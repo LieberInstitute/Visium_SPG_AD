@@ -1,0 +1,362 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.0.x
+**** Job starts ****
+Mon May  3 14:44:05 EDT 2021
+**** JHPCE info ****
+User: lcollado
+Job id: 5241079
+Job name: download_from_10x
+Hostname: compute-098.cm.cluster
+Task id: undefined
+Unloading conda_R/4.0.x
+Loading conda_R/4.0.x
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/16          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.0.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+--2021-05-03 14:44:07--  https://ty.10xgenomics.com/6ef33f518641b336/Leiber_Fastqs.tar
+Resolving ty.10xgenomics.com (ty.10xgenomics.com)... 104.18.0.173, 104.18.1.173, 2606:4700::6812:ad, ...
+Connecting to ty.10xgenomics.com (ty.10xgenomics.com)|104.18.0.173|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 184379248640 (172G) [application/x-tar]
+Saving to: ‘Leiber_Fastqs.tar’
+
+180057850K ..........                                            100% 52.4M=2h12m
+
+2021-05-03 16:57:00 (22.1 MB/s) - ‘Leiber_Fastqs.tar’ saved [184379248640/184379248640]
+
+FINISHED --2021-05-03 16:57:00--
+Total wall clock time: 2h 12m 53s
+Downloaded: 1 files, 172G in 2h 12m 53s (22.1 MB/s)
+tar: Leiber_Fastqs: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+mv: cannot stat ‘Leiber_Fastqs’: No such file or directory
+**** Job ends ****
+
+
+Mon May  3 16:57:00 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.0.x
+**** Job starts ****
+Mon May  3 20:05:54 EDT 2021
+**** JHPCE info ****
+User: lcollado
+Job id: 5243569
+Job name: download_from_10x
+Hostname: compute-098.cm.cluster
+Task id: undefined
+Unloading conda_R/4.0.x
+Loading conda_R/4.0.x
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/16          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.0.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+Leiber_Fastqs/
+Leiber_Fastqs/Leiber/
+Leiber_Fastqs/Leiber/fastqs.tar.gz
+**** Job ends ****
+Tue May  4 00:53:16 EDT 2021
+
+
+
+$ tar -xvf fastqs.tar.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACAACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACGATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACGCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACGCAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCACGCTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCAGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AACCCGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AATGCATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AATGCCATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-ACCACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AGTTCCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AGTTTCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-AGTTTCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CACACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CAGTATAGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCACCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCACACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCACCAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCACCCAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCACCCCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCCCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCCCCCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CGCGGTAGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTACACCATT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTCAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTCTAGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTCTCGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTCTGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-CTTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGAGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGAGGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGATGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCAGTATAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCCGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCGCGTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCGCTATGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCGCTTATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GCGCTTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GGGGGGCGGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GGGGGGGTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GGGGGGGTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTACCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGACAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGACCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCATGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCCTG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCCTTT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTAGCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-GTGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-NTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TCCGTTGGAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TCTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TTCCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TTCTCGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TTCTGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-TTTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I1_si-X_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACAACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACGATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACGCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACGCAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCACGCTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCAGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AACCCGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AATGCATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AATGCCATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-ACCACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AGTTCCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AGTTTCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-AGTTTCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CACACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CAGTATAGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCACCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCACACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCACCAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCACCCAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCACCCCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCCCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCCCCCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CGCGGTAGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTACACCATT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTCAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTCTAGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTCTCGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTCTGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-CTTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGAGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGAGGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGATGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCAGTATAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCCGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCGCGTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCGCTATGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCGCTTATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GCGCTTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GGGGGGCGGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GGGGGGGTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GGGGGGGTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTACCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGACAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGACCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCATGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCCTG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCCTTT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTAGCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-GTGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-NTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TCCGTTGGAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TCTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TTCCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TTCTCGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TTCTGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-TTTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-I2_si-X_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACAACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACGATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACGCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACGCAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCACGCTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCAGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AACCCGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AATGCATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AATGCCATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-ACCACGCATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AGTTCCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AGTTTCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-AGTTTCTGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CACACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CAGTATAGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCACCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCACACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCACCAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCACCCAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCACCCCAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCCCACAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCCCCCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CGCGGTAGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTACACCATT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTCAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTCTAGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTCTCGCGAG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTCTGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-CTTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGAGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGAGGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGATGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCAGTATAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCCGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCGCGTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCGCTATGGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCGCTTATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GCGCTTATGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GGAGGATATA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GGGGGGCGGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GGGGGGGTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GGGGGGGTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTACCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGACAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGACCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCATGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCCTG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCGGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCCTTT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTAGCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-GTGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NACCACGCAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NAGAGGATAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NCAGTATAGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NCCACCACAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NGTTTCCTGG_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NTAGACGAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NTAGCCCTGT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-NTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TAGACGAAAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TAGCCCTGTA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TCCGTTGGAT_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TCTAGCGAGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TCTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TTCCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TTCTCGATAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TTCTCGATGA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TTCTGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-TTTCGATGAA_lane-002-chunk-001.fastq.gz
+mnt/analysis/marsoc/pipestances/H5GKNDSX2/BCL_PROCESSOR_PD/H5GKNDSX2/2020.0623.2-0/outs/fastq_path/read-RA_si-X_lane-002-chunk-001.fastq.gz
+
