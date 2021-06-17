@@ -26,7 +26,7 @@ module use /jhpce/shared/jhpce/modulefiles/libd
 module load spaceranger
 
 # run in outputs directory (spaceranger can only save outputs in current working directory)
-cwd=/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD
+cwd="/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD"
 mkdir -p processed-data/MiSeq
 cd processed-data/MiSeq
 
