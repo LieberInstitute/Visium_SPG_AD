@@ -1,6 +1,2 @@
 raw-data
-*.sh.e*
-*.sh.o*
-*.sh.pe*
-*.sh.po*
 processed-data

@@ -1,0 +1,12 @@
+Adding LIBD modules
+Loading git
+error: No input FASTQs were found for the requested parameters.
+
+If your files came from bcl2fastq or mkfastq:
+ - Make sure you are specifying the correct --sample(s), i.e. matching the sample sheet
+ - Make sure your files follow the correct naming convention, e.g. SampleName_S1_L001_R1_001.fastq.gz (and the R2 version)
+ - Make sure your --fastqs points to the correct location.
+
+Refer to the "Specifying Input FASTQs" page at https://support.10xgenomics.com/ for more details.
+
+

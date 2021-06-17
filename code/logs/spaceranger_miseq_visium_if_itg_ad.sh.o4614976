@@ -1,0 +1,7 @@
+Adding LIBD modules
+Loading git
+Martian Runtime - v4.0.2
+
+RuntimeError: pipestance 'Br3874_ITG' already exists with different invocation file __Br3874_ITG.mro
+
+2021-03-15 10:14:47 Shutting down.
