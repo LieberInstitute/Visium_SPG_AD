@@ -20,12 +20,17 @@ echo "Task id: ${SGE_TASK_ID}"
 module list
 
 ## Download the data
-wget https://ty.10xgenomics.com/083ad7b0088d8912/Lieber_Transfer.tar
-wget https://ty.10xgenomics.com/faf16fa65919ce60/Lieber_Transfer_10x_Alignments.tar
+## for less verbose output: https://www.davekb.com/browse_computer_tips:wget_disable_progress_bar:txt
+wget -nv https://ty.10xgenomics.com/083ad7b0088d8912/Lieber_Transfer.tar
+wget -nv https://ty.10xgenomics.com/faf16fa65919ce60/Lieber_Transfer_10x_Alignments.tar
 
 ## Uncompress
 tar -xvf Lieber_Transfer.tar
 tar -xvf Lieber_Transfer_10x_Alignments.tar
+
+## Clean up
+rm Lieber_Transfer.tar
+rm Lieber_Transfer_10x_Alignments.tar
 
 echo "**** Job ends ****"
 date
