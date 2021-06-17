@@ -3,6 +3,4 @@ raw-data
 *.sh.o*
 *.sh.pe*
 *.sh.po*
-
-rdata
-outputs
+processed-data
