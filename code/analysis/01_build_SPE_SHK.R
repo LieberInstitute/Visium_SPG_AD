@@ -5,7 +5,7 @@
 
 ## Automatically style the code in this script:
 styler::style_file(
-  here::here("analysis", "01_build_SPE_SHK.R"),
+  here::here("code", "analysis", "01_build_SPE_SHK.R"),
   transformers = biocthis::bioc_style()
 )
 
@@ -61,7 +61,7 @@ sample_info <- data.frame(
   diagnosis = c("AD","Control","AD","AD")
 )
 sample_info$sample_path <- file.path(
-  here::here("outputs", "MiSeq"),
+  here::here("processed-data", "MiSeq"),
   sample_info$sample_id,
   "outs"
 )
@@ -168,9 +168,9 @@ dim(spe_raw)
 spe_raw$overlaps_tissue <- factor(ifelse(inTissue(spe_raw), "in", "out"))
 
 ## Save the raw version now
-dir.create(here::here("rdata"), showWarnings = FALSE)
-dir.create(here::here("rdata", "spe"), showWarnings = FALSE)
-save(spe_raw, file = here::here("rdata", "spe", "spe_raw.Rdata"))
+dir.create(here::here("processed-data", "rdata"), showWarnings = FALSE)
+dir.create(here::here("processed-data", "rdata", "spe"), showWarnings = FALSE)
+save(spe_raw, file = here::here("processed-data", "rdata", "spe", "spe_raw.Rdata"))
 
 ## Work with SPE
 spe <- spe_raw[, which(inTissue(spe_raw))]
@@ -186,7 +186,7 @@ dim(spe)
 pryr::object_size(spe)
 # 94.7 MB
 
-save(spe, file = here::here("rdata", "spe", "spe.Rdata"))
+save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 ## Inspect in vs outside of tissue
 vis_grid_clus(
   spe = spe_raw,
@@ -362,7 +362,7 @@ spe <- logNormCounts(spe)
 pryr::object_size(spe)
 # 139 MB
 
-save(spe, file = here::here("rdata", "spe", "spe.Rdata"))
+save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 
 ## From
 ## http://bioconductor.org/packages/release/bioc/vignettes/scran/inst/doc/scran.html#4_variance_modelling
@@ -405,7 +405,7 @@ length(top.hvgs.fdr1)
 save(top.hvgs,
      top.hvgs.fdr5,
      top.hvgs.fdr1,
-     file = here::here("rdata", "spe", "top.hvgs.Rdata"))
+     file = here::here("processed-data", "rdata", "spe", "top.hvgs.Rdata"))
 
 set.seed(20191112)
 Sys.time()
@@ -491,7 +491,7 @@ Sys.time()
 
 
 # save
-save(spe, file = here::here("rdata", "spe", "spe.Rdata"))
+save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 
 ## Reproducibility information
 print('Reproducibility information:')
@@ -697,8 +697,8 @@ session_info()
 # [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/site-library
 # [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/library
 
-#load(here::here("rdata", "spe", "spe.Rdata"), verbose = TRUE)
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/rdata/spe/spe.Rdata")
+#load(here::here("processed-data", "rdata", "spe", "spe.Rdata"), verbose = TRUE)
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe.Rdata")
 
 Sys.time()
 g_k50 <- buildSNNGraph(spe, k = 50, use.dimred = 'PCA')
@@ -716,8 +716,8 @@ Sys.time()
 # [1] "2019-11-14 12:05:23 EST"
 
 clust_k50 <- sort_clusters(g_walk_k50$membership)
-save(g_k50, g_walk_k50, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/rdata/g_k50.Rdata')
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/rdata/g_k50.Rdata")
+save(g_k50, g_walk_k50, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata')
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata")
 
 ### For the SNN graph with K = 50, find which nested subset best matches
 ## the clusters from 10x Genomics labeled by Kristen Maynard and Keri Martinowich
@@ -726,8 +726,8 @@ clust_k5_list <- lapply(4:28, function(n) {
   sort_clusters(igraph::cut_at(g_walk_k50, n = n))
 })
 names(clust_k5_list) <- paste0('k', 4:28)
-save(clust_k5_list, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/rdata/clust_k5_list.Rdata')
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/rdata/clust_k5_list.Rdata")
+save(clust_k5_list, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/clust_k5_list.Rdata')
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/processed-data/rdata/clust_k5_list.Rdata")
 
 ## Add clusters to spe colData
 
@@ -738,5 +738,5 @@ for (i in seq_along(col.names)){
 col.names <- paste0("SNN_k50_k",4:28)
 colnames(colData(spe))[18:42] <- col.names
 
-save(spe, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/rdata/spe/spe_SNN_clusters.Rdata")
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/rdata/spe/spe_SNN_clusters.Rdata")
+save(spe, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe_SNN_clusters.Rdata")
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/processed-data/rdata/spe/spe_SNN_clusters.Rdata")

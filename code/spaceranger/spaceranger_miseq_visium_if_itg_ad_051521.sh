@@ -26,9 +26,9 @@ module use /jhpce/shared/jhpce/modulefiles/libd
 module load spaceranger/1.2.2
 
 # run in outputs directory (spaceranger can only save outputs in current working directory)
-cwd=$(pwd)
-mkdir -p outputs/NovaSeq
-cd outputs/NovaSeq
+cwd=/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD
+mkdir -p processed-data/NovaSeq
+cd processed-data/NovaSeq
 
 
 # run spaceranger count for each sample
