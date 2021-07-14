@@ -6,6 +6,7 @@ styler::style_file(here::here("code", "analysis", "02_sample_metrics.R"),
 
 library("ggplot2")
 library("here")
+library("ggpubr")
 library("sessioninfo")
 
 
@@ -93,6 +94,21 @@ ggplot(
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20)
 
+dev.off()
+
+
+
+## Compare fiducial alignments: made by Abby or by 10x Genomics
+## Used https://rpkgs.datanovia.com/ggpubr/reference/ggpaired.html
+pdf(
+    here::here("plots", "10x_checks", "alignment_check_abby_vs_10x.pdf"),
+    useDingbats = FALSE,
+    width = 10
+)
+for(i in colnames(sample_metrics)[-c(1, ncol(sample_metrics))]) {
+    p <- ggpaired(sample_metrics, id = "Sample.ID", x = "Alignment", y = i, xlab = "Fiducial Alignment", ylab = i, fill = "Alignment", palette = "Dark2", line.color = "gray", ggtheme = theme_pubr(base_size = 30))
+    print(p)
+}
 dev.off()
 
 
