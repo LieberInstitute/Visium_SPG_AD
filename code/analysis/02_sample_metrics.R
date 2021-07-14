@@ -1,5 +1,5 @@
 ## Automatically style the code in this script:
-styler::style_file(here::here("code", "analysis", "02_sample_metrics.R"),
+styler::style_file(here("code", "analysis", "02_sample_metrics.R"),
     transformers = biocthis::bioc_style()
 )
 
@@ -24,8 +24,8 @@ sample_names <-
         "V10T31036_D1_Br3880"
     )
 dir_outputs <- c(
-    here::here("raw-data", "10x_files", "Lieber_Transfer"),
-    here::here("raw-data", "10x_files", "Lieber_Transfer_10x_Alignments")
+    here("raw-data", "10x_files", "Lieber_Transfer"),
+    here("raw-data", "10x_files", "Lieber_Transfer_10x_Alignments")
 )
 
 metrics_csvs <- unlist(lapply(dir_outputs, function(x) {
@@ -49,16 +49,16 @@ sample_metrics$Alignment <- rep(c("Abby", "10x"), each = 10)
 
 dir.create(here("processed-data", "10x_checks"), showWarnings = FALSE)
 save(sample_metrics,
-    file = here::here("processed-data", "10x_checks", "sample_metrics.Rdata")
+    file = here("processed-data", "10x_checks", "sample_metrics.Rdata")
 )
 write.csv(sample_metrics,
-    file = here::here("processed-data", "10x_checks", "sample_metrics.csv")
+    file = here("processed-data", "10x_checks", "sample_metrics.csv")
 )
 
 
 dir.create(here("plots", "10x_checks"), showWarnings = FALSE)
 pdf(
-    here::here("plots", "10x_checks", "spaceranger_metrics_by_number_of_reads.pdf"),
+    here("plots", "10x_checks", "spaceranger_metrics_by_number_of_reads.pdf"),
     useDingbats = FALSE,
     width = 10
 )
@@ -101,7 +101,7 @@ dev.off()
 ## Compare fiducial alignments: made by Abby or by 10x Genomics
 ## Used https://rpkgs.datanovia.com/ggpubr/reference/ggpaired.html
 pdf(
-    here::here("plots", "10x_checks", "alignment_check_abby_vs_10x.pdf"),
+    here("plots", "10x_checks", "alignment_check_abby_vs_10x.pdf"),
     useDingbats = FALSE,
     width = 10
 )
@@ -111,6 +111,86 @@ for(i in colnames(sample_metrics)[-c(1, ncol(sample_metrics))]) {
 }
 dev.off()
 
+## Match with spatialDLPFC metrics
+load(here("raw-data", "spatialDLPFC", "shared_metrics.Rdata"), verbose = TRUE)
+shared_metrics$Sample.ID <- rownames(shared_metrics)
+
+## Keep only the alignments by Abby for now
+tmp <- subset(sample_metrics, Alignment == "Abby")
+tmp$Alignment <- NULL
+tmp$study <- "VisiumIF"
+
+## Columns that aren't shared
+colnames(tmp)[!colnames(tmp) %in% colnames(shared_metrics)]
+# [1] "Number.of.Spots.Under.Tissue"         "Mean.Reads.Under.Tissue.per.Spot"
+# [3] "Fraction.of.Spots.Under.Tissue"       "Valid.UMIs"
+# [5] "Fraction.Reads.in.Spots.Under.Tissue"
+colnames(shared_metrics)[!colnames(shared_metrics) %in% colnames(tmp)]
+# character(0)
+
+## Subset to common columns
+cols_shared <- colnames(tmp)[colnames(tmp) %in% colnames(shared_metrics)]
+tmp <- tmp[, cols_shared]
+shared_metrics <- shared_metrics[, cols_shared]
+
+## Put on the same scale
+tmp[, sapply(tmp, max) < 1] <- round(tmp[, sapply(tmp, max) < 1] * 100, 1)
+
+## Combine
+all_metrics <- rbind(tmp, shared_metrics)
+row.names(all_metrics) <- NULL
+
+## Fix study
+all_metrics$study[all_metrics$study == "current"] <- "spatialDLPFC"
+all_metrics$study[all_metrics$study == "pilot"] <- "spatialLIBD"
+
+## Save for later
+save(all_metrics,
+    file = here("processed-data", "10x_checks", "all_metrics.Rdata")
+)
+write.csv(all_metrics,
+    file = here("processed-data", "10x_checks", "all_metrics.csv")
+)
+
+
+pdf(
+    here("plots", "10x_checks", "cross_study_spaceranger_metrics_by_number_of_reads.pdf"),
+    useDingbats = FALSE,
+    width = 12
+)
+ggplot(
+    all_metrics,
+    aes(x = Mean.Reads.per.Spot, y = Number.of.Reads / 1e6)
+) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_bw(base_size = 20) +
+    facet_grid(~
+    study)
+
+ggplot(
+    all_metrics,
+    aes(x = Median.Genes.per.Spot, y = Number.of.Reads / 1e6, color = study)
+) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_bw(base_size = 20)
+ggplot(
+    all_metrics,
+    aes(x = Total.Genes.Detected, y = Number.of.Reads / 1e6, color = study)
+) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_bw(base_size = 20)
+ggplot(
+    all_metrics,
+    aes(x = Median.UMI.Counts.per.Spot, y = Number.of.Reads / 1e6, color = study)
+) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_bw(base_size = 20)
+
+dev.off()
 
 print("Reproducibility information:")
 Sys.time()
