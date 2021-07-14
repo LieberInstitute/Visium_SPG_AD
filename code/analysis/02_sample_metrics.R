@@ -1,185 +1,93 @@
 ## Automatically style the code in this script:
-styler::style_file(here::here("analysis", "04_sample_metrics.R"),
+styler::style_file(here::here("code", "analysis", "02_sample_metrics.R"),
     transformers = biocthis::bioc_style()
 )
 
 
 library("ggplot2")
+library("here")
 library("sessioninfo")
 
 
 sample_names <-
     c(
-        "DLPFC_Br2743_ant_manual_alignment",
-        "DLPFC_Br2743_mid_manual_alignment",
-        "DLPFC_Br2743_post_manual_alignment",
-        "DLPFC_Br3942_ant_manual_alignment",
-        "DLPFC_Br3942_mid_manual_alignment",
-        "DLPFC_Br3942_post_manual_alignment",
-        "DLPFC_Br6423_ant_manual_alignment",
-        "DLPFC_Br6423_mid_manual_alignment",
-        "DLPFC_Br6423_post_manual_alignment",
-        "DLPFC_Br8492_ant_manual_alignment",
-        "DLPFC_Br8492_mid_manual_alignment",
-        "DLPFC_Br8492_post_manual_alignment"
+        "V10A27004_A1_Br3874",
+        "V10A27004_D1_Br3880",
+        "V10A27106_A1_Br3874",
+        "V10A27106_B1_Br3854",
+        "V10A27106_C1_Br3873",
+        "V10A27106_D1_Br3880",
+        "V10T31036_A1_Br3874",
+        "V10T31036_B1_Br3854",
+        "V10T31036_C1_Br3873",
+        "V10T31036_D1_Br3880"
     )
-dir_outputs <- here::here("outputs", "NextSeq")
+dir_outputs <- c(
+    here::here("raw-data", "10x_files", "Lieber_Transfer"),
+    here::here("raw-data", "10x_files", "Lieber_Transfer_10x_Alignments")
+)
+
+metrics_csvs <- unlist(lapply(dir_outputs, function(x) {
+    file.path(x, sample_names)
+}))
+stopifnot(all(file.exists(metrics_csvs)))
 
 df_metrics_all <- NULL
-for (sample_name in sample_names) {
-    dir_csv <-
-        file.path(dir_outputs, sample_name, "outs", "metrics_summary.csv")
+for (i in metrics_csvs) {
+    dir_csv <- file.path(i, "metrics_summary_csv.csv")
     df_metrics <- read.csv(dir_csv, header = TRUE)
     df_metrics_all <- rbind(df_metrics_all, df_metrics)
 }
 
 # save
 sample_metrics <- df_metrics_all
+
+## Overwrite the 10x Sample IDs by ours
+sample_metrics$Sample.ID <- basename(metrics_csvs)
+sample_metrics$Alignment <- rep(c("Abby", "10x"), each = 10)
+
+dir.create(here("processed-data", "10x_checks"), showWarnings = FALSE)
 save(sample_metrics,
-    file = here::here("rdata", "spe", "sample_metrics.Rdata")
+    file = here::here("processed-data", "10x_checks", "sample_metrics.Rdata")
 )
 write.csv(sample_metrics,
-    file = here::here("rdata", "spe", "sample_metrics.csv")
+    file = here::here("processed-data", "10x_checks", "sample_metrics.csv")
 )
 
 
-## Read in older data
-pilot_metrics <-
-    read.table(
-        "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/visium_dlpfc_pilot_sample_metrics.tsv",
-        header = TRUE,
-        sep = "\t"
-    )
-
-## Reshape the data
-pilot_metrics <- as.data.frame(t(pilot_metrics))
-colnames(pilot_metrics) <- pilot_metrics[1, ]
-pilot_metrics <- pilot_metrics[-1, ]
-rownames(pilot_metrics) <- gsub("X", "", rownames(pilot_metrics))
-
-## Make it usable in R
-for (i in c(
-    "Estimated.Number.of.Spots",
-    "Mean.Reads.per.Spot",
-    "Median.Genes.per.Spot",
-    "Number.of.Reads",
-    "Total.Genes.Detected",
-    "Median.UMI.Counts.per.Spot",
-    "Mean.Cells.Per.Spot",
-    "Proportion.0.Cells.Per.Spot",
-    "Proportion.1.Cell.Per.Spot",
-    "Age.Death"
-)) {
-    pilot_metrics[[i]] <- as.numeric(gsub(",", "", pilot_metrics[[i]]))
-}
-for (i in c(
-    "Valid.Barcodes",
-    "Sequencing.Saturation",
-    "Q30.Bases.in.Barcode",
-    "Q30.Bases.in.RNA.Read",
-    "Q30.Bases.in.Sample.Index",
-    "Q30.Bases.in.UMI",
-    "Reads.Mapped.to.Genome",
-    "Reads.Mapped.Confidently.to.Genome",
-    "Reads.Mapped.Confidently.to.Intergenic.Regions",
-    "Reads.Mapped.Confidently.to.Intronic.Regions",
-    "Reads.Mapped.Confidently.to.Exonic.Regions",
-    "Reads.Mapped.Confidently.to.Transcriptome",
-    "Reads.Mapped.Antisense.to.Gene",
-    "Fraction.Reads.in.Spots"
-)) {
-    pilot_metrics[[i]] <- as.numeric(gsub("%", "", pilot_metrics[[i]]))
-}
-summary(pilot_metrics)
-save(pilot_metrics,
-    file = here::here("rdata", "spe", "pilot_metrics.Rdata")
-)
-
-write.csv(pilot_metrics,
-    file = here::here("rdata", "spe", "pilot_metrics.csv")
-)
-
-
-rownames(sample_metrics) <- gsub("DLPFC_|_manual_alignment", "", sample_metrics$Sample.ID)
-shared_cols <-
-    intersect(colnames(sample_metrics), colnames(pilot_metrics))
-shared_cols
-#  [1] "Number.of.Reads"                                "Mean.Reads.per.Spot"
-#  [3] "Median.Genes.per.Spot"                          "Median.UMI.Counts.per.Spot"
-#  [5] "Valid.Barcodes"                                 "Sequencing.Saturation"
-#  [7] "Q30.Bases.in.Barcode"                           "Q30.Bases.in.RNA.Read"
-#  [9] "Q30.Bases.in.UMI"                               "Reads.Mapped.to.Genome"
-# [11] "Reads.Mapped.Confidently.to.Genome"             "Reads.Mapped.Confidently.to.Intergenic.Regions"
-# [13] "Reads.Mapped.Confidently.to.Intronic.Regions"   "Reads.Mapped.Confidently.to.Exonic.Regions"
-# [15] "Reads.Mapped.Confidently.to.Transcriptome"      "Reads.Mapped.Antisense.to.Gene"
-# [17] "Total.Genes.Detected"
-
-
-## Document missing variables from each table
-colnames(pilot_metrics)[!colnames(pilot_metrics) %in% shared_cols]
-# [1] "Estimated.Number.of.Spots"   "Q30.Bases.in.Sample.Index"   "Fraction.Reads.in.Spots"     "Mean.Cells.Per.Spot"
-# [5] "Proportion.0.Cells.Per.Spot" "Proportion.1.Cell.Per.Spot"  "Brain.Number"                "Position"
-# [9] "Replicate"                   "Age.Death"                   "Sex"                         "Primary.Diagnosis"
-colnames(sample_metrics)[!colnames(sample_metrics) %in% shared_cols]
-# [1] "Sample.ID"                            "Number.of.Spots.Under.Tissue"         "Mean.Reads.Under.Tissue.per.Spot"
-# [4] "Fraction.of.Spots.Under.Tissue"       "Valid.UMIs"                           "Fraction.Reads.in.Spots.Under.Tissue"
-
-## Combine the shared metrics
-tmp <- sample_metrics[, shared_cols]
-regular_cols <-
-    which(
-        colnames(tmp) %in% c(
-            "Number.of.Reads",
-            "Mean.Reads.per.Spot",
-            "Median.Genes.per.Spot",
-            "Median.UMI.Counts.per.Spot",
-            "Total.Genes.Detected"
-        )
-    )
-tmp[, -regular_cols] <- tmp[, -regular_cols] * 100
-shared_metrics <- rbind(round(tmp, 1),
-    pilot_metrics[, shared_cols])
-shared_metrics$study <- rep(c("current", "pilot"), each = 12)
-
-save(shared_metrics,
-    file = here::here("rdata", "spe", "shared_metrics.Rdata")
-)
-write.csv(shared_metrics,
-    file = here::here("rdata", "spe", "shared_metrics.csv")
-)
-
+dir.create(here("plots", "10x_checks"), showWarnings = FALSE)
 pdf(
-    here::here("plots", "spaceranger_metrics_by_number_of_reads.pdf"),
+    here::here("plots", "10x_checks", "spaceranger_metrics_by_number_of_reads.pdf"),
     useDingbats = FALSE,
     width = 10
 )
 ggplot(
-    shared_metrics,
+    sample_metrics,
     aes(x = Mean.Reads.per.Spot, y = Number.of.Reads / 1e6)
 ) +
     geom_point() +
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20) +
     facet_grid(~
-    study)
+    Alignment)
 
 ggplot(
-    shared_metrics,
-    aes(x = Median.Genes.per.Spot, y = Number.of.Reads / 1e6, color = study)
+    sample_metrics,
+    aes(x = Median.Genes.per.Spot, y = Number.of.Reads / 1e6, color = Alignment)
 ) +
     geom_point() +
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20)
 ggplot(
-    shared_metrics,
-    aes(x = Total.Genes.Detected, y = Number.of.Reads / 1e6, color = study)
+    sample_metrics,
+    aes(x = Total.Genes.Detected, y = Number.of.Reads / 1e6, color = Alignment)
 ) +
     geom_point() +
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20)
 ggplot(
-    shared_metrics,
-    aes(x = Median.UMI.Counts.per.Spot, y = Number.of.Reads / 1e6, color = study)
+    sample_metrics,
+    aes(x = Median.UMI.Counts.per.Spot, y = Number.of.Reads / 1e6, color = Alignment)
 ) +
     geom_point() +
     geom_smooth(method = "lm") +
@@ -193,3 +101,65 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
+
+# ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+#  setting  value
+#  version  R version 4.1.0 Patched (2021-05-18 r80330)
+#  os       CentOS Linux 7 (Core)
+#  system   x86_64, linux-gnu
+#  ui       X11
+#  language (EN)
+#  collate  en_US.UTF-8
+#  ctype    en_US.UTF-8
+#  tz       US/Eastern
+#  date     2021-07-14
+#
+# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  package     * version date       lib source
+#  assertthat    0.2.1   2019-03-21 [2] CRAN (R 4.1.0)
+#  cli           3.0.0   2021-06-30 [2] CRAN (R 4.1.0)
+#  colorout      1.2-2   2021-05-25 [1] Github (jalvesaq/colorout@79931fd)
+#  colorspace    2.0-2   2021-06-24 [2] CRAN (R 4.1.0)
+#  crayon        1.4.1   2021-02-08 [2] CRAN (R 4.1.0)
+#  DBI           1.1.1   2021-01-15 [2] CRAN (R 4.1.0)
+#  digest        0.6.27  2020-10-24 [2] CRAN (R 4.1.0)
+#  dplyr         1.0.7   2021-06-18 [2] CRAN (R 4.1.0)
+#  ellipsis      0.3.2   2021-04-29 [2] CRAN (R 4.1.0)
+#  fansi         0.5.0   2021-05-25 [2] CRAN (R 4.1.0)
+#  generics      0.1.0   2020-10-31 [2] CRAN (R 4.1.0)
+#  ggplot2     * 3.3.5   2021-06-25 [2] CRAN (R 4.1.0)
+#  glue          1.4.2   2020-08-27 [2] CRAN (R 4.1.0)
+#  gtable        0.3.0   2019-03-25 [2] CRAN (R 4.1.0)
+#  here        * 1.0.1   2020-12-13 [1] CRAN (R 4.1.0)
+#  htmltools     0.5.1.1 2021-01-22 [2] CRAN (R 4.1.0)
+#  htmlwidgets   1.5.3   2020-12-10 [2] CRAN (R 4.1.0)
+#  httpuv        1.6.1   2021-05-07 [2] CRAN (R 4.1.0)
+#  jsonlite      1.7.2   2020-12-09 [2] CRAN (R 4.1.0)
+#  later         1.2.0   2021-04-23 [2] CRAN (R 4.1.0)
+#  lattice       0.20-44 2021-05-02 [3] CRAN (R 4.1.0)
+#  lifecycle     1.0.0   2021-02-15 [2] CRAN (R 4.1.0)
+#  magrittr      2.0.1   2020-11-17 [2] CRAN (R 4.1.0)
+#  munsell       0.5.0   2018-06-12 [2] CRAN (R 4.1.0)
+#  pillar        1.6.1   2021-05-16 [2] CRAN (R 4.1.0)
+#  pkgconfig     2.0.3   2019-09-22 [2] CRAN (R 4.1.0)
+#  png           0.1-7   2013-12-03 [2] CRAN (R 4.1.0)
+#  promises      1.2.0.1 2021-02-11 [2] CRAN (R 4.1.0)
+#  purrr         0.3.4   2020-04-17 [2] CRAN (R 4.1.0)
+#  R6            2.5.0   2020-10-28 [2] CRAN (R 4.1.0)
+#  Rcpp          1.0.7   2021-07-07 [2] CRAN (R 4.1.0)
+#  rlang         0.4.11  2021-04-30 [2] CRAN (R 4.1.0)
+#  rmote         0.3.4   2021-05-25 [1] Github (cloudyr/rmote@fbce611)
+#  rprojroot     2.0.2   2020-11-15 [2] CRAN (R 4.1.0)
+#  scales        1.1.1   2020-05-11 [2] CRAN (R 4.1.0)
+#  servr         0.22    2021-04-14 [1] CRAN (R 4.1.0)
+#  sessioninfo * 1.1.1   2018-11-05 [2] CRAN (R 4.1.0)
+#  tibble        3.1.2   2021-05-16 [2] CRAN (R 4.1.0)
+#  tidyselect    1.1.1   2021-04-30 [2] CRAN (R 4.1.0)
+#  utf8          1.2.1   2021-03-12 [2] CRAN (R 4.1.0)
+#  vctrs         0.3.8   2021-04-29 [2] CRAN (R 4.1.0)
+#  withr         2.4.2   2021-04-18 [2] CRAN (R 4.1.0)
+#  xfun          0.24    2021-06-15 [2] CRAN (R 4.1.0)
+#
+# [1] /users/lcollado/R/4.1
+# [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1/R/4.1/lib64/R/site-library
+# [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1/R/4.1/lib64/R/library
