@@ -192,6 +192,23 @@ ggplot(
 
 dev.off()
 
+
+## Compare metrics one at a time across studies
+## Used https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html
+pdf(
+    here("plots", "10x_checks", "cross_study_spaceranger_metrics_boxplots.pdf"),
+    useDingbats = FALSE,
+    width = 10
+)
+for(i in colnames(all_metrics)[-c(1, ncol(all_metrics))]) {
+    set.seed(20210714)
+    p <- ggboxplot(all_metrics, x = "study", y = i, color = "study", palette = "Dark2", add = "jitter", shape = "study", label = "Sample.ID", repel = TRUE, font.label = list(size = 5), ggtheme = theme_pubr(base_size = 30))
+    print(p)
+}
+dev.off()
+
+
+
 print("Reproducibility information:")
 Sys.time()
 proc.time()
@@ -200,62 +217,100 @@ session_info()
 
 # ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  setting  value
-#  version  R version 4.1.0 Patched (2021-05-18 r80330)
-#  os       CentOS Linux 7 (Core)
-#  system   x86_64, linux-gnu
-#  ui       X11
+#  version  R version 4.1.0 (2021-05-18)
+#  os       macOS Big Sur 11.4
+#  system   x86_64, darwin17.0
+#  ui       RStudio
 #  language (EN)
 #  collate  en_US.UTF-8
 #  ctype    en_US.UTF-8
-#  tz       US/Eastern
+#  tz       America/New_York
 #  date     2021-07-14
 #
 # ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
-#  package     * version date       lib source
-#  assertthat    0.2.1   2019-03-21 [2] CRAN (R 4.1.0)
-#  cli           3.0.0   2021-06-30 [2] CRAN (R 4.1.0)
-#  colorout      1.2-2   2021-05-25 [1] Github (jalvesaq/colorout@79931fd)
-#  colorspace    2.0-2   2021-06-24 [2] CRAN (R 4.1.0)
-#  crayon        1.4.1   2021-02-08 [2] CRAN (R 4.1.0)
-#  DBI           1.1.1   2021-01-15 [2] CRAN (R 4.1.0)
-#  digest        0.6.27  2020-10-24 [2] CRAN (R 4.1.0)
-#  dplyr         1.0.7   2021-06-18 [2] CRAN (R 4.1.0)
-#  ellipsis      0.3.2   2021-04-29 [2] CRAN (R 4.1.0)
-#  fansi         0.5.0   2021-05-25 [2] CRAN (R 4.1.0)
-#  generics      0.1.0   2020-10-31 [2] CRAN (R 4.1.0)
-#  ggplot2     * 3.3.5   2021-06-25 [2] CRAN (R 4.1.0)
-#  glue          1.4.2   2020-08-27 [2] CRAN (R 4.1.0)
-#  gtable        0.3.0   2019-03-25 [2] CRAN (R 4.1.0)
-#  here        * 1.0.1   2020-12-13 [1] CRAN (R 4.1.0)
-#  htmltools     0.5.1.1 2021-01-22 [2] CRAN (R 4.1.0)
-#  htmlwidgets   1.5.3   2020-12-10 [2] CRAN (R 4.1.0)
-#  httpuv        1.6.1   2021-05-07 [2] CRAN (R 4.1.0)
-#  jsonlite      1.7.2   2020-12-09 [2] CRAN (R 4.1.0)
-#  later         1.2.0   2021-04-23 [2] CRAN (R 4.1.0)
-#  lattice       0.20-44 2021-05-02 [3] CRAN (R 4.1.0)
-#  lifecycle     1.0.0   2021-02-15 [2] CRAN (R 4.1.0)
-#  magrittr      2.0.1   2020-11-17 [2] CRAN (R 4.1.0)
-#  munsell       0.5.0   2018-06-12 [2] CRAN (R 4.1.0)
-#  pillar        1.6.1   2021-05-16 [2] CRAN (R 4.1.0)
-#  pkgconfig     2.0.3   2019-09-22 [2] CRAN (R 4.1.0)
-#  png           0.1-7   2013-12-03 [2] CRAN (R 4.1.0)
-#  promises      1.2.0.1 2021-02-11 [2] CRAN (R 4.1.0)
-#  purrr         0.3.4   2020-04-17 [2] CRAN (R 4.1.0)
-#  R6            2.5.0   2020-10-28 [2] CRAN (R 4.1.0)
-#  Rcpp          1.0.7   2021-07-07 [2] CRAN (R 4.1.0)
-#  rlang         0.4.11  2021-04-30 [2] CRAN (R 4.1.0)
-#  rmote         0.3.4   2021-05-25 [1] Github (cloudyr/rmote@fbce611)
-#  rprojroot     2.0.2   2020-11-15 [2] CRAN (R 4.1.0)
-#  scales        1.1.1   2020-05-11 [2] CRAN (R 4.1.0)
-#  servr         0.22    2021-04-14 [1] CRAN (R 4.1.0)
-#  sessioninfo * 1.1.1   2018-11-05 [2] CRAN (R 4.1.0)
-#  tibble        3.1.2   2021-05-16 [2] CRAN (R 4.1.0)
-#  tidyselect    1.1.1   2021-04-30 [2] CRAN (R 4.1.0)
-#  utf8          1.2.1   2021-03-12 [2] CRAN (R 4.1.0)
-#  vctrs         0.3.8   2021-04-29 [2] CRAN (R 4.1.0)
-#  withr         2.4.2   2021-04-18 [2] CRAN (R 4.1.0)
-#  xfun          0.24    2021-06-15 [2] CRAN (R 4.1.0)
+#  package      * version    date       lib source
+#  abind          1.4-5      2016-07-21 [1] CRAN (R 4.1.0)
+#  assertthat     0.2.1      2019-03-21 [1] CRAN (R 4.1.0)
+#  backports      1.2.1      2020-12-09 [1] CRAN (R 4.1.0)
+#  biocthis       1.2.0      2021-05-19 [1] Bioconductor
+#  broom          0.7.7      2021-06-13 [1] CRAN (R 4.1.0)
+#  cachem         1.0.5      2021-05-15 [1] CRAN (R 4.1.0)
+#  callr          3.7.0      2021-04-20 [1] CRAN (R 4.1.0)
+#  car            3.0-10     2020-09-29 [1] CRAN (R 4.1.0)
+#  carData        3.0-4      2020-05-22 [1] CRAN (R 4.1.0)
+#  cellranger     1.1.0      2016-07-27 [1] CRAN (R 4.1.0)
+#  cli            2.5.0      2021-04-26 [1] CRAN (R 4.1.0)
+#  colorout       1.2-2      2020-11-03 [1] Github (jalvesaq/colorout@726d681)
+#  colorspace     2.0-1      2021-05-04 [1] CRAN (R 4.1.0)
+#  crayon         1.4.1      2021-02-08 [1] CRAN (R 4.1.0)
+#  curl           4.3.1      2021-04-30 [1] CRAN (R 4.1.0)
+#  data.table     1.14.0     2021-02-21 [1] CRAN (R 4.1.0)
+#  DBI            1.1.1      2021-01-15 [1] CRAN (R 4.1.0)
+#  desc           1.3.0      2021-03-05 [1] CRAN (R 4.1.0)
+#  devtools     * 2.4.2      2021-06-07 [1] CRAN (R 4.1.0)
+#  digest         0.6.27     2020-10-24 [1] CRAN (R 4.1.0)
+#  dplyr          1.0.7      2021-06-18 [1] CRAN (R 4.1.0)
+#  ellipsis       0.3.2      2021-04-29 [1] CRAN (R 4.1.0)
+#  fansi          0.5.0      2021-05-25 [1] CRAN (R 4.1.0)
+#  farver         2.1.0      2021-02-28 [1] CRAN (R 4.1.0)
+#  fastmap        1.1.0      2021-01-25 [1] CRAN (R 4.1.0)
+#  forcats        0.5.1      2021-01-27 [1] CRAN (R 4.1.0)
+#  foreign        0.8-81     2020-12-22 [1] CRAN (R 4.1.0)
+#  fs             1.5.0      2020-07-31 [1] CRAN (R 4.1.0)
+#  generics       0.1.0      2020-10-31 [1] CRAN (R 4.1.0)
+#  ggplot2      * 3.3.4      2021-06-16 [1] CRAN (R 4.1.0)
+#  ggpubr       * 0.4.0      2020-06-27 [1] CRAN (R 4.1.0)
+#  ggrepel        0.9.1      2021-01-15 [1] CRAN (R 4.1.0)
+#  ggsignif       0.6.2      2021-06-14 [1] CRAN (R 4.1.0)
+#  glue           1.4.2      2020-08-27 [1] CRAN (R 4.1.0)
+#  gtable         0.3.0      2019-03-25 [1] CRAN (R 4.1.0)
+#  haven          2.4.1      2021-04-23 [1] CRAN (R 4.1.0)
+#  here         * 1.0.1      2020-12-13 [1] CRAN (R 4.1.0)
+#  hms            1.1.0      2021-05-17 [1] CRAN (R 4.1.0)
+#  labeling       0.4.2      2020-10-20 [1] CRAN (R 4.1.0)
+#  lattice        0.20-44    2021-05-02 [1] CRAN (R 4.1.0)
+#  lifecycle      1.0.0      2021-02-15 [1] CRAN (R 4.1.0)
+#  lubridate      1.7.10     2021-02-26 [1] CRAN (R 4.1.0)
+#  magrittr       2.0.1      2020-11-17 [1] CRAN (R 4.1.0)
+#  Matrix         1.3-4      2021-06-01 [1] CRAN (R 4.1.0)
+#  memoise        2.0.0      2021-01-26 [1] CRAN (R 4.1.0)
+#  mgcv           1.8-36     2021-06-01 [1] CRAN (R 4.1.0)
+#  munsell        0.5.0      2018-06-12 [1] CRAN (R 4.1.0)
+#  nlme           3.1-152    2021-02-04 [1] CRAN (R 4.1.0)
+#  openxlsx       4.2.4      2021-06-16 [1] CRAN (R 4.1.0)
+#  pillar         1.6.1      2021-05-16 [1] CRAN (R 4.1.0)
+#  pkgbuild       1.2.0      2020-12-15 [1] CRAN (R 4.1.0)
+#  pkgconfig      2.0.3      2021-03-31 [1] Github (gaborcsardi/pkgconfig@b81ae03)
+#  pkgload        1.2.1      2021-04-06 [1] CRAN (R 4.1.0)
+#  prettyunits    1.1.1      2020-01-24 [1] CRAN (R 4.1.0)
+#  processx       3.5.2      2021-04-30 [1] CRAN (R 4.1.0)
+#  prompt         1.0.1      2021-03-12 [1] CRAN (R 4.1.0)
+#  ps             1.6.0      2021-02-28 [1] CRAN (R 4.1.0)
+#  purrr          0.3.4      2020-04-17 [1] CRAN (R 4.1.0)
+#  R6             2.5.0      2020-10-28 [1] CRAN (R 4.1.0)
+#  RColorBrewer   1.1-2      2014-12-07 [1] CRAN (R 4.1.0)
+#  Rcpp           1.0.6      2021-01-15 [1] CRAN (R 4.1.0)
+#  readxl         1.3.1      2019-03-13 [1] CRAN (R 4.1.0)
+#  remotes        2.4.0      2021-06-02 [1] CRAN (R 4.1.0)
+#  rio            0.5.27     2021-06-21 [1] CRAN (R 4.1.0)
+#  rlang          0.4.11     2021-04-30 [1] CRAN (R 4.1.0)
+#  rprojroot      2.0.2      2020-11-15 [1] CRAN (R 4.1.0)
+#  rstatix        0.7.0      2021-02-13 [1] CRAN (R 4.1.0)
+#  rsthemes       0.2.1.9000 2021-02-12 [1] Github (gadenbuie/rsthemes@521572b)
+#  rstudioapi     0.13       2020-11-12 [1] CRAN (R 4.1.0)
+#  scales         1.1.1      2020-05-11 [1] CRAN (R 4.1.0)
+#  sessioninfo  * 1.1.1      2018-11-05 [1] CRAN (R 4.1.0)
+#  stringi        1.6.2      2021-05-17 [1] CRAN (R 4.1.0)
+#  styler         1.4.1      2021-03-30 [1] CRAN (R 4.1.0)
+#  suncalc        0.5.0      2019-04-03 [1] CRAN (R 4.1.0)
+#  testthat     * 3.0.3      2021-06-16 [1] CRAN (R 4.1.0)
+#  tibble         3.1.2      2021-05-16 [1] CRAN (R 4.1.0)
+#  tidyr          1.1.3      2021-03-03 [1] CRAN (R 4.1.0)
+#  tidyselect     1.1.1      2021-04-30 [1] CRAN (R 4.1.0)
+#  usethis      * 2.0.1      2021-02-10 [1] CRAN (R 4.1.0)
+#  utf8           1.2.1      2021-03-12 [1] CRAN (R 4.1.0)
+#  vctrs          0.3.8      2021-04-29 [1] CRAN (R 4.1.0)
+#  withr          2.4.2      2021-04-18 [1] CRAN (R 4.1.0)
+#  zip            2.2.0      2021-05-31 [1] CRAN (R 4.1.0)
 #
-# [1] /users/lcollado/R/4.1
-# [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1/R/4.1/lib64/R/site-library
-# [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1/R/4.1/lib64/R/library
+# [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
