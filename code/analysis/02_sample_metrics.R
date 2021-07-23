@@ -202,7 +202,7 @@ pdf(
 )
 for(i in colnames(all_metrics)[-c(1, ncol(all_metrics))]) {
     set.seed(20210714)
-    p <- ggboxplot(all_metrics, x = "study", y = i, color = "study", palette = "Dark2", add = "jitter", shape = "study", label = "Sample.ID", repel = TRUE, font.label = list(size = 5), ggtheme = theme_pubr(base_size = 30))
+    p <- ggboxplot(all_metrics, x = "study", y = i, color = "study", palette = "Dark2", add = "jitter", shape = "study", label = "Sample.ID", repel = TRUE, font.label = list(size = 5), legend = "none", ggtheme = theme_pubr(base_size = 30))
     print(p)
 }
 dev.off()
