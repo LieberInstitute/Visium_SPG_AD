@@ -2,5 +2,5 @@
 
 ## Internal
 
-JHPCE location: `/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD`
+JHPCE location: `/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD`
 
