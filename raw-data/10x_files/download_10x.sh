@@ -21,8 +21,8 @@ module list
 
 ## Download the data
 ## for less verbose output: https://www.davekb.com/browse_computer_tips:wget_disable_progress_bar:txt
-wget -nv https://ty.10xgenomics.com/083ad7b0088d8912/Lieber_Transfer.tar
-wget -nv https://ty.10xgenomics.com/faf16fa65919ce60/Lieber_Transfer_10x_Alignments.tar
+wget -nv https://ty.10xgenomics.com/91c621c7b18d8b86/Lieber_Transfer.tar
+wget -nv https://ty.10xgenomics.com/42e0d8f4a79cea20/Lieber_Transfer_10x_Alignments.tar
 
 ## Uncompress
 tar -xvf Lieber_Transfer.tar
