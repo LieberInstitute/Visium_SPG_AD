@@ -39,7 +39,7 @@ mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments
 OUTPUTDIR="../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}/"
 
 ## Run bamtofastq
-bamtofastq --nthreads=4 --traceback ${INPUTBAM} ${OUTPUTDIR}
+bamtofastq --nthreads=4 --traceback --cr11 ${INPUTBAM} ${OUTPUTDIR}
 
 echo "**** Job ends ****"
 date
