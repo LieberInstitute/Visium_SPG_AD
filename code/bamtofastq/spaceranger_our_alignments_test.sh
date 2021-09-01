@@ -6,7 +6,7 @@
 #$ -o logs/spaceranger_our_alignments_test.$TASK_ID.txt
 #$ -e logs/spaceranger_our_alignments_test.$TASK_ID.txt
 #$ -m e
-#$ -t 1-2
+#$ -t 3-10
 #$ -tc 5
 
 echo "**** Job starts ****"
