@@ -2,9 +2,9 @@
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=200G
 #$ -pe local 4
-#$ -N spaceranger_our_alignments
-#$ -o logs/spaceranger_our_alignments.$TASK_ID.txt
-#$ -e logs/spaceranger_our_alignments.$TASK_ID.txt
+#$ -N spaceranger_their_alignments
+#$ -o logs/spaceranger_their_alignments.$TASK_ID.txt
+#$ -e logs/spaceranger_their_alignments.$TASK_ID.txt
 #$ -m e
 #$ -t 1-10
 #$ -tc 5
@@ -31,12 +31,12 @@ echo "Processing sample ${SAMPLE}"
 date
 
 ## List current input file
-INPUTBAM="../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam.bam"
+INPUTBAM="../../raw-data/10x_files/Lieber_Transfer_10x_Alignments/${SAMPLE}/possorted_genome_bam.bam"
 ls -lh ${INPUTBAM}
 
 ## Create output directory
-mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments
-OUTPUTDIR="../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}/"
+mkdir -p ../../raw-data/FASTQ/spaceranger_their_alignments
+OUTPUTDIR="../../raw-data/FASTQ/spaceranger_their_alignments/${SAMPLE}/"
 
 ## Run bamtofastq
 bamtofastq --nthreads=4 --traceback --cr11 ${INPUTBAM} ${OUTPUTDIR}
