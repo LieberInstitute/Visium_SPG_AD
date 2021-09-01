@@ -30,13 +30,16 @@ SAMPLE=$(awk "NR==${SGE_TASK_ID}" samples.txt)
 echo "Processing sample ${SAMPLE}"
 date
 
+## List current input file
+INPUTBAM="../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam.bam"
+ls -lh ${INPUTBAM}
+
 ## Create output directory
-mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}
+OUTPUTDIR="../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}/"
+mkdir -p ${OUTPUTDIR}
 
 ## Run bamtofastq
-bamtofastq --nthreads=4 \
-    ../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam.bam \
-    ../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}/
+bamtofastq --nthreads=4 ${INPUTBAM} ${OUTPUTDIR}
 
 echo "**** Job ends ****"
 date
