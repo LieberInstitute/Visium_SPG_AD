@@ -1,12 +1,12 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=35G,h_vmem=35G,h_fsize=100G
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=200G
 #$ -pe local 4
 #$ -N round1
-#$ -o logs/round1.$TASK_ID.txt
-#$ -e logs/round1.$TASK_ID.txt
+#$ -o logs/spaceranger_our_alignments.$TASK_ID.txt
+#$ -e logs/spaceranger_our_alignments.$TASK_ID.txt
 #$ -m e
-#$ -t 1-3
+#$ -t 1-10
 #$ -tc 3
 
 echo "**** Job starts ****"
@@ -19,32 +19,24 @@ echo "Job name: ${JOB_NAME}"
 echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
-## load CellRanger
-module load cellranger/6.1.1
+## load bamtofastq
+module load bamtofastq/1.3.2
 
 ## List current modules for reproducibility
 module list
 
 ## Locate file
-SAMPLE=$(awk "NR==${SGE_TASK_ID}" ${JOB_NAME}.txt)
+SAMPLE=$(awk "NR==${SGE_TASK_ID}" samples.txt)
 echo "Processing sample ${SAMPLE}"
 date
 
-## Run CellRanger
-cellranger count --id=${SAMPLE} \
-    --transcriptome=/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A \
-    --fastqs=/dcs04/lieber/lcolladotor/deconvolution_LIBD4030/DLPFC_snRNAseq/raw-data/FASTQ/${SAMPLE} \
-    --sample=${SAMPLE} \
-    --jobmode=local \
-    --localcores=4 \
-    --localmem=140 \
-    --include-introns
+## Create output directory
+mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}
 
-## Move output
-echo "Moving data to new location"
-date
-mkdir -p /dcs04/lieber/lcolladotor/deconvolution_LIBD4030/DLPFC_snRNAseq/processed-data/cellranger/
-mv ${SAMPLE} /dcs04/lieber/lcolladotor/deconvolution_LIBD4030/DLPFC_snRNAseq/processed-data/cellranger/
+## Run bamtofastq
+bamtofastq --nthreads=4 \
+    ../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam.bam \
+    ../../raw-data/FASTQ/spaceranger_our_alignments/${SAMPLE}/
 
 echo "**** Job ends ****"
 date
