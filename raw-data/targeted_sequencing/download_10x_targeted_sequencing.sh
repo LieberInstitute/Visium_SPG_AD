@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=200G
 #$ -N download_10x
-#$ -o logs/download_10x_targetted_sequencing.txt
-#$ -e logs/download_10x_targetted_sequencing.txt
+#$ -o logs/download_10x_targeted_sequencing.txt
+#$ -e logs/download_10x_targeted_sequencing.txt
 #$ -m e
 
 echo "**** Job starts ****"
