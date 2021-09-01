@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=200G
+#$ -l bluejay,mem_free=1G,h_vmem=1G,h_fsize=200G
 #$ -pe local 4
 #$ -N spaceranger_our_alignments_test
 #$ -o logs/spaceranger_our_alignments_test.$TASK_ID.txt
@@ -37,6 +37,8 @@ INPUTBAM="../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_ba
 
 ## Add missing SAM headers Stephen Williams mentioned via email
 (samtools view -H ${INITIALBAM}; echo -e "@CO\t10x_bam_to_fastq:R1(CR:CY,UR:UY)"; echo -e "@CO\t10x_bam_to_fastq:R2(SEQ:QUAL)") | samtools reheader - ${INITIALBAM} > ${INPUTBAM}
+echo "Done creating new bam file"
+date
 ls -lh ${INPUTBAM}
 
 ## Create output directory

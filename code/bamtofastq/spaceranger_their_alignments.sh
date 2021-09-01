@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=200G
+#$ -l bluejay,mem_free=1G,h_vmem=1G,h_fsize=200G
 #$ -pe local 4
 #$ -N spaceranger_their_alignments
 #$ -o logs/spaceranger_their_alignments.$TASK_ID.txt
