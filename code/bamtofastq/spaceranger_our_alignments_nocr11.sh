@@ -2,9 +2,9 @@
 #$ -cwd
 #$ -l bluejay,mem_free=5G,h_vmem=5G,h_fsize=200G
 #$ -pe local 4
-#$ -N spaceranger_our_alignments_test
-#$ -o logs/spaceranger_our_alignments_test.$TASK_ID.txt
-#$ -e logs/spaceranger_our_alignments_test.$TASK_ID.txt
+#$ -N spaceranger_our_alignments_nocr11
+#$ -o logs/spaceranger_our_alignments_nocr11.$TASK_ID.txt
+#$ -e logs/spaceranger_our_alignments_nocr11.$TASK_ID.txt
 #$ -m e
 #$ -t 1-10
 #$ -tc 5
@@ -42,8 +42,8 @@ date
 ls -lh ${INPUTBAM}
 
 ## Create output directory
-mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments_test
-OUTPUTDIR="../../raw-data/FASTQ/spaceranger_our_alignments_test/${SAMPLE}/"
+mkdir -p ../../raw-data/FASTQ/spaceranger_our_alignments_nocr11
+OUTPUTDIR="../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/"
 
 ## Run bamtofastq
 bamtofastq --nthreads=4 --traceback ${INPUTBAM} ${OUTPUTDIR}
