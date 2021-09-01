@@ -2,7 +2,7 @@
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=200G
 #$ -pe local 4
-#$ -N round1
+#$ -N spaceranger_our_alignments
 #$ -o logs/spaceranger_our_alignments.$TASK_ID.txt
 #$ -e logs/spaceranger_our_alignments.$TASK_ID.txt
 #$ -m e
