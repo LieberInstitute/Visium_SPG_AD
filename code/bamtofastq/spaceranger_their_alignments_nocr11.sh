@@ -32,8 +32,8 @@ echo "Processing sample ${SAMPLE}"
 date
 
 ## List current input file
-INITIALBAM="../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam.bam"
-INPUTBAM="../../raw-data/10x_files/Lieber_Transfer/${SAMPLE}/possorted_genome_bam_newheader.bam"
+INITIALBAM="../../raw-data/10x_files/Lieber_Transfer_10x_Alignments/${SAMPLE}/possorted_genome_bam.bam"
+INPUTBAM="../../raw-data/10x_files/Lieber_Transfer_10x_Alignments/${SAMPLE}/possorted_genome_bam_newheader.bam"
 
 ## Add missing SAM headers Stephen Williams mentioned via email
 (samtools view -H ${INITIALBAM}; echo -e "@CO\t10x_bam_to_fastq:R1(CR:CY,UR:UY)"; echo -e "@CO\t10x_bam_to_fastq:R2(SEQ:QUAL)") | samtools reheader - ${INITIALBAM} > ${INPUTBAM}
