@@ -34,18 +34,32 @@ date
 SLIDEPART1=$(echo ${SAMPLE} | cut -c1-6)
 SLIDEPART2=$(echo ${SAMPLE} | cut -c7-9)
 SLIDE="${SLIDEPART1}-${SLIDEPART2}"
-CAPTUREAREA=$(echo ${SAMPLE} | cut -c11-12)    
-echo "Slide: ${SLIDE}, capture area: ${CAPTUREAREA}"
+CAPTUREAREA=$(echo ${SAMPLE} | cut -c11-12)
+
+## Get VIF part
+if [ ${SLIDE} == "V10A27-106" ]
+then
+    SLIDEVIF="VIFAD1"
+elif [ ${SLIDE} == "V10A27-004" ]
+then
+    SLIDEVIF="VIFAD2"
+elif [ ${SLIDE} == "V10T31-036" ]
+then
+    SLIDEVIF="VIFAD3"
+else
+    echo "Unsupported slide ${SLIDE}."
+fi
+echo "Slide: ${SLIDE}, capture area: ${CAPTUREAREA}, VIF: ${SLIDEVIF}"
 
 ## Run SpaceRanger
 spaceranger count \
     --id=${SAMPLE} \
     --transcriptome=/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A \
     --fastqs=../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/ \
-    --image=../../processed-data/Images/VistoSeg/Capture_Areas/${SAMPLE}.tif \
+    --image=../../processed-data/Images/VistoSeg/Capture_Areas/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
     --slide=${SLIDE} \
     --area=${CAPTUREAREA} \
-    --loupe-alignment=../../processed-data/Images/VistoSeg/Capture_Areas/loupe_alignment/${SAMPLE}.json \
+    --loupe-alignment=../../processed-data/Images/VistoSeg/Capture_Areas/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.json \
     --jobmode=local \
     --localcores=8 \
     --localmem=80
