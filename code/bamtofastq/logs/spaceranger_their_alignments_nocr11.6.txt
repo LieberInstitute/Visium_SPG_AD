@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1
 **** Job starts ****
-Wed Sep  1 17:46:37 EDT 2021
+Fri Sep  3 00:25:32 EDT 2021
 **** JHPCE info ****
 User: lcollado
-Job id: 6843025
+Job id: 6846928
 Job name: spaceranger_their_alignments_nocr11
 Hostname: compute-100.cm.cluster
 Task id: 6
@@ -29,13 +29,13 @@ Currently Loaded Modules:
  
 
 Processing sample V10A27106_D1_Br3880
-Wed Sep  1 17:46:37 EDT 2021
+Fri Sep  3 00:25:33 EDT 2021
 Done creating new bam file
-Wed Sep  1 17:48:14 EDT 2021
--rw-rw---- 1 lcollado lieber_lcolladotor 16G Sep  1 17:48 ../../raw-data/10x_files/Lieber_Transfer/V10A27106_D1_Br3880/possorted_genome_bam_newheader.bam
+Fri Sep  3 00:27:59 EDT 2021
+-rw-rw---- 1 lcollado lieber_lcolladotor 16G Sep  3 00:27 ../../raw-data/10x_files/Lieber_Transfer_10x_Alignments/V10A27106_D1_Br3880/possorted_genome_bam_newheader.bam
 bamtofastq v1.3.2
-Args { arg_bam: "../../raw-data/10x_files/Lieber_Transfer/V10A27106_D1_Br3880/possorted_genome_bam_newheader.bam", arg_output_path: "../../raw-data/FASTQ/spaceranger_their_alignments_nocr11/V10A27106_D1_Br3880/", flag_nthreads: 4, flag_locus: None, flag_bx_list: None, flag_reads_per_fastq: 50000000, flag_gemcode: false, flag_lr20: false, flag_cr11: false, flag_traceback: true }
+Args { arg_bam: "../../raw-data/10x_files/Lieber_Transfer_10x_Alignments/V10A27106_D1_Br3880/possorted_genome_bam_newheader.bam", arg_output_path: "../../raw-data/FASTQ/spaceranger_their_alignments_nocr11/V10A27106_D1_Br3880/", flag_nthreads: 4, flag_locus: None, flag_bx_list: None, flag_reads_per_fastq: 50000000, flag_gemcode: false, flag_lr20: false, flag_cr11: false, flag_traceback: true }
 entry
 Writing finished.  Observed 326514734 read pairs. Wrote 326514734 read pairs
 **** Job ends ****
-Wed Sep  1 18:22:12 EDT 2021
+Fri Sep  3 01:02:01 EDT 2021
