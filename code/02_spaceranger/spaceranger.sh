@@ -48,6 +48,7 @@ then
     SLIDEVIF="VIFAD3"
 else
     echo "Unsupported slide ${SLIDE}."
+    exit 1
 fi
 echo "Slide: ${SLIDE}, capture area: ${CAPTUREAREA}, VIF: ${SLIDEVIF}"
 
