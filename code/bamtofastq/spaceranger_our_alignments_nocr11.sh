@@ -7,7 +7,7 @@
 #$ -e logs/spaceranger_our_alignments_nocr11.$TASK_ID.txt
 #$ -m e
 #$ -t 1-10
-#$ -tc 5
+#$ -tc 10
 
 echo "**** Job starts ****"
 date
