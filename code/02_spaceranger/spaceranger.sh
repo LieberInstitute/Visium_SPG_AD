@@ -63,7 +63,7 @@ spaceranger count \
     --darkimage=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
     --slide=${SLIDE} \
     --area=${CAPTUREAREA} \
-    --loupe-alignment=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.json \
+    --loupe-alignment=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}-${CAPTUREAREA}.json \
     --jobmode=local \
     --localcores=8 \
     --localmem=80
