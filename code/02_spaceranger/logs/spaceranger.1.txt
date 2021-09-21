@@ -1,0 +1,39 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Tue Sep 21 16:18:11 EDT 2021
+**** JHPCE info ****
+User: lcollado
+Job id: 6955847
+Job name: spaceranger
+Hostname: compute-093.cm.cluster
+Task id: 1
+Loading LIBD module for spaceranger/1.3.0
+Reference files, for use with the '--transcriptome' argument, can be accessed
+or downloaded into /dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x. 
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0                  15) spaceranger/1.3.0
+
+ 
+
+Processing sample V10A27004_A1_Br3874
+Tue Sep 21 16:18:12 EDT 2021
+Slide: V10A27-004, capture area: A1, VIF: VIFAD2
+error: Invalid value for '--darkimage <IMG>...': No such file or directory: '../../processed-data/Images/loupe_alignment/VIFAD2_V10A27-004_A1.tif'
+
+For more information try --help
+Moving results to new location
+Tue Sep 21 16:18:12 EDT 2021
+mv: cannot stat ‘V10A27004_A1_Br3874’: No such file or directory
+**** Job ends ****
+Tue Sep 21 16:18:12 EDT 2021
