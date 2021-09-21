@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Tue Sep 21 16:18:11 EDT 2021
+Tue Sep 21 16:24:17 EDT 2021
 **** JHPCE info ****
 User: lcollado
-Job id: 6955847
+Job id: 6955869
 Job name: spaceranger
 Hostname: compute-093.cm.cluster
 Task id: 1
@@ -27,13 +27,13 @@ Currently Loaded Modules:
  
 
 Processing sample V10A27004_A1_Br3874
-Tue Sep 21 16:18:12 EDT 2021
-Slide: V10A27-004, capture area: A1, VIF: VIFAD2
-error: Invalid value for '--darkimage <IMG>...': No such file or directory: '../../processed-data/Images/loupe_alignment/VIFAD2_V10A27-004_A1.tif'
+Tue Sep 21 16:24:17 EDT 2021
+Slide: V10A27-004, capture area: A1, VIF: VIFAD1
+error: Invalid value for '--loupe-alignment <PATH>': No such file or directory: '../../processed-data/Images/loupe_alignment/VIFAD1_V10A27-004_A1.json'
 
 For more information try --help
 Moving results to new location
-Tue Sep 21 16:18:12 EDT 2021
+Tue Sep 21 16:24:17 EDT 2021
 mv: cannot stat ‘V10A27004_A1_Br3874’: No such file or directory
 **** Job ends ****
-Tue Sep 21 16:18:12 EDT 2021
+Tue Sep 21 16:24:17 EDT 2021
