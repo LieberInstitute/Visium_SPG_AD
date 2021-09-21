@@ -52,11 +52,14 @@ else
 fi
 echo "Slide: ${SLIDE}, capture area: ${CAPTUREAREA}, VIF: ${SLIDEVIF}"
 
+## Find FASTQ file path
+FASTQPATH=$(ls -d ../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/)
+
 ## Run SpaceRanger
 spaceranger count \
     --id=${SAMPLE} \
     --transcriptome=/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A \
-    --fastqs=../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/ \
+    --fastqs=${FASTQPATH} \
     --darkimage=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
     --slide=${SLIDE} \
     --area=${CAPTUREAREA} \
