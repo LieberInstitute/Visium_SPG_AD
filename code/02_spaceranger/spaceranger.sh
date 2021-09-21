@@ -37,10 +37,10 @@ SLIDE="${SLIDEPART1}-${SLIDEPART2}"
 CAPTUREAREA=$(echo ${SAMPLE} | cut -c11-12)
 
 ## Get VIF part
-if [ ${SLIDE} == "V10A27-106" ]
+if [ ${SLIDE} == "V10A27-004" ]
 then
     SLIDEVIF="VIFAD1"
-elif [ ${SLIDE} == "V10A27-004" ]
+elif [ ${SLIDE} == "V10A27-106" ]
 then
     SLIDEVIF="VIFAD2"
 elif [ ${SLIDE} == "V10T31-036" ]
