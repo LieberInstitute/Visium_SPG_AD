@@ -57,7 +57,7 @@ spaceranger count \
     --id=${SAMPLE} \
     --transcriptome=/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A \
     --fastqs=../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/ \
-    --darkimage=../../processed-data/Images/VistoSeg/Capture_Areas/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
+    --darkimage=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
     --slide=${SLIDE} \
     --area=${CAPTUREAREA} \
     --loupe-alignment=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.json \
