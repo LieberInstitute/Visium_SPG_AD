@@ -6,8 +6,8 @@
 #$ -o logs/spaceranger.$TASK_ID.txt
 #$ -e logs/spaceranger.$TASK_ID.txt
 #$ -m e
-#$ -t 10
-#$ -tc 3
+#$ -t 1-10
+#$ -tc 5
 
 echo "**** Job starts ****"
 date
@@ -57,10 +57,10 @@ spaceranger count \
     --id=${SAMPLE} \
     --transcriptome=/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A \
     --fastqs=../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/ \
-    --image=../../processed-data/Images/VistoSeg/Capture_Areas/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
+    --darkimage=../../processed-data/Images/VistoSeg/Capture_Areas/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.tif \
     --slide=${SLIDE} \
     --area=${CAPTUREAREA} \
-    --loupe-alignment=../../processed-data/Images/VistoSeg/Capture_Areas/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.json \
+    --loupe-alignment=../../processed-data/Images/loupe_alignment/${SLIDEVIF}_${SLIDE}_${CAPTUREAREA}.json \
     --jobmode=local \
     --localcores=8 \
     --localmem=80
