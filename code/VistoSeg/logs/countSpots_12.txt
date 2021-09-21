@@ -1,0 +1,35 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Tue Sep 21 14:53:29 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 6955443
+Job name: countSpots.sh
+Hostname: compute-065.cm.cluster
+Task id: 12
+****
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+51351 DAPI ROIS detected
+354528 Abeta ROIS detected
+296005 pTau ROIS detected
+544188 GFAP ROIS detected
+661982 MAP2 ROIS detected
+185825 Lipofuscin ROIS detected
+counting dots per Visium spot
