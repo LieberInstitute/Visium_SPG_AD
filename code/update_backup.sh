@@ -23,7 +23,7 @@ module list
 umask 077
 
 ## Update the backup location
-rsync -avh /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD /dcs04/lieber/lcolladotor/backup_with10x_LIBD001/Visium_IF_AD
+rsync -avh /dcs04/lieber/lcolladotor/with10x_LIBD001 /dcl01/lieber/lcolladotor/backup_with10x_LIBD001
 
 echo "**** Job ends ****"
 date
