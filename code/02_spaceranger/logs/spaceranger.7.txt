@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Tue Sep 21 18:43:30 EDT 2021
+Tue Sep 21 20:22:43 EDT 2021
 **** JHPCE info ****
 User: lcollado
-Job id: 6955877
+Job id: 6956646
 Job name: spaceranger
 Hostname: compute-094.cm.cluster
 Task id: 7
@@ -27,13 +27,13 @@ Currently Loaded Modules:
  
 
 Processing sample V10T31036_A1_Br3874
-Tue Sep 21 18:43:31 EDT 2021
+Tue Sep 21 20:22:43 EDT 2021
 Slide: V10T31-036, capture area: A1, VIF: VIFAD3
 error: Invalid value for '--loupe-alignment <PATH>': No such file or directory: '../../processed-data/Images/loupe_alignment/VIFAD3_V10T31-036-A1.json'
 
 For more information try --help
 Moving results to new location
-Tue Sep 21 18:43:31 EDT 2021
+Tue Sep 21 20:22:43 EDT 2021
 mv: cannot stat ‘V10T31036_A1_Br3874’: No such file or directory
 **** Job ends ****
-Tue Sep 21 18:43:31 EDT 2021
+Tue Sep 21 20:22:43 EDT 2021
