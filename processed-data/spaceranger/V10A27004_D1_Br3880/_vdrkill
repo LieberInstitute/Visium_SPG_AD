@@ -1,0 +1,772 @@
+{
+    "count": 11456,
+    "size": 42920110453,
+    "timestamp": "2021-09-21 18:41:01",
+    "paths": [
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_PREPROCESS/fork0/chnk0-u53244a5f47/files/gem_group_index_json.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_PREPROCESS/fork0/chnk0-u53244a5f47/files/output_for_cloupe.cloupe",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmp94v55ndg",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmp2d3d1ib1",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmpvxet79mf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmpkhx148ey",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmpawg_7ifm",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/tmp/tmpas9pv43o",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/files/dzi_info.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/CLOUPE_TILE_IMAGES/fork0/join-u53244a411c/files/dzi_tiles_paths",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPACERANGER_PREFLIGHT/fork0/join-u53244a40f7/tmp/tmpm8ajycky",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPACERANGER_PREFLIGHT_LOCAL/fork0/chnk0-u53244a40f7/tmp/tmp66uszagf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk00-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk01-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk02-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk03-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk04-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk05-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk06-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk07-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk08-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk09-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk10-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk11-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk12-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk13-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk14-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk15-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk16-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk17-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/chnk18-u53244a5d5b/files/chunked_spatial_enrichment_files.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/0_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/0_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/10000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/10000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/12000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/12000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/14000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/14000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/16000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/16000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/18000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/18000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/20000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/20000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/2000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/2000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/22000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/22000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/24000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/24000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/26000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/26000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/28000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/28000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/30000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/30000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/32000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/32000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/34000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/34000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/36000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/36000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/4000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/4000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/6000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/6000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/8000_spatial_feature_def.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/8000_spatial_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/split-u53244a5d3e/files/weight_matrix.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/RUN_SPATIAL_ENRICHMENT/fork0/join-u53244a5d3e/files/spatial_enrichment_json.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_REPORTER/fork0/chnk0-u53244a5f1e/tmp/tmpe_g25ai0",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u53244a5eb4/files/clustering_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/COMBINE_CLUSTERING/fork0/chnk0-u53244a5eb4/files/clustering_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/MERGE_CLUSTERS/fork0/join-u53244a5e9e/files/clusters_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/MERGE_CLUSTERS/fork0/join-u53244a5e9e/files/clusters_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u53244a5d41/files/cloupe_matrix_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/PREPROCESS_MATRIX/fork0/join-u53244a5d41/files/preprocessed_matrix_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk00-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk00-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk01-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk01-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk02-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk02-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk03-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk03-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk04-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk04-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk05-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk05-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk06-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk06-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk07-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk07-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk08-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk08-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk09-u53244a5eb7/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/chnk09-u53244a5eb7/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/join-u53244a5eb5/files/diffexp_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_DIFFERENTIAL_EXPRESSION/fork0/join-u53244a5eb5/files/diffexp_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/chnk0-u53244a5e63/files/chunked_neighbors.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/join-u53244a5e4f/files/clusters_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/join-u53244a5e4f/files/louvain.out",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/join-u53244a5e4f/files/matrix.bin",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/split-u53244a5e4f/files/0_submatrix.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/split-u53244a5e4f/files/neighbor_index.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/split-u53244a5e4f/files/use_bcs.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_GRAPH_CLUSTERING/fork0/join-u53244a5e4f/files/clusters_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk0-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk0-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk1-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk1-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk2-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk2-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk3-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk3-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk4-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk4-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk5-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk5-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk6-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk6-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk7-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk7-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk8-u53244a5e61/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/chnk8-u53244a5e61/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/join-u53244a5e4f/files/kmeans_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_KMEANS/fork0/join-u53244a5e4f/files/kmeans_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_PCA/fork0/chnk0-u53244a5d57/files/pca_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_PCA/fork0/chnk0-u53244a5d57/files/pca_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_PCA/fork0/join-u53244a5d52/files/pca_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_PCA/fork0/join-u53244a5d52/files/pca_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_TSNE/fork0/chnk0-u53244a5e61/files/tsne_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_TSNE/fork0/chnk0-u53244a5e61/files/tsne_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_TSNE/fork0/join-u53244a5e4f/files/tsne_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_TSNE/fork0/join-u53244a5e4f/files/tsne_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_UMAP/fork0/chnk0-u53244a5e70/files/umap_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_UMAP/fork0/chnk0-u53244a5e70/files/umap_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_UMAP/fork0/join-u53244a5e4f/files/umap_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/RUN_UMAP/fork0/join-u53244a5e4f/files/umap_h5.h5",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/SUMMARIZE_ANALYSIS/fork0/chnk0-u53244a5f17/files/analysis",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/SUMMARIZE_ANALYSIS/fork0/chnk0-u53244a5f17/files/analysis_csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/SUMMARIZE_ANALYSIS/fork0/join-u53244a5f16/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/SPATIAL_RNA_ANALYZER/SUMMARIZE_ANALYSIS/fork0/join-u53244a5f16/files/analysis",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/WRITE_GENE_INDEX/fork0/chnk0-u53244a411c/files/gene_index.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/FILTER_BARCODES/fork0/join-u53244a5ba6/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/FILTER_BARCODES/fork0/join-u53244a5ba6/files/filtered_barcodes.csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/MERGE_METRICS/fork0/chnk0-u53244a5e9f/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk00-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk01-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk02-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk03-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk04-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk05-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk06-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk07-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk08-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk09-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/WRITE_POS_BAM/fork0/chnk10-u53244a5ba0/files/pos_sortednon_multiplexed.bam",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk0-u53244a5d4b/files/metrics.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/chnk1-u53244a5d4b/files/metrics.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/join-u53244a5d47/files/merged_metrics.pickle",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/SUBSAMPLE_READS/fork0/join-u53244a5d47/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/SUMMARIZE_BASIC_REPORTS/fork0/join-u53244a5e98/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_CELLS_REPORTER/WRITE_MOLECULE_INFO/fork0/chnk0-u53244a5d3e/files/non_multiplexed_summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/barcode_summary.bsf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/feature_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/bc_sort.csf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/metrics_shard.bmsf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/join-u53244a44c3/files/barcode_summary.csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/bc_umi_info.bui",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk00-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk01-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk02-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk03-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk04-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk05-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk06-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk07-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk08-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk09-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/chnk10-u53244a44c4/files/pos_sorted.asf",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/ALIGN_AND_COUNT/fork0/join-u53244a44c3/files/bam_header",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk00-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk00-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk00-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk01-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk01-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk01-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk02-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk02-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk02-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk03-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk03-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk03-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk04-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk04-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk04-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk05-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk05-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk05-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk06-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk06-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk06-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk07-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk07-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk07-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk08-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk08-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk08-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk09-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk09-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk09-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk11-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk11-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk11-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk12-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk12-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk12-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk13-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk13-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk13-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk14-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk14-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk14-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk15-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk15-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk15-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk16-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk16-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk16-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk17-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk17-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk17-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk18-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk18-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk18-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk19-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk19-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk19-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk20-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk20-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk20-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk21-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk21-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk21-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk22-u53244a43ee/files/chunk_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk22-u53244a43ee/files/corrected_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk22-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/join-u53244a43ee/files/correct_barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk00-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk00-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk01-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk01-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk02-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk02-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk03-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk03-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk04-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk04-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk05-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk05-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk06-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk06-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk07-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk07-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk08-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk08-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk09-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk09-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk10-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk11-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk11-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk12-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk12-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk13-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk13-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk14-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk14-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk15-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk15-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk16-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk16-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk17-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk17-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk18-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk18-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk19-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk19-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk20-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk20-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk21-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk21-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk22-u53244a43ee/files/invalid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/chnk22-u53244a43ee/files/valid_shard.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/join-u53244a43ee/files/total_barcode_counts.tbcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/BARCODE_CORRECTION/fork0/join-u53244a43ee/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/COLLATE_METRICS/fork0/chnk0-u53244a5b9f/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/COLLATE_METRICS/fork0/chnk0-u53244a5b9f/files/per_barcode_metrics.csv",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/chunk_hist.msh.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/chunk_summary.msm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/sequencing_metrics.smf.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/invalid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/barcode_counts.bcc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/barcode_segment_counts.bsc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/bc_correct_summary.bcm.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk0-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk1-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk2-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk3-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk4-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/chnk5-u53244a4170/files/valid.shard",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/feature_counts.fbc.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/join-u53244a4163/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MAKE_SHARD/fork0/split-u53244a4163/files/feature_reference.frf.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/MERGE_METRICS/fork0/chnk0-u53244a5d22/files/summary.json",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/WRITE_BARCODE_INDEX/fork0/chnk0-u53244a44c2/files/barcode_index.bi.bincode",
+        "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/SPATIAL_RNA_COUNTER_CS/SPATIAL_RNA_COUNTER/_BASIC_SPATIAL_RNA_COUNTER/_MATRIX_COMPUTER/WRITE_BARCODE_SUMMARY/fork0/chnk0-u53244a5b9f/files/barcode_summary.h5"
+    ],
+    "errors": null,
+    "events": [
+        {
+            "Timestamp": "2021-09-21T16:30:47-04:00",
+            "DeltaBytes": 1114885
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:18-04:00",
+            "DeltaBytes": 1084809
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:24-04:00",
+            "DeltaBytes": 158792800
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:24.292073003-04:00",
+            "DeltaBytes": -2146594
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:26-04:00",
+            "DeltaBytes": 1406865492
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:27-04:00",
+            "DeltaBytes": 23478861
+        },
+        {
+            "Timestamp": "2021-09-21T16:31:32-04:00",
+            "DeltaBytes": 22648
+        },
+        {
+            "Timestamp": "2021-09-21T16:32:11-04:00",
+            "DeltaBytes": 16121
+        },
+        {
+            "Timestamp": "2021-09-21T16:32:35-04:00",
+            "DeltaBytes": 5105828
+        },
+        {
+            "Timestamp": "2021-09-21T16:32:35.504360957-04:00",
+            "DeltaBytes": -158736187
+        },
+        {
+            "Timestamp": "2021-09-21T16:32:36-04:00",
+            "DeltaBytes": 1902102
+        },
+        {
+            "Timestamp": "2021-09-21T16:32:39-04:00",
+            "DeltaBytes": 2083973
+        },
+        {
+            "Timestamp": "2021-09-21T16:40:09-04:00",
+            "DeltaBytes": 12588256298
+        },
+        {
+            "Timestamp": "2021-09-21T16:43:25-04:00",
+            "DeltaBytes": 668715
+        },
+        {
+            "Timestamp": "2021-09-21T16:43:26-04:00",
+            "DeltaBytes": 17205
+        },
+        {
+            "Timestamp": "2021-09-21T16:43:26.38185702-04:00",
+            "DeltaBytes": -3100114
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:48-04:00",
+            "DeltaBytes": 1002396658
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:57-04:00",
+            "DeltaBytes": 416835
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:58-04:00",
+            "DeltaBytes": 6694
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:58.234746897-04:00",
+            "DeltaBytes": -1003082405
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:59-04:00",
+            "DeltaBytes": 353449
+        },
+        {
+            "Timestamp": "2021-09-21T16:46:59.382537997-04:00",
+            "DeltaBytes": -174936
+        },
+        {
+            "Timestamp": "2021-09-21T17:05:10.113719289-04:00",
+            "DeltaBytes": -12
+        },
+        {
+            "Timestamp": "2021-09-21T18:04:21-04:00",
+            "DeltaBytes": 14977189114
+        },
+        {
+            "Timestamp": "2021-09-21T18:24:28-04:00",
+            "DeltaBytes": 369902
+        },
+        {
+            "Timestamp": "2021-09-21T18:24:29.372010568-04:00",
+            "DeltaBytes": -507961
+        },
+        {
+            "Timestamp": "2021-09-21T18:24:31-04:00",
+            "DeltaBytes": 34241810
+        },
+        {
+            "Timestamp": "2021-09-21T18:24:31.096181952-04:00",
+            "DeltaBytes": -12584227897
+        },
+        {
+            "Timestamp": "2021-09-21T18:24:40.542684434-04:00",
+            "DeltaBytes": -33656099
+        },
+        {
+            "Timestamp": "2021-09-21T18:29:31-04:00",
+            "DeltaBytes": 9575564295
+        },
+        {
+            "Timestamp": "2021-09-21T18:30:58-04:00",
+            "DeltaBytes": 30273
+        },
+        {
+            "Timestamp": "2021-09-21T18:30:58.467873198-04:00",
+            "DeltaBytes": -1431139
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:02-04:00",
+            "DeltaBytes": 29271924
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:26-04:00",
+            "DeltaBytes": 1390632783
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:26.619294492-04:00",
+            "DeltaBytes": -279158
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:29-04:00",
+            "DeltaBytes": 6686
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:33-04:00",
+            "DeltaBytes": 15925358
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:35-04:00",
+            "DeltaBytes": 41088
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:35.819415069-04:00",
+            "DeltaBytes": -109238857
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:39-04:00",
+            "DeltaBytes": 42851124
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:46-04:00",
+            "DeltaBytes": 6702
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:46.80535145-04:00",
+            "DeltaBytes": -8145219
+        },
+        {
+            "Timestamp": "2021-09-21T18:31:51-04:00",
+            "DeltaBytes": 8887955
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:13-04:00",
+            "DeltaBytes": 3775125
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:49-04:00",
+            "DeltaBytes": 9578826844
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:51-04:00",
+            "DeltaBytes": 8873431
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:54.970593773-04:00",
+            "DeltaBytes": -8865898
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:55-04:00",
+            "DeltaBytes": 8873211
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:59-04:00",
+            "DeltaBytes": 2535317
+        },
+        {
+            "Timestamp": "2021-09-21T18:35:59.094072756-04:00",
+            "DeltaBytes": -8865898
+        },
+        {
+            "Timestamp": "2021-09-21T18:36:17-04:00",
+            "DeltaBytes": 841568
+        },
+        {
+            "Timestamp": "2021-09-21T18:36:18.024497075-04:00",
+            "DeltaBytes": -1343086832
+        },
+        {
+            "Timestamp": "2021-09-21T18:36:33-04:00",
+            "DeltaBytes": 1069218
+        },
+        {
+            "Timestamp": "2021-09-21T18:36:37-04:00",
+            "DeltaBytes": 357820
+        },
+        {
+            "Timestamp": "2021-09-21T18:36:38-04:00",
+            "DeltaBytes": 22889075
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:08-04:00",
+            "DeltaBytes": 254469
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:09-04:00",
+            "DeltaBytes": 28364921
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:10.821034997-04:00",
+            "DeltaBytes": -9574727847
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:12-04:00",
+            "DeltaBytes": 8862
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:12.268808151-04:00",
+            "DeltaBytes": -14898685385
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:14-04:00",
+            "DeltaBytes": 48865
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:18-04:00",
+            "DeltaBytes": 7055
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:18.081398905-04:00",
+            "DeltaBytes": -29339939
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:19-04:00",
+            "DeltaBytes": 43817
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:19.810023218-04:00",
+            "DeltaBytes": -668957
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:20-04:00",
+            "DeltaBytes": 7491
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:22-04:00",
+            "DeltaBytes": 121553
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:40-04:00",
+            "DeltaBytes": 1063331
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:40.744155444-04:00",
+            "DeltaBytes": -12697
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:41-04:00",
+            "DeltaBytes": 8163
+        },
+        {
+            "Timestamp": "2021-09-21T18:37:41.908774458-04:00",
+            "DeltaBytes": -1058677
+        },
+        {
+            "Timestamp": "2021-09-21T18:38:07-04:00",
+            "DeltaBytes": 81735098
+        },
+        {
+            "Timestamp": "2021-09-21T18:38:13-04:00",
+            "DeltaBytes": 233140
+        },
+        {
+            "Timestamp": "2021-09-21T18:38:19.010084076-04:00",
+            "DeltaBytes": -223447
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:14-04:00",
+            "DeltaBytes": 81596653
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:18-04:00",
+            "DeltaBytes": 9169
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:18.803205959-04:00",
+            "DeltaBytes": -81460012
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:19-04:00",
+            "DeltaBytes": 99834631
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:24-04:00",
+            "DeltaBytes": 99832381
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:26-04:00",
+            "DeltaBytes": 18034647
+        },
+        {
+            "Timestamp": "2021-09-21T18:39:26.640293012-04:00",
+            "DeltaBytes": -190786562
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:06-04:00",
+            "DeltaBytes": 9943
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:06.52592532-04:00",
+            "DeltaBytes": -265477
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:07-04:00",
+            "DeltaBytes": 1440855510
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:44-04:00",
+            "DeltaBytes": 1440797895
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:52.36408226-04:00",
+            "DeltaBytes": -30650510
+        },
+        {
+            "Timestamp": "2021-09-21T18:40:53-04:00",
+            "DeltaBytes": -1440784624
+        },
+        {
+            "Timestamp": "2021-09-21T18:41:01.479318196-04:00",
+            "DeltaBytes": -1405901113
+        }
+    ]
+}
