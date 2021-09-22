@@ -1,30 +1,24 @@
 
-function rnascope_human(filename)
+function rnascope_human(filename,I)
 
 img = load(filename);
 O = fieldnames(img);
-[Y,~,Z] = size(img.(O{1}));
 
 for i = 1:numel(O)
-	  %channe_i = ['im2double(img.',O{i},')']; %for rosehip
-	  channe_i = ['rescale(img.',O{i},')'];
+  channel = rescale(img.(O{i}));
        
-  if contains(channe_i, 'Lipofuscin')
-      channel = eval(channe_i);
-  elseif contains(channe_i,'DAPI')
-	  channel = medfilt3(eval(channe_i),[7 7 3]);
+  if contains((O{i}),'DAPI')
+	 channel = medfilt3(channel,[7 7 3]);
+     thresh = graythresh(channel);
+  elseif contains((O{i}),{'Lipofuscin','Abeta'})
+     thresh = graythresh(channel);
   else
-      channel = imhmin(eval(channe_i),std2(eval(channe_i)));% suppress background noise in RNA scope channels.
+     thresh = 0.7;
   end
   
-   thresh = graythresh(channel); %for rosehip
-   BWc = imbinarize(channel,thresh);
-	  
-	 %if thresh<0.04
-	 %  BWc = imbinarize(channel,0.04);
-	 %end
+  BWc = imbinarize(channel,thresh);
   
-if contains(channe_i,'DAPI')
+  if contains((O{i}),'DAPI')
     BWc = imfill(BWc,'holes');
 	bw3=max(BWc,[],3);
     D = -bwdist(~bw3);
@@ -32,26 +26,18 @@ if contains(channe_i,'DAPI')
     D2 = imimposemin(D,mask);
     Ld2 = watershed(D2);
     bw3(Ld2 == 0) = 0;
-
-    setenv('TZ','America/New_York')
-parfor zi =1:Z	
-		A = BWc(:,:,zi);
-		A(bw3==0)=0;
-		BWc(:,:,zi) = A;	 	
-end
-	
-else	 	 
+    BWc(bw3==0)=0;	
+  else	 	 
 	 x = imcomplement(channel);
 	 x = imhmin(x,2*std(channel(:)));
 	 L = watershed(x);
 	 BWc(L==0) = 0;  
-end	 
+  end	 
 
-[~,no_of_dots] = bwlabeln(BWc);
-disp(['segmented ',O{i}, ': ',num2str(no_of_dots)])
-
-v = ['Segmentations.',O{i}];
-	eval([v '= BWc;']);
+  [~,no_of_dots] = bwlabeln(BWc);
+  disp(['segmented ',O{i}, ': ',num2str(no_of_dots)])
+  v = ['Segmentations.',O{i}];
+  eval([v '= BWc;']);
 
 end
 
@@ -59,8 +45,10 @@ save([filename(1:end-4),'_segmentation.mat'], '-struct', 'Segmentations')
 
 O = fieldnames(img);
 IMG = [];
+%I = [4001,5000,7101,8100];
 for pp = 1:numel(O)
-IMG = [IMG,[max(mat2gray(img.(O{pp})),[],3),ones(Y,20); max(Segmentations.(O{pp}),[],3), ones(Y,20)]];
+    img1 = rescale(img.(O{pp}));
+    IMG = [IMG,[mat2gray(img1(I(1):I(2),I(3):I(4))),ones(1000,20); Segmentations.(O{pp})(I(1):I(2),I(3):I(4)), ones(1000,20)]];
 end
 
 imwrite(IMG,[filename(1:end-4),'.png']);

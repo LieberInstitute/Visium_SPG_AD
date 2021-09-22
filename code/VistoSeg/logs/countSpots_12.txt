@@ -33,3 +33,17 @@ loading data
 661982 MAP2 ROIS detected
 185825 Lipofuscin ROIS detected
 counting dots per Visium spot
+100 spots finished in time 6816.1599s
+200 spots finished in time 13886.7843s
+300 spots finished in time 20689.5269s
+400 spots finished in time 27329.1282s
+500 spots finished in time 33607.0005s
+600 spots finished in time 39867.1683s
+700 spots finished in time 46212.6098s
+800 spots finished in time 52527.2941s
+900 spots finished in time 58801.4144s
+1000 spots finished in time 65057.6863s
+1100 spots finished in time 71268.2593s
+1200 spots finished in time 77463.0084s
+1300 spots finished in time 83741.0811s
+1400 spots finished in time 90003.5787s
