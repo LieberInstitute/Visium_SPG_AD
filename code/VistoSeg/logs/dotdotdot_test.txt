@@ -1,0 +1,413 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Thu Sep 23 20:19:41 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 6978850
+Job name: dotdotdot
+Hostname: compute-097.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 143690
+segmented DAPI: 20725
+segmented GFAP: 25821
+segmented Lipofuscin: 73362
+segmented MAP2: 8519
+segmented pTau: 9102
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 139391
+segmented DAPI: 24748
+segmented GFAP: 56297
+segmented Lipofuscin: 50551
+segmented MAP2: 59124
+segmented pTau: 434
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 310969
+segmented DAPI: 53285
+segmented GFAP: 209706
+segmented Lipofuscin: 157795
+segmented MAP2: 146252
+segmented pTau: 27748
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 173542
+segmented DAPI: 25834
+segmented GFAP: 4664
+segmented Lipofuscin: 74051
+segmented MAP2: 2526
+segmented pTau: 7909
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 185949
+segmented DAPI: 27302
+segmented GFAP: 20547
+segmented Lipofuscin: 57791
+segmented MAP2: 30451
+segmented pTau: 359
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 356904
+segmented DAPI: 54896
+segmented GFAP: 29288
+segmented Lipofuscin: 157504
+segmented MAP2: 95330
+segmented pTau: 31642
+>> **** Job ends ****
+Thu Sep 23 21:14:08 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 20:19:54 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7030233
+Job name: dotdotdot
+Hostname: compute-097.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+{Undefined function or variable 'rnascope_human'.
+} 
+>> **** Job ends ****
+Mon Sep 27 20:20:31 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 20:25:17 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7030275
+Job name: dotdotdot
+Hostname: compute-097.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+{Undefined function or variable 'rnascope_human'.
+} 
+>> **** Job ends ****
+Mon Sep 27 20:25:25 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 20:28:31 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7030293
+Job name: dotdotdot
+Hostname: compute-097.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+{Undefined function or variable 'rnascope_human'.
+} 
+>> **** Job ends ****
+Mon Sep 27 20:28:38 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 20:31:53 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7030315
+Job name: dotdotdot
+Hostname: compute-094.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 127488
+segmented DAPI: 29962
+segmented GFAP: 65646
+segmented Lipofuscin: 64130
+segmented MAP2: 17414
+segmented pTau: 251
+>> **** Job ends ****
+Mon Sep 27 20:39:57 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 21:14:58 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7030902
+Job name: dotdotdot
+Hostname: compute-097.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 112306
+segmented DAPI: 36118
+segmented GFAP: 6945
+segmented Lipofuscin: 63172
+segmented MAP2: 749
+segmented pTau: 92
+>> 
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 188825
+segmented DAPI: 41032
+segmented GFAP: 7325
+segmented Lipofuscin: 83647
+segmented MAP2: 9463
+segmented pTau: 155
+>> **** Job ends ****
+Mon Sep 27 21:34:09 EDT 2021
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Mon Sep 27 22:48:39 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7031625
+Job name: dotdotdot
+Hostname: compute-100.cm.cluster
+Task id: undefined
+****
+****
+
+Currently Loaded Modules:
+  1) stata/17                        8) git/2.28.0
+  2) JHPCE_tools/1.0                 9) git-lfs/2.8.0
+  3) sge/8.1.9                      10) ruby/2.6.4p104
+  4) gcc/4.4.7                      11) rmate/1.5.9
+  5) COMMUNITY_CENTOS7_DEFAULT_ENV  12) conda/3-4.6.14
+  6) JHPCE_CENTOS7_DEFAULT_ENV      13) conda_R/4.1.x
+  7) git-status-size/github         14) matlab/R2019a
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+segmented Abeta: 112306
+segmented DAPI: 36118
+segmented GFAP: 33174
+segmented Lipofuscin: 63172
+segmented MAP2: 6483
+segmented pTau: 283
+>> **** Job ends ****
+Mon Sep 27 22:55:57 EDT 2021

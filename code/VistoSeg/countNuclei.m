@@ -14,7 +14,6 @@ disp('loading data')
 w = jsondecode(fileread(jsonname));
 R = ceil(w.spot_diameter_fullres/2);
 tbl = readtable(posname) ;
- 
 count = [];
 prop = [];
 
@@ -26,7 +25,7 @@ prop = [];
         b = b+3;
         end
     else
-        
+        tbl.Properties.VariableNames = {'barcode','tissue','row','col','imagerow','imagecol'};
         [count,prop] = countSpots(BW, R, tbl, posPath);
         
     end

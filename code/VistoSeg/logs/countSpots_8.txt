@@ -1,0 +1,100 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Thu Oct  7 14:51:12 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7175865
+Job name: countSpots.sh
+Hostname: compute-057.cm.cluster
+Task id: 12
+****
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+Building spot grid
+33579 Abeta ROIS detected
+0 MAP2 ROIS detected
+0 GFAP ROIS detected
+0 Lipofuscin ROIS detected
+62336 DAPI ROIS detected
+112584 pTau ROIS detected
+counting dots per Visium spot
+100 spots finished in time 1070.8551s
+200 spots finished in time 2063.939s
+300 spots finished in time 3140.9094s
+400 spots finished in time 4250.6291s
+500 spots finished in time 5362.9662s
+600 spots finished in time 6456.148s
+700 spots finished in time 7541.8815s
+800 spots finished in time 8623.2603s
+900 spots finished in time 9706.8639s
+1000 spots finished in time 10797.1471s
+1100 spots finished in time 11891.8529s
+1200 spots finished in time 12981.7866s
+1300 spots finished in time 14072.9154s
+1400 spots finished in time 15160.3007s
+1500 spots finished in time 16279.5997s
+1600 spots finished in time 17396.4926s
+1700 spots finished in time 18509.819s
+1800 spots finished in time 19621.8833s
+1900 spots finished in time 20721.0881s
+2000 spots finished in time 21844.7378s
+2100 spots finished in time 22955.1712s
+2200 spots finished in time 24068.3245s
+2300 spots finished in time 25176.0054s
+2400 spots finished in time 26283.8196s
+2500 spots finished in time 27380.0133s
+2600 spots finished in time 28480.3926s
+2700 spots finished in time 29580.6098s
+2800 spots finished in time 30693.4931s
+2900 spots finished in time 31800.8399s
+3000 spots finished in time 32909.0959s
+3100 spots finished in time 34016.6943s
+3200 spots finished in time 35123.1099s
+3300 spots finished in time 36235.911s
+3400 spots finished in time 37341.0046s
+3500 spots finished in time 38440.3143s
+3600 spots finished in time 39493.561s
+3700 spots finished in time 40482.5688s
+3800 spots finished in time 41508.8418s
+3900 spots finished in time 42548.2328s
+4000 spots finished in time 43559.6788s
+4100 spots finished in time 44542.9485s
+4200 spots finished in time 45519.2453s
+4300 spots finished in time 46527.6641s
+4400 spots finished in time 47536.555s
+4500 spots finished in time 48558.9337s
+4600 spots finished in time 49579.021s
+4700 spots finished in time 50550.3254s
+4800 spots finished in time 51524.0761s
+4900 spots finished in time 52493.3627s
+writing table
+
+ans = 
+
+  struct with fields:
+
+         Abeta: [4992x1 double]
+          MAP2: [4992x1 double]
+          GFAP: [4992x1 double]
+    Lipofuscin: [4992x1 double]
+          DAPI: [4992x1 double]
+          pTau: [4992x1 double]
+
+>> **** Job ends ****
+Fri Oct  8 05:41:10 EDT 2021

@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -pe local 5
 #$ -l mem_free=10G,h_vmem=10G,h_fsize=100G
-#$ -o /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/countSpots_12.txt
-#$ -e /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/countSpots_12.txt
+#$ -o /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/countSpots_8.txt
+#$ -e /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/countSpots_8.txt
 #$ -m e
 #$ -M madhavitippani28@gmail.com
 #$ -t 12
@@ -23,9 +23,9 @@ echo "****"
 
 toolbox='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/'
 
-mask='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD3_V10T31-036_D1_segmentation.mat'
-jsonname='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/VIFAD3_V10T31-036_D1/outs/spatial/scalefactors_json.json'
-posname='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/VIFAD3_V10T31-036_D1/outs/spatial/tissue_positions_list.csv'
+mask='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD2_V10A27-106_D1_segmentation.mat'
+jsonname='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_D1_Br3880/outs/spatial/scalefactors_json.json'
+posname='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_D1_Br3880/outs/spatial/tissue_positions_list.csv'
 
 matlab -nodesktop -nosplash -nojvm -r "addpath(genpath('$toolbox')), countNuclei('$mask','$jsonname','$posname')" 
 

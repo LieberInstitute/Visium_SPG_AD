@@ -1,5 +1,5 @@
 function [count,prop] = countSpots(BW, R, tbl, posPath)
-    
+  
 count = [];
 prop = [];
 
@@ -8,6 +8,7 @@ O = fieldnames(BW);
     nSpots = size(tbl, 1);
     disp([num2str(nSpots),' Visium spots detected'])
     
+    disp('Building spot grid')
     crow = round(table2array(tbl(:, 5)));
     ccol = round(table2array(tbl(:, 6)));
     mask = zeros(size(BW.(O{1})));
@@ -40,10 +41,9 @@ for i = 1:nSpots
 
 end
 
-tbl = renamevars(tbl, {'Var1','Var2','Var3','Var4','Var5','Var6'},{'barcode','tissue','row','col','imagerow','imagecol'});
 for C = 1:numel(O)
  temp = [count.(O{C}) prop.(O{C})];  
- tbl = [tbl array2table(temp, 'VariableNames', {['#',O{C}],['%',O{C}]})];        
+ tbl = [tbl array2table(temp, 'VariableNames', {['N',O{C}],['P',O{C}]})];        
 end
 
 if ~exist(posPath, 'dir')
