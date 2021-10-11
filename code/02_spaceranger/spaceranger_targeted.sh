@@ -2,12 +2,13 @@
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -pe local 8
-#$ -N spaceranger
-#$ -o logs/spaceranger.$TASK_ID.txt
-#$ -e logs/spaceranger.$TASK_ID.txt
+#$ -N spaceranger_targeted
+#$ -o logs/spaceranger_targeted.$TASK_ID.txt
+#$ -e logs/spaceranger_targeted.$TASK_ID.txt
 #$ -m e
 #$ -t 1-10
-#$ -tc 5
+#$ -tc 10
+#$ -hold_jid spaceranger_their_alignments_nocr11_targeted
 
 echo "**** Job starts ****"
 date
@@ -26,8 +27,9 @@ module load spaceranger/1.3.0
 module list
 
 ## Locate file
-SAMPLE=$(awk "NR==${SGE_TASK_ID}" ../01_bamtofastq/samples.txt)
-echo "Processing sample ${SAMPLE}"
+SAMPLERAW=$(awk "NR==${SGE_TASK_ID}" ../01_bamtofastq/samples_targeted_sequencing.txt)
+SAMPLE=$(echo ${SAMPLERAW} | sed 's/^.*_Visium_Neuroscience_//g; s/_114.*//g')
+echo "Processing sample ${SAMPLERAW}; short: ${SAMPLE}"
 date
 
 ## Get slide and area
@@ -53,7 +55,7 @@ fi
 echo "Slide: ${SLIDE}, capture area: ${CAPTUREAREA}, VIF: ${SLIDEVIF}"
 
 ## Find FASTQ file path
-FASTQPATH=$(ls -d ../../raw-data/FASTQ/spaceranger_our_alignments_nocr11/${SAMPLE}/*/)
+FASTQPATH=$(ls -d ../../raw-data/FASTQ/spaceranger_their_alignments_nocr11/${SAMPLERAW}/*/)
 
 ## Run SpaceRanger
 spaceranger count \
@@ -71,8 +73,8 @@ spaceranger count \
 ## Move output
 echo "Moving results to new location"
 date
-mkdir -p ../../processed-data/spaceranger/
-mv ${SAMPLE} ../../processed-data/spaceranger/
+mkdir -p ../../processed-data/spaceranger_targeted/
+mv ${SAMPLE} ../../processed-data/spaceranger_targeted/
 
 echo "**** Job ends ****"
 date
