@@ -1,0 +1,38 @@
+@include "rna/spatial_rna_counter_cs.mro"
+
+call SPATIAL_RNA_COUNTER_CS(
+    sample_id                 = "V10A27106_B1_Br3854",
+    sample_def                = [
+        {
+            "fastq_id": null,
+            "fastq_mode": "ILMN_BCL2FASTQ",
+            "gem_group": null,
+            "lanes": null,
+            "library_type": "Gene Expression",
+            "read_path": "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/raw-data/FASTQ/spaceranger_their_alignments_nocr11/1169492_Visium_Neuroscience_V10A27106_B1_Br3854_1146313/1169492_1186590_0_1_HJ3WGDSX2",
+            "sample_indices": ["any"],
+            "sample_names": ["bamtofastq"],
+            "subsample_rate": null,
+            "target_set": null,
+            "target_set_name": null,
+        },
+    ],
+    sample_desc               = "",
+    slide_serial_capture_area = "V10A27-106-B1",
+    loupe_alignment_file      = "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/loupe_alignment/VIFAD2_V10A27-106-B1.json",
+    gpr_file                  = null,
+    reference_path            = "/dcs04/lieber/lcolladotor/annotationFiles_LIBD001/10x/refdata-gex-GRCh38-2020-A",
+    no_bam                    = false,
+    no_secondary_analysis     = false,
+    no_probe_filter           = false,
+    rps_limit                 = null,
+    r1_length                 = null,
+    r2_length                 = null,
+    targeting_method          = null,
+    aligner                   = null,
+    trim_polya_min_score      = 20,
+    trim_tso_min_score        = 20,
+    tissue_image_paths        = ["/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/loupe_alignment/VIFAD2_V10A27-106_B1.tif"],
+    dark_images               = 1,
+    reorientation_mode        = null,
+)
