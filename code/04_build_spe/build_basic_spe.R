@@ -133,7 +133,7 @@ segmentations_list <- lapply(sample_info$sample_id, function(sampleid) {
     if(!file.exists(file)) return(NULL)
     x <- read.csv(file)
     x$key <- paste0(x$barcode, "_", sampleid)
-    x
+    return(x)
 })
 ## Merge them (once the these files are done, this could be replaced by an rbind)
 segmentations <- Reduce(function(...) merge(..., all = TRUE), segmentations_list[lengths(segmentations_list) > 0])
@@ -143,6 +143,27 @@ segmentation_match <- match(spe$key, segmentations$key)
 segmentation_info <- segmentations[segmentation_match, - which(colnames(segmentations) %in% c("barcode", "tissue", "row", "col", "imagerow", "imagecol", "key"))]
 colData(spe) <- cbind(colData(spe), segmentation_info)
 colData(spe_targeted) <- cbind(colData(spe_targeted), segmentation_info)
+
+
+## Add 10x GraphBased clustering results
+clusters <- do.call(rbind, lapply(sample_info$sample_id, function(sampleid) {
+    file <- here("processed-data", "spaceranger", sampleid, "outs", "analysis", "clustering", "graphclust", "clusters.csv")
+    if(!file.exists(file)) return(NULL)
+    x <- read.csv(file)
+    x$key <- paste0(x$Barcode, "_", sampleid)
+    x$GraphBased <- factor(paste0("Cluster", x$Cluster))
+    return(x)
+}))
+spe$GraphBased <- clusters$GraphBased[match(spe$key, clusters$key)]
+clusters_targeted <- do.call(rbind, lapply(sample_info$sample_id, function(sampleid) {
+    file <- here("processed-data", "spaceranger_targeted", sampleid, "outs", "analysis", "clustering", "graphclust", "clusters.csv")
+    if(!file.exists(file)) return(NULL)
+    x <- read.csv(file)
+    x$key <- paste0(x$Barcode, "_", sampleid)
+    x$GraphBased <- factor(paste0("Cluster", x$Cluster))
+    return(x)
+}))
+spe_targeted$GraphBased <- clusters_targeted$GraphBased[match(spe_targeted$key, clusters_targeted$key)]
 
 ## Remove genes with no data
 no_expr <- which(rowSums(counts(spe)) == 0)
