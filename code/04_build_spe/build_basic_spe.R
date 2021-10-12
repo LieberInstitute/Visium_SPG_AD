@@ -81,14 +81,17 @@ Sys.time()
 ## https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/count
 stopifnot(identical(rowData(spe), rowData(spe_targeted)))
 stopifnot(identical(colData(spe), colData(spe_targeted)))
+spe_targeted$key <- spe$key <- paste0(colnames(spe), '_', spe$sample_id)
 
 ## Add the study design info
 new_col <- merge(colData(spe), sample_info)
+## Fix order
+new_col <- new_col[match(spe$key, new_col$key), ]
+stopifnot(identical(new_col$key, spe$key))
 rownames(new_col) <- rownames(colData(spe))
 colData(spe) <- colData(spe_targeted) <- new_col[, -which(colnames(new_col) == "sample_path")]
 
 ## Add some information used by spatialLIBD
-spe_targeted$key <- spe$key <- paste0(colnames(spe), '_', spe$sample_id)
 spe$sum_umi <- colSums(counts(spe))
 spe$sum_gene <- colSums(counts(spe) > 0)
 spe_targeted$sum_umi <- colSums(counts(spe_targeted))
