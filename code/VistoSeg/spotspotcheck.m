@@ -46,6 +46,7 @@ function start(~, ~, countCheck)
 
     BW = load(fullfile(maskPath, maskFile));
     O = fieldnames(BW);
+    
     for C = 1:numel(O)
             im.(O{C}) = imread(fullfile(imgPath, imgFile), C);
     end

@@ -20,7 +20,7 @@ function clickPlot(im, mask, R, tbl, count, prop, O)
     zoomoutButton.Callback = {@zoomout, imsize};
     channelDD = uicontrol('Style','popupmenu','units', 'normalized','position', [0.5 0.05 0.1 0.02], 'String', O);
     channelDD.Callback = {@selection,im,O,ax,cmap} ;
-    set(ax, 'ButtonDownFcn', {@click, im, mask, O, channelDD, cmap, count, prop, spotCol, spotRow})
+    set(ax, 'ButtonDownFcn', {@click, im, mask, O, channelDD, cmap})
 
      if exist('count','var')
          C = get(channelDD,'Value');
@@ -29,21 +29,23 @@ function clickPlot(im, mask, R, tbl, count, prop, O)
    
 end
 
-function click(hObj, ~, im, mask, O, channelDD, cmap, count, prop, spotCol, spotRow)
+function click(hObj, ~, im, mask, O, channelDD, cmap)
 
     C = get(channelDD,'Value');
     if get(hObj, 'UserData')
         set(hObj, 'CData', mask.(O{C}));
         set(hObj, 'UserData', false);
         colormap(gca, gray(2))
-        text(spotCol, spotRow, string(count.(O{C})), 'Color', 'red', 'FontSize', 20);
-
+        %if exist('count','var')
+        %text(spotCol, spotRow, string(count.(O{C})), 'Color', 'red', 'FontSize', 20);
+        %end
     else
         set(hObj, 'CData', im.(O{C}));
         set(hObj, 'UserData', true);
         colormap(gca, cmap)
-        text(spotCol, spotRow, string(round(prop.(O{C}),1)), 'Color', 'red', 'FontSize', 20);
-
+        %if exist('count','var')
+        %text(spotCol, spotRow, string(round(prop.(O{C}),1)), 'Color', 'red', 'FontSize', 20);
+        %end
     end
 
 end
