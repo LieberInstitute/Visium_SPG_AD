@@ -1,4 +1,4 @@
-    function InFormStitch(filename,O,P,fname)
+function InFormStitch(filename,O,P,fname)
 
 % O{1} = 'DAPI';
 % O{2} = 'Abeta';

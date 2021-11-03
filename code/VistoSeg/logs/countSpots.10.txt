@@ -1,0 +1,112 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Fri Oct 22 02:13:44 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7332821
+Job name: countSpots.sh
+Hostname: compute-111.cm.cluster
+Task id: 10
+****
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD3_V10T31-036_D1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_D1_Br3880/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_D1_Br3880/outs/spatial/tissue_positions_list.csv
+****
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+Building spot grid
+306 Abeta ROIS detected
+64537 DAPI ROIS detected
+0 GFAP ROIS detected
+0 Lipofuscin ROIS detected
+0 MAP2 ROIS detected
+194649 pTau ROIS detected
+counting dots per Visium spot
+100 spots finished in time 600.0916s
+200 spots finished in time 1193.347s
+300 spots finished in time 1726.1348s
+400 spots finished in time 2265.6199s
+500 spots finished in time 2795.5622s
+600 spots finished in time 3337.3527s
+700 spots finished in time 3885.7922s
+800 spots finished in time 4435.8439s
+900 spots finished in time 4962.6172s
+1000 spots finished in time 5485.5721s
+1100 spots finished in time 6007.7969s
+1200 spots finished in time 6535.1091s
+1300 spots finished in time 7061.0861s
+1400 spots finished in time 7582.8124s
+1500 spots finished in time 8100.4851s
+1600 spots finished in time 8596.8409s
+1700 spots finished in time 9106.17s
+1800 spots finished in time 9626.7166s
+1900 spots finished in time 10147.01s
+2000 spots finished in time 10667.9669s
+2100 spots finished in time 11188.8369s
+2200 spots finished in time 11709.7807s
+2300 spots finished in time 12231.4844s
+2400 spots finished in time 12755.0455s
+2500 spots finished in time 13277.3829s
+2600 spots finished in time 13780.495s
+2700 spots finished in time 14279.3629s
+2800 spots finished in time 14777.9936s
+2900 spots finished in time 15277.0435s
+3000 spots finished in time 15775.1405s
+3100 spots finished in time 16273.2594s
+3200 spots finished in time 16770.3703s
+3300 spots finished in time 17268.0998s
+3400 spots finished in time 17767.9397s
+3500 spots finished in time 18268.2545s
+3600 spots finished in time 18790.4526s
+3700 spots finished in time 19313.7394s
+3800 spots finished in time 19815.382s
+3900 spots finished in time 20314.8492s
+4000 spots finished in time 20813.1245s
+4100 spots finished in time 21323.5876s
+4200 spots finished in time 21849.1254s
+4300 spots finished in time 22384.2325s
+4400 spots finished in time 22914.246s
+4500 spots finished in time 23434.9382s
+4600 spots finished in time 23939.4856s
+4700 spots finished in time 24462.0071s
+4800 spots finished in time 24961.029s
+4900 spots finished in time 25459.9434s
+writing table
+
+ans = 
+
+  struct with fields:
+
+         Abeta: [4992x1 double]
+          DAPI: [4992x1 double]
+          GFAP: [4992x1 double]
+    Lipofuscin: [4992x1 double]
+          MAP2: [4992x1 double]
+          pTau: [4992x1 double]
+
+>> **** Job ends ****
+Fri Oct 22 09:26:13 EDT 2021

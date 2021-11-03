@@ -1,0 +1,112 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Thu Oct 21 14:27:15 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7332821
+Job name: countSpots.sh
+Hostname: compute-052.cm.cluster
+Task id: 5
+****
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD2_V10A27-106_C1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_C1_Br3873/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_C1_Br3873/outs/spatial/tissue_positions_list.csv
+****
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+Building spot grid
+867 Abeta ROIS detected
+28865 DAPI ROIS detected
+0 GFAP ROIS detected
+0 Lipofuscin ROIS detected
+0 MAP2 ROIS detected
+1602 pTau ROIS detected
+counting dots per Visium spot
+100 spots finished in time 1162.7025s
+200 spots finished in time 2285.1261s
+300 spots finished in time 3336.9009s
+400 spots finished in time 4399.3705s
+500 spots finished in time 5476.5934s
+600 spots finished in time 6542.7739s
+700 spots finished in time 7604.1635s
+800 spots finished in time 8595.5956s
+900 spots finished in time 9600.1063s
+1000 spots finished in time 10601.6157s
+1100 spots finished in time 11599.0848s
+1200 spots finished in time 12587.4046s
+1300 spots finished in time 13581.6394s
+1400 spots finished in time 14579.3105s
+1500 spots finished in time 15611.0693s
+1600 spots finished in time 16586.6717s
+1700 spots finished in time 17555.828s
+1800 spots finished in time 18518.0161s
+1900 spots finished in time 19477.3937s
+2000 spots finished in time 20434.3086s
+2100 spots finished in time 21389.2101s
+2200 spots finished in time 22349.0154s
+2300 spots finished in time 23321.2998s
+2400 spots finished in time 24293.7614s
+2500 spots finished in time 25257.5588s
+2600 spots finished in time 26226.1166s
+2700 spots finished in time 27186.7708s
+2800 spots finished in time 28149.5977s
+2900 spots finished in time 29116.9392s
+3000 spots finished in time 30081.6437s
+3100 spots finished in time 31054.2526s
+3200 spots finished in time 32018.6732s
+3300 spots finished in time 32987.2348s
+3400 spots finished in time 33945.7221s
+3500 spots finished in time 34908.9355s
+3600 spots finished in time 35870.2267s
+3700 spots finished in time 36823.7244s
+3800 spots finished in time 37777.1912s
+3900 spots finished in time 38742.8659s
+4000 spots finished in time 39738.5096s
+4100 spots finished in time 40716.2645s
+4200 spots finished in time 41676.5209s
+4300 spots finished in time 42635.3963s
+4400 spots finished in time 43590.4368s
+4500 spots finished in time 44575.8508s
+4600 spots finished in time 45556.7877s
+4700 spots finished in time 46530.5175s
+4800 spots finished in time 47492.946s
+4900 spots finished in time 48450.0473s
+writing table
+
+ans = 
+
+  struct with fields:
+
+         Abeta: [4992x1 double]
+          DAPI: [4992x1 double]
+          GFAP: [4992x1 double]
+    Lipofuscin: [4992x1 double]
+          MAP2: [4992x1 double]
+          pTau: [4992x1 double]
+
+>> **** Job ends ****
+Fri Oct 22 04:10:19 EDT 2021

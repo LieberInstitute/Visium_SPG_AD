@@ -1,0 +1,112 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Thu Oct 21 21:00:20 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7332821
+Job name: countSpots.sh
+Hostname: compute-121.cm.cluster
+Task id: 7
+****
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD3_V10T31-036_A1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_A1_Br3874/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_A1_Br3874/outs/spatial/tissue_positions_list.csv
+****
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+Building spot grid
+22 Abeta ROIS detected
+45792 DAPI ROIS detected
+0 GFAP ROIS detected
+0 Lipofuscin ROIS detected
+0 MAP2 ROIS detected
+45582 pTau ROIS detected
+counting dots per Visium spot
+100 spots finished in time 397.3203s
+200 spots finished in time 800.451s
+300 spots finished in time 1171.7779s
+400 spots finished in time 1542.1746s
+500 spots finished in time 1926.2737s
+600 spots finished in time 2306.1188s
+700 spots finished in time 2683.4662s
+800 spots finished in time 3061.8967s
+900 spots finished in time 3445.2643s
+1000 spots finished in time 3828.1482s
+1100 spots finished in time 4204.8598s
+1200 spots finished in time 4583.5195s
+1300 spots finished in time 4960.6649s
+1400 spots finished in time 5323.9243s
+1500 spots finished in time 5686.3927s
+1600 spots finished in time 6048.8194s
+1700 spots finished in time 6414.6348s
+1800 spots finished in time 6780.694s
+1900 spots finished in time 7146.0379s
+2000 spots finished in time 7513.2213s
+2100 spots finished in time 7880.7346s
+2200 spots finished in time 8245.8849s
+2300 spots finished in time 8612.9467s
+2400 spots finished in time 8977.0685s
+2500 spots finished in time 9338.494s
+2600 spots finished in time 9700.4431s
+2700 spots finished in time 10062.3707s
+2800 spots finished in time 10421.6988s
+2900 spots finished in time 10784.4559s
+3000 spots finished in time 11152.9592s
+3100 spots finished in time 11522.5942s
+3200 spots finished in time 11892.2897s
+3300 spots finished in time 12262.1159s
+3400 spots finished in time 12628.6353s
+3500 spots finished in time 12990.0175s
+3600 spots finished in time 13355.1942s
+3700 spots finished in time 13724.4692s
+3800 spots finished in time 14089.22s
+3900 spots finished in time 14453.1738s
+4000 spots finished in time 14821.5071s
+4100 spots finished in time 15190.7687s
+4200 spots finished in time 15564.7379s
+4300 spots finished in time 15934.6955s
+4400 spots finished in time 16303.5714s
+4500 spots finished in time 16676.9008s
+4600 spots finished in time 17043.2164s
+4700 spots finished in time 17411.6855s
+4800 spots finished in time 17789.5589s
+4900 spots finished in time 18166.1885s
+writing table
+
+ans = 
+
+  struct with fields:
+
+         Abeta: [4992x1 double]
+          DAPI: [4992x1 double]
+          GFAP: [4992x1 double]
+    Lipofuscin: [4992x1 double]
+          MAP2: [4992x1 double]
+          pTau: [4992x1 double]
+
+>> **** Job ends ****
+Fri Oct 22 02:09:25 EDT 2021

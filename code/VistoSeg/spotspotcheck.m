@@ -28,7 +28,7 @@ function start(~, ~, countCheck)
         end
     end
     [imgFile, imgPath] = uigetfile(getImg, 'Select Visium Image');
-    getMask = fullfile(imgPath, '*.mat');
+    getMask = fullfile(imgPath, '*segmentation.mat');
     getJSON = fullfile(imgPath, '*.json');
     getPositions = fullfile(imgPath, '*.txt;*.csv'); 
     [maskFile, maskPath] = uigetfile(getMask, 'Select Segmented Mat File');
@@ -46,11 +46,11 @@ function start(~, ~, countCheck)
 
     BW = load(fullfile(maskPath, maskFile));
     O = fieldnames(BW);
-    
+    O1 =[2,1,4,6,5,3];
     for C = 1:numel(O)
-            im.(O{C}) = imread(fullfile(imgPath, imgFile), C);
+    im.(O{C}) = imread(fullfile(imgPath,imgFile),O1(C));
     end
-   
+    
     jsonname = fullfile(jsonPath, jsonFile);
     w = jsondecode(fileread(jsonname));
     R = ceil(w.spot_diameter_fullres/2);
@@ -66,8 +66,8 @@ function start(~, ~, countCheck)
         end
     end
     if countCheck.Value
-        [count,prop] = countSpots(BW, R, tbl, posPath);
+        [count,~] = countSpots(BW, R, tbl, posPath);
     end
-    clickPlot(im, BW, R, tbl, count, prop, O);    
+    clickPlot(im, BW, R, tbl, count, O);    
 
 end

@@ -1,0 +1,112 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Thu Oct 21 14:27:13 EDT 2021
+**** JHPCE info ****
+User: mtippani
+Job id: 7332821
+Job name: countSpots.sh
+Hostname: compute-095.cm.cluster
+Task id: 4
+****
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD2_V10A27-106_B1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_B1_Br3854/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10A27106_B1_Br3854/outs/spatial/tissue_positions_list.csv
+****
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+loading data
+4992 Visium spots detected
+Building spot grid
+371 Abeta ROIS detected
+25075 DAPI ROIS detected
+0 GFAP ROIS detected
+0 Lipofuscin ROIS detected
+0 MAP2 ROIS detected
+53608 pTau ROIS detected
+counting dots per Visium spot
+100 spots finished in time 765.1103s
+200 spots finished in time 1503.863s
+300 spots finished in time 2203.3071s
+400 spots finished in time 2900.0921s
+500 spots finished in time 3598.8339s
+600 spots finished in time 4300.0888s
+700 spots finished in time 4999.8122s
+800 spots finished in time 5695.6363s
+900 spots finished in time 6393.3191s
+1000 spots finished in time 7093.8755s
+1100 spots finished in time 7787.083s
+1200 spots finished in time 8472.6415s
+1300 spots finished in time 9168.0028s
+1400 spots finished in time 9860.4668s
+1500 spots finished in time 10555.7176s
+1600 spots finished in time 11248.4315s
+1700 spots finished in time 11937.903s
+1800 spots finished in time 12633.7638s
+1900 spots finished in time 13339.2604s
+2000 spots finished in time 14038.7504s
+2100 spots finished in time 14735.012s
+2200 spots finished in time 15443.8039s
+2300 spots finished in time 16145.6195s
+2400 spots finished in time 16839.2988s
+2500 spots finished in time 17520.0237s
+2600 spots finished in time 18196.5377s
+2700 spots finished in time 18884.6466s
+2800 spots finished in time 19570.4225s
+2900 spots finished in time 20250.7675s
+3000 spots finished in time 20972.7817s
+3100 spots finished in time 21668.4789s
+3200 spots finished in time 22358.1913s
+3300 spots finished in time 23058.1661s
+3400 spots finished in time 23760.0099s
+3500 spots finished in time 24465.9552s
+3600 spots finished in time 25159.8422s
+3700 spots finished in time 25947.6548s
+3800 spots finished in time 26871.2272s
+3900 spots finished in time 27789.8583s
+4000 spots finished in time 28704.4533s
+4100 spots finished in time 29615.558s
+4200 spots finished in time 30546.1366s
+4300 spots finished in time 31487.9794s
+4400 spots finished in time 32416.154s
+4500 spots finished in time 33341.8057s
+4600 spots finished in time 34251.398s
+4700 spots finished in time 35152.1615s
+4800 spots finished in time 36086.2728s
+4900 spots finished in time 37034.4781s
+writing table
+
+ans = 
+
+  struct with fields:
+
+         Abeta: [4992x1 double]
+          DAPI: [4992x1 double]
+          GFAP: [4992x1 double]
+    Lipofuscin: [4992x1 double]
+          MAP2: [4992x1 double]
+          pTau: [4992x1 double]
+
+>> **** Job ends ****
+Fri Oct 22 00:59:43 EDT 2021

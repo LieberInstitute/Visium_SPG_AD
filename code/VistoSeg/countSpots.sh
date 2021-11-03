@@ -6,7 +6,7 @@
 #$ -e /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/countSpots.$TASK_ID.txt
 #$ -m e
 #$ -M madhavitippani28@gmail.com
-#$ -t 1
+#$ -t 2-10
 #$ -tc 5
 
  
