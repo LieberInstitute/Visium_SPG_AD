@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=200G
-#$ -N update_backup
+#$ -N update_backup_Visium_IF_AD
 #$ -o logs/update_backup.txt
 #$ -e logs/update_backup.txt
 #$ -m e
@@ -23,7 +23,7 @@ module list
 umask 077
 
 ## Update the backup location
-rsync -avh /dcs04/lieber/lcolladotor/with10x_LIBD001 /dcl01/lieber/lcolladotor/backup_with10x_LIBD001
+rsync -avh /dcs04/lieber/lcolladotor/with10x_LIBD001 /dcl02/lieber/lcolladotor/backup_with10x_LIBD001
 
 echo "**** Job ends ****"
 date
