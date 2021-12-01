@@ -13,25 +13,25 @@ options(repos = BiocManager::repositories())
 ## Data setup
 
 ## Download to my laptop
-# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spe/spe.Rdata processed-data/spe/
+# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spe/spe_targeted.Rdata processed-data/spe/
 
 ## Create a soft link to the data, otherwise rsconnect::deployApp doesn't work
 ## Note that soft link has to be relative to work
-# cd code/05_deploy_app
-# ln -s ../../processed-data/spe/spe.Rdata spe.Rdata
+# cd code/06_deploy_app_targeted
+# ln -s ../../processed-data/spe/spe_targeted.Rdata spe_targeted.Rdata
 
 ## Load the data
-load("spe.Rdata", verbose = TRUE)
+load("spe_targeted.Rdata", verbose = TRUE)
 
-vars <- colnames(colData(spe))
+vars <- colnames(colData(spe_targeted))
 
 ## Deploy the website
 spatialLIBD::run_app(
-    spe,
+    spe_targeted,
     sce_layer = NULL,
     modeling_results = NULL,
     sig_genes = NULL,
-    title = "Visium IF AD, Kwon SH et al, 2021",
+    title = "Visium IF AD (TGE), Kwon SH et al, 2021",
     spe_discrete_vars = c(
         vars[grep("10x_", vars)],
         "ManualAnnotation"
