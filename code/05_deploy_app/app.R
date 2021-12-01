@@ -10,34 +10,30 @@ options("golem.app.prod" = TRUE)
 ## You need this to enable shinyapps to install Bioconductor packages
 options(repos = BiocManager::repositories())
 
-## Load the data
-# spe <- readRDS("spe_workflow_Visium_spatialLIBD.rds")
+## Data setup
+
+## Download to my laptop
+# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spe/spe.Rdata processed-data/spe/
 
 ## Create a soft link to the data, otherwise rsconnect::deployApp doesn't work
-# system("ln -s ../../processed-data/spe/spe_raw.Rdata spe_raw.Rdata")
-load("spe_raw.Rdata", verbose = TRUE)
-spe_raw <- spe_raw[, spatialData(spe_raw)$in_tissue]
-# rm(spe_raw)
+## Note that soft link has to be relative to work
+# cd code/05_deploy_app
+# ln -s ../../processed-data/spe/spe.Rdata spe.Rdata
 
-vars <- colnames(colData(spe_raw))
+## Load the data
+load("spe.Rdata", verbose = TRUE)
+
+vars <- colnames(colData(spe))
 
 ## Deploy the website
 spatialLIBD::run_app(
-    spe_raw,
+    spe,
     sce_layer = NULL,
     modeling_results = NULL,
     sig_genes = NULL,
     title = "Visium IF AD, Kwon SH et al, 2021",
     spe_discrete_vars = c(
         vars[grep("10x_", vars)],
-        # "subject",
-        # "sex",
-        # "race",
-        # "diagnosis",
-        # "BCrating",
-        # "braak",
-        # "cerad",
-        # "overlaps_tissue",
         "ManualAnnotation"
     ),
     spe_continuous_vars = c(
@@ -45,9 +41,6 @@ spatialLIBD::run_app(
         "sum_gene",
         "expr_chrM",
         "expr_chrM_ratio",
-        # "age",
-        # "pmi",
-        # "rin",
         "NAbeta",
         "PAbeta",
         "NDAPI",

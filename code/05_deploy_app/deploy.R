@@ -18,7 +18,7 @@ rsconnect::deployApp(
     appDir = here("code", "05_deploy_app"),
     appFiles = c(
         "app.R",
-        "spe_raw.Rdata"
+        "spe.Rdata"
     ),
     appName = 'Visium_IF_AD_Kwon2021',
     account = 'libd',
