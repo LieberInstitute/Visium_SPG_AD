@@ -10,53 +10,107 @@ load(here("processed-data", "spe", "spe_targeted.Rdata"), verbose = TRUE)
 
 dir.create(here("plots", "initial_exploration"), showWarnings = FALSE)
 
+## Define order of samples for the grid plots
+slide_order <- c("V10A27106", "V10T31036", "V10A27004")
+sample_order <- unlist(sapply(slide_order, function(i) {
+    sort(unique(spe$sample_id)[grepl(i, unique(spe$sample_id))])
+}))
+sample_order
+#            V10A271061            V10A271062            V10A271063
+# "V10A27106_A1_Br3874" "V10A27106_B1_Br3854" "V10A27106_C1_Br3873"
+#            V10A271064            V10T310361            V10T310362
+# "V10A27106_D1_Br3880" "V10T31036_A1_Br3874" "V10T31036_B1_Br3854"
+#            V10T310363            V10T310364            V10A270041
+# "V10T31036_C1_Br3873" "V10T31036_D1_Br3880" "V10A27004_A1_Br3874"
+#            V10A270042
+# "V10A27004_D1_Br3880"
+
+## Check the segmentation information
+segmentation_variables <-
+    c(
+        "NAbeta",
+        "PAbeta",
+        "NDAPI",
+        "PDAPI",
+        "NGFAP",
+        "PGFAP",
+        "NLipofuscin",
+        "PLipofuscin",
+        "NMAP2",
+        "PMAP2",
+        "NpTau",
+        "PpTau"
+    )
+
+for(seg_var in segmentation_variables) {
+
+    seg_grid <-
+        vis_grid_gene(
+            spe,
+            geneid = seg_var,
+            return_plots = TRUE,
+            spatial = FALSE,
+            cont_colors = viridisLite::magma(21, direction = -1),
+            minCount = -1
+        )
+    pdf(
+        here(
+            "plots",
+            "initial_exploration",
+            paste0("segmentation_info_", seg_var, ".pdf")
+        ),
+        height = 24,
+        width = 36
+    )
+    print(cowplot::plot_grid(plotlist = seg_grid[sample_order]))
+    dev.off()
+}
+
+#### the code below is no longer needed since we now have segmentation data for
+#### all images
 ## Check the segmantation preliminary results on one sample
-pdf(here("plots", "initial_exploration", "segmentation_info.pdf"), height = 8, width = 9)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = FALSE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = FALSE, viridis = FALSE)
-
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = FALSE)
-
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = TRUE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = TRUE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = TRUE, viridis = FALSE)
-vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = TRUE, viridis = FALSE)
-dev.off()
+# pdf(here("plots", "initial_exploration", "segmentation_info.pdf"), height = 8, width = 9)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
+#
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = FALSE)
+#
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = TRUE, viridis = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = TRUE, viridis = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = TRUE, viridis = FALSE)
+# vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PAbeta", spatial = TRUE, viridis = FALSE)
+# dev.off()
 
 
 ## Make grids for the GraphBased cluster results
-length(unique(spe$GraphBased))
+length(unique(spe$`10x_graphclust`))
 # [1] 9
-cols <- RColorBrewer::brewer.pal(length(unique(spe$GraphBased)), "Set1")
+cols <- RColorBrewer::brewer.pal(length(unique(spe$`10x_graphclust`)), "Set1")
 names(cols) <- seq_len(length(cols))
 clus_list <- vis_grid_clus(spe,
-    clustervar = "GraphBased",
+    clustervar = "10x_graphclust",
     pdf_file = NULL,
     sort_clust = TRUE,
     colors = cols,
     return_plots = TRUE,
     spatial = FALSE
 )
-slide_order <- c("V10A27106", "V10T31036", "V10A27004")
-sample_order <- unlist(sapply(slide_order, function(i) {
-    sort(names(clus_list)[grepl(i, names(clus_list))])
-}))
 
 pdf(here("plots", "initial_exploration", "wholegenome_graph_based.pdf"), height = 24, width = 36)
 print(cowplot::plot_grid(plotlist = clus_list[sample_order]))
 dev.off()
 
-length(unique(spe_targeted$GraphBased))
+length(unique(spe_targeted$`10x_graphclust`))
 # [1] 6
-cols_targeted <- RColorBrewer::brewer.pal(length(unique(spe_targeted$GraphBased)), "Dark2")
+cols_targeted <- RColorBrewer::brewer.pal(length(unique(spe_targeted$`10x_graphclust`)), "Dark2")
 names(cols_targeted) <- seq_len(length(cols_targeted))
 clus_list_targeted <- vis_grid_clus(spe_targeted,
-    clustervar = "GraphBased",
+    clustervar = "10x_graphclust",
     pdf_file = NULL,
     sort_clust = TRUE,
     colors = cols_targeted,
