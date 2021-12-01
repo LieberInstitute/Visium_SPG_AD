@@ -44,32 +44,24 @@ segmentation_variables <-
     )
 
 for(seg_var in segmentation_variables) {
-
-    seg_grid <-
-        vis_grid_gene(
-            spe,
-            geneid = seg_var,
-            return_plots = TRUE,
-            spatial = FALSE,
-            cont_colors = viridisLite::magma(21, direction = -1),
-            minCount = -1
-        )
-    pdf(
-        here(
+    vis_grid_gene(
+        spe,
+        geneid = seg_var,
+        pdf_file = here(
             "plots",
             "initial_exploration",
             paste0("segmentation_info_", seg_var, ".pdf")
         ),
-        height = 24,
-        width = 36
+        spatial = FALSE,
+        cont_colors = viridisLite::magma(21, direction = -1),
+        minCount = -1,
+        sample_order = sample_order
     )
-    print(cowplot::plot_grid(plotlist = seg_grid[sample_order]))
-    dev.off()
 }
 
 #### the code below is no longer needed since we now have segmentation data for
 #### all images
-## Check the segmantation preliminary results on one sample
+## Check the segmentation preliminary results on one sample
 # pdf(here("plots", "initial_exploration", "segmentation_info.pdf"), height = 8, width = 9)
 # vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
 # vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
@@ -93,35 +85,27 @@ length(unique(spe$`10x_graphclust`))
 # [1] 9
 cols <- RColorBrewer::brewer.pal(length(unique(spe$`10x_graphclust`)), "Set1")
 names(cols) <- seq_len(length(cols))
-clus_list <- vis_grid_clus(spe,
+vis_grid_clus(spe,
     clustervar = "10x_graphclust",
-    pdf_file = NULL,
+    pdf_file = here("plots", "initial_exploration", "wholegenome_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols,
-    return_plots = TRUE,
-    spatial = FALSE
+    spatial = FALSE,
+    sample_order = sample_order
 )
-
-pdf(here("plots", "initial_exploration", "wholegenome_graph_based.pdf"), height = 24, width = 36)
-print(cowplot::plot_grid(plotlist = clus_list[sample_order]))
-dev.off()
 
 length(unique(spe_targeted$`10x_graphclust`))
 # [1] 6
 cols_targeted <- RColorBrewer::brewer.pal(length(unique(spe_targeted$`10x_graphclust`)), "Dark2")
 names(cols_targeted) <- seq_len(length(cols_targeted))
-clus_list_targeted <- vis_grid_clus(spe_targeted,
+vis_grid_clus(spe_targeted,
     clustervar = "10x_graphclust",
-    pdf_file = NULL,
+    pdf_file = here("plots", "initial_exploration", "targeted_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols_targeted,
-    return_plots = TRUE,
-    spatial = FALSE
+    spatial = FALSE,
+    sample_order = sample_order
 )
-pdf(here("plots", "initial_exploration", "targeted_graph_based.pdf"), height = 24, width = 36)
-print(cowplot::plot_grid(plotlist = clus_list_targeted[sample_order]))
-dev.off()
-
 
 ## Read in list of AD genes
 ad_genes_raw <- read_xlsx(here("raw-data", "10X_NS targeted gene_AD genes.xlsx"))
@@ -171,8 +155,8 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
-# ─ Session info  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#  hash: selfie: medium-dark skin tone, musical note, man: medium-dark skin tone, white hair
+# ─ Session info  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  hash: victory hand, flag: Grenada, mahjong red dragon
 #
 #  setting  value
 #  version  R version 4.1.2 Patched (2021-11-04 r81138)
@@ -186,7 +170,7 @@ session_info()
 #  date     2021-12-01
 #  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 #
-# ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  package                * version  date (UTC) lib source
 #  AnnotationDbi            1.56.2   2021-11-09 [2] Bioconductor
 #  AnnotationHub            3.2.0    2021-10-26 [2] Bioconductor
@@ -331,7 +315,7 @@ session_info()
 #  scater                   1.22.0   2021-10-26 [1] Bioconductor
 #  scatterplot3d            0.3-41   2018-03-14 [1] CRAN (R 4.1.2)
 #  scuttle                  1.4.0    2021-10-26 [1] Bioconductor
-#  servr                    0.23     2021-08-11 [1] CRAN (R 4.1.2)
+#  servr                    0.24     2021-11-16 [1] CRAN (R 4.1.2)
 #  sessioninfo            * 1.2.1    2021-11-02 [2] CRAN (R 4.1.2)
 #  shiny                    1.7.1    2021-10-02 [2] CRAN (R 4.1.2)
 #  shinyWidgets             0.6.2    2021-09-17 [1] CRAN (R 4.1.2)
@@ -339,7 +323,7 @@ session_info()
 #  spam                     2.7-0    2021-06-25 [2] CRAN (R 4.1.0)
 #  sparseMatrixStats        1.6.0    2021-10-26 [2] Bioconductor
 #  SpatialExperiment      * 1.4.0    2021-10-26 [1] Bioconductor
-#  spatialLIBD            * 1.7.3    2021-11-10 [1] Github (LieberInstitute/spatialLIBD@771d2f7)
+#  spatialLIBD            * 1.6.2    2021-12-01 [1] Github (LieberInstitute/spatialLIBD@848e207)
 #  stringi                  1.7.6    2021-11-29 [2] CRAN (R 4.1.2)
 #  stringr                  1.4.0    2019-02-10 [2] CRAN (R 4.1.0)
 #  SummarizedExperiment   * 1.24.0   2021-10-26 [2] Bioconductor
@@ -366,4 +350,4 @@ session_info()
 #  [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library
 #  [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/library
 #
-# ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
