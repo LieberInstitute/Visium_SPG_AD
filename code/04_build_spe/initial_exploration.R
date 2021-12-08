@@ -25,6 +25,11 @@ sample_order
 #            V10A270042
 # "V10A27004_D1_Br3880"
 
+
+## Edit spatial images to create a black background box
+spe <- img_update_all(spe, image_id = "lowres", new_image_id = "black", brightness = 0, saturation = 0, hue = 0)
+imgData(spe_targeted) <- imgData(spe)
+
 ## Check the segmentation information
 segmentation_variables <-
     c(
@@ -52,7 +57,8 @@ for(seg_var in segmentation_variables) {
             "initial_exploration",
             paste0("segmentation_info_", seg_var, ".pdf")
         ),
-        spatial = FALSE,
+        spatial = TRUE,
+        image_d = "black",
         cont_colors = viridisLite::magma(21, direction = -1),
         minCount = -1,
         sample_order = sample_order
@@ -90,9 +96,29 @@ vis_grid_clus(spe,
     pdf_file = here("plots", "initial_exploration", "wholegenome_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols,
-    spatial = FALSE,
+    spatial = TRUE,
+    image_id = "black",
     sample_order = sample_order
 )
+
+x <- vis_grid_clus(spe,
+    clustervar = "10x_graphclust",
+    pdf_file = here("plots", "initial_exploration", "wholegenome_graph_based.pdf"),
+    sort_clust = TRUE,
+    colors = cols,
+    spatial = TRUE,
+    image_id = "black",
+    sample_order = sample_order,
+    return_plots = TRUE
+)
+library(ggplot2)
+z <- lapply(x, function(y) {
+    y$layers[[2]]$aes_params$size <- 2
+    return(y)
+})
+pdf(here("plots", "initial_exploration", "wholegenome_graph_based.pdf"), height = 24, width = 36)
+cowplot::plot_grid(plotlist = z)
+dev.off()
 
 length(unique(spe_targeted$`10x_graphclust`))
 # [1] 6
@@ -103,7 +129,8 @@ vis_grid_clus(spe_targeted,
     pdf_file = here("plots", "initial_exploration", "targeted_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols_targeted,
-    spatial = FALSE,
+    spatial = TRUE,
+    image_id = "black",
     sample_order = sample_order
 )
 
