@@ -27,7 +27,15 @@ sample_order
 
 
 ## Edit spatial images to create a black background box
-spe <- img_update_all(spe, image_id = "lowres", new_image_id = "black", brightness = 0, saturation = 0, hue = 0)
+spe <-
+    img_update_all(
+        spe,
+        image_id = "lowres",
+        new_image_id = "black",
+        brightness = 0,
+        saturation = 0,
+        hue = 0
+    )
 imgData(spe_targeted) <- imgData(spe)
 
 ## Check the segmentation information
@@ -58,8 +66,8 @@ for(seg_var in segmentation_variables) {
             paste0("segmentation_info_", seg_var, ".pdf")
         ),
         spatial = TRUE,
-        image_d = "black",
-        cont_colors = viridisLite::magma(21, direction = -1),
+        image_id = "black",
+        cont_colors = viridisLite::plasma(101, direction = 1),
         minCount = -1,
         sample_order = sample_order,
         point_size = 2
@@ -166,9 +174,8 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
-# ─ Session info  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#  hash: victory hand, flag: Grenada, mahjong red dragon
-#
+
+# ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  setting  value
 #  version  R version 4.1.2 Patched (2021-11-04 r81138)
 #  os       CentOS Linux 7 (Core)
@@ -178,10 +185,10 @@ session_info()
 #  collate  en_US.UTF-8
 #  ctype    en_US.UTF-8
 #  tz       US/Eastern
-#  date     2021-12-01
+#  date     2021-12-08
 #  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 #
-# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  package                * version  date (UTC) lib source
 #  AnnotationDbi            1.56.2   2021-11-09 [2] Bioconductor
 #  AnnotationHub            3.2.0    2021-10-26 [2] Bioconductor
@@ -261,7 +268,7 @@ session_info()
 #  httr                     1.4.2    2020-07-20 [2] CRAN (R 4.1.0)
 #  interactiveDisplayBase   1.32.0   2021-10-26 [2] Bioconductor
 #  IRanges                * 2.28.0   2021-10-26 [2] Bioconductor
-#  irlba                    2.3.3    2019-02-05 [2] CRAN (R 4.1.0)
+#  irlba                    2.3.5    2021-12-06 [2] CRAN (R 4.1.2)
 #  iterators                1.0.13   2020-10-15 [2] CRAN (R 4.1.0)
 #  jquerylib                0.1.4    2021-04-26 [2] CRAN (R 4.1.0)
 #  jsonlite                 1.7.2    2020-12-09 [2] CRAN (R 4.1.0)
@@ -315,7 +322,7 @@ session_info()
 #  roxygen2                 7.1.2    2021-09-08 [2] CRAN (R 4.1.2)
 #  rprojroot                2.0.2    2020-11-15 [2] CRAN (R 4.1.0)
 #  Rsamtools                2.10.0   2021-10-26 [2] Bioconductor
-#  RSQLite                  2.2.8    2021-08-21 [2] CRAN (R 4.1.2)
+#  RSQLite                  2.2.9    2021-12-06 [2] CRAN (R 4.1.2)
 #  rstudioapi               0.13     2020-11-12 [2] CRAN (R 4.1.0)
 #  rsvd                     1.0.5    2021-04-16 [1] CRAN (R 4.1.2)
 #  rtracklayer              1.54.0   2021-10-26 [2] Bioconductor
@@ -327,18 +334,18 @@ session_info()
 #  scatterplot3d            0.3-41   2018-03-14 [1] CRAN (R 4.1.2)
 #  scuttle                  1.4.0    2021-10-26 [1] Bioconductor
 #  servr                    0.24     2021-11-16 [1] CRAN (R 4.1.2)
-#  sessioninfo            * 1.2.1    2021-11-02 [2] CRAN (R 4.1.2)
+#  sessioninfo            * 1.2.2    2021-12-06 [2] CRAN (R 4.1.2)
 #  shiny                    1.7.1    2021-10-02 [2] CRAN (R 4.1.2)
 #  shinyWidgets             0.6.2    2021-09-17 [1] CRAN (R 4.1.2)
 #  SingleCellExperiment   * 1.16.0   2021-10-26 [2] Bioconductor
 #  spam                     2.7-0    2021-06-25 [2] CRAN (R 4.1.0)
 #  sparseMatrixStats        1.6.0    2021-10-26 [2] Bioconductor
 #  SpatialExperiment      * 1.4.0    2021-10-26 [1] Bioconductor
-#  spatialLIBD            * 1.6.2    2021-12-01 [1] Github (LieberInstitute/spatialLIBD@848e207)
+#  spatialLIBD            * 1.6.4    2021-12-08 [1] Github (LieberInstitute/spatialLIBD@ea2c037)
 #  stringi                  1.7.6    2021-11-29 [2] CRAN (R 4.1.2)
 #  stringr                  1.4.0    2019-02-10 [2] CRAN (R 4.1.0)
 #  SummarizedExperiment   * 1.24.0   2021-10-26 [2] Bioconductor
-#  testthat                 3.1.0    2021-10-04 [2] CRAN (R 4.1.2)
+#  testthat                 3.1.1    2021-12-03 [2] CRAN (R 4.1.2)
 #  tibble                   3.1.6    2021-11-07 [2] CRAN (R 4.1.2)
 #  tidyr                    1.1.4    2021-09-27 [2] CRAN (R 4.1.2)
 #  tidyselect               1.1.1    2021-04-30 [2] CRAN (R 4.1.0)
@@ -361,4 +368,4 @@ session_info()
 #  [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library
 #  [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/library
 #
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
