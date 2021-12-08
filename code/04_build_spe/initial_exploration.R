@@ -61,7 +61,8 @@ for(seg_var in segmentation_variables) {
         image_d = "black",
         cont_colors = viridisLite::magma(21, direction = -1),
         minCount = -1,
-        sample_order = sample_order
+        sample_order = sample_order,
+        point_size = 2
     )
 }
 
@@ -98,27 +99,9 @@ vis_grid_clus(spe,
     colors = cols,
     spatial = TRUE,
     image_id = "black",
-    sample_order = sample_order
-)
-
-x <- vis_grid_clus(spe,
-    clustervar = "10x_graphclust",
-    pdf_file = here("plots", "initial_exploration", "wholegenome_graph_based.pdf"),
-    sort_clust = TRUE,
-    colors = cols,
-    spatial = TRUE,
-    image_id = "black",
     sample_order = sample_order,
-    return_plots = TRUE
+    point_size = 2
 )
-library(ggplot2)
-z <- lapply(x, function(y) {
-    y$layers[[2]]$aes_params$size <- 2
-    return(y)
-})
-pdf(here("plots", "initial_exploration", "wholegenome_graph_based.pdf"), height = 24, width = 36)
-cowplot::plot_grid(plotlist = z)
-dev.off()
 
 length(unique(spe_targeted$`10x_graphclust`))
 # [1] 6
@@ -131,7 +114,8 @@ vis_grid_clus(spe_targeted,
     colors = cols_targeted,
     spatial = TRUE,
     image_id = "black",
-    sample_order = sample_order
+    sample_order = sample_order,
+    point_size = 2
 )
 
 ## Read in list of AD genes
