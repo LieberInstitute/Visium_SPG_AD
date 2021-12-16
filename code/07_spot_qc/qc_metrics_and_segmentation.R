@@ -3,6 +3,7 @@ library("SpatialExperiment")
 library("scran")
 library("scater")
 library("ggpubr")
+library("ggplot2")
 library("spatialLIBD")
 library("sessioninfo")
 
@@ -69,6 +70,35 @@ metrics_qc <- function(spe, spename) {
     )
     qcfilter$discard <- (qcfilter$low_lib_size | qcfilter$low_n_features) | qcfilter$high_subsets_Mito_percent
 
+
+    pdf(file.path(
+        dir_plots,
+        paste0("scran_", spename, "_low_lib_size_vs_mito_scatter.pdf")
+    ), width = 21)
+    ggplot(
+        qc_df,
+        aes(
+            x = log2sum,
+            y = subsets_Mito_percent,
+            color = qcfilter$low_lib_size,
+            shape = isOutlier(qcstats$subsets_Mito_percent, type = "lower", batch = sample_id_factor)
+        )
+    ) + geom_point() + facet_grid(~ sample_id) + guides(color = guide_legend("Low lib?")) + guides(shape = guide_legend("Low mito?"))
+    dev.off()
+
+    spe$scran_low_lib_size_low_mito <- factor(qcfilter$low_lib_size & qc_df$subsets_Mito_percent < 0.5, levels = c("TRUE", "FALSE"))
+    vis_grid_clus(
+        spe = spe,
+        clustervar = "scran_low_lib_size_low_mito",
+        pdf = file.path(dir_plots, paste0("scran_", spename, "_low_lib_size_vs_mito.pdf")),
+        sort_clust = FALSE,
+        colors = c("FALSE" = "grey90", "TRUE" = "orange"),
+        spatial = FALSE,
+        point_size = 2,
+        sample_order = sample_order
+    )
+
+
     spe$scran_discard <-
         factor(qcfilter$discard, levels = c("TRUE", "FALSE"))
     spe$scran_low_lib_size <-
@@ -86,9 +116,80 @@ metrics_qc <- function(spe, spename) {
             sort_clust = FALSE,
             colors = c("FALSE" = "grey90", "TRUE" = "orange"),
             spatial = FALSE,
-            point_size = 2
+            point_size = 2,
+            sample_order = sample_order
         )
     }
+
+
+    ## Find edge spots
+    spots <- data.frame(
+        row = spatialData(spe)$array_row,
+        col = spatialData(spe)$array_col,
+        sample_id = sample_id_factor
+    )
+
+    edge_spots_row <- group_by(spots, sample_id, row) %>% summarize(min_col = min(col), max_col = max(col))
+    edge_spots_col <- group_by(spots, sample_id, col) %>% summarize(min_row = min(row), max_row = max(row))
+
+    spots <- left_join(spots, edge_spots_row) %>% left_join(edge_spots_col)
+    spots$edge_spots <- with(spots, row == min_row | row == max_row | col == min_col | col == max_col)
+
+    spots$row_distance <- with(spots, pmin(abs(row - min_row), abs(row - max_row)))
+    spots$col_distance <- with(spots, pmin(abs(col - min_col), abs(col - max_col)))
+    spots$edge_distance <- with(spots, sqrt(row_distance^2 + col_distance^2))
+    spots$edge_distance <- with(spots, pmin(row_distance, col_distance))
+
+
+    spe$edge_spots <- factor(spots$edge_spots, levels = c("TRUE", "FALSE"))
+    spe$edge_distance <- spots$edge_distance
+    vis_grid_clus(
+        spe = spe,
+        clustervar = "edge_spots",
+        pdf = file.path(dir_plots, paste0("scran_", spename, "_egde_spots.pdf")),
+        sort_clust = FALSE,
+        colors = c("FALSE" = "grey90", "TRUE" = "orange"),
+        spatial = FALSE,
+        point_size = 2,
+        sample_order = sample_order
+    )
+
+    vis_grid_gene(
+        spe = spe,
+        geneid = "edge_distance",
+        pdf = file.path(dir_plots, paste0("scran_", spename, "_egde_distance.pdf")),
+        spatial = FALSE,
+        point_size = 2,
+        sample_order = sample_order
+    )
+
+
+    pdf(file.path(
+        dir_plots,
+        paste0("scran_", spename, "_low_lib_size_vs_edge_distance_scatter.pdf")
+    ), width = 21)
+    ggplot(
+        qc_df,
+        aes(
+            x = log2sum,
+            y = spots$edge_distance,
+            color = qcfilter$low_lib_size
+        )
+    ) + geom_point() + facet_grid(~ sample_id) + guides(color = guide_legend("Low lib?"))
+    dev.off()
+
+    spe$scran_low_lib_size_edge <- factor(qcfilter$low_lib_size & spots$edge_distance < 5, levels = c("TRUE", "FALSE"))
+    vis_grid_clus(
+        spe = spe,
+        clustervar = "scran_low_lib_size_edge",
+        pdf = file.path(dir_plots, paste0("scran_", spename, "_low_lib_size_vs_edge_distance.pdf")),
+        sort_clust = FALSE,
+        colors = c("FALSE" = "grey90", "TRUE" = "orange"),
+        spatial = FALSE,
+        point_size = 2,
+        sample_order = sample_order
+    )
+
     return(spe)
 }
 
