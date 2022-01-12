@@ -4,3 +4,5 @@
 *bam
 *bam.bai
 *spatial_enrichment.csv
+*_raw_feature*.gz
+*_filtered_feature*.gz
