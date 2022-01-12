@@ -49,7 +49,7 @@ metrics_qc <- function(spe, spename) {
         sample_id = sample_id_factor
     )
 
-    for(i in c("log2sum", "log2detected", "subsets_Mito_percent")) {
+    for (i in c("log2sum", "log2detected", "subsets_Mito_percent")) {
         pdf(file.path(dir_plots, paste0("scran_", spename, "_distribution_", i, ".pdf")), width = 14)
         p <- ggpubr::ggviolin(
             qc_df,
@@ -84,7 +84,11 @@ metrics_qc <- function(spe, spename) {
             color = qcfilter$low_lib_size,
             shape = isOutlier(qcstats$subsets_Mito_percent, type = "lower", batch = sample_id_factor)
         )
-    ) + geom_point() + facet_grid(~ sample_id) + guides(color = guide_legend("Low lib?")) + guides(shape = guide_legend("Low mito?"))
+    ) +
+        geom_point() +
+        facet_grid(~sample_id) +
+        guides(color = guide_legend("Low lib?")) +
+        guides(shape = guide_legend("Low mito?"))
     dev.off()
 
     spe$scran_low_lib_size_low_mito <- factor(qcfilter$low_lib_size & qc_df$subsets_Mito_percent < 0.5, levels = c("TRUE", "FALSE"))
@@ -180,7 +184,10 @@ metrics_qc <- function(spe, spename) {
             y = spots$edge_distance,
             color = qcfilter$low_lib_size
         )
-    ) + geom_point() + facet_grid(~ sample_id) + guides(color = guide_legend("Low lib?"))
+    ) +
+        geom_point() +
+        facet_grid(~sample_id) +
+        guides(color = guide_legend("Low lib?"))
     dev.off()
 
     spe$scran_low_lib_size_edge <- factor(qcfilter$low_lib_size & spots$edge_distance < 1, levels = c("TRUE", "FALSE"))
@@ -215,7 +222,7 @@ seg_df <- data.frame(
     check.names = FALSE
 )
 
-for(i in paste0(rep(c("Percent_", "Number_"), each = 3), rep(c("Abeta", "DAPI", "pTau"), 2))) {
+for (i in paste0(rep(c("Percent_", "Number_"), each = 3), rep(c("Abeta", "DAPI", "pTau"), 2))) {
     pdf(file.path(dir_plots, paste0("segmentation_distribution_", i, ".pdf")), width = 14)
     p <- ggpubr::ggviolin(
         seg_df,
@@ -316,7 +323,8 @@ spe_targeted$scran_low_lib_size_edge <- spe$scran_low_lib_size_edge <- NULL
 ## Save for later
 save(spe, file = here::here("processed-data", "spe", "spe_postqc.Rdata"))
 save(spe_targeted,
-    file = here::here("processed-data", "spe", "spe_targeted_postqc.Rdata"))
+    file = here::here("processed-data", "spe", "spe_targeted_postqc.Rdata")
+)
 
 
 ## Reproducibility information
