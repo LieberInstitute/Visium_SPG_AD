@@ -4,6 +4,7 @@ library("scran")
 library("scater")
 library("ggpubr")
 library("ggplot2")
+library("dplyr")
 library("spatialLIBD")
 library("sessioninfo")
 
@@ -137,7 +138,11 @@ metrics_qc <- function(spe, spename) {
 
     spots$row_distance <- with(spots, pmin(abs(row - min_row), abs(row - max_row)))
     spots$col_distance <- with(spots, pmin(abs(col - min_col), abs(col - max_col)))
-    spots$edge_distance <- with(spots, sqrt(row_distance^2 + col_distance^2))
+    ## spots$edge_distance <- with(spots, sqrt(row_distance^2 + col_distance^2))
+    ## The above is from:
+    ## sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
+    ## but it was wrong, here's a case the the smallest distance is on the column:
+    ## sqrt(0^2 + col_distance^2) = col_distance
     spots$edge_distance <- with(spots, pmin(row_distance, col_distance))
 
 
@@ -146,7 +151,7 @@ metrics_qc <- function(spe, spename) {
     vis_grid_clus(
         spe = spe,
         clustervar = "edge_spots",
-        pdf = file.path(dir_plots, paste0("scran_", spename, "_egde_spots.pdf")),
+        pdf = file.path(dir_plots, paste0("egde_spots_", spename, ".pdf")),
         sort_clust = FALSE,
         colors = c("FALSE" = "grey90", "TRUE" = "orange"),
         spatial = FALSE,
@@ -157,7 +162,7 @@ metrics_qc <- function(spe, spename) {
     vis_grid_gene(
         spe = spe,
         geneid = "edge_distance",
-        pdf = file.path(dir_plots, paste0("scran_", spename, "_egde_distance.pdf")),
+        pdf = file.path(dir_plots, paste0("egde_distance_", spename, ".pdf")),
         spatial = FALSE,
         point_size = 2,
         sample_order = sample_order
@@ -178,7 +183,7 @@ metrics_qc <- function(spe, spename) {
     ) + geom_point() + facet_grid(~ sample_id) + guides(color = guide_legend("Low lib?"))
     dev.off()
 
-    spe$scran_low_lib_size_edge <- factor(qcfilter$low_lib_size & spots$edge_distance < 5, levels = c("TRUE", "FALSE"))
+    spe$scran_low_lib_size_edge <- factor(qcfilter$low_lib_size & spots$edge_distance < 1, levels = c("TRUE", "FALSE"))
     vis_grid_clus(
         spe = spe,
         clustervar = "scran_low_lib_size_edge",
@@ -199,7 +204,6 @@ spe_targeted <- metrics_qc(spe_targeted, "targeted")
 
 
 ## Segmentation spot QC
-
 seg_df <- data.frame(
     Percent_Abeta = spe$PAbeta,
     Percent_DAPI = spe$PDAPI,
@@ -265,6 +269,55 @@ for (i in colnames(segqcfilter)) {
         point_size = 2
     )
 }
+
+## Don't drop any spots due to isOutlier() results on the image segmentation
+## Drop this information since we won't use for downstream analyses.
+spe$scran_discard_segmentation <- NULL
+spe$scran_Number_DAPI <- NULL
+spe$scran_Percent_pTau <- NULL
+
+## Read information about the glare spots manually identified by Madhavi Tippani
+## and Sang Ho Kwon.
+glare <- read.csv(here("code", "07_spot_qc", "glare_spots.csv"))
+colnames(glare)[1] <- "slide"
+m <- sapply(
+    with(glare, paste0(slide, "_", array)),
+    function(partial_sample_id) {
+        grep(partial_sample_id, spe$sample_id)[1]
+    }
+)
+glare$sample_id <- spe$sample_id[m]
+glare$key <- with(glare, paste0(spotID, "_", sample_id))
+
+## Locate and drop the glare spots
+m <- match(glare$key, spe$key)
+stopifnot(all(!is.na(m)))
+stopifnot(identical(m, match(glare$key, spe_targeted$key)))
+spe <- spe[, -m]
+spe_targeted <- spe_targeted[, -m]
+
+
+## Drop low library size spots on the edge for either whole genome or
+## targeted sequencing
+addmargins(table("wholegenome" = spe$scran_low_lib_size_edge, "targeted" = spe_targeted$scran_low_lib_size_edge))
+#            targeted
+# wholegenome  TRUE FALSE   Sum
+#       TRUE    125    19   144
+#       FALSE     8 38115 38123
+#       Sum     133 38134 38267
+
+drop_low_library_edge_either <- spe$scran_low_lib_size_edge == "TRUE" | spe_targeted$scran_low_lib_size_edge == "TRUE"
+spe <- spe[, !drop_low_library_edge_either]
+spe_targeted <- spe_targeted[, !drop_low_library_edge_either]
+
+## Clean up some variables names
+spe_targeted$scran_low_lib_size_edge <- spe$scran_low_lib_size_edge <- NULL
+
+## Save for later
+save(spe, file = here::here("processed-data", "spe", "spe_postqc.Rdata"))
+save(spe_targeted,
+    file = here::here("processed-data", "spe", "spe_targeted_postqc.Rdata"))
+
 
 ## Reproducibility information
 print("Reproducibility information:")
