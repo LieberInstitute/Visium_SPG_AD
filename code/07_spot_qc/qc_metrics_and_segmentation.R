@@ -18,8 +18,8 @@ library("spatialLIBD")
 library("sessioninfo")
 
 ## Load basic SPE data
-load(here::here("processed-data", "spe", "spe.Rdata"), verbose = TRUE)
-load(here::here("processed-data", "spe", "spe_targeted.Rdata"), verbose = TRUE)
+load(here::here("processed-data", "04_build_spe", "spe.Rdata"), verbose = TRUE)
+load(here::here("processed-data", "04_build_spe", "spe_targeted.Rdata"), verbose = TRUE)
 
 ## Create output directories
 dir_plots <- here::here("plots", "07_spot_qc")

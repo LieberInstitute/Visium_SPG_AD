@@ -47,18 +47,18 @@ sample_metrics <- df_metrics_all
 sample_metrics$Sample.ID <- basename(metrics_csvs)
 sample_metrics$Alignment <- rep(c("Abby", "10x"), each = 10)
 
-dir.create(here("processed-data", "10x_checks"), showWarnings = FALSE)
+dir.create(here("processed-data", "03_analysis", "10x_checks"), showWarnings = FALSE, recursive =  TRUE)
 save(sample_metrics,
-    file = here("processed-data", "10x_checks", "sample_metrics.Rdata")
+    file = here("processed-data", "03_analysis", "10x_checks", "sample_metrics.Rdata")
 )
 write.csv(sample_metrics,
-    file = here("processed-data", "10x_checks", "sample_metrics.csv")
+    file = here("processed-data", "03_analysis", "10x_checks", "sample_metrics.csv")
 )
 
 
-dir.create(here("plots", "10x_checks"), showWarnings = FALSE)
+dir.create(here("plots", "03_analysis", "10x_checks"), showWarnings = FALSE, recursive = TRUE)
 pdf(
-    here("plots", "10x_checks", "spaceranger_metrics_by_number_of_reads.pdf"),
+    here("plots", "03_analysis", "10x_checks", "spaceranger_metrics_by_number_of_reads.pdf"),
     useDingbats = FALSE,
     width = 10
 )
@@ -101,7 +101,7 @@ dev.off()
 ## Compare fiducial alignments: made by Abby or by 10x Genomics
 ## Used https://rpkgs.datanovia.com/ggpubr/reference/ggpaired.html
 pdf(
-    here("plots", "10x_checks", "alignment_check_abby_vs_10x.pdf"),
+    here("plots", "03_analysis", "10x_checks", "alignment_check_abby_vs_10x.pdf"),
     useDingbats = FALSE,
     width = 10
 )
@@ -146,15 +146,15 @@ all_metrics$study[all_metrics$study == "pilot"] <- "spatialLIBD"
 
 ## Save for later
 save(all_metrics,
-    file = here("processed-data", "10x_checks", "all_metrics.Rdata")
+    file = here("processed-data", "03_analysis", "10x_checks", "all_metrics.Rdata")
 )
 write.csv(all_metrics,
-    file = here("processed-data", "10x_checks", "all_metrics.csv")
+    file = here("processed-data", "03_analysis", "10x_checks", "all_metrics.csv")
 )
 
 
 pdf(
-    here("plots", "10x_checks", "cross_study_spaceranger_metrics_by_number_of_reads.pdf"),
+    here("plots", "03_analysis", "10x_checks", "cross_study_spaceranger_metrics_by_number_of_reads.pdf"),
     useDingbats = FALSE,
     width = 12
 )
@@ -196,7 +196,7 @@ dev.off()
 ## Compare metrics one at a time across studies
 ## Used https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html
 pdf(
-    here("plots", "10x_checks", "cross_study_spaceranger_metrics_boxplots.pdf"),
+    here("plots", "03_analysis", "10x_checks", "cross_study_spaceranger_metrics_boxplots.pdf"),
     useDingbats = FALSE,
     width = 10
 )

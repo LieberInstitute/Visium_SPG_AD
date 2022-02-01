@@ -196,11 +196,11 @@ spe_targeted$overlaps_tissue <-
 spe_raw <- spe
 spe_raw_targeted <- spe_targeted
 
-dir.create(here::here("processed-data", "spe"), showWarnings = FALSE)
+dir.create(here::here("processed-data", "04_build_spe"), showWarnings = FALSE)
 save(spe_raw,
-    file = here::here("processed-data", "spe", "spe_raw.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_raw.Rdata"))
 save(spe_raw_targeted,
-    file = here::here("processed-data", "spe", "spe_raw_targeted.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_raw_targeted.Rdata"))
 
 ## Size in Gb
 lobstr::obj_size(spe_raw) / 1024 ^ 3
@@ -235,9 +235,9 @@ lobstr::obj_size(spe) / 1024 ^ 3
 lobstr::obj_size(spe_targeted) / 1024 ^ 3
 # 1.198796
 
-save(spe, file = here::here("processed-data", "spe", "spe.Rdata"))
+save(spe, file = here::here("processed-data", "04_build_spe", "spe.Rdata"))
 save(spe_targeted,
-    file = here::here("processed-data", "spe", "spe_targeted.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_targeted.Rdata"))
 
 ## Reproducibility information
 print('Reproducibility information:')

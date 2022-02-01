@@ -5,10 +5,10 @@ library("readxl")
 library("RColorBrewer")
 library("sessioninfo")
 
-load(here("processed-data", "spe", "spe.Rdata"), verbose = TRUE)
-load(here("processed-data", "spe", "spe_targeted.Rdata"), verbose = TRUE)
+load(here("processed-data", "04_build_spe", "spe.Rdata"), verbose = TRUE)
+load(here("processed-data", "04_build_spe", "spe_targeted.Rdata"), verbose = TRUE)
 
-dir.create(here("plots", "initial_exploration"), showWarnings = FALSE)
+dir.create(here("plots", "04_build_spe"), showWarnings = FALSE)
 
 ## Define order of samples for the grid plots
 slide_order <- c("V10A27106", "V10T31036", "V10A27004")
@@ -62,7 +62,7 @@ for(seg_var in segmentation_variables) {
         geneid = seg_var,
         pdf_file = here(
             "plots",
-            "initial_exploration",
+            "04_build_spe",
             paste0("segmentation_info_", seg_var, ".pdf")
         ),
         spatial = TRUE,
@@ -77,7 +77,7 @@ for(seg_var in segmentation_variables) {
 #### the code below is no longer needed since we now have segmentation data for
 #### all images
 ## Check the segmentation preliminary results on one sample
-# pdf(here("plots", "initial_exploration", "segmentation_info.pdf"), height = 8, width = 9)
+# pdf(here("plots", "04_build_spe", "segmentation_info.pdf"), height = 8, width = 9)
 # vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
 # vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "PpTau", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
 # vis_gene(spe, sampleid = "V10A27106_D1_Br3880", geneid = "NAbeta", spatial = FALSE, cont_colors = viridisLite::mako(21, direction = -1))
@@ -102,7 +102,7 @@ cols <- RColorBrewer::brewer.pal(length(unique(spe$`10x_graphclust`)), "Set1")
 names(cols) <- seq_len(length(cols))
 vis_grid_clus(spe,
     clustervar = "10x_graphclust",
-    pdf_file = here("plots", "initial_exploration", "wholegenome_graph_based.pdf"),
+    pdf_file = here("plots", "04_build_spe", "wholegenome_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols,
     spatial = TRUE,
@@ -117,7 +117,7 @@ cols_targeted <- RColorBrewer::brewer.pal(length(unique(spe_targeted$`10x_graphc
 names(cols_targeted) <- seq_len(length(cols_targeted))
 vis_grid_clus(spe_targeted,
     clustervar = "10x_graphclust",
-    pdf_file = here("plots", "initial_exploration", "targeted_graph_based.pdf"),
+    pdf_file = here("plots", "04_build_spe", "targeted_graph_based.pdf"),
     sort_clust = TRUE,
     colors = cols_targeted,
     spatial = TRUE,
@@ -160,11 +160,11 @@ make_gene_grids <- function(spatial) {
     return(NULL)
 }
 
-pdf(here("plots", "initial_exploration", "wholegenome_V10A27106_D1_Br3880_AD_genes.pdf"), height = 8, width = 9)
+pdf(here("plots", "04_build_spe", "wholegenome_V10A27106_D1_Br3880_AD_genes.pdf"), height = 8, width = 9)
 make_gene_grids(spe)
 dev.off()
 
-pdf(here("plots", "initial_exploration", "targeted_V10A27106_D1_Br3880_AD_genes.pdf"), height = 8, width = 9)
+pdf(here("plots", "04_build_spe", "targeted_V10A27106_D1_Br3880_AD_genes.pdf"), height = 8, width = 9)
 make_gene_grids(spe_targeted)
 dev.off()
 
