@@ -13,12 +13,12 @@ options(repos = BiocManager::repositories())
 ## Data setup
 
 ## Download to my laptop
-# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spe/spe_targeted.Rdata processed-data/spe/
+# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/07_spot_qc/spe_targeted_postqc.Rdata processed-data/07_spot_qc/
 
 ## Create a soft link to the data, otherwise rsconnect::deployApp doesn't work
 ## Note that soft link has to be relative to work
 # cd code/06_deploy_app_targeted
-# ln -s ../../processed-data/spe/spe_targeted.Rdata spe_targeted.Rdata
+# ln -s ../../processed-data/07_spot_qc/spe_targeted_postqc.Rdata spe_targeted.Rdata
 
 ## Load the data
 load("spe_targeted.Rdata", verbose = TRUE)
@@ -34,7 +34,9 @@ spatialLIBD::run_app(
     title = "Visium IF AD (TGE), Kwon SH et al, 2021",
     spe_discrete_vars = c(
         vars[grep("10x_", vars)],
-        "ManualAnnotation"
+        "ManualAnnotation",
+        "edge_spots",
+        vars[grep("^scran_", vars)]
     ),
     spe_continuous_vars = c(
         "sum_umi",
@@ -52,7 +54,8 @@ spatialLIBD::run_app(
         "NMAP2",
         "PMAP2",
         "NpTau",
-        "PpTau"
+        "PpTau",
+        "edge_distance"
     ),
     default_cluster = "10x_graphclust"
 )
