@@ -10,16 +10,6 @@ options("golem.app.prod" = TRUE)
 ## You need this to enable shinyapps to install Bioconductor packages
 options(repos = BiocManager::repositories())
 
-## Data setup
-
-## Download to my laptop
-# scp e:/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/07_spot_qc/spe_postqc.Rdata processed-data/07_spot_qc/
-
-## Create a soft link to the data, otherwise rsconnect::deployApp doesn't work
-## Note that soft link has to be relative to work
-# cd code/05_deploy_app
-# ln -s ../../processed-data/07_spot_qc/spe_postqc.Rdata spe.Rdata
-
 ## Load the data
 load("spe.Rdata", verbose = TRUE)
 
