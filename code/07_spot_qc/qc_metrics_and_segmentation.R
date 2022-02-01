@@ -321,10 +321,8 @@ spe_targeted <- spe_targeted[, !drop_low_library_edge_either]
 spe_targeted$scran_low_lib_size_edge <- spe$scran_low_lib_size_edge <- NULL
 
 ## Save for later
-save(spe, file = here::here("processed-data", "spe", "spe_postqc.Rdata"))
-save(spe_targeted,
-    file = here::here("processed-data", "spe", "spe_targeted_postqc.Rdata")
-)
+save(spe, file = file.path(dir_rdata, "spe_postqc.Rdata"))
+save(spe_targeted, file = file.path(dir_rdata, "spe_targeted_postqc.Rdata"))
 
 
 ## Reproducibility information
@@ -535,5 +533,5 @@ session_info()
 #  [1] /users/lcollado/R/4.1.x
 #  [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library
 #  [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/library
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
