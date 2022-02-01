@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -N subset_data_shiny
 #$ -o logs/subset_data_shiny.txt
 #$ -e logs/subset_data_shiny.txt
