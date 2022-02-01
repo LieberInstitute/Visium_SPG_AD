@@ -23,7 +23,7 @@ spatialLIBD::run_app(
     sig_genes = NULL,
     title = "Visium IF AD (TGE), Kwon SH et al, 2021",
     spe_discrete_vars = c(
-        vars[grep("10x_", vars)],
+        vars[grep("^10x_", vars)],
         "ManualAnnotation",
         "edge_spots",
         vars[grep("^scran_", vars)]
