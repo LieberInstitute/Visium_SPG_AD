@@ -54,29 +54,29 @@ k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 
 set.seed(20220201)
 
-spe = spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 50000)
+spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 50000)
 
-spe$bayesSpace_temp<-spe$spatial.cluster
+spe$bayesSpace_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_k", k)
 colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 
 cluster_export(
-  spe,
-  bayesSpace_name,
-  cluster_dir = file.path(dir_rdata, "clustering_results")
+    spe,
+    bayesSpace_name,
+    cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
 sample_ids <- unique(colData(spe)$sample_id)
 
-pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k",k,".pdf")))
-for (i in seq_along(sample_ids)){
-  my_plot <- vis_clus(
-    spe = spe,
-    clustervar = bayesSpace_name,
-    sampleid = sample_ids[i],
-    colors =  Polychrome::palette36.colors(k)
-  )
-  print(my_plot)
+pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k, ".pdf")))
+for (i in seq_along(sample_ids)) {
+    my_plot <- vis_clus(
+        spe = spe,
+        clustervar = bayesSpace_name,
+        sampleid = sample_ids[i],
+        colors = Polychrome::palette36.colors(k)
+    )
+    print(my_plot)
 }
 dev.off()
 
