@@ -5,8 +5,8 @@
 
 ## Automatically style the code in this script:
 styler::style_file(
-  here::here("code", "analysis", "01_build_SPE_SHK.R"),
-  transformers = biocthis::bioc_style()
+    here::here("code", "analysis", "01_build_SPE_SHK.R"),
+    transformers = biocthis::bioc_style()
 )
 
 ## This script requires R 4.1
@@ -36,34 +36,34 @@ stopifnot(packageVersion("scuttle") >= "1.1.15")
 
 ## Define some info for the samples
 sample_info <- data.frame(
-  sample_id = c(
-    "Br3880_ITG",
-    "Br3874_ITG",
-    "Br3873_ITG",
-    "Br3854_ITG"
+    sample_id = c(
+        "Br3880_ITG",
+        "Br3874_ITG",
+        "Br3873_ITG",
+        "Br3854_ITG"
     ),
-  subjects = rep(
-    c("Br3880", "Br3874", "Br3873", "Br3854"),
-    each = 1
-  ),
-  # regions = rep(
-  #   c("anterior", "middle", "posterior"),
-  #   4
-  # ),
-  # sex = rep(
-  #   c("M", "M", "M", "F"),
-  #   each = 3
-  # ),
-  # age = rep(
-  #   c(61.54, 47.53, 51.73, 53.40),
-  #   each = 3
-  # ),
-  diagnosis = c("AD","Control","AD","AD")
+    subjects = rep(
+        c("Br3880", "Br3874", "Br3873", "Br3854"),
+        each = 1
+    ),
+    # regions = rep(
+    #   c("anterior", "middle", "posterior"),
+    #   4
+    # ),
+    # sex = rep(
+    #   c("M", "M", "M", "F"),
+    #   each = 3
+    # ),
+    # age = rep(
+    #   c(61.54, 47.53, 51.73, 53.40),
+    #   each = 3
+    # ),
+    diagnosis = c("AD", "Control", "AD", "AD")
 )
 sample_info$sample_path <- file.path(
-  here::here("processed-data", "MiSeq"),
-  sample_info$sample_id,
-  "outs"
+    here::here("processed-data", "MiSeq"),
+    sample_info$sample_id,
+    "outs"
 )
 stopifnot(all(file.exists(sample_info$sample_path)))
 
@@ -78,12 +78,12 @@ stopifnot(all(file.exists(sample_info$sample_path)))
 ## Read the data
 Sys.time()
 spe <- read10xVisium(
-  sample_info$sample_path,
-  sample_info$sample_id,
-  type = "sparse",
-  data = "raw",
-  images = "lowres",
-  load = TRUE
+    sample_info$sample_path,
+    sample_info$sample_id,
+    type = "sparse",
+    data = "raw",
+    images = "lowres",
+    load = TRUE
 )
 Sys.time()
 ## About 3-9 minutes (depending on JHPCE load)
@@ -92,7 +92,7 @@ Sys.time()
 
 
 ## Add some information used by spatialLIBD
-spe$key <- paste0(spe$Barcode, '_', spe$sample_id)
+spe$key <- paste0(spe$Barcode, "_", spe$sample_id)
 spe$sum_umi <- colSums(counts(spe))
 spe$sum_gene <- colSums(counts(spe) > 0)
 
@@ -100,17 +100,17 @@ spe$sum_gene <- colSums(counts(spe) > 0)
 ### Equivalent to:
 ## colData(spe)$subject <- ...
 spe$subject <- sample_info$subjects[match(spe$sample_id, sample_info$sample_id)]
-#spe$region <- sample_info$regions[match(spe$sample_id, sample_info$sample_id)]
-#spe$sex <- sample_info$sex[match(spe$sample_id, sample_info$sample_id)]
-#spe$age <- sample_info$age[match(spe$sample_id, sample_info$sample_id)]
+# spe$region <- sample_info$regions[match(spe$sample_id, sample_info$sample_id)]
+# spe$sex <- sample_info$sex[match(spe$sample_id, sample_info$sample_id)]
+# spe$age <- sample_info$age[match(spe$sample_id, sample_info$sample_id)]
 spe$diagnosis <- sample_info$diagnosis[match(spe$sample_id, sample_info$sample_id)]
 
 
 ## Read in the gene information from the annotation GTF file
 gtf <-
-  rtracklayer::import(
-    "/dcl02/lieber/ajaffe/SpatialTranscriptomics/refdata-gex-GRCh38-2020-A/genes/genes.gtf"
-  )
+    rtracklayer::import(
+        "/dcl02/lieber/ajaffe/SpatialTranscriptomics/refdata-gex-GRCh38-2020-A/genes/genes.gtf"
+    )
 gtf <- gtf[gtf$type == "gene"]
 names(gtf) <- gtf$gene_id
 
@@ -147,7 +147,7 @@ spe$cell_count <- NA
 
 
 ## Simplify sample_ids for plotting
-#spe$sample_id <- gsub("DLPFC_|_manual_alignment", "", spe$sample_id)
+# spe$sample_id <- gsub("DLPFC_|_manual_alignment", "", spe$sample_id)
 
 ## Remove genes with no data
 no_expr <- which(rowSums(counts(spe)) == 0)
@@ -189,11 +189,11 @@ pryr::object_size(spe)
 save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 ## Inspect in vs outside of tissue
 vis_grid_clus(
-  spe = spe_raw,
-  clustervar = "overlaps_tissue",
-  pdf = here::here("plots", "in_tissue_grid.pdf"),
-  sort_clust = FALSE,
-  colors = c("in" = "grey90", "out" = "orange")
+    spe = spe_raw,
+    clustervar = "overlaps_tissue",
+    pdf = here::here("plots", "in_tissue_grid.pdf"),
+    sort_clust = FALSE,
+    colors = c("in" = "grey90", "out" = "orange")
 )
 
 summary(spe_raw$sum_umi[!inTissue(spe_raw)])
@@ -205,20 +205,20 @@ head(table(spe_raw$sum_umi[!inTissue(spe_raw)]))
 # 4 5 5 1 7 8
 
 vis_grid_gene(
-  spe = spe_raw[, which(!inTissue(spe_raw))],
-  geneid = "sum_umi",
-  pdf = here::here("plots", "out_tissue_sum_umi.pdf"),
-  assayname = "counts"
+    spe = spe_raw[, which(!inTissue(spe_raw))],
+    geneid = "sum_umi",
+    pdf = here::here("plots", "out_tissue_sum_umi.pdf"),
+    assayname = "counts"
 )
 
 summary(spe_raw$sum_gene[!inTissue(spe_raw)])
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 # 2.0    83.0   132.0   180.7   228.0  1143.0
 vis_grid_gene(
-  spe = spe_raw[, which(!inTissue(spe_raw))],
-  geneid = "sum_gene",
-  pdf = here::here("plots", "out_tissue_sum_gene.pdf"),
-  assayname = "counts"
+    spe = spe_raw[, which(!inTissue(spe_raw))],
+    geneid = "sum_gene",
+    pdf = here::here("plots", "out_tissue_sum_gene.pdf"),
+    assayname = "counts"
 )
 
 summary(spe_raw$expr_chrM_ratio[!inTissue(spe_raw)])
@@ -226,10 +226,10 @@ summary(spe_raw$expr_chrM_ratio[!inTissue(spe_raw)])
 # 0.0000  0.1498  0.1852  0.1932  0.2246  1.0000
 
 vis_grid_gene(
-  spe = spe_raw[, which(!inTissue(spe_raw))],
-  geneid = "expr_chrM_ratio",
-  pdf = here::here("plots", "out_tissue_expr_chrM_ratio.pdf"),
-  assayname = "counts"
+    spe = spe_raw[, which(!inTissue(spe_raw))],
+    geneid = "expr_chrM_ratio",
+    pdf = here::here("plots", "out_tissue_expr_chrM_ratio.pdf"),
+    assayname = "counts"
 )
 
 
@@ -237,58 +237,58 @@ summary(spe$sum_umi)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 # 0.0000  0.1498  0.1852  0.1932  0.2246  1.0000
 vis_grid_gene(
-  spe = spe,
-  geneid = "sum_umi",
-  pdf = here::here("plots", "in_tissue_sum_umi.pdf"),
-  assayname = "counts"
+    spe = spe,
+    geneid = "sum_umi",
+    pdf = here::here("plots", "in_tissue_sum_umi.pdf"),
+    assayname = "counts"
 )
 
 summary(spe$sum_gene)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 # 1.0   273.0   353.0   368.9   447.0  1456.0
 vis_grid_gene(
-  spe = spe,
-  geneid = "sum_gene",
-  pdf = here::here("plots", "in_tissue_sum_gene.pdf"),
-  assayname = "counts"
+    spe = spe,
+    geneid = "sum_gene",
+    pdf = here::here("plots", "in_tissue_sum_gene.pdf"),
+    assayname = "counts"
 )
 
 summary(spe$expr_chrM_ratio)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 # 0.0000  0.1142  0.1414  0.1441  0.1702  1.0000
 vis_grid_gene(
-  spe = spe,
-  geneid = "expr_chrM_ratio",
-  pdf = here::here("plots", "in_tissue_expr_chrM_ratio.pdf"),
-  assayname = "counts"
+    spe = spe,
+    geneid = "expr_chrM_ratio",
+    pdf = here::here("plots", "in_tissue_expr_chrM_ratio.pdf"),
+    assayname = "counts"
 )
 
 vis_grid_gene(
-  spe = spe_raw,
-  geneid = "sum_umi",
-  pdf = here::here("plots", "all_sum_umi.pdf"),
-  assayname = "counts"
+    spe = spe_raw,
+    geneid = "sum_umi",
+    pdf = here::here("plots", "all_sum_umi.pdf"),
+    assayname = "counts"
 )
 vis_grid_gene(
-  spe = spe_raw,
-  geneid = "sum_gene",
-  pdf = here::here("plots", "all_sum_gene.pdf"),
-  assayname = "counts"
+    spe = spe_raw,
+    geneid = "sum_gene",
+    pdf = here::here("plots", "all_sum_gene.pdf"),
+    assayname = "counts"
 )
 vis_grid_gene(
-  spe = spe_raw,
-  geneid = "expr_chrM_ratio",
-  pdf = here::here("plots", "all_expr_chrM_ratio.pdf"),
-  assayname = "counts"
+    spe = spe_raw,
+    geneid = "expr_chrM_ratio",
+    pdf = here::here("plots", "all_expr_chrM_ratio.pdf"),
+    assayname = "counts"
 )
 
 
 
 ## Quality control (scran)
 qcstats <- perCellQCMetrics(spe, subsets = list(
-  Mito = which(seqnames(spe) == "chrM")
+    Mito = which(seqnames(spe) == "chrM")
 ))
-qcfilter <- quickPerCellQC(qcstats, sub.fields="subsets_Mito_percent")
+qcfilter <- quickPerCellQC(qcstats, sub.fields = "subsets_Mito_percent")
 colSums(as.matrix(qcfilter))
 # low_lib_size            low_n_features high_subsets_Mito_percent
 # 340                       350                       141
@@ -301,32 +301,32 @@ colSums(as.matrix(qcfilter))
 #         2781           3062           3062
 
 spe$scran_discard <-
-  factor(qcfilter$discard, levels = c("TRUE", "FALSE"))
+    factor(qcfilter$discard, levels = c("TRUE", "FALSE"))
 spe$scran_low_lib_size <-
-  factor(qcfilter$low_lib_size, levels = c("TRUE", "FALSE"))
+    factor(qcfilter$low_lib_size, levels = c("TRUE", "FALSE"))
 spe$scran_low_n_features <-
-  factor(qcfilter$low_n_features, levels = c("TRUE", "FALSE"))
+    factor(qcfilter$low_n_features, levels = c("TRUE", "FALSE"))
 spe$scran_high_subsets_Mito_percent <-
-  factor(qcfilter$high_subsets_Mito_percent, levels = c("TRUE", "FALSE"))
+    factor(qcfilter$high_subsets_Mito_percent, levels = c("TRUE", "FALSE"))
 
-for(i in colnames(qcfilter)) {
-  vis_grid_clus(
-    spe = spe,
-    clustervar = paste0("scran_", i),
-    pdf = here::here("plots", paste0("scran_", i, ".pdf")),
-    sort_clust = FALSE,
-    colors = c("FALSE" = "grey90", "TRUE" = "orange")
-  )
+for (i in colnames(qcfilter)) {
+    vis_grid_clus(
+        spe = spe,
+        clustervar = paste0("scran_", i),
+        pdf = here::here("plots", paste0("scran_", i, ".pdf")),
+        sort_clust = FALSE,
+        colors = c("FALSE" = "grey90", "TRUE" = "orange")
+    )
 }
 
 ## Find quick clusters
 set.seed(20191112)
 Sys.time()
 spe$scran_quick_cluster <- quickCluster(
-  spe,
-  BPPARAM = MulticoreParam(4),
-  block = spe$sample_id,
-  block.BPPARAM = MulticoreParam(4)
+    spe,
+    BPPARAM = MulticoreParam(4),
+    block = spe$sample_id,
+    block.BPPARAM = MulticoreParam(4)
 )
 Sys.time()
 # [1] "2021-02-17 10:23:01 EST"
@@ -336,10 +336,10 @@ Sys.time()
 ## Might be needed:
 # options(error = recover)
 spe <-
-  computeSumFactors(spe,
-                    clusters = spe$scran_quick_cluster,
-                    BPPARAM = MulticoreParam(4)
-  )
+    computeSumFactors(spe,
+        clusters = spe$scran_quick_cluster,
+        BPPARAM = MulticoreParam(4)
+    )
 Sys.time()
 # [1] "2021-02-17 10:28:34 EST"
 # [1] "2021-02-17 10:35:13 EST"
@@ -367,26 +367,26 @@ save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 ## From
 ## http://bioconductor.org/packages/release/bioc/vignettes/scran/inst/doc/scran.html#4_variance_modelling
 dec <- modelGeneVar(spe,
-                    block = spe$sample_id,
-                    BPPARAM = MulticoreParam(4)
+    block = spe$sample_id,
+    BPPARAM = MulticoreParam(4)
 )
 
 pdf(
-  here::here("plots", "scran_modelGeneVar.pdf"),
-  useDingbats = FALSE
+    here::here("plots", "scran_modelGeneVar.pdf"),
+    useDingbats = FALSE
 )
 mapply(function(block, blockname) {
-  plot(
-    block$mean,
-    block$total,
-    xlab = "Mean log-expression",
-    ylab = "Variance",
-    main = blockname
-  )
-  curve(metadata(block)$trend(x),
+    plot(
+        block$mean,
+        block$total,
+        xlab = "Mean log-expression",
+        ylab = "Variance",
+        main = blockname
+    )
+    curve(metadata(block)$trend(x),
         col = "blue",
         add = TRUE
-  )
+    )
 }, dec$per.block, names(dec$per.block))
 dev.off()
 
@@ -403,9 +403,10 @@ length(top.hvgs.fdr1)
 # [1] 12257
 
 save(top.hvgs,
-     top.hvgs.fdr5,
-     top.hvgs.fdr1,
-     file = here::here("processed-data", "rdata", "spe", "top.hvgs.Rdata"))
+    top.hvgs.fdr5,
+    top.hvgs.fdr1,
+    file = here::here("processed-data", "rdata", "spe", "top.hvgs.Rdata")
+)
 
 set.seed(20191112)
 Sys.time()
@@ -434,11 +435,11 @@ summary(colMeans(reducedDim(spe, "PCA")))
 Sys.time()
 set.seed(20191206)
 spe <-
-  runTSNE(spe,
-          dimred = "PCA",
-          name = "TSNE_perplexity50",
-          perplexity = 50
-  )
+    runTSNE(spe,
+        dimred = "PCA",
+        name = "TSNE_perplexity50",
+        perplexity = 50
+    )
 Sys.time()
 # [1] "2021-02-17 10:45:30 EST"
 # [1] "2021-02-17 11:02:59 EST"
@@ -446,11 +447,11 @@ Sys.time()
 Sys.time()
 set.seed(20191206)
 spe <-
-  runTSNE(spe,
-          dimred = "PCA",
-          name = "TSNE_perplexity5",
-          perplexity = 5
-  )
+    runTSNE(spe,
+        dimred = "PCA",
+        name = "TSNE_perplexity5",
+        perplexity = 5
+    )
 Sys.time()
 # [1] "2021-02-17 11:03:46 EST"
 # [1] "2021-02-17 11:15:12 EST"
@@ -458,11 +459,11 @@ Sys.time()
 Sys.time()
 set.seed(20191206)
 spe <-
-  runTSNE(spe,
-          dimred = "PCA",
-          name = "TSNE_perplexity20",
-          perplexity = 20
-  )
+    runTSNE(spe,
+        dimred = "PCA",
+        name = "TSNE_perplexity20",
+        perplexity = 20
+    )
 Sys.time()
 # [1] "2021-02-17 11:17:23 EST"
 # [1] "2021-02-17 11:31:32 EST"
@@ -470,11 +471,11 @@ Sys.time()
 Sys.time()
 set.seed(20191206)
 spe <-
-  runTSNE(spe,
-          dimred = "PCA",
-          name = "TSNE_perplexity80",
-          perplexity = 80
-  )
+    runTSNE(spe,
+        dimred = "PCA",
+        name = "TSNE_perplexity80",
+        perplexity = 80
+    )
 Sys.time()
 # [1] "2021-02-17 12:25:31 EST"
 # [1] "2021-02-17 12:58:33 EST"
@@ -494,14 +495,14 @@ Sys.time()
 save(spe, file = here::here("processed-data", "rdata", "spe", "spe.Rdata"))
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)
 session_info()
 
 # session_info()
-# ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# - Session info -------------------------------------------------------------------------------------------------------
 # setting  value
 # version  R Under development (unstable) (2021-03-18 r80099)
 # os       CentOS Linux 7 (Core)
@@ -512,8 +513,8 @@ session_info()
 # ctype    en_US.UTF-8
 # tz       US/Eastern
 # date     2021-03-18
-# 
-# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+#
+# - Packages -----------------------------------------------------------------------------------------------------------
 # package                * version  date       lib source
 # AnnotationDbi            1.53.1   2021-02-04 [2] Bioconductor
 # AnnotationHub            2.23.2   2021-02-05 [2] Bioconductor
@@ -692,16 +693,16 @@ session_info()
 # XVector                  0.31.1   2020-12-12 [2] Bioconductor
 # yaml                     2.2.1    2020-02-01 [2] CRAN (R 4.1.0)
 # zlibbioc                 1.37.0   2020-10-27 [2] Bioconductor
-# 
+#
 # [1] /users/aspangle/R/devel
 # [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/site-library
 # [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/library
 
-#load(here::here("processed-data", "rdata", "spe", "spe.Rdata"), verbose = TRUE)
+# load(here::here("processed-data", "rdata", "spe", "spe.Rdata"), verbose = TRUE)
 load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe.Rdata")
 
 Sys.time()
-g_k50 <- buildSNNGraph(spe, k = 50, use.dimred = 'PCA')
+g_k50 <- buildSNNGraph(spe, k = 50, use.dimred = "PCA")
 Sys.time()
 ## About 12 minutes
 # [1] "2019-11-13 15:20:32 EST"
@@ -716,26 +717,26 @@ Sys.time()
 # [1] "2019-11-14 12:05:23 EST"
 
 clust_k50 <- sort_clusters(g_walk_k50$membership)
-save(g_k50, g_walk_k50, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata')
+save(g_k50, g_walk_k50, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata")
 load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata")
 
 ### For the SNN graph with K = 50, find which nested subset best matches
 ## the clusters from 10x Genomics labeled by Kristen Maynard and Keri Martinowich
 clust_k5_list <- lapply(4:28, function(n) {
-  message(paste(Sys.time(), 'n =', n))
-  sort_clusters(igraph::cut_at(g_walk_k50, n = n))
+    message(paste(Sys.time(), "n =", n))
+    sort_clusters(igraph::cut_at(g_walk_k50, n = n))
 })
-names(clust_k5_list) <- paste0('k', 4:28)
-save(clust_k5_list, file = '/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/clust_k5_list.Rdata')
+names(clust_k5_list) <- paste0("k", 4:28)
+save(clust_k5_list, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/clust_k5_list.Rdata")
 load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/processed-data/rdata/clust_k5_list.Rdata")
 
 ## Add clusters to spe colData
 
-for (i in seq_along(col.names)){
-  colData(spe) <- cbind(colData(spe),clust_k5_list[i])
+for (i in seq_along(col.names)) {
+    colData(spe) <- cbind(colData(spe), clust_k5_list[i])
 }
 
-col.names <- paste0("SNN_k50_k",4:28)
+col.names <- paste0("SNN_k50_k", 4:28)
 colnames(colData(spe))[18:42] <- col.names
 
 save(spe, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe_SNN_clusters.Rdata")

@@ -20,7 +20,7 @@ rsconnect::deployApp(
         "app.R",
         "spe_targeted.Rdata"
     ),
-    appName = 'Visium_IF_AD_Kwon2021_TGE',
-    account = 'libd',
-    server = 'shinyapps.io'
+    appName = "Visium_IF_AD_Kwon2021_TGE",
+    account = "libd",
+    server = "shinyapps.io"
 )

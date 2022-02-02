@@ -47,7 +47,7 @@ sample_metrics <- df_metrics_all
 sample_metrics$Sample.ID <- basename(metrics_csvs)
 sample_metrics$Alignment <- rep(c("Abby", "10x"), each = 10)
 
-dir.create(here("processed-data", "03_analysis", "10x_checks"), showWarnings = FALSE, recursive =  TRUE)
+dir.create(here("processed-data", "03_analysis", "10x_checks"), showWarnings = FALSE, recursive = TRUE)
 save(sample_metrics,
     file = here("processed-data", "03_analysis", "10x_checks", "sample_metrics.Rdata")
 )
@@ -105,7 +105,7 @@ pdf(
     useDingbats = FALSE,
     width = 10
 )
-for(i in colnames(sample_metrics)[-c(1, ncol(sample_metrics))]) {
+for (i in colnames(sample_metrics)[-c(1, ncol(sample_metrics))]) {
     p <- ggpaired(sample_metrics, id = "Sample.ID", x = "Alignment", y = i, xlab = "Fiducial Alignment", ylab = i, fill = "Alignment", palette = "Dark2", line.color = "gray", ggtheme = theme_pubr(base_size = 30))
     print(p)
 }
@@ -200,7 +200,7 @@ pdf(
     useDingbats = FALSE,
     width = 10
 )
-for(i in colnames(all_metrics)[-c(1, ncol(all_metrics))]) {
+for (i in colnames(all_metrics)[-c(1, ncol(all_metrics))]) {
     set.seed(20210714)
     p <- ggboxplot(all_metrics, x = "study", y = i, color = "study", palette = "Dark2", add = "jitter", shape = "study", label = "Sample.ID", repel = TRUE, font.label = list(size = 5), legend = "none", ggtheme = theme_pubr(base_size = 30))
     print(p)
@@ -215,7 +215,7 @@ proc.time()
 options(width = 120)
 session_info()
 
-# ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# - Session info -------------------------------------------------------------------------------------------------------
 #  setting  value
 #  version  R version 4.1.0 (2021-05-18)
 #  os       macOS Big Sur 11.4
@@ -227,7 +227,7 @@ session_info()
 #  tz       America/New_York
 #  date     2021-07-14
 #
-# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+# - Packages -----------------------------------------------------------------------------------------------------------
 #  package      * version    date       lib source
 #  abind          1.4-5      2016-07-21 [1] CRAN (R 4.1.0)
 #  assertthat     0.2.1      2019-03-21 [1] CRAN (R 4.1.0)

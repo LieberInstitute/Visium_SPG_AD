@@ -22,9 +22,11 @@ sample_info <- data.frame(
 )
 sample_info$subject <- gsub(".*_", "", sample_info$sample_id)
 sample_info$sample_path <-
-    file.path(here::here("processed-data", "spaceranger"),
+    file.path(
+        here::here("processed-data", "spaceranger"),
         sample_info$sample_id,
-        "outs")
+        "outs"
+    )
 stopifnot(all(file.exists(sample_info$sample_path)))
 
 ## Define the donor info using information from
@@ -150,16 +152,18 @@ segmentations_list <-
                 "spatial",
                 "tissue_spot_counts.csv"
             )
-        if (!file.exists(file))
-            return(NULL)
+        if (!file.exists(file)) {
+              return(NULL)
+          }
         x <- read.csv(file)
         x$key <- paste0(x$barcode, "_", sampleid)
         return(x)
     })
 ## Merge them (once the these files are done, this could be replaced by an rbind)
 segmentations <-
-    Reduce(function(...)
-        merge(..., all = TRUE), segmentations_list[lengths(segmentations_list) > 0])
+    Reduce(function(...) {
+          merge(..., all = TRUE)
+      }, segmentations_list[lengths(segmentations_list) > 0])
 
 ## Add the information
 segmentation_match <- match(spe$key, segmentations$key)
@@ -198,14 +202,16 @@ spe_raw_targeted <- spe_targeted
 
 dir.create(here::here("processed-data", "04_build_spe"), showWarnings = FALSE)
 save(spe_raw,
-    file = here::here("processed-data", "04_build_spe", "spe_raw.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_raw.Rdata")
+)
 save(spe_raw_targeted,
-    file = here::here("processed-data", "04_build_spe", "spe_raw_targeted.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_raw_targeted.Rdata")
+)
 
 ## Size in Gb
-lobstr::obj_size(spe_raw) / 1024 ^ 3
+lobstr::obj_size(spe_raw) / 1024^3
 # 1.651702
-lobstr::obj_size(spe_raw_targeted) / 1024 ^ 3
+lobstr::obj_size(spe_raw_targeted) / 1024^3
 # 1.235324
 
 ## Now drop the spots outside the tissue
@@ -230,17 +236,18 @@ if (any(colSums(counts(spe_targeted)) == 0)) {
     dim(spe_targeted)
 }
 
-lobstr::obj_size(spe) / 1024 ^ 3
+lobstr::obj_size(spe) / 1024^3
 # 1.534376
-lobstr::obj_size(spe_targeted) / 1024 ^ 3
+lobstr::obj_size(spe_targeted) / 1024^3
 # 1.198796
 
 save(spe, file = here::here("processed-data", "04_build_spe", "spe.Rdata"))
 save(spe_targeted,
-    file = here::here("processed-data", "04_build_spe", "spe_targeted.Rdata"))
+    file = here::here("processed-data", "04_build_spe", "spe_targeted.Rdata")
+)
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)

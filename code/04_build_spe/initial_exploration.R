@@ -56,7 +56,7 @@ segmentation_variables <-
         "PpTau"
     )
 
-for(seg_var in segmentation_variables) {
+for (seg_var in segmentation_variables) {
     vis_grid_gene(
         spe,
         geneid = seg_var,
@@ -147,7 +147,7 @@ ad_genes[!ad_genes %in% rowRanges(spe_targeted)$gene_search]
 
 make_gene_grids <- function(spatial) {
     genes <- ad_genes[ad_genes %in% rowRanges(spatial)$gene_search]
-    for(g in genes) {
+    for (g in genes) {
         print(vis_gene(
             spatial,
             sampleid = "V10A27106_D1_Br3880",
@@ -169,13 +169,13 @@ make_gene_grids(spe_targeted)
 dev.off()
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)
 session_info()
 
-# ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# - Session info -------------------------------------------------------------------------------------------------------
 #  setting  value
 #  version  R version 4.1.2 Patched (2021-11-04 r81138)
 #  os       CentOS Linux 7 (Core)
@@ -188,7 +188,7 @@ session_info()
 #  date     2021-12-08
 #  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 #
-# ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+# - Packages -----------------------------------------------------------------------------------------------------------
 #  package                * version  date (UTC) lib source
 #  AnnotationDbi            1.56.2   2021-11-09 [2] Bioconductor
 #  AnnotationHub            3.2.0    2021-10-26 [2] Bioconductor
@@ -368,4 +368,4 @@ session_info()
 #  [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library
 #  [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/library
 #
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ----------------------------------------------------------------------------------------------------------------------
