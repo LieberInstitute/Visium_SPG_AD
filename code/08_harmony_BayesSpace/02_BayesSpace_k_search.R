@@ -54,7 +54,7 @@ k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 
 set.seed(20220201)
 
-spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k)
+spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 20000)
 
 spe$bayesSpace_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_k", k)
@@ -67,19 +67,16 @@ cluster_export(
 )
 
 
-spe.enhanced <- spatialEnhance(spe, use.dimred = "HARMONY", q = 7, nrep = 10000,  burn.in=100)
+spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in= 4000)
 
-pdf(file=here::here("plots", "bayesSpace_clusterPlot_harmony.pdf"))
-clusterPlot(spe.enhaced, color = NA) + #plot clusters
-  labs(title = "BayesSpace enhanced clustering")
-dev.off()
-
-spe$bayesSpace_enhanced_harmony <- spe$spatial.cluster
+spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
+bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k)
+colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 
 cluster_export(
-  spe.enhanced,
-  "bayesSpace_enhanced_harmony",
-  cluster_dir = here::here("processed-data", "rdata", "spe", "clustering_results" )
+    spe,
+    bayesSpace_name,
+    cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
 
