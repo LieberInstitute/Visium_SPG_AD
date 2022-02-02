@@ -67,7 +67,7 @@ cluster_export(
 )
 
 
-spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in= 4000)
+spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k)
