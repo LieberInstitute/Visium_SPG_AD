@@ -301,7 +301,7 @@ names(auto_offset_row) <- unique(spe$sample_id)
 spe$row <- spatialData(spe)$array_row + auto_offset_row[spe$sample_id]
 spe$col <- spatialData(spe)$array_col
 
-pdf(file = file.path(dir_plots, "bayesSpace_offset_check.pdf"))
+pdf(file = file.path(dir_plots, "BayesSpace_offset_check.pdf"))
 clusterPlot(spe, "subject", color = NA) + # make sure no overlap between samples
     labs(fill = "Subject", title = "Offset check")
 dev.off()
