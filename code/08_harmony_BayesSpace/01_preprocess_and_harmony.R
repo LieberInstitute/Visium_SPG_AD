@@ -69,6 +69,7 @@ table(spe$scran_quick_cluster)
 message("Running checking sizeFactors()")
 summary(sizeFactors(spe))
 
+message("Running logNormCounts()")
 spe <- logNormCounts(spe)
 
 
@@ -81,7 +82,7 @@ dec <- modelGeneVar(spe,
 )
 
 pdf(
-    file.path(dir_plots, "scran_modelGeneVar_final.pdf"),
+    file.path(dir_plots, "scran_modelGeneVar.pdf"),
     useDingbats = FALSE
 )
 mapply(function(block, blockname) {
@@ -112,7 +113,7 @@ length(top.hvgs.fdr1)
 save(top.hvgs,
     top.hvgs.fdr5,
     top.hvgs.fdr1,
-    file = file.path(dir_rdata, "top.hvgs_all_final.Rdata")
+    file = file.path(dir_rdata, "top.hvgs.Rdata")
 )
 
 
@@ -128,7 +129,7 @@ chosen.elbow <- PCAtools::findElbowPoint(percent.var)
 chosen.elbow
 
 pdf(
-    file.path(dir_plots, "pca_elbow_final.pdf"),
+    file.path(dir_plots, "pca_elbow.pdf"),
     useDingbats = FALSE
 )
 plot(percent.var, xlab = "PC", ylab = "Variance explained (%)")
@@ -293,19 +294,6 @@ for (i in seq_along(sample_ids)) {
 }
 dev.off()
 
-## Save new SPE objects
-if (opt$spefile == "spe_targeted_postqc.Rdata") {
-    spe_targeted <- spe
-    ## First time switching the order of the keywords: now targeted is at the
-    ## end, which will make it easier to sort the spe files.
-    saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_harmony_targeted.rds"))
-} else {
-    ## First time using "wholegenome" in the spe name, to clearly differentiate
-    ## it from the "targeted" one
-    spe_wholegenome <- spe
-    saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.rds"))
-}
-
 
 ## do offset so we can run BayesSpace
 auto_offset_row <- as.numeric(factor(unique(spe$sample_id))) * 100
@@ -319,7 +307,21 @@ clusterPlot(spe, "subject", color = NA) + # make sure no overlap between samples
 dev.off()
 
 
+## Save new SPE objects
+if (opt$spefile == "spe_targeted_postqc.Rdata") {
+    spe_targeted <- spe
+    ## First time switching the order of the keywords: now targeted is at the
+    ## end, which will make it easier to sort the spe files.
+    saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_harmony_targeted.rds"))
+} else {
+    ## First time using "wholegenome" in the spe name, to clearly differentiate
+    ## it from the "targeted" one
+    spe_wholegenome <- spe
+    saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.rds"))
+}
+
 ## Object size in GB
+## (do this near the end in case lobstr crashes, it's happened to me once)
 lobstr::obj_size(spe) / 1024^3
 
 
