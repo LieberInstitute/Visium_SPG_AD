@@ -31,10 +31,10 @@ if(opt$spefile == "spe_targeted_postqc.Rdata") {
     spe_targeted <- spe
     ## First time switching the order of the keywords: now targeted is at the
     ## end, which will make it easier to sort the spe files.
-    save(spe_targeted, file = file.path(dir_rdata, "spe_harmony_targeted.Rdata"))
+    saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_harmony_targeted.rds"))
 } else {
     ## First time using "wholegenome" in the spe name, to clearly differentiate
     ## it from the "targeted" one
     spe_wholegenome <- spe
-    save(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.Rdata"))
+    saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.rds"))
 }
