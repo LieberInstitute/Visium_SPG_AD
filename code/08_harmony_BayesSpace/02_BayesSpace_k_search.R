@@ -51,7 +51,7 @@ dir_plots <- here::here("plots", "08_harmony_BayesSpace", suffix)
 dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", suffix)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
-dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
+dir.create(file.path(dir_rdata, "clusters_BayesSpace"), showWarnings = FALSE)
 
 ## Choose k
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
@@ -72,7 +72,7 @@ colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 cluster_export(
     spe,
     bayesSpace_name,
-    cluster_dir = file.path(dir_rdata, "clustering_results")
+    cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
 )
 
 message("Running spatialEnhance()")
@@ -87,7 +87,7 @@ colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 cluster_export(
     spe,
     bayesSpace_name,
-    cluster_dir = file.path(dir_rdata, "clustering_results")
+    cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
 )
 
 
