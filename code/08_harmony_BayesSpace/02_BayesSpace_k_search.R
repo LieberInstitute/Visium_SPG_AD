@@ -35,12 +35,16 @@ if (!is.null(opt$help)) {
 ## Rename from spe_targeted to spe to simplify the code so it can work with
 ## either
 if (opt$spefile == "spe_harmony_targeted") {
-    spe <- readRDS(here::here("processed-data", "08_harmony_BayesSpace", "spe_harmony_targeted.rds"))
     suffix <- "targeted"
 } else if (opt$spefile == "spe_harmony_wholegenome") {
-    spe <- readRDS(here::here("processed-data", "08_harmony_BayesSpace", "spe_harmony_wholegenome.rds"))
     suffix <- "wholegenome"
 }
+spe <- readRDS(
+    here::here(
+        "processed-data", "08_harmony_BayesSpace", suffix,
+        paste0("spe_harmony_", suffix, ".rds")
+    )
+)
 
 ## Create output directories
 dir_plots <- here::here("plots", "08_harmony_BayesSpace", suffix)
