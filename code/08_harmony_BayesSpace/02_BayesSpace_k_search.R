@@ -55,13 +55,14 @@ dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
 
 ## Choose k
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
+k_nice <- sprintf("%02d", k)
 
 set.seed(20220201)
 
 spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 20000)
 
 spe$bayesSpace_temp <- spe$spatial.cluster
-bayesSpace_name <- paste0("BayesSpace_harmony_k", k)
+bayesSpace_name <- paste0("BayesSpace_harmony_k", k_nice)
 colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 
 cluster_export(
@@ -74,7 +75,7 @@ cluster_export(
 spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
-bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k)
+bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k_nice)
 colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 
 cluster_export(
@@ -89,33 +90,25 @@ sample_ids <- unique(colData(spe)$sample_id)
 cols <- Polychrome::palette36.colors(k)
 names(cols) <- unique(spe$spatial.cluster)
 
-pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k, ".pdf")))
-for (i in seq_along(sample_ids)) {
-    my_plot <- vis_clus(
-        spe = spe,
-        clustervar = paste0("BayesSpace_harmony_k", k),
-        sampleid = sample_ids[i],
-        colors = cols,
-        spatial = FALSE,
-        point_size = 1.75
-    )
-    print(my_plot)
-}
-dev.off()
+vis_grid_clus(
+    spe = spe,
+    clustervar = paste0("BayesSpace_harmony_k", k_nice),
+    pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k_nice, ".pdf")),
+    sort_clust = FALSE,
+    colors = cols,
+    spatial = FALSE,
+    point_size = 2
+)
 
-pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_enhanced_k", k, ".pdf")))
-for (i in seq_along(sample_ids)) {
-    my_plot <- vis_clus(
-        spe = spe,
-        clustervar = paste0("BayesSpace_harmony_enhanced_k", k),
-        sampleid = sample_ids[i],
-        colors = cols,
-        spatial = FALSE,
-        point_size = 1.75
-    )
-    print(my_plot)
-}
-dev.off()
+vis_grid_clus(
+    spe = spe,
+    clustervar = paste0("BayesSpace_harmony_enhanced_k", k_nice),
+    pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_enhanced_k", k_nice, ".pdf")),
+    sort_clust = FALSE,
+    colors = cols,
+    spatial = FALSE,
+    point_size = 2
+)
 
 
 ## Reproducibility information
