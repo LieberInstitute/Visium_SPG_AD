@@ -15,7 +15,11 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
-## Rename from spe_targeted to spe to simplify the code
+## Load the data
+load(here::here("processed-data", "07_spot_qc", opt$spefile), verbose = TRUE)
+
+## Rename from spe_targeted to spe to simplify the code so it can work with
+## either
 if(opt$spefile == "spe_targeted_postqc.Rdata") {
     spe <- spe_targeted
 }
@@ -29,6 +33,8 @@ if(opt$spefile == "spe_targeted_postqc.Rdata") {
     ## end, which will make it easier to sort the spe files.
     save(spe_targeted, file = file.path(dir_rdata, "spe_harmony_targeted.Rdata"))
 } else {
-    ## First time using "wholegenome" in the spe name, to clearly identify it
-    save(spe, file.path(dir_rdata, "spe_harmony_wholegenome.Rdata"))
+    ## First time using "wholegenome" in the spe name, to clearly differentiate
+    ## it from the "targeted" one
+    spe_wholegenome <- spe
+    save(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.Rdata"))
 }
