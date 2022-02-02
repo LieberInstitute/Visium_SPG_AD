@@ -299,11 +299,15 @@ sample_ids <- unique(colData(spe)$sample_id)
 pdf(file = file.path(dir_plots, "graph_based_harmony.pdf"))
 for (i in seq_along(sample_ids)) {
     for (j in seq_along(names(clust_k5_list))) {
+        clus_vals <- unique(clust_k5_list[[j]])
+        cols <- Polychrome::palette36.colors(length(clus_vals))
+        names(cols) <- clus_vals
+
         my_plot <- vis_clus(
             spe = spe,
             clustervar = names(clust_k5_list)[j],
             sampleid = sample_ids[i],
-            colors = Polychrome::palette36.colors(length(unique(clust_k5_list[[j]]))),
+            colors = cols,
             ... = paste0(" ", names(clust_k5_list)[j])
         )
         print(my_plot)
