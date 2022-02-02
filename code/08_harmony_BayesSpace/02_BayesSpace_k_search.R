@@ -16,7 +16,7 @@ library("sessioninfo")
 library("SpatialExperiment")
 library("spatialLIBD")
 library("BayesSpace")
-library("RColorBrewer")
+library("Polychrome")
 
 ## Specify parameters
 spec <- matrix(c(
@@ -49,32 +49,32 @@ dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
 
+## Choose k
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 
-set.seed(20220127)
+set.seed(20220201)
 
-spe = spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 10000)
+spe = spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 50000)
 
 spe$bayesSpace_temp<-spe$spatial.cluster
-bayesSpace_name <- paste0("bayesSpace_harmony_", k)
+bayesSpace_name <- paste0("BayesSpace_harmony_k", k)
 colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
 
 cluster_export(
   spe,
   bayesSpace_name,
-  cluster_dir = here::here("processed-data", "rdata", "spe", "clustering_results" )
+  cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
 sample_ids <- unique(colData(spe)$sample_id)
-mycolors <- brewer.pal(7, "Dark2")
 
-pdf(file = here::here("plots",paste0("vis_clus_bayesSpace_harmony_",k,".pdf")))
+pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k",k,".pdf")))
 for (i in seq_along(sample_ids)){
   my_plot <- vis_clus(
     spe = spe,
     clustervar = bayesSpace_name,
     sampleid = sample_ids[i],
-    colors =  mycolors
+    colors =  Polychrome::palette36.colors(k)
   )
   print(my_plot)
 }
