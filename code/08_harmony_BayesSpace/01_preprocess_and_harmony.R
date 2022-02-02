@@ -1,6 +1,6 @@
 # sgejobs::job_loop(
 #     loops = list(spefile = c(
-#         "spe_postqc.Rdata", "spe_targeted_postqc.Rdata"
+#         "spe_postqc", "spe_targeted_postqc"
 #     )),
 #     name = "preprocess_and_harmony",
 #     create_shell = TRUE,
@@ -40,7 +40,7 @@ if (!is.null(opt$help)) {
 
 ## Rename from spe_targeted to spe to simplify the code so it can work with
 ## either
-if (opt$spefile == "spe_targeted_postqc.Rdata") {
+if (opt$spefile == "spe_targeted_postqc") {
     spe <- spe_targeted
     suffix <- "targeted"
 } else {
@@ -55,7 +55,7 @@ dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
 
 ## Load the data
-load(here::here("processed-data", "07_spot_qc", opt$spefile), verbose = TRUE)
+load(here::here("processed-data", "07_spot_qc", paste0(opt$spefile, ".Rdata")), verbose = TRUE)
 
 
 
@@ -324,7 +324,7 @@ dev.off()
 
 
 ## Save new SPE objects
-if (opt$spefile == "spe_targeted_postqc.Rdata") {
+if (opt$spefile == "spe_targeted_postqc") {
     spe_targeted <- spe
     ## First time switching the order of the keywords: now targeted is at the
     ## end, which will make it easier to sort the spe files.

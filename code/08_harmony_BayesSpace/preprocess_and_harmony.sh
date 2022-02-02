@@ -6,7 +6,7 @@
 ## Create the logs directory
 mkdir -p logs
 
-for spefile in spe_postqc.Rdata spe_targeted_postqc.Rdata; do
+for spefile in "spe_postqc" "spe_targeted_postqc"; do
 
     ## Internal script name
     SHORT="preprocess_and_harmony_${spefile}"
@@ -22,6 +22,7 @@ for spefile in spe_postqc.Rdata spe_targeted_postqc.Rdata; do
 #$ -o logs/${SHORT}.txt
 #$ -e logs/${SHORT}.txt
 #$ -m e
+#$ -hold_jid qc_metrics_and_segmentation
 
 echo "**** Job starts ****"
 date
@@ -34,13 +35,13 @@ echo "Hostname: \${HOSTNAME}"
 echo "Task id: \${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/4.1.x
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('${spefile}'); sessioninfo::session_info()"
+Rscript 01_preprocess_and_harmony.R -s ${spefile}
 
 echo "**** Job ends ****"
 date
