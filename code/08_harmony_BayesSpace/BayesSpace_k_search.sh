@@ -23,7 +23,7 @@ for spefile in spe_harmony_wholegenome spe_harmony_targeted; do
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=60G,h_vmem=60G,h_fsize=100G
 #$ -N ${SHORT}
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
