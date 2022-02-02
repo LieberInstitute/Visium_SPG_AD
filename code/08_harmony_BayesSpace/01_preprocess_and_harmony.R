@@ -8,7 +8,6 @@
 #     memory = "30G",
 #     cores = 4L
 # )
-# dir.create(here::here("code", "08_harmony_BayesSpace", "logs"), showWarnings = FALSE)
 
 ## Required libraries
 library("getopt")
