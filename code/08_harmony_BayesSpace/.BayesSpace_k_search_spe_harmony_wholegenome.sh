@@ -7,7 +7,7 @@
 #$ -m e
 #$ -t 4-15
 #$ -tc 20
-#$ -hold_jid preprocess_and_harmony_spe_harmony_wholegenome
+#$ -hold_jid preprocess_and_harmony_spe_postqc
 
 echo "**** Job starts ****"
 date
