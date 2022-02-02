@@ -52,6 +52,7 @@ dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", suffix)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clusters_graphbased"), showWarnings = FALSE)
+dir.create(file.path(dir_rdata, "clusters_graphbased_cut_at"), showWarnings = FALSE)
 
 ## Load the data
 load(here::here("processed-data", "07_spot_qc", paste0(opt$spefile, ".Rdata")), verbose = TRUE)
@@ -290,7 +291,7 @@ for (i in seq_along(names(clust_k5_list))) {
     cluster_export(
         spe,
         names(clust_k5_list)[i],
-        cluster_dir = file.path(dir_rdata, "clusters_graphbased")
+        cluster_dir = file.path(dir_rdata, "clusters_graphbased_cut_at")
     )
 }
 
