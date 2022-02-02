@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=30G,h_vmem=30G,h_fsize=100G
+#$ -l bluejay,mem_free=9G,h_vmem=9G,h_fsize=100G
 #$ -pe local 4
 #$ -N preprocess_and_harmony_spe_postqc
 #$ -o logs/preprocess_and_harmony_spe_postqc.txt
