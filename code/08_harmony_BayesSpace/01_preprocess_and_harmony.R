@@ -39,7 +39,7 @@ if (opt$spefile == "spe_targeted_postqc.Rdata") {
 }
 
 
-set.seed(20191112)
+set.seed(20220201)
 Sys.time()
 spe$scran_quick_cluster <- quickCluster(
     spe,
@@ -114,7 +114,7 @@ save(top.hvgs,
 
 
 
-set.seed(20191112)
+set.seed(20220201)
 Sys.time()
 spe <- runPCA(spe, subset_row = top.hvgs, ncomponents = 50)
 Sys.time()
@@ -134,7 +134,7 @@ abline(v = chosen.elbow, col = "red")
 dev.off()
 
 Sys.time()
-set.seed(20191206)
+set.seed(20220201)
 spe <-
     runTSNE(spe,
         dimred = "PCA",
@@ -147,7 +147,7 @@ Sys.time()
 
 
 Sys.time()
-set.seed(20191206)
+set.seed(20220201)
 spe <-
     runTSNE(spe,
         dimred = "PCA",
@@ -159,7 +159,7 @@ Sys.time()
 # [1] "2021-09-08 12:03:04 EDT"
 
 Sys.time()
-set.seed(20191206)
+set.seed(20220201)
 spe <-
     runTSNE(spe,
         dimred = "PCA",
@@ -171,7 +171,7 @@ Sys.time()
 # [1] "2021-09-08 13:09:17 EDT"
 
 Sys.time()
-set.seed(20191206)
+set.seed(20220201)
 spe <-
     runTSNE(spe,
         dimred = "PCA",
