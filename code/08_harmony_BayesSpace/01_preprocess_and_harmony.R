@@ -38,9 +38,18 @@ if (!is.null(opt$help)) {
     q(status = 1)
 }
 
+## Rename from spe_targeted to spe to simplify the code so it can work with
+## either
+if (opt$spefile == "spe_targeted_postqc.Rdata") {
+    spe <- spe_targeted
+    suffix <- "targeted"
+} else {
+    suffix <- "wholegenome"
+}
+
 ## Create output directories
-dir_plots <- here::here("plots", "08_harmony_BayesSpace")
-dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace")
+dir_plots <- here::here("plots", "08_harmony_BayesSpace", suffix)
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", suffix)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
@@ -48,11 +57,7 @@ dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
 ## Load the data
 load(here::here("processed-data", "07_spot_qc", opt$spefile), verbose = TRUE)
 
-## Rename from spe_targeted to spe to simplify the code so it can work with
-## either
-if (opt$spefile == "spe_targeted_postqc.Rdata") {
-    spe <- spe_targeted
-}
+
 
 message("Running quickCluster()")
 set.seed(20220201)
