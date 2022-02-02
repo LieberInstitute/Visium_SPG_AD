@@ -77,7 +77,7 @@ dec <- modelGeneVar(spe,
 )
 
 pdf(
-    here::here("plots", "scran_modelGeneVar_final.pdf"),
+    file.path(dir_plots, "scran_modelGeneVar_final.pdf"),
     useDingbats = FALSE
 )
 mapply(function(block, blockname) {
@@ -109,7 +109,7 @@ length(top.hvgs.fdr1)
 save(top.hvgs,
     top.hvgs.fdr5,
     top.hvgs.fdr1,
-    file = here::here("processed-data", "rdata", "spe", "top.hvgs_all_final.Rdata")
+    file = file.path(dir_rdata, "top.hvgs_all_final.Rdata")
 )
 
 
@@ -126,7 +126,7 @@ chosen.elbow
 # 50
 
 pdf(
-    here::here("plots", "pca_elbow_final.pdf"),
+    file.path(dir_plots, "pca_elbow_final.pdf"),
     useDingbats = FALSE
 )
 plot(percent.var, xlab = "PC", ylab = "Variance explained (%)")
@@ -194,7 +194,7 @@ Sys.time()
 
 
 # make plots ofUMAP
-pdf(file = here::here("plots", "UMAP_subject.pdf"))
+pdf(file = file.path(dir_plots, "UMAP_subject.pdf"))
 ggplot(
     data.frame(reducedDim(spe, "UMAP")),
     aes(x = UMAP1, y = UMAP2, color = factor(spe$subject))
@@ -204,7 +204,7 @@ ggplot(
     theme_bw()
 dev.off()
 
-pdf(file = here::here("plots", "UMAP_sample_id.pdf"))
+pdf(file = file.path(dir_plots, "UMAP_sample_id.pdf"))
 ggplot(
     data.frame(reducedDim(spe, "UMAP")),
     aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
@@ -220,7 +220,7 @@ spe <- runUMAP(spe, dimred = "HARMONY", name = "UMAP.HARMONY")
 colnames(reducedDim(spe, "UMAP.HARMONY")) <- c("UMAP1", "UMAP2")
 
 
-pdf(file = here::here("plots", "UMAP_harmony_sample_id.pdf"))
+pdf(file = file.path(dir_plots, "UMAP_harmony_sample_id.pdf"))
 ggplot(
     data.frame(reducedDim(spe, "UMAP.HARMONY")),
     aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
@@ -237,24 +237,24 @@ g_k10 <- buildSNNGraph(spe, k = 10, use.dimred = "HARMONY")
 Sys.time()
 # "2021-12-16 16:17:31 EST"
 # "2021-12-16 16:34:28 EST"
-save(g_k10, file = here::here("processed-data", "rdata", "spe", "g_k10_harmony.Rdata"))
+save(g_k10, file = file.path(dir_rdata, "g_k10_harmony.Rdata"))
 
 Sys.time()
 g_walk_k10 <- igraph::cluster_walktrap(g_k10)
 Sys.time()
 # [1] "2021-12-17 13:05:59 EST"
 
-save(g_walk_k10, file = here::here("processed-data", "rdata", "spe", "g_walk_k10_harmony.Rdata"))
+save(g_walk_k10, file = file.path(dir_rdata, "g_walk_k10_harmony.Rdata"))
 
 clust_k10 <- sort_clusters(g_walk_k10$membership)
-save(clust_k10, file = here::here("processed-data", "rdata", "spe", "clust_k10_harmony.Rdata"))
+save(clust_k10, file = file.path(dir_rdata, "clust_k10_harmony.Rdata"))
 
 clust_k5_list <- lapply(4:28, function(n) {
     message(paste(Sys.time(), "n =", n))
     sort_clusters(igraph::cut_at(g_walk_k10, n = n))
 })
 names(clust_k5_list) <- paste0("k", 4:28)
-save(clust_k5_list, file = here::here("processed-data", "rdata", "spe", "clust_k5_list_harmony.Rdata"))
+save(clust_k5_list, file = file.path(dir_rdata, "clust_k5_list_harmony.Rdata"))
 
 ## Add clusters to spe colData
 cluster_colNames <- paste0("SNN_k10_k", 4:28)
@@ -265,7 +265,7 @@ colnames(colData(spe))[34:58] <- cluster_colNames
 
 ## make plot
 sample_ids <- unique(colData(spe)$sample_id)
-pdf(file = here::here("plots", "vis_clus_graph_based_har.pdf"))
+pdf(file = file.path(dir_plots, "vis_clus_graph_based_har.pdf"))
 for (i in seq_along(sample_ids)) {
     for (j in seq_along(cluster_colNames)) {
         my_plot <- vis_clus(
@@ -283,7 +283,7 @@ dev.off()
 cluster_export(
     spe,
     "SNN_k10_k7",
-    cluster_dir = here::here("processed-data", "rdata", "spe", "clustering_results")
+    cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
 ## Save new SPE objects
@@ -306,7 +306,7 @@ names(auto_offset_row) <- unique(spe$sample_id)
 spe$row <- spatialData(spe)$array_row + auto_offset_row[spe$sample_id]
 spe$col <- spatialData(spe)$array_col
 
-pdf(file = here::here("plots", "bayesSpace_offset_check.pdf"))
+pdf(file = file.path(dir_plots, "bayesSpace_offset_check.pdf"))
 clusterPlot(spe, "subject", color = NA) + # make sure no overlap between samples
     labs(fill = "Subject", title = "Offset check")
 dev.off()
