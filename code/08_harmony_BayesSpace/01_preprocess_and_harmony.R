@@ -21,6 +21,7 @@ library("scater")
 library("BiocParallel")
 library("PCAtools")
 library("ggplot2")
+library("Polychrome")
 library("harmony")
 library("BayesSpace")
 
@@ -303,7 +304,7 @@ for (i in seq_along(sample_ids)) {
             spe = spe,
             clustervar = names(clust_k5_list)[j],
             sampleid = sample_ids[i],
-            colors = mycolors,
+            colors = Polychrome::palette36.colors(length(unique(clust_k5_list[[j]]))),
             ... = paste0(" ", names(clust_k5_list)[j])
         )
         print(my_plot)
