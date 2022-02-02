@@ -80,20 +80,33 @@ cluster_export(
 )
 
 
-
+## Visualize BayesSpace results
 sample_ids <- unique(colData(spe)$sample_id)
 
 pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k, ".pdf")))
 for (i in seq_along(sample_ids)) {
     my_plot <- vis_clus(
         spe = spe,
-        clustervar = bayesSpace_name,
+        clustervar = paste0("BayesSpace_harmony_k", k),
         sampleid = sample_ids[i],
         colors = Polychrome::palette36.colors(k)
     )
     print(my_plot)
 }
 dev.off()
+
+pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_enhanced_k", k, ".pdf")))
+for (i in seq_along(sample_ids)) {
+    my_plot <- vis_clus(
+        spe = spe,
+        clustervar = paste0("BayesSpace_harmony_enhanced_k", k),
+        sampleid = sample_ids[i],
+        colors = Polychrome::palette36.colors(k)
+    )
+    print(my_plot)
+}
+dev.off()
+
 
 ## Reproducibility information
 print("Reproducibility information:")
