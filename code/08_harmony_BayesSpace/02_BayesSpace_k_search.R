@@ -1,6 +1,6 @@
 # sgejobs::job_loop(
 #     loops = list(spefile = c(
-#         "spe_postqc", "spe_targeted_postqc"
+#         "spe_harmony_wholegenome", "spe_harmony_targeted"
 #     )),
 #     name = "BayesSpace_k_search",
 #     create_shell = TRUE,
@@ -54,7 +54,7 @@ k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 
 set.seed(20220201)
 
-spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 50000)
+spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k)
 
 spe$bayesSpace_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_k", k)
