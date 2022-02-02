@@ -1,3 +1,15 @@
+# sgejobs::job_loop(
+#     loops = list(spefile = c(
+#         "spe_postqc.Rdata", "spe_targeted_postqc.Rdata"
+#     )),
+#     name = "preprocess_and_harmony",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "30G",
+#     cores = 4L
+# )
+# dir.create(here::here("code", "08_harmony_BayesSpace", "logs"), showWarnings = FALSE)
+
 ## Required libraries
 library("getopt")
 library("here")
@@ -265,7 +277,7 @@ names(clust_k5_list) <- paste0("SNN_k10_k", 4:28)
 ## Add clusters to spe colData
 for (i in seq_along(names(clust_k5_list))) {
     colData(spe) <- cbind(colData(spe), clust_k5_list[i])
-     ## Add proper name
+    ## Add proper name
     colnames(colData(spe))[ncol(colData(spe))] <- names(clust_k5_list)[i]
 
     ## Export for later use outside the SPE object
@@ -274,7 +286,6 @@ for (i in seq_along(names(clust_k5_list))) {
         names(clust_k5_list)[i],
         cluster_dir = file.path(dir_rdata, "clustering_results")
     )
-
 }
 
 ## make plot
