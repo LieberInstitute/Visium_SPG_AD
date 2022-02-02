@@ -21,6 +21,7 @@ library("scater")
 library("BiocParallel")
 library("PCAtools")
 library("ggplot2")
+library("harmony")
 library("BayesSpace")
 
 ## Specify parameters
