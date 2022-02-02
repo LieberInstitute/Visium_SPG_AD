@@ -57,9 +57,13 @@ dir.create(file.path(dir_rdata, "clustering_results"), showWarnings = FALSE)
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
 
+## For reproducibility
 set.seed(20220201)
 
+message("Running spatialCluster()")
+Sys.time()
 spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 20000)
+Sys.time()
 
 spe$bayesSpace_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_k", k_nice)
@@ -71,8 +75,10 @@ cluster_export(
     cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
-
+message("Running spatialEnhance()")
+Sys.time()
 spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
+Sys.time()
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
 bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k_nice)
