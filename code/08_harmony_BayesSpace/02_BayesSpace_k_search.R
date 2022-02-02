@@ -66,6 +66,24 @@ cluster_export(
     cluster_dir = file.path(dir_rdata, "clustering_results")
 )
 
+
+spe.enhanced <- spatialEnhance(spe, use.dimred = "HARMONY", q = 7, nrep = 10000,  burn.in=100)
+
+pdf(file=here::here("plots", "bayesSpace_clusterPlot_harmony.pdf"))
+clusterPlot(spe.enhaced, color = NA) + #plot clusters
+  labs(title = "BayesSpace enhanced clustering")
+dev.off()
+
+spe$bayesSpace_enhanced_harmony <- spe$spatial.cluster
+
+cluster_export(
+  spe.enhanced,
+  "bayesSpace_enhanced_harmony",
+  cluster_dir = here::here("processed-data", "rdata", "spe", "clustering_results" )
+)
+
+
+
 sample_ids <- unique(colData(spe)$sample_id)
 
 pdf(file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k, ".pdf")))
