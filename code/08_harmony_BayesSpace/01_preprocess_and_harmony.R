@@ -1,5 +1,8 @@
 ## Required libraries
 library('getopt')
+library("here")
+library("SpatialExperiment")
+library("sessioninfo")
 
 ## Specify parameters
 spec <- matrix(c(
@@ -14,6 +17,13 @@ if (!is.null(opt$help)) {
 	cat(getopt(spec, usage=TRUE))
 	q(status=1)
 }
+
+## Create output directories
+dir_plots <- here::here("plots", "08_harmony_BayesSpace")
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace")
+dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
+dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+
 
 ## Load the data
 load(here::here("processed-data", "07_spot_qc", opt$spefile), verbose = TRUE)
@@ -38,3 +48,11 @@ if(opt$spefile == "spe_targeted_postqc.Rdata") {
     spe_wholegenome <- spe
     saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_harmony_wholegenome.rds"))
 }
+
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
