@@ -95,7 +95,9 @@ for (i in seq_along(sample_ids)) {
         spe = spe,
         clustervar = paste0("BayesSpace_harmony_k", k),
         sampleid = sample_ids[i],
-        colors = cols
+        colors = cols,
+        spatial = FALSE,
+        point_size = 1.75
     )
     print(my_plot)
 }
@@ -107,7 +109,9 @@ for (i in seq_along(sample_ids)) {
         spe = spe,
         clustervar = paste0("BayesSpace_harmony_enhanced_k", k),
         sampleid = sample_ids[i],
-        colors = cols
+        colors = cols,
+        spatial = FALSE,
+        point_size = 1.75
     )
     print(my_plot)
 }
