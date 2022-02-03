@@ -15,7 +15,7 @@ plot_SNN_k10 <- function(suffix) {
         cluster_dir = here::here("processed-data", "08_harmony_BayesSpace", suffix, "clusters_graphbased")
     )
 
-    cols <- Polychrome::palette36.colors(k)
+    cols <- Polychrome::palette36.colors(length(unique(spe$SNN_k10)))
     names(cols) <- unique(spe$SNN_k10)
 
     vis_grid_clus(
