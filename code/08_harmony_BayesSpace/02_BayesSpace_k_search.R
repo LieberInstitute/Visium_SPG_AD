@@ -57,6 +57,10 @@ dir.create(file.path(dir_rdata, "clusters_BayesSpace"), showWarnings = FALSE)
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
 
+## Set the BayesSpace metadata using code from
+## https://github.com/edward130603/BayesSpace/blob/master/R/spatialPreprocess.R#L43-L46
+metadata(spe)$BayesSpace.data <- list(platform = "Visium", is.enhanced = FALSE)
+
 ## For reproducibility
 set.seed(20220201)
 
