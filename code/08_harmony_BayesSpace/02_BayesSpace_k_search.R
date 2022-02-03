@@ -64,7 +64,7 @@ metadata(spe)$BayesSpace.data <- list(platform = "Visium", is.enhanced = FALSE)
 message("Running spatialCluster()")
 Sys.time()
 set.seed(20220201)
-spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 20000)
+spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k)
 Sys.time()
 
 spe$bayesSpace_temp <- spe$spatial.cluster
@@ -102,26 +102,6 @@ cluster_export(
 # k_nice <- "04"
 # spe$spatial.cluster <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
 
-message("Running spatialEnhance()")
-Sys.time()
-set.seed(20220203)
-spe$imagerow <- spatialData(spe)$array_row
-spe$imagecol <- spatialData(spe)$array_col
-spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
-# Error: cannot allocate vector of size 194.8 Gb
-Sys.time()
-
-spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
-bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k_nice)
-colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
-
-cluster_export(
-    spe,
-    bayesSpace_name,
-    cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
-)
-
-
 ## Visualize BayesSpace results
 sample_ids <- unique(spe$sample_id)
 cols <- Polychrome::palette36.colors(k)
@@ -137,6 +117,35 @@ vis_grid_clus(
     point_size = 2
 )
 
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
+
+
+message("Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71")
+Sys.time()
+set.seed(20220203)
+spe$imagerow <- spatialData(spe)$array_row
+spe$imagecol <- spatialData(spe)$array_col
+imgData(spe) <- NULL
+spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k)
+# Error: cannot allocate vector of size 194.8 Gb
+## Reported this at https://github.com/edward130603/BayesSpace/issues/71
+Sys.time()
+
+spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
+bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k_nice)
+colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
+
+cluster_export(
+    spe,
+    bayesSpace_name,
+    cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
+)
+
 vis_grid_clus(
     spe = spe,
     clustervar = paste0("BayesSpace_harmony_enhanced_k", k_nice),
@@ -146,11 +155,3 @@ vis_grid_clus(
     spatial = FALSE,
     point_size = 2
 )
-
-
-## Reproducibility information
-print("Reproducibility information:")
-Sys.time()
-proc.time()
-options(width = 120)
-session_info()
