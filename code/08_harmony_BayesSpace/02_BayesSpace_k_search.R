@@ -61,11 +61,9 @@ k_nice <- sprintf("%02d", k)
 ## https://github.com/edward130603/BayesSpace/blob/master/R/spatialPreprocess.R#L43-L46
 metadata(spe)$BayesSpace.data <- list(platform = "Visium", is.enhanced = FALSE)
 
-## For reproducibility
-set.seed(20220201)
-
 message("Running spatialCluster()")
 Sys.time()
+set.seed(20220201)
 spe <- spatialCluster(spe, use.dimred = "HARMONY", q = k, nrep = 20000)
 Sys.time()
 
@@ -79,8 +77,34 @@ cluster_export(
     cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
 )
 
+## Code crashed during spatialEnhance()
+## Load the current results and make plots
+## then try to debug spatialEnhance()
+# spe <- cluster_import(spe, cluster_dir = file.path(dir_rdata, "clusters_BayesSpace"), prefix = "")
+# for(k in 4:14) {
+#     k_nice <- sprintf("%02d", k)
+#     sample_ids <- unique(spe$sample_id)
+#     cols <- Polychrome::palette36.colors(k)
+#     names(cols) <- sort(unique(colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]))
+#
+#     vis_grid_clus(
+#         spe = spe,
+#         clustervar = paste0("BayesSpace_harmony_k", k_nice),
+#         pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k_nice, ".pdf")),
+#         sort_clust = FALSE,
+#         colors = cols,
+#         spatial = FALSE,
+#         point_size = 2
+#     )
+# }
+## For debugging spatialEnhance()
+# k <- 4
+# k_nice <- "04"
+# spe$spatial.cluster <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
+
 message("Running spatialEnhance()")
 Sys.time()
+set.seed(20220203)
 spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
 Sys.time()
 
@@ -96,9 +120,9 @@ cluster_export(
 
 
 ## Visualize BayesSpace results
-sample_ids <- unique(colData(spe)$sample_id)
+sample_ids <- unique(spe$sample_id)
 cols <- Polychrome::palette36.colors(k)
-names(cols) <- unique(spe$spatial.cluster)
+names(cols) <- sort(unique(spe$spatial.cluster))
 
 vis_grid_clus(
     spe = spe,
