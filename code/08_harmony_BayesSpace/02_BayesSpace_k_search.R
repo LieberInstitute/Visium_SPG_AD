@@ -108,6 +108,7 @@ set.seed(20220203)
 spe$imagerow <- spatialData(spe)$array_row
 spe$imagecol <- spatialData(spe)$array_col
 spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
+# Error: cannot allocate vector of size 194.8 Gb
 Sys.time()
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
