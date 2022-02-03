@@ -105,26 +105,9 @@ cluster_export(
 message("Running spatialEnhance()")
 Sys.time()
 set.seed(20220203)
+spe$imagerow <- spatialData(spe)$array_row
+spe$imagecol <- spatialData(spe)$array_col
 spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000, burn.in = 4000)
-# Error: subscript contains invalid names
-# > traceback()
-# 12: stop(wmsg(...), call. = FALSE)
-# 11: .subscript_error("subscript contains invalid ", what)
-# 10: NSBS(i, x, exact = exact, strict.upper.bound = !allow.append,
-#         allow.NAs = allow.NAs)
-# 9: NSBS(i, x, exact = exact, strict.upper.bound = !allow.append,
-#        allow.NAs = allow.NAs)
-# 8: normalizeSingleBracketSubscript(i, xstub)
-# 7: extractCOLS(x, j)
-# 6: extractCOLS(x, j)
-# 5: colData(sce)[position.cols]
-# 4: colData(sce)[position.cols]
-# 3: as.matrix(colData(sce)[position.cols])
-# 2: .prepare_inputs(sce, use.dimred = use.dimred, d = d, positions =
-# NULL,
-#        position.cols = position.cols, xdist = xdist, ydist = ydist)
-# 1: spatialEnhance(spe, use.dimred = "HARMONY", q = k, nrep = 20000,
-#        burn.in = 4000)
 Sys.time()
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
