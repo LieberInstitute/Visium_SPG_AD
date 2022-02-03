@@ -12,7 +12,7 @@ plot_SNN_k10 <- function(suffix) {
     )
 
     cols <- Polychrome::palette36.colors(length(unique(spe$SNN_k10)))
-    names(cols) <- unique(spe$SNN_k10)
+    names(cols) <- sort(unique(spe$SNN_k10))
 
     vis_grid_clus(
         spe = spe,
@@ -30,7 +30,7 @@ plot_SNN_k10 <- function(suffix) {
 
         cols <- Polychrome::palette36.colors(k)
         k_var <- paste0("SNN_k10_k", k)
-        names(cols) <- unique(colData(spe)[[k_var]])
+        names(cols) <- sort(unique(colData(spe)[[k_var]]))
 
         p_list <- vis_grid_clus(
             spe = spe,
@@ -68,7 +68,7 @@ session_info()
 #  collate  en_US.UTF-8
 #  ctype    en_US.UTF-8
 #  tz       US/Eastern
-#  date     2022-02-02
+#  date     2022-02-03
 #  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 #
 # ─ Packages ──────────────────────────────────────────────────────────────────────────────────────
