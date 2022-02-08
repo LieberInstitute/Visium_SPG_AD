@@ -245,7 +245,7 @@ dev.off()
 
 ## Plot tSNEs
 
-for (perplexity in c(5, 20, 50, 80)) {
+for (perplexity in c("05", "20", "50", "80")) {
     colnames(reducedDim(spe, paste0("TSNE_perplexity", perplexity))) <- c("TSNE1", "TSNE2")
     pdf(file = file.path(dir_plots, paste0("tSNE_perplexity", perplexity, "_sample_id.pdf")), width = 9)
     p <- ggplot(
