@@ -5,7 +5,7 @@
 #$ -o logs/plot_SNN_k10.txt
 #$ -e logs/plot_SNN_k10.txt
 #$ -m e
-##$ -hold_jid preprocess_and_harmony_spe_postqc,preprocess_and_harmony_spe_targeted_postqc
+#$ -hold_jid preprocess_and_harmony_spe_postqc,preprocess_and_harmony_spe_targeted_postqc
 
 echo "**** Job starts ****"
 date
