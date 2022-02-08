@@ -222,6 +222,51 @@ Sys.time()
 colnames(reducedDim(spe, "UMAP.HARMONY")) <- c("UMAP1", "UMAP2")
 
 
+message("Running runTSNE() perplexity 5 on HARMONY dimensions")
+Sys.time()
+set.seed(20220208)
+spe <-
+    runTSNE(spe,
+        dimred = "HARMONY",
+        name = "TSNE_perplexity05.HARMONY",
+        perplexity = 5
+    )
+Sys.time()
+
+message("Running runTSNE() perplexity 20 on HARMONY dimensions")
+Sys.time()
+set.seed(20220208)
+spe <-
+    runTSNE(spe,
+        dimred = "HARMONY",
+        name = "TSNE_perplexity20.HARMONY",
+        perplexity = 20
+    )
+Sys.time()
+
+message("Running runTSNE() perplexity 50 on HARMONY dimensions")
+Sys.time()
+set.seed(20220208)
+spe <-
+    runTSNE(spe,
+        dimred = "HARMONY",
+        name = "TSNE_perplexity50.HARMONY",
+        perplexity = 50
+    )
+Sys.time()
+
+message("Running runTSNE() perplexity 80 on HARMONY dimensions")
+Sys.time()
+set.seed(20220208)
+spe <-
+    runTSNE(spe,
+        dimred = "HARMONY",
+        name = "TSNE_perplexity80.HARMONY",
+        perplexity = 80
+    )
+Sys.time()
+
+
 ## Explore UMAP results
 pdf(file = file.path(dir_plots, "UMAP_subject.pdf"))
 ggplot(
@@ -244,12 +289,23 @@ ggplot(
 dev.off()
 
 ## Plot tSNEs
-
 for (perplexity in c("05", "20", "50", "80")) {
     colnames(reducedDim(spe, paste0("TSNE_perplexity", perplexity))) <- c("TSNE1", "TSNE2")
     pdf(file = file.path(dir_plots, paste0("tSNE_perplexity", perplexity, "_sample_id.pdf")), width = 9)
     p <- ggplot(
         data.frame(reducedDim(spe, paste0("TSNE_perplexity", perplexity))),
+        aes(x = TSNE1, y = TSNE2, color = factor(spe$sample_id))
+    ) +
+        geom_point() +
+        labs(color = "sample_id") +
+        theme_bw()
+    print(p)
+    dev.off()
+
+    colnames(reducedDim(spe, paste0("TSNE_perplexity", perplexity, ".HARMONY"))) <- c("TSNE1", "TSNE2")
+    pdf(file = file.path(dir_plots, paste0("tSNE_perplexity", perplexity, "_harmony_sample_id.pdf")), width = 9)
+    p <- ggplot(
+        data.frame(reducedDim(spe, paste0("TSNE_perplexity", perplexity, ".HARMONY"))),
         aes(x = TSNE1, y = TSNE2, color = factor(spe$sample_id))
     ) +
         geom_point() +
