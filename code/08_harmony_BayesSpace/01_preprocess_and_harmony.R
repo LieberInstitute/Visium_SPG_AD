@@ -288,6 +288,17 @@ ggplot(
     theme_bw()
 dev.off()
 
+## Explore UMAP on HARMONY reduced dimensions
+pdf(file = file.path(dir_plots, "UMAP_harmony_sample_id.pdf"), width = 9)
+ggplot(
+    data.frame(reducedDim(spe, "UMAP.HARMONY")),
+    aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
+) +
+    geom_point() +
+    labs(color = "sample_id") +
+    theme_bw()
+dev.off()
+
 ## Plot tSNEs
 for (perplexity in c("05", "20", "50", "80")) {
     colnames(reducedDim(spe, paste0("TSNE_perplexity", perplexity))) <- c("TSNE1", "TSNE2")
@@ -314,17 +325,6 @@ for (perplexity in c("05", "20", "50", "80")) {
     print(p)
     dev.off()
 }
-
-## Explore UMAP on HARMONY reduced dimensions
-pdf(file = file.path(dir_plots, "UMAP_harmony_sample_id.pdf"), width = 9)
-ggplot(
-    data.frame(reducedDim(spe, "UMAP.HARMONY")),
-    aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
-) +
-    geom_point() +
-    labs(color = "sample_id") +
-    theme_bw()
-dev.off()
 
 
 ## Perform graph-based clustering on batch corrected-data
