@@ -130,10 +130,12 @@ Sys.time()
 set.seed(20220203)
 spe$imagerow <- spatialData(spe)$array_row
 spe$imagecol <- spatialData(spe)$array_col
-imgData(spe) <- NULL
-spe <- spatialEnhance(spe, use.dimred = "HARMONY", q = k)
-# Error: cannot allocate vector of size 194.8 Gb
-## Reported this at https://github.com/edward130603/BayesSpace/issues/71
+
+for(sample in unique(spe$sample_id)) {
+    spe_small <- spatialEnhance(spe[, spe$sample_id == sample], use.dimred = "HARMONY", q = k)
+    spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster
+    rm(spe_small)
+}
 Sys.time()
 
 spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
