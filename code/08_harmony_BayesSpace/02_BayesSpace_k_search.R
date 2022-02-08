@@ -127,11 +127,11 @@ session_info()
 
 message("Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71")
 Sys.time()
-set.seed(20220203)
 spe$imagerow <- spatialData(spe)$array_row
 spe$imagecol <- spatialData(spe)$array_col
 
 for(sample in unique(spe$sample_id)) {
+    set.seed(20220208)
     spe_small <- spatialEnhance(spe[, spe$sample_id == sample], use.dimred = "HARMONY", q = k)
     spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster
     rm(spe_small)
