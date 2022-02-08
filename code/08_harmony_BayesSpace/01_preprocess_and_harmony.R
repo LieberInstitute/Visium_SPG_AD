@@ -202,6 +202,7 @@ Sys.time()
 
 message("Running runUMAP()")
 Sys.time()
+set.seed(20220208)
 spe <- runUMAP(spe, dimred = "PCA")
 colnames(reducedDim(spe, "UMAP")) <- c("UMAP1", "UMAP2")
 Sys.time()
@@ -209,11 +210,13 @@ Sys.time()
 ## Perform harmony batch correction
 message("Running RunHarmony()")
 Sys.time()
+set.seed(20220208)
 spe <- RunHarmony(spe, "sample_id", verbose = FALSE)
 Sys.time()
 
 message("Running runUMAP() on HARMONY dimensions")
 Sys.time()
+set.seed(20220208)
 spe <- runUMAP(spe, dimred = "HARMONY", name = "UMAP.HARMONY")
 Sys.time()
 colnames(reducedDim(spe, "UMAP.HARMONY")) <- c("UMAP1", "UMAP2")
@@ -230,7 +233,7 @@ ggplot(
     theme_bw()
 dev.off()
 
-pdf(file = file.path(dir_plots, "UMAP_sample_id.pdf"))
+pdf(file = file.path(dir_plots, "UMAP_sample_id.pdf"), width = 9)
 ggplot(
     data.frame(reducedDim(spe, "UMAP")),
     aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
@@ -240,8 +243,24 @@ ggplot(
     theme_bw()
 dev.off()
 
+## Plot tSNEs
+
+for (perplexity in c(5, 20, 50, 80)) {
+    colnames(reducedDim(spe, paste0("TSNE_perplexity", perplexity))) <- c("TSNE1", "TSNE2")
+    pdf(file = file.path(dir_plots, paste0("tSNE_perplexity", perplexity, "_sample_id.pdf")), width = 9)
+    p <- ggplot(
+        data.frame(reducedDim(spe, paste0("TSNE_perplexity", perplexity))),
+        aes(x = TSNE1, y = TSNE2, color = factor(spe$sample_id))
+    ) +
+        geom_point() +
+        labs(color = "sample_id") +
+        theme_bw()
+    print(p)
+    dev.off()
+}
+
 ## Explore UMAP on HARMONY reduced dimensions
-pdf(file = file.path(dir_plots, "UMAP_harmony_sample_id.pdf"))
+pdf(file = file.path(dir_plots, "UMAP_harmony_sample_id.pdf"), width = 9)
 ggplot(
     data.frame(reducedDim(spe, "UMAP.HARMONY")),
     aes(x = UMAP1, y = UMAP2, color = factor(spe$sample_id))
