@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=100G,h_vmem=100G,h_fsize=100G
 #$ -N BayesSpace_k_search_spe_harmony_targeted
 #$ -o logs/BayesSpace_k_search_spe_harmony_targeted.$TASK_ID.txt
 #$ -e logs/BayesSpace_k_search_spe_harmony_targeted.$TASK_ID.txt
