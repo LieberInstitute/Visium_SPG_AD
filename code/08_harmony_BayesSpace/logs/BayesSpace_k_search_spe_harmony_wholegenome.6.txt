@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Wed Feb  2 19:04:30 EST 2022
+Tue Feb  8 20:33:19 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9025490
+Job id: 9131874
 Job name: BayesSpace_k_search_spe_harmony_wholegenome
-Hostname: compute-100.cm.cluster
+Hostname: compute-098.cm.cluster
 Task id: 6
 Unloading conda_R/4.1.x
 Loading conda_R/4.1.x
@@ -99,14 +99,24 @@ The following objects are masked from ‘package:matrixStats’:
     anyMissing, rowMedians
 
 Running spatialCluster()
-[1] "2022-02-02 19:09:18 EST"
+[1] "2022-02-08 20:38:06 EST"
 Neighbors were identified for 38111 out of 38115 spots.
 Fitting model...
-Calculating labels using iterations 1000 through 20000.
-[1] "2022-02-03 00:19:32 EST"
-Running spatialEnhance()
-[1] "2022-02-03 00:19:35 EST"
-Error: subscript contains invalid names
+Calculating labels using iterations 1000 through 50000.
+[1] "2022-02-09 09:42:31 EST"
+Warning message:
+In dir.create(outdir, recursive = TRUE) :
+  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/clusters_BayesSpace/BayesSpace_harmony_k06' already exists
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k06.pdf"
+[1] "Reproducibility information:"
+[1] "2022-02-09 09:43:13 EST"
+    user   system  elapsed 
+46425.75   956.37 47392.39 
+Error in system(paste(which, shQuote(names[i])), intern = TRUE, ignore.stderr = TRUE) : 
+  cannot popen '/bin/which 'pandoc' 2>/dev/null', probable reason 'Cannot allocate memory'
+Calls: session_info ... stopifnot -> drop_null -> get_pandoc_version -> Sys.which
 Execution halted
+Warning message:
+system call failed: Cannot allocate memory 
 **** Job ends ****
-Thu Feb  3 00:19:41 EST 2022
+Wed Feb  9 09:45:23 EST 2022

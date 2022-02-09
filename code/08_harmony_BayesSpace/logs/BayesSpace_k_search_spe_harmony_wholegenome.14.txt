@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Wed Feb  2 19:18:51 EST 2022
+Tue Feb  8 22:33:48 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9025490
+Job id: 9131874
 Job name: BayesSpace_k_search_spe_harmony_wholegenome
-Hostname: compute-100.cm.cluster
+Hostname: compute-095.cm.cluster
 Task id: 14
 Unloading conda_R/4.1.x
 Loading conda_R/4.1.x
@@ -99,14 +99,6 @@ The following objects are masked from ‘package:matrixStats’:
     anyMissing, rowMedians
 
 Running spatialCluster()
-[1] "2022-02-02 19:23:47 EST"
+[1] "2022-02-08 23:34:34 EST"
 Neighbors were identified for 38111 out of 38115 spots.
 Fitting model...
-Calculating labels using iterations 1000 through 20000.
-[1] "2022-02-03 00:40:31 EST"
-Running spatialEnhance()
-[1] "2022-02-03 00:40:33 EST"
-Error: subscript contains invalid names
-Execution halted
-**** Job ends ****
-Thu Feb  3 00:40:41 EST 2022
