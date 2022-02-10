@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Wed Feb  2 15:13:45 EST 2022
+Tue Feb  8 17:21:14 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9024806
+Job id: 9131872
 Job name: preprocess_and_harmony_spe_postqc
 Hostname: compute-100.cm.cluster
 Task id: undefined
@@ -124,11 +124,11 @@ Loading required package: Rcpp
 Loading objects:
   spe
 Running quickCluster()
-[1] "2022-02-02 15:18:24 EST"
-[1] "2022-02-02 15:19:12 EST"
+[1] "2022-02-08 17:25:47 EST"
+[1] "2022-02-08 17:26:32 EST"
 Running computeSumFactors()
-[1] "2022-02-02 15:19:12 EST"
-[1] "2022-02-02 15:20:49 EST"
+[1] "2022-02-08 17:26:32 EST"
+[1] "2022-02-08 17:28:03 EST"
 
    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16 
 1284  105  506  824  596  196 1176  189  621  365  649  699  392  352  161  273 
@@ -166,25 +166,25 @@ Running getTopHVGs()
 [1] 14708
 [1] 13538
 Running runPCA()
-[1] "2022-02-02 15:21:13 EST"
-[1] "2022-02-02 15:21:52 EST"
+[1] "2022-02-08 17:28:26 EST"
+[1] "2022-02-08 17:29:04 EST"
 [1] 3
 null device 
           1 
 Running runTSNE() perplexity 5
-[1] "2022-02-02 15:21:52 EST"
-[1] "2022-02-02 15:29:17 EST"
+[1] "2022-02-08 17:29:04 EST"
+[1] "2022-02-08 17:36:19 EST"
 Running runTSNE() perplexity 20
-[1] "2022-02-02 15:29:17 EST"
-[1] "2022-02-02 15:37:24 EST"
+[1] "2022-02-08 17:36:19 EST"
+[1] "2022-02-08 17:44:12 EST"
 Running runTSNE() perplexity 50
-[1] "2022-02-02 15:37:24 EST"
-[1] "2022-02-02 15:46:57 EST"
+[1] "2022-02-08 17:44:12 EST"
+[1] "2022-02-08 17:53:34 EST"
 Running runTSNE() perplexity 80
-[1] "2022-02-02 15:46:57 EST"
-[1] "2022-02-02 15:57:40 EST"
+[1] "2022-02-08 17:53:34 EST"
+[1] "2022-02-08 18:04:03 EST"
 Running runUMAP()
-[1] "2022-02-02 15:57:40 EST"
+[1] "2022-02-08 18:04:03 EST"
 Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
 Also defined by ‘spam’
 Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
@@ -194,12 +194,12 @@ In .check_reddim_names(x, value, withDimnames) :
   non-NULL 'rownames(value)' should be the same as 'colnames(x)' for
 'reducedDim<-'. This will be an error in the next release of
 Bioconductor.
-[1] "2022-02-02 15:59:27 EST"
+[1] "2022-02-08 18:05:46 EST"
 Running RunHarmony()
-[1] "2022-02-02 15:59:27 EST"
-[1] "2022-02-02 16:01:16 EST"
+[1] "2022-02-08 18:05:46 EST"
+[1] "2022-02-08 18:07:35 EST"
 Running runUMAP() on HARMONY dimensions
-[1] "2022-02-02 16:01:16 EST"
+[1] "2022-02-08 18:07:35 EST"
 Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
 Also defined by ‘spam’
 Found more than one class "dist" in cache; using the first, from namespace 'BiocGenerics'
@@ -209,7 +209,19 @@ In .check_reddim_names(x, value, withDimnames) :
   non-NULL 'rownames(value)' should be the same as 'colnames(x)' for
 'reducedDim<-'. This will be an error in the next release of
 Bioconductor.
-[1] "2022-02-02 16:03:00 EST"
+[1] "2022-02-08 18:09:15 EST"
+Running runTSNE() perplexity 5 on HARMONY dimensions
+[1] "2022-02-08 18:09:16 EST"
+[1] "2022-02-08 18:16:38 EST"
+Running runTSNE() perplexity 20 on HARMONY dimensions
+[1] "2022-02-08 18:16:38 EST"
+[1] "2022-02-08 18:24:46 EST"
+Running runTSNE() perplexity 50 on HARMONY dimensions
+[1] "2022-02-08 18:24:46 EST"
+[1] "2022-02-08 18:34:32 EST"
+Running runTSNE() perplexity 80 on HARMONY dimensions
+[1] "2022-02-08 18:34:32 EST"
+[1] "2022-02-08 18:46:16 EST"
 null device 
           1 
 null device 
@@ -217,48 +229,48 @@ null device
 null device 
           1 
 Running buildSNNGraph() on HARMONY dimensions
-[1] "2022-02-02 16:03:09 EST"
-[1] "2022-02-02 16:05:00 EST"
+[1] "2022-02-08 18:46:56 EST"
+[1] "2022-02-08 18:48:46 EST"
 Running cluster_walktrap()
-[1] "2022-02-02 16:06:42 EST"
-[1] "2022-02-02 17:31:09 EST"
+[1] "2022-02-08 18:50:28 EST"
+[1] "2022-02-08 20:14:18 EST"
 Warning message:
 In dir.create(outdir, recursive = TRUE) :
-  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/clustering_results/SNN_k10' already exists
+  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/clusters_graphbased/SNN_k10' already exists
 Running cut_at() from k = 4 to 28
-2022-02-02 17:31:10 n = 4
-2022-02-02 17:31:10 n = 5
-2022-02-02 17:31:10 n = 6
-2022-02-02 17:31:10 n = 7
-2022-02-02 17:31:10 n = 8
-2022-02-02 17:31:10 n = 9
-2022-02-02 17:31:10 n = 10
-2022-02-02 17:31:10 n = 11
-2022-02-02 17:31:10 n = 12
-2022-02-02 17:31:10 n = 13
-2022-02-02 17:31:10 n = 14
-2022-02-02 17:31:10 n = 15
-2022-02-02 17:31:10 n = 16
-2022-02-02 17:31:10 n = 17
-2022-02-02 17:31:10 n = 18
-2022-02-02 17:31:10 n = 19
-2022-02-02 17:31:10 n = 20
-2022-02-02 17:31:11 n = 21
-2022-02-02 17:31:11 n = 22
-2022-02-02 17:31:11 n = 23
-2022-02-02 17:31:11 n = 24
-2022-02-02 17:31:11 n = 25
-2022-02-02 17:31:11 n = 26
-2022-02-02 17:31:11 n = 27
-2022-02-02 17:31:11 n = 28
+2022-02-08 20:14:19 n = 4
+2022-02-08 20:14:19 n = 5
+2022-02-08 20:14:20 n = 6
+2022-02-08 20:14:20 n = 7
+2022-02-08 20:14:20 n = 8
+2022-02-08 20:14:20 n = 9
+2022-02-08 20:14:20 n = 10
+2022-02-08 20:14:20 n = 11
+2022-02-08 20:14:20 n = 12
+2022-02-08 20:14:20 n = 13
+2022-02-08 20:14:20 n = 14
+2022-02-08 20:14:20 n = 15
+2022-02-08 20:14:20 n = 16
+2022-02-08 20:14:20 n = 17
+2022-02-08 20:14:20 n = 18
+2022-02-08 20:14:20 n = 19
+2022-02-08 20:14:20 n = 20
+2022-02-08 20:14:20 n = 21
+2022-02-08 20:14:20 n = 22
+2022-02-08 20:14:21 n = 23
+2022-02-08 20:14:21 n = 24
+2022-02-08 20:14:21 n = 25
+2022-02-08 20:14:21 n = 26
+2022-02-08 20:14:21 n = 27
+2022-02-08 20:14:21 n = 28
 There were 25 warnings (use warnings() to see them)
 null device 
           1 
-4.231927 B
+4.234201 B
 [1] "Reproducibility information:"
-[1] "2022-02-02 17:47:10 EST"
-    user   system  elapsed 
-9379.715  115.523 9203.402 
+[1] "2022-02-08 20:30:00 EST"
+     user    system   elapsed 
+11522.031    75.831 11324.772 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.1.2 Patched (2021-11-04 r81138)
@@ -269,7 +281,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-02-02
+ date     2022-02-08
  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -317,9 +329,9 @@ null device
  desc                     1.4.0    2021-09-28 [2] CRAN (R 4.1.2)
  digest                   0.6.29   2021-12-01 [2] CRAN (R 4.1.2)
  dockerfiler              0.1.4    2021-09-03 [1] CRAN (R 4.1.2)
- doParallel               1.0.16   2020-10-16 [2] CRAN (R 4.1.0)
+ doParallel               1.0.17   2022-02-07 [2] CRAN (R 4.1.2)
  dotCall64                1.0-1    2021-02-11 [2] CRAN (R 4.1.0)
- dplyr                    1.0.7    2021-06-18 [2] CRAN (R 4.1.0)
+ dplyr                    1.0.8    2022-02-08 [2] CRAN (R 4.1.2)
  dqrng                    0.3.0    2021-05-01 [1] CRAN (R 4.1.2)
  DropletUtils             1.14.2   2022-01-09 [1] Bioconductor
  DT                       0.20     2021-11-15 [2] CRAN (R 4.1.2)
@@ -357,7 +369,7 @@ null device
  interactiveDisplayBase   1.32.0   2021-10-26 [2] Bioconductor
  IRanges                * 2.28.0   2021-10-26 [2] Bioconductor
  irlba                    2.3.5    2021-12-06 [2] CRAN (R 4.1.2)
- iterators                1.0.13   2020-10-15 [2] CRAN (R 4.1.0)
+ iterators                1.0.14   2022-02-05 [2] CRAN (R 4.1.2)
  jquerylib                0.1.4    2021-04-26 [2] CRAN (R 4.1.0)
  jsonlite                 1.7.3    2022-01-17 [2] CRAN (R 4.1.2)
  KEGGREST                 1.34.0   2021-10-26 [2] Bioconductor
@@ -410,7 +422,7 @@ null device
  rhdf5filters             1.6.0    2021-10-26 [2] Bioconductor
  Rhdf5lib                 1.16.0   2021-10-26 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.1.2)
- rlang                    1.0.0    2022-01-26 [2] CRAN (R 4.1.2)
+ rlang                    1.0.1    2022-02-03 [2] CRAN (R 4.1.2)
  roxygen2                 7.1.2    2021-09-08 [2] CRAN (R 4.1.2)
  rprojroot                2.0.2    2020-11-15 [2] CRAN (R 4.1.0)
  Rsamtools                2.10.0   2021-10-26 [2] Bioconductor
@@ -466,4 +478,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Wed Feb  2 17:47:13 EST 2022
+Tue Feb  8 20:30:03 EST 2022
