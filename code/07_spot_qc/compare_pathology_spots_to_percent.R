@@ -1,4 +1,4 @@
-#import required libraries
+##import required libraries
 library("here")
 library("SpatialExperiment")
 library("scran")
@@ -15,22 +15,11 @@ load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), ve
 
 
 
+## output directories
+dir_plots <- here::here("plots", "07_spot_qc")
 
-##pathology_df
-
-
-path_df_spe <- data.frame(
-    spot_id =rownames(colData(spe)),
-    sample_id = colData(spe)$sample_id,
-    NAbeta = colData(spe)$NAbeta,
-    NpTau = colData(spe)$NpTau,
-    PAbeta = colData(spe)$PAbeta,
-    PpTau = colData(spe)$PpTau
-    )
 
 ##Create function to create 2x2 Table
-##
-
 two_by_two_table <- function(spe_object, sample_num, pathology, n =0, p =0.01) {
     #n = threshold for number of pathology 'blobs' in spot
     #p = percentage of pathology pixels in spot
