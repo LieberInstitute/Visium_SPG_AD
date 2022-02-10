@@ -63,7 +63,6 @@ two_by_two_table <- function(spe_object, sample_num, pathology, n =0, p =0.01) {
 
     vals = c(col1_row1, col1_row2, col2_row1, col2_row2)
     matrix_2x2 = matrix(vals, nrow = 2, ncol = 2,dimnames=list(row_names, col_names))
-    matrix_2x2 = addmargins(matrix_2x2)
     return(matrix_2x2)
 }
 
