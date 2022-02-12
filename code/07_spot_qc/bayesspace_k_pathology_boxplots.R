@@ -9,11 +9,17 @@ library("dplyr")
 library("spatialLIBD")
 library("sessioninfo")
 
+
 ## Load basic SPE data
 load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = TRUE)
 load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), verbose = TRUE)
 
+##output directories
+dir_plots <- here::here("plots", "07_spot_qc", "temp")
+dir.create(dir_plots, showWarnings = FALSE)
 
+
+#import cluster info for whole genome
 dir_rdata_whole <- here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") #, suffix
 
 cluster_spe <- cluster_import(
@@ -21,6 +27,7 @@ cluster_spe <- cluster_import(
     cluster_dir = file.path(dir_rdata_whole, "clusters_BayesSpace"),
     prefix = "imported_")
 
+#import cluster info for targeted genome
 dir_rdata_targeted <- here::here("processed-data", "08_harmony_BayesSpace", "targeted")
 
 cluster_spe_targeted <- cluster_import(
@@ -28,6 +35,8 @@ cluster_spe_targeted <- cluster_import(
     cluster_dir = file.path(dir_rdata_targeted, "clusters_BayesSpace"),
     prefix = "imported_")
 
+
+#create df with relevant variables for whole
 cluster_whole_df <- data.frame(
     spot_id =rownames(colData(cluster_spe)),
     diagnosis = colData(cluster_spe)$diagnosis,
@@ -40,6 +49,7 @@ cluster_whole_df <- data.frame(
                                 ## have to convert entire colData to df
 )
 
+#create df with relevant variables for targeted
 cluster_targeted_df <- data.frame(
     spot_id =rownames(colData(cluster_spe_targeted)),
     diagnosis = colData(cluster_spe_targeted)$diagnosis,
@@ -52,20 +62,51 @@ cluster_targeted_df <- data.frame(
 )
 
 
-cols <- colnames(cluster_whole_df |> select(matches("harmony")))
+#convert cluster info to factor in cluster_whole_df
+cols_whole <- colnames(cluster_whole_df |> select(matches("harmony")))
+cluster_whole_df[cols_whole] <- lapply(cluster_whole_df[cols_whole], factor)
 
-cluster_whole_df[cols] <- lapply(cluster_whole_df[cols], factor)
+#convert cluster info to factor in cluster_targeted_df
+cols_targeted <- colnames(cluster_targeted_df |> select(matches("harmony")))
+cluster_targeted_df[cols_targeted] <- lapply(cluster_targeted_df[cols_targeted], factor)
 
-plot_list <- list()
 
-for (i in (cluster_whole_df)|> select(matches("harmony")) ){
-    plot<- ggplot(cluster_whole_df, aes( x = i, y = PpTau)) +geom_boxplot()+
-    xlab("Cluster ") + ylab("Percentage of pTau")
-    plot_list[[colnames(i)]] <- plot
+
+pathology_measures = c("PpTau", "PAbeta")
+
+#create plots for whole genome
+for( measure in pathology_measures){
+    for (i in cols_whole) {
+        pdf(file.path(dir_plots, paste0(spe_whole,"_", sample_id,"_", i, ".pdf")), width = 14)
+
+        plot<- ggpubr::ggviolin(
+            cluster_whole_df,
+            i,
+            "PpTau",
+            add= "boxplot",
+            add.params = list(fill = "white"))
+        print(plot)
     }
 
+}
 
 
+
+#create plots for targeted genome
+for( measure in pathology_measures){
+    for (i in cols_targeted) {
+        pdf(file.path(dir_plots, paste0(spe_targeted,"_", sample_id,"_", i, ".pdf")), width = 14)
+
+        plot<- ggpubr::ggviolin(
+            cluster_targeted_df,
+            i,
+            "PpTau",
+            add= "boxplot",
+            add.params = list(fill = "white"))
+        print(plot)
+    }
+
+}
 
 
 
