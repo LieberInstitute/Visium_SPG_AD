@@ -15,7 +15,7 @@ load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = T
 load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), verbose = TRUE)
 
 ##output directories
-dir_plots <- here::here("plots", "07_spot_qc", "temp")
+dir_plots <- here::here("plots", "07_spot_qc", "pathology_vs_Bayesspace_cluster_boxplots")
 dir.create(dir_plots, showWarnings = FALSE)
 
 
@@ -76,9 +76,9 @@ pathology_measures = c("PpTau", "PAbeta")
 
 #create plots for whole genome
 for( measure in pathology_measures){
+  pdf(file.path(dir_plots, paste0("spe_whole","_",measure, ".pdf")), width = 14)
 
     for (i in cols_whole) {
-        pdf(file.path(dir_plots, paste0("spe_whole","_", i,"_",measure, ".pdf")), width = 14)
 
         plot<- ggpubr::ggviolin(
             cluster_whole_df,
@@ -92,17 +92,16 @@ for( measure in pathology_measures){
 
 
         print(plot)
-        dev.off()
+
     }
-
+  dev.off()
 }
-
 
 
 #create plots for targeted genome
 for(measure in pathology_measures){
+  pdf(file.path(dir_plots, paste0("spe_targetted","_",measure, ".pdf")), width = 14)
     for (i in cols_targeted) {
-        pdf(file.path(dir_plots, paste0("spe_targeted","_", i, ".pdf")), width = 14)
 
         plot<- ggpubr::ggviolin(
             cluster_targeted_df,
@@ -115,6 +114,6 @@ for(measure in pathology_measures){
                      scales = "free_y")
         print(plot)
     }
-
+  dev.off()
 }
 
