@@ -76,16 +76,23 @@ pathology_measures = c("PpTau", "PAbeta")
 
 #create plots for whole genome
 for( measure in pathology_measures){
+
     for (i in cols_whole) {
-        pdf(file.path(dir_plots, paste0(spe_whole,"_", sample_id,"_", i, ".pdf")), width = 14)
+        pdf(file.path(dir_plots, paste0("spe_whole","_", i,"_",measure, ".pdf")), width = 14)
 
         plot<- ggpubr::ggviolin(
             cluster_whole_df,
             i,
-            "PpTau",
+            measure,
             add= "boxplot",
             add.params = list(fill = "white"))
+        plot <-facet(plot+ theme_bw(), facet.by = "sample_id",
+                     short.panel.labs = FALSE,
+                     scales = "free_y")
+
+
         print(plot)
+        dev.off()
     }
 
 }
@@ -93,20 +100,21 @@ for( measure in pathology_measures){
 
 
 #create plots for targeted genome
-for( measure in pathology_measures){
+for(measure in pathology_measures){
     for (i in cols_targeted) {
-        pdf(file.path(dir_plots, paste0(spe_targeted,"_", sample_id,"_", i, ".pdf")), width = 14)
+        pdf(file.path(dir_plots, paste0("spe_targeted","_", i, ".pdf")), width = 14)
 
         plot<- ggpubr::ggviolin(
             cluster_targeted_df,
             i,
-            "PpTau",
+            measure,
             add= "boxplot",
             add.params = list(fill = "white"))
+        plot <-facet(plot+ theme_bw(), facet.by = "sample_id",
+                     short.panel.labs = FALSE,
+                     scales = "free_y")
         print(plot)
     }
 
 }
-
-
 
