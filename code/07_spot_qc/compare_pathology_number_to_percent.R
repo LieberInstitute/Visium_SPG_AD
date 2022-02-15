@@ -79,6 +79,14 @@ for (path in c('Abeta', 'pTau')){
 
 }
 
+# create plots for targeted genome
+for (path in c('Abeta', 'pTau')){
+    pdf(file.path(dir_plots, paste0("spe_targeted", "_",path,"_","scatter",".pdf")), width = 14)
+    print(create_plots(spe_targeted, path))
+    dev.off()
+
+}
+
 
 
 '''
