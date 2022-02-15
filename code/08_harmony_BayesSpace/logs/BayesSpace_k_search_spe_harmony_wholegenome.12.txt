@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Tue Feb  8 20:33:34 EST 2022
+Wed Feb  9 13:26:46 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9131874
+Job id: 9135144
 Job name: BayesSpace_k_search_spe_harmony_wholegenome
-Hostname: compute-100.cm.cluster
+Hostname: compute-096.cm.cluster
 Task id: 12
 Unloading conda_R/4.1.x
 Loading conda_R/4.1.x
@@ -99,18 +99,16 @@ The following objects are masked from ‘package:matrixStats’:
     anyMissing, rowMedians
 
 Running spatialCluster()
-[1] "2022-02-08 20:38:24 EST"
+[1] "2022-02-09 13:31:31 EST"
 Neighbors were identified for 38111 out of 38115 spots.
 Fitting model...
 Calculating labels using iterations 1000 through 50000.
-[1] "2022-02-09 09:42:33 EST"
+[1] "2022-02-10 02:36:25 EST"
 Warning message:
 In dir.create(outdir, recursive = TRUE) :
   '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/clusters_BayesSpace/BayesSpace_harmony_k12' already exists
-Error in dyn.load(file, DLLpath = DLLpath, ...) : 
-  unable to load shared object '/jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library/farver/libs/farver.so':
-  /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library/farver/libs/farver.so: failed to map segment from shared object: Cannot allocate memory
-Calls: vis_grid_clus ... alpha -> loadNamespace -> library.dynam -> dyn.load
-Execution halted
-**** Job ends ****
-Wed Feb  9 09:42:53 EST 2022
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k12.pdf"
+[1] "Reproducibility information:"
+[1] "2022-02-10 02:36:42 EST"
+     user    system   elapsed 
+46887.510   490.975 47394.604 
