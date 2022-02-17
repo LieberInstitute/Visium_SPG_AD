@@ -28,7 +28,7 @@ for spefile in spe_harmony_wholegenome spe_harmony_targeted; do
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
 #$ -m e
-#$ -t 4-15
+#$ -t 2-15
 #$ -tc 20
 #$ -hold_jid preprocess_and_harmony_${speprevious}
 
