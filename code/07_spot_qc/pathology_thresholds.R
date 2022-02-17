@@ -37,6 +37,23 @@ path_df |> filter(sample_id %in% controls[1:2]) |> summarise_if(is.numeric, max,
 
 
 
+
+##Frequency of unique NAbeta values across all controls
+
+path_df |> filter(sample_id %in% controls) |> count(NAbeta) |>
+  group_by(NAbeta) |> mutate(prop = prop.table(n))
+
+'''
+    NAbeta   n  prop
+   <int> <int> <dbl>
+1      0 12963     1
+2      1    22     1
+3      2     3     1
+4      3     2     1
+5      4     1     1
+'''
+
+
 ##Quantiles for NAbeta
 path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
     summarise( q = list(quantile(NAbeta)), na.rm = TRUE) |> unnest_wider(q)
@@ -50,28 +67,17 @@ sample_id            `0%` `25%` `50%` `75%` `100%` na.rm
 '''
 
 
-##Quantiles for NAbeta
+##New percentiles for NAbeta
 path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
-  summarise( quantiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
+  summarise( percentiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
              NAbeta = quantile(NAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
              na.rm = TRUE)
   # Everything zero except 0.999 where NAbeta = 1
 
 
-##Frequency of unique NAbeta values across all controls
 
-path_df |> filter(sample_id %in% controls) |> count(NAbeta) |>
-    group_by(NAbeta) |> mutate(prop = prop.table(n))
 
-'''
-    NAbeta   n  prop
-   <int> <int> <dbl>
-1      0 12963     1
-2      1    22     1
-3      2     3     1
-4      3     2     1
-5      4     1     1
-'''
+
 
 ## Quantiles for PAbeta
 path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
@@ -85,4 +91,9 @@ sample_id            `0%` `25%` `50%` `75%` `100%` na.rm
 3 V10T31036_A1_Br3874     0     0     0     0 0.149  TRUE
 '''
 
-
+##New percentiles for PAbeta
+path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
+  summarise( percentiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
+             NAbeta = quantile(PAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
+             na.rm = TRUE)
+## for 004 and 1036 99.9% is 0.108 and 0.0543 respectively. Zeros for everything else.
