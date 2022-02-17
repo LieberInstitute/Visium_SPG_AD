@@ -89,36 +89,6 @@ for (path in c('Abeta', 'pTau')){
 
 
 
-'''
-    if(pathology == 'Abeta'){
-        col1_row1 = path_df |> filter(NAbeta > n & PAbeta > p) |> count()
-        col1_row2 = path_df |> filter(NAbeta > n & PAbeta <= p) |> count()
-        col2_row1 = path_df |> filter(NAbeta == n & PAbeta > p) |> count()
-        col2_row2 = path_df |> filter(NAbeta == n & PAbeta <= p) |> count()
-
-        row_names = c('PAbeta Present', 'PAbeta Absent')
-        col_names = c('NAbeta Present', 'NAbeta Absent')
-
-        }
-
-    if(pathology =='pTau'){
-        col1_row1 = path_df |> filter(NpTau > n & PpTau > p) |> count()
-        col1_row2 = path_df |> filter(NpTau > n & PpTau <= p) |> count()
-        col2_row1 = path_df |> filter(NpTau == n & PpTau > p) |> count()
-        col2_row2 = path_df |> filter(NpTau == n & PpTau <= p) |> count()
-
-        row_names = c('PpTau Present', 'PpTau Absent')
-        col_names = c('NpTau Present', 'NpTau Absent')
-        }
-
-    vals = c(col1_row1, col1_row2, col2_row1, col2_row2)
-    matrix_2x2 = matrix(vals, nrow = 2, ncol = 2,dimnames=list(row_names, col_names))
-    return(matrix_2x2)
-'''
-
-
-
-
 
 ## Reproducibility information
 print("Reproducibility information:")
