@@ -3,8 +3,6 @@ library("here")
 library("SpatialExperiment")
 library("scran")
 library("scater")
-library("ggpubr")
-library("ggplot2")
 library("dplyr")
 library("spatialLIBD")
 library("sessioninfo")
@@ -38,6 +36,7 @@ path_df |> filter(sample_id %in% controls[1:2]) |> summarise_if(is.numeric, max,
 
 
 
+
 ##Quantiles for NAbeta
 path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
     summarise( q = list(quantile(NAbeta)), na.rm = TRUE) |> unnest_wider(q)
@@ -49,6 +48,15 @@ sample_id            `0%` `25%` `50%` `75%` `100%` na.rm
 2 V10A27106_A1_Br3874     0     0     0     0      2 TRUE
 3 V10T31036_A1_Br3874     0     0     0     0      3 TRUE
 '''
+
+
+##Quantiles for NAbeta
+path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
+  summarise( quantiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
+             NAbeta = quantile(NAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
+             na.rm = TRUE)
+  # Everything zero except 0.999 where NAbeta = 1
+
 
 ##Frequency of unique NAbeta values across all controls
 
