@@ -5,7 +5,7 @@
 #$ -o logs/BayesSpace_k_search_spe_harmony_wholegenome.$TASK_ID.txt
 #$ -e logs/BayesSpace_k_search_spe_harmony_wholegenome.$TASK_ID.txt
 #$ -m e
-#$ -t 9
+#$ -t 12
 #$ -tc 20
 #$ -hold_jid preprocess_and_harmony_spe_postqc
 
