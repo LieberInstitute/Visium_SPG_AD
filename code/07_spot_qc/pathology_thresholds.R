@@ -97,3 +97,10 @@ path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
              NAbeta = quantile(PAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
              na.rm = TRUE)
 ## for 004 and 1036 99.9% is 0.108 and 0.0543 respectively. Zeros for everything else.
+
+
+path_df_AD <- path_df |> filter(!sample_id %in% controls)
+count(path_df_AD) #25124 total spots in all AD samples
+
+thresholded <- path_df_AD |> filter(NAbeta >= 1 & PAbeta >= 0.108)
+count(thresholded) #498 spots with >, and 1125 with >=
