@@ -30,8 +30,7 @@ cluster_spe <- cluster_import(
 
 
 
-controls <- c("V10A27106_A1_Br3874", "V10A27004_A1_Br3874", "V10T31036_A1_Br3874")
-#last one shouldn't be used for pTau
+
 
 
 colData(cluster_spe)
@@ -42,13 +41,37 @@ cluster_df <- as.data.frame(colData(cluster_spe))
 cluster_df <- cluster_df |> mutate(across(matches("BayesSpace_harmony"),factor ))
 
 cluster_df <- cluster_df |> mutate(pTau_outliers =
-                                       ifelse(NpTau > 7 &PpTau > 0.014, "outlier", "normal"))
+                                       ifelse(NpTau > 7 & PpTau > 0.014, "outlier", "normal"))
 
 
 
 # Stacked bar plots, add labels inside bars
-plot <- ggbarplot(cluster_df, x = "imported_BayesSpace_harmony_k14", y = "pTau_outliers",
-          fill = "pTau_outliers", color = "pTau_outliers",
-          palette = c("gray", "black"),
-          label = TRUE, lab.col = "white", lab.pos = "in")
+
+plot <- ggplot(cluster_df, aes(fill = pTau_outliers,
+                       x = imported_BayesSpace_harmony_k14, y = PpTau))+
+    geom_bar(position = "fill", stat = "identity")
+
+
+
+bayes_cols <- cluster_df |> select(matches("BayesSpace_harmony"))
+
+##
+
+pdf(file.path(dir_plots, paste0("spe_whole_barplots_pTau", ".pdf")), width = 14)
+
+for (i in bayes_cols) {
+    plot <- ggplot(cluster_df, aes(x= i))+
+        geom_bar(aes(fill = pTau_outliers),
+                    position = 'fill')+
+        scale_y_continuous(labels = scales::percent)+
+        labs ( y = "Percentage")
+    plot <-facet(plot+ theme_bw(), facet.by = "sample_id",
+            short.panel.labs = FALSE)
+
+
+    print(plot)
+    }
+dev.off()
+
+
 
