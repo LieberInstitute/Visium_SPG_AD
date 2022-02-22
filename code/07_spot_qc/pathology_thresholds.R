@@ -20,22 +20,26 @@ controls <- c("V10A27106_A1_Br3874", "V10A27004_A1_Br3874", "V10T31036_A1_Br3874
 ##find max of NpTau, PpTau
 
 path_df <- data.frame(
-    spot_id =rownames(colData(spe)),
-    diagnosis = colData(spe)$diagnosis,
-    sample_id = colData(spe)$sample_id,
-    NAbeta = colData(spe)$NAbeta,
-    NpTau = colData(spe)$NpTau,
-    PAbeta = colData(spe)$PAbeta,
-    PpTau = colData(spe)$PpTau)
+    spot_id = colnames(spe),
+    diagnosis = spe$diagnosis,
+    sample_id = spe$sample_id,
+    NAbeta = spe$NAbeta,
+    NpTau = spe$NpTau,
+    PAbeta = spe$PAbeta,
+    PpTau = spe$PpTau
+)
 
-
+## Just for NpTau/PpTau
 path_df |> filter(sample_id %in% controls[1:2]) |> summarise_if(is.numeric, max, na.rm = TRUE)
 
-#NAbeta NpTau    PAbeta       PpTau
-#  4     7     0.1983471      0.01396914
+#   NAbeta NpTau    PAbeta      PpTau
+# 1      4     7 0.1983471 0.01396914
 
+## Just for NAbeta/PAbeta
+path_df |> filter(sample_id %in% controls[c(1, 3)]) |> summarise_if(is.numeric, max, na.rm = TRUE)
 
-
+#   NAbeta NpTau   PAbeta      PpTau
+# 1      3    83 0.149126 0.04073722
 
 
 ##Frequency of unique NAbeta values across all controls
@@ -102,5 +106,10 @@ path_df |> filter(sample_id %in% controls) |> group_by(sample_id) |>
 path_df_AD <- path_df |> filter(!sample_id %in% controls)
 count(path_df_AD) #25124 total spots in all AD samples
 
-thresholded <- path_df_AD |> filter(NAbeta >= 1 & PAbeta >= 0.108)
-count(thresholded) #498 spots with >, and 1125 with >=
+thresholded <- path_df_AD |> filter(NAbeta > 1 | PAbeta > 0.108)
+count(thresholded)
+# 1 2004
+
+path_df_AD |> filter(NAbeta >= 1 | PAbeta >= 0.108) |> count()
+#      n
+# 1 2861
