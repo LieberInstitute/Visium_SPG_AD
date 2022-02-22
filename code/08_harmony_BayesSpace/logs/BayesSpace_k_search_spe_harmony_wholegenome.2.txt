@@ -6,13 +6,13 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/4.1.x
 **** Job starts ****
-Wed Feb  9 12:53:31 EST 2022
+Sun Feb 20 04:49:36 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9135144
+Job id: 9182621
 Job name: BayesSpace_k_search_spe_harmony_wholegenome
-Hostname: compute-099.cm.cluster
-Task id: 8
+Hostname: compute-072.cm.cluster
+Task id: 2
 Unloading conda_R/4.1.x
 Loading conda_R/4.1.x
 
@@ -99,19 +99,20 @@ The following objects are masked from ‘package:matrixStats’:
     anyMissing, rowMedians
 
 Running spatialCluster()
-[1] "2022-02-09 12:58:15 EST"
+[1] "2022-02-20 04:55:43 EST"
 Neighbors were identified for 38111 out of 38115 spots.
 Fitting model...
 Calculating labels using iterations 1000 through 50000.
-[1] "2022-02-10 02:03:26 EST"
+[1] "2022-02-21 03:06:32 EST"
 Warning message:
-In dir.create(outdir, recursive = TRUE) :
-  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/clusters_BayesSpace/BayesSpace_harmony_k08' already exists
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k08.pdf"
+In makePalette(n, palette36) :
+  minimal value for n is 3, returning requested palette with 3 levels
+
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k02.pdf"
 [1] "Reproducibility information:"
-[1] "2022-02-10 02:03:42 EST"
+[1] "2022-02-21 03:07:04 EST"
      user    system   elapsed 
-46840.307   508.136 47410.046 
+78707.915  1522.263 80246.152 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.1.2 Patched (2021-11-04 r81138)
@@ -122,7 +123,7 @@ In dir.create(outdir, recursive = TRUE) :
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-02-10
+ date     2022-02-21
  pandoc   2.13 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -155,14 +156,14 @@ In dir.create(outdir, recursive = TRUE) :
  bslib                    0.3.1    2021-10-06 [2] CRAN (R 4.1.2)
  cachem                   1.0.6    2021-08-19 [2] CRAN (R 4.1.2)
  callr                    3.7.0    2021-04-20 [2] CRAN (R 4.1.0)
- cli                      3.1.1    2022-01-20 [2] CRAN (R 4.1.2)
+ cli                      3.2.0    2022-02-14 [2] CRAN (R 4.1.2)
  cluster                  2.1.2    2021-04-17 [3] CRAN (R 4.1.2)
  coda                     0.19-4   2020-09-30 [2] CRAN (R 4.1.0)
  codetools                0.2-18   2020-11-04 [3] CRAN (R 4.1.2)
  colorspace               2.0-2    2021-06-24 [2] CRAN (R 4.1.0)
  config                   0.3.1    2020-12-17 [1] CRAN (R 4.1.2)
  cowplot                  1.1.1    2020-12-30 [1] CRAN (R 4.1.2)
- crayon                   1.4.2    2021-10-29 [2] CRAN (R 4.1.2)
+ crayon                   1.5.0    2022-02-14 [2] CRAN (R 4.1.2)
  curl                     4.3.2    2021-06-23 [2] CRAN (R 4.1.0)
  data.table               1.14.2   2021-09-27 [2] CRAN (R 4.1.2)
  DBI                      1.1.2    2021-12-20 [2] CRAN (R 4.1.2)
@@ -223,7 +224,7 @@ In dir.create(outdir, recursive = TRUE) :
  lattice                  0.20-45  2021-09-22 [3] CRAN (R 4.1.2)
  lazyeval                 0.2.2    2019-03-15 [2] CRAN (R 4.1.0)
  lifecycle                1.0.1    2021-09-24 [2] CRAN (R 4.1.2)
- limma                    3.50.0   2021-10-26 [2] Bioconductor
+ limma                    3.50.1   2022-02-17 [2] Bioconductor
  locfit                   1.5-9.4  2020-03-25 [2] CRAN (R 4.1.0)
  magick                   2.7.3    2021-08-18 [2] CRAN (R 4.1.2)
  magrittr                 2.0.2    2022-01-26 [2] CRAN (R 4.1.2)
@@ -268,7 +269,7 @@ In dir.create(outdir, recursive = TRUE) :
  roxygen2                 7.1.2    2021-09-08 [2] CRAN (R 4.1.2)
  rprojroot                2.0.2    2020-11-15 [2] CRAN (R 4.1.0)
  Rsamtools                2.10.0   2021-10-26 [2] Bioconductor
- RSQLite                  2.2.9    2021-12-06 [2] CRAN (R 4.1.2)
+ RSQLite                  2.2.10   2022-02-17 [2] CRAN (R 4.1.2)
  rstudioapi               0.13     2020-11-12 [2] CRAN (R 4.1.0)
  rsvd                     1.0.5    2021-04-16 [1] CRAN (R 4.1.2)
  rtracklayer              1.54.0   2021-10-26 [2] Bioconductor
@@ -310,7 +311,7 @@ In dir.create(outdir, recursive = TRUE) :
  xml2                     1.3.3    2021-11-30 [2] CRAN (R 4.1.2)
  xtable                   1.8-4    2019-04-21 [2] CRAN (R 4.1.0)
  XVector                  0.34.0   2021-10-26 [2] Bioconductor
- yaml                     2.2.2    2022-01-25 [2] CRAN (R 4.1.2)
+ yaml                     2.3.4    2022-02-17 [2] CRAN (R 4.1.2)
  zlibbioc                 1.40.0   2021-10-26 [2] Bioconductor
  zoo                      1.8-9    2021-03-09 [2] CRAN (R 4.1.0)
 
@@ -320,15 +321,5 @@ In dir.create(outdir, recursive = TRUE) :
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71
-[1] "2022-02-10 02:03:52 EST"
-2022-02-10 02:03:53 processing sample V10A27106_A1_Br3874
-Calculating labels using iterations 10000 through 2e+05.
-2022-02-12 16:28:13 processing sample V10A27106_B1_Br3854
-Calculating labels using iterations 10000 through 2e+05.
-2022-02-14 08:56:03 processing sample V10A27106_C1_Br3873
-Calculating labels using iterations 10000 through 2e+05.
-2022-02-16 02:32:36 processing sample V10A27106_D1_Br3880
-Calculating labels using iterations 10000 through 2e+05.
-2022-02-18 23:22:11 processing sample V10T31036_A1_Br3874
-Calculating labels using iterations 10000 through 2e+05.
-2022-02-21 15:57:23 processing sample V10T31036_B1_Br3854
+[1] "2022-02-21 03:07:29 EST"
+2022-02-21 03:07:31 processing sample V10A27106_A1_Br3874
