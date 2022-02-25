@@ -186,4 +186,10 @@ for (i in colnames(bayes_cols)) {
 dev.off()
 
 
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
 

@@ -113,3 +113,10 @@ count(thresholded)
 path_df_AD |> filter(NAbeta >= 1 | PAbeta >= 0.108) |> count()
 #      n
 # 1 2861
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
