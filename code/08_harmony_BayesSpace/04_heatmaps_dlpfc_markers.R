@@ -10,8 +10,11 @@ library("dplyr")
 library("spatialLIBD")
 library("sessioninfo")
 library("scuttle")
+library('stringr')
 library(Matrix.utils)
 library(ComplexHeatmap)
+library(cowplot)
+
 
 
 
@@ -56,22 +59,60 @@ sig_genes$gene_layer <- paste(sig_genes$gene, sig_genes$layer)
 #can't add counts_subset to assays since rownames are not identical to OG
 
 
+rownames(sig_genes)
+sig_gen_index <- match(colnames(pb), rownames(sig_genes))
+reordered <- sig_genes[sig_gen_index,]
+
 
 ##pseudobulking
 
 spe_new <- SpatialExperiment(assays = list(counts = counts_subset),
                          colData = colData(spe))
 
+
 groups <- colData(spe_new)[, c("sample_id", "imported_BayesSpace_harmony_k15")]
 
 pb <- aggregate.Matrix(t(counts(spe_new)),
                        groupings = groups, fun = "sum")
-colnames(pb)
-rownames(sig_genes)
-sig_gen_index <- match(colnames(pb), rownames(sig_genes))
-reordered <- sig_genes[sig_gen_index,]
-colnames(pb) <- reordered$gene_layer
-#ave.beta <- aggregateAcrossCells(spe_new, statistics="mean",
-                                 #use.assay.type="counts", ids=c(spe$sample_id, spe$imported_BayesSpace_harmony_k08))
-Heatmap(as.matrix(pb))
 
+pb<- as.matrix(pb)
+pb<-as.data.frame(pb)
+colnames(pb) <- reordered$gene_layer
+
+pb$sample_cluster <- rownames(pb)
+pb <-pb |> mutate(sample = str_sub(sample_cluster, 1,19))
+pb<- pb |> mutate(cluster = str_sub(sample_cluster, 21))
+
+s <- split(pb, pb$sample)
+
+
+## plot for k = 15
+myplots <- list()
+
+for(i in 1:10){
+rownames(s[[i]]) = s[[i]]$cluster
+plot <- grid.grabExpr(draw(Heatmap(as.matrix(s[[i]][,1:69]),
+        column_names_gp = grid::gpar(fontsize = 4),
+        row_names_gp = grid::gpar(fontsize = 6),
+        column_title = as.character(s[[i]]$sample[1]),
+        column_title_gp = grid::gpar(fontsize = 8),
+        name = " ")))
+myplots[[i]] <- plot
+
+
+}
+cowplot::plot_grid(plotlist = myplots, ncol =4)
+
+
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
+
+
+
+#ave.beta <- aggregateAcrossCells(spe_new, statistics="mean",
+#use.assay.type="counts", ids=c(spe$sample_id, spe$imported_BayesSpace_harmony_k08))
