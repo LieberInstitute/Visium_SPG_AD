@@ -11,6 +11,7 @@ library('stringr')
 library('Matrix.utils')
 library('ComplexHeatmap')
 library('cowplot')
+library('Polychrome')
 
 sig_genes <- read_csv('https://raw.githubusercontent.com/LieberInstitute/HumanPilot/master/Analysis/Layer_Guesses/sig_genes.csv')
 table(sig_genes$test)
@@ -121,6 +122,3 @@ options(width = 120)
 session_info()
 
 
-
-#ave.beta <- aggregateAcrossCells(spe_new, statistics="mean",
-#use.assay.type="counts", ids=c(spe$sample_id, spe$imported_BayesSpace_harmony_k08))
