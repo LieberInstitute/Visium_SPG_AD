@@ -1,0 +1,50 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/4.1.x
+**** Job starts ****
+Tue Mar  1 13:27:28 EST 2022
+**** JHPCE info ****
+User: mtippani
+Job id: 9289520
+Job name: refineVIFAD3_A1.sh
+Hostname: compute-103.cm.cluster
+Task id: undefined
+****
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD3_V10T31-036_A1.mat
+****
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+                  R2019a (9.6.0.1072779) 64-bit (glnxa64)
+                               March 8, 2019
+
+ 
+For online documentation, see https://www.mathworks.com/support
+For product information, visit www.mathworks.com.
+ 
+{Error using figure
+This functionality is no longer supported under the -nojvm startup option. For
+more information, see "Changes to -nojvm Startup Option" in the MATLAB Release
+Notes. To view the release note in your system browser, run
+web('http://www.mathworks.com/help/matlab/release-notes.html#btsurqv-6',
+'-browser').
+
+Error in refineIF (line 11)
+figure('Visible','off')
+} 
+>> **** Job ends ****
+Tue Mar  1 13:29:02 EST 2022

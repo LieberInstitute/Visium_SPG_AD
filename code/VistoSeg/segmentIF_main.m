@@ -27,7 +27,7 @@ refineIF(filename,[4801,5800,8001,9000],0.15,0.3,0.3,0.2)
 
 filename='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD3_V10T31-036_A1.mat';
 %segmentIF(filename,[13501,14500,8701,9700])
-refineIF(filename,[13501,14500,8701,9700],[],[],0.15,[])
+refineIF(filename,[13501,14500,8701,9700],[],[],0.15,0.1)
 
 filename='/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD3_V10T31-036_B1.mat';
 %segmentIF(filename,[7001,8000,9501,10500])
