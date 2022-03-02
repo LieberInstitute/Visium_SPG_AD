@@ -153,8 +153,8 @@ segmentations_list <-
                 "tissue_spot_counts.csv"
             )
         if (!file.exists(file)) {
-              return(NULL)
-          }
+            return(NULL)
+        }
         x <- read.csv(file)
         x$key <- paste0(x$barcode, "_", sampleid)
         return(x)
@@ -162,8 +162,8 @@ segmentations_list <-
 ## Merge them (once the these files are done, this could be replaced by an rbind)
 segmentations <-
     Reduce(function(...) {
-          merge(..., all = TRUE)
-      }, segmentations_list[lengths(segmentations_list) > 0])
+        merge(..., all = TRUE)
+    }, segmentations_list[lengths(segmentations_list) > 0])
 
 ## Add the information
 segmentation_match <- match(spe$key, segmentations$key)

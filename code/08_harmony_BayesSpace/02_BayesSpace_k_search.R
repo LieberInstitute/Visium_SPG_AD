@@ -130,8 +130,8 @@ Sys.time()
 spe$imagerow <- spatialData(spe)$array_row
 spe$imagecol <- spatialData(spe)$array_col
 
-for(sample in unique(spe$sample_id)) {
-	message(Sys.time(), " processing sample ", sample)
+for (sample in unique(spe$sample_id)) {
+    message(Sys.time(), " processing sample ", sample)
     set.seed(20220208)
     spe_small <- spatialEnhance(spe[, spe$sample_id == sample], use.dimred = "HARMONY", q = k)
     spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster

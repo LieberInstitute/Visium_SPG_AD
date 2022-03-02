@@ -1,44 +1,45 @@
-library('readr')
-library('here')
+library("readr")
+library("here")
 library("SpatialExperiment")
 library("scran")
 library("scater")
 library("spatialLIBD")
 library("sessioninfo")
-library('ComplexHeatmap')
-library('cowplot')
+library("ComplexHeatmap")
+library("cowplot")
 
 
-##load and process sig_genes
+## load and process sig_genes
 sig_genes <-
     read_csv(
-        'https://raw.githubusercontent.com/LieberInstitute/HumanPilot/master/Analysis/Layer_Guesses/sig_genes.csv'
+        "https://raw.githubusercontent.com/LieberInstitute/HumanPilot/master/Analysis/Layer_Guesses/sig_genes.csv"
     )
 table(sig_genes$test)
 
-#filter layer-related genes
+# filter layer-related genes
 sig_genes <- sig_genes |> filter(test == "layer_vs_rest")
-#dim(sig_genes)  70x15
+# dim(sig_genes)  70x15
 
-#create new column to merge gene name and layer
+# create new column to merge gene name and layer
 sig_genes <- as.data.frame(sig_genes)
 rownames(sig_genes) <- sig_genes$ensembl
 sig_genes$gene_layer <- paste(sig_genes$gene, sig_genes$layer)
 
-##output directories
+## output directories
 dir_plots <- here::here("plots", "07_spot_qc", "heatmaps")
 dir.create(dir_plots, showWarnings = FALSE)
 
-################################whole genome####################################
+################################ whole genome####################################
 
 ## Load basic SPE data
 load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"),
-    verbose = TRUE)
+    verbose = TRUE
+)
 
 
-#import cluster info for whole genome
+# import cluster info for whole genome
 dir_rdata_whole <-
-    here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") #, suffix
+    here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") # , suffix
 
 spe <- cluster_import(
     spe,
@@ -47,7 +48,7 @@ spe <- cluster_import(
 )
 
 ## Check genes not present in our data
-sig_genes[!sig_genes$ensembl %in% rownames(spe),]
+sig_genes[!sig_genes$ensembl %in% rownames(spe), ]
 #                 top  layer      gene   tstat         pval          fdr gene_index
 # ENSG00000259527   4 Layer1 LINC00052 11.3532 4.328627e-18 2.416564e-14      16455
 #                         ensembl KM_Zeng    BM RNAscope          test in_rows
@@ -56,11 +57,11 @@ sig_genes[!sig_genes$ensembl %in% rownames(spe),]
 # ENSG00000259527 Layer1_top4;Layer1-Layer6_top10 LINC00052 Layer1
 
 
-#check if BayesSpace columns have NA vals
+# check if BayesSpace columns have NA vals
 sum(is.na(as.data.frame(colData(spe)) |> select(matches(
     "BayesSpace_harmony"
 ))))
-#[1] 0
+# [1] 0
 
 
 bayes_cols <-
@@ -72,11 +73,13 @@ for (k in bayes_cols) {
     groups <- colData(spe)[, c("sample_id", k)]
 
     ## Pseudo-bulk for our current BayesSpace cluster results
-    spe_pseudo <- aggregateAcrossCells(spe,
+    spe_pseudo <- aggregateAcrossCells(
+        spe,
         DataFrame(
             BayesSpace = colData(spe)[[k]],
             sample_id = spe$sample_id
-        ))
+        )
+    )
     spe_pseudo <- logNormCounts(spe_pseudo)
 
     ## plot for k = 15
@@ -102,22 +105,21 @@ for (k in bayes_cols) {
             )
         ))
         myplots[[i]] <- plot
-
-
     }
     plot_grid <- cowplot::plot_grid(plotlist = myplots, ncol = 4)
     print(plot_grid)
 }
 dev.off()
 
-################################targeted genome##################################
+################################ targeted genome##################################
 
 load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"),
-    verbose = TRUE)
+    verbose = TRUE
+)
 
-#import cluster info for targeted
+# import cluster info for targeted
 dir_rdata_whole <-
-    here::here("processed-data", "08_harmony_BayesSpace", "targeted") #, suffix
+    here::here("processed-data", "08_harmony_BayesSpace", "targeted") # , suffix
 
 spe_targeted <- cluster_import(
     spe_targeted,
@@ -125,22 +127,24 @@ spe_targeted <- cluster_import(
     prefix = "imported_"
 )
 
-#add logcounts(spe)
+# add logcounts(spe)
 spe_targeted <- logNormCounts(spe_targeted)
 
-#only keep gene logcounts found in sig_genes
+# only keep gene logcounts found in sig_genes
 counts_subset <-
-    logcounts(spe_targeted)[rownames(logcounts(spe_targeted)) %in% sig_genes$ensembl,]
-#dim(counts_subset)
-#[1] 68 38115
-#setdiff(rownames(counts_subset),sig_genes$ensembl)
-#character(0)   setdiff returns this.
+    logcounts(spe_targeted)[rownames(logcounts(spe_targeted)) %in% sig_genes$ensembl, ]
+# dim(counts_subset)
+# [1] 68 38115
+# setdiff(rownames(counts_subset),sig_genes$ensembl)
+# character(0)   setdiff returns this.
 
 
-##pseudobulking
+## pseudobulking
 
-spe_new <- SpatialExperiment(assays = list(counts = counts_subset),
-    colData = colData(spe_targeted))
+spe_new <- SpatialExperiment(
+    assays = list(counts = counts_subset),
+    colData = colData(spe_targeted)
+)
 
 
 bayes_cols <-
@@ -152,7 +156,8 @@ for (k in bayes_cols) {
     groups <- colData(spe_new)[, c("sample_id", k)]
 
     pb <- aggregate.Matrix(t(counts(spe_new)),
-        groupings = groups, fun = "sum")
+        groupings = groups, fun = "sum"
+    )
 
     sig_gen_index <- match(colnames(pb), rownames(sig_genes))
     reordered <- sig_genes[sig_gen_index, ]
@@ -172,7 +177,7 @@ for (k in bayes_cols) {
     myplots <- list()
 
     for (i in 1:10) {
-        rownames(s[[i]]) = s[[i]]$cluster
+        rownames(s[[i]]) <- s[[i]]$cluster
         plot <- grid.grabExpr(draw(
             Heatmap(
                 as.matrix(s[[i]][, 1:69]),
@@ -184,8 +189,6 @@ for (k in bayes_cols) {
             )
         ))
         myplots[[i]] <- plot
-
-
     }
     plot_grid <- cowplot::plot_grid(plotlist = myplots, ncol = 4)
     print(plot_grid)
