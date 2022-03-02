@@ -20,10 +20,12 @@ echo "Task id: ${SGE_TASK_ID}"
 module list
 
 CODEDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code"
+PROCESSEDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data"
 
 ## Delete the logs and re-submit the build SPE script
 cd ${CODEDIR}/04_build_spe
 rm logs/build_basic_spe.txt
+rm ${PROCESSEDIR}/04_build_spe/spe*.Rdata
 qsub build_basic_spe.sh
 
 ## Delete SPE versions for shiny
@@ -34,6 +36,7 @@ cd ${CODEDIR}/07_spot_qc
 rm logs/qc_metrics_and_segmentation.txt
 rm logs/subset_data_shiny.txt
 rm logs/compare_pathology_number_to_percent.txt
+#rm ${PROCESSEDIR}/07_spot_qc/spe*.Rdata ## Won't do this now since some 08_harmony_BayesSpace are running
 qsub qc_metrics_and_segmentation.sh
 qsub subset_data_shiny.sh
 qsub compare_pathology_number_to_percent.sh
