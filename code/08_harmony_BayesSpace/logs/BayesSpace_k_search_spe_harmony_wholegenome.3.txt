@@ -319,3 +319,9 @@ Calculating labels using iterations 1000 through 50000.
 Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71
 [1] "2022-02-21 02:19:36 EST"
 2022-02-21 02:19:38 processing sample V10A27106_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-24 23:16:17 processing sample V10A27106_B1_Br3854
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-27 15:31:40 processing sample V10A27106_C1_Br3873
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-02 15:25:54 processing sample V10A27106_D1_Br3880

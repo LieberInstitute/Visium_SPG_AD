@@ -325,3 +325,7 @@ In makePalette(n, palette36) :
 Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71
 [1] "2022-02-21 09:15:41 EST"
 2022-02-21 09:15:42 processing sample V10A27106_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-26 05:02:30 processing sample V10A27106_B1_Br3854
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-01 09:46:34 processing sample V10A27106_C1_Br3873

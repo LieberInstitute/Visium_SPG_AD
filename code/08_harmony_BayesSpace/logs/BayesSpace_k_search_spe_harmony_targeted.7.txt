@@ -322,3 +322,13 @@ In dir.create(outdir, recursive = TRUE) :
 Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71
 [1] "2022-02-19 03:59:30 EST"
 2022-02-19 03:59:31 processing sample V10A27106_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-21 18:00:32 processing sample V10A27106_B1_Br3854
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-23 10:12:46 processing sample V10A27106_C1_Br3873
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-25 03:27:15 processing sample V10A27106_D1_Br3880
+Calculating labels using iterations 10000 through 2e+05.
+2022-02-27 23:29:58 processing sample V10T31036_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-02 15:09:38 processing sample V10T31036_B1_Br3854
