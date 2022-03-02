@@ -5,6 +5,7 @@
 #$ -o logs/compare_pathology_number_to_percent.txt
 #$ -e logs/compare_pathology_number_to_percent.txt
 #$ -m e
+#$ -hold_jid qc_metrics_and_segmentation
 
 echo "**** Job starts ****"
 date
@@ -17,7 +18,7 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.1.x
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
