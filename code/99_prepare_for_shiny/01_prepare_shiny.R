@@ -28,10 +28,12 @@ spe <- cluster_import(
     prefix = ""
 )
 
-## Set pathology levels
-spe$path_pTau <- ifelse(spe$NpTau > 7 | spe$PpTau > 0.014, "pTau+", "pTau-")
-spe$path_Abeta <- ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
-spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta) ## missing finding neighbors
+## Import pathology levels
+spe <- cluster_import(
+    spe,
+    cluster_dir = here::here("processed-data", "09_pathology_vs_BayesSpace", "pathology_levels"),
+    prefix = ""
+)
 
 ## Convert pathology variables into factors
 for(i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {

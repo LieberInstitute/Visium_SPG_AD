@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=15G,h_vmem=15G,h_fsize=100G
+#$ -l mem_free=2G,h_vmem=2G,h_fsize=100G
 #$ -N VisiumIFAD_run_all_post_spaceranger
 #$ -o logs/run_all_post_spaceranger.txt
 #$ -e logs/run_all_post_spaceranger.txt
@@ -48,12 +48,19 @@ qsub 02_compare_pathology_number_to_percent.sh
 # sh 02_BayesSpace_k_search.sh
 # qsub 03_plot_SNN_k10.sh
 
+## Run code related to comparing pathology vs BayesSpace
+cd ${CODEDIR}/09_pathology_vs_BayesSpace
+rm logs/label_pathology_spots.txt
+qsub 04_label_pathology_spots.sh
+
+## Add future steps here
+## TODO
+
+## Prepare the inputs for shiny (steps 05 and 06)
+## (this will likely be the last step)
 cd ${CODEDIR}/99_prepare_for_shiny
 rm logs/prepare_shiny*.txt
 qsub 01_prepare_shiny.sh
-
-## Add future steps here
-
 
 echo "**** Job ends ****"
 date
