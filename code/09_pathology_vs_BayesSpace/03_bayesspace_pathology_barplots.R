@@ -42,6 +42,7 @@ barplots_spe <- function(suffix) {
     )
 
     cluster_df <- as.data.frame(colData(spe))
+    cluster_df$sample_id <- factor(cluster_df$sample_id, levels = unique(cluster_df$sample_id))
 
     cluster_df <-
         cluster_df |> mutate(across(matches("BayesSpace_harmony"), factor))

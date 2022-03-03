@@ -26,7 +26,6 @@ spe_targeted <- readRDS(
 dir_plots <- here::here("plots", "09_pathology_vs_BayesSpace", "pathology_vs_Bayesspace_cluster_boxplots")
 dir.create(dir_plots, showWarnings = FALSE)
 
-
 # import cluster info for whole genome
 dir_rdata_whole <- here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") # , suffix
 
@@ -50,7 +49,7 @@ spe_targeted <- cluster_import(
 cluster_whole_df <- data.frame(
     spot_id = colnames(spe_wholegenome),
     diagnosis = spe_wholegenome$diagnosis,
-    sample_id = spe_wholegenome$sample_id,
+    sample_id = factor(spe_wholegenome$sample_id, levels = unique(spe_wholegenome$sample_id)),
     NAbeta = spe_wholegenome$NAbeta,
     NpTau = spe_wholegenome$NpTau,
     PAbeta = spe_wholegenome$PAbeta,
@@ -63,7 +62,7 @@ cluster_whole_df <- data.frame(
 cluster_targeted_df <- data.frame(
     spot_id = colnames(spe_targeted),
     diagnosis = spe_targeted$diagnosis,
-    sample_id = spe_targeted$sample_id,
+    sample_id = factor(spe_targeted$sample_id, levels = unique(spe_targeted$sample_id)),
     NAbeta = spe_targeted$NAbeta,
     NpTau = spe_targeted$NpTau,
     PAbeta = spe_targeted$PAbeta,
