@@ -5,6 +5,7 @@
 #$ -o logs/label_pathology_spots.txt
 #$ -e logs/label_pathology_spots.txt
 #$ -m e
+##$ -hold_jid qc_metrics_and_segmentation,preprocess_and_harmony_wholegenome,preprocess_and_harmony_targeted
 
 echo "**** Job starts ****"
 date
