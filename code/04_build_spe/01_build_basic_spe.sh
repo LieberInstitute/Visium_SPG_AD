@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=15G,h_vmem=15G,h_fsize=100G
+#$ -l bluejay,mem_free=8G,h_vmem=8G,h_fsize=100G
 #$ -N VisiumIFAD_build_basic_spe
 #$ -o logs/build_basic_spe.txt
 #$ -e logs/build_basic_spe.txt
