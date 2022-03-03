@@ -153,8 +153,8 @@ metrics_qc <- function(spe, spename) {
 
     ## Find edge spots
     spots <- data.frame(
-        row = spatialData(spe)$array_row,
-        col = spatialData(spe)$array_col,
+        row = spe$array_row,
+        col = spe$array_col,
         sample_id = spe$sample_id_short
     )
 

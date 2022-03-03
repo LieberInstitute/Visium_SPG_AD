@@ -392,8 +392,8 @@ dev.off()
 ## do offset so we can run BayesSpace
 auto_offset_row <- as.numeric(factor(unique(spe$sample_id))) * 100
 names(auto_offset_row) <- unique(spe$sample_id)
-spe$row <- spatialData(spe)$array_row + auto_offset_row[spe$sample_id]
-spe$col <- spatialData(spe)$array_col
+spe$row <- spe$array_row + auto_offset_row[spe$sample_id]
+spe$col <- spe$array_col
 
 ## Save new SPE objects
 if (opt$spetype == "targeted") {

@@ -124,8 +124,8 @@ session_info()
 
 message("Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71")
 Sys.time()
-spe$imagerow <- spatialData(spe)$array_row
-spe$imagecol <- spatialData(spe)$array_col
+spe$imagerow <- spe$array_row
+spe$imagecol <- spe$array_col
 
 for (sample in unique(spe$sample_id)) {
     message(Sys.time(), " processing sample ", sample)

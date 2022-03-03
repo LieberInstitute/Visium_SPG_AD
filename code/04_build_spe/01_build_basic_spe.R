@@ -194,10 +194,9 @@ length(no_expr) / nrow(spe_targeted) * 100
 spe_targeted <- spe_targeted[-no_expr, ]
 
 ## For visualizing this later with spatialLIBD
-stopifnot(identical(spatialData(spe_wholegenome), spatialData(spe_targeted)))
 spe_targeted$overlaps_tissue <-
     spe_wholegenome$overlaps_tissue <-
-    factor(ifelse(spatialData(spe_wholegenome)$in_tissue, "in", "out"))
+    factor(ifelse(spe_wholegenome$in_tissue, "in", "out"))
 
 ## Save with and without dropping spots outside of the tissue
 spe_raw_wholegenome <- spe_wholegenome
@@ -213,7 +212,7 @@ lobstr::obj_size(spe_raw_targeted) / 1024^3
 # 1.235324
 
 ## Now drop the spots outside the tissue
-spe_wholegenome <- spe_raw_wholegenome[, spatialData(spe_raw_wholegenome)$in_tissue]
+spe_wholegenome <- spe_raw_wholegenome[, spe_raw_wholegenome$in_tissue]
 dim(spe_wholegenome)
 # [1] 27853 38287
 ## Remove spots without counts
@@ -223,7 +222,7 @@ if (any(colSums(counts(spe_wholegenome)) == 0)) {
     dim(spe_wholegenome)
 }
 
-spe_targeted <- spe_raw_targeted[, spatialData(spe_raw_targeted)$in_tissue]
+spe_targeted <- spe_raw_targeted[, spe_raw_targeted$in_tissue]
 dim(spe_targeted)
 # [1] 23485 38287
 ## Remove spots without counts
