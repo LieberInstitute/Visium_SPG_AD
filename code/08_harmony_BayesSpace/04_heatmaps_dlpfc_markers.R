@@ -83,11 +83,13 @@ heatmap_spe <- function(suffix) {
         groups <- colData(spe)[, c("sample_id", k)]
 
         ## Pseudo-bulk for our current BayesSpace cluster results
-        spe_pseudo <- aggregateAcrossCells(spe,
+        spe_pseudo <- aggregateAcrossCells(
+            spe,
             DataFrame(
                 BayesSpace = colData(spe)[[k]],
                 sample_id = spe$sample_id
-            ))
+            )
+        )
         spe_pseudo <- logNormCounts(spe_pseudo)
 
         ## plot for k = 15

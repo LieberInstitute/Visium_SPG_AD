@@ -4,7 +4,7 @@ library("SpatialExperiment")
 library("sessioninfo")
 
 ## Determine the suffix
-suffix <- ifelse(as.numeric(Sys.getenv("SGE_TASK_ID")) ==1, "wholegenome", "targeted")
+suffix <- ifelse(as.numeric(Sys.getenv("SGE_TASK_ID")) == 1, "wholegenome", "targeted")
 
 ## Load the data
 spe <- readRDS(
@@ -36,13 +36,13 @@ spe <- cluster_import(
 )
 
 ## Convert pathology variables into factors
-for(i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
+for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
     colData(spe)[[i]] <- factor(colData(spe)[[i]])
 }
 
 
 ## Save the final object for the shiny app
-if(suffix == "wholegenome") {
+if (suffix == "wholegenome") {
     save(spe, file = here("code", "05_deploy_app_wholegenome", "spe.Rdata"))
 } else {
     save(spe, file = here("code", "06_deploy_app_targeted", "spe.Rdata"))
@@ -50,7 +50,7 @@ if(suffix == "wholegenome") {
 
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)

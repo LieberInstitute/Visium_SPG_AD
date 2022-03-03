@@ -1,4 +1,4 @@
-##import required libraries
+## import required libraries
 library("here")
 library("SpatialExperiment")
 library("scran")
@@ -16,10 +16,10 @@ spe <- readRDS(
 )
 
 controls <- c("V10A27106_A1_Br3874", "V10A27004_A1_Br3874", "V10T31036_A1_Br3874")
-#last one shouldn't be used for pTau
+# last one shouldn't be used for pTau
 
 
-##find max of NpTau, PpTau
+## find max of NpTau, PpTau
 
 path_df <- data.frame(
     spot_id = colnames(spe),
@@ -32,22 +32,29 @@ path_df <- data.frame(
 )
 
 ## Just for NpTau/PpTau
-path_df |> dplyr::filter(sample_id %in% controls[1:2]) |> summarise_if(is.numeric, max, na.rm = TRUE)
+path_df |>
+    dplyr::filter(sample_id %in% controls[1:2]) |>
+    summarise_if(is.numeric, max, na.rm = TRUE)
 
 #   NAbeta NpTau    PAbeta      PpTau
 # 1      4     7 0.1983471 0.01396914
 
 ## Just for NAbeta/PAbeta
-path_df |> dplyr::filter(sample_id %in% controls[c(1, 3)]) |> summarise_if(is.numeric, max, na.rm = TRUE)
+path_df |>
+    dplyr::filter(sample_id %in% controls[c(1, 3)]) |>
+    summarise_if(is.numeric, max, na.rm = TRUE)
 
 #   NAbeta NpTau   PAbeta      PpTau
 # 1      3    83 0.149126 0.04073722
 
 
-##Frequency of unique NAbeta values across all controls
+## Frequency of unique NAbeta values across all controls
 
-path_df |> dplyr::filter(sample_id %in% controls) |> count(NAbeta) |>
-  group_by(NAbeta) |> mutate(prop = prop.table(n))
+path_df |>
+    dplyr::filter(sample_id %in% controls) |>
+    count(NAbeta) |>
+    group_by(NAbeta) |>
+    mutate(prop = prop.table(n))
 
 # '''
 #     NAbeta   n  prop
@@ -60,9 +67,12 @@ path_df |> dplyr::filter(sample_id %in% controls) |> count(NAbeta) |>
 # '''
 
 
-##Quantiles for NAbeta
-path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
-    summarise( q = list(quantile(NAbeta)), na.rm = TRUE) |> unnest_wider(q)
+## Quantiles for NAbeta
+path_df |>
+    dplyr::filter(sample_id %in% controls) |>
+    group_by(sample_id) |>
+    summarise(q = list(quantile(NAbeta)), na.rm = TRUE) |>
+    unnest_wider(q)
 
 # '''
 # sample_id            `0%` `25%` `50%` `75%` `100%` na.rm
@@ -73,12 +83,16 @@ path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
 # '''
 
 
-##New percentiles for NAbeta
-path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
-  summarise( percentiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
-             NAbeta = quantile(NAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
-             na.rm = TRUE)
-  # Everything zero except 0.999 where NAbeta = 1
+## New percentiles for NAbeta
+path_df |>
+    dplyr::filter(sample_id %in% controls) |>
+    group_by(sample_id) |>
+    summarise(
+        percentiles = scales::percent(c(0.95, 0.96, 0.97, 0.98, 0.99, 0.999)),
+        NAbeta = quantile(NAbeta, c(0.95, 0.96, 0.97, 0.98, 0.99, 0.999)),
+        na.rm = TRUE
+    )
+# Everything zero except 0.999 where NAbeta = 1
 
 
 
@@ -86,8 +100,11 @@ path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
 
 
 ## Quantiles for PAbeta
-path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
-    summarise( q = list(quantile(PAbeta)), na.rm = TRUE) |> unnest_wider(q)
+path_df |>
+    dplyr::filter(sample_id %in% controls) |>
+    group_by(sample_id) |>
+    summarise(q = list(quantile(PAbeta)), na.rm = TRUE) |>
+    unnest_wider(q)
 
 # '''
 # sample_id            `0%` `25%` `50%` `75%` `100%` na.rm
@@ -97,22 +114,28 @@ path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
 # 3 V10T31036_A1_Br3874     0     0     0     0 0.149  TRUE
 # '''
 
-##New percentiles for PAbeta
-path_df |> dplyr::filter(sample_id %in% controls) |> group_by(sample_id) |>
-  summarise( percentiles = scales::percent(c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
-             NAbeta = quantile(PAbeta, c(0.95, 0.96, 0.97,0.98,0.99, 0.999)),
-             na.rm = TRUE)
+## New percentiles for PAbeta
+path_df |>
+    dplyr::filter(sample_id %in% controls) |>
+    group_by(sample_id) |>
+    summarise(
+        percentiles = scales::percent(c(0.95, 0.96, 0.97, 0.98, 0.99, 0.999)),
+        NAbeta = quantile(PAbeta, c(0.95, 0.96, 0.97, 0.98, 0.99, 0.999)),
+        na.rm = TRUE
+    )
 ## for 004 and 1036 99.9% is 0.108 and 0.0543 respectively. Zeros for everything else.
 
 
 path_df_AD <- path_df |> dplyr::filter(!sample_id %in% controls)
-count(path_df_AD) #25124 total spots in all AD samples
+count(path_df_AD) # 25124 total spots in all AD samples
 
 thresholded <- path_df_AD |> dplyr::filter(NAbeta > 1 | PAbeta > 0.108)
 count(thresholded)
 # 1 2004
 
-path_df_AD |> dplyr::filter(NAbeta >= 1 | PAbeta >= 0.108) |> count()
+path_df_AD |>
+    dplyr::filter(NAbeta >= 1 | PAbeta >= 0.108) |>
+    count()
 #      n
 # 1 2861
 

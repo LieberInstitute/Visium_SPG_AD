@@ -30,7 +30,7 @@ spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta)
 ## TODO find neighbors
 
 ## Export pathology levels for later
-for(i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
+for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
     cluster_export(
         spe,
         i,
@@ -39,7 +39,7 @@ for(i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
 }
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)

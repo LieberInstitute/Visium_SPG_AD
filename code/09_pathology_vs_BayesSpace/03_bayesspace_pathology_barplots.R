@@ -47,10 +47,14 @@ barplots_spe <- function(suffix) {
     cluster_df <-
         cluster_df |> mutate(across(matches("BayesSpace_harmony"), factor))
 
-    cluster_df <- cluster_df |> mutate(pTau_outliers =
-            ifelse(NpTau > 7 | PpTau > 0.014, "outlier", "normal"))
-    cluster_df <- cluster_df |> mutate(Abeta_outliers =
-            ifelse(NAbeta > 1 | PAbeta > 0.108, "outlier", "normal"))
+    cluster_df <- cluster_df |> mutate(
+        pTau_outliers =
+            ifelse(NpTau > 7 | PpTau > 0.014, "outlier", "normal")
+    )
+    cluster_df <- cluster_df |> mutate(
+        Abeta_outliers =
+            ifelse(NAbeta > 1 | PAbeta > 0.108, "outlier", "normal")
+    )
 
     print(addmargins(table(cluster_df$Abeta_outliers)))
     # normal outlier     Sum
@@ -115,7 +119,8 @@ barplots_spe <- function(suffix) {
 
         plot <- facet(plot + theme_bw(),
             facet.by = "sample_id",
-            short.panel.labs = FALSE)
+            short.panel.labs = FALSE
+        )
 
         print(plot)
     }
@@ -148,18 +153,22 @@ barplots_spe <- function(suffix) {
             labs(y = "Pathology percent") +
             geom_text(aes(label = count),
                 size = 2,
-                nudge_y = 5)
+                nudge_y = 5
+            )
 
 
         plot <-
             plot + geom_hline(yintercept = 41.67728, color = "red") +
-            geom_hline(data = line_df,
+            geom_hline(
+                data = line_df,
                 aes(yintercept = mean_line),
-                color = "grey40")
+                color = "grey40"
+            )
 
         plot <- facet(plot + theme_bw(),
             facet.by = "sample_id",
-            short.panel.labs = FALSE)
+            short.panel.labs = FALSE
+        )
 
         print(plot)
     }
@@ -187,7 +196,8 @@ barplots_spe <- function(suffix) {
 
         plot <- facet(plot + theme_bw(),
             facet.by = "sample_id",
-            short.panel.labs = FALSE)
+            short.panel.labs = FALSE
+        )
 
 
         print(plot)
@@ -222,24 +232,27 @@ barplots_spe <- function(suffix) {
             labs(y = "Pathology percent") +
             geom_text(aes(label = count),
                 size = 2,
-                nudge_y = 5)
+                nudge_y = 5
+            )
 
 
         plot <-
             plot + geom_hline(yintercept = 7.976437, color = "red") +
-            geom_hline(data = line_df,
+            geom_hline(
+                data = line_df,
                 aes(yintercept = mean_line),
-                color = "grey40")
+                color = "grey40"
+            )
 
         plot <- facet(plot + theme_bw(),
             facet.by = "sample_id",
-            short.panel.labs = FALSE)
+            short.panel.labs = FALSE
+        )
 
 
         print(plot)
     }
     dev.off()
-
 }
 
 ## Run the function
