@@ -1,18 +1,18 @@
 #!/bin/bash
 
 ## Usage:
-# sh preprocess_and_harmony.sh
+# sh 01_preprocess_and_harmony.sh
 
 ## Create the logs directory
 mkdir -p logs
 
-for spefile in "spe_postqc" "spe_targeted_postqc"; do
+for spetype in "wholegenome" "targeted"; do
 
     ## Internal script name
-    SHORT="preprocess_and_harmony_${spefile}"
+    SHORT="preprocess_and_harmony_${spetype}"
 
     # Construct shell file
-    echo "Creating script preprocess_and_harmony_${spefile}"
+    echo "Creating script preprocess_and_harmony_${spetype}"
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
@@ -41,7 +41,7 @@ module load conda_R/4.1.x
 module list
 
 ## Edit with your job command
-Rscript 01_preprocess_and_harmony.R -s ${spefile}
+Rscript 01_preprocess_and_harmony.R -s ${spetype}
 
 echo "**** Job ends ****"
 date

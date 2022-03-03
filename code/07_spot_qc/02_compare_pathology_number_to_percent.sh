@@ -1,10 +1,9 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=9G,h_vmem=9G,h_fsize=100G
-#$ -pe local 4
-#$ -N preprocess_and_harmony_spe_targeted_postqc
-#$ -o logs/preprocess_and_harmony_spe_targeted_postqc.txt
-#$ -e logs/preprocess_and_harmony_spe_targeted_postqc.txt
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -N compare_pathology_number_to_percent
+#$ -o logs/compare_pathology_number_to_percent.txt
+#$ -e logs/compare_pathology_number_to_percent.txt
 #$ -m e
 #$ -hold_jid qc_metrics_and_segmentation
 
@@ -19,18 +18,16 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.1.x
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript 01_preprocess_and_harmony.R -s spe_targeted_postqc
+Rscript 02_compare_pathology_number_to_percent.R
 
 echo "**** Job ends ****"
 date
 
 ## This script was made using sgejobs version 0.99.1
 ## available from http://research.libd.org/sgejobs/
-
-

@@ -11,6 +11,17 @@ library("sessioninfo")
 
 
 ## Load basic SPE data
+spe_wholegenome <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_wholegenome_postqc.rds"
+    )
+)
+spe_targeted <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_targeted_postqc.rds"
+    )
+)
+
 load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = TRUE)
 load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), verbose = TRUE)
 
@@ -23,7 +34,7 @@ dir.create(dir_plots, showWarnings = FALSE)
 dir_rdata_whole <- here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") # , suffix
 
 cluster_spe <- cluster_import(
-    spe,
+    spe_wholegenome,
     cluster_dir = file.path(dir_rdata_whole, "clusters_BayesSpace"),
     prefix = "imported_"
 )
@@ -103,7 +114,7 @@ for (measure in pathology_measures) {
 
 # create plots for targeted genome
 for (measure in pathology_measures) {
-    pdf(file.path(dir_plots, paste0("spe_targetted", "_", measure, ".pdf")), width = 14)
+    pdf(file.path(dir_plots, paste0("spe_targeted", "_", measure, ".pdf")), width = 14)
     for (i in cols_targeted) {
         plot <- ggpubr::ggviolin(
             cluster_targeted_df,

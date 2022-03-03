@@ -12,7 +12,12 @@ library("ggplot2")
 
 
 ## Load basic SPE data
-load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = TRUE)
+spe <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_wholegenome_postqc.rds"
+    )
+)
+
 
 
 ## output directories

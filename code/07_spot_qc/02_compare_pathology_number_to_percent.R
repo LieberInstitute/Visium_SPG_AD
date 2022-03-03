@@ -10,10 +10,11 @@ library("spatialLIBD")
 library("sessioninfo")
 
 ## Load basic SPE data
-load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = TRUE)
-load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), verbose = TRUE)
-
-
+spe_wholegenome <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_wholegenome_postqc.rds"
+    )
+)
 
 ## output directories
 dir_plots <- here::here("plots", "07_spot_qc", "outliers")
@@ -82,18 +83,9 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
 # create plots for whole genome
 for (path in c("Abeta", "pTau")) {
     pdf(file.path(dir_plots, paste0("spe_whole", "_", path, "_", "scatter", ".pdf")), width = 14)
-    print(create_plots(spe, path))
+    print(create_plots(spe_wholegenome, path))
     dev.off()
 }
-
-# create plots for targeted genome
-for (path in c("Abeta", "pTau")) {
-    pdf(file.path(dir_plots, paste0("spe_targeted", "_", path, "_", "scatter", ".pdf")), width = 14)
-    print(create_plots(spe_targeted, path))
-    dev.off()
-}
-
-
 
 
 ## Reproducibility information

@@ -37,18 +37,18 @@ rm logs/qc_metrics_and_segmentation.txt
 rm logs/subset_data_shiny.txt
 rm logs/compare_pathology_number_to_percent.txt
 #rm ${PROCESSEDIR}/07_spot_qc/spe*.Rdata ## Won't do this now since some 08_harmony_BayesSpace are running
-qsub qc_metrics_and_segmentation.sh
+qsub 01_qc_metrics_and_segmentation.sh
+qsub 02_compare_pathology_number_to_percent.sh
 qsub subset_data_shiny.sh
-qsub compare_pathology_number_to_percent.sh
 
 ## Run harmony and BayesSpace
 # cd ${CODEDIR}/08_harmony_BayesSpace
 # rm logs/preprocess_and_harmony*.txt
 # rm logs/BayesSpace_k_search_spe_harmony*.txt
 # rm logs/plot_SNN_k10.txt
-# sh preprocess_and_harmony.sh
-# sh BayesSpace_k_search.sh
-# qsub plot_SNN_k10.sh
+# sh 01_preprocess_and_harmony.sh
+# sh 02_BayesSpace_k_search.sh
+# qsub 03_plot_SNN_k10.sh
 
 ## Add future steps here
 

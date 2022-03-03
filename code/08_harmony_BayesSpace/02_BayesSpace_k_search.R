@@ -1,6 +1,6 @@
 # sgejobs::job_loop(
-#     loops = list(spefile = c(
-#         "spe_harmony_wholegenome", "spe_harmony_targeted"
+#     loops = list(spetype = c(
+#         "wholegenome", "targeted"
 #     )),
 #     name = "BayesSpace_k_search",
 #     create_shell = TRUE,
@@ -11,16 +11,10 @@
 
 ## Required libraries
 library("getopt")
-library("here")
-library("sessioninfo")
-library("SpatialExperiment")
-library("spatialLIBD")
-library("BayesSpace")
-library("Polychrome")
 
 ## Specify parameters
 spec <- matrix(c(
-    "spefile", "s", 2, "character", "SPE file name",
+    "spetype", "s", 2, "character", "SPE type: wholegenome or targeted",
     "help", "h", 0, "logical", "Display help"
 ), byrow = TRUE, ncol = 5)
 opt <- getopt(spec)
@@ -32,23 +26,26 @@ if (!is.null(opt$help)) {
     q(status = 1)
 }
 
-## Rename from spe_targeted to spe to simplify the code so it can work with
-## either
-if (opt$spefile == "spe_harmony_targeted") {
-    suffix <- "targeted"
-} else if (opt$spefile == "spe_harmony_wholegenome") {
-    suffix <- "wholegenome"
-}
+## Load remaining required packages
+library("here")
+library("sessioninfo")
+library("SpatialExperiment")
+library("spatialLIBD")
+library("BayesSpace")
+library("Polychrome")
+
+
+## Load the data
 spe <- readRDS(
     here::here(
-        "processed-data", "08_harmony_BayesSpace", suffix,
-        paste0("spe_harmony_", suffix, ".rds")
+        "processed-data", "08_harmony_BayesSpace", opt$spetype,
+        paste0("spe_harmony_", opt$spetype, ".rds")
     )
 )
 
 ## Create output directories
-dir_plots <- here::here("plots", "08_harmony_BayesSpace", suffix)
-dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", suffix)
+dir_plots <- here::here("plots", "08_harmony_BayesSpace", opt$spetype)
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clusters_BayesSpace"), showWarnings = FALSE)

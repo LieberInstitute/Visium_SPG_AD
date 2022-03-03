@@ -1,11 +1,10 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
-#$ -N plot_SNN_k10
-#$ -o logs/plot_SNN_k10.txt
-#$ -e logs/plot_SNN_k10.txt
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -N qc_metrics_and_segmentation
+#$ -o logs/qc_metrics_and_segmentation.txt
+#$ -e logs/qc_metrics_and_segmentation.txt
 #$ -m e
-#$ -hold_jid preprocess_and_harmony_spe_postqc,preprocess_and_harmony_spe_targeted_postqc
 
 echo "**** Job starts ****"
 date
@@ -18,13 +17,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.1.x
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript 03_plot_SNN_k10.R
+Rscript 01_qc_metrics_and_segmentation.R
 
 echo "**** Job ends ****"
 date

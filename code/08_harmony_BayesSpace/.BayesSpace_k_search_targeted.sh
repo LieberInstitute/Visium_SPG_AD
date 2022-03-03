@@ -1,12 +1,13 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=9G,h_vmem=9G,h_fsize=100G
-#$ -pe local 4
-#$ -N preprocess_and_harmony_spe_postqc
-#$ -o logs/preprocess_and_harmony_spe_postqc.txt
-#$ -e logs/preprocess_and_harmony_spe_postqc.txt
+#$ -l bluejay,mem_free=100G,h_vmem=100G,h_fsize=100G
+#$ -N BayesSpace_k_search_targeted
+#$ -o logs/BayesSpace_k_search_targeted.$TASK_ID.txt
+#$ -e logs/BayesSpace_k_search_targeted.$TASK_ID.txt
 #$ -m e
-#$ -hold_jid qc_metrics_and_segmentation
+#$ -t 2-15
+#$ -tc 20
+#$ -hold_jid preprocess_and_harmony_targeted
 
 echo "**** Job starts ****"
 date
@@ -25,7 +26,7 @@ module load conda_R/4.1.x
 module list
 
 ## Edit with your job command
-Rscript 01_preprocess_and_harmony.R -s spe_postqc
+Rscript 02_BayesSpace_k_search.R -s targeted
 
 echo "**** Job ends ****"
 date

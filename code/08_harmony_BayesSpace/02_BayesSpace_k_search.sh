@@ -6,20 +6,13 @@
 ## Create the logs directory
 mkdir -p logs
 
-for spefile in spe_harmony_wholegenome spe_harmony_targeted; do
+for spetype in wholegenome targeted; do
 
     ## Internal script name
-    SHORT="BayesSpace_k_search_${spefile}"
-
-    ## Map to older names in order to use a dynamic hold_jid below
-    if [ $spefile == "spe_harmony_wholegenome" ] ; then
-    	speprevious="spe_postqc"
-    else
-    	speprevious="spe_targeted_postqc"
-    fi
+    SHORT="BayesSpace_k_search_${spetype}"
 
     # Construct shell file
-    echo "Creating script BayesSpace_k_search_${spefile}"
+    echo "Creating script BayesSpace_k_search_${spetype}"
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
@@ -30,7 +23,7 @@ for spefile in spe_harmony_wholegenome spe_harmony_targeted; do
 #$ -m e
 #$ -t 2-15
 #$ -tc 20
-#$ -hold_jid preprocess_and_harmony_${speprevious}
+#$ -hold_jid preprocess_and_harmony_${spetype}
 
 echo "**** Job starts ****"
 date
@@ -49,7 +42,7 @@ module load conda_R/4.1.x
 module list
 
 ## Edit with your job command
-Rscript 02_BayesSpace_k_search.R -s ${spefile}
+Rscript 02_BayesSpace_k_search.R -s ${spetype}
 
 echo "**** Job ends ****"
 date

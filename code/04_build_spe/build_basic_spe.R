@@ -5,6 +5,10 @@ library("rtracklayer")
 library("lobstr")
 library("sessioninfo")
 
+## Create output directories
+dir_rdata <- here::here("processed-data", "04_build_spe")
+dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+
 ## Define some info for the samples
 sample_info <- data.frame(
     sample_id = c(
@@ -50,7 +54,7 @@ sample_info <- merge(sample_info, donor_info)
 
 ## Build basic SPE
 Sys.time()
-spe <- read10xVisiumWrapper(
+spe_wholegenome <- read10xVisiumWrapper(
     sample_info$sample_path,
     sample_info$sample_id,
     type = "sparse",
@@ -104,9 +108,9 @@ Sys.time()
 image_types <- c("Abeta", "Abeta_seg", "pTau", "pTau_seg", "DAPI", "DAPI_seg", "merge", "merge_seg")
 
 for (img in image_types) {
-    for (res in c("lowres", "hires")) {
-        spe <- add_images(
-            spe = spe,
+    for (res in c("lowres")) {
+        spe_wholegenome <- add_images(
+            spe = spe_wholegenome,
             image_dir = here("processed-data", "Images", "spatialLIBD_images"),
             image_pattern = paste0(img, "_", res),
             image_id_current = res
@@ -115,13 +119,13 @@ for (img in image_types) {
 }
 
 ## Update the imData in the targeted sequencing
-imgData(spe_targeted) <- imgData(spe)
+imgData(spe_targeted) <- imgData(spe_wholegenome)
 
 ## This is the case since we didn't use the --target-panel option when
 ## running spaceranger as described at
 ## https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/count
-stopifnot(identical(rowData(spe), rowData(spe_targeted)))
-# stopifnot(identical(colData(spe), colData(spe_targeted)))
+stopifnot(identical(rowData(spe_wholegenome), rowData(spe_targeted)))
+# stopifnot(identical(colData(spe_wholegenome), colData(spe_targeted)))
 ## The above is no longer true since we are reading in the clustering results
 ## from SpaceRanger which are different between the regular Visium and the
 ## targeted sequencing Visium.
@@ -137,7 +141,7 @@ add_design <- function(spe) {
         new_col[, -which(colnames(new_col) == "sample_path")]
     return(spe)
 }
-spe <- add_design(spe)
+spe_wholegenome <- add_design(spe_wholegenome)
 spe_targeted <- add_design(spe_targeted)
 
 ## Read in cell counts and segmentation results
@@ -166,22 +170,21 @@ segmentations <-
     }, segmentations_list[lengths(segmentations_list) > 0])
 
 ## Add the information
-segmentation_match <- match(spe$key, segmentations$key)
+segmentation_match <- match(spe_wholegenome$key, segmentations$key)
 segmentation_info <-
     segmentations[segmentation_match, -which(
         colnames(segmentations) %in% c("barcode", "tissue", "row", "col", "imagerow", "imagecol", "key")
     )]
-colData(spe) <- cbind(colData(spe), segmentation_info)
-colData(spe_targeted) <-
-    cbind(colData(spe_targeted), segmentation_info)
+colData(spe_wholegenome) <- cbind(colData(spe_wholegenome), segmentation_info)
+colData(spe_targeted) <- cbind(colData(spe_targeted), segmentation_info)
 
 ## Remove genes with no data
-no_expr <- which(rowSums(counts(spe)) == 0)
+no_expr <- which(rowSums(counts(spe_wholegenome)) == 0)
 length(no_expr)
 # [1] 8748
-length(no_expr) / nrow(spe) * 100
+length(no_expr) / nrow(spe_wholegenome) * 100
 # [1] 23.90099
-spe <- spe[-no_expr, ]
+spe_wholegenome <- spe_wholegenome[-no_expr, ]
 
 no_expr <- which(rowSums(counts(spe_targeted)) == 0)
 length(no_expr)
@@ -191,38 +194,33 @@ length(no_expr) / nrow(spe_targeted) * 100
 spe_targeted <- spe_targeted[-no_expr, ]
 
 ## For visualizing this later with spatialLIBD
-stopifnot(identical(spatialData(spe), spatialData(spe_targeted)))
+stopifnot(identical(spatialData(spe_wholegenome), spatialData(spe_targeted)))
 spe_targeted$overlaps_tissue <-
-    spe$overlaps_tissue <-
-    factor(ifelse(spatialData(spe)$in_tissue, "in", "out"))
+    spe_wholegenome$overlaps_tissue <-
+    factor(ifelse(spatialData(spe_wholegenome)$in_tissue, "in", "out"))
 
 ## Save with and without dropping spots outside of the tissue
-spe_raw <- spe
+spe_raw_wholegenome <- spe_wholegenome
 spe_raw_targeted <- spe_targeted
 
-dir.create(here::here("processed-data", "04_build_spe"), showWarnings = FALSE)
-save(spe_raw,
-    file = here::here("processed-data", "04_build_spe", "spe_raw.Rdata")
-)
-save(spe_raw_targeted,
-    file = here::here("processed-data", "04_build_spe", "spe_raw_targeted.Rdata")
-)
+saveRDS(spe_raw_wholegenome, file.path(dir_rdata, "spe_raw_wholegenome.rds"))
+saveRDS(spe_raw_targeted, file = file.path(dir_rdata, "spe_raw_targeted.rds"))
 
 ## Size in Gb
-lobstr::obj_size(spe_raw) / 1024^3
+lobstr::obj_size(spe_raw_wholegenome) / 1024^3
 # 1.651702
 lobstr::obj_size(spe_raw_targeted) / 1024^3
 # 1.235324
 
 ## Now drop the spots outside the tissue
-spe <- spe_raw[, spatialData(spe_raw)$in_tissue]
-dim(spe)
+spe_wholegenome <- spe_raw_wholegenome[, spatialData(spe_raw_wholegenome)$in_tissue]
+dim(spe_wholegenome)
 # [1] 27853 38287
 ## Remove spots without counts
-if (any(colSums(counts(spe)) == 0)) {
-    message("removing spots without counts for spe")
-    spe <- spe[, -which(colSums(counts(spe)) == 0)]
-    dim(spe)
+if (any(colSums(counts(spe_wholegenome)) == 0)) {
+    message("removing spots without counts for spe_wholegenome")
+    spe_wholegenome <- spe_wholegenome[, -which(colSums(counts(spe_wholegenome)) == 0)]
+    dim(spe_wholegenome)
 }
 
 spe_targeted <- spe_raw_targeted[, spatialData(spe_raw_targeted)$in_tissue]
@@ -236,15 +234,13 @@ if (any(colSums(counts(spe_targeted)) == 0)) {
     dim(spe_targeted)
 }
 
-lobstr::obj_size(spe) / 1024^3
+lobstr::obj_size(spe_wholegenome) / 1024^3
 # 1.534376
 lobstr::obj_size(spe_targeted) / 1024^3
 # 1.198796
 
-save(spe, file = here::here("processed-data", "04_build_spe", "spe.Rdata"))
-save(spe_targeted,
-    file = here::here("processed-data", "04_build_spe", "spe_targeted.Rdata")
-)
+saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_wholegenome.rds"))
+saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_targeted.rds"))
 
 ## Reproducibility information
 print("Reproducibility information:")

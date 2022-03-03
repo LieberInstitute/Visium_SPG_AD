@@ -1,6 +1,6 @@
 # sgejobs::job_loop(
-#     loops = list(spefile = c(
-#         "spe_postqc", "spe_targeted_postqc"
+#     loops = list(spetype = c(
+#         "wholegenome", "targeted"
 #     )),
 #     name = "preprocess_and_harmony",
 #     create_shell = TRUE,
@@ -11,6 +11,23 @@
 
 ## Required libraries
 library("getopt")
+
+## Specify parameters
+spec <- matrix(c(
+    "spetype", "s", 2, "character", "SPE type: wholegenome or targeted",
+    "help", "h", 0, "logical", "Display help"
+), byrow = TRUE, ncol = 5)
+opt <- getopt(spec)
+
+## if help was asked for print a friendly message
+## and exit with a non-zero error code
+if (!is.null(opt$help)) {
+    cat(getopt(spec, usage = TRUE))
+    q(status = 1)
+}
+
+
+## Load remaining required packages
 library("here")
 library("SpatialExperiment")
 library("spatialLIBD")
@@ -24,42 +41,22 @@ library("ggplot2")
 library("Polychrome")
 library("harmony")
 
-## Specify parameters
-spec <- matrix(c(
-    "spefile", "s", 2, "character", "SPE file name",
-    "help", "h", 0, "logical", "Display help"
-), byrow = TRUE, ncol = 5)
-opt <- getopt(spec)
-
-## if help was asked for print a friendly message
-## and exit with a non-zero error code
-if (!is.null(opt$help)) {
-    cat(getopt(spec, usage = TRUE))
-    q(status = 1)
-}
-
-## Rename from spe_targeted to spe to simplify the code so it can work with
-## either
-if (opt$spefile == "spe_targeted_postqc") {
-    suffix <- "targeted"
-} else {
-    suffix <- "wholegenome"
-}
 
 ## Create output directories
-dir_plots <- here::here("plots", "08_harmony_BayesSpace", suffix)
-dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", suffix)
+dir_plots <- here::here("plots", "08_harmony_BayesSpace", opt$spetype)
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path(dir_rdata, "clusters_graphbased"), showWarnings = FALSE)
 dir.create(file.path(dir_rdata, "clusters_graphbased_cut_at"), showWarnings = FALSE)
 
 ## Load the data
-load(here::here("processed-data", "07_spot_qc", paste0(opt$spefile, ".Rdata")), verbose = TRUE)
-if (opt$spefile == "spe_targeted_postqc") {
-    spe <- spe_targeted
-}
-
+spe <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", opt$spetype,
+        paste0("spe_", opt$spetype, "_postqc.rds")
+    )
+)
 
 message("Running quickCluster()")
 set.seed(20220201)
@@ -399,7 +396,7 @@ spe$row <- spatialData(spe)$array_row + auto_offset_row[spe$sample_id]
 spe$col <- spatialData(spe)$array_col
 
 ## Save new SPE objects
-if (opt$spefile == "spe_targeted_postqc") {
+if (opt$spetype == "targeted") {
     spe_targeted <- spe
     ## First time switching the order of the keywords: now targeted is at the
     ## end, which will make it easier to sort the spe files.

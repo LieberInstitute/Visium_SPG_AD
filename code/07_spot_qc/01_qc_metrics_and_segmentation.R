@@ -18,8 +18,16 @@ library("spatialLIBD")
 library("sessioninfo")
 
 ## Load basic SPE data
-load(here::here("processed-data", "04_build_spe", "spe.Rdata"), verbose = TRUE)
-load(here::here("processed-data", "04_build_spe", "spe_targeted.Rdata"), verbose = TRUE)
+spe_wholegenome <- readRDS(
+    here::here(
+        "processed-data", "04_build_spe", "spe_wholegenome.rds"
+    )
+)
+spe_targeted <- readRDS(
+    here::here(
+        "processed-data", "04_build_spe", "spe_targeted.rds"
+    )
+)
 
 ## Create output directories
 dir_plots <- here::here("plots", "07_spot_qc")
@@ -29,30 +37,30 @@ dir.create(dir_rdata, showWarnings = FALSE)
 
 slide_order <- c("V10A27106", "V10T31036", "V10A27004")
 sample_order <- unlist(sapply(slide_order, function(i) {
-    sort(unique(spe$sample_id)[grepl(i, unique(spe$sample_id))])
+    sort(unique(spe_wholegenome$sample_id)[grepl(i, unique(spe_wholegenome$sample_id))])
 }))
 sample_order
 
 ## Re-order samples
 new_order <- unlist(lapply(sample_order, function(i) {
-    which(spe$sample_id == i)
+    which(spe_wholegenome$sample_id == i)
 }))
-stopifnot(all(seq_len(ncol(spe)) %in% new_order))
-spe <- spe[, new_order]
+stopifnot(all(seq_len(ncol(spe_wholegenome)) %in% new_order))
+spe_wholegenome <- spe_wholegenome[, new_order]
 spe_targeted <- spe_targeted[, new_order]
 
 shorten_names <- function(x) {
     gsub(slide_order[3], "S3", gsub(slide_order[2], "S2", gsub(slide_order[1], "S1", x)))
 }
 
-spe$sample_id_short <- factor(shorten_names(spe$sample_id), levels = shorten_names(sample_order))
-spe_targeted$sample_id_short <- spe$sample_id_short
+spe_wholegenome$sample_id_short <- factor(shorten_names(spe_wholegenome$sample_id), levels = shorten_names(sample_order))
+spe_targeted$sample_id_short <- spe_wholegenome$sample_id_short
 
 palette_colors <- paste0(
     rep(c("darkorchid", "sienna", "steelblue"), c(4, 4, 2)),
     c(1:4, 1:4, 3:4)
 )
-names(palette_colors) <- levels(spe$sample_id_short)
+names(palette_colors) <- levels(spe_wholegenome$sample_id_short)
 
 ## Metrics QC
 metrics_qc <- function(spe, spename) {
@@ -219,19 +227,19 @@ metrics_qc <- function(spe, spename) {
 }
 
 
-spe <- metrics_qc(spe, "wholegenome")
+spe_wholegenome <- metrics_qc(spe_wholegenome, "wholegenome")
 spe_targeted <- metrics_qc(spe_targeted, "targeted")
 
 
 ## Segmentation spot QC
 seg_df <- data.frame(
-    Percent_Abeta = spe$PAbeta,
-    Percent_DAPI = spe$PDAPI,
-    Percent_pTau = spe$PpTau,
-    Number_Abeta = spe$NAbeta,
-    Number_DAPI = spe$NDAPI,
-    Number_pTau = spe$NpTau,
-    sample_id = spe$sample_id_short,
+    Percent_Abeta = spe_wholegenome$PAbeta,
+    Percent_DAPI = spe_wholegenome$PDAPI,
+    Percent_pTau = spe_wholegenome$PpTau,
+    Number_Abeta = spe_wholegenome$NAbeta,
+    Number_DAPI = spe_wholegenome$NDAPI,
+    Number_pTau = spe_wholegenome$NpTau,
+    sample_id = spe_wholegenome$sample_id_short,
     check.names = FALSE
 )
 
@@ -251,8 +259,8 @@ for (i in paste0(rep(c("Percent_", "Number_"), each = 3), rep(c("Abeta", "DAPI",
 }
 
 segqcfilter <- DataFrame(
-    Number_DAPI = isOutlier(spe$NDAPI, type = "higher", batch = spe$sample_id_short, nmads = 3),
-    Percent_pTau = isOutlier(spe$PpTau, type = "higher", batch = spe$sample_id_short, nmads = 5)
+    Number_DAPI = isOutlier(spe_wholegenome$NDAPI, type = "higher", batch = spe_wholegenome$sample_id_short, nmads = 3),
+    Percent_pTau = isOutlier(spe_wholegenome$PpTau, type = "higher", batch = spe_wholegenome$sample_id_short, nmads = 5)
 )
 segqcfilter$discard_segmentation <- segqcfilter$Number_DAPI | segqcfilter$Percent_pTau
 
@@ -271,16 +279,16 @@ attr(segqcfilter$Percent_pTau, "thresholds")
 # lower          -Inf         -Inf         -Inf         -Inf         -Inf
 # higher   0.03801507            0   0.04665947            0   0.03044226
 
-spe$scran_discard_segmentation <-
+spe_wholegenome$scran_discard_segmentation <-
     factor(segqcfilter$discard_segmentation, levels = c("TRUE", "FALSE"))
-spe$scran_Number_DAPI <-
+spe_wholegenome$scran_Number_DAPI <-
     factor(segqcfilter$Number_DAPI, levels = c("TRUE", "FALSE"))
-spe$scran_Percent_pTau <-
+spe_wholegenome$scran_Percent_pTau <-
     factor(segqcfilter$Percent_pTau, levels = c("TRUE", "FALSE"))
 
 for (i in colnames(segqcfilter)) {
     vis_grid_clus(
-        spe = spe,
+        spe = spe_wholegenome,
         clustervar = paste0("scran_", i),
         pdf = file.path(dir_plots, paste0("scran_", i, ".pdf")),
         sort_clust = FALSE,
@@ -292,9 +300,9 @@ for (i in colnames(segqcfilter)) {
 
 ## Don't drop any spots due to isOutlier() results on the image segmentation
 ## Drop this information since we won't use for downstream analyses.
-spe$scran_discard_segmentation <- NULL
-spe$scran_Number_DAPI <- NULL
-spe$scran_Percent_pTau <- NULL
+spe_wholegenome$scran_discard_segmentation <- NULL
+spe_wholegenome$scran_Number_DAPI <- NULL
+spe_wholegenome$scran_Percent_pTau <- NULL
 
 ## Read information about the glare spots manually identified by Madhavi Tippani
 ## and Sang Ho Kwon.
@@ -303,40 +311,39 @@ colnames(glare)[1] <- "slide"
 m <- sapply(
     with(glare, paste0(slide, "_", array)),
     function(partial_sample_id) {
-        grep(partial_sample_id, spe$sample_id)[1]
+        grep(partial_sample_id, spe_wholegenome$sample_id)[1]
     }
 )
-glare$sample_id <- spe$sample_id[m]
+glare$sample_id <- spe_wholegenome$sample_id[m]
 glare$key <- with(glare, paste0(spotID, "_", sample_id))
 
 ## Locate and drop the glare spots
-m <- match(glare$key, spe$key)
+m <- match(glare$key, spe_wholegenome$key)
 stopifnot(all(!is.na(m)))
 stopifnot(identical(m, match(glare$key, spe_targeted$key)))
-spe <- spe[, -m]
+spe_wholegenome <- spe_wholegenome[, -m]
 spe_targeted <- spe_targeted[, -m]
 
 
 ## Drop low library size spots on the edge for either whole genome or
 ## targeted sequencing
-addmargins(table("wholegenome" = spe$scran_low_lib_size_edge, "targeted" = spe_targeted$scran_low_lib_size_edge))
+addmargins(table("wholegenome" = spe_wholegenome$scran_low_lib_size_edge, "targeted" = spe_targeted$scran_low_lib_size_edge))
 #            targeted
 # wholegenome  TRUE FALSE   Sum
 #       TRUE    125    19   144
 #       FALSE     8 38115 38123
 #       Sum     133 38134 38267
 
-drop_low_library_edge_either <- spe$scran_low_lib_size_edge == "TRUE" | spe_targeted$scran_low_lib_size_edge == "TRUE"
-spe <- spe[, !drop_low_library_edge_either]
+drop_low_library_edge_either <- spe_wholegenome$scran_low_lib_size_edge == "TRUE" | spe_targeted$scran_low_lib_size_edge == "TRUE"
+spe_wholegenome <- spe_wholegenome[, !drop_low_library_edge_either]
 spe_targeted <- spe_targeted[, !drop_low_library_edge_either]
 
 ## Clean up some variables names
-spe_targeted$scran_low_lib_size_edge <- spe$scran_low_lib_size_edge <- NULL
+spe_targeted$scran_low_lib_size_edge <- spe_wholegenome$scran_low_lib_size_edge <- NULL
 
 ## Save for later
-save(spe, file = file.path(dir_rdata, "spe_postqc.Rdata"))
-save(spe_targeted, file = file.path(dir_rdata, "spe_targeted_postqc.Rdata"))
-
+saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_wholegenome_postqc.rds"))
+saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_targeted_postqc.rds"))
 
 ## Reproducibility information
 print("Reproducibility information:")
