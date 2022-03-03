@@ -86,7 +86,7 @@ pathology_measures <- c("PpTau", "PAbeta")
 
 # create plots for whole genome
 for (measure in pathology_measures) {
-    pdf(file.path(dir_plots, paste0("spe_whole", "_", measure, ".pdf")), width = 14)
+    pdf(file.path(dir_plots, paste0("spe_wholegenome", "_", measure, ".pdf")), width = 14)
 
     for (i in cols_whole) {
         plot <- ggpubr::ggviolin(
