@@ -7,6 +7,7 @@ library("spatialLIBD")
 library("sessioninfo")
 library("ComplexHeatmap")
 library("cowplot")
+library("dplyr")
 
 
 ## load and process sig_genes
@@ -17,7 +18,7 @@ sig_genes <-
 table(sig_genes$test)
 
 # filter layer-related genes
-sig_genes <- sig_genes |> filter(test == "layer_vs_rest")
+sig_genes <- sig_genes |> dplyr::filter(test == "layer_vs_rest")
 # dim(sig_genes)  70x15
 
 # create new column to merge gene name and layer
