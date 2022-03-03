@@ -1,0 +1,462 @@
+Adding LIBD modules
+Loading git
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/devel
+**** Job starts ****
+Wed Mar  2 21:57:24 EST 2022
+**** JHPCE info ****
+User: lcollado
+Job id: 9317258
+Job name: initial_exploration
+Hostname: compute-099.cm.cluster
+Task id: undefined
+Unloading conda_R/devel
+Loading conda_R/devel
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/devel
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+           V10A271061            V10A271062            V10A271063 
+"V10A27106_A1_Br3874" "V10A27106_B1_Br3854" "V10A27106_C1_Br3873" 
+           V10A271064            V10T310361            V10T310362 
+"V10A27106_D1_Br3880" "V10T31036_A1_Br3874" "V10T31036_B1_Br3854" 
+           V10T310363            V10T310364            V10A270041 
+"V10T31036_C1_Br3873" "V10T31036_D1_Br3880" "V10A27004_A1_Br3874" 
+           V10A270042 
+"V10A27004_D1_Br3880" 
+[1] 9
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/04_build_spe/wholegenome_graph_based.pdf"
+[1] 6
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/04_build_spe/targeted_graph_based.pdf"
+New names:
+* `` -> ...3
+           TargetedSequencing
+WholeGenome FALSE Sum
+      FALSE   139 139
+      Sum     139 139
+  [1] "ENSG00000165029; ABCA1"    "ENSG00000085563; ABCB1"   
+  [3] "ENSG00000159640; ACE"      "ENSG00000087085; ACHE"    
+  [5] "ENSG00000151694; ADAM17"   "ENSG00000150594; ADRA2A"  
+  [7] "ENSG00000043591; ADRB1"    "ENSG00000204305; AGER"    
+  [9] "ENSG00000135744; AGT"      "ENSG00000163631; ALB"     
+ [11] "ENSG00000166313; APBB1"    "ENSG00000118137; APOA1"   
+ [13] "ENSG00000189058; APOD"     "ENSG00000130203; APOE"    
+ [15] "ENSG00000142192; APP"      "ENSG00000169083; AR"      
+ [17] "ENSG00000186318; BACE1"    "ENSG00000182240; BACE2"   
+ [19] "ENSG00000114200; BCHE"     "ENSG00000176697; BDNF"    
+ [21] "ENSG00000136717; BIN1"     "ENSG00000148660; CAMK2G"  
+ [23] "ENSG00000137752; CASP1"    "ENSG00000153113; CAST"    
+ [25] "ENSG00000160200; CBS"      "ENSG00000108691; CCL2"    
+ [27] "ENSG00000160791; CCR5"     "ENSG00000170458; CD14"    
+ [29] "ENSG00000105383; CD33"     "ENSG00000070748; CHAT"    
+ [31] "ENSG00000168539; CHRM1"    "ENSG00000080644; CHRNA3"  
+ [33] "ENSG00000101204; CHRNA4"   "ENSG00000175344; CHRNA7"  
+ [35] "ENSG00000160716; CHRNB2"   "ENSG00000203710; CR1"     
+ [37] "ENSG00000132693; CRP"      "ENSG00000184371; CSF1"    
+ [39] "ENSG00000117984; CTSD"     "ENSG00000169429; CXCL8"   
+ [41] "ENSG00000137869; CYP19A1"  "ENSG00000036530; CYP46A1" 
+ [43] "ENSG00000123454; DBH"      "ENSG00000162946; DISC1"   
+ [45] "ENSG00000107984; DKK1"     "ENSG00000091140; DLD"     
+ [47] "ENSG00000079805; DNM2"     "ENSG00000091831; ESR1"    
+ [49] "ENSG00000140009; ESR2"     "ENSG00000026103; FAS"     
+ [51] "ENSG00000117560; FASLG"    "ENSG00000170345; FOS"     
+ [53] "ENSG00000010810; FYN"      "ENSG00000273079; GRIN2B"  
+ [55] "ENSG00000082701; GSK3B"    "ENSG00000084207; GSTP1"   
+ [57] "ENSG00000206503; HLA-A"    "ENSG00000196126; HLA-DRB1"
+ [59] "ENSG00000100292; HMOX1"    "ENSG00000102468; HTR2A"   
+ [61] "ENSG00000147246; HTR2C"    "ENSG00000090339; ICAM1"   
+ [63] "ENSG00000119912; IDE"      "ENSG00000111537; IFNG"    
+ [65] "ENSG00000167244; IGF2"     "ENSG00000136634; IL10"    
+ [67] "ENSG00000150782; IL18"     "ENSG00000115008; IL1A"    
+ [69] "ENSG00000125538; IL1B"     "ENSG00000115594; IL1R1"   
+ [71] "ENSG00000136689; IL1RN"    "ENSG00000109471; IL2"     
+ [73] "ENSG00000113520; IL4"      "ENSG00000077238; IL4R"    
+ [75] "ENSG00000136244; IL6"      "ENSG00000160712; IL6R"    
+ [77] "ENSG00000254647; INS"      "ENSG00000198910; L1CAM"   
+ [79] "ENSG00000116678; LEPR"     "ENSG00000160789; LMNA"    
+ [81] "ENSG00000175445; LPL"      "ENSG00000123384; LRP1"    
+ [83] "ENSG00000188906; LRRK2"    "ENSG00000186868; MAPT"    
+ [85] "ENSG00000007047; MARK4"    "ENSG00000240972; MIF"     
+ [87] "ENSG00000196549; MME"      "ENSG00000149968; MMP3"    
+ [89] "ENSG00000100985; MMP9"     "ENSG00000177000; MTHFR"   
+ [91] "ENSG00000130202; NECTIN2"  "ENSG00000089250; NOS1"    
+ [93] "ENSG00000164867; NOS3"     "ENSG00000204301; NOTCH4"  
+ [95] "ENSG00000141458; NPC1"     "ENSG00000181019; NQO1"    
+ [97] "ENSG00000157168; NRG1"     "ENSG00000185652; NTF3"    
+ [99] "ENSG00000198400; NTRK1"    "ENSG00000148053; NTRK2"   
+[101] "ENSG00000173391; OLR1"     "ENSG00000007168; PAFAH1B1"
+[103] "ENSG00000143799; PARP1"    "ENSG00000075891; PAX2"    
+[105] "ENSG00000073921; PICALM"   "ENSG00000145675; PIK3R1"  
+[107] "ENSG00000116711; PLA2G4A"  "ENSG00000184381; PLA2G6"  
+[109] "ENSG00000122861; PLAU"     "ENSG00000132170; PPARG"   
+[111] "ENSG00000138814; PPP3CA"   "ENSG00000171867; PRNP"    
+[113] "ENSG00000080815; PSEN1"    "ENSG00000143801; PSEN2"   
+[115] "ENSG00000240065; PSMB9"    "ENSG00000171862; PTEN"    
+[117] "ENSG00000073756; PTGS2"    "ENSG00000106366; SERPINE1"
+[119] "ENSG00000166224; SGPL1"    "ENSG00000147955; SIGMAR1" 
+[121] "ENSG00000096717; SIRT1"    "ENSG00000018280; SLC11A1" 
+[123] "ENSG00000187714; SLC18A3"  "ENSG00000108576; SLC6A4"  
+[125] "ENSG00000145335; SNCA"     "ENSG00000137642; SORL1"   
+[127] "ENSG00000157005; SST"      "ENSG00000120948; TARDBP"  
+[129] "ENSG00000091513; TF"       "ENSG00000108064; TFAM"    
+[131] "ENSG00000105329; TGFB1"    "ENSG00000232810; TNF"     
+[133] "ENSG00000130204; TOMM40"   "ENSG00000141510; TP53"    
+[135] "ENSG00000129167; TPH1"     "ENSG00000135018; UBQLN1"  
+[137] "ENSG00000154277; UCHL1"    "ENSG00000112715; VEGFA"   
+[139] "ENSG00000184937; WT1"     
+  [1] "ENSG00000165029; ABCA1"    "ENSG00000085563; ABCB1"   
+  [3] "ENSG00000159640; ACE"      "ENSG00000087085; ACHE"    
+  [5] "ENSG00000151694; ADAM17"   "ENSG00000150594; ADRA2A"  
+  [7] "ENSG00000043591; ADRB1"    "ENSG00000204305; AGER"    
+  [9] "ENSG00000135744; AGT"      "ENSG00000163631; ALB"     
+ [11] "ENSG00000166313; APBB1"    "ENSG00000118137; APOA1"   
+ [13] "ENSG00000189058; APOD"     "ENSG00000130203; APOE"    
+ [15] "ENSG00000142192; APP"      "ENSG00000169083; AR"      
+ [17] "ENSG00000186318; BACE1"    "ENSG00000182240; BACE2"   
+ [19] "ENSG00000114200; BCHE"     "ENSG00000176697; BDNF"    
+ [21] "ENSG00000136717; BIN1"     "ENSG00000148660; CAMK2G"  
+ [23] "ENSG00000137752; CASP1"    "ENSG00000153113; CAST"    
+ [25] "ENSG00000160200; CBS"      "ENSG00000108691; CCL2"    
+ [27] "ENSG00000160791; CCR5"     "ENSG00000170458; CD14"    
+ [29] "ENSG00000105383; CD33"     "ENSG00000070748; CHAT"    
+ [31] "ENSG00000168539; CHRM1"    "ENSG00000080644; CHRNA3"  
+ [33] "ENSG00000101204; CHRNA4"   "ENSG00000175344; CHRNA7"  
+ [35] "ENSG00000160716; CHRNB2"   "ENSG00000203710; CR1"     
+ [37] "ENSG00000132693; CRP"      "ENSG00000184371; CSF1"    
+ [39] "ENSG00000117984; CTSD"     "ENSG00000169429; CXCL8"   
+ [41] "ENSG00000137869; CYP19A1"  "ENSG00000036530; CYP46A1" 
+ [43] "ENSG00000123454; DBH"      "ENSG00000162946; DISC1"   
+ [45] "ENSG00000107984; DKK1"     "ENSG00000091140; DLD"     
+ [47] "ENSG00000079805; DNM2"     "ENSG00000091831; ESR1"    
+ [49] "ENSG00000140009; ESR2"     "ENSG00000026103; FAS"     
+ [51] "ENSG00000117560; FASLG"    "ENSG00000170345; FOS"     
+ [53] "ENSG00000010810; FYN"      "ENSG00000273079; GRIN2B"  
+ [55] "ENSG00000082701; GSK3B"    "ENSG00000084207; GSTP1"   
+ [57] "ENSG00000206503; HLA-A"    "ENSG00000196126; HLA-DRB1"
+ [59] "ENSG00000100292; HMOX1"    "ENSG00000102468; HTR2A"   
+ [61] "ENSG00000147246; HTR2C"    "ENSG00000090339; ICAM1"   
+ [63] "ENSG00000119912; IDE"      "ENSG00000111537; IFNG"    
+ [65] "ENSG00000167244; IGF2"     "ENSG00000136634; IL10"    
+ [67] "ENSG00000150782; IL18"     "ENSG00000115008; IL1A"    
+ [69] "ENSG00000125538; IL1B"     "ENSG00000115594; IL1R1"   
+ [71] "ENSG00000136689; IL1RN"    "ENSG00000109471; IL2"     
+ [73] "ENSG00000113520; IL4"      "ENSG00000077238; IL4R"    
+ [75] "ENSG00000136244; IL6"      "ENSG00000160712; IL6R"    
+ [77] "ENSG00000254647; INS"      "ENSG00000198910; L1CAM"   
+ [79] "ENSG00000116678; LEPR"     "ENSG00000160789; LMNA"    
+ [81] "ENSG00000175445; LPL"      "ENSG00000123384; LRP1"    
+ [83] "ENSG00000188906; LRRK2"    "ENSG00000186868; MAPT"    
+ [85] "ENSG00000007047; MARK4"    "ENSG00000240972; MIF"     
+ [87] "ENSG00000196549; MME"      "ENSG00000149968; MMP3"    
+ [89] "ENSG00000100985; MMP9"     "ENSG00000177000; MTHFR"   
+ [91] "ENSG00000130202; NECTIN2"  "ENSG00000089250; NOS1"    
+ [93] "ENSG00000164867; NOS3"     "ENSG00000204301; NOTCH4"  
+ [95] "ENSG00000141458; NPC1"     "ENSG00000181019; NQO1"    
+ [97] "ENSG00000157168; NRG1"     "ENSG00000185652; NTF3"    
+ [99] "ENSG00000198400; NTRK1"    "ENSG00000148053; NTRK2"   
+[101] "ENSG00000173391; OLR1"     "ENSG00000007168; PAFAH1B1"
+[103] "ENSG00000143799; PARP1"    "ENSG00000075891; PAX2"    
+[105] "ENSG00000073921; PICALM"   "ENSG00000145675; PIK3R1"  
+[107] "ENSG00000116711; PLA2G4A"  "ENSG00000184381; PLA2G6"  
+[109] "ENSG00000122861; PLAU"     "ENSG00000132170; PPARG"   
+[111] "ENSG00000138814; PPP3CA"   "ENSG00000171867; PRNP"    
+[113] "ENSG00000080815; PSEN1"    "ENSG00000143801; PSEN2"   
+[115] "ENSG00000240065; PSMB9"    "ENSG00000171862; PTEN"    
+[117] "ENSG00000073756; PTGS2"    "ENSG00000106366; SERPINE1"
+[119] "ENSG00000166224; SGPL1"    "ENSG00000147955; SIGMAR1" 
+[121] "ENSG00000096717; SIRT1"    "ENSG00000018280; SLC11A1" 
+[123] "ENSG00000187714; SLC18A3"  "ENSG00000108576; SLC6A4"  
+[125] "ENSG00000145335; SNCA"     "ENSG00000137642; SORL1"   
+[127] "ENSG00000157005; SST"      "ENSG00000120948; TARDBP"  
+[129] "ENSG00000091513; TF"       "ENSG00000108064; TFAM"    
+[131] "ENSG00000105329; TGFB1"    "ENSG00000232810; TNF"     
+[133] "ENSG00000130204; TOMM40"   "ENSG00000141510; TP53"    
+[135] "ENSG00000129167; TPH1"     "ENSG00000135018; UBQLN1"  
+[137] "ENSG00000154277; UCHL1"    "ENSG00000112715; VEGFA"   
+[139] "ENSG00000184937; WT1"     
+NULL
+null device 
+          1 
+NULL
+null device 
+          1 
+[1] "Reproducibility information:"
+[1] "2022-03-02 22:02:24 EST"
+   user  system elapsed 
+280.052   7.970 298.127 
+─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R Under development (unstable) (2021-11-06 r81149)
+ os       CentOS Linux 7 (Core)
+ system   x86_64, linux-gnu
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       US/Eastern
+ date     2022-03-02
+ pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package                * version  date (UTC) lib source
+ AnnotationDbi            1.57.1   2021-10-29 [2] Bioconductor
+ AnnotationHub            3.3.9    2022-02-28 [2] Bioconductor
+ assertthat               0.2.1    2019-03-21 [2] CRAN (R 4.1.0)
+ attempt                  0.3.1    2020-05-03 [1] CRAN (R 4.2.0)
+ beachmat                 2.11.0   2021-10-26 [2] Bioconductor
+ beeswarm                 0.4.0    2021-06-01 [2] CRAN (R 4.2.0)
+ benchmarkme              1.0.7    2021-03-21 [1] CRAN (R 4.2.0)
+ benchmarkmeData          1.0.4    2020-04-23 [1] CRAN (R 4.2.0)
+ Biobase                * 2.55.0   2021-10-26 [2] Bioconductor
+ BiocFileCache            2.3.4    2022-01-20 [2] Bioconductor
+ BiocGenerics           * 0.41.2   2021-11-15 [2] Bioconductor
+ BiocIO                   1.5.0    2021-10-26 [2] Bioconductor
+ BiocManager              1.30.16  2021-06-15 [2] CRAN (R 4.2.0)
+ BiocNeighbors            1.13.0   2021-10-26 [2] Bioconductor
+ BiocParallel             1.29.15  2022-02-23 [2] Bioconductor
+ BiocSingular             1.11.0   2021-10-26 [2] Bioconductor
+ BiocVersion              3.15.0   2021-10-26 [2] Bioconductor
+ Biostrings               2.63.1   2022-01-05 [2] Bioconductor
+ bit                      4.0.4    2020-08-04 [2] CRAN (R 4.1.0)
+ bit64                    4.0.5    2020-08-30 [2] CRAN (R 4.1.0)
+ bitops                   1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
+ blob                     1.2.2    2021-07-23 [2] CRAN (R 4.2.0)
+ brio                     1.1.3    2021-11-30 [2] CRAN (R 4.2.0)
+ bslib                    0.3.1    2021-10-06 [2] CRAN (R 4.2.0)
+ cachem                   1.0.6    2021-08-19 [2] CRAN (R 4.2.0)
+ callr                    3.7.0    2021-04-20 [2] CRAN (R 4.2.0)
+ cellranger               1.1.0    2016-07-27 [2] CRAN (R 4.1.0)
+ cli                      3.2.0    2022-02-14 [2] CRAN (R 4.2.0)
+ codetools                0.2-18   2020-11-04 [3] CRAN (R 4.2.0)
+ colorspace               2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
+ config                   0.3.1    2020-12-17 [1] CRAN (R 4.2.0)
+ cowplot                  1.1.1    2020-12-30 [2] CRAN (R 4.2.0)
+ crayon                   1.5.0    2022-02-14 [2] CRAN (R 4.2.0)
+ curl                     4.3.2    2021-06-23 [2] CRAN (R 4.2.0)
+ data.table               1.14.2   2021-09-27 [2] CRAN (R 4.2.0)
+ DBI                      1.1.2    2021-12-20 [2] CRAN (R 4.2.0)
+ dbplyr                   2.1.1    2021-04-06 [2] CRAN (R 4.1.0)
+ DelayedArray             0.21.2   2021-11-16 [2] Bioconductor
+ DelayedMatrixStats       1.17.0   2021-10-26 [2] Bioconductor
+ desc                     1.4.0    2021-09-28 [2] CRAN (R 4.2.0)
+ digest                   0.6.29   2021-12-01 [2] CRAN (R 4.2.0)
+ dockerfiler              0.1.4    2021-09-03 [1] CRAN (R 4.2.0)
+ doParallel               1.0.17   2022-02-07 [2] CRAN (R 4.2.0)
+ dotCall64                1.0-1    2021-02-11 [2] CRAN (R 4.1.0)
+ dplyr                    1.0.8    2022-02-08 [2] CRAN (R 4.2.0)
+ dqrng                    0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
+ DropletUtils             1.15.2   2021-11-08 [2] Bioconductor
+ DT                       0.21     2022-02-26 [2] CRAN (R 4.2.0)
+ edgeR                    3.37.0   2021-10-26 [2] Bioconductor
+ ellipsis                 0.3.2    2021-04-29 [2] CRAN (R 4.2.0)
+ ExperimentHub            2.3.5    2022-01-20 [2] Bioconductor
+ fansi                    1.0.2    2022-01-14 [2] CRAN (R 4.2.0)
+ farver                   2.1.0    2021-02-28 [2] CRAN (R 4.1.0)
+ fastmap                  1.1.0    2021-01-25 [2] CRAN (R 4.1.0)
+ fields                   13.3     2021-10-30 [2] CRAN (R 4.2.0)
+ filelock                 1.0.2    2018-10-05 [2] CRAN (R 4.1.0)
+ foreach                  1.5.2    2022-02-02 [2] CRAN (R 4.2.0)
+ fs                       1.5.2    2021-12-08 [2] CRAN (R 4.2.0)
+ generics                 0.1.2    2022-01-31 [2] CRAN (R 4.2.0)
+ GenomeInfoDb           * 1.31.4   2022-01-30 [2] Bioconductor
+ GenomeInfoDbData         1.2.7    2021-11-02 [2] Bioconductor
+ GenomicAlignments        1.31.2   2021-11-05 [2] Bioconductor
+ GenomicRanges          * 1.47.6   2022-01-12 [2] Bioconductor
+ ggbeeswarm               0.6.0    2017-08-07 [2] CRAN (R 4.2.0)
+ ggplot2                  3.3.5    2021-06-25 [2] CRAN (R 4.2.0)
+ ggrepel                  0.9.1    2021-01-15 [2] CRAN (R 4.1.0)
+ glue                     1.6.2    2022-02-24 [2] CRAN (R 4.2.0)
+ golem                    0.3.1    2021-04-17 [1] CRAN (R 4.2.0)
+ gridExtra                2.3      2017-09-09 [2] CRAN (R 4.1.0)
+ gtable                   0.3.0    2019-03-25 [2] CRAN (R 4.1.0)
+ HDF5Array                1.23.2   2021-11-15 [2] Bioconductor
+ here                   * 1.0.1    2020-12-13 [1] CRAN (R 4.2.0)
+ htmltools                0.5.2    2021-08-25 [2] CRAN (R 4.2.0)
+ htmlwidgets              1.5.4    2021-09-08 [2] CRAN (R 4.2.0)
+ httpuv                   1.6.5    2022-01-05 [2] CRAN (R 4.2.0)
+ httr                     1.4.2    2020-07-20 [2] CRAN (R 4.1.0)
+ interactiveDisplayBase   1.33.0   2021-10-26 [2] Bioconductor
+ IRanges                * 2.29.1   2021-11-16 [2] Bioconductor
+ irlba                    2.3.5    2021-12-06 [2] CRAN (R 4.2.0)
+ iterators                1.0.14   2022-02-05 [2] CRAN (R 4.2.0)
+ jquerylib                0.1.4    2021-04-26 [2] CRAN (R 4.2.0)
+ jsonlite                 1.8.0    2022-02-22 [2] CRAN (R 4.2.0)
+ KEGGREST                 1.35.0   2021-10-26 [2] Bioconductor
+ knitr                    1.37     2021-12-16 [2] CRAN (R 4.2.0)
+ labeling                 0.4.2    2020-10-20 [2] CRAN (R 4.1.0)
+ later                    1.3.0    2021-08-18 [2] CRAN (R 4.2.0)
+ lattice                  0.20-45  2021-09-22 [3] CRAN (R 4.2.0)
+ lazyeval                 0.2.2    2019-03-15 [2] CRAN (R 4.1.0)
+ lifecycle                1.0.1    2021-09-24 [2] CRAN (R 4.2.0)
+ limma                    3.51.5   2022-02-17 [2] Bioconductor
+ locfit                   1.5-9.4  2020-03-25 [2] CRAN (R 4.1.0)
+ magick                   2.7.3    2021-08-18 [2] CRAN (R 4.2.0)
+ magrittr                 2.0.2    2022-01-26 [2] CRAN (R 4.2.0)
+ maps                     3.4.0    2021-09-25 [2] CRAN (R 4.2.0)
+ Matrix                   1.4-0    2021-12-08 [3] CRAN (R 4.2.0)
+ MatrixGenerics         * 1.7.0    2021-10-26 [2] Bioconductor
+ matrixStats            * 0.61.0   2021-09-17 [2] CRAN (R 4.2.0)
+ memoise                  2.0.1    2021-11-26 [2] CRAN (R 4.2.0)
+ mime                     0.12     2021-09-28 [2] CRAN (R 4.2.0)
+ munsell                  0.5.0    2018-06-12 [2] CRAN (R 4.1.0)
+ pillar                   1.7.0    2022-02-01 [2] CRAN (R 4.2.0)
+ pkgbuild                 1.3.1    2021-12-20 [2] CRAN (R 4.2.0)
+ pkgconfig                2.0.3    2019-09-22 [2] CRAN (R 4.1.0)
+ pkgload                  1.2.4    2021-11-30 [2] CRAN (R 4.2.0)
+ plotly                   4.10.0   2021-10-09 [2] CRAN (R 4.2.0)
+ png                      0.1-7    2013-12-03 [2] CRAN (R 4.1.0)
+ Polychrome               1.3.1    2021-07-16 [1] CRAN (R 4.2.0)
+ prettyunits              1.1.1    2020-01-24 [2] CRAN (R 4.1.0)
+ processx                 3.5.2    2021-04-30 [2] CRAN (R 4.2.0)
+ promises                 1.2.0.1  2021-02-11 [2] CRAN (R 4.1.0)
+ ps                       1.6.0    2021-02-28 [2] CRAN (R 4.1.0)
+ purrr                    0.3.4    2020-04-17 [2] CRAN (R 4.1.0)
+ R.methodsS3              1.8.1    2020-08-26 [2] CRAN (R 4.1.0)
+ R.oo                     1.24.0   2020-08-26 [2] CRAN (R 4.1.0)
+ R.utils                  2.11.0   2021-09-26 [2] CRAN (R 4.2.0)
+ R6                       2.5.1    2021-08-19 [2] CRAN (R 4.2.0)
+ rappdirs                 0.3.3    2021-01-31 [2] CRAN (R 4.1.0)
+ RColorBrewer           * 1.1-2    2014-12-07 [2] CRAN (R 4.1.0)
+ Rcpp                     1.0.8    2022-01-13 [2] CRAN (R 4.2.0)
+ RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
+ readxl                 * 1.3.1    2019-03-13 [2] CRAN (R 4.1.0)
+ remotes                  2.4.2    2021-11-30 [2] CRAN (R 4.2.0)
+ restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
+ rhdf5                    2.39.5   2022-01-21 [2] Bioconductor
+ rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
+ Rhdf5lib                 1.17.3   2022-01-31 [2] Bioconductor
+ rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
+ rlang                    1.0.1    2022-02-03 [2] CRAN (R 4.2.0)
+ roxygen2                 7.1.2    2021-09-08 [2] CRAN (R 4.2.0)
+ rprojroot                2.0.2    2020-11-15 [2] CRAN (R 4.1.0)
+ Rsamtools                2.11.0   2021-10-27 [2] Bioconductor
+ RSQLite                  2.2.10   2022-02-17 [2] CRAN (R 4.2.0)
+ rstudioapi               0.13     2020-11-12 [2] CRAN (R 4.1.0)
+ rsvd                     1.0.5    2021-04-16 [2] CRAN (R 4.2.0)
+ rtracklayer              1.55.3   2021-12-08 [2] Bioconductor
+ S4Vectors              * 0.33.10  2022-01-12 [2] Bioconductor
+ sass                     0.4.0    2021-05-12 [2] CRAN (R 4.2.0)
+ ScaledMatrix             1.3.0    2021-10-26 [2] Bioconductor
+ scales                   1.1.1    2020-05-11 [2] CRAN (R 4.1.0)
+ scater                   1.23.2   2021-12-14 [2] Bioconductor
+ scatterplot3d            0.3-41   2018-03-14 [1] CRAN (R 4.2.0)
+ scuttle                  1.5.0    2021-10-27 [2] Bioconductor
+ sessioninfo            * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
+ shiny                    1.7.1    2021-10-02 [2] CRAN (R 4.2.0)
+ shinyWidgets             0.6.4    2022-02-06 [2] CRAN (R 4.2.0)
+ SingleCellExperiment   * 1.17.2   2021-11-18 [2] Bioconductor
+ spam                     2.8-0    2022-01-06 [2] CRAN (R 4.2.0)
+ sparseMatrixStats        1.7.0    2021-10-26 [2] Bioconductor
+ SpatialExperiment      * 1.5.3    2022-03-01 [1] Bioconductor
+ spatialLIBD            * 1.7.12   2022-03-03 [1] Github (LieberInstitute/spatialLIBD@a416438)
+ stringi                  1.7.6    2021-11-29 [2] CRAN (R 4.2.0)
+ stringr                  1.4.0    2019-02-10 [2] CRAN (R 4.1.0)
+ SummarizedExperiment   * 1.25.3   2021-12-08 [2] Bioconductor
+ testthat                 3.1.2    2022-01-20 [2] CRAN (R 4.2.0)
+ tibble                   3.1.6    2021-11-07 [2] CRAN (R 4.2.0)
+ tidyr                    1.2.0    2022-02-01 [2] CRAN (R 4.2.0)
+ tidyselect               1.1.2    2022-02-21 [2] CRAN (R 4.2.0)
+ usethis                  2.1.5    2021-12-09 [2] CRAN (R 4.2.0)
+ utf8                     1.2.2    2021-07-24 [2] CRAN (R 4.2.0)
+ vctrs                    0.3.8    2021-04-29 [2] CRAN (R 4.2.0)
+ vipor                    0.4.5    2017-03-22 [2] CRAN (R 4.2.0)
+ viridis                  0.6.2    2021-10-13 [2] CRAN (R 4.2.0)
+ viridisLite              0.4.0    2021-04-13 [2] CRAN (R 4.2.0)
+ withr                    2.4.3    2021-11-30 [2] CRAN (R 4.2.0)
+ xfun                     0.29     2021-12-14 [2] CRAN (R 4.2.0)
+ XML                      3.99-0.9 2022-02-24 [2] CRAN (R 4.2.0)
+ xml2                     1.3.3    2021-11-30 [2] CRAN (R 4.2.0)
+ xtable                   1.8-4    2019-04-21 [2] CRAN (R 4.1.0)
+ XVector                  0.35.0   2021-10-26 [2] Bioconductor
+ yaml                     2.3.5    2022-02-21 [2] CRAN (R 4.2.0)
+ zlibbioc                 1.41.0   2021-10-26 [2] Bioconductor
+
+ [1] /users/lcollado/R/devel
+ [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/site-library
+ [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+**** Job ends ****
+Wed Mar  2 22:02:33 EST 2022
