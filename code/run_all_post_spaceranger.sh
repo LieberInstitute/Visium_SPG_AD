@@ -34,12 +34,10 @@ rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
 ## Run the spot QC code
 cd ${CODEDIR}/07_spot_qc
 rm logs/qc_metrics_and_segmentation.txt
-rm logs/subset_data_shiny.txt
 rm logs/compare_pathology_number_to_percent.txt
 #rm ${PROCESSEDIR}/07_spot_qc/spe*.Rdata ## Won't do this now since some 08_harmony_BayesSpace are running
 qsub 01_qc_metrics_and_segmentation.sh
 qsub 02_compare_pathology_number_to_percent.sh
-qsub subset_data_shiny.sh
 
 ## Run harmony and BayesSpace
 # cd ${CODEDIR}/08_harmony_BayesSpace
@@ -49,6 +47,10 @@ qsub subset_data_shiny.sh
 # sh 01_preprocess_and_harmony.sh
 # sh 02_BayesSpace_k_search.sh
 # qsub 03_plot_SNN_k10.sh
+
+cd ${CODEDIR}/99_prepare_for_shiny
+rm logs/prepare_shiny*.txt
+qsub 01_prepare_shiny.sh
 
 ## Add future steps here
 

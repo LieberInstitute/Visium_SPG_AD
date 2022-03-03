@@ -1,11 +1,13 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
-#$ -N subset_data_shiny
-#$ -o logs/subset_data_shiny.txt
-#$ -e logs/subset_data_shiny.txt
+#$ -N prepare_shiny
+#$ -o logs/prepare_shiny.txt
+#$ -e logs/prepare_shiny.txt
 #$ -m e
-#$ -hold_jid qc_metrics_and_segmentation
+#$ -hold_jid qc_metrics_and_segmentation,preprocess_and_harmony_wholegenome,preprocess_and_harmony_targeted
+#$ -t 1-2
+#$ -tc 2
 
 echo "**** Job starts ****"
 date
@@ -24,8 +26,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript ../05_deploy_app/subset_data.R
-Rscript ../06_deploy_app_targeted/subset_data.R
+Rscript 01_prepare_shiny.R
 
 echo "**** Job ends ****"
 date

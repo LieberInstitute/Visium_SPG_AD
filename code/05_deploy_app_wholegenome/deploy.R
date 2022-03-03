@@ -15,12 +15,12 @@ options(repos = BiocManager::repositories())
 
 ## Deploy the app, that is, upload it to shinyapps.io
 rsconnect::deployApp(
-    appDir = here("code", "06_deploy_app_targeted"),
+    appDir = here("code", "05_deploy_app_wholegenome"),
     appFiles = c(
         "app.R",
         "spe.Rdata"
     ),
-    appName = "Visium_IF_AD_Kwon2021_TGE",
+    appName = "Visium_IF_AD_Kwon2021",
     account = "libd",
     server = "shinyapps.io"
 )

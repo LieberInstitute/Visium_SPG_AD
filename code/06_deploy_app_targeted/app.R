@@ -11,7 +11,7 @@ options("golem.app.prod" = TRUE)
 options(repos = BiocManager::repositories())
 
 ## Load the data
-load("spe_targeted.Rdata", verbose = TRUE)
+load("spe.Rdata", verbose = TRUE)
 
 vars <- colnames(colData(spe_targeted))
 
