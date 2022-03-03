@@ -23,10 +23,13 @@ spatialLIBD::run_app(
     sig_genes = NULL,
     title = "Visium IF AD, Kwon SH et al, 2021",
     spe_discrete_vars = c(
-        vars[grep("^10x_", vars)],
+        vars[grep("^path_", vars)],
         "ManualAnnotation",
+        vars[grep("^BayesSpace_", vars)],
+        vars[grep("^graph_", vars)],
         "edge_spots",
-        vars[grep("^scran_", vars)]
+        vars[grep("^scran_", vars)],
+        vars[grep("^10x_", vars)]
     ),
     spe_continuous_vars = c(
         "sum_umi",
@@ -47,5 +50,5 @@ spatialLIBD::run_app(
         "PpTau",
         "edge_distance"
     ),
-    default_cluster = "10x_graphclust"
+    default_cluster = "BayesSpace_harmony_k15"
 )
