@@ -53,7 +53,13 @@ qsub 04_heatmaps_dlpfc_markers.sh
 
 ## Run code related to comparing pathology vs BayesSpace
 cd ${CODEDIR}/09_pathology_vs_BayesSpace
+rm logs/bayesspace_k_pathology_boxplots.txt
+rm logs/pathology_thresholds.txt
+rm logs/bayesspace_pathology_barplots.txt
 rm logs/label_pathology_spots.txt
+qsub 01_bayesspace_k_pathology_boxplots.sh
+qsub 02_pathology_thresholds.sh
+qsub 03_bayesspace_pathology_barplots.sh
 qsub 04_label_pathology_spots.sh
 
 ## Add future steps here
