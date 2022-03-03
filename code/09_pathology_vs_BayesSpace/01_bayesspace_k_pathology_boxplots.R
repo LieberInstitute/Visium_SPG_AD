@@ -30,7 +30,7 @@ dir.create(dir_plots, showWarnings = FALSE)
 # import cluster info for whole genome
 dir_rdata_whole <- here::here("processed-data", "08_harmony_BayesSpace", "wholegenome") # , suffix
 
-cluster_spe <- cluster_import(
+spe_wholegenome <- cluster_import(
     spe_wholegenome,
     cluster_dir = file.path(dir_rdata_whole, "clusters_BayesSpace"),
     prefix = ""
@@ -39,7 +39,7 @@ cluster_spe <- cluster_import(
 # import cluster info for targeted genome
 dir_rdata_targeted <- here::here("processed-data", "08_harmony_BayesSpace", "targeted")
 
-cluster_spe_targeted <- cluster_import(
+spe_targeted <- cluster_import(
     spe_targeted,
     cluster_dir = file.path(dir_rdata_targeted, "clusters_BayesSpace"),
     prefix = ""
@@ -48,27 +48,27 @@ cluster_spe_targeted <- cluster_import(
 
 # create df with relevant variables for whole
 cluster_whole_df <- data.frame(
-    spot_id = colnames(cluster_spe),
-    diagnosis = cluster_spe$diagnosis,
-    sample_id = cluster_spe$sample_id,
-    NAbeta = cluster_spe$NAbeta,
-    NpTau = cluster_spe$NpTau,
-    PAbeta = cluster_spe$PAbeta,
-    PpTau = cluster_spe$PpTau,
-    colData(cluster_spe)[grep("BayesSpace_harmony_k", colnames(colData(cluster_spe)))] ## could use select(matches =) but
+    spot_id = colnames(spe_wholegenome),
+    diagnosis = spe_wholegenome$diagnosis,
+    sample_id = spe_wholegenome$sample_id,
+    NAbeta = spe_wholegenome$NAbeta,
+    NpTau = spe_wholegenome$NpTau,
+    PAbeta = spe_wholegenome$PAbeta,
+    PpTau = spe_wholegenome$PpTau,
+    colData(spe_wholegenome)[grep("BayesSpace_harmony_k", colnames(colData(spe_wholegenome)))] ## could use select(matches =) but
     ## have to convert entire colData to df
 )
 
 # create df with relevant variables for targeted
 cluster_targeted_df <- data.frame(
-    spot_id = colnames(cluster_spe_targeted),
-    diagnosis = cluster_spe_targeted$diagnosis,
-    sample_id = cluster_spe_targeted$sample_id,
-    NAbeta = cluster_spe_targeted$NAbeta,
-    NpTau = cluster_spe_targeted$NpTau,
-    PAbeta = cluster_spe_targeted$PAbeta,
-    PpTau = cluster_spe_targeted$PpTau,
-    colData(cluster_spe_targeted)[grep("BayesSpace_harmony_k", colnames(colData(cluster_spe_targeted)))]
+    spot_id = colnames(spe_targeted),
+    diagnosis = spe_targeted$diagnosis,
+    sample_id = spe_targeted$sample_id,
+    NAbeta = spe_targeted$NAbeta,
+    NpTau = spe_targeted$NpTau,
+    PAbeta = spe_targeted$PAbeta,
+    PpTau = spe_targeted$PpTau,
+    colData(spe_targeted)[grep("BayesSpace_harmony_k", colnames(colData(spe_targeted)))]
 )
 
 
