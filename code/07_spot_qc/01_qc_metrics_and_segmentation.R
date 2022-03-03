@@ -102,7 +102,7 @@ metrics_qc <- function(spe, spename) {
         dir_plots,
         paste0("scran_", spename, "_low_lib_size_vs_mito_scatter.pdf")
     ), width = 21)
-    ggplot(
+    p <- ggplot(
         qc_df,
         aes(
             x = log2sum,
@@ -115,6 +115,7 @@ metrics_qc <- function(spe, spename) {
         facet_grid(~sample_id) +
         guides(color = guide_legend("Low lib?")) +
         guides(shape = guide_legend("Low mito?"))
+    print(p)
     dev.off()
 
     spe$scran_low_lib_size_low_mito <- factor(qcfilter$low_lib_size & qc_df$subsets_Mito_percent < 0.5, levels = c("TRUE", "FALSE"))
@@ -199,7 +200,7 @@ metrics_qc <- function(spe, spename) {
         dir_plots,
         paste0("scran_", spename, "_low_lib_size_vs_edge_distance_scatter.pdf")
     ), width = 21)
-    ggplot(
+    p <- ggplot(
         qc_df,
         aes(
             x = log2sum,
@@ -210,6 +211,7 @@ metrics_qc <- function(spe, spename) {
         geom_point() +
         facet_grid(~sample_id) +
         guides(color = guide_legend("Low lib?"))
+    print(p)
     dev.off()
 
     spe$scran_low_lib_size_edge <- factor(qcfilter$low_lib_size & spots$edge_distance < 1, levels = c("TRUE", "FALSE"))
