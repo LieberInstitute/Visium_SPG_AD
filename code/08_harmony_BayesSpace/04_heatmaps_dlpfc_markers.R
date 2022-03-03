@@ -32,10 +32,11 @@ dir.create(dir_plots, showWarnings = FALSE)
 ################################ whole genome####################################
 
 ## Load basic SPE data
-load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"),
-    verbose = TRUE
+spe <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_wholegenome_postqc.rds"
+    )
 )
-
 
 # import cluster info for whole genome
 dir_rdata_whole <-
@@ -113,8 +114,10 @@ dev.off()
 
 ################################ targeted genome##################################
 
-load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"),
-    verbose = TRUE
+spe_targeted <- readRDS(
+    here::here(
+        "processed-data", "07_spot_qc", "spe_targeted_postqc.rds"
+    )
 )
 
 # import cluster info for targeted
