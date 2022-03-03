@@ -1,13 +1,11 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -N heatmaps_dlpfc_markers
-#$ -o logs/heatmaps_dlpfc_markers.txt
-#$ -e logs/heatmaps_dlpfc_markers.txt
+#$ -N bayesspace_k_pathology_boxplots
+#$ -o logs/bayesspace_k_pathology_boxplots.txt
+#$ -e logs/bayesspace_k_pathology_boxplots.txt
 #$ -m e
-#$ -hold_jid preprocess_and_harmony_wholegenome,preprocess_and_harmony_targeted
-#
-# Should really be BayesSpace_k_search_wholegenome,BayesSpace_k_search_targeted
+#$ -hold_jid heatmaps_dlpfc_markers
 
 echo "**** Job starts ****"
 date
@@ -26,7 +24,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 04_heatmaps_dlpfc_markers.R
+Rscript 01_bayesspace_k_pathology_boxplots.R
 
 echo "**** Job ends ****"
 date
