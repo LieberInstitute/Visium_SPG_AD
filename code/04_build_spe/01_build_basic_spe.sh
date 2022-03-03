@@ -23,7 +23,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript build_basic_spe.R
+Rscript 01_build_basic_spe.R
 
 echo "**** Job ends ****"
 date

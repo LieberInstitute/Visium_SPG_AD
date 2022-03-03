@@ -27,7 +27,9 @@ PROCESSEDIR="${MAINDIR}/processed-data"
 cd ${CODEDIR}/04_build_spe
 rm logs/build_basic_spe.txt
 rm ${PROCESSEDIR}/04_build_spe/spe*.Rdata
-qsub build_basic_spe.sh
+rm logs/initial_exploration.txt
+qsub 01_build_basic_spe.sh
+qsub 02_initial_exploration.sh
 
 ## Run the spot QC code
 cd ${CODEDIR}/07_spot_qc
