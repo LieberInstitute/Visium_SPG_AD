@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -l bluejay,mem_free=4G,h_vmem=4G,h_fsize=100G
 #$ -N compare_pathology_number_to_percent
 #$ -o logs/compare_pathology_number_to_percent.txt
 #$ -e logs/compare_pathology_number_to_percent.txt
