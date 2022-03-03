@@ -5,7 +5,7 @@
 #$ -o logs/prepare_shiny.txt
 #$ -e logs/prepare_shiny.txt
 #$ -m e
-#$ -hold_jid qc_metrics_and_segmentation,preprocess_and_harmony_wholegenome,preprocess_and_harmony_targeted
+#$ -hold_jid label_pathology_spots
 #$ -t 1-2
 #$ -tc 2
 
