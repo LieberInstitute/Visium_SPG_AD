@@ -22,11 +22,8 @@ spe_targeted <- readRDS(
     )
 )
 
-load(here::here("processed-data", "07_spot_qc", "spe_postqc.Rdata"), verbose = TRUE)
-load(here::here("processed-data", "07_spot_qc", "spe_targeted_postqc.Rdata"), verbose = TRUE)
-
 ## output directories
-dir_plots <- here::here("plots", "07_spot_qc", "pathology_vs_Bayesspace_cluster_boxplots")
+dir_plots <- here::here("plots", "09_pathology_vs_BayesSpace", "pathology_vs_Bayesspace_cluster_boxplots")
 dir.create(dir_plots, showWarnings = FALSE)
 
 

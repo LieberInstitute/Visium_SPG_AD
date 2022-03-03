@@ -21,7 +21,7 @@ spe <- readRDS(
 
 
 ## output directories
-dir_plots <- here::here("plots", "07_spot_qc", "pathology_vs_Bayesspace_cluster_barplots")
+dir_plots <- here::here("plots", "09_pathology_vs_BayesSpace", "pathology_vs_Bayesspace_cluster_barplots")
 dir.create(dir_plots, showWarnings = FALSE)
 
 
@@ -84,12 +84,12 @@ table(cluster_df$NpTau > 0 | cluster_df$PpTau > 0)
 
 # Stacked bar plots, add labels inside bars
 
-plot <- ggplot(cluster_df, aes(
-    fill = pTau_outliers,
-    x = imported_BayesSpace_harmony_k14
-)) + # , y = PpTau
-    geom_bar(position = "fill", stat = "count") +
-    geom_text(aes(label = stat(count)), stat = "count", position = "fill")
+# plot <- ggplot(cluster_df, aes(
+#     fill = pTau_outliers,
+#     x = imported_BayesSpace_harmony_k14
+# )) + # , y = PpTau
+#     geom_bar(position = "fill", stat = "count") +
+#     geom_text(aes(label = stat(count)), stat = "count", position = "fill")
 
 
 
