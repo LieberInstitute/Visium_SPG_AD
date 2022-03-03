@@ -26,7 +26,7 @@ rownames(sig_genes) <- sig_genes$ensembl
 sig_genes$gene_layer <- paste(sig_genes$gene, sig_genes$layer)
 
 ## output directories
-dir_plots <- here::here("plots", "07_spot_qc", "heatmaps")
+dir_plots <- here::here("plots", "08_harmony_BayesSpace", "marker_heatmaps")
 dir.create(dir_plots, showWarnings = FALSE)
 
 ################################ whole genome####################################
