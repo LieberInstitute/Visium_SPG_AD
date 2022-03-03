@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=9G,h_vmem=9G,h_fsize=100G
+#$ -l bluejay,mem_free=8G,h_vmem=8G,h_fsize=100G
 #$ -N qc_metrics_and_segmentation
 #$ -o logs/qc_metrics_and_segmentation.txt
 #$ -e logs/qc_metrics_and_segmentation.txt
