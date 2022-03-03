@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
 #$ -N plot_SNN_k10
 #$ -o logs/plot_SNN_k10.txt
 #$ -e logs/plot_SNN_k10.txt
