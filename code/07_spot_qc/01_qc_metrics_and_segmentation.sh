@@ -5,6 +5,7 @@
 #$ -o logs/qc_metrics_and_segmentation.txt
 #$ -e logs/qc_metrics_and_segmentation.txt
 #$ -m e
+#$ -hold_jid VisiumIFAD_build_basic_spe
 
 echo "**** Job starts ****"
 date
