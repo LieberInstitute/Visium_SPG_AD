@@ -19,8 +19,9 @@ echo "Task id: ${SGE_TASK_ID}"
 ## List current modules for reproducibility
 module list
 
-CODEDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code"
-PROCESSEDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data"
+MAINDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+CODEDIR="${MAINDIR}/code"
+PROCESSEDIR="${MAINDIR}/processed-data"
 
 ## Delete the logs and re-submit the build SPE script
 cd ${CODEDIR}/04_build_spe
@@ -28,25 +29,23 @@ rm logs/build_basic_spe.txt
 rm ${PROCESSEDIR}/04_build_spe/spe*.Rdata
 qsub build_basic_spe.sh
 
-## Delete SPE versions for shiny
-rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
-
 ## Run the spot QC code
 cd ${CODEDIR}/07_spot_qc
 rm logs/qc_metrics_and_segmentation.txt
 rm logs/compare_pathology_number_to_percent.txt
-#rm ${PROCESSEDIR}/07_spot_qc/spe*.Rdata ## Won't do this now since some 08_harmony_BayesSpace are running
+rm ${PROCESSEDIR}/07_spot_qc/spe*.Rdata
 qsub 01_qc_metrics_and_segmentation.sh
 qsub 02_compare_pathology_number_to_percent.sh
 
 ## Run harmony and BayesSpace
-# cd ${CODEDIR}/08_harmony_BayesSpace
-# rm logs/preprocess_and_harmony*.txt
-# rm logs/BayesSpace_k_search_spe_harmony*.txt
-# rm logs/plot_SNN_k10.txt
-# sh 01_preprocess_and_harmony.sh
-# sh 02_BayesSpace_k_search.sh
-# qsub 03_plot_SNN_k10.sh
+cd ${CODEDIR}/08_harmony_BayesSpace
+rm ${PROCESSEDIR}/08_harmony_BayesSpace/spe_harmony_*.rds
+rm logs/preprocess_and_harmony*.txt
+# rm logs/BayesSpace_k_search_spe_harmony*.txt ## Won't do this now since some 08_harmony_BayesSpace are running
+rm logs/plot_SNN_k10.txt
+sh 01_preprocess_and_harmony.sh
+# sh 02_BayesSpace_k_search.sh ## Will need to manually submit for k = 8-15 for targeted
+qsub 03_plot_SNN_k10.sh
 
 ## Run code related to comparing pathology vs BayesSpace
 cd ${CODEDIR}/09_pathology_vs_BayesSpace
@@ -55,6 +54,9 @@ qsub 04_label_pathology_spots.sh
 
 ## Add future steps here
 ## TODO
+
+## Delete SPE versions for shiny
+rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
 
 ## Prepare the inputs for shiny (steps 05 and 06)
 ## (this will likely be the last step)
