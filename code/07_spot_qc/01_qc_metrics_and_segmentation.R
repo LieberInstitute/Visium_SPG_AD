@@ -342,7 +342,7 @@ spe_targeted <- spe_targeted[, !drop_low_library_edge_either]
 spe_targeted$scran_low_lib_size_edge <- spe_wholegenome$scran_low_lib_size_edge <- NULL
 
 ## Save for later
-saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_wholegenome_postqc.rds"))
+saveRDS(spe_wholegenome, file = file.path(dir_rdata, "spe_wholegenome_postqc.rds"))
 saveRDS(spe_targeted, file = file.path(dir_rdata, "spe_targeted_postqc.rds"))
 
 ## Reproducibility information

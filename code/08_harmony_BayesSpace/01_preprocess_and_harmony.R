@@ -53,7 +53,7 @@ dir.create(file.path(dir_rdata, "clusters_graphbased_cut_at"), showWarnings = FA
 ## Load the data
 spe <- readRDS(
     here::here(
-        "processed-data", "07_spot_qc", opt$spetype,
+        "processed-data", "07_spot_qc",
         paste0("spe_", opt$spetype, "_postqc.rds")
     )
 )
