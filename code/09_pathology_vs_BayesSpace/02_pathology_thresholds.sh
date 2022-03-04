@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
+#$ -l bluejay,mem_free=4G,h_vmem=4G,h_fsize=100G
 #$ -N pathology_thresholds
 #$ -o logs/pathology_thresholds.txt
 #$ -e logs/pathology_thresholds.txt
