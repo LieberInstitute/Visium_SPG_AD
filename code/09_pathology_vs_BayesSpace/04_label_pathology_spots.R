@@ -10,6 +10,7 @@
 library("here")
 library("spatialLIBD")
 library("sessioninfo")
+library('BayesSpace')
 
 ## Create output directory
 dir_rdata <- here::here("processed-data", "09_pathology_vs_BayesSpace", "pathology_levels")
@@ -22,12 +23,22 @@ spe <- readRDS(
     )
 )
 
+
+
+
 ## Set pathology levels
 spe$path_pTau <- ifelse(spe$NpTau > 7 | spe$PpTau > 0.014, "pTau+", "pTau-")
 spe$path_Abeta <- ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
 spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta)
 
 ## TODO find neighbors
+spe$col <- spe$array_col
+spe$row <- spe$array_row
+
+neighbors_list <- BayesSpace:::.find_neighbors(spe, platform = 'Visium')
+neighbors_list[1]
+#Neighbors were identified for 38115 out of 38115 spots.
+#[1] "list"
 
 ## Export pathology levels for later
 for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
