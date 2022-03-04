@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
+#$ -l bluejay,mem_free=5G,h_vmem=5G,h_fsize=100G
 #$ -N prepare_shiny
 #$ -o logs/prepare_shiny.txt
 #$ -e logs/prepare_shiny.txt
