@@ -43,7 +43,7 @@ qsub 02_compare_pathology_number_to_percent.sh
 cd ${CODEDIR}/08_harmony_BayesSpace
 rm ${PROCESSEDIR}/08_harmony_BayesSpace/*/spe_harmony_*.rds
 rm logs/preprocess_and_harmony*.txt
-rm logs/BayesSpace_k_search_spe_harmony*.txt
+rm logs/BayesSpace_k_search_*.txt
 rm logs/plot_SNN_k10.txt
 rm logs/heatmaps_dlpfc_markers.txt
 rm logs/fasthplus_optimal_k_*.txt
