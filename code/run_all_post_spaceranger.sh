@@ -47,11 +47,17 @@ rm logs/BayesSpace_k_search_*.txt
 rm logs/plot_SNN_k10.txt
 rm logs/heatmaps_dlpfc_markers.txt
 rm logs/fasthplus_optimal_k_*.txt
+rm logs/BayesSpace_enhance_a_split*.txt
+rm logs/BayesSpace_enhance_b_compute_*.txt
+rm logs/BayesSpace_enhance_c_merge*.txt
 sh 01_preprocess_and_harmony.sh
 sh 02_BayesSpace_k_search.sh
 qsub 03_plot_SNN_k10.sh
 qsub 04_heatmaps_dlpfc_markers.sh
 sh 05_fasthplus_optimal_k.sh
+qsub 06_BayesSpace_enhance_a_split.sh
+sh 06_BayesSpace_enhance_b_compute.sh
+qsub 06_BayesSpace_enhance_c_merge.sh
 
 ## Run code related to comparing pathology vs BayesSpace
 cd ${CODEDIR}/09_pathology_vs_BayesSpace
