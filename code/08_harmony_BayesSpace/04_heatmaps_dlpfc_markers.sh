@@ -5,9 +5,7 @@
 #$ -o logs/heatmaps_dlpfc_markers.txt
 #$ -e logs/heatmaps_dlpfc_markers.txt
 #$ -m e
-#$ -hold_jid preprocess_and_harmony_wholegenome,preprocess_and_harmony_targeted
-#
-# Should really be BayesSpace_k_search_wholegenome,BayesSpace_k_search_targeted
+#$ -hold_jid BayesSpace_k_search_wholegenome,BayesSpace_k_search_targeted
 
 echo "**** Job starts ****"
 date
