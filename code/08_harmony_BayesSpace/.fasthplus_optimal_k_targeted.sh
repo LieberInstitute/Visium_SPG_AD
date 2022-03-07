@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -N fastplus_optimal_k_targeted
-#$ -o logs/fastplus_optimal_k_targeted.$TASK_ID.txt
-#$ -e logs/fastplus_optimal_k_targeted.$TASK_ID.txt
+#$ -N fasthplus_optimal_k_targeted
+#$ -o logs/fasthplus_optimal_k_targeted.$TASK_ID.txt
+#$ -e logs/fasthplus_optimal_k_targeted.$TASK_ID.txt
 #$ -m e
 #$ -t 2-15
 #$ -tc 14
@@ -26,7 +26,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 05_fastplus_optimal_k -s targeted
+Rscript 05_fasthplus_optimal_k -s targeted
 
 echo "**** Job ends ****"
 date
