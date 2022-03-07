@@ -9,14 +9,14 @@ mkdir -p logs
 for spetype in wholegenome targeted; do
 
     ## Internal script name
-    SHORT="05_fastplus_optimal_k_${spetype}"
+    SHORT="fastplus_optimal_k_${spetype}"
 
     # Construct shell file
-    echo "Creating script 05_fastplus_optimal_k_${spetype}"
+    echo "Creating script fastplus_optimal_k_${spetype}"
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
 #$ -N ${SHORT}
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
@@ -35,13 +35,13 @@ echo "Hostname: \${HOSTNAME}"
 echo "Task id: \${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('${spetype}'); sessioninfo::session_info()"
+Rscript 05_fastplus_optimal_k -s ${spetype}
 
 echo "**** Job ends ****"
 date

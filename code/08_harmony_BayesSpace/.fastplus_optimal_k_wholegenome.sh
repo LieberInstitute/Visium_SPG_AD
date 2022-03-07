@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
-#$ -N 05_fastplus_optimal_k_targeted
-#$ -o logs/05_fastplus_optimal_k_targeted.$TASK_ID.txt
-#$ -e logs/05_fastplus_optimal_k_targeted.$TASK_ID.txt
+#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -N fastplus_optimal_k_wholegenome
+#$ -o logs/fastplus_optimal_k_wholegenome.$TASK_ID.txt
+#$ -e logs/fastplus_optimal_k_wholegenome.$TASK_ID.txt
 #$ -m e
 #$ -t 2-15
 #$ -tc 14
@@ -19,13 +19,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('targeted'); sessioninfo::session_info()"
+Rscript 05_fastplus_optimal_k -s wholegenome
 
 echo "**** Job ends ****"
 date

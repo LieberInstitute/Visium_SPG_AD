@@ -1,4 +1,4 @@
-library(remotes)
+#library(remotes)
 #remotes::install_github('LieberInstitute/sgejobs')
 # library(sgejobs)
 # sgejobs::job_loop(
@@ -8,8 +8,8 @@ library(remotes)
 #     name = "05_fastplus_optimal_k",
 #     create_shell = TRUE,
 #     queue = "bluejay",
-#     memory = "80G",
-#     task_num = 14,
+#     memory = "20G",
+#     task_num = 15,
 #     tc = 14
 #
 # )
@@ -34,20 +34,22 @@ if (!is.null(opt$help)) {
 
 
 library('here')
-#remotes::install_github(repo="ntdyjack/fasthplus", ref = "main")
+#remotes::install_github(repo="ntdyjack/fasthplus")
 library('fasthplus')
 library("sessioninfo")
-library("SpatialExperiment")
 library("spatialLIBD")
-library("BayesSpace")
 
-suffix = 'wholegenome'  #replace suffix w/ opt$spetype after testing
+if (FALSE) {
+    ## For testing, run interactively if needed
+    opt <- list(spetype = "wholegenome")
+}
+
 ## Load the data
 spe <- readRDS(here::here(
     "processed-data",
-    "07_spot_qc",
-    opt_,
-    paste0("spe_", suffix, "_postqc.rds")
+    "08_harmony_BayesSpace",
+    opt$spetype,
+    paste0("spe_harmony_", opt$spetype, ".rds")
 ))
 
 # import cluster info
@@ -56,14 +58,14 @@ spe <- cluster_import(
     cluster_dir = here::here(
         "processed-data",
         "08_harmony_BayesSpace",
-        suffix,
+        opt$spetype,
         "clusters_BayesSpace"
     ),
     prefix = ""
 )
 
 ##create output directories
-dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", "fasthplus_results.csv")
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace")
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 
 
@@ -75,9 +77,10 @@ k_nice <- sprintf("%02d", k)
 ##Code from https://github.com/LieberInstitute/spatialDLPFC/blob/main/code/analysis/06_fastplus/06_fasthplus.R
 #hpb estimate. t = pre-bootstrap sample size, D = reduced dimensions matrix, L = cluster labels, r = number of bootstrap iterations
 set.seed(20220304)
-fasthplus <- hpb(D= reducedDims(spe)$HARMONY,L=colData(spe)[[paste0("BayesSpace_harmony_k",k)]],t=1446,r=30)
-results <- data.frame (k=k, fasthplus=fasthplus)
-write.table(results,file = here::here("processed-data","08_harmony_BayesSpace","fasthplus_results.csv"), append = TRUE)
+## Use 5% of the data
+fasthplus <- hpb(D= reducedDims(spe)$HARMONY,L=colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]],t=floor(nrow(spe) * 0.05),r=30)
+results <- data.frame (k=k, fasthplus=fasthplus, type = opt$spetype)
+write.table(results, file = here::here("processed-data","08_harmony_BayesSpace","fasthplus_results.csv"), append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t")
 
 ## Reproducibility information
 print("Reproducibility information:")
