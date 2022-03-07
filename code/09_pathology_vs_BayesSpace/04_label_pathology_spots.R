@@ -10,10 +10,15 @@
 library("here")
 library("spatialLIBD")
 library("sessioninfo")
-library('BayesSpace')
+library("BayesSpace")
 
 ## Create output directory
-dir_rdata <- here::here("processed-data", "09_pathology_vs_BayesSpace", "pathology_levels")
+dir_rdata <-
+    here::here(
+        "processed-data",
+        "09_pathology_vs_BayesSpace",
+        "pathology_levels"
+    )
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 
 ## Load the data
@@ -28,39 +33,50 @@ spe <- readRDS(
 
 
 ## Set pathology levels
-spe$path_pTau <- ifelse(spe$NpTau > 7 | spe$PpTau > 0.014, "pTau+", "pTau-")
-spe$path_Abeta <- ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
+spe$path_pTau <-
+    ifelse(spe$NpTau > 7 | spe$PpTau > 0.014, "pTau+", "pTau-")
+spe$path_Abeta <-
+    ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
 spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta)
 
 ## TODO find neighbors
 
-neighbors_list <- BayesSpace:::.find_neighbors(spe, platform = 'Visium')
+neighbors_list <-
+    BayesSpace:::.find_neighbors(spe, platform = "Visium")
 neighbors_list[1]
-#Neighbors were identified for 38115 out of 38115 spots.
-#[1] "list"
+# Neighbors were identified for 38115 out of 38115 spots.
+# [1] "list"
 
-######CODE FROM .find_neighbors######
-#https://github.com/edward130603/BayesSpace/blob/master/R/spatialCluster.R#L201
-offsets <- data.frame(x.offset=c(-2, 2, -1,  1, -1, 1),
-                      y.offset=c( 0, 0, -1, -1,  1, 1))
+###### CODE FROM .find_neighbors######
+# https://github.com/edward130603/BayesSpace/blob/master/R/spatialCluster.R#L201
+offsets <- data.frame(
+    x.offset = c(-2, 2, -1, 1, -1, 1),
+    y.offset = c(0, 0, -1, -1, 1, 1)
+)
 
 spot.positions <- colData(spe)[, c("col", "row")]
 spot.positions$spot.idx <- seq_len(nrow(spot.positions))
 neighbor.positions <- merge(spot.positions, offsets)
-neighbor.positions$x.pos <- neighbor.positions$col + neighbor.positions$x.offset
-neighbor.positions$y.pos <- neighbor.positions$row + neighbor.positions$y.offset
-neighbors <- merge(as.data.frame(neighbor.positions), ##x.pos becomes the x.offset list during merging
-                   as.data.frame(spot.positions),
-                   by.x=c("x.pos", "y.pos"), by.y=c("col", "row"),
-                   suffixes=c(".primary", ".neighbor"),
-                   all.x=TRUE)
+neighbor.positions$x.pos <-
+    neighbor.positions$col + neighbor.positions$x.offset
+neighbor.positions$y.pos <-
+    neighbor.positions$row + neighbor.positions$y.offset
+neighbors <-
+    merge(
+        as.data.frame(neighbor.positions),
+        ## x.pos becomes the x.offset list during merging
+        as.data.frame(spot.positions),
+        by.x = c("x.pos", "y.pos"),
+        by.y = c("col", "row"),
+        suffixes = c(".primary", ".neighbor"),
+        all.x = TRUE
+    )
 ############
 
 
 ## Export pathology levels for later
 for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
-    cluster_export(
-        spe,
+    cluster_export(spe,
         i,
         cluster_dir = dir_rdata
     )
@@ -258,6 +274,6 @@ session_info()
 # zlibbioc                 1.41.0   2022-01-13 [1] Bioconductor
 # zoo                      1.8-9    2021-03-09 [1] CRAN (R 4.2.0)
 
-#[1] ../R/win-library/4.2
-#[2] ../R/R-devel/library
+# [1] ../R/win-library/4.2
+# [2] ../R/R-devel/library
 # D ── DLL MD5 mismatch, broken installation.
