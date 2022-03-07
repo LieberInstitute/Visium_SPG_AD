@@ -338,3 +338,51 @@ Calculating labels using iterations 10000 through 2e+05.
 2022-03-02 00:06:55 processing sample V10T31036_D1_Br3880
 Calculating labels using iterations 10000 through 2e+05.
 2022-03-03 09:36:00 processing sample V10A27004_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-04 21:22:07 processing sample V10A27004_D1_Br3880
+Calculating labels using iterations 10000 through 2e+05.
+Warning messages:
+1: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+2: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+3: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+4: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+5: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+6: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+7: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+8: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+9: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+10: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+[1] "2022-03-06 06:42:49 EST"
+
+ *** caught bus error ***
+address 0x7f274efcdd20, cause 'non-existent physical address'
+
+Traceback:
+ 1: (function (arg) {    .External(ffi_capturearginfo, environment(), parent.frame())})(x)
+ 2: FUN(X[[i]], ...)
+ 3: lapply(.x, .f, ...)
+ 4: map(syms, function(sym) {    if (!is_symbol(sym)) {        abort("Inputs to defuse must be argument names.", call = error_call)    }    if (identical(sym, dots_sym)) {        splice_dots <<- TRUE        splice(dot_call(capture_dots, frame_env = frame_env,             named = named, ignore_empty = ignore_empty, unquote_names = unquote_names,             homonyms = homonyms, check_assign = check_assign))    }    else {        dot_call(capture_arg, sym, frame_env)    }})
+ 5: endots(call = sys.call(), frame_env = parent.frame(), capture_arg = ffi_enquo,     capture_dots = ffi_quos_interp, named = .named, ignore_empty = .ignore_empty,     unquote_names = .unquote_names, homonyms = .homonyms, check_assign = .check_assign)
+ 6: enquos(x = x, y = y, ..., .ignore_empty = "all")
+ 7: aes(x = pxl_row_in_fullres * SpatialExperiment::scaleFactors(spe,     sample_id = sampleid, image_id = image_id), y = pxl_col_in_fullres *     SpatialExperiment::scaleFactors(spe, sample_id = sampleid,         image_id = image_id), fill = factor(!!sym(clustervar)),     key = key)
+ 8: ggplot.default(d, aes(x = pxl_row_in_fullres * SpatialExperiment::scaleFactors(spe,     sample_id = sampleid, image_id = image_id), y = pxl_col_in_fullres *     SpatialExperiment::scaleFactors(spe, sample_id = sampleid,         image_id = image_id), fill = factor(!!sym(clustervar)),     key = key))
+ 9: ggplot(d, aes(x = pxl_row_in_fullres * SpatialExperiment::scaleFactors(spe,     sample_id = sampleid, image_id = image_id), y = pxl_col_in_fullres *     SpatialExperiment::scaleFactors(spe, sample_id = sampleid,         image_id = image_id), fill = factor(!!sym(clustervar)),     key = key))
+10: vis_clus_p(spe = spe_sub, d = d, clustervar = clustervar, sampleid = sampleid,     spatial = spatial, title = paste0(sampleid, ...), colors = get_colors(colors,         d[, clustervar]), image_id = image_id, alpha = alpha,     point_size = point_size)
+11: vis_clus(spe, sampleid, clustervar, colors = colors, spatial = spatial,     image_id = image_id, alpha = alpha, point_size = point_size,     ...)
+12: FUN(X[[i]], ...)
+13: lapply(sample_order, function(sampleid) {    vis_clus(spe, sampleid, clustervar, colors = colors, spatial = spatial,         image_id = image_id, alpha = alpha, point_size = point_size,         ...)})
+14: vis_grid_clus(spe = spe, clustervar = paste0("BayesSpace_harmony_enhanced_k",     k_nice), pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_enhanced_k",     k_nice, ".pdf")), sort_clust = FALSE, colors = cols, spatial = FALSE,     point_size = 2)
+An irrecoverable exception occurred. R is aborting now ...
+/cm/shared/apps/sge/sge-8.1.9//default/spool/compute-119/job_scripts/9182674: line 29: 113088 Bus error               (core dumped) Rscript 02_BayesSpace_k_search.R -s spe_harmony_wholegenome
+**** Job ends ****
+Sun Mar  6 06:43:26 EST 2022

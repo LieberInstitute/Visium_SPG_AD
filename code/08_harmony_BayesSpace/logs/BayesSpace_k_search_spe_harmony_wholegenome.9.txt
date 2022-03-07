@@ -336,3 +336,33 @@ Calculating labels using iterations 10000 through 2e+05.
 2022-03-01 19:46:35 processing sample V10T31036_C1_Br3873
 Calculating labels using iterations 10000 through 2e+05.
 2022-03-02 19:11:47 processing sample V10T31036_D1_Br3880
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-04 06:58:46 processing sample V10A27004_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-05 19:23:13 processing sample V10A27004_D1_Br3880
+Calculating labels using iterations 10000 through 2e+05.
+Warning messages:
+1: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+2: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+3: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+4: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+5: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+6: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+7: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+8: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+9: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+10: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+[1] "2022-03-07 05:02:42 EST"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_enhanced_k09.pdf"
+**** Job ends ****
+Mon Mar  7 05:02:53 EST 2022

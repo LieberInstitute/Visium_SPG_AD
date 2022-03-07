@@ -338,3 +338,40 @@ Calculating labels using iterations 10000 through 2e+05.
 2022-02-25 22:39:16 processing sample V10T31036_D1_Br3880
 Calculating labels using iterations 10000 through 2e+05.
 2022-02-28 23:03:47 processing sample V10A27004_A1_Br3874
+Calculating labels using iterations 10000 through 2e+05.
+2022-03-04 04:06:50 processing sample V10A27004_D1_Br3880
+Calculating labels using iterations 10000 through 2e+05.
+Warning messages:
+1: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+2: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+3: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+4: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+5: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+6: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+7: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+8: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+9: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+10: In spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster :
+  number of items to replace is not a multiple of replacement length
+[1] "2022-03-07 04:04:22 EST"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_enhanced_k11.pdf"
+
+ *** caught bus error ***
+address 0x7f8e600b02c0, cause 'non-existent physical address'
+
+Traceback:
+ 1: x$unload()
+ 2: (function (x) x$unload())(<environment>)
+An irrecoverable exception occurred. R is aborting now ...
+/cm/local/apps/sge/sge-8.1.9/default/spool/compute-096/job_scripts/9135144: line 29: 31847 Bus error               (core dumped) Rscript 02_BayesSpace_k_search.R -s spe_harmony_wholegenome
+**** Job ends ****
+Mon Mar  7 04:05:44 EST 2022
