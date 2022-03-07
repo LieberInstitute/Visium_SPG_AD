@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Usage:
-# sh 05_fastplus_optimal_k.sh
+# sh 05_fasthplus_optimal_k.sh
 
 ## Create the logs directory
 mkdir -p logs
@@ -9,10 +9,10 @@ mkdir -p logs
 for spetype in wholegenome targeted; do
 
     ## Internal script name
-    SHORT="fastplus_optimal_k_${spetype}"
+    SHORT="fasthplus_optimal_k_${spetype}"
 
     # Construct shell file
-    echo "Creating script fastplus_optimal_k_${spetype}"
+    echo "Creating script fasthplus_optimal_k_${spetype}"
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
@@ -41,7 +41,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 05_fastplus_optimal_k -s ${spetype}
+Rscript 05_fasthplus_optimal_k -s ${spetype}
 
 echo "**** Job ends ****"
 date

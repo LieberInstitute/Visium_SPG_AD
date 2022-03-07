@@ -5,7 +5,7 @@
 #     loops = list(spetype = c(
 #         "wholegenome", "targeted"
 #     )),
-#     name = "05_fastplus_optimal_k",
+#     name = "fasthplus_optimal_k",
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "20G",
