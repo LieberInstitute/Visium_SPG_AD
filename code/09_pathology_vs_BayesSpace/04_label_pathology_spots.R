@@ -40,7 +40,7 @@ neighbors_list[1]
 #[1] "list"
 
 ######CODE FROM .find_neighbors######
-
+#https://github.com/edward130603/BayesSpace/blob/master/R/spatialCluster.R#L201
 offsets <- data.frame(x.offset=c(-2, 2, -1,  1, -1, 1),
                       y.offset=c( 0, 0, -1, -1,  1, 1))
 
