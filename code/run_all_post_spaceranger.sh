@@ -43,13 +43,15 @@ qsub 02_compare_pathology_number_to_percent.sh
 cd ${CODEDIR}/08_harmony_BayesSpace
 rm ${PROCESSEDIR}/08_harmony_BayesSpace/*/spe_harmony_*.rds
 rm logs/preprocess_and_harmony*.txt
-# rm logs/BayesSpace_k_search_spe_harmony*.txt ## Won't do this now since some 08_harmony_BayesSpace are running
+rm logs/BayesSpace_k_search_spe_harmony*.txt
 rm logs/plot_SNN_k10.txt
 rm logs/heatmaps_dlpfc_markers.txt
+rm logs/fasthplus_optimal_k_*.txt
 sh 01_preprocess_and_harmony.sh
-# sh 02_BayesSpace_k_search.sh ## Will need to manually submit for k = 8-15 for targeted
+sh 02_BayesSpace_k_search.sh
 qsub 03_plot_SNN_k10.sh
 qsub 04_heatmaps_dlpfc_markers.sh
+sh 05_fasthplus_optimal_k.sh
 
 ## Run code related to comparing pathology vs BayesSpace
 cd ${CODEDIR}/09_pathology_vs_BayesSpace
