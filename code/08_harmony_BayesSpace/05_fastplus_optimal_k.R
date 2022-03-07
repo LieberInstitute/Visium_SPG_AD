@@ -63,6 +63,9 @@ spe <- cluster_import(
 )
 
 ##create output directories
+dir_rdata <- here::here("processed-data", "08_harmony_BayesSpace", "fasthplus_results.csv")
+dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+
 
 ##choose k
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
@@ -82,3 +85,5 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
+
+
