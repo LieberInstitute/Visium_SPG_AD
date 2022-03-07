@@ -74,31 +74,6 @@ cluster_export(
     cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
 )
 
-## Code crashed during spatialEnhance()
-## Load the current results and make plots
-## then try to debug spatialEnhance()
-# spe <- cluster_import(spe, cluster_dir = file.path(dir_rdata, "clusters_BayesSpace"), prefix = "")
-# for(k in 4:14) {
-#     k_nice <- sprintf("%02d", k)
-#     sample_ids <- unique(spe$sample_id)
-#     cols <- Polychrome::palette36.colors(k)
-#     names(cols) <- sort(unique(colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]))
-#
-#     vis_grid_clus(
-#         spe = spe,
-#         clustervar = paste0("BayesSpace_harmony_k", k_nice),
-#         pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_k", k_nice, ".pdf")),
-#         sort_clust = FALSE,
-#         colors = cols,
-#         spatial = FALSE,
-#         point_size = 2
-#     )
-# }
-## For debugging spatialEnhance()
-# k <- 4
-# k_nice <- "04"
-# spe$spatial.cluster <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
-
 ## Visualize BayesSpace results
 sample_ids <- unique(spe$sample_id)
 cols <- Polychrome::palette36.colors(k)
@@ -120,38 +95,3 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
-
-
-message("Running spatialEnhance() -- currently crashes due to https://github.com/edward130603/BayesSpace/issues/71")
-Sys.time()
-spe$imagerow <- spe$array_row
-spe$imagecol <- spe$array_col
-
-for (sample in unique(spe$sample_id)) {
-    message(Sys.time(), " processing sample ", sample)
-    set.seed(20220208)
-    spe_small <- spatialEnhance(spe[, spe$sample_id == sample], use.dimred = "HARMONY", q = k)
-    spe$spatial.cluster[spe$sample_id == sample] <- spe_small$spatial.cluster
-    rm(spe_small)
-}
-Sys.time()
-
-spe$bayesSpace_enhanced_temp <- spe$spatial.cluster
-bayesSpace_name <- paste0("BayesSpace_harmony_enhanced_k", k_nice)
-colnames(colData(spe))[ncol(colData(spe))] <- bayesSpace_name
-
-cluster_export(
-    spe,
-    bayesSpace_name,
-    cluster_dir = file.path(dir_rdata, "clusters_BayesSpace")
-)
-
-vis_grid_clus(
-    spe = spe,
-    clustervar = paste0("BayesSpace_harmony_enhanced_k", k_nice),
-    pdf_file = file.path(dir_plots, paste0("BayesSpace_harmony_enhanced_k", k_nice, ".pdf")),
-    sort_clust = FALSE,
-    colors = cols,
-    spatial = FALSE,
-    point_size = 2
-)
