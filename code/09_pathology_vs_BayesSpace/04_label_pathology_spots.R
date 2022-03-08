@@ -34,7 +34,7 @@ spe <- readRDS(
 
 ## Set pathology levels
 spe$path_pTau <-
-    ifelse(spe$NpTau > 7 | spe$PpTau > 0.014, "pTau+", "pTau-")
+    ifelse(spe$NpTau > 8 | spe$PpTau > 0.0143, "pTau+", "pTau-")
 spe$path_Abeta <-
     ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
 spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta)

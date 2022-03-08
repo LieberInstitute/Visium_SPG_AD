@@ -33,11 +33,11 @@ path_df <- data.frame(
 
 ## Just for NpTau/PpTau
 path_df |>
-    dplyr::filter(sample_id %in% controls[1:2]) |>
+    dplyr::filter(sample_id %in% controls) |>
     summarise_if(is.numeric, max, na.rm = TRUE)
 
 #   NAbeta NpTau    PAbeta      PpTau
-# 1      4     7 0.1983471 0.01396914
+# 1      4     8 0.1983471 0.01433482
 
 ## Just for NAbeta/PAbeta
 path_df |>
@@ -45,7 +45,7 @@ path_df |>
     summarise_if(is.numeric, max, na.rm = TRUE)
 
 #   NAbeta NpTau   PAbeta      PpTau
-# 1      3    83 0.149126 0.04073722
+# 1      3     8 0.149126 0.01433482
 
 
 ## Frequency of unique NAbeta values across all controls

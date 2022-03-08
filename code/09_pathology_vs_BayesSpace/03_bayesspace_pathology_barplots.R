@@ -49,7 +49,7 @@ barplots_spe <- function(suffix) {
 
     cluster_df <- cluster_df |> mutate(
         pTau_outliers =
-            ifelse(NpTau > 7 | PpTau > 0.014, "outlier", "normal")
+            ifelse(NpTau > 8 | PpTau > 0.0143, "outlier", "normal")
     )
     cluster_df <- cluster_df |> mutate(
         Abeta_outliers =
@@ -63,9 +63,9 @@ barplots_spe <- function(suffix) {
     # [1] 5.286633
     print(addmargins(table(cluster_df$pTau_outliers)))
     # normal outlier     Sum
-    #  27119   10996   38115
-    10996 / 38115 * 100
-    # [1] 28.84953
+    # 28419    9696   38115
+    9696 / 38115 * 100
+    # [1] 25.4388
 
     print(table(cluster_df$NAbeta > 0 | cluster_df$PAbeta > 0))
     # FALSE  TRUE
@@ -75,9 +75,9 @@ barplots_spe <- function(suffix) {
 
     print(table(cluster_df$NpTau > 0 | cluster_df$PpTau > 0))
     # FALSE  TRUE
-    # 16217 21898
-    10996 / 21898 * 100
-    # [1] 50.21463
+    # 18567 19548
+    9696 / 19548 * 100
+    # [1] 49.60098
 
     ## pTau observations
     # pTau_observations <- cluster_df |> group_by(pTau_outliers, sample_id,i ) |>
@@ -126,10 +126,10 @@ barplots_spe <- function(suffix) {
     }
     dev.off()
 
-    print(addmargins(table(cluster_df$pTau_outliers[cluster_df$diagnosis != "Control"])) / sum(cluster_df$diagnosis != "Control") * 100)
-    #   normal   outlier       Sum
-    # 58.32272  41.67728 100.00000
-    #
+    outliers_thres_pTau <- addmargins(table(cluster_df$pTau_outliers[cluster_df$diagnosis != "Control"])) / sum(cluster_df$diagnosis != "Control") * 100
+    print(outliers_thres_pTau)
+    # normal  outlier      Sum
+    # 61.4114  38.5886 100.0000
 
     pdf(file.path(
         dir_plots,
@@ -158,7 +158,7 @@ barplots_spe <- function(suffix) {
 
 
         plot <-
-            plot + geom_hline(yintercept = 41.67728, color = "red") +
+            plot + geom_hline(yintercept = outliers_thres_pTau[2], color = "red") +
             geom_hline(
                 data = line_df,
                 aes(yintercept = mean_line),
@@ -173,9 +173,6 @@ barplots_spe <- function(suffix) {
         print(plot)
     }
     dev.off()
-
-
-
 
 
     pdf(file.path(
@@ -204,10 +201,10 @@ barplots_spe <- function(suffix) {
     }
     dev.off()
 
-    print(addmargins(table(cluster_df$Abeta_outliers[cluster_df$diagnosis != "Control"])) / sum(cluster_df$diagnosis != "Control") * 100)
+    outliers_thres_Abeta <- addmargins(table(cluster_df$Abeta_outliers[cluster_df$diagnosis != "Control"])) / sum(cluster_df$diagnosis != "Control") * 100
+    print(outliers_thres_Abeta)
     #    normal    outlier        Sum
     # 92.023563   7.976437 100.000000
-    #
 
 
     pdf(file.path(
@@ -237,7 +234,7 @@ barplots_spe <- function(suffix) {
 
 
         plot <-
-            plot + geom_hline(yintercept = 7.976437, color = "red") +
+            plot + geom_hline(yintercept = outliers_thres_Abeta[2], color = "red") +
             geom_hline(
                 data = line_df,
                 aes(yintercept = mean_line),
