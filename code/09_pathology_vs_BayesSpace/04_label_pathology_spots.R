@@ -64,10 +64,11 @@ vis_grid_clus(
     clustervar = "path_groups",
     pdf_file = file.path(dir_plots, "pathology_groups.pdf"),
     sort_clust = FALSE,
-    colors = setNames(paletteer_d("awtools::ppalette", 5), levels(spe$path_groups)),
+    colors = setNames(c(paletteer_d("awtools::spalette", 4), "lightblue"), levels(spe$path_groups)),
     spatial = FALSE,
     point_size = 2
 )
+
 
 
 ## Export pathology levels for later
