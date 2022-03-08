@@ -11,6 +11,7 @@ library("here")
 library("spatialLIBD")
 library("sessioninfo")
 library("BayesSpace")
+library("paletteer")
 
 ## Create output directory
 dir_rdata <-
@@ -19,7 +20,9 @@ dir_rdata <-
         "09_pathology_vs_BayesSpace",
         "pathology_levels"
     )
+dir_plots <- here::here("plots", "09_pathology_vs_BayesSpace")
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+dir.create(dir_plots, showWarnings = FALSE)
 
 ## Load the data
 spe <- readRDS(
@@ -38,40 +41,33 @@ spe$path_pTau <-
 spe$path_Abeta <-
     ifelse(spe$NAbeta > 1 | spe$PAbeta > 0.108, "Abeta+", "Abeta-")
 spe$path_groups <- paste0(spe$path_pTau, "_", spe$path_Abeta)
+has_path <- which(spe$path_pTau == "pTau+" | spe$path_Abeta == "Abeta+")
 
-## TODO find neighbors
-
+## Find neighboring spots
 neighbors_list <-
     BayesSpace:::.find_neighbors(spe, platform = "Visium")
-neighbors_list[1]
-# Neighbors were identified for 38115 out of 38115 spots.
-# [1] "list"
+## Undo the C++ index from
+## https://github.com/edward130603/BayesSpace/blob/master/R/spatialCluster.R#L231
+path_neighbors_all <- unlist(neighbors_list[has_path]) + 1
+spe$path_groups[path_neighbors_all[!path_neighbors_all %in% has_path]] <- "path_neighbor"
+spe$path_groups <- factor(spe$path_groups, levels = c("pTau-_Abeta-", "pTau-_Abeta+", "pTau+_Abeta-", "pTau+_Abeta+", "path_neighbor"))
+addmargins(table(spe$path_groups))
+# pTau-_Abeta-  pTau-_Abeta+  pTau+_Abeta-  pTau+_Abeta+ path_neighbor           Sum
+#         17258          1279          8960           736          9882         38115
+round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
+# pTau-_Abeta-  pTau-_Abeta+  pTau+_Abeta-  pTau+_Abeta+ path_neighbor           Sum
+#         45.28          3.36         23.51          1.93         25.93        100.00
 
-###### CODE FROM .find_neighbors######
-# https://github.com/edward130603/BayesSpace/blob/master/R/spatialCluster.R#L201
-offsets <- data.frame(
-    x.offset = c(-2, 2, -1, 1, -1, 1),
-    y.offset = c(0, 0, -1, -1, 1, 1)
+## Visualize pathology spots
+vis_grid_clus(
+    spe = spe,
+    clustervar = "path_groups",
+    pdf_file = file.path(dir_plots, "pathology_groups.pdf"),
+    sort_clust = FALSE,
+    colors = setNames(paletteer_d("awtools::ppalette", 5), levels(spe$path_groups)),
+    spatial = FALSE,
+    point_size = 2
 )
-
-spot.positions <- colData(spe)[, c("col", "row")]
-spot.positions$spot.idx <- seq_len(nrow(spot.positions))
-neighbor.positions <- merge(spot.positions, offsets)
-neighbor.positions$x.pos <-
-    neighbor.positions$col + neighbor.positions$x.offset
-neighbor.positions$y.pos <-
-    neighbor.positions$row + neighbor.positions$y.offset
-neighbors <-
-    merge(
-        as.data.frame(neighbor.positions),
-        ## x.pos becomes the x.offset list during merging
-        as.data.frame(spot.positions),
-        by.x = c("x.pos", "y.pos"),
-        by.y = c("col", "row"),
-        suffixes = c(".primary", ".neighbor"),
-        all.x = TRUE
-    )
-############
 
 
 ## Export pathology levels for later
