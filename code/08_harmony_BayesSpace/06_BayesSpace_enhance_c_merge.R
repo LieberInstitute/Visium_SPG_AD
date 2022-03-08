@@ -43,22 +43,26 @@ sce_enhanced <- do.call(cbind, lapply(rds_files, readRDS))
 k_selected <- ifelse(opt$spetype == "wholegenome", 2, 2)
 
 ## Make a plot of the enhanced cluster results
-pdf(file.path(dir_plots,
+pdf(file.path(
+    dir_plots,
     "BayesSpace_enhanced.pdf"
 ), width = 7 * length(rds_files))
 clusterPlot(sce_enhanced,
     palette = setNames(
         Polychrome::palette36.colors(k_selected),
         seq_len(k_selected)
-    ))
+    )
+)
 dev.off()
 
 ## Save for later
 saveRDS(sce_enhanced, file = file.path(dir_rdata, file.path(
     dir_rdata,
-    paste0("sce_enhanced_",
+    paste0(
+        "sce_enhanced_",
         opt$spetype,
-        ".rds")
+        ".rds"
+    )
 )))
 
 ## Reproducibility information
