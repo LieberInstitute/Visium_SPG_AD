@@ -21,8 +21,8 @@ for spetype in wholegenome targeted; do
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
 #$ -m e
-#$ -t 2-15
-#$ -tc 14
+#$ -t 2-28
+#$ -tc 20
 #$ -hold_jid BayesSpace_k_search_wholegenome,BayesSpace_k_search_targeted
 
 echo "**** Job starts ****"

@@ -5,8 +5,8 @@
 #     name = "BayesSpace_k_search",
 #     create_shell = TRUE,
 #     queue = "bluejay",
-#     memory = "60G",
-#     task_num = 15
+#     memory = "50G",
+#     task_num = 28
 # )
 
 ## Required libraries

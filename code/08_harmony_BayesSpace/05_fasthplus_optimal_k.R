@@ -9,9 +9,7 @@
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "20G",
-#     task_num = 15,
-#     tc = 14
-#
+#     task_num = 28
 # )
 
 

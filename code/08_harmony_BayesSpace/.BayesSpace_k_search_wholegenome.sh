@@ -1,11 +1,11 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=60G,h_vmem=60G,h_fsize=100G
+#$ -l bluejay,mem_free=50G,h_vmem=50G,h_fsize=100G
 #$ -N BayesSpace_k_search_wholegenome
 #$ -o logs/BayesSpace_k_search_wholegenome.$TASK_ID.txt
 #$ -e logs/BayesSpace_k_search_wholegenome.$TASK_ID.txt
 #$ -m e
-#$ -t 2-15
+#$ -t 2-28
 #$ -tc 20
 #$ -hold_jid preprocess_and_harmony_wholegenome
 
