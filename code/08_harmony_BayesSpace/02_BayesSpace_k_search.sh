@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Usage:
-# sh BayesSpace_k_search.sh
+# sh 02_BayesSpace_k_search.sh
 
 ## Create the logs directory
 mkdir -p logs
@@ -16,7 +16,7 @@ for spetype in wholegenome targeted; do
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=50G,h_vmem=50G,h_fsize=100G
+#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
 #$ -N ${SHORT}
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
