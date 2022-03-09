@@ -101,7 +101,7 @@ vis_grid_clus(
     clustervar = "path_groups",
     pdf_file = file.path(dir_plots, "pathology_groups.pdf"),
     sort_clust = FALSE,
-    colors = colors_pathology ,
+    colors = colors_pathology,
     spatial = FALSE,
     point_size = 2
 )
@@ -111,7 +111,7 @@ p <- vis_clus(
     spe = spe,
     sampleid = "V10T31036_D1_Br3880",
     clustervar = "path_groups",
-    colors = colors_pathology ,
+    colors = colors_pathology,
     spatial = FALSE,
     point_size = 2
 )

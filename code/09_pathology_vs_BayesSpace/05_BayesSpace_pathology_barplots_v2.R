@@ -15,7 +15,11 @@ dir_plots <-
 dir.create(dir_plots, showWarnings = FALSE)
 
 ## Load pathology colors
-source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
+source(
+    here("code", "colors_pathology.R"),
+    echo = TRUE,
+    max.deparse.length = 500
+)
 
 barplots_spe <- function(suffix) {
     ## Load basic SPE data
@@ -40,20 +44,38 @@ barplots_spe <- function(suffix) {
     ## Import pathology levels
     spe <- cluster_import(
         spe,
-        cluster_dir = here::here("processed-data", "09_pathology_vs_BayesSpace", "pathology_levels"),
+        cluster_dir = here::here(
+            "processed-data",
+            "09_pathology_vs_BayesSpace",
+            "pathology_levels"
+        ),
         prefix = ""
     )
 
     ## Convert from character to a factor, so they appear in the order
     ## we want
-    spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "both", "next_both"))
+    spe$path_groups <-
+        factor(
+            spe$path_groups,
+            levels = c(
+                "none",
+                "Ab+",
+                "next_Ab+",
+                "pT+",
+                "next_pT+",
+                "both",
+                "next_both"
+            )
+        )
 
     ## Shorten names
     spe$sample_id_shorter <- gsub("Br", "", spe$sample_id_short)
 
     ## Drop the 3 controls since they are not interesting for this
-    cluster_df <- as.data.frame(colData(spe[, !grepl("3874$", spe$sample_id)]))
-    bayes_cols <- cluster_df |> select(matches("BayesSpace_harmony"))
+    cluster_df <-
+        as.data.frame(colData(spe[, !grepl("3874$", spe$sample_id)]))
+    bayes_cols <-
+        cluster_df |> select(matches("BayesSpace_harmony"))
 
     pdf(file.path(
         dir_plots,
@@ -79,7 +101,6 @@ barplots_spe <- function(suffix) {
         print(plot)
     }
     dev.off()
-
 }
 
 ## Run the function
