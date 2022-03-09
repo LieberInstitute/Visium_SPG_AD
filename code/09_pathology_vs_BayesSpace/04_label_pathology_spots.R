@@ -151,15 +151,16 @@ which_neighbors <- function(var, values, has_path) {
     res[!res %in% has_path]
 }
 
-path_neighbor_pTau <- which_neighbors("path_pTau", "pTau+", has_path)
-
 ## Key change number 2: prioritize Abeta+ neighbors over pTau+
 path_neighbor_Abeta <- which_neighbors("path_Abeta", "Abeta+", which(spe$path_Abeta == "Abeta+"))
+## Prioritize re-labeling the next_Ab+ spots over any pTau signal, aka:
+## relabel some pT+_Ab- spots as next to Ab+, and no longer consider them pTau+
+spe$path_groups[path_neighbor_Abeta] <- "next_Ab+"
+path_neighbor_pTau <- which_neighbors("path_groups", "pT+_Ab-", has_path)
 path_neighbor_both <- intersect(path_neighbor_Abeta, path_neighbor_pTau)
 
 ## Add the neighbors
-spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_both)] <- "next_pT+"
-spe$path_groups[setdiff(path_neighbor_Abeta, path_neighbor_both)] <- "next_Ab+"
+spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_Abeta)] <- "next_pT+"
 spe$path_groups[path_neighbor_both] <- "next_both"
 
 ## Simplify some groups even more
@@ -168,10 +169,10 @@ spe$path_groups <- gsub("pT-_Ab\\+", "Ab+", gsub("pT\\+_Ab-", "pT+", gsub("pT-_A
 spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "next_both"))
 addmargins(table(spe$path_groups))
 #  none       Ab+  next_Ab+       pT+  next_pT+ next_both       Sum
-# 19244      2015      5645      6381      3638      1192     38115
+# 19407      2015      6141      6381      3475       696     38115
 round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
-# none       Ab+  next_Ab+       pT+  next_pT+ next_both       Sum
-# 50.49      5.29     14.81     16.74      9.54      3.13    100.00
+#  none       Ab+  next_Ab+       pT+  next_pT+ next_both       Sum
+# 50.92      5.29     16.11     16.74      9.12      1.83    100.00
 
 
 vis_grid_clus(
