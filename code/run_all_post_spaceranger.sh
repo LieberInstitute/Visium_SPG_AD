@@ -65,10 +65,12 @@ rm logs/bayesspace_k_pathology_boxplots.txt
 rm logs/pathology_thresholds.txt
 rm logs/bayesspace_pathology_barplots.txt
 rm logs/label_pathology_spots.txt
+rm logs/BayesSpace_pathology_barplots_v2.txt
 qsub 01_bayesspace_k_pathology_boxplots.sh
 qsub 02_pathology_thresholds.sh
 qsub 03_bayesspace_pathology_barplots.sh
 qsub 04_label_pathology_spots.sh
+qsub 05_BayesSpace_pathology_barplots_v2.sh
 
 ## Add future steps here
 ## TODO
