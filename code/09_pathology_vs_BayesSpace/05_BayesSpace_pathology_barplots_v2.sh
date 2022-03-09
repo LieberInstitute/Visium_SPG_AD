@@ -1,11 +1,11 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=6G,h_vmem=6G,h_fsize=100G
-#$ -N bayesspace_pathology_barplots
-#$ -o logs/bayesspace_pathology_barplots.txt
-#$ -e logs/bayesspace_pathology_barplots.txt
+#$ -N BayesSpace_pathology_barplots_v2
+#$ -o logs/BayesSpace_pathology_barplots_v2.txt
+#$ -e logs/BayesSpace_pathology_barplots_v2.txt
 #$ -m e
-#$ -hold_jid heatmaps_dlpfc_markers
+#$ -hold_jid label_pathology_spots
 
 echo "**** Job starts ****"
 date
@@ -24,7 +24,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 03_bayesspace_pathology_barplots.R
+Rscript 05_BayesSpace_pathology_barplots_v2.R
 
 echo "**** Job ends ****"
 date
