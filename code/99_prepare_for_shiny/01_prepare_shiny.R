@@ -35,6 +35,10 @@ spe <- cluster_import(
     prefix = ""
 )
 
+## Convert from character to a factor, so they appear in the order
+## we want
+spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "both", "next_both"))
+
 ## Convert pathology variables into factors
 for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
     colData(spe)[[i]] <- factor(colData(spe)[[i]])
