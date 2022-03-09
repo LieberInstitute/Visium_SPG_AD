@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -l bluejay,mem_free=5G,h_vmem=5G,h_fsize=100G
 #$ -N prepare_shiny
-#$ -o logs/prepare_shiny.txt
-#$ -e logs/prepare_shiny.txt
+#$ -o logs/prepare_shiny.$TASK_ID.txt
+#$ -e logs/prepare_shiny.$TASK_ID.txt
 #$ -m e
 #$ -hold_jid label_pathology_spots
 #$ -t 1-2
