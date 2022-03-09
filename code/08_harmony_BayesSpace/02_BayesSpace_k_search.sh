@@ -16,7 +16,7 @@ for spetype in wholegenome targeted; do
     cat > .${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -l bluejay,mem_free=100G,h_vmem=100G,h_fsize=100G
 #$ -N ${SHORT}
 #$ -o logs/${SHORT}.\$TASK_ID.txt
 #$ -e logs/${SHORT}.\$TASK_ID.txt
@@ -55,5 +55,5 @@ EOF
 
     call="qsub .${SHORT}.sh"
     echo $call
-    $call
+    #$call
 done

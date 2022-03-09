@@ -6,13 +6,13 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Mar  8 12:06:26 EST 2022
+Tue Mar  8 23:12:18 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9332206
-Job name: BayesSpace_k_search_wholegenome
-Hostname: compute-098.cm.cluster
-Task id: 5
+Job id: 9333820
+Job name: BayesSpace_k_search_targeted
+Hostname: compute-126.cm.cluster
+Task id: 2
 Unloading conda_R/devel
 Loading conda_R/devel
 
@@ -98,7 +98,3 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-Running spatialCluster()
-[1] "2022-03-08 12:08:35 EST"
-Neighbors were identified for 38111 out of 38115 spots.
-Fitting model...
