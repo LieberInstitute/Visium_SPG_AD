@@ -26,7 +26,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 05_fasthplus_optimal_k -s targeted
+Rscript 05_fasthplus_optimal_k.R -s targeted
 
 echo "**** Job ends ****"
 date

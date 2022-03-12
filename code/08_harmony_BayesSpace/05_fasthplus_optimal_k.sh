@@ -42,7 +42,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 05_fasthplus_optimal_k -s ${spetype}
+Rscript 05_fasthplus_optimal_k.R -s ${spetype}
 
 echo "**** Job ends ****"
 date

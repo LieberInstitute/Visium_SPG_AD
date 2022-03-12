@@ -83,23 +83,84 @@ dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
 
+## Find the right value of t to use
+## Adapted code from https://github.com/LieberInstitute/spatialDLPFC/blob/main/code/analysis/06_fastplus/06_fasthplus.R#L46-L63
+find_t <- function(L, proportion = 0.05) {
+    t_value <- floor(length(L) * proportion)
+	message(Sys.time(), " t value based on proportion: ", t_value)
+    smallest_cluster_size <- min(table(L))
+    n_labels <- length(unique(L))
+    t_value <- ifelse(smallest_cluster_size > (t_value / n_labels), t_value, smallest_cluster_size * n_labels)
+	message(Sys.time(), " t value estimated: ", t_value)
+	return(t_value)
+}
+
+## Function that takes a logical vector of spots we can use
+## and returns the list of those we can actually use and the resulting t
+find_spots_and_t <- function(usable_spots, t_proportion = 0.05) {
+	L <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
+	t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
+
+	cluster_prop <- table(L[usable_spots]) / sum(usable_spots)
+	bad_clusters <- which(cluster_prop < t_proportion / k)
+	if(length(bad_clusters) > 0) {
+	    message("For k: ", k, " we are dropping small clusters: ", paste(names(bad_clusters), collapse = ", "))
+		usable_spots[ L %in% as.integer(names(bad_clusters)) ] <- FALSE
+	    t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
+	}
+	return(list(t_value = t_value, spots_to_use = usable_spots))
+}
+spots_and_t <- find_spots_and_t(usable_spots = rep(TRUE, ncol(spe)))
+
 
 ## Code from https://github.com/LieberInstitute/spatialDLPFC/blob/main/code/analysis/06_fastplus/06_fasthplus.R
 # hpb estimate. t = pre-bootstrap sample size, D = reduced dimensions matrix, L = cluster labels, r = number of bootstrap iterations
 set.seed(20220304)
-## Use 5% of the data
 fasthplus <-
     hpb(
-        D = reducedDims(spe)$HARMONY,
-        L = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]],
-        t = floor(nrow(spe) * 0.05),
+        D = reducedDims(spe[, spots_and_t$spots_to_use])$HARMONY,
+        L = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]][spots_and_t$spots_to_use],
+        t = spots_and_t$t_value,
         r = 30
     )
 results <-
     data.frame(
         k = k,
         fasthplus = fasthplus,
-        type = opt$spetype
+        type = opt$spetype,
+		spots_set = "all_spots",
+		t_value = spots_and_t$t_value
+    )
+write.table(
+    results,
+    file = here::here(
+        "processed-data",
+        "08_harmony_BayesSpace",
+        "fasthplus_results.csv"
+    ),
+    append = TRUE,
+    quote = FALSE,
+    row.names = FALSE,
+    sep = "\t"
+)
+
+## Repeat but after dropping the white matter
+spots_and_t <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_02 == 1)
+set.seed(20220304)
+fasthplus <-
+    hpb(
+        D = reducedDims(spe[, spots_and_t$spots_to_use])$HARMONY,
+        L = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]][spots_and_t$spots_to_use],
+        t = spots_and_t$t_value,
+        r = 30
+    )
+results <-
+    data.frame(
+        k = k,
+        fasthplus = fasthplus,
+        type = opt$spetype,
+		spots_set = "grey_matter",
+		t_value = spots_and_t$t_value
     )
 write.table(
     results,
