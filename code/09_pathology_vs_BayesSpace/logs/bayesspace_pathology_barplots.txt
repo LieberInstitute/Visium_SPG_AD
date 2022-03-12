@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Mar  8 14:43:35 EST 2022
+Fri Mar 11 18:34:53 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9332704
+Job id: 9465656
 Job name: bayesspace_pathology_barplots
 Hostname: compute-100.cm.cluster
 Task id: undefined
@@ -152,7 +152,7 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
   36100    2015   38115 
 
  normal outlier     Sum 
-  27643   10472   38115 
+  28419    9696   38115 
 
 FALSE  TRUE 
 35226  2889 
@@ -160,8 +160,8 @@ FALSE  TRUE
 FALSE  TRUE 
 18567 19548 
 
-   normal   outlier       Sum 
- 58.32272  41.67728 100.00000 
+  normal  outlier      Sum 
+ 61.4114  38.5886 100.0000 
 `summarise()` has grouped output by 'BayesSpace_harmony_k02'. You can override
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k03'. You can override
@@ -189,6 +189,32 @@ using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k14'. You can override
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k15'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k16'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k17'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k18'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k19'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k20'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k21'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k22'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k23'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k24'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k25'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k26'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k27'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k28'. You can override
 using the `.groups` argument.
 
     normal    outlier        Sum 
@@ -220,6 +246,32 @@ using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k14'. You can override
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k15'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k16'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k17'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k18'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k19'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k20'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k21'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k22'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k23'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k24'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k25'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k26'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k27'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k28'. You can override
 using the `.groups` argument.
 null device 
           1 
@@ -229,7 +281,7 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
   36100    2015   38115 
 
  normal outlier     Sum 
-  27643   10472   38115 
+  28419    9696   38115 
 
 FALSE  TRUE 
 35226  2889 
@@ -237,8 +289,8 @@ FALSE  TRUE
 FALSE  TRUE 
 18567 19548 
 
-   normal   outlier       Sum 
- 58.32272  41.67728 100.00000 
+  normal  outlier      Sum 
+ 61.4114  38.5886 100.0000 
 `summarise()` has grouped output by 'BayesSpace_harmony_k02'. You can override
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k03'. You can override
@@ -266,6 +318,32 @@ using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k14'. You can override
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k15'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k16'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k17'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k18'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k19'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k20'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k21'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k22'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k23'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k24'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k25'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k26'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k27'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k28'. You can override
 using the `.groups` argument.
 
     normal    outlier        Sum 
@@ -298,12 +376,38 @@ using the `.groups` argument.
 using the `.groups` argument.
 `summarise()` has grouped output by 'BayesSpace_harmony_k15'. You can override
 using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k16'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k17'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k18'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k19'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k20'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k21'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k22'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k23'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k24'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k25'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k26'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k27'. You can override
+using the `.groups` argument.
+`summarise()` has grouped output by 'BayesSpace_harmony_k28'. You can override
+using the `.groups` argument.
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-03-08 14:49:44 EST"
+[1] "2022-03-11 18:44:02 EST"
    user  system elapsed 
-355.343   7.321 367.322 
+525.860   8.187 547.339 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -314,7 +418,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-03-08
+ date     2022-03-11
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -444,7 +548,7 @@ null device
  Rcpp                     1.0.8    2022-01-13 [2] CRAN (R 4.2.0)
  RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
- rhdf5                    2.39.5   2022-01-21 [2] Bioconductor
+ rhdf5                    2.39.6   2022-03-09 [2] Bioconductor
  rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
  Rhdf5lib                 1.17.3   2022-01-31 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
@@ -502,4 +606,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Mar  8 14:49:46 EST 2022
+Fri Mar 11 18:44:04 EST 2022

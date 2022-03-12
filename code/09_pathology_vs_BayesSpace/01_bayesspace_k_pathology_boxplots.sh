@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=6G,h_vmem=6G,h_fsize=100G
+#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -N bayesspace_k_pathology_boxplots
 #$ -o logs/bayesspace_k_pathology_boxplots.txt
 #$ -e logs/bayesspace_k_pathology_boxplots.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=6G,h_vmem=6G,h_fsize=100G
+#$ -l bluejay,mem_free=8G,h_vmem=8G,h_fsize=100G
 #$ -N heatmaps_dlpfc_markers
 #$ -o logs/heatmaps_dlpfc_markers.txt
 #$ -e logs/heatmaps_dlpfc_markers.txt

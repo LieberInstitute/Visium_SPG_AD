@@ -85,7 +85,7 @@ pathology_measures <- c("PpTau", "PAbeta")
 
 # create plots for whole genome
 for (measure in pathology_measures) {
-    pdf(file.path(dir_plots, paste0("spe_wholegenome", "_", measure, ".pdf")), width = 14)
+    pdf(file.path(dir_plots, paste0("spe_wholegenome", "_", measure, ".pdf")), width = 18)
 
     for (i in cols_whole) {
         plot <- ggpubr::ggviolin(
@@ -110,7 +110,7 @@ for (measure in pathology_measures) {
 
 # create plots for targeted genome
 for (measure in pathology_measures) {
-    pdf(file.path(dir_plots, paste0("spe_targeted", "_", measure, ".pdf")), width = 14)
+    pdf(file.path(dir_plots, paste0("spe_targeted", "_", measure, ".pdf")), width = 18)
     for (i in cols_targeted) {
         plot <- ggpubr::ggviolin(
             cluster_targeted_df,

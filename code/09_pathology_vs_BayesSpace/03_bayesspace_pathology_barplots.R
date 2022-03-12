@@ -102,7 +102,7 @@ barplots_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("spe_", suffix, "_barplots_pTau_outliers", ".pdf")
-    ), width = 14)
+    ), width = 18)
 
     for (i in bayes_cols) {
         plot <- ggplot(cluster_df, aes(x = i, fill = pTau_outliers)) +
@@ -134,7 +134,7 @@ barplots_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("spe_", suffix, "_pathology_percent_pTau_outliers", ".pdf")
-    ), width = 14)
+    ), width = 18)
     for (i in colnames(bayes_cols)) {
         plot_df <- cluster_df %>%
             group_by(!!sym(i), sample_id) %>%
@@ -178,7 +178,7 @@ barplots_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("spe_", suffix, "_barplots_Abeta_outliers", ".pdf")
-    ), width = 14)
+    ), width = 18)
     for (i in bayes_cols) {
         plot <- ggplot(cluster_df, aes(x = i, fill = Abeta_outliers)) +
             geom_bar(position = "fill", stat = "count") +
@@ -210,7 +210,7 @@ barplots_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("spe_", suffix, "_pathology_percent_Abeta_outliers", ".pdf")
-    ), width = 14)
+    ), width = 18)
     for (i in colnames(bayes_cols)) {
         plot_df <- cluster_df %>%
             group_by(!!sym(i), sample_id) %>%

@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Mar  8 22:50:08 EST 2022
+Fri Mar 11 18:01:33 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9333799
+Job id: 9464582
 Job name: prepare_shiny
 Hostname: compute-099.cm.cluster
 Task id: 1
@@ -103,9 +103,9 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 [1] "Reproducibility information:"
-[1] "2022-03-08 22:56:19 EST"
+[1] "2022-03-11 18:07:48 EST"
    user  system elapsed 
-360.992   4.779 369.356 
+364.326   6.155 373.360 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -116,7 +116,7 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-03-08
+ date     2022-03-11
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -233,7 +233,7 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
  Rcpp                     1.0.8    2022-01-13 [2] CRAN (R 4.2.0)
  RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
- rhdf5                    2.39.5   2022-01-21 [2] Bioconductor
+ rhdf5                    2.39.6   2022-03-09 [2] Bioconductor
  rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
  Rhdf5lib                 1.17.3   2022-01-31 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
@@ -288,4 +288,4 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Mar  8 22:56:22 EST 2022
+Fri Mar 11 18:07:50 EST 2022

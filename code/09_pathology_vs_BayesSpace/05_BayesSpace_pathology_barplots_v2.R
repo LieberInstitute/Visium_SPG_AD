@@ -80,7 +80,7 @@ barplots_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("BayesSpace_vs_pathology_barplots_", suffix, ".pdf")
-    ), width = 18)
+    ), width = 24)
 
     for (i in bayes_cols) {
         plot <- ggplot(cluster_df, aes(x = i, fill = path_groups)) +

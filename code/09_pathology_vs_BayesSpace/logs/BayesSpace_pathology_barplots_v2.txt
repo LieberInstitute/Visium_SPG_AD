@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Mar  8 22:47:39 EST 2022
+Fri Mar 11 18:05:19 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9333792
+Job id: 9464845
 Job name: BayesSpace_pathology_barplots_v2
-Hostname: compute-100.cm.cluster
+Hostname: compute-099.cm.cluster
 Task id: undefined
 Unloading conda_R/devel
 Loading conda_R/devel
@@ -151,16 +151,16 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 null device 
           1 
-There were 31 warnings (use warnings() to see them)
+There were 50 or more warnings (use warnings() to see the first 50)
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 null device 
           1 
-There were 28 warnings (use warnings() to see them)
+There were 50 or more warnings (use warnings() to see the first 50)
 [1] "Reproducibility information:"
-[1] "2022-03-08 22:54:14 EST"
+[1] "2022-03-11 18:15:38 EST"
    user  system elapsed 
-374.491   7.756 393.490 
+595.794  10.054 617.503 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -171,7 +171,7 @@ There were 28 warnings (use warnings() to see them)
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-03-08
+ date     2022-03-11
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -293,7 +293,7 @@ There were 28 warnings (use warnings() to see them)
  RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
  rematch2                 2.1.2    2020-05-01 [2] CRAN (R 4.1.0)
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
- rhdf5                    2.39.5   2022-01-21 [2] Bioconductor
+ rhdf5                    2.39.6   2022-03-09 [2] Bioconductor
  rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
  Rhdf5lib                 1.17.3   2022-01-31 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
@@ -348,4 +348,4 @@ There were 28 warnings (use warnings() to see them)
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Mar  8 22:54:17 EST 2022
+Fri Mar 11 18:15:46 EST 2022

@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Mar  8 21:46:37 EST 2022
+Fri Mar 11 17:45:12 EST 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9333771
+Job id: 9463235
 Job name: label_pathology_spots
-Hostname: compute-095.cm.cluster
+Hostname: compute-099.cm.cluster
 Task id: undefined
 Unloading conda_R/devel
 Loading conda_R/devel
@@ -144,9 +144,9 @@ pT-_Ab- pT-_Ab+ pT+_Ab-
     50.92      5.29     16.11     16.74      9.12      1.83    100.00 
 [1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/09_pathology_vs_BayesSpace/pathology_groups_alternative.pdf"
 [1] "Reproducibility information:"
-[1] "2022-03-08 21:50:56 EST"
+[1] "2022-03-11 17:48:44 EST"
    user  system elapsed 
-227.743  13.642 256.233 
+170.457   7.252 206.777 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -157,7 +157,7 @@ pT-_Ab- pT-_Ab+ pT+_Ab-
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-03-08
+ date     2022-03-11
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -291,7 +291,7 @@ pT-_Ab- pT-_Ab+ pT+_Ab-
  RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
  rematch2                 2.1.2    2020-05-01 [2] CRAN (R 4.1.0)
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
- rhdf5                    2.39.5   2022-01-21 [2] Bioconductor
+ rhdf5                    2.39.6   2022-03-09 [2] Bioconductor
  rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
  Rhdf5lib                 1.17.3   2022-01-31 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
@@ -351,4 +351,4 @@ pT-_Ab- pT-_Ab+ pT+_Ab-
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Mar  8 21:50:59 EST 2022
+Fri Mar 11 17:48:47 EST 2022
