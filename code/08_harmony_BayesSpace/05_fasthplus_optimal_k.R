@@ -145,13 +145,19 @@ write.table(
 )
 
 ## Repeat but after dropping the white matter
-spots_and_t <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_02 == 1)
+if(opt$spetype == "wholegenome") {
+	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k02 == 1)
+} else {
+	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k04 == 4)
+}
+
+
 set.seed(20220304)
 fasthplus <-
     hpb(
-        D = reducedDims(spe[, spots_and_t$spots_to_use])$HARMONY,
-        L = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]][spots_and_t$spots_to_use],
-        t = spots_and_t$t_value,
+        D = reducedDims(spe[, spots_and_t_noWM$spots_to_use])$HARMONY,
+        L = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]][spots_and_t_noWM$spots_to_use],
+        t = spots_and_t_noWM$t_value,
         r = 30
     )
 results <-
@@ -160,7 +166,7 @@ results <-
         fasthplus = fasthplus,
         type = opt$spetype,
 		spots_set = "grey_matter",
-		t_value = spots_and_t$t_value
+		t_value = spots_and_t_noWM$t_value
     )
 write.table(
     results,
