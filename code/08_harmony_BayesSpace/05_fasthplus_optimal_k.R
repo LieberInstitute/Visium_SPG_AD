@@ -146,9 +146,9 @@ write.table(
 
 ## Repeat but after dropping the white matter
 if(opt$spetype == "wholegenome") {
-	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k02 == 1)
+	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k02 != 1)
 } else {
-	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k04 == 4)
+	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k04 != 4)
 }
 
 
