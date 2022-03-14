@@ -78,8 +78,9 @@ heatmap_spe <- function(suffix) {
     pdf(file.path(
         dir_plots,
         paste0("spe_", suffix, "_dlpfc_heatmap", ".pdf")
-    ), width = 14)
+    ), width = 18, height = 9)
     for (k in bayes_cols) {
+        message(Sys.time(), " processing ", k)
         groups <- colData(spe)[, c("sample_id", k)]
 
         ## Pseudo-bulk for our current BayesSpace cluster results
@@ -96,13 +97,35 @@ heatmap_spe <- function(suffix) {
         myplots <- vector("list", 10)
 
         for (i in 1:10) {
+            message(Sys.time(), " processing sample ", i)
+            which_spots <- spe_pseudo$sample_id_short == levels(spe_pseudo$sample_id_short)[i]
             heat_matrix <-
-                logcounts(spe_pseudo)[rownames(spe_pseudo) %in% sig_genes$ensembl, spe_pseudo$sample_id_short == levels(spe_pseudo$sample_id_short)[i]]
-            colnames(heat_matrix) <- unique(spe_pseudo$BayesSpace)
+                logcounts(spe_pseudo)[rownames(spe_pseudo) %in% sig_genes$ensembl, which_spots]
+            colnames(heat_matrix) <- spe_pseudo$BayesSpace[which_spots]
             rownames(heat_matrix) <-
                 sig_genes$gene_layer[match(rownames(heat_matrix), sig_genes$ensembl)]
             rownames(heat_matrix) <-
                 gsub("ayer", "", rownames(heat_matrix))
+
+
+            ## Save gene layer info for later
+            gene_layers <- gsub("^.+ ", "", rownames(heat_matrix))
+
+            ## Delete the layer info from the genes
+            rownames(heat_matrix) <- gsub(" .*", "", rownames(heat_matrix))
+
+            ## Re-order genes by layer
+            split_index <- unlist(split(seq_len(length(gene_layers)),
+                gene_layers))
+            heat_matrix <- heat_matrix[split_index, ]
+
+            ## Update info
+            gene_layers <- gene_layers[split_index]
+
+            layer_colors <- setNames(
+                spatialLIBD::libd_layer_colors[seq_len(7)],
+                sort(unique(gene_layers))
+            )
 
             plot <- grid.grabExpr(draw(
                 Heatmap(
@@ -111,7 +134,17 @@ heatmap_spe <- function(suffix) {
                     row_names_gp = grid::gpar(fontsize = 5),
                     column_title = spe_pseudo$sample_id[spe_pseudo$sample_id_short == levels(spe_pseudo$sample_id_short)[i]][1],
                     column_title_gp = grid::gpar(fontsize = 8),
-                    name = " "
+                    name = " ",
+                    cluster_columns = TRUE,
+                    cluster_column_slices = FALSE,
+                    top_annotation = HeatmapAnnotation(
+                        Layer = anno_block(
+                            gp = gpar(fill = layer_colors),
+                            labels = names(layer_colors),
+                            labels_gp = gpar(col = "white", fontsize = 5)
+                        )
+                    ),
+                    column_split = as.integer(as.factor(gene_layers))
                 )
             ))
             myplots[[i]] <- plot
