@@ -1,10 +1,11 @@
 # sgejobs::job_single(
-#     "01_spatial_registration",
+#     name = "spatial_registration",
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "10G",
 #     command = "Rscript 01_spatial_registration.R",
 #     create_logdir = TRUE
+#
 # )
 #
 #
