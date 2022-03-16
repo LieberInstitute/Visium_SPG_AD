@@ -52,10 +52,10 @@ spe <- cluster_import(
 
 
 ## Pseudo-bulk for our current BayesSpace cluster results
-# spe_pseudo <- aggregateAcrossCells(
+# sce_pseudo <- aggregateAcrossCells(
 #     spe,
 #     DataFrame(
-#         BayesSpace = colData(spe)[[k]],
+#         BayesSpace = colData(spe)[[k]], #REDO
 #         sample_id = spe$sample_id
 #     )
 # )
@@ -72,25 +72,25 @@ rownames(phenoComb) = phenoComb$PseudoSample #renames rows of new colData frame 
 phenoComb = phenoComb[colnames(umiComb), ]
 phenoComb = DataFrame(phenoComb)
 
-spe_pseudo <-
+sce_pseudo <-
     logNormCounts(SingleCellExperiment(
         list(counts = umiComb),
         colData = phenoComb,
         rowData = rowData(spe)
     ))
 
-#spe_pseudo <- logNormCounts(spe_pseudo) #size factors <0? from aggregateAcrossCells
+#sce_pseudo <- logNormCounts(sce_pseudo) #size factors <0? from aggregateAcrossCells
 # range(spe$size_factor)
 # [1]  Inf -Inf
 # spe$size_factor[spe$size_factor =='NA'] #size factors
 # NULL
 #
 
-saveRDS(spe_pseudo, file = here::here("processed-data","10_spatial_registration", "pseudo_bulked",paste0("spe_pseudobulked_BayesSpace",k_nice,".RDS")))
+saveRDS(sce_pseudo, file = here::here("processed-data","10_spatial_registration", "pseudo_bulked",paste0("sce_pseudobulked_BayesSpace",k_nice,".RDS")))
 
 ###############################
 ##### get mean expression  ####
-mat <- counts(spe_pseudo)              #have to change this to log
+mat <- logcounts(sce_pseudo)
 
 ## filter
 gIndex = rowMeans(mat) > 0.2 # find the genes for which the mean expression is greater than 0.2
@@ -101,37 +101,37 @@ mat_filter = mat[gIndex, ] #subset matrix on just those genes.  want to remove l
 ## Build a group model
 
 #convert variables to factors
-spe_pseudo$spatial.cluster <- as.factor(colData(spe_pseudo)[[paste0("BayesSpace_harmony_k",k_nice)]]) #NAs present
-spe_pseudo$age <- as.integer(spe_pseudo$age)
-spe_pseudo$sex <- as.factor(spe_pseudo$sex)
-spe_pseudo$diagnosis <- as.factor(spe_pseudo$diagnosis)
-spe_pseudo$subject <- as.factor(spe_pseudo$subject)
+sce_pseudo$spatial.cluster <- as.factor(colData(sce_pseudo)[[paste0("BayesSpace_harmony_k",k_nice)]]) #NAs present
+sce_pseudo$age <- as.integer(sce_pseudo$age)
+sce_pseudo$sex <- as.factor(sce_pseudo$sex)
+sce_pseudo$diagnosis <- as.factor(sce_pseudo$diagnosis)
+sce_pseudo$subject <- as.factor(sce_pseudo$subject)
 #should we be using other variables, like race etc.?
 
 
-mod <- with(colData(spe_pseudo),
-            model.matrix(~ 0 + spatial.cluster + age + sex +diagnosis + subject))
+mod <- with(colData(sce_pseudo),
+            model.matrix(~ 0 + spatial.cluster + age + sex +diagnosis))
 colnames(mod) <- gsub('cluster', '', colnames(mod)) #not neccesary
 
 ## get duplicate correlation
 corfit <- duplicateCorrelation(mat_filter, mod,
-                               block = spe_pseudo$subject)
+                               block = sce_pseudo$subject)
 saveRDS(corfit, file = here::here("processed-data","10_spatial_registration", "dupCor",paste0("pseudobulked_dupCor_k",k_nice,".RDS")))
 
 
 ## Next for each layer test that layer vs the rest
-cell_idx <- splitit(spe_pseudo$spatial.cluster)
+cell_idx <- splitit(sce_pseudo$spatial.cluster)  #cell_idx is actually cluster_idx
 
 eb0_list_cell <- lapply(cell_idx, function(x) {
-    res <- rep(0, ncol(spe_pseudo))
-    res[x] <- 1
-    m <- with(colData(spe_pseudo),
-              model.matrix(~ res + diagnosis + age + sex))
+    res <- rep(0, ncol(sce_pseudo))
+    res[x] <- 1   #indicator of whether pseudobulked column belongs to
+    m <- with(colData(sce_pseudo), #find genes that are diff expressed across diff BayesSpace clusters adjusting for
+              model.matrix(~ res + diagnosis + age + sex))      #age, diagnosis, sex
     eBayes(
         lmFit(
             mat_filter,
             design = m,
-            block = spe_pseudo$subject,
+            block = sce_pseudo$subject,
             correlation = corfit$consensus.correlation
         )
     )
@@ -189,21 +189,24 @@ rownames(t0_contrasts) = rownames(eb_contrasts)
 
 ############
 # line up ##
-
+#find genes that match b/w both datasets
 mm = match(rownames(pvals0_contrasts), rownames(pvals0_contrasts_cell))
 
+#subset data from Maynard 2021
 pvals0_contrasts = pvals0_contrasts[!is.na(mm), ]
 t0_contrasts = t0_contrasts[!is.na(mm), ]
 fdrs0_contrasts = fdrs0_contrasts[!is.na(mm), ]
 
+#subset from current data
 pvals0_contrasts_cell = pvals0_contrasts_cell[mm[!is.na(mm)], ]
 t0_contrasts_cell = t0_contrasts_cell[mm[!is.na(mm)], ]
 fdrs0_contrasts_cell = fdrs0_contrasts_cell[mm[!is.na(mm)], ]
 
+#correlation b/w t-stats
 cor_t = cor(t0_contrasts_cell, t0_contrasts)
 signif(cor_t, 2)
 
-### just layer specific genes from ones left
+### just layer specific genes from ones left -Top 100 genes from Maynard 2021
 layer_specific_indices = mapply(function(t, p) {
     oo = order(t, decreasing = TRUE)[1:100]
 },
@@ -211,6 +214,7 @@ as.data.frame(t0_contrasts),
 as.data.frame(pvals0_contrasts))
 layer_ind = unique(as.numeric(layer_specific_indices))
 
+#corr matrix for t-stats with Top 100 x 7 layers
 cor_t_layer = cor(t0_contrasts_cell[layer_ind, ],
                   t0_contrasts[layer_ind, ])
 signif(cor_t_layer, 3)
@@ -223,12 +227,14 @@ dd = dist(1-cor_t_layer)
 hc = hclust(dd)
 cor_t_layer_toPlot = cor_t_layer[hc$order, c(1, 7:2)]
 colnames(cor_t_layer_toPlot) = gsub("ayer", "", colnames(cor_t_layer_toPlot))
-rownames(cor_t_layer_toPlot)[rownames(cor_t_layer_toPlot) == "Oligodendrocytes"] = "OLIGO" # does thismatter?
+#rownames(cor_t_layer_toPlot)[rownames(cor_t_layer_toPlot) == "Oligodendrocytes"] = "OLIGO" # doesn't matter
 
 ##plot output directory
 dir_plots <-
     here::here("plots", "10_spatial_registration")
 dir.create(dir_plots, showWarnings = FALSE)
+
+#http://research.libd.org/spatialLIBD/reference/layer_stat_cor_plot.html newer function for plotting
 
 pdf(file = here::here("plots","10_spatial_registration",paste0("pseudobulked_bayesSpace_vs_mannual_annotations_k",k_nice,".pdf")), width = 8)
 print(
