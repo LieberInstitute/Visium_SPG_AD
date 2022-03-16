@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
-#$ -N 01_spatial_registration
+#$ -l bluejay,mem_free=80G,h_vmem=80G,h_fsize=100G
+#$ -N spatial_registration  #delete numbers here
 #$ -o logs/01_spatial_registration.txt
 #$ -e logs/01_spatial_registration.txt
 #$ -m e
