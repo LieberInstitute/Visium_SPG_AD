@@ -28,7 +28,7 @@ library(lattice)
 # dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts"), showWarnings = FALSE)
 #dir.create(here::here("code", "10_spatial_registration"))
 
-k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
+k <-  7 # as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
 
 #load post BayesSpace spe object
