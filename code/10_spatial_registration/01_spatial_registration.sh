@@ -2,11 +2,10 @@
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -N spatial_registration
-#$ -o logs/spatial_registration.$TASK_ID.txt
-#$ -e logs/spatial_registration.$TASK_ID.txt
+#$ -o logs/spatial_registration.txt
+#$ -e logs/spatial_registration.txt
 #$ -m e
-#$ -t 1
-#$ -tc 1
+
 
 echo "**** Job starts ****"
 date

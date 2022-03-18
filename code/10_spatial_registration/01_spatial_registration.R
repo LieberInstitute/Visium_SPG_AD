@@ -1,14 +1,12 @@
-sgejobs::job_single(
-    name = "01_spatial_registration",
-    create_shell = TRUE,
-    queue = "bluejay",
-    memory = "10G",
-    command = "Rscript 01_spatial_registration.R",
-    create_logdir = TRUE
-
-)
-
-
+# sgejobs::job_single(
+#     name = "01_spatial_registration",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "10G",
+#     command = "Rscript 01_spatial_registration.R",
+#     create_logdir = TRUE
+#
+# )
 
 
 library(SpatialExperiment)
