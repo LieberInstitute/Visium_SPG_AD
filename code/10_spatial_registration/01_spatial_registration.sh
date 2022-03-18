@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -N spatial_registration  #delete numbers here
-#$ -o logs/01_spatial_registration.txt
-#$ -e logs/01_spatial_registration.txt
+#$ -o logs/01_spatial_registration.$TASK_ID.txt
+#$ -e logs/01_spatial_registration$TASK_ID.txt
 #$ -m e
 #$ -t 1
 #$ -tc 1
