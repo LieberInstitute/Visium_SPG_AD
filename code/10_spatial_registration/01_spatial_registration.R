@@ -52,33 +52,34 @@ spe <- cluster_import(
 )
 
 
-## Pseudo-bulk for our current BayesSpace cluster results
-# sce_pseudo <- aggregateAcrossCells(
-#     spe,
-#     DataFrame(
-#         BayesSpace = colData(spe)[[k]], #REDO
-#         sample_id = spe$sample_id
-#     )
-# )
+# Pseudo-bulk for our current BayesSpace cluster results
+sce_pseudo <- aggregateAcrossCells(
+    spe,
+    DataFrame(
+        BayesSpace = colData(spe)[[k]], #REDO
+        sample_id = spe$sample_id
+    )
+)
 
+sce_pseudo <- logNormCounts(sce_pseudo, size.factors = NULL) #size factors <0? from aggregateAcrossCells
 
-spe$PseudoSample = paste0(spe$sample_id, ":", colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]])
-cIndexes = splitit(spe$PseudoSample) # gives you the index for each cluster
-
-umiComb <- sapply(cIndexes, function(ii)
-    rowSums(assays(spe)$counts[, ii, drop = FALSE])) #
-
-phenoComb = colData(spe)[!duplicated(spe$PseudoSample), ] #creates new colData dataframe with pseudobulked colData
-rownames(phenoComb) = phenoComb$PseudoSample #renames rows of new colData frame to be the clusters
-phenoComb = phenoComb[colnames(umiComb),]
-phenoComb = DataFrame(phenoComb)
-
-sce_pseudo <-
-    logNormCounts(SingleCellExperiment(
-        list(counts = umiComb),
-        colData = phenoComb,
-        rowData = rowData(spe)
-    ))
+# spe$PseudoSample = paste0(spe$sample_id, ":", colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]])
+# cIndexes = splitit(spe$PseudoSample) # gives you the index for each cluster
+#
+# umiComb <- sapply(cIndexes, function(ii)
+#     rowSums(assays(spe)$counts[, ii, drop = FALSE])) #
+#
+# phenoComb = colData(spe)[!duplicated(spe$PseudoSample), ] #creates new colData dataframe with pseudobulked colData
+# rownames(phenoComb) = phenoComb$PseudoSample #renames rows of new colData frame to be the clusters
+# phenoComb = phenoComb[colnames(umiComb),]
+# phenoComb = DataFrame(phenoComb)
+#
+# sce_pseudo <-
+#     logNormCounts(SingleCellExperiment(
+#         list(counts = umiComb),
+#         colData = phenoComb,
+#         rowData = rowData(spe)
+#     ))
 
 #sce_pseudo <- logNormCounts(sce_pseudo) #size factors <0? from aggregateAcrossCells
 # range(spe$size_factor)
@@ -119,13 +120,14 @@ sce_pseudo$subject <- as.factor(sce_pseudo$subject)
 #should we be using other variables, like race etc.?
 
 
-mod <- with(colData(sce_pseudo),
-            model.matrix( ~ 0 + spatial.cluster + age + sex + diagnosis))
-colnames(mod) <- gsub('cluster', '', colnames(mod)) #not neccesary
+mat_formula <-  ~ 0 + spatial.cluster + age + sex + diagnosis#size factors <0? from aggregateAcrossCells
+
+mod <- model.matrix(mat_formula, data = colData(sce_pseudo))
+colnames(mod) <- gsub('cluster', '', colnames(mod)) #not necessary
 
 ## get duplicate correlation
 corfit <- duplicateCorrelation(mat_filter, mod,
-                               block = sce_pseudo$subject)
+                               block = sce_pseudo$sample_id)
 saveRDS(
     corfit,
     file = here::here(
@@ -137,11 +139,12 @@ saveRDS(
 )
 
 
+
 ## Next for each layer test that layer vs the rest
-cell_idx <-
+cluster_idx <-
     splitit(sce_pseudo$spatial.cluster)  #cell_idx is actually cluster_idx
 
-eb0_list_cell <- lapply(cell_idx, function(x) {
+eb0_list_cluster <- lapply(cluster_idx, function(x) {
     res <- rep(0, ncol(sce_pseudo))
     res[x] <-
         1   #indicator of whether pseudobulked column belongs to
@@ -162,7 +165,7 @@ eb0_list_cell <- lapply(cell_idx, function(x) {
 })
 
 saveRDS(
-    eb0_list_cell,
+    eb0_list_cluster,
     file = here::here(
         "processed-data",
         "10_spatial_registration",
@@ -175,12 +178,12 @@ saveRDS(
 ##########
 ## Extract the p-values
 
-pvals0_contrasts_cell <- sapply(eb0_list_cell, function(x) {
+pvals0_contrasts_cell <- sapply(eb0_list_cluster, function(x) {
     x$p.value[, 2, drop = FALSE]
 })
 rownames(pvals0_contrasts_cell) = rownames(mat_filter)
 
-t0_contrasts_cell <- sapply(eb0_list_cell, function(x) {
+t0_contrasts_cell <- sapply(eb0_list_cluster, function(x) {
     x$t[, 2, drop = FALSE]
 })
 rownames(t0_contrasts_cell) = rownames(mat_filter)
