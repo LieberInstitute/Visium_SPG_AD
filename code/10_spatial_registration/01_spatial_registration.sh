@@ -1,11 +1,12 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
+#$ -l bluejay,mem_free=50G,h_vmem=50G,h_fsize=100G
 #$ -N spatial_registration
 #$ -o logs/spatial_registration.txt
 #$ -e logs/spatial_registration.txt
 #$ -m e
-
+#$ -t 2-28
+#$ -tc 20
 
 echo "**** Job starts ****"
 date
