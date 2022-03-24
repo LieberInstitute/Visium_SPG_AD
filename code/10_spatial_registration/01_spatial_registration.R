@@ -56,7 +56,7 @@ spe <- cluster_import(
 sce_pseudo <- aggregateAcrossCells(
     spe,
     DataFrame(
-        BayesSpace = colData(spe)[[k]], #REDO
+        BayesSpace = colData(spe)[[paste0("BayesSpace_harmony_k",k_nice)]], #REDO
         sample_id = spe$sample_id
     )
 )
@@ -80,13 +80,8 @@ sce_pseudo <- logNormCounts(sce_pseudo, size.factors = NULL) #size factors <0? f
 #         colData = phenoComb,
 #         rowData = rowData(spe)
 #     ))
-
-#sce_pseudo <- logNormCounts(sce_pseudo) #size factors <0? from aggregateAcrossCells
-# range(spe$size_factor)
-# [1]  Inf -Inf
-# spe$size_factor[spe$size_factor =='NA'] #size factors
-# NULL
 #
+
 
 saveRDS(
     sce_pseudo,
@@ -116,18 +111,27 @@ sce_pseudo$spatial.cluster <-
 sce_pseudo$age <- as.integer(sce_pseudo$age)
 sce_pseudo$sex <- as.factor(sce_pseudo$sex)
 sce_pseudo$diagnosis <- as.factor(sce_pseudo$diagnosis)
-sce_pseudo$subject <- as.factor(sce_pseudo$subject)
+sce_pseudo$sample_id<- as.factor(sce_pseudo$sample_id)
 #should we be using other variables, like race etc.?
 
+mod <- with(colData(sce_pseudo),
+            model.matrix(~ 0 + spatial.cluster + age + sex + diagnosis))
 
-mat_formula <-  ~ 0 + spatial.cluster + age + sex + diagnosis#size factors <0? from aggregateAcrossCells
-
-mod <- model.matrix(mat_formula, data = colData(sce_pseudo))
-colnames(mod) <- gsub('cluster', '', colnames(mod)) #not necessary
+colnames(mod) <- gsub('cluster', '', colnames(mod))
 
 ## get duplicate correlation
+# the design matrix of the micro-array experiment, with rows
+# corresponding to arrays and columns to comparisons to be
+# estimated. The number of rows must match the number of
+# columns of ‘object’.
+
 corfit <- duplicateCorrelation(mat_filter, mod,
                                block = sce_pseudo$sample_id)
+# > dim(mod)
+# [1] 21  7
+# > dim(mat_filter)
+# [1] 18116   100
+
 saveRDS(
     corfit,
     file = here::here(
@@ -206,25 +210,24 @@ data.frame(
 # 4      0           0           0
 
 ###################
-load(
-    "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb_contrasts.Rdata"
-)
-load(
-    "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb0_list.Rdata"
-)
+# load(
+#     "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb_contrasts.Rdata"
+# )
+# load(
+#     "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb0_list.Rdata"
+# )
 
+ground_truth <- spatialLIBD::fetch_data("modeling_results")
 ## Extract the p-values
-pvals0_contrasts <- sapply(eb0_list, function(x) {
-    x$p.value[, 2, drop = FALSE]
-})
-rownames(pvals0_contrasts) = rownames(eb_contrasts)
+pvals0_contrasts <- ground_truth$enrichment[8:14]
+
+rownames(pvals0_contrasts) <- ground_truth$enrichment$ensembl
+
 fdrs0_contrasts = apply(pvals0_contrasts, 2, p.adjust, "fdr")
 
 ## Extract the t-stats
-t0_contrasts <- sapply(eb0_list, function(x) {
-    x$t[, 2, drop = FALSE]
-})
-rownames(t0_contrasts) = rownames(eb_contrasts)
+t0_contrasts <- ground_truth$enrichment[1:7]
+rownames(t0_contrasts) <- ground_truth$enrichment$ensembl
 
 ############
 # line up ##
