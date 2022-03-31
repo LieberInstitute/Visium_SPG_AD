@@ -2,46 +2,56 @@ library(ggplot2)
 library(dplyr)
 library(here)
 
-
+##locate and read in csv file
 fhplus_data <- read.csv(
     here::here(
         "processed-data",
         "08_harmony_BayesSpace",
         "fasthplus_results.csv"
-    ), sep="\t",  #data is tab delimited
+    ),
+    sep = "\t",
+    #data is tab delimited
 )
 
 head(fhplus_data)
 
-fhplus_data<- fhplus_data[fhplus_data$k != "k" ,]
+#remove redundant lines
+fhplus_data <- fhplus_data[fhplus_data$k != "k" , ]
+#convert k to class integer so it's ordered in the plot
 fhplus_data$k <- as.integer(fhplus_data$k)
+
 type_list <- c('wholegenome', 'targeted')
 spots_set_list <- c('grey_matter', 'all_spots')
 
 ##plot output directory
 dir_plots <-
     here::here("plots", "08_harmony_BayesSpace", "fasthplus")
-dir.create(dir_plots)
+#dir.create(dir_plots)
 
-for (t in type){
-    for (s in spots_set){
+
+##create line plots
+for (t in type_list) {
+    for (s in spots_set_list) {
         pdf(
             file = here::here(
                 "plots",
                 "08_harmony_BayesSpace",
                 "fasthplus",
-                paste0(
-                    "fasthplus_results_",
-                    t, "_", s,
-                    ".pdf"
-                )
+                paste0("fasthplus_results_",
+                       t, "_", s,
+                       ".pdf")
             ),
             width = 8
         )
 
-        df_subset <- subset(fhplus_data, type == t& spots_set == s)
-        plot<- ggplot(df_subset, aes(x=k, y=t_value, group=1)) +
-            geom_line()+
+        df_subset <- subset(fhplus_data, type == t & spots_set == s)
+        df_subset <- na.omit(df_subset)  #some fasthplus values were NA
+        plot <- ggplot(df_subset, aes(
+            x = k,
+            y = fasthplus,
+            group = 1
+        )) +
+            geom_line() +
             geom_point()
 
         print(plot)
