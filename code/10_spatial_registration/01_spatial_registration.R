@@ -99,6 +99,8 @@ mat <- logcounts(sce_pseudo)
 
 ## filter
 gIndex = rowMeans(mat) > 0.2 # find the genes for which the mean expression is greater than 0.2
+message("Genes passing the expression filter:")
+table(gIndex)
 mat_filter = mat[gIndex,] #subset matrix on just those genes.  want to remove lowly expressed genes.
 
 
@@ -108,14 +110,14 @@ mat_filter = mat[gIndex,] #subset matrix on just those genes.  want to remove lo
 #convert variables to factors
 sce_pseudo$spatial.cluster <-
     as.factor(colData(sce_pseudo)[[paste0("BayesSpace_harmony_k", k_nice)]]) #NAs present
-sce_pseudo$age <- as.integer(sce_pseudo$age)
+table(is.na(sce_pseudo$spatial.cluster))
 sce_pseudo$sex <- as.factor(sce_pseudo$sex)
 sce_pseudo$diagnosis <- as.factor(sce_pseudo$diagnosis)
 sce_pseudo$sample_id<- as.factor(sce_pseudo$sample_id)
 #should we be using other variables, like race etc.?
 
 mod <- with(colData(sce_pseudo),
-            model.matrix(~ 0 + spatial.cluster + age + sex + diagnosis))
+            model.matrix(~ 0 + spatial.cluster + diagnosis + age + sex))
 
 colnames(mod) <- gsub('cluster', '', colnames(mod))
 
@@ -127,6 +129,8 @@ colnames(mod) <- gsub('cluster', '', colnames(mod))
 
 corfit <- duplicateCorrelation(mat_filter, mod,
                                block = sce_pseudo$sample_id)
+message("Detected correlation: ", corfit$consensus.correlation)
+
 # > dim(mod)
 # [1] 21  7
 # > dim(mat_filter)
@@ -218,58 +222,14 @@ data.frame(
 # )
 
 ground_truth <- spatialLIBD::fetch_data("modeling_results")
-## Extract the p-values
-pvals0_contrasts <- ground_truth$enrichment[8:14]
 
-rownames(pvals0_contrasts) <- ground_truth$enrichment$ensembl
+cor_stats_layer <- layer_stat_cor(
+    t0_contrasts_cell,
+    modeling_results = ground_truth,
+    model_type = "enrichment",
+    top_n = 100
+)
 
-fdrs0_contrasts = apply(pvals0_contrasts, 2, p.adjust, "fdr")
-
-## Extract the t-stats
-t0_contrasts <- ground_truth$enrichment[1:7]
-rownames(t0_contrasts) <- ground_truth$enrichment$ensembl
-
-############
-# line up ##
-#find genes that match b/w both datasets
-mm = match(rownames(pvals0_contrasts), rownames(pvals0_contrasts_cell))
-
-#subset data from Maynard 2021
-pvals0_contrasts = pvals0_contrasts[!is.na(mm),]
-t0_contrasts = t0_contrasts[!is.na(mm),]
-fdrs0_contrasts = fdrs0_contrasts[!is.na(mm),]
-
-#subset from current data
-pvals0_contrasts_cell = pvals0_contrasts_cell[mm[!is.na(mm)],]
-t0_contrasts_cell = t0_contrasts_cell[mm[!is.na(mm)],]
-fdrs0_contrasts_cell = fdrs0_contrasts_cell[mm[!is.na(mm)],]
-
-#correlation b/w t-stats
-cor_t = cor(t0_contrasts_cell, t0_contrasts)
-signif(cor_t, 2)
-
-### just layer specific genes from ones left -Top 100 genes from Maynard 2021
-layer_specific_indices = mapply(function(t, p) {
-    oo = order(t, decreasing = TRUE)[1:100]
-},
-as.data.frame(t0_contrasts),
-as.data.frame(pvals0_contrasts))
-layer_ind = unique(as.numeric(layer_specific_indices))
-
-#corr matrix for t-stats with Top 100 x 7 layers
-cor_t_layer = cor(t0_contrasts_cell[layer_ind,],
-                  t0_contrasts[layer_ind,])
-signif(cor_t_layer, 3)
-
-### heatmap
-theSeq = seq(-.85, .85, by = 0.01)
-my.col <- colorRampPalette(brewer.pal(7, "PRGn"))(length(theSeq))
-
-dd = dist(1 - cor_t_layer)
-hc = hclust(dd)
-cor_t_layer_toPlot = cor_t_layer[hc$order, c(1, 7:2)]
-colnames(cor_t_layer_toPlot) = gsub("ayer", "", colnames(cor_t_layer_toPlot))
-#rownames(cor_t_layer_toPlot)[rownames(cor_t_layer_toPlot) == "Oligodendrocytes"] = "OLIGO" # doesn't matter
 
 ##plot output directory
 dir_plots <-
@@ -290,16 +250,9 @@ pdf(
     ),
     width = 8
 )
-print(
-    levelplot(
-        cor_t_layer_toPlot,
-        aspect = "fill",
-        at = theSeq,
-        col.regions = my.col,
-        ylab = "",
-        xlab = "",
-        scales = list(x = list(rot = 90, cex = 1.5), y = list(cex = 1.5))
-    )
+layer_stat_cor_plot(
+    cor_stats_layer,
+    max = 1
 )
 dev.off()
 
