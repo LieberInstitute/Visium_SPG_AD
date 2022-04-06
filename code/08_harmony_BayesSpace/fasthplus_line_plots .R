@@ -19,9 +19,34 @@ head(fhplus_data)
 fhplus_data <- fhplus_data[fhplus_data$k != "k" , ]
 #convert k to class integer so it's ordered in the plot
 fhplus_data$k <- as.integer(fhplus_data$k)
+fhplus_data$fasthplus <- as.numeric(fhplus_data$fasthplus)
+fhplus_data$t_value <- as.integer(fhplus_data$t_value)
+
+dim(fhplus_data)
+# [1] 99  5
+27 * 2 * 2 ## 27 k values * whole/targeted * GM/all spots
+# [1] 108
 
 type_list <- c('wholegenome', 'targeted')
 spots_set_list <- c('grey_matter', 'all_spots')
+
+with(fhplus_data, tapply(t_value, paste0(type, "_", spots_set), summary))
+# $targeted_all_spots
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    1408    1905    1905    1885    1905    1905
+#
+# $targeted_grey_matter
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    1680    1713    1713    1712    1714    1714
+#
+# $wholegenome_all_spots
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    1905    1905    1905    1905    1905    1905
+#
+# $wholegenome_grey_matter
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#    1664    1667    1668    1667    1668    1668
+
 
 ##plot output directory
 dir_plots <-
@@ -48,7 +73,7 @@ for (t in type_list) {
         df_subset <- na.omit(df_subset)  #some fasthplus values were NA
         plot <- ggplot(df_subset, aes(
             x = k,
-            y = fasthplus,
+            y = 1 - fasthplus,
             group = 1
         )) +
             geom_line() +
