@@ -53,35 +53,15 @@ spe <- cluster_import(
 
 
 # Pseudo-bulk for our current BayesSpace cluster results
-sce_pseudo <- aggregateAcrossCells(
+sce_pseudo <- aggregateAcrossclusters(
     spe,
     DataFrame(
-        BayesSpace = colData(spe)[[paste0("BayesSpace_harmony_k",k_nice)]], #REDO
+        BayesSpace = colData(spe)[[paste0("BayesSpace_harmony_k",k_nice)]],
         sample_id = spe$sample_id
     )
 )
 
-sce_pseudo <- logNormCounts(sce_pseudo, size.factors = NULL) #size factors <0? from aggregateAcrossCells
-
-# spe$PseudoSample = paste0(spe$sample_id, ":", colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]])
-# cIndexes = splitit(spe$PseudoSample) # gives you the index for each cluster
-#
-# umiComb <- sapply(cIndexes, function(ii)
-#     rowSums(assays(spe)$counts[, ii, drop = FALSE])) #
-#
-# phenoComb = colData(spe)[!duplicated(spe$PseudoSample), ] #creates new colData dataframe with pseudobulked colData
-# rownames(phenoComb) = phenoComb$PseudoSample #renames rows of new colData frame to be the clusters
-# phenoComb = phenoComb[colnames(umiComb),]
-# phenoComb = DataFrame(phenoComb)
-#
-# sce_pseudo <-
-#     logNormCounts(SingleCellExperiment(
-#         list(counts = umiComb),
-#         colData = phenoComb,
-#         rowData = rowData(spe)
-#     ))
-#
-
+sce_pseudo <- logNormCounts(sce_pseudo, size.factors = NULL)
 
 saveRDS(
     sce_pseudo,
@@ -109,12 +89,13 @@ mat_filter = mat[gIndex,] #subset matrix on just those genes.  want to remove lo
 
 #convert variables to factors
 sce_pseudo$spatial.cluster <-
-    as.factor(colData(sce_pseudo)[[paste0("BayesSpace_harmony_k", k_nice)]]) #NAs present
+    as.factor(colData(sce_pseudo)[[paste0("BayesSpace_harmony_k", k_nice)]])
 table(is.na(sce_pseudo$spatial.cluster))
 sce_pseudo$sex <- as.factor(sce_pseudo$sex)
 sce_pseudo$diagnosis <- as.factor(sce_pseudo$diagnosis)
 sce_pseudo$sample_id<- as.factor(sce_pseudo$sample_id)
-#should we be using other variables, like race etc.?
+sce_pseudo$age <- as.numeric(sce_pseudo$age)
+
 
 mod <- with(colData(sce_pseudo),
             model.matrix(~ 0 + spatial.cluster + diagnosis + age + sex))
@@ -146,11 +127,9 @@ saveRDS(
     )
 )
 
-
-
 ## Next for each layer test that layer vs the rest
 cluster_idx <-
-    splitit(sce_pseudo$spatial.cluster)  #cell_idx is actually cluster_idx
+    splitit(sce_pseudo$spatial.cluster)
 
 eb0_list_cluster <- lapply(cluster_idx, function(x) {
     res <- rep(0, ncol(sce_pseudo))
@@ -186,24 +165,24 @@ saveRDS(
 ##########
 ## Extract the p-values
 
-pvals0_contrasts_cell <- sapply(eb0_list_cluster, function(x) {
+pvals0_contrasts_cluster <- sapply(eb0_list_cluster, function(x) {
     x$p.value[, 2, drop = FALSE]
 })
-rownames(pvals0_contrasts_cell) = rownames(mat_filter)
+rownames(pvals0_contrasts_cluster) = rownames(mat_filter)
 
-t0_contrasts_cell <- sapply(eb0_list_cluster, function(x) {
+t0_contrasts_cluster <- sapply(eb0_list_cluster, function(x) {
     x$t[, 2, drop = FALSE]
 })
-rownames(t0_contrasts_cell) = rownames(mat_filter)
-fdrs0_contrasts_cell = apply(pvals0_contrasts_cell, 2, p.adjust, 'fdr')
+rownames(t0_contrasts_cluster) = rownames(mat_filter)
+fdrs0_contrasts_cluster = apply(pvals0_contrasts_cluster, 2, p.adjust, 'fdr')
 
 data.frame(
-    'FDRsig' = colSums(fdrs0_contrasts_cell < 0.05 &
-                           t0_contrasts_cell > 0),
-    'Pval10-6sig' = colSums(pvals0_contrasts_cell < 1e-6 &
-                                t0_contrasts_cell > 0),
-    'Pval10-8sig' = colSums(pvals0_contrasts_cell < 1e-8 &
-                                t0_contrasts_cell > 0)
+    'FDRsig' = colSums(fdrs0_contrasts_cluster < 0.05 &
+                           t0_contrasts_cluster > 0),
+    'Pval10-6sig' = colSums(pvals0_contrasts_cluster < 1e-6 &
+                                t0_contrasts_cluster > 0),
+    'Pval10-8sig' = colSums(pvals0_contrasts_cluster < 1e-8 &
+                                t0_contrasts_cluster > 0)
 )
 
 #for k = 04
@@ -214,17 +193,11 @@ data.frame(
 # 4      0           0           0
 
 ###################
-# load(
-#     "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb_contrasts.Rdata"
-# )
-# load(
-#     "/dcl02/lieber/ajaffe/SpatialTranscriptomics/HumanPilot/Analysis/Layer_Guesses/rda/eb0_list.Rdata"
-# )
 
 ground_truth <- spatialLIBD::fetch_data("modeling_results")
 
 cor_stats_layer <- layer_stat_cor(
-    t0_contrasts_cell,
+    t0_contrasts_cluster,
     modeling_results = ground_truth,
     model_type = "enrichment",
     top_n = 100
