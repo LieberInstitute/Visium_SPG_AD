@@ -13,9 +13,9 @@ for spetype in wholegenome targeted; do
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=50G,h_vmem=50G,h_fsize=100G
-#$ -N spatial_registration
-#$ -o logs/spatial_registration.txt
-#$ -e logs/spatial_registration.txt
+#$ -N ${SHORT}
+#$ -o logs/${SHORT}.\$TASK_ID.txt
+#$ -e logs/${SHORT}.\$TASK_ID.txt
 #$ -m e
 #$ -t 2-28
 #$ -tc 20
