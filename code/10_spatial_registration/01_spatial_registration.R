@@ -1,4 +1,7 @@
-# sgejobs::job_single(
+# sgejobs::job_loop(
+#    loops = list(spetype = c(
+#        "wholegenome", "targeted"
+#     )),
 #     name = "01_spatial_registration",
 #     create_shell = TRUE,
 #     queue = "bluejay",
@@ -7,6 +10,23 @@
 #     create_logdir = TRUE
 #
 # )
+
+# Required libraries
+library("getopt")
+
+## Specify parameters
+spec <- matrix(c(
+    "spetype", "s", 2, "character", "SPE type: wholegenome or targeted",
+    "help", "h", 0, "logical", "Display help"
+), byrow = TRUE, ncol = 5)
+opt <- getopt(spec)
+
+## if help was asked for print a friendly message
+## and exit with a non-zero error code
+if (!is.null(opt$help)) {
+    cat(getopt(spec, usage = TRUE))
+    q(status = 1)
+}
 
 
 library(SpatialExperiment)
@@ -19,11 +39,11 @@ library(RColorBrewer)
 library(lattice)
 
 
-# # ##create directories
-# # dir.create(here::here("processed-data","10_spatial_registration"), showWarnings = FALSE)
-# dir.create(here::here("processed-data","10_spatial_registration", "pseudo_bulked"), showWarnings = FALSE)
-# dir.create(here::here("processed-data", "10_spatial_registration", "dupCor"), showWarnings = FALSE)
-# dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts"), showWarnings = FALSE)
+# ##create directories
+dir.create(here::here("processed-data","10_spatial_registration", opt$spetype), showWarnings = FALSE)
+dir.create(here::here("processed-data","10_spatial_registration", "pseudo_bulked", opt$spetype), showWarnings = FALSE)
+dir.create(here::here("processed-data", "10_spatial_registration", "dupCor", opt$spetype), showWarnings = FALSE)
+dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts", opt$spetype), showWarnings = FALSE)
 #dir.create(here::here("code", "10_spatial_registration"))
 
 k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
@@ -36,7 +56,8 @@ spe <-
             "processed-data",
             "08_harmony_BayesSpace",
             "wholegenome",
-            "spe_harmony_wholegenome.rds"
+            paste0("spe_harmony_",opt$spetype, ".rds")
+
         )
     )
 
@@ -45,7 +66,7 @@ spe <- cluster_import(
     cluster_dir = here::here(
         "processed-data",
         "08_harmony_BayesSpace",
-        "wholegenome",
+        opt$spe_type,
         "clusters_BayesSpace"
     ),
     prefix = ""
@@ -69,7 +90,7 @@ saveRDS(
         "processed-data",
         "10_spatial_registration",
         "pseudo_bulked",
-        paste0("sce_pseudobulked_BayesSpace", k_nice, ".RDS")
+        paste0("sce_pseudobulked_BayesSpace", k_nice, opt$spetype, ".RDS")
     )
 )
 
@@ -123,7 +144,7 @@ saveRDS(
         "processed-data",
         "10_spatial_registration",
         "dupCor",
-        paste0("pseudobulked_dupCor_k", k_nice, ".RDS")
+        paste0("pseudobulked_dupCor_k", k_nice, opt$spetype ,".RDS")
     )
 )
 
@@ -157,7 +178,7 @@ saveRDS(
         "processed-data",
         "10_spatial_registration",
         "specific_Ts",
-        paste0("pseudobulked_specific_Ts_k", k_nice, ".RDS")
+        paste0("pseudobulked_specific_Ts_k", k_nice, opt$spetype,".RDS")
     )
 )
 
@@ -206,7 +227,7 @@ cor_stats_layer <- layer_stat_cor(
 
 ##plot output directory
 dir_plots <-
-    here::here("plots", "10_spatial_registration")
+    here::here("plots", "10_spatial_registration", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE)
 
 #http://research.libd.org/spatialLIBD/reference/layer_stat_cor_plot.html newer function for plotting
@@ -216,8 +237,9 @@ pdf(
         "plots",
         "10_spatial_registration",
         paste0(
-            "pseudobulked_bayesSpace_vs_mannual_annotations_k",
+            "enrichment_analysis_k",
             k_nice,
+            opt$spetype,
             ".pdf"
         )
     ),
