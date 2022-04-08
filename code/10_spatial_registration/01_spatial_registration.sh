@@ -4,7 +4,7 @@ mkdir -p logs
 
 for spetype in wholegenome targeted; do
 
-    SHORT = "spatial_registration_${spetype}"
+    SHORT= "spatial_registration_${spetype}"
 
     ##construct shell file
     echo "Creating script spatial_registration_${spetype}"
