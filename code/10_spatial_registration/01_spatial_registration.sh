@@ -1,14 +1,23 @@
 #!/bin/bash
+# indicates the file is a bash script file
+
+## Usage:
+# sh 01_spatial_registration.sh
+#an example of how to run this script
 
 mkdir -p logs
 
 for spetype in wholegenome targeted; do
 
     SHORT="spatial_registration_${spetype}"
+    #create a new var
 
     ##construct shell file
     echo "Creating script spatial_registration_${spetype}"
-    cat > .${SHORT}.sh <<EOF
+
+    #write to a hidden file using "End of file"
+    cat > ${SHORT}.sh <<EOF
+
 
 #!/bin/bash
 #$ -cwd
@@ -48,7 +57,7 @@ date
 
 EOF
 
-    call="qsub .${SHORT}.sh"
+    call="qsub ${SHORT}.sh"
     echo $call
-    #$call
+    $call
 done
