@@ -51,7 +51,7 @@ library(edgeR)
 #k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
 
 genome_type <- c('wholegenome', 'targeted')
-k_s<- 3 #2:28
+k_s<- 2:28
 k_nices <- sprintf("%02d", k_s)
 
 
@@ -253,8 +253,8 @@ for(k_nice in k_nices){
             "plots",
             "10_spatial_registration",
             paste0(
-                "enrichment_analysis_k",
-                k_nice,
+                "enrichment_analysis_k_",
+                k_nice, "_",
                 "wholegenome",
                 ".pdf"
             )
