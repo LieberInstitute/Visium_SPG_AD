@@ -41,9 +41,14 @@ for(type in genome_type){
     # > dim(colData(spe))
     # [1] 38115   108
 
-    x <- colData(spe)[!colData(spe)$subject == "Br3874",]
-    # > dim(x)
-    # [1] 25124   108
+    spe_new <- spe[,!spe$subject == "Br3874"]
+    spe_new <- spe_new[, !spe_new$BayesSpace_harmony_k02 == 2]
+
+
+    # > dim(colData(spe_new))
+    # [1] 21086   108
+
+    ##pseudobulk across pathology labels
 
 
 
