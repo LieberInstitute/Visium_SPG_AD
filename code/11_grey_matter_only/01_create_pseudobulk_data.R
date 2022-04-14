@@ -49,6 +49,12 @@ for(type in genome_type){
     # [1] 21086   108
 
     ##pseudobulk across pathology labels
+    ##.Rdata stored here for path levels
+    #     here::here(
+    #         "processed-data",
+    #         "09_pathology_vs_BayesSpace",
+    #         "pathology_levels")
+
 
 
 
