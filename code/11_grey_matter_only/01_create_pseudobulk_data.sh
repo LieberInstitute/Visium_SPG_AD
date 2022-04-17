@@ -13,7 +13,7 @@ for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 
     # Construct shell file
     echo "Creating script 01_create_pseudobulk_data_${spetype}"
-    cat > .${SHORT}.sh <<EOF
+    cat > ${SHORT}.sh <<EOF
 
 #!/bin/bash
 #$ -cwd
@@ -53,5 +53,5 @@ EOF
 
     call="qsub .${SHORT}.sh"
     echo $call
-    $call
+    #$call
 done
