@@ -51,7 +51,7 @@ date
 
 EOF
 
-    call="qsub .${SHORT}.sh"
+    call="qsub ${SHORT}.sh"
     echo $call
     #$call
 done
