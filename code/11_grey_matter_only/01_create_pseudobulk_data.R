@@ -9,8 +9,6 @@ sgejobs::job_loop(
     memory = "10G")
 #To execute the script builder, use: sh 01_create_pseudobulk_data.sh
 
-
-
 # Required libraries
 library("getopt")
 
@@ -105,14 +103,12 @@ logcounts(sce_pseudo) <- x
 ## We don't need this 'x' object anymore
 rm(x)
 
-##save RDS
+##save RDS file
 saveRDS(
     sce_pseudo,
     file = here::here(
-        "processed-data",
-        "10_spatial_registration",
-        "pseudo_bulked",
-        paste0("sce_pseudobulked_BayesSpace", k_nice, opt$spetype, ".RDS")
+        "processed-data","11_grey_matter_only", opt$spetype,
+        paste0("sce_pseudo_path_type",opt$spetype, ".RDS")
     )
 )
 
