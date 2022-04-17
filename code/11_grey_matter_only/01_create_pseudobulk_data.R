@@ -1,12 +1,13 @@
-library(sgejobs)
-sgejobs::job_loop(
-   loops = list(speopt$spetype = c(
-       "wholegenome", "targeted"
-    )),
-    name = "01_create_pseudobulk_data",
-    create_shell = TRUE,
-    queue = "bluejay",
-    memory = "10G")
+# library(sgejobs)
+
+# sgejobs::job_loop(
+#    loops = list(spetype = c(
+#        "wholegenome", "targeted"
+#     )),
+#     name = "01_create_pseudobulk_data",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "10G")
 #To execute the script builder, use: sh 01_create_pseudobulk_data.sh
 
 # Required libraries
