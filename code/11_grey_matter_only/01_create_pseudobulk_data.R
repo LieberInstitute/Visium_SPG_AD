@@ -40,10 +40,11 @@ library(RColorBrewer)
 library(lattice)
 library(edgeR)
 
+##output directory
+dir_rdata<- here::here("processed-data","11_grey_matter_only", opt$spetype)
+dir.create(dir_r, showWarnings = FALSE)
 
-
-dir.create(here::here("processed-data","gm_only", opt$spetype), showWarnings = FALSE)
-
+##load spe data
 spe <-
     readRDS(
         here::here(
@@ -74,7 +75,7 @@ spe <-cluster_import(
 ),
 prefix = "")
 
-
+##subset spe data based on subject and cluster 1 for k = 2
 spe_new <- spe[,!spe$subject == "Br3874"]
 spe_new <- spe_new[, !spe_new$BayesSpace_harmony_k02 == 2]
 # > dim(colData(spe))
@@ -87,12 +88,33 @@ spe_new <- spe_new[, !spe_new$BayesSpace_harmony_k02 == 2]
 # [7] "next_pT+"
 
 
-    ##pseudobulk across pathology labels
-    ##.Rdata stored here for path levels
-    #     here::here(
-    #         "processed-data",
-    #         "09_pathology_vs_BayesSpace",
-    #         "pathology_levels")
+##pseudobulk across pathology labels
+sce_pseudo <- aggregateAcrossCells(
+    spe_new,
+    DataFrame(path_groups = spe_new$path_groups,
+              sample_id = spe_new$sample_id
+    )
+)
+x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
+
+stopifnot(identical(rownames(x), rownames(sce_pseudo)))
+## Fix the column names. DGEList will have samples names as Sample1 Sample2 etc
+dimnames(x) <- dimnames(sce_pseudo)
+## Store the log normalized counts on the SingleCellExperiment object
+logcounts(sce_pseudo) <- x
+## We don't need this 'x' object anymore
+rm(x)
+
+##save RDS
+saveRDS(
+    sce_pseudo,
+    file = here::here(
+        "processed-data",
+        "10_spatial_registration",
+        "pseudo_bulked",
+        paste0("sce_pseudobulked_BayesSpace", k_nice, opt$spetype, ".RDS")
+    )
+)
 
 
 
