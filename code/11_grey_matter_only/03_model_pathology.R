@@ -3,11 +3,11 @@
 #    loops = list(spetype = c(
 #        "wholegenome", "targeted"
 #     )),
-#     name = "02_explore_expr_variability",
+#     name = "03_model_pathology",
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "15G")
-# To execute the script builder, use: sh 02_explore_expr_variability.sh
+# To execute the script builder, use: sh 03_model_pathology.sh
 
 # Required libraries
 library("getopt")

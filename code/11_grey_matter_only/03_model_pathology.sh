@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Usage:
-# sh 02_explore_expr_variability.sh
+# sh 03_model_pathology.sh
 
 ## Create the logs directory
 mkdir -p logs
@@ -9,10 +9,10 @@ mkdir -p logs
 for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 
     ## Internal script name
-    SHORT="explore_expr_variability_${spetype}"
+    SHORT="model_pathology_${spetype}"
 
     # Construct shell file
-    echo "Creating script 02_explore_expr_variability_${spetype}"
+    echo "Creating script 03_model_pathology_${spetype}"
     cat > ${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
@@ -39,7 +39,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 02_explore_expr_variability.R -s ${spetype}
+Rscript 03_model_pathology.R -s ${spetype}
 
 echo "**** Job ends ****"
 date
