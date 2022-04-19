@@ -1,10 +1,9 @@
-
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
 #$ -N create_pseudobulk_data_wholegenome
-#$ -o logs/01_create_pseudobulk_data_wholegenome.txt
-#$ -e logs/01_create_pseudobulk_data_wholegenome.txt
+#$ -o logs/create_pseudobulk_data_wholegenome.txt
+#$ -e logs/create_pseudobulk_data_wholegenome.txt
 #$ -m e
 
 echo "**** Job starts ****"
@@ -24,7 +23,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('wholegenome'); sessioninfo::session_info()"
+Rscript 01_create_pseudobulk_data -s wholegenome
 
 echo "**** Job ends ****"
 date

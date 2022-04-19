@@ -1,10 +1,9 @@
-
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
-#$ -N 01_create_pseudobulk_data_targeted
-#$ -o logs/01_create_pseudobulk_data_targeted.txt
-#$ -e logs/01_create_pseudobulk_data_targeted.txt
+#$ -N create_pseudobulk_data_targeted
+#$ -o logs/create_pseudobulk_data_targeted.txt
+#$ -e logs/create_pseudobulk_data_targeted.txt
 #$ -m e
 
 echo "**** Job starts ****"
@@ -18,13 +17,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('targeted'); sessioninfo::session_info()"
+Rscript 01_create_pseudobulk_data -s targeted
 
 echo "**** Job ends ****"
 date

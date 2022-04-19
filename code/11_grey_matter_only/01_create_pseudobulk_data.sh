@@ -9,12 +9,11 @@ mkdir -p logs
 for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 
     ## Internal script name
-    SHORT="01_create_pseudobulk_data_${spetype}"
+    SHORT="create_pseudobulk_data_${spetype}"
 
     # Construct shell file
     echo "Creating script 01_create_pseudobulk_data_${spetype}"
     cat > ${SHORT}.sh <<EOF
-
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=100G
@@ -34,13 +33,13 @@ echo "Hostname: \${HOSTNAME}"
 echo "Task id: \${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('${spetype}'); sessioninfo::session_info()"
+Rscript 01_create_pseudobulk_data -s ${spetype}
 
 echo "**** Job ends ****"
 date
