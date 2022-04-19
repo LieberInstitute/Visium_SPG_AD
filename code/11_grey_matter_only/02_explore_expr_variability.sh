@@ -9,7 +9,7 @@ mkdir -p logs
 for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 
     ## Internal script name
-    SHORT="create_pseudobulk_data_${spetype}"
+    SHORT="explore_expr_variability_${spetype}"
 
     # Construct shell file
     echo "Creating script 02_explore_expr_variability_${spetype}"
