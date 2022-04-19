@@ -17,8 +17,6 @@ for spetype in wholegenome targeted; do
 
     #write to a hidden file using "End of file"
     cat > ${SHORT}.sh <<EOF
-
-
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=50G,h_vmem=50G,h_fsize=100G

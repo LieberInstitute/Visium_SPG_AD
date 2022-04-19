@@ -1,0 +1,149 @@
+Filesystem                                            1K-blocks         Used    Available Use% Mounted on
+devtmpfs                                               98978396            0     98978396   0% /dev
+tmpfs                                                  98989088         3632     98985456   1% /dev/shm
+tmpfs                                                  98989088       387276     98601812   1% /run
+tmpfs                                                  98989088            0     98989088   0% /sys/fs/cgroup
+/dev/sda2                                              20469760      4146112     16323648  21% /
+/dev/sda5                                               6133760       478364      5655396   8% /var
+/dev/sda3                                              51175000        36068     51138932   1% /tmp
+/dev/sda6                                            7721825280        33520   7721791760   1% /scratch
+192.168.11.205:/zpool-dcs02-01/jhpce2                1072878592    966201344    106677248  91% /jhpce/shared
+192.168.11.205:/zpool-dcs02-01/users                49956414464  34996927488  14959486976  71% /users
+192.168.11.252:/cm/shared                             969459712    196461568    772998144  21% /cm/shared
+192.168.11.207:/scratch1/myscratch                  22618054656   3162348544  19455706112  14% /fastscratch/myscratch
+tmpfs                                                  19797820            0     19797820   0% /run/user/42226
+tmpfs                                                  19797820            0     19797820   0% /run/user/42311
+192.168.11.234@tcp2:192.168.11.236@tcp2:/leased02  213070643200 199788878976  13281762176  94% /dcl02/leased
+tmpfs                                                  19797820            0     19797820   0% /run/user/42327
+192.168.11.216@tcp1:192.168.11.218@tcp1:/lieber    444252291072 435393343872   8858945152  99% /dcl01/lieber
+192.168.11.209:/srv/dcs04/lieber                  1610612736000 969218700288 641394035712  61% /dcs04/lieber
+/users/sparthib/.bashrc: line 15: eserving-order: command not found
+/users/sparthib/.bashrc: line 53: =0: command not found
+/users/sparthib/.bashrc: line 53: 41:sg=0: command not found
+/users/sparthib/.bashrc: line 53: 46:tw=0: command not found
+/users/sparthib/.bashrc: line 53: 47:ow=0: command not found
+/users/sparthib/.bashrc: line 57: 43
+## After switching to RStudio:
+# https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-
+console
+export LS_COLORS=di=0: No such file or directory
+/users/sparthib/.bashrc: line 57: 32:ln=0: command not found
+/users/sparthib/.bashrc: line 57: 36:so=0: command not found
+/users/sparthib/.bashrc: line 57: 35:pi=0: command not found
+/users/sparthib/.bashrc: line 57: 93:ex=0: command not found
+/users/sparthib/.bashrc: line 57: 31:bd=0: command not found
+/users/sparthib/.bashrc: line 57: 34: command not found
+/users/sparthib/.bashrc: line 57: 46:cd=0: command not found
+/users/sparthib/.bashrc: line 57: 34: command not found
+/users/sparthib/.bashrc: line 57: 43:su=0: command not found
+/users/sparthib/.bashrc: line 57: 41:sg=0: command not found
+/users/sparthib/.bashrc: line 57: 46:tw: command not found
+/users/sparthib/.bashrc: line 87: unexpected EOF while looking for matching `"'
+/users/sparthib/.bashrc: line 92: syntax error: unexpected end of file
+**** Job starts ****
+Fri Apr  8 17:15:42 EDT 2022
+**** JHPCE info ****
+User: sparthib
+Job id: 
+Job name: 
+Hostname: jhpce01.cm.cluster
+Task id: 
+Loading conda_R/devel
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV
+  3) JHPCE_tools/1.0   8) conda/3-4.6.14
+  4) sge/8.1.9         9) conda_R/devel
+  5) gcc/4.4.7
+
+ 
+
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+
+Attaching package: ‘limma’
+
+The following object is masked from ‘package:BiocGenerics’:
+
+    plotMA
+
+Error in gzfile(file, "rb") : cannot open the connection
+Calls: readRDS -> gzfile
+In addition: Warning message:
+In gzfile(file, "rb") :
+  cannot open compressed file '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/spe_harmony_targeted.rds', probable reason 'No such file or directory'
+Execution halted
+**** Job ends ****
+Fri Apr  8 17:16:07 EDT 2022
