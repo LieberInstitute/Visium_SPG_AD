@@ -39,6 +39,7 @@ library("sessioninfo")
 ##output directory
 dir_rdata<- here::here("processed-data","11_grey_matter_only", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE)
+dir.create(file.path(dir_rdata, opt$spetype), showWarnings = FALSE)
 
 ##load spe data
 spe <-
@@ -110,7 +111,7 @@ saveRDS(
     sce_pseudo,
     file = here::here(
         "processed-data","11_grey_matter_only", opt$spetype,
-        paste0("sce_pseudo_path_type",opt$spetype, ".RDS")
+        paste0("sce_pseudo_pathology_",opt$spetype, ".rds")
     )
 )
 
