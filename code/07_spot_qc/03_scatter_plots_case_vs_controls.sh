@@ -6,10 +6,10 @@
 ## Create the logs directory
 mkdir -p logs
 
-for spetype in wholegenome targeted; do
+for spetype in "wholegenome"  "targeted"; do
 
     ## Internal script name
-    SHORT="03_scatter_plots_case_vs_controls_${spetype}"
+    SHORT="scatter_plots_case_vs_controls_${spetype}"
 
     # Construct shell file
     echo "Creating script 03_scatter_plots_case_vs_controls_${spetype}"
@@ -33,14 +33,13 @@ echo "Hostname: \${HOSTNAME}"
 echo "Task id: \${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript -e "options(width = 120); print('${spetype}'); sessioninfo::session_info()"
-
+Rscript 03_scatter_plots_case_vs_controls.R -s ${spetype}
 echo "**** Job ends ****"
 date
 
