@@ -27,6 +27,10 @@ if (!is.null(opt$help)) {
     q(status = 1)
 }
 
+## For testing
+if(FALSE) {
+    opt <- list(spetype = "wholegenome")
+}
 
 
 library("SpatialExperiment")
@@ -38,8 +42,8 @@ library("sessioninfo")
 
 ## output directory
 dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
-dir.create(dir_rdata, showWarnings = FALSE)
-dir.create(file.path(dir_rdata, opt$spetype), showWarnings = FALSE)
+dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
 
 ## load spe data
 spe <-
