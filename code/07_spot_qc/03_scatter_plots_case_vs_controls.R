@@ -1,16 +1,12 @@
-# library(sgejobs)
-# sgejobs::job_loop(
-#    loops = list(spetype = c(
-#        "wholegenome", "targeted"
-#     )),
-#     name = "01_spatial_registration",
-#     create_shell = TRUE,
-#     queue = "bluejay",
-#     memory = "10G",
-#     command = "Rscript 01_spatial_registration.R",
-#     create_logdir = TRUE
-#
-# )
+library(sgejobs)
+sgejobs::job_loop(
+   loops = list(spetype = c(
+       "wholegenome", "targeted"
+    )),
+    name = "03_scatter_plots_case_vs_controls",
+    create_shell = TRUE,
+    queue = "bluejay",
+    memory = "10G")
 
 library("here")
 library("SpatialExperiment")
