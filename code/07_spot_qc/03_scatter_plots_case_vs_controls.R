@@ -1,12 +1,12 @@
-library(sgejobs)
-sgejobs::job_loop(
-   loops = list(spetype = c(
-       "wholegenome", "targeted"
-    )),
-    name = "03_scatter_plots_case_vs_controls",
-    create_shell = TRUE,
-    queue = "bluejay",
-    memory = "10G")
+# library(sgejobs)
+# sgejobs::job_loop(
+#    loops = list(spetype = c(
+#        "wholegenome", "targeted"
+#     )),
+#     name = "03_scatter_plots_case_vs_controls",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "10G")
 
 library("here")
 library("SpatialExperiment")
@@ -43,12 +43,12 @@ dir_plots <- here::here("plots", "07_spot_qc", "outliers")
 
 
 ## Create scatter plots to view outlier information
-create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
+create_plots <- function(spe_object, pathology) {
     # pathology can be 'Abeta' or 'pTau'
     # n = threshold for number of pathology 'blobs' in spot
     # p = percentage of pathology pixels in spot
     # add optional params (diagnosis)
-    colors_hex <- c("#00AFBB", "#E7B800", "#FC4E07")
+    colors_hex <- c("#00AFBB", "#E7B800", "#FC4E07", "#CC79A7")
 
     path_df <- data.frame(
         spot_id = rownames(colData(spe_object)),
@@ -63,6 +63,8 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
     path_df$diagnosis <- factor(path_df$diagnosis, levels = c("Control", "AD"))
     ## row 1: Percent > 0.01, column 2: Percent absent
     if (pathology == "Abeta") {
+        n = 1
+        p = 0.108
         path_df <- path_df |> mutate(outliers = case_when(
             NAbeta > n & PAbeta > p ~ "both",
             NAbeta > n & PAbeta <= p ~ "n",
@@ -72,8 +74,8 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
 
         plot <- ggpubr::ggscatter(path_df,
             x = "NAbeta", y = "PAbeta",
-            color = "outliers", size = 0.5,
-            # palette = c("#00AFBB", "#E7B800", "#FC4E07")
+            color = "outliers", size = 0.5, alpha = 0.3
+            # palette = c("#00AFBB", "#E7B800", "#FC4E07", "#CC79A7")
         )
         plot <- facet(plot + theme_bw(),
             facet.by = "diagnosis",
@@ -81,12 +83,14 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
         )
         plot <- plot + scale_color_manual(
             name = "type of Abeta",
-            labels = c("n and %", "n", "none"),
+            labels = c("n and %", "n", "p" ,"none"),
             values = colors_hex
         )
     }
 
     if (pathology == "pTau") {
+        n= 8
+        p = 0.0143
         path_df <- path_df |> mutate(outliers = case_when(
             NpTau > n & PpTau > p ~ "both",
             NpTau > n & PpTau <= p ~ "n",
@@ -96,7 +100,7 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
 
         plot <- ggpubr::ggscatter(path_df,
             x = "NpTau", y = "PpTau",
-            color = "outliers", size = 0.5
+            color = "outliers", size = 0.5, alpha = 0.3
         )
 
         plot <- facet(plot + theme_bw(),
@@ -106,7 +110,7 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
 
         plot <- plot + scale_color_manual(
             name = "type of pTau",
-            labels = c("n and %", "n", "none"),
+            labels = c("n and %", "n", "p" ,"none"),
             values = colors_hex
         )
     }
@@ -140,5 +144,5 @@ for (type in genome_type) {
 }
 
 
-create_plots(spe, "Abeta", n = 0, p = 0.01)
-create_plots(spe, "pTau", n = 0, p = 0.01)
+create_plots(spe, "Abeta")
+create_plots(spe, "pTau")
