@@ -30,9 +30,8 @@ if (!is.null(opt$help)) {
 library("here")
 library("sessioninfo")
 library("SpatialExperiment")
-library("spatialLIBD")
-library("scater")
-library("jaffelab")
+library("rafalib")
+library("limma")
 
 
 ## output directory
@@ -61,45 +60,28 @@ stopifnot(is.factor(sce_pseudo$path_groups))
 ## Add APOe genotype info
 sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E4", "Br3800" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
 
-## Compute PCs
-## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
-pca <- prcomp(t(assays(sce_pseudo)$logcounts))
-message(Sys.time(), " % of variance explained for the top 50 PCs:")
-jaffelab::getPcaVars(pca)[seq_len(50)]
-pca_pseudo<- pca$x[, seq_len(50)]
-reducedDims(sce_pseudo) <- list(PCA=pca_pseudo)
+## Adapted from https://github.com/LieberInstitute/HumanPilot/blob/7049cd42925e00b187c0866f93409196dbcdd526/Analysis/Layer_Guesses/layer_specificity.R#L1423-L1443
+layer_idx <- splitit(sce_layer$layer_guess)
 
-## Plot PCs with different colors
-## Each point here is a sample
-pdf(file = file.path(dir_plots, paste0("sce_pseudo_pca.pdf")), width = 14, height = 14)
-plotPCA(sce_pseudo, colour_by = "age", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "sample_id", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "path_groups", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "subject", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "sex", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "pmi", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "APOe", ncomponents = 12, point_size = 1)
-dev.off()
-
-
-## Obtain percent of variance explained at the gene level
-## using scater::getVarianceExplained()
-vars <- getVarianceExplained(sce_pseudo,
-    variables = c(
-        "age",
-        "sample_id",
-        "path_groups",
-        "subject",
-        "sex",
-        "pmi",
-        "APOe"
+eb0_list <- lapply(layer_idx, function(x) {
+    res <- rep(0, ncol(sce_layer))
+    res[x] <- 1
+    m <- model.matrix(~ res)
+    eBayes(
+        lmFit(
+            mat,
+            design = m,
+            block = sce_layer$subject_position,
+            correlation = corfit$consensus.correlation
+        )
     )
-)
+})
 
-## Now visualize the percent of variance explained across all genes
-pdf(file = file.path(dir_plots, paste0("sce_pseudo_gene_explanatory_vars.pdf")))
-plotExplanatoryVariables(vars)
-dev.off()
+## Extract the p-values
+pvals0_contrasts <- sapply(eb0_list, function(x) {
+    x$p.value[, 2, drop = FALSE]
+})
+
 
 ## Reproducibility information
 print("Reproducibility information:")
