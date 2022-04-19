@@ -23,7 +23,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 01_create_pseudobulk_data -s wholegenome
+Rscript 01_create_pseudobulk_data.R -s wholegenome
 
 echo "**** Job ends ****"
 date

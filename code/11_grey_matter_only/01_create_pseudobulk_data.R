@@ -38,7 +38,7 @@ library("sessioninfo")
 
 ##output directory
 dir_rdata<- here::here("processed-data","11_grey_matter_only", opt$spetype)
-dir.create(dir_r, showWarnings = FALSE)
+dir.create(dir_rdata, showWarnings = FALSE)
 
 ##load spe data
 spe <-

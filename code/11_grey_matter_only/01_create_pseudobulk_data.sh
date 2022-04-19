@@ -39,7 +39,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 01_create_pseudobulk_data -s ${spetype}
+Rscript 01_create_pseudobulk_data.R -s ${spetype}
 
 echo "**** Job ends ****"
 date
@@ -52,5 +52,5 @@ EOF
 
     call="qsub ${SHORT}.sh"
     echo $call
-    #$call
+    $call
 done
