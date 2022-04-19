@@ -72,19 +72,19 @@ reducedDims(sce_pseudo) <- list(PCA=pca_pseudo)
 ## Plot PCs with different colors
 ## Each point here is a sample
 pdf(file = file.path(dir_plots, paste0("sce_pseudo_pca.pdf")), width = 14, height = 14)
-plotPCA(spe_pseudo, colour_by = "age", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "sample_id", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "path_groups", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "subject", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "sex", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "pmi", ncomponents = 12, point_size = 1)
-plotPCA(spe_pseudo, colour_by = "APOe", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "age", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "sample_id", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "path_groups", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "subject", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "sex", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "pmi", ncomponents = 12, point_size = 1)
+plotPCA(sce_pseudo, colour_by = "APOe", ncomponents = 12, point_size = 1)
 dev.off()
 
 
 ## Obtain percent of variance explained at the gene level
 ## using scater::getVarianceExplained()
-vars <- getVarianceExplained(spe_pseudo,
+vars <- getVarianceExplained(sce_pseudo,
     variables = c(
         "age",
         "sample_id",
