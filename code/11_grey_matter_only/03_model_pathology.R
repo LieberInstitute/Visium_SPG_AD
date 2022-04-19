@@ -71,8 +71,9 @@ mat <- assays(sce_pseudo)$logcounts
 ## Compute correlation
 ## Adapted from https://github.com/LieberInstitute/Visium_IF_AD/blob/7973fcebb7c4b17cc3e23be2c31ac324d1cc099b/code/10_spatial_registration/01_spatial_registration.R#L134-L150
 mod <- with(colData(sce_pseudo),
-    model.matrix( ~ 0 + path_groups + age + sex))
+    model.matrix( ~ 0 + path_groups))
 
+message(Sys.time(), " running duplicateCorrelation()")
 corfit <- duplicateCorrelation(mat, mod,
     block = sce_pseudo$sample_id)
 message("Detected correlation: ", corfit$consensus.correlation)
@@ -81,10 +82,11 @@ message("Detected correlation: ", corfit$consensus.correlation)
 ## Adapted from https://github.com/LieberInstitute/HumanPilot/blob/7049cd42925e00b187c0866f93409196dbcdd526/Analysis/Layer_Guesses/layer_specificity.R#L1423-L1443
 patho_idx <- splitit(sce_pseudo$path_groups)
 
+message(Sys.time(), " running the enrichment model")
 eb0_list <- lapply(patho_idx, function(x) {
     res <- rep(0, ncol(sce_pseudo))
     res[x] <- 1
-    m <- model.matrix(~ res + age + sex)
+    m <- model.matrix(~ res)
     eBayes(
         lmFit(
             mat,
@@ -100,7 +102,10 @@ eb0_list <- lapply(patho_idx, function(x) {
 
 ## Build a group model
 mod <- with(colData(sce_pseudo), model.matrix(~ 0 + path_groups))
+colnames(mod) <- gsub('path_groups', '', colnames(mod))
+colnames(mod) <- gsub("\\+", "pos", colnames(mod))
 
+message(Sys.time(), " runnign the baseline pairwise model")
 fit <-
     lmFit(
         mat,
@@ -111,7 +116,8 @@ fit <-
 eb <- eBayes(fit)
 
 
-## Define the contrasts for each layer vs the rest (excluding WM comparisons since we have that one already)
+## Define the contrasts for each pathology group vs another one
+message(Sys.time(), " run pairwise models")
 path_combs <- combn(colnames(mod), 2)
 path_contrasts <- apply(path_combs, 2, function(x) {
     z <- paste(x, collapse = '-')
@@ -137,7 +143,9 @@ fit_f_model <- function(sce) {
     sce$path_groups <- factor(sce$path_groups)
 
     ## Build a group model
-    mod <- with(colData(sce), model.matrix( ~ path_groups + age + sex))
+    mod <- with(colData(sce), model.matrix( ~ path_groups))
+    colnames(mod) <- gsub('path_groups', '', colnames(mod))
+    colnames(mod) <- gsub("\\+", "pos", colnames(mod))
 
     ## Takes like 2 min to run
     corfit <-
@@ -163,7 +171,7 @@ f_stats <- do.call(cbind, lapply(names(ebF_list), function(i) {
     top <-
         topTable(
             x,
-            coef = grep("path_groups", colnames(x$coefficients)),
+            coef = 2:ncol(x$coefficients),
             sort.by = 'none',
             number = length(x$F)
         )
