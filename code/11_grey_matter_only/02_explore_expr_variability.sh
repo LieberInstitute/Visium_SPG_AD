@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Usage:
-# sh 01_create_pseudobulk_data.sh
+# sh 02_explore_expr_variability.sh
 
 ## Create the logs directory
 mkdir -p logs
@@ -12,7 +12,7 @@ for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
     SHORT="create_pseudobulk_data_${spetype}"
 
     # Construct shell file
-    echo "Creating script 01_create_pseudobulk_data_${spetype}"
+    echo "Creating script 02_explore_expr_variability_${spetype}"
     cat > ${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
@@ -39,7 +39,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 01_create_pseudobulk_data.R -s ${spetype}
+Rscript 02_explore_expr_variability.R -s ${spetype}
 
 echo "**** Job ends ****"
 date

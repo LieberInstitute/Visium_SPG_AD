@@ -1,14 +1,13 @@
 # library(sgejobs)
-
 # sgejobs::job_loop(
 #    loops = list(spetype = c(
 #        "wholegenome", "targeted"
 #     )),
-#     name = "01_create_pseudobulk_data",
+#     name = "02_explore_expr_variability",
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "15G")
-# To execute the script builder, use: sh 01_create_pseudobulk_data.sh
+# To execute the script builder, use: sh 02_explore_expr_variability.sh
 
 # Required libraries
 library("getopt")
@@ -28,13 +27,12 @@ if (!is.null(opt$help)) {
 }
 
 
-
-library("SpatialExperiment")
 library("here")
-library("spatialLIBD")
-library("scuttle")
-library("edgeR")
 library("sessioninfo")
+library("SpatialExperiment")
+library("spatialLIBD")
+library("scater")
+
 
 ## output directory
 dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
@@ -42,13 +40,13 @@ dir.create(dir_rdata, showWarnings = FALSE)
 dir.create(file.path(dir_rdata, opt$spetype), showWarnings = FALSE)
 
 ## load spe data
-spe <-
+sce_pseudo <-
     readRDS(
         here::here(
             "processed-data",
-            "08_harmony_BayesSpace",
+            "11_grey_matter_only",
             opt$spetype,
-            paste0("spe_harmony_", opt$spetype, ".rds")
+            paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
         )
     )
 
