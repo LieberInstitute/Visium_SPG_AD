@@ -15,7 +15,7 @@ library("getopt")
 
 ## Specify parameters
 spec <- matrix(c(
-    "speopt$spetype", "s", 2, "character", "SPE opt$spetype: wholegenome or targeted",
+    "spetype", "s", 2, "character", "SPE spetype: wholegenome or targeted",
     "help", "h", 0, "logical", "Display help"
 ), byrow = TRUE, ncol = 5)
 opt <- getopt(spec = spec)
@@ -29,15 +29,12 @@ if (!is.null(opt$help)) {
 
 
 
-library(SpatialExperiment)
-library(here)
-library(spatialLIBD)
-library(rafalib)
-library(scuttle)
-library(limma)
-library(RColorBrewer)
-library(lattice)
-library(edgeR)
+library("SpatialExperiment")
+library("here")
+library("spatialLIBD")
+library("scuttle")
+library("edgeR")
+library("sessioninfo")
 
 ##output directory
 dir_rdata<- here::here("processed-data","11_grey_matter_only", opt$spetype)
@@ -76,7 +73,13 @@ prefix = "")
 
 ##subset spe data based on subject and cluster 1 for k = 2
 spe_new <- spe[,!spe$subject == "Br3874"]
-spe_new <- spe_new[, !spe_new$BayesSpace_harmony_k02 == 2]
+
+if(opt$spetype == "wholegenome") {
+    spe_new <- spe_new[, spe_new$BayesSpace_harmony_k02 != 2]
+} else {
+    spe_new <- spe_new[, spe_new$BayesSpace_harmony_k04 != 4]
+}
+
 # > dim(colData(spe))
 # [1] 38115   111
 # # > dim(colData(spe_new))
@@ -101,8 +104,6 @@ stopifnot(identical(rownames(x), rownames(sce_pseudo)))
 dimnames(x) <- dimnames(sce_pseudo)
 ## Store the log normalized counts on the SingleCellExperiment object
 logcounts(sce_pseudo) <- x
-## We don't need this 'x' object anymore
-rm(x)
 
 ##save RDS file
 saveRDS(
@@ -112,6 +113,14 @@ saveRDS(
         paste0("sce_pseudo_path_type",opt$spetype, ".RDS")
     )
 )
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
+
 
 
 
