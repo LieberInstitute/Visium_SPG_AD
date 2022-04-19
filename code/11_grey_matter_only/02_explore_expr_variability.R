@@ -26,11 +26,15 @@ if (!is.null(opt$help)) {
     q(status = 1)
 }
 
+## For testing
+if(FALSE) {
+    opt <- list(spetype = "wholegenome")
+}
+
 
 library("here")
 library("sessioninfo")
-library("SpatialExperiment")
-library("spatialLIBD")
+library("SingleCellExperiment")
 library("scater")
 library("jaffelab")
 
@@ -56,7 +60,7 @@ sce_pseudo <-
 
 ## We don't want to model the pathology groups as integers / numeric
 ## so let's double check this
-stopifnot(is.factor(sce_pseudo$path_groups))
+stopifnot(is.factor(sce_pseudo$path_groups) || is.character(sce_pseudo$path_groups))
 
 ## Add APOe genotype info
 sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E4", "Br3800" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
