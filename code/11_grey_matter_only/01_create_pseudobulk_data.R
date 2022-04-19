@@ -7,7 +7,7 @@
 #     name = "01_create_pseudobulk_data",
 #     create_shell = TRUE,
 #     queue = "bluejay",
-#     memory = "10G")
+#     memory = "15G")
 #To execute the script builder, use: sh 01_create_pseudobulk_data.sh
 
 # Required libraries
