@@ -115,8 +115,10 @@ heatmap_spe <- function(suffix) {
             rownames(heat_matrix) <- gsub(" .*", "", rownames(heat_matrix))
 
             ## Re-order genes by layer
-            split_index <- unlist(split(seq_len(length(gene_layers)),
-                gene_layers))
+            split_index <- unlist(split(
+                seq_len(length(gene_layers)),
+                gene_layers
+            ))
             heat_matrix <- heat_matrix[split_index, ]
 
             ## Update info

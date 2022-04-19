@@ -87,28 +87,28 @@ k_nice <- sprintf("%02d", k)
 ## Adapted code from https://github.com/LieberInstitute/spatialDLPFC/blob/main/code/analysis/06_fastplus/06_fasthplus.R#L46-L63
 find_t <- function(L, proportion = 0.05) {
     t_value <- floor(length(L) * proportion)
-	message(Sys.time(), " t value based on proportion: ", t_value)
+    message(Sys.time(), " t value based on proportion: ", t_value)
     smallest_cluster_size <- min(table(L))
     n_labels <- length(unique(L))
     t_value <- ifelse(smallest_cluster_size > (t_value / n_labels), t_value, smallest_cluster_size * n_labels)
-	message(Sys.time(), " t value estimated: ", t_value)
-	return(t_value)
+    message(Sys.time(), " t value estimated: ", t_value)
+    return(t_value)
 }
 
 ## Function that takes a logical vector of spots we can use
 ## and returns the list of those we can actually use and the resulting t
 find_spots_and_t <- function(usable_spots, t_proportion = 0.05) {
-	L <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
-	t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
+    L <- colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]]
+    t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
 
-	cluster_prop <- table(L[usable_spots]) / sum(usable_spots)
-	bad_clusters <- which(cluster_prop < t_proportion / k)
-	if(length(bad_clusters) > 0) {
-	    message("For k: ", k, " we are dropping small clusters: ", paste(names(bad_clusters), collapse = ", "))
-		usable_spots[ L %in% as.integer(names(bad_clusters)) ] <- FALSE
-	    t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
-	}
-	return(list(t_value = t_value, spots_to_use = usable_spots))
+    cluster_prop <- table(L[usable_spots]) / sum(usable_spots)
+    bad_clusters <- which(cluster_prop < t_proportion / k)
+    if (length(bad_clusters) > 0) {
+        message("For k: ", k, " we are dropping small clusters: ", paste(names(bad_clusters), collapse = ", "))
+        usable_spots[L %in% as.integer(names(bad_clusters))] <- FALSE
+        t_value <- find_t(L = L[usable_spots], proportion = t_proportion)
+    }
+    return(list(t_value = t_value, spots_to_use = usable_spots))
 }
 spots_and_t <- find_spots_and_t(usable_spots = rep(TRUE, ncol(spe)))
 
@@ -128,8 +128,8 @@ results <-
         k = k,
         fasthplus = fasthplus,
         type = opt$spetype,
-		spots_set = "all_spots",
-		t_value = spots_and_t$t_value
+        spots_set = "all_spots",
+        t_value = spots_and_t$t_value
     )
 write.table(
     results,
@@ -145,10 +145,10 @@ write.table(
 )
 
 ## Repeat but after dropping the white matter
-if(opt$spetype == "wholegenome") {
-	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k02 != 2)
+if (opt$spetype == "wholegenome") {
+    spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k02 != 2)
 } else {
-	spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k04 != 4)
+    spots_and_t_noWM <- find_spots_and_t(usable_spots = spe$BayesSpace_harmony_k04 != 4)
 }
 
 
@@ -165,8 +165,8 @@ results <-
         k = k,
         fasthplus = fasthplus,
         type = opt$spetype,
-		spots_set = "grey_matter",
-		t_value = spots_and_t_noWM$t_value
+        spots_set = "grey_matter",
+        t_value = spots_and_t_noWM$t_value
     )
 write.table(
     results,

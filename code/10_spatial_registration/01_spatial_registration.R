@@ -46,16 +46,16 @@ library(edgeR)
 # dir.create(here::here("processed-data","10_spatial_registration", "pseudo_bulked", opt$spetype), showWarnings = FALSE)
 # dir.create(here::here("processed-data", "10_spatial_registration", "dupCor", opt$spetype), showWarnings = FALSE)
 # dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts", opt$spetype), showWarnings = FALSE)
-#dir.create(here::here("code", "10_spatial_registration"))
+# dir.create(here::here("code", "10_spatial_registration"))
 
-#k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
+# k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
 
-genome_type <- c('targeted', 'wholegenome')
-k_s<- 2:28
+genome_type <- c("targeted", "wholegenome")
+k_s <- 2:28
 k_nices <- sprintf("%02d", k_s)
 
-for(type in genome_type){
-    #load post BayesSpace spe object
+for (type in genome_type) {
+    # load post BayesSpace spe object
 
     spe <-
         readRDS(
@@ -64,7 +64,6 @@ for(type in genome_type){
                 "08_harmony_BayesSpace",
                 type,
                 paste0("spe_harmony_", type, ".rds")
-
             )
         )
 
@@ -78,11 +77,11 @@ for(type in genome_type){
         ),
         prefix = ""
     )
-    for(k_nice in k_nices){
+    for (k_nice in k_nices) {
         sce_pseudo <- aggregateAcrossCells(
             spe,
             DataFrame(
-                BayesSpace = colData(spe)[[paste0("BayesSpace_harmony_k",k_nice)]],
+                BayesSpace = colData(spe)[[paste0("BayesSpace_harmony_k", k_nice)]],
                 sample_id = spe$sample_id
             )
         )
@@ -122,20 +121,22 @@ for(type in genome_type){
         #####################
         ## Build a group model
 
-        #convert variables to factors
+        # convert variables to factors
         sce_pseudo$spatial.cluster <-
             as.factor(colData(sce_pseudo)[[paste0("BayesSpace_harmony_k", k_nice)]])
         table(is.na(sce_pseudo$spatial.cluster))
         sce_pseudo$sex <- as.factor(sce_pseudo$sex)
         sce_pseudo$diagnosis <- as.factor(sce_pseudo$diagnosis)
-        sce_pseudo$sample_id<- as.factor(sce_pseudo$sample_id)
+        sce_pseudo$sample_id <- as.factor(sce_pseudo$sample_id)
         sce_pseudo$age <- as.numeric(sce_pseudo$age)
 
 
-        mod <- with(colData(sce_pseudo),
-                    model.matrix(~ 0 + spatial.cluster + diagnosis + age + sex))
+        mod <- with(
+            colData(sce_pseudo),
+            model.matrix(~ 0 + spatial.cluster + diagnosis + age + sex)
+        )
 
-        colnames(mod) <- gsub('cluster', '', colnames(mod))
+        colnames(mod) <- gsub("cluster", "", colnames(mod))
 
         ## get duplicate correlation
         # the design matrix of the micro-array experiment, with rows
@@ -144,7 +145,8 @@ for(type in genome_type){
         # columns of ‘object’.
 
         corfit <- duplicateCorrelation(mat, mod,
-                                       block = sce_pseudo$sample_id)
+            block = sce_pseudo$sample_id
+        )
         message("Detected correlation: ", corfit$consensus.correlation)
 
         # > dim(mod)
@@ -169,18 +171,20 @@ for(type in genome_type){
         eb0_list_cluster <- lapply(cluster_idx, function(x) {
             res <- rep(0, ncol(sce_pseudo))
             res[x] <-
-                1   #indicator of whether pseudobulked column belongs to
+                1 # indicator of whether pseudobulked column belongs to
             m <-
-                with(colData(sce_pseudo),
-                     #find genes that are diff expressed across diff BayesSpace clusters adjusting for
-                     model.matrix( ~ res + diagnosis + age + sex))      #age, diagnosis, sex
+                with(
+                    colData(sce_pseudo),
+                    # find genes that are diff expressed across diff BayesSpace clusters adjusting for
+                    model.matrix(~ res + diagnosis + age + sex)
+                ) # age, diagnosis, sex
             eBayes(
                 lmFit(
                     mat,
                     design = m,
                     block = sce_pseudo$sample_id,
-                    ##block helps take into account that there are some bulks that come from the same sample and
-                    ##they may be highly correlated to each other
+                    ## block helps take into account that there are some bulks that come from the same sample and
+                    ## they may be highly correlated to each other
                     correlation = corfit$consensus.correlation
                 )
             )
@@ -203,24 +207,24 @@ for(type in genome_type){
         pvals0_contrasts_cluster <- sapply(eb0_list_cluster, function(x) {
             x$p.value[, 2, drop = FALSE]
         })
-        rownames(pvals0_contrasts_cluster) = rownames(mat)
+        rownames(pvals0_contrasts_cluster) <- rownames(mat)
 
         t0_contrasts_cluster <- sapply(eb0_list_cluster, function(x) {
             x$t[, 2, drop = FALSE]
         })
-        rownames(t0_contrasts_cluster) = rownames(mat)
-        fdrs0_contrasts_cluster = apply(pvals0_contrasts_cluster, 2, p.adjust, 'fdr')
+        rownames(t0_contrasts_cluster) <- rownames(mat)
+        fdrs0_contrasts_cluster <- apply(pvals0_contrasts_cluster, 2, p.adjust, "fdr")
 
         data.frame(
-            'FDRsig' = colSums(fdrs0_contrasts_cluster < 0.05 &
-                                   t0_contrasts_cluster > 0),
-            'Pval10-6sig' = colSums(pvals0_contrasts_cluster < 1e-6 &
-                                        t0_contrasts_cluster > 0),
-            'Pval10-8sig' = colSums(pvals0_contrasts_cluster < 1e-8 &
-                                        t0_contrasts_cluster > 0)
+            "FDRsig" = colSums(fdrs0_contrasts_cluster < 0.05 &
+                t0_contrasts_cluster > 0),
+            "Pval10-6sig" = colSums(pvals0_contrasts_cluster < 1e-6 &
+                t0_contrasts_cluster > 0),
+            "Pval10-8sig" = colSums(pvals0_contrasts_cluster < 1e-8 &
+                t0_contrasts_cluster > 0)
         )
 
-        #for k = 04
+        # for k = 04
         # FDRsig Pval10.6sig Pval10.8sig
         # 1  16576        2113         401
         # 2    266          12           1
@@ -239,12 +243,12 @@ for(type in genome_type){
         )
 
 
-        ##plot output directory
+        ## plot output directory
         dir_plots <-
             here::here("plots", "10_spatial_registration", type)
-        #dir.create(dir_plots, showWarnings = FALSE)
+        # dir.create(dir_plots, showWarnings = FALSE)
 
-        #http://research.libd.org/spatialLIBD/reference/layer_stat_cor_plot.html newer function for plotting
+        # http://research.libd.org/spatialLIBD/reference/layer_stat_cor_plot.html newer function for plotting
 
         pdf(
             file = here::here(
@@ -264,10 +268,8 @@ for(type in genome_type){
             max = 1
         )
         dev.off()
-
-
     }
-    }
+}
 
 ## Reproducibility information
 print("Reproducibility information:")

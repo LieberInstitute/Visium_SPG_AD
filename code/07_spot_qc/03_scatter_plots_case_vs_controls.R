@@ -1,4 +1,4 @@
-#library(sgejobs)
+# library(sgejobs)
 # sgejobs::job_loop(
 #    loops = list(spetype = c(
 #        "wholegenome", "targeted"
@@ -39,9 +39,9 @@ if (!is.null(opt$help)) {
 
 
 
-##output plots directory
+## output plots directory
 
-#dir.create(here::here("plots","07_spot_qc", "outliers" type), showWarnings = FALSE)
+# dir.create(here::here("plots","07_spot_qc", "outliers" type), showWarnings = FALSE)
 dir_plots <- here::here("plots", "07_spot_qc", "outliers")
 
 
@@ -52,7 +52,7 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
     # n = threshold for number of pathology 'blobs' in spot
     # p = percentage of pathology pixels in spot
     # add optional params (diagnosis)
-    colors_hex = c("#00AFBB", "#E7B800", "#FC4E07")
+    colors_hex <- c("#00AFBB", "#E7B800", "#FC4E07")
 
     path_df <- data.frame(
         spot_id = rownames(colData(spe_object)),
@@ -64,7 +64,7 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
         PpTau = colData(spe_object)$PpTau
     )
 
-    path_df$diagnosis = factor(path_df$diagnosis , levels = c("Control", "AD" ))
+    path_df$diagnosis <- factor(path_df$diagnosis, levels = c("Control", "AD"))
     ## row 1: Percent > 0.01, column 2: Percent absent
     if (pathology == "Abeta") {
         path_df <- path_df |> mutate(outliers = case_when(
@@ -75,19 +75,19 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
         ))
 
         plot <- ggpubr::ggscatter(path_df,
-                                  x = "NAbeta", y = "PAbeta",
-                                  color = "outliers", size = 0.5,
-                                  #palette = c("#00AFBB", "#E7B800", "#FC4E07")
+            x = "NAbeta", y = "PAbeta",
+            color = "outliers", size = 0.5,
+            # palette = c("#00AFBB", "#E7B800", "#FC4E07")
         )
         plot <- facet(plot + theme_bw(),
-                      facet.by = "diagnosis",
-                      short.panel.labs = TRUE
-
+            facet.by = "diagnosis",
+            short.panel.labs = TRUE
         )
-        plot <- plot + scale_color_manual(name = "type of Abeta",
-                                          labels = c("n and %", "n", "none"),
-                                          values = colors_hex)
-
+        plot <- plot + scale_color_manual(
+            name = "type of Abeta",
+            labels = c("n and %", "n", "none"),
+            values = colors_hex
+        )
     }
 
     if (pathology == "pTau") {
@@ -99,17 +99,20 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
         ))
 
         plot <- ggpubr::ggscatter(path_df,
-                                  x = "NpTau", y = "PpTau",
-                                  color = "outliers", size = 0.5)
+            x = "NpTau", y = "PpTau",
+            color = "outliers", size = 0.5
+        )
 
         plot <- facet(plot + theme_bw(),
-                      facet.by = "diagnosis",
-                      short.panel.labs = TRUE)
+            facet.by = "diagnosis",
+            short.panel.labs = TRUE
+        )
 
-        plot <-plot + scale_color_manual(name = "type of pTau",
-                                         labels = c("n and %", "n", "none"),
-                                         values = colors_hex)
-
+        plot <- plot + scale_color_manual(
+            name = "type of pTau",
+            labels = c("n and %", "n", "none"),
+            values = colors_hex
+        )
     }
 
     return(plot)
@@ -117,16 +120,14 @@ create_plots <- function(spe_object, pathology, n = 0, p = 0.01) {
 
 
 
-for(type in genome_type){
-
+for (type in genome_type) {
     spe <-
         readRDS(
             here::here(
                 "processed-data",
                 "08_harmony_BayesSpace",
                 type,
-                paste0("spe_harmony_",type, ".rds")
-
+                paste0("spe_harmony_", type, ".rds")
             )
         )
 
@@ -140,10 +141,8 @@ for(type in genome_type){
         ),
         prefix = ""
     )
-
-
 }
 
 
-create_plots(spe, 'Abeta', n = 0, p = 0.01)
-create_plots(spe, 'pTau', n = 0, p = 0.01)
+create_plots(spe, "Abeta", n = 0, p = 0.01)
+create_plots(spe, "pTau", n = 0, p = 0.01)

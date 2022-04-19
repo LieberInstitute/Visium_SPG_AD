@@ -2,7 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(here)
 
-##locate and read in csv file
+## locate and read in csv file
 fhplus_data <- read.csv(
     here::here(
         "processed-data",
@@ -10,14 +10,14 @@ fhplus_data <- read.csv(
         "fasthplus_results.csv"
     ),
     sep = "\t",
-    #data is tab delimited
+    # data is tab delimited
 )
 
 head(fhplus_data)
 
-#remove redundant lines
-fhplus_data <- fhplus_data[fhplus_data$k != "k" , ]
-#convert k to class integer so it's ordered in the plot
+# remove redundant lines
+fhplus_data <- fhplus_data[fhplus_data$k != "k", ]
+# convert k to class integer so it's ordered in the plot
 fhplus_data$k <- as.integer(fhplus_data$k)
 fhplus_data$fasthplus <- as.numeric(fhplus_data$fasthplus)
 fhplus_data$t_value <- as.integer(fhplus_data$t_value)
@@ -27,8 +27,8 @@ dim(fhplus_data)
 27 * 2 * 2 ## 27 k values * whole/targeted * GM/all spots
 # [1] 108
 
-type_list <- c('wholegenome', 'targeted')
-spots_set_list <- c('grey_matter', 'all_spots')
+type_list <- c("wholegenome", "targeted")
+spots_set_list <- c("grey_matter", "all_spots")
 
 with(fhplus_data, tapply(t_value, paste0(type, "_", spots_set), summary))
 # $targeted_all_spots
@@ -48,13 +48,13 @@ with(fhplus_data, tapply(t_value, paste0(type, "_", spots_set), summary))
 #    1664    1667    1668    1667    1668    1668
 
 
-##plot output directory
+## plot output directory
 dir_plots <-
     here::here("plots", "08_harmony_BayesSpace", "fasthplus")
-#dir.create(dir_plots)
+# dir.create(dir_plots)
 
 
-##create line plots
+## create line plots
 for (t in type_list) {
     for (s in spots_set_list) {
         pdf(
@@ -62,15 +62,17 @@ for (t in type_list) {
                 "plots",
                 "08_harmony_BayesSpace",
                 "fasthplus",
-                paste0("fasthplus_results_",
-                       t, "_", s,
-                       ".pdf")
+                paste0(
+                    "fasthplus_results_",
+                    t, "_", s,
+                    ".pdf"
+                )
             ),
             width = 8
         )
 
         df_subset <- subset(fhplus_data, type == t & spots_set == s)
-        df_subset <- na.omit(df_subset)  #some fasthplus values were NA
+        df_subset <- na.omit(df_subset) # some fasthplus values were NA
         plot <- ggplot(df_subset, aes(
             x = k,
             y = 1 - fasthplus,
@@ -81,7 +83,6 @@ for (t in type_list) {
 
         print(plot)
         dev.off()
-
     }
 }
 

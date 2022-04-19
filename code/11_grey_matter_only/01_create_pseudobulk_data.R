@@ -8,7 +8,7 @@
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "15G")
-#To execute the script builder, use: sh 01_create_pseudobulk_data.sh
+# To execute the script builder, use: sh 01_create_pseudobulk_data.sh
 
 # Required libraries
 library("getopt")
@@ -36,20 +36,19 @@ library("scuttle")
 library("edgeR")
 library("sessioninfo")
 
-##output directory
-dir_rdata<- here::here("processed-data","11_grey_matter_only", opt$spetype)
+## output directory
+dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE)
 dir.create(file.path(dir_rdata, opt$spetype), showWarnings = FALSE)
 
-##load spe data
+## load spe data
 spe <-
     readRDS(
         here::here(
             "processed-data",
             "08_harmony_BayesSpace",
             opt$spetype,
-            paste0("spe_harmony_",opt$spetype, ".rds")
-
+            paste0("spe_harmony_", opt$spetype, ".rds")
         )
     )
 
@@ -64,18 +63,20 @@ spe <- cluster_import(
     prefix = ""
 )
 
-spe <-cluster_import(
-    spe, cluster_dir = here::here(
+spe <- cluster_import(
+    spe,
+    cluster_dir = here::here(
         "processed-data",
         "09_pathology_vs_BayesSpace",
         "pathology_levels"
-),
-prefix = "")
+    ),
+    prefix = ""
+)
 
-##subset spe data based on subject and cluster 1 for k = 2
-spe_new <- spe[,!spe$subject == "Br3874"]
+## subset spe data based on subject and cluster 1 for k = 2
+spe_new <- spe[, !spe$subject == "Br3874"]
 
-if(opt$spetype == "wholegenome") {
+if (opt$spetype == "wholegenome") {
     spe_new <- spe_new[, spe_new$BayesSpace_harmony_k02 != 2]
 } else {
     spe_new <- spe_new[, spe_new$BayesSpace_harmony_k04 != 4]
@@ -91,11 +92,12 @@ if(opt$spetype == "wholegenome") {
 # [7] "next_pT+"
 
 
-##pseudobulk across pathology labels
+## pseudobulk across pathology labels
 sce_pseudo <- aggregateAcrossCells(
     spe_new,
-    DataFrame(path_groups = spe_new$path_groups,
-              sample_id = spe_new$sample_id
+    DataFrame(
+        path_groups = spe_new$path_groups,
+        sample_id = spe_new$sample_id
     )
 )
 x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
@@ -106,12 +108,12 @@ dimnames(x) <- dimnames(sce_pseudo)
 ## Store the log normalized counts on the SingleCellExperiment object
 logcounts(sce_pseudo) <- x
 
-##save RDS file
+## save RDS file
 saveRDS(
     sce_pseudo,
     file = here::here(
-        "processed-data","11_grey_matter_only", opt$spetype,
-        paste0("sce_pseudo_pathology_",opt$spetype, ".rds")
+        "processed-data", "11_grey_matter_only", opt$spetype,
+        paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
     )
 )
 
@@ -121,7 +123,3 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
-
-
-
-

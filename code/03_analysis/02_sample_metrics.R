@@ -70,7 +70,7 @@ ggplot(
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20) +
     facet_grid(~
-    Alignment)
+        Alignment)
 
 ggplot(
     sample_metrics,
@@ -166,7 +166,7 @@ ggplot(
     geom_smooth(method = "lm") +
     theme_bw(base_size = 20) +
     facet_grid(~
-    study)
+        study)
 
 ggplot(
     all_metrics,
