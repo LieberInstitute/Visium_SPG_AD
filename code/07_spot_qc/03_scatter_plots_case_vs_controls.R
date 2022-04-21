@@ -28,7 +28,7 @@ spe <-
             "processed-data",
             "08_harmony_BayesSpace",
             "wholegenome",
-            paste0("spe_harmony_", opt$spetype, ".rds")
+            paste0("spe_harmony_", "wholegenome", ".rds")
         )
     )
 
