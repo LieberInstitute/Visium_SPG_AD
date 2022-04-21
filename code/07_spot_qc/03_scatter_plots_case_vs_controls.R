@@ -1,10 +1,10 @@
-library(sgejobs)
-sgejobs::job_single(
-    name = "03_scatter_plots_case_vs_controls",
-    create_shell = TRUE,
-    queue = "bluejay",
-    command = "Rscript 03_scatter_plots_case_vs_controls.R",
-    memory = "10G")
+# library(sgejobs)
+# sgejobs::job_single(
+#     name = "03_scatter_plots_case_vs_controls",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     command = "Rscript 03_scatter_plots_case_vs_controls.R",
+#     memory = "10G")
 
 library("here")
 library("SpatialExperiment")
