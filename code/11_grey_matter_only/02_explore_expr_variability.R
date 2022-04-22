@@ -37,6 +37,8 @@ library("sessioninfo")
 library("SingleCellExperiment")
 library("scater")
 
+## Load pathology colors
+source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 
 ## output directory
 dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
@@ -57,31 +59,41 @@ sce_pseudo <-
         )
     )
 
+## Define variables to use
+vars <- c(
+    "age",
+    "sample_id",
+    "path_groups",
+    "subject",
+    "sex",
+    "pmi",
+    "APOe"
+)
+
 ## Plot PCs with different colors
 ## Each point here is a sample
 pdf(file = file.path(dir_plots, paste0("sce_pseudo_pca.pdf")), width = 14, height = 14)
-plotPCA(sce_pseudo, colour_by = "age", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "sample_id", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "path_groups", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "subject", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "sex", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "pmi", ncomponents = 12, point_size = 1)
-plotPCA(sce_pseudo, colour_by = "APOe", ncomponents = 12, point_size = 1)
+for(var in vars) {
+    p <- plotPCA(
+            sce_pseudo,
+            colour_by = var,
+            ncomponents = 12,
+            point_size = 1,
+            label_format = c("%s %02i", " (%i%%)"),
+            percentVar = metadata(sce_pseudo)$PCA_var_explained
+        )
+    if(var == "path_groups") {
+        p <- p + scale_color_manual("path_groups", values = colors_pathology)
+    }
+    print(p)
+}
 dev.off()
 
 
 ## Obtain percent of variance explained at the gene level
 ## using scater::getVarianceExplained()
 vars <- getVarianceExplained(sce_pseudo,
-    variables = c(
-        "age",
-        "sample_id",
-        "path_groups",
-        "subject",
-        "sex",
-        "pmi",
-        "APOe"
-    )
+    variables = vars
 )
 
 ## Now visualize the percent of variance explained across all genes
