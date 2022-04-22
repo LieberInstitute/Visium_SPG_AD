@@ -22,7 +22,7 @@ rsconnect::deployApp(
         "Visium_IF_AD_modeling_results.Rdata",
         "sce_pseudo_pathology_wholegenome.rds"
     ),
-    appName = "Visium_IF_AD_Kwon2021",
+    appName = "Visium_IF_AD_Kwon2022",
     account = "libd",
     server = "shinyapps.io"
 )

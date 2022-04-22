@@ -26,33 +26,19 @@ sig_genes <- sig_genes_extract_all(
 ## Extract FDR < 5%
 ## From
 ## https://github.com/LieberInstitute/brainseq_phase2/blob/be2b7f972bb2a0ede320633bf06abe1d4ef2c067/supp_tabs/create_supp_tables.R#L173-L181
-fix_csv <- function(df) {
-    for (i in seq_len(ncol(df))) {
-        if (any(grepl(",", df[, i]))) {
-            message(paste(Sys.time(), "fixing column", colnames(df)[i]))
-            df[, i] <- gsub(",", ";", df[, i])
-        }
-    }
-    return(df)
-}
-z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
-write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv") # fix_csv <- function(df) {
+# fix_csv <- function(df) {
 #     for (i in seq_len(ncol(df))) {
-#         if (any(grepl(',', df[, i]))) {
-#             message(paste(Sys.time(), 'fixing column', colnames(df)[i]))
-#             df[, i] <- gsub(',', ';', df[, i])
+#         if (any(grepl(",", df[, i]))) {
+#             message(paste(Sys.time(), "fixing column", colnames(df)[i]))
+#             df[, i] <- gsub(",", ";", df[, i])
 #         }
 #     }
 #     return(df)
 # }
-# sig_genes <- sig_genes_extract_all(
-#     n = nrow(sce_pseudo),
-#     modeling_results = modeling_results,
-#     sce_layer = sce_pseudo
-# )
 # z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
 # write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
 
+sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
 vars <- colnames(colData(spe))
 
 ## Deploy the website
@@ -61,7 +47,7 @@ spatialLIBD::run_app(
     sce_layer = sce_pseudo,
     modeling_results = modeling_results,
     sig_genes = sig_genes,
-    title = "Visium IF AD, Kwon SH et al, 2021",
+    title = "Visium IF AD, Kwon SH et al, 2022",
     spe_discrete_vars = c(
         vars[grep("^path_", vars)],
         "ManualAnnotation",

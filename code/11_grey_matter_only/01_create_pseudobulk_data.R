@@ -146,9 +146,6 @@ rowData(sce_pseudo)$gene_search <-
         rowData(sce_pseudo)$gene_id
     )
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
-## Something I need to fix on the shiny app since it's hardcoded to use
-## this variable right now
-sce_pseudo$layer_guess_reordered_short <- sce_pseudo$path_groups
 
 ## save RDS file
 saveRDS(
