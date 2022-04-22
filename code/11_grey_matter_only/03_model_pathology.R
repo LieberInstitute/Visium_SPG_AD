@@ -27,7 +27,7 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
-if(FALSE) {
+if (FALSE) {
     opt <- list(spetype = "wholegenome")
 }
 
@@ -63,12 +63,15 @@ mat <- assays(sce_pseudo)$logcounts
 
 ## Compute correlation
 ## Adapted from https://github.com/LieberInstitute/Visium_IF_AD/blob/7973fcebb7c4b17cc3e23be2c31ac324d1cc099b/code/10_spatial_registration/01_spatial_registration.R#L134-L150
-mod <- with(colData(sce_pseudo),
-    model.matrix( ~ 0 + path_groups))
+mod <- with(
+    colData(sce_pseudo),
+    model.matrix(~ 0 + path_groups)
+)
 
 message(Sys.time(), " running duplicateCorrelation()")
 corfit <- duplicateCorrelation(mat, mod,
-    block = sce_pseudo$sample_id)
+    block = sce_pseudo$sample_id
+)
 message("Detected correlation: ", corfit$consensus.correlation)
 
 ######### ENRICHMENT t-stats ######################
@@ -79,7 +82,7 @@ message(Sys.time(), " running the enrichment model")
 eb0_list <- lapply(patho_idx, function(x) {
     res <- rep(0, ncol(sce_pseudo))
     res[x] <- 1
-    m <- model.matrix(~ res)
+    m <- model.matrix(~res)
     eBayes(
         lmFit(
             mat,
@@ -95,7 +98,7 @@ eb0_list <- lapply(patho_idx, function(x) {
 
 ## Build a group model
 mod <- with(colData(sce_pseudo), model.matrix(~ 0 + path_groups))
-colnames(mod) <- gsub('path_groups', '', colnames(mod))
+colnames(mod) <- gsub("path_groups", "", colnames(mod))
 colnames(mod) <- gsub("\\+", "pos", colnames(mod))
 
 message(Sys.time(), " runnign the baseline pairwise model")
@@ -113,12 +116,12 @@ eb <- eBayes(fit)
 message(Sys.time(), " run pairwise models")
 path_combs <- combn(colnames(mod), 2)
 path_contrasts <- apply(path_combs, 2, function(x) {
-    z <- paste(x, collapse = '-')
+    z <- paste(x, collapse = "-")
     makeContrasts(contrasts = z, levels = mod)
 })
 rownames(path_contrasts) <- colnames(mod)
 colnames(path_contrasts) <-
-    apply(path_combs, 2, paste, collapse = '-')
+    apply(path_combs, 2, paste, collapse = "-")
 eb_contrasts <- eBayes(contrasts.fit(fit, path_contrasts))
 
 
@@ -127,7 +130,7 @@ eb_contrasts <- eBayes(contrasts.fit(fit, path_contrasts))
 
 ## From layer_specificity.R
 fit_f_model <- function(sce) {
-    message(paste(Sys.time(), 'starting the model run'))
+    message(paste(Sys.time(), "starting the model run"))
 
     ## Extract the data
     mat <- assays(sce)$logcounts
@@ -136,14 +139,14 @@ fit_f_model <- function(sce) {
     sce$path_groups <- factor(sce$path_groups)
 
     ## Build a group model
-    mod <- with(colData(sce), model.matrix( ~ path_groups))
-    colnames(mod) <- gsub('path_groups', '', colnames(mod))
+    mod <- with(colData(sce), model.matrix(~path_groups))
+    colnames(mod) <- gsub("path_groups", "", colnames(mod))
     colnames(mod) <- gsub("\\+", "pos", colnames(mod))
 
     ## Takes like 2 min to run
     corfit <-
         duplicateCorrelation(mat, mod, block = sce$subject)
-    message(paste(Sys.time(), 'correlation:', corfit$consensus.correlation))
+    message(paste(Sys.time(), "correlation:", corfit$consensus.correlation))
     fit <-
         lmFit(
             mat,
@@ -156,7 +159,7 @@ fit_f_model <- function(sce) {
 }
 
 ebF_list <-
-    lapply(list('noWM' = sce_pseudo), fit_f_model)
+    lapply(list("noWM" = sce_pseudo), fit_f_model)
 
 ## Extract F-statistics
 f_stats <- do.call(cbind, lapply(names(ebF_list), function(i) {
@@ -165,18 +168,18 @@ f_stats <- do.call(cbind, lapply(names(ebF_list), function(i) {
         topTable(
             x,
             coef = 2:ncol(x$coefficients),
-            sort.by = 'none',
+            sort.by = "none",
             number = length(x$F)
         )
     # identical(p.adjust(top$P.Value, 'fdr'), top$adj.P.Val)
     res <- data.frame(
-        'f' = top$F,
-        'p_value' = top$P.Value,
-        'fdr' = top$adj.P.Val,
-        'AveExpr' = top$AveExpr,
+        "f" = top$F,
+        "p_value" = top$P.Value,
+        "fdr" = top$adj.P.Val,
+        "AveExpr" = top$AveExpr,
         stringsAsFactors = FALSE
     )
-    colnames(res) <- paste0(i, '_', colnames(res))
+    colnames(res) <- paste0(i, "_", colnames(res))
     return(res)
 }))
 f_stats$ensembl <- rownames(sce_pseudo)

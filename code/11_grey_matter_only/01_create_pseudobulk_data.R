@@ -28,7 +28,7 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
-if(FALSE) {
+if (FALSE) {
     opt <- list(spetype = "wholegenome")
 }
 
@@ -117,7 +117,7 @@ logcounts(sce_pseudo) <- x
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
 rowData(spe_pseudo)$low_expr <- filterByExpr(spe_pseudo)
 summary(rowData(spe_pseudo)$low_expr)
-spe_pseudo <- spe_pseudo[which(!rowData(spe_pseudo)$low_expr),]
+spe_pseudo <- spe_pseudo[which(!rowData(spe_pseudo)$low_expr), ]
 dim(spe_pseudo)
 
 ## Compute PCs
@@ -125,8 +125,8 @@ dim(spe_pseudo)
 pca <- prcomp(t(assays(sce_pseudo)$logcounts))
 message(Sys.time(), " % of variance explained for the top 20 PCs:")
 jaffelab::getPcaVars(pca)[seq_len(20)]
-pca_pseudo<- pca$x[, seq_len(20)]
-reducedDims(sce_pseudo) <- list(PCA=pca_pseudo)
+pca_pseudo <- pca$x[, seq_len(20)]
+reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
 
 ## We don't want to model the pathology groups as integers / numeric
 ## so let's double check this
@@ -137,9 +137,11 @@ sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3",
 
 ## For the spatialLIBD shiny app
 rowData(sce_pseudo)$gene_search <-
-    paste0(rowData(sce_pseudo)$gene_name,
+    paste0(
+        rowData(sce_pseudo)$gene_name,
         "; ",
-        rowData(sce_pseudo)$gene_id)
+        rowData(sce_pseudo)$gene_id
+    )
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
 ## Something I need to fix on the shiny app since it's hardcoded to use
 ## this variable right now

@@ -27,7 +27,7 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
-if(FALSE) {
+if (FALSE) {
     opt <- list(spetype = "wholegenome")
 }
 

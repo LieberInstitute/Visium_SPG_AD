@@ -54,31 +54,33 @@ path_df <- data.frame(
     PpTau = colData(spe)$PpTau
 )
 
-n_Abeta = 1
-p_Abeta = 0.108
+n_Abeta <- 1
+p_Abeta <- 0.108
 
 path_df <- path_df |> mutate(Abeta_outliers = case_when(
-    NAbeta > n_Abeta& PAbeta > p_Abeta~ "n and %",
-    NAbeta > n_Abeta& PAbeta <= p_Abeta~ "n",
-    NAbeta <= n_Abeta& PAbeta > p_Abeta~ "%",
-    NAbeta <= n_Abeta& PAbeta <= p_Abeta~ "none"
+    NAbeta > n_Abeta & PAbeta > p_Abeta ~ "n and %",
+    NAbeta > n_Abeta & PAbeta <= p_Abeta ~ "n",
+    NAbeta <= n_Abeta & PAbeta > p_Abeta ~ "%",
+    NAbeta <= n_Abeta & PAbeta <= p_Abeta ~ "none"
 ))
 
-n_pTau= 8
-p_pTau = 0.0143
+n_pTau <- 8
+p_pTau <- 0.0143
 
 path_df <- path_df |> mutate(pTau_outliers = case_when(
-    NpTau > n_pTau& PpTau > p_pTau~ "n and %",
-    NpTau > n_pTau& PpTau <= p_pTau~ "n",
-    NpTau <= n_pTau& PpTau > p_pTau~ "%",
-    NpTau <= n_pTau& PpTau <= p_pTau~ "none"
+    NpTau > n_pTau & PpTau > p_pTau ~ "n and %",
+    NpTau > n_pTau & PpTau <= p_pTau ~ "n",
+    NpTau <= n_pTau & PpTau > p_pTau ~ "%",
+    NpTau <= n_pTau & PpTau <= p_pTau ~ "none"
 ))
 
 path_df$diagnosis <- factor(path_df$diagnosis, levels = c("Control", "AD"))
-path_df$Abeta_outliers <- factor(path_df$Abeta_outliers ,
-                                 levels = c("n", "%", "n and %", "none"))
-path_df$pTau_outliers <- factor(path_df$pTau_outliers ,
-                                levels = c("n", "%", "n and %", "none"))
+path_df$Abeta_outliers <- factor(path_df$Abeta_outliers,
+    levels = c("n", "%", "n and %", "none")
+)
+path_df$pTau_outliers <- factor(path_df$pTau_outliers,
+    levels = c("n", "%", "n and %", "none")
+)
 
 
 
@@ -89,21 +91,20 @@ create_plots <- function(pathology) {
 
 
     if (pathology == "Abeta") {
-
         plot <- ggpubr::ggscatter(path_df,
             x = "NAbeta", y = "PAbeta",
             color = "Abeta_outliers", size = 0.5,
             xlab = "Number of Abeta per spot (n)",
             ylab = "Percentage of Abeta per spot (%)"
-
         )
         plot <- facet(plot + theme_bw(),
             facet.by = "diagnosis",
             short.panel.labs = TRUE
         )
         plot <- plot + scale_color_manual(
-           name = "",
-           values = colors_hex)
+            name = "",
+            values = colors_hex
+        )
     }
 
     if (pathology == "pTau") {

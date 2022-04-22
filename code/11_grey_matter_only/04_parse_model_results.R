@@ -27,7 +27,7 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
-if(FALSE) {
+if (FALSE) {
     opt <- list(spetype = "wholegenome")
 }
 
@@ -72,34 +72,34 @@ sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3",
 pvals0_contrasts <- sapply(eb0_list, function(x) {
     x$p.value[, 2, drop = FALSE]
 })
-rownames(pvals0_contrasts) = rownames(eb_contrasts)
-fdrs0_contrasts = apply(pvals0_contrasts, 2, p.adjust, "fdr")
+rownames(pvals0_contrasts) <- rownames(eb_contrasts)
+fdrs0_contrasts <- apply(pvals0_contrasts, 2, p.adjust, "fdr")
 
 ## Extract the t-stats
 t0_contrasts <- sapply(eb0_list, function(x) {
     x$t[, 2, drop = FALSE]
 })
-rownames(t0_contrasts) = rownames(eb_contrasts)
+rownames(t0_contrasts) <- rownames(eb_contrasts)
 summary(fdrs0_contrasts < 0.05)
- #    Ab+             both          next_Ab+
- # Mode :logical   Mode :logical   Mode :logical
- # FALSE:27853     FALSE:27852     FALSE:27853
- #                 TRUE :1
- # next_both        next_pT+          none
- # Mode :logical   Mode :logical   Mode :logical
- # FALSE:27852     FALSE:27850     FALSE:27836
- # TRUE :1         TRUE :3         TRUE :17
- #    pT+
- # Mode :logical
- # FALSE:27764
- # TRUE :89
+#    Ab+             both          next_Ab+
+# Mode :logical   Mode :logical   Mode :logical
+# FALSE:27853     FALSE:27852     FALSE:27853
+#                 TRUE :1
+# next_both        next_pT+          none
+# Mode :logical   Mode :logical   Mode :logical
+# FALSE:27852     FALSE:27850     FALSE:27836
+# TRUE :1         TRUE :3         TRUE :17
+#    pT+
+# Mode :logical
+# FALSE:27764
+# TRUE :89
 
 ## From
 ## https://github.com/LieberInstitute/HumanPilot/blob/879f11c7c57efd72334332b40feb3ad623e067c8/Analysis/Layer_Guesses/misc_numbers.R#L302-L317
 f_merge <- function(p, fdr, t) {
-    colnames(p) <- paste0('p_value_', colnames(p))
-    colnames(fdr) <- paste0('fdr_', colnames(fdr))
-    colnames(t) <- paste0('t_stat_', colnames(t))
+    colnames(p) <- paste0("p_value_", colnames(p))
+    colnames(fdr) <- paste0("fdr_", colnames(fdr))
+    colnames(t) <- paste0("t_stat_", colnames(t))
     res <- as.data.frame(cbind(t, p, fdr))
     res$ensembl <- rownames(res)
     ## Check it's all in order
@@ -157,28 +157,30 @@ results_pairwise <-
     f_merge(p = pvals_contrasts, fdr = fdrs_contrasts, t = eb_contrasts$t)
 colnames(results_pairwise)
 sort(colSums(fdrs_contrasts < 0.05))
-     #       Abpos-both      Abpos-next_Abpos       Abpos-next_both
-     #                0                     0                     0
-     # Abpos-next_pTpos       both-next_Abpos        both-next_both
-     #                0                     0                     0
-     #  both-next_pTpos  next_Abpos-next_both next_Abpos-next_pTpos
-     #                0                     0                     0
-     # next_Abpos-pTpos  next_both-next_pTpos            Abpos-none
-     #                0                     0                     1
-     #       both-pTpos       next_Abpos-none        next_both-none
-     #                1                     1                     1
-     #  next_pTpos-none           Abpos-pTpos             both-none
-     #                1                     3                     3
-     #  next_both-pTpos      next_pTpos-pTpos            none-pTpos
-     #                3                     3                     3
+#       Abpos-both      Abpos-next_Abpos       Abpos-next_both
+#                0                     0                     0
+# Abpos-next_pTpos       both-next_Abpos        both-next_both
+#                0                     0                     0
+#  both-next_pTpos  next_Abpos-next_both next_Abpos-next_pTpos
+#                0                     0                     0
+# next_Abpos-pTpos  next_both-next_pTpos            Abpos-none
+#                0                     0                     1
+#       both-pTpos       next_Abpos-none        next_both-none
+#                1                     1                     1
+#  next_pTpos-none           Abpos-pTpos             both-none
+#                1                     3                     3
+#  next_both-pTpos      next_pTpos-pTpos            none-pTpos
+#                3                     3                     3
 
 ## From
 ## https://github.com/LieberInstitute/HumanPilot/blob/879f11c7c57efd72334332b40feb3ad623e067c8/Analysis/Layer_Guesses/misc_numbers.R#L205-L215
 f_sig <- function(type, cut = 0.05) {
-    cbind('n' = addmargins(table(f_stats[[type]] < cut)),
-        'ratio' = addmargins(table(f_stats[[type]] < cut)) / nrow(f_stats))
+    cbind(
+        "n" = addmargins(table(f_stats[[type]] < cut)),
+        "ratio" = addmargins(table(f_stats[[type]] < cut)) / nrow(f_stats)
+    )
 }
-f_sig('noWM_fdr')
+f_sig("noWM_fdr")
 #           n        ratio
 # FALSE 27851 9.999282e-01
 # TRUE      2 7.180555e-05
@@ -188,17 +190,17 @@ f_sig('noWM_fdr')
 ## https://github.com/LieberInstitute/HumanPilot/blob/879f11c7c57efd72334332b40feb3ad623e067c8/Analysis/Layer_Guesses/misc_numbers.R#L383-L396
 ## Match the colnames to the new style
 f_rename <- function(x, old, new = old) {
-    old_patt <- paste0('_', old, '$')
+    old_patt <- paste0("_", old, "$")
     i <- grep(old_patt, colnames(x))
-    tmp <- gsub(old_patt, '', colnames(x)[i])
-    tmp <- paste0(new, '_', tmp)
+    tmp <- gsub(old_patt, "", colnames(x)[i])
+    tmp <- paste0(new, "_", tmp)
     colnames(x)[i] <- tmp
     return(x)
 }
 results_anova <-
     f_rename(f_rename(f_rename(
-        f_rename(f_stats, 'f', 'f_stat'), 'p_value'
-    ), 'fdr'), 'Amean')
+        f_rename(f_stats, "f", "f_stat"), "p_value"
+    ), "fdr"), "Amean")
 head(results_anova)
 #   f_stat_noWM p_value_noWM  fdr_noWM noWM_AveExpr         ensembl        gene
 # 1   0.9810021    0.4502729 0.9763246    0.6515295 ENSG00000243485 MIR1302-2HG
@@ -208,15 +210,17 @@ head(results_anova)
 # 5   0.6429322    0.6952897 0.9801360    2.9180726 ENSG00000237491   LINC01409
 # 6   0.9722365    0.4559056 0.9763246    0.6494224 ENSG00000177757      FAM87B
 
-modeling_results <- list('anova' = results_anova,
-    'enrichment' = results_specificity,
-    'pairwise' = results_pairwise)
+modeling_results <- list(
+    "anova" = results_anova,
+    "enrichment" = results_specificity,
+    "pairwise" = results_pairwise
+)
 
 save(
     modeling_results,
     file = file.path(
         dir_rdata,
-        'Visium_IF_AD_modeling_results.Rdata'
+        "Visium_IF_AD_modeling_results.Rdata"
     )
 )
 
