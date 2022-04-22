@@ -124,7 +124,9 @@ dim(sce_pseudo)
 ## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
 pca <- prcomp(t(assays(sce_pseudo)$logcounts))
 message(Sys.time(), " % of variance explained for the top 20 PCs:")
-jaffelab::getPcaVars(pca)[seq_len(20)]
+metadata(sce_pseudo)
+metadata(sce_pseudo) <- list("PCA_var_explained" = jaffelab::getPcaVars(pca)[seq_len(20)])
+metadata(sce_pseudo)
 pca_pseudo <- pca$x[, seq_len(20)]
 colnames(pca_pseudo) <- paste0("PC", sprintf("%02d", seq_len(ncol(pca_pseudo))))
 reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
