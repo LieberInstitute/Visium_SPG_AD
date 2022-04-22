@@ -126,6 +126,7 @@ pca <- prcomp(t(assays(sce_pseudo)$logcounts))
 message(Sys.time(), " % of variance explained for the top 20 PCs:")
 jaffelab::getPcaVars(pca)[seq_len(20)]
 pca_pseudo <- pca$x[, seq_len(20)]
+colnames(pca_pseudo) <- paste0("PC", sprintf("%02d", seq_len(ncol(pca_pseudo))))
 reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
 
 ## We don't want to model the pathology groups as integers / numeric
