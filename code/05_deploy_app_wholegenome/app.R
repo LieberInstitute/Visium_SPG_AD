@@ -15,14 +15,28 @@ load("spe.Rdata", verbose = TRUE)
 load("Visium_IF_AD_modeling_results.Rdata", verbose = TRUE)
 sce_pseudo <- readRDS("sce_pseudo_pathology_wholegenome.rds")
 
-sce_pseudo$spatialLIBD <- sce_pseudo$path_groups ## Dunno why I have to run this again
+## For sig_genes_extract_all() to work
 spe$spatialLIBD <- spe$path_groups
-vars <- colnames(colData(spe))
+sig_genes <- sig_genes_extract_all(
+    n = nrow(sce_pseudo),
+    modeling_results = modeling_results,
+    sce_layer = sce_pseudo
+)
 
 ## Extract FDR < 5%
 ## From
 ## https://github.com/LieberInstitute/brainseq_phase2/blob/be2b7f972bb2a0ede320633bf06abe1d4ef2c067/supp_tabs/create_supp_tables.R#L173-L181
-# fix_csv <- function(df) {
+fix_csv <- function(df) {
+    for (i in seq_len(ncol(df))) {
+        if (any(grepl(',', df[, i]))) {
+            message(paste(Sys.time(), 'fixing column', colnames(df)[i]))
+            df[, i] <- gsub(',', ';', df[, i])
+        }
+    }
+    return(df)
+}
+z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
+write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")# fix_csv <- function(df) {
 #     for (i in seq_len(ncol(df))) {
 #         if (any(grepl(',', df[, i]))) {
 #             message(paste(Sys.time(), 'fixing column', colnames(df)[i]))
@@ -38,6 +52,8 @@ vars <- colnames(colData(spe))
 # )
 # z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
 # write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
+
+vars <- colnames(colData(spe))
 
 ## Deploy the website
 spatialLIBD::run_app(
