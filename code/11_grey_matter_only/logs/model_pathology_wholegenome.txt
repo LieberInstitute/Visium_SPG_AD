@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Apr 19 17:04:09 EDT 2022
+Fri Apr 22 11:46:52 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9912888
+Job id: 9922168
 Job name: model_pathology_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -105,13 +105,13 @@ The following object is masked from ‘package:BiocGenerics’:
     plotMA
 
 Loading required package: SpatialExperiment
-2022-04-19 17:05:22 running duplicateCorrelation()
+2022-04-22 11:48:05 running duplicateCorrelation()
 Detected correlation: 0.0364399791232199
-2022-04-19 17:06:20 running the enrichment model
-2022-04-19 17:06:24 runnign the baseline pairwise model
-2022-04-19 17:06:24 run pairwise models
-2022-04-19 17:06:26 starting the model run
-2022-04-19 17:07:30 correlation: 0.0502708596192617
+2022-04-22 11:49:03 running the enrichment model
+2022-04-22 11:49:06 runnign the baseline pairwise model
+2022-04-22 11:49:06 run pairwise models
+2022-04-22 11:49:08 starting the model run
+2022-04-22 11:50:12 correlation: 0.0502708596192617
      noWM_f noWM_p_value  noWM_fdr noWM_AveExpr         ensembl        gene
 1 0.9810021    0.4502729 0.9763246    0.6515295 ENSG00000243485 MIR1302-2HG
 2 0.5485499    0.7681921 0.9921032    1.1652509 ENSG00000238009  AL627309.1
@@ -120,9 +120,9 @@ Detected correlation: 0.0364399791232199
 5 0.6429322    0.6952897 0.9801360    2.9180726 ENSG00000237491   LINC01409
 6 0.9722365    0.4559056 0.9763246    0.6494224 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-19 17:07:49 EDT"
+[1] "2022-04-22 11:50:19 EDT"
    user  system elapsed 
-203.507   2.064 219.285 
+202.774   1.937 205.439 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -133,7 +133,7 @@ Detected correlation: 0.0364399791232199
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-04-19
+ date     2022-04-22
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -141,7 +141,7 @@ Detected correlation: 0.0364399791232199
  beachmat               2.11.0   2021-10-26 [2] Bioconductor
  Biobase              * 2.55.2   2022-04-07 [1] Bioconductor
  BiocGenerics         * 0.41.2   2021-11-15 [2] Bioconductor
- BiocParallel           1.29.20  2022-04-05 [2] Bioconductor
+ BiocParallel           1.29.21  2022-04-19 [2] Bioconductor
  bitops                 1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
  cli                    3.2.0    2022-02-14 [2] CRAN (R 4.2.0)
  colorspace             2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
@@ -150,7 +150,7 @@ Detected correlation: 0.0364399791232199
  DelayedMatrixStats     1.17.0   2021-10-26 [2] Bioconductor
  dqrng                  0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils           1.15.2   2021-11-08 [2] Bioconductor
- edgeR                  3.37.1   2022-03-16 [2] Bioconductor
+ edgeR                  3.37.2   2022-04-20 [2] Bioconductor
  GenomeInfoDb         * 1.31.7   2022-04-01 [2] Bioconductor
  GenomeInfoDbData       1.2.8    2022-04-16 [2] Bioconductor
  GenomicRanges        * 1.47.6   2022-01-12 [2] Bioconductor
@@ -165,7 +165,7 @@ Detected correlation: 0.0364399791232199
  magrittr               2.0.3    2022-03-30 [2] CRAN (R 4.2.0)
  Matrix                 1.4-1    2022-03-23 [3] CRAN (R 4.2.0)
  MatrixGenerics       * 1.7.0    2021-10-26 [2] Bioconductor
- matrixStats          * 0.61.0   2021-09-17 [2] CRAN (R 4.2.0)
+ matrixStats          * 0.62.0   2022-04-19 [2] CRAN (R 4.2.0)
  R.methodsS3            1.8.1    2020-08-26 [2] CRAN (R 4.1.0)
  R.oo                   1.24.0   2020-08-26 [2] CRAN (R 4.1.0)
  R.utils                2.11.0   2021-09-26 [2] CRAN (R 4.2.0)
@@ -179,7 +179,7 @@ Detected correlation: 0.0364399791232199
  rjson                  0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
  rprojroot              2.0.3    2022-04-02 [2] CRAN (R 4.2.0)
  S4Vectors            * 0.33.17  2022-04-06 [2] Bioconductor
- scuttle                1.5.1    2022-03-15 [2] Bioconductor
+ scuttle                1.5.2    2022-04-18 [2] Bioconductor
  sessioninfo          * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
  SingleCellExperiment * 1.17.2   2021-11-18 [2] Bioconductor
  sparseMatrixStats      1.7.0    2021-10-26 [2] Bioconductor
@@ -195,4 +195,4 @@ Detected correlation: 0.0364399791232199
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Apr 19 17:07:50 EDT 2022
+Fri Apr 22 11:50:19 EDT 2022
