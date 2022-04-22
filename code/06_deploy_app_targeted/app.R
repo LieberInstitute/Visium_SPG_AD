@@ -41,6 +41,23 @@ sig_genes <- sig_genes_extract_all(
 sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
 vars <- colnames(colData(spe))
 
+## Simplify the colData()  for the pseudo-bulked data
+colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
+    "age",
+    "sample_id",
+    "path_groups",
+    "subject",
+    "sex",
+    "pmi",
+    "APOe",
+    "race",
+    "diagnosis",
+    "rin",
+    "BCrating",
+    "braak",
+    "cerad"
+))]
+
 ## Deploy the website
 spatialLIBD::run_app(
     spe,
