@@ -21,6 +21,7 @@ for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 #$ -o logs/${SHORT}.txt
 #$ -e logs/${SHORT}.txt
 #$ -m e
+#$ -hold_jid create_pseudobulk_data_${spetype}
 
 echo "**** Job starts ****"
 date

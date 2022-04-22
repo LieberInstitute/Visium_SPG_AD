@@ -21,6 +21,7 @@ for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
 #$ -o logs/${SHORT}.txt
 #$ -e logs/${SHORT}.txt
 #$ -m e
+#$ -hold_jid model_pathology_${spetype}
 
 echo "**** Job starts ****"
 date
