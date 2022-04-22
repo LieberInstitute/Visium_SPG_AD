@@ -39,6 +39,7 @@ library("spatialLIBD")
 library("scuttle")
 library("edgeR")
 library("sessioninfo")
+library("jaffelab")
 
 ## output directory
 dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
@@ -111,6 +112,38 @@ stopifnot(identical(rownames(x), rownames(sce_pseudo)))
 dimnames(x) <- dimnames(sce_pseudo)
 ## Store the log normalized counts on the SingleCellExperiment object
 logcounts(sce_pseudo) <- x
+
+## From
+## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
+rowData(spe_pseudo)$low_expr <- filterByExpr(spe_pseudo)
+summary(rowData(spe_pseudo)$low_expr)
+spe_pseudo <- spe_pseudo[which(!rowData(spe_pseudo)$low_expr),]
+dim(spe_pseudo)
+
+## Compute PCs
+## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
+pca <- prcomp(t(assays(sce_pseudo)$logcounts))
+message(Sys.time(), " % of variance explained for the top 20 PCs:")
+jaffelab::getPcaVars(pca)[seq_len(20)]
+pca_pseudo<- pca$x[, seq_len(20)]
+reducedDims(sce_pseudo) <- list(PCA=pca_pseudo)
+
+## We don't want to model the pathology groups as integers / numeric
+## so let's double check this
+stopifnot(is.factor(sce_pseudo$path_groups) || is.character(sce_pseudo$path_groups))
+
+## Add APOe genotype info
+sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
+
+## For the spatialLIBD shiny app
+rowData(sce_pseudo)$gene_search <-
+    paste0(rowData(sce_pseudo)$gene_name,
+        "; ",
+        rowData(sce_pseudo)$gene_id)
+sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
+## Something I need to fix on the shiny app since it's hardcoded to use
+## this variable right now
+sce_pseudo$layer_guess_reordered_short <- sce_pseudo$path_groups
 
 ## save RDS file
 saveRDS(

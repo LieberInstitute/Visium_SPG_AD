@@ -14,24 +14,8 @@ options(repos = BiocManager::repositories())
 load("spe.Rdata", verbose = TRUE)
 load("Visium_IF_AD_modeling_results.Rdata", verbose = TRUE)
 sce_pseudo <- readRDS("sce_pseudo_pathology_wholegenome.rds")
-sce_pseudo$APOe <-
-    c(
-        "Br3854" = "E3/E4",
-        "Br3873" = "E3/E3",
-        "Br3880" = "E3/E3",
-        "Br3874" = "E2/E3"
-    )[sce_pseudo$subject]
 
-rowData(sce_pseudo)$gene_search <-
-    paste0(rowData(sce_pseudo)$gene_name,
-        "; ",
-        rowData(sce_pseudo)$gene_id)
-sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
 spe$spatialLIBD <- spe$path_groups
-sce_pseudo$layer_guess_reordered_short <- sce_pseudo$path_groups
-# pca <- prcomp(t(assays(sce_pseudo)$logcounts))
-# reducedDim(sce_pseudo, "PCA") <- pca$x[, seq_len(20)]
-
 vars <- colnames(colData(spe))
 
 ## Deploy the website
