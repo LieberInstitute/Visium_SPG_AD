@@ -55,8 +55,7 @@ spatialLIBD::run_app(
         vars[grep("^graph_", vars)],
         "edge_spots",
         vars[grep("^scran_", vars)],
-        vars[grep("^10x_", vars)],
-        "spatialLIBD"
+        vars[grep("^10x_", vars)]
     ),
     spe_continuous_vars = c(
         "sum_umi",
