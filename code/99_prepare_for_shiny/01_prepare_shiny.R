@@ -71,6 +71,11 @@ for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
     colData(spe)[[i]] <- factor(colData(spe)[[i]])
 }
 
+## Load pathology colors
+## This info is used by spatialLIBD v1.7.18 or newer
+source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
+spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
+
 
 ## Save the final object for the shiny app
 if (suffix == "wholegenome") {
