@@ -5,6 +5,7 @@
 #$ -o logs/explore_expr_variability_wholegenome.txt
 #$ -e logs/explore_expr_variability_wholegenome.txt
 #$ -m e
+#$ -hold_jid create_pseudobulk_data_wholegenome
 
 echo "**** Job starts ****"
 date

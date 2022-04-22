@@ -5,6 +5,7 @@
 #$ -o logs/model_pathology_wholegenome.txt
 #$ -e logs/model_pathology_wholegenome.txt
 #$ -m e
+#$ -hold_jid explore_expr_variability_wholegenome
 
 echo "**** Job starts ****"
 date

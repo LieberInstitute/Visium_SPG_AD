@@ -5,6 +5,7 @@
 #$ -o logs/model_pathology_targeted.txt
 #$ -e logs/model_pathology_targeted.txt
 #$ -m e
+#$ -hold_jid explore_expr_variability_targeted
 
 echo "**** Job starts ****"
 date

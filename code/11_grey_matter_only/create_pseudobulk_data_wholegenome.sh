@@ -5,6 +5,7 @@
 #$ -o logs/create_pseudobulk_data_wholegenome.txt
 #$ -e logs/create_pseudobulk_data_wholegenome.txt
 #$ -m e
+#$ -hold_jid label_pathology_spots
 
 echo "**** Job starts ****"
 date

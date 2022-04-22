@@ -1,11 +1,11 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=15G,h_vmem=15G,h_fsize=100G
-#$ -N explore_expr_variability_targeted
-#$ -o logs/explore_expr_variability_targeted.txt
-#$ -e logs/explore_expr_variability_targeted.txt
+#$ -N parse_model_results_targeted
+#$ -o logs/parse_model_results_targeted.txt
+#$ -e logs/parse_model_results_targeted.txt
 #$ -m e
-#$ -hold_jid create_pseudobulk_data_targeted
+#$ -hold_jid model_pathology_targeted
 
 echo "**** Job starts ****"
 date
@@ -24,7 +24,7 @@ module load conda_R/devel
 module list
 
 ## Edit with your job command
-Rscript 02_explore_expr_variability.R -s targeted
+Rscript 04_parse_model_results.R -s targeted
 
 echo "**** Job ends ****"
 date
