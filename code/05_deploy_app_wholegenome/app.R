@@ -28,15 +28,15 @@ sig_genes <- sig_genes_extract_all(
 ## https://github.com/LieberInstitute/brainseq_phase2/blob/be2b7f972bb2a0ede320633bf06abe1d4ef2c067/supp_tabs/create_supp_tables.R#L173-L181
 fix_csv <- function(df) {
     for (i in seq_len(ncol(df))) {
-        if (any(grepl(',', df[, i]))) {
-            message(paste(Sys.time(), 'fixing column', colnames(df)[i]))
-            df[, i] <- gsub(',', ';', df[, i])
+        if (any(grepl(",", df[, i]))) {
+            message(paste(Sys.time(), "fixing column", colnames(df)[i]))
+            df[, i] <- gsub(",", ";", df[, i])
         }
     }
     return(df)
 }
 z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
-write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")# fix_csv <- function(df) {
+write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv") # fix_csv <- function(df) {
 #     for (i in seq_len(ncol(df))) {
 #         if (any(grepl(',', df[, i]))) {
 #             message(paste(Sys.time(), 'fixing column', colnames(df)[i]))

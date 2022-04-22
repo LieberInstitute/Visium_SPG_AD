@@ -73,16 +73,16 @@ vars <- c(
 ## Plot PCs with different colors
 ## Each point here is a sample
 pdf(file = file.path(dir_plots, paste0("sce_pseudo_pca.pdf")), width = 14, height = 14)
-for(var in vars) {
+for (var in vars) {
     p <- plotPCA(
-            sce_pseudo,
-            colour_by = var,
-            ncomponents = 12,
-            point_size = 1,
-            label_format = c("%s %02i", " (%i%%)"),
-            percentVar = metadata(sce_pseudo)$PCA_var_explained
-        )
-    if(var == "path_groups") {
+        sce_pseudo,
+        colour_by = var,
+        ncomponents = 12,
+        point_size = 1,
+        label_format = c("%s %02i", " (%i%%)"),
+        percentVar = metadata(sce_pseudo)$PCA_var_explained
+    )
+    if (var == "path_groups") {
         p <- p + scale_color_manual("path_groups", values = colors_pathology)
     }
     print(p)
