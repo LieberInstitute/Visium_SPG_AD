@@ -41,6 +41,18 @@ sig_genes <- sig_genes_extract_all(
 sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
 vars <- colnames(colData(spe))
 
+## From code/colors_pathology.R
+colors_pathology <- setNames(
+    c(
+        "grey90",
+        paletteer::paletteer_d("dichromat::SteppedSequential_5")[rep(c(6, 18), each = 2) + c(0, 3)],
+        paletteer::paletteer_d("beyonce::X7")[4:5]
+    )[c(1:3, 6:7, 4:5)],
+    c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "both", "next_both")
+)
+## This is now used by spatialLIBD v1.7.18
+spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
+
 ## Simplify the colData()  for the pseudo-bulked data
 colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
     "age",
