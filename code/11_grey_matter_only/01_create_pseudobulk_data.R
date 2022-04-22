@@ -115,10 +115,10 @@ logcounts(sce_pseudo) <- x
 
 ## From
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
-rowData(spe_pseudo)$low_expr <- filterByExpr(spe_pseudo)
-summary(rowData(spe_pseudo)$low_expr)
-spe_pseudo <- spe_pseudo[which(!rowData(spe_pseudo)$low_expr), ]
-dim(spe_pseudo)
+rowData(sce_pseudo)$low_expr <- filterByExpr(sce_pseudo)
+summary(rowData(sce_pseudo)$low_expr)
+sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr), ]
+dim(sce_pseudo)
 
 ## Compute PCs
 ## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
