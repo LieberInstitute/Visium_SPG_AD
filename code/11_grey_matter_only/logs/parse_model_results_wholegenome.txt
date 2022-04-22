@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 12:24:24 EDT 2022
+Fri Apr 22 13:52:07 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922195
+Job id: 9922247
 Job name: parse_model_results_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -144,9 +144,9 @@ Sum   23901 1.000000e+00
 5   0.6430285    0.6952143 0.9796481    2.9180726 ENSG00000237491   LINC01409
 6   0.9839825    0.4483826 0.9665588    0.6494224 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-22 12:25:46 EDT"
+[1] "2022-04-22 13:53:26 EDT"
    user  system elapsed 
- 74.495   1.476  79.147 
+ 75.195   1.444  77.002 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -216,4 +216,4 @@ Sum   23901 1.000000e+00
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 12:25:47 EDT 2022
+Fri Apr 22 13:53:26 EDT 2022

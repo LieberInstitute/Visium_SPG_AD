@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 12:14:05 EDT 2022
+Fri Apr 22 13:42:19 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922190
+Job id: 9922242
 Job name: create_pseudobulk_data_targeted
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -122,13 +122,16 @@ In filterByExpr.DGEList(y, design = design, group = group, lib.size = lib.size, 
    Mode   FALSE    TRUE 
 logical   22722     763 
 [1] 22722    48
-2022-04-22 12:16:27 % of variance explained for the top 20 PCs:
+2022-04-22 13:44:43 % of variance explained for the top 20 PCs:
+list()
+$PCA_var_explained
  [1] 36.90  4.24  2.76  2.47  2.45  2.38  2.37  2.32  2.30  2.16  2.05  1.94
 [13]  1.90  1.87  1.83  1.78  1.71  1.66  1.61  1.56
+
 [1] "Reproducibility information:"
-[1] "2022-04-22 12:18:12 EDT"
+[1] "2022-04-22 13:46:30 EDT"
    user  system elapsed 
-239.333   3.341 244.803 
+239.174   3.129 249.511 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -318,4 +321,4 @@ logical   22722     763
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 12:18:13 EDT 2022
+Fri Apr 22 13:46:31 EDT 2022
