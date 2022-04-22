@@ -26,6 +26,7 @@ for spetype in wholegenome targeted; do
 #$ -m e
 #$ -t 2-28
 #$ -tc 20
+#$ -hold_jid BayesSpace_k_search_${spetype}
 
 
 echo "**** Job starts ****"
