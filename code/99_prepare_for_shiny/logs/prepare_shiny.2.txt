@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 17:28:46 EDT 2022
+Fri Apr 22 20:03:23 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922758
+Job id: 9922871
 Job name: prepare_shiny
 Hostname: compute-098.cm.cluster
 Task id: 2
@@ -103,9 +103,9 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 [1] "Reproducibility information:"
-[1] "2022-04-22 17:33:58 EDT"
+[1] "2022-04-22 20:08:44 EDT"
    user  system elapsed 
-302.665   2.863 310.695 
+302.534   3.607 319.275 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -288,4 +288,4 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 17:33:59 EDT 2022
+Fri Apr 22 20:08:52 EDT 2022
