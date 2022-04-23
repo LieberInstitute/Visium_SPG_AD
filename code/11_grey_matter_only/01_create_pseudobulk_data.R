@@ -164,7 +164,6 @@ rowData(sce_pseudo)$gene_search <-
         "; ",
         rowData(sce_pseudo)$gene_id
     )
-sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
 
 ## Drop things we don't need
 spatialCoords(sce_pseudo) <- NULL

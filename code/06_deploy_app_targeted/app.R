@@ -14,6 +14,7 @@ load("Visium_IF_AD_modeling_results.Rdata", verbose = TRUE)
 sce_pseudo <- readRDS("sce_pseudo_pathology_targeted.rds")
 
 ## For sig_genes_extract_all() to work
+sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
 sig_genes <- sig_genes_extract_all(
     n = nrow(sce_pseudo),
     modeling_results = modeling_results,
