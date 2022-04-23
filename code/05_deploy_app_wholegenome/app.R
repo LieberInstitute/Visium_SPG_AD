@@ -1,6 +1,7 @@
 library("spatialLIBD")
 library("markdown") ## Hm... to avoid this error
 # 2021-11-11T05:30:50.218127+00:00 shinyapps[5096402]: Warning: Error in loadNamespace: there is no package called ‘markdown’
+library("scater") ## to compute some reduced dimensions
 
 ## spatialLIBD uses golem
 options("golem.app.prod" = TRUE)
@@ -37,6 +38,11 @@ z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
 write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
 
 vars <- colnames(colData(spe))
+
+## Compute some reduced dims
+set.seed(20220423)
+sce_pseudo <- scater::runMDS(sce_pseudo, ncomponents = 20)
+sce_pseudo <- scater::runPCA(sce_pseudo, name = "runPCA")
 
 ## Deploy the website
 spatialLIBD::run_app(
