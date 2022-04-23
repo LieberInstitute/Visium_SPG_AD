@@ -131,6 +131,9 @@ pca_pseudo <- pca$x[, seq_len(20)]
 colnames(pca_pseudo) <- paste0("PC", sprintf("%02d", seq_len(ncol(pca_pseudo))))
 reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
 
+## Set the same levels
+sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
+
 ## We don't want to model the pathology groups as integers / numeric
 ## so let's double check this
 stopifnot(is.factor(sce_pseudo$path_groups) || is.character(sce_pseudo$path_groups))
@@ -146,6 +149,31 @@ rowData(sce_pseudo)$gene_search <-
         rowData(sce_pseudo)$gene_id
     )
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
+
+## Drop things we don't need
+spatialCoords(sce_pseudo) <- NULL
+imgData(sce_pseudo) <- NULL
+
+## Simplify the colData()  for the pseudo-bulked data
+colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
+    "age",
+    "sample_id",
+    "path_groups",
+    "subject",
+    "sex",
+    "pmi",
+    "APOe",
+    "race",
+    "diagnosis",
+    "rin",
+    "BCrating",
+    "braak",
+    "cerad"
+))]
+
+## Add the colors
+sce_pseudo$path_groups_colors <-
+    spe$path_groups_colors[match(sce_pseudo$path_groups, spe$path_groups)]
 
 ## save RDS file
 saveRDS(

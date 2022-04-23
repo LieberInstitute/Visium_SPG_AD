@@ -14,7 +14,6 @@ load("Visium_IF_AD_modeling_results.Rdata", verbose = TRUE)
 sce_pseudo <- readRDS("sce_pseudo_pathology_wholegenome.rds")
 
 ## For sig_genes_extract_all() to work
-spe$spatialLIBD <- spe$path_groups
 sig_genes <- sig_genes_extract_all(
     n = nrow(sce_pseudo),
     modeling_results = modeling_results,
@@ -36,26 +35,7 @@ sig_genes <- sig_genes_extract_all(
 # z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
 # write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
 
-sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
-sce_pseudo$path_groups_colors <- spe$path_groups_colors[match(sce_pseudo$path_groups, spe$path_groups)]
 vars <- colnames(colData(spe))
-
-## Simplify the colData()  for the pseudo-bulked data
-colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
-    "age",
-    "sample_id",
-    "path_groups",
-    "subject",
-    "sex",
-    "pmi",
-    "APOe",
-    "race",
-    "diagnosis",
-    "rin",
-    "BCrating",
-    "braak",
-    "cerad"
-))]
 
 ## Deploy the website
 spatialLIBD::run_app(
