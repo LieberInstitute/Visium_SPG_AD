@@ -171,7 +171,10 @@ colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
     "cerad"
 ))]
 
-## Add the colors
+## Load pathology colors
+## This info is used by spatialLIBD v1.7.18 or newer
+source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
+spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
 sce_pseudo$path_groups_colors <-
     spe$path_groups_colors[match(sce_pseudo$path_groups, spe$path_groups)]
 
