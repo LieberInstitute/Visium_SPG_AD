@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 21:48:45 EDT 2022
+Fri Apr 22 22:12:43 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922891
+Job id: 9922912
 Job name: parse_model_results_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -102,51 +102,51 @@ Loading objects:
   eb0_list
   eb_contrasts
 Loading required package: SpatialExperiment
-    Ab+             both          next_Ab+       next_both      
+    none            Ab+           next_Ab+          pT+         
  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
- FALSE:23901     FALSE:23899     FALSE:23901     FALSE:23900    
-                 TRUE :2                         TRUE :1        
-  next_pT+          none            pT+         
+ FALSE:23884     FALSE:23901     FALSE:23901     FALSE:23591    
+ TRUE :17                                        TRUE :310      
+  next_pT+          both         next_both      
  Mode :logical   Mode :logical   Mode :logical  
- FALSE:23898     FALSE:23883     FALSE:23591    
- TRUE :3         TRUE :18        TRUE :310      
-  t_stat_Ab+ t_stat_both t_stat_next_Ab+ t_stat_next_both t_stat_next_pT+ t_stat_none t_stat_pT+ p_value_Ab+ p_value_both p_value_next_Ab+ p_value_next_both p_value_next_pT+ p_value_none p_value_pT+   fdr_Ab+ fdr_both fdr_next_Ab+ fdr_next_both fdr_next_pT+  fdr_none   fdr_pT+         ensembl        gene
-1 -0.4224930  -0.3251040       2.5788221       -0.4224852      -0.4224863  -0.4225213 -0.4225177   0.6746100    0.7465587        0.0131366         0.6746156       0.67461479    0.6745895   0.6745921 0.9383841        1    0.6391570     0.9799852    1.0000000 0.8750694 1.0000000 ENSG00000243485 MIR1302-2HG
-2 -1.0959293   1.0185933       0.3730890       -0.6181658       0.6217974  -0.7406513  0.5009297   0.2787460    0.3136597        0.7107754         0.5394783       0.53710802    0.4626237   0.6187806 0.9383841        1    0.9554692     0.9799852    1.0000000 0.8573032 1.0000000 ENSG00000238009  AL627309.1
-3 -0.3938120  -0.3690197      -0.3938138       -0.3937533      -0.3937736  -0.3940307  2.4575064   0.6955176    0.7137858        0.6955163         0.6955606       0.69554574    0.6953572   0.0177718 0.9383841        1    0.9469969     0.9799852    1.0000000 0.8750694 0.2722845 ENSG00000239945  AL627309.3
-4 -0.1857613   0.3679692      -1.2137418       -0.6385010       1.2025430   0.0735052  0.4155458   0.8534389    0.7145638        0.2309672         0.5262759       0.23523307    0.9417190   0.6796514 1.0000000        1    0.9469969     0.9799852    1.0000000 1.0000000 1.0000000 ENSG00000241860  AL627309.5
-5 -0.5043041   0.7656746      -0.4831345        0.7377312      -0.9120944   1.3017020 -0.8414782   0.6164259    0.4477341        0.6312644         0.4643797       0.36641749    0.1994219   0.4043814 0.9383841        1    0.9469969     0.9799852    1.0000000 0.6707468 1.0000000 ENSG00000237491   LINC01409
-6 -0.4117713  -0.3858847      -0.4117723       -0.4117615       2.5828386  -0.4118075 -0.4118058   0.6823965    0.7013396        0.6823958         0.6824036       0.01300402    0.6823702   0.6823715 0.9383841        1    0.9469969     0.9799852    0.5897707 0.8750694 1.0000000 ENSG00000177757      FAM87B
+ FALSE:23898     FALSE:23899     FALSE:23900    
+ TRUE :3         TRUE :2         TRUE :1        
+  t_stat_none t_stat_Ab+ t_stat_next_Ab+ t_stat_pT+ t_stat_next_pT+ t_stat_both t_stat_next_both p_value_none p_value_Ab+ p_value_next_Ab+ p_value_pT+ p_value_next_pT+ p_value_both p_value_next_both  fdr_none   fdr_Ab+ fdr_next_Ab+   fdr_pT+ fdr_next_pT+ fdr_both fdr_next_both         ensembl        gene
+1 -0.41877146 -0.4187454       2.5725915 -0.4187686      -0.4187378  -0.3394739       -0.4187369    0.6773087   0.6773276       0.01334478  0.67731084       0.67733314    0.7357792         0.6773338 0.8759776 0.9394371    0.6512946 1.0000000    1.0000000        1     0.9812846 ENSG00000243485 MIR1302-2HG
+2 -0.73644560 -1.0891425       0.3695082  0.4964474       0.6164547   1.0174247       -0.6148300    0.4651540   0.2816962       0.71342425  0.62191462       0.54059693    0.3142092         0.5416602 0.8610229 0.9394371    0.9575635 1.0000000    1.0000000        1     0.9812846 ENSG00000238009  AL627309.1
+3 -0.39320113 -0.3930021      -0.3930027  2.4490093      -0.3929529  -0.3656738       -0.3929347    0.6959656   0.6961115       0.69611110  0.01814628       0.69614764    0.7162646         0.6961610 0.8759776 0.9394371    0.9479540 0.2778439    1.0000000        1     0.9812846 ENSG00000239945  AL627309.3
+4  0.07403591 -0.1847914      -1.2109386  0.4154993       1.2011328   0.3629794       -0.6367488    0.9412990   0.8541952       0.23202966  0.67968518       0.23577430    0.7182630         0.5274068 1.0000000 1.0000000    0.9479540 1.0000000    1.0000000        1     0.9812846 ENSG00000241860  AL627309.5
+5  1.29812300 -0.5023265      -0.4812218 -0.8384512      -0.9088427   0.7600918        0.7359457    0.2006386   0.6178054       0.63261272  0.40606138       0.36811365    0.4510315         0.4654553 0.6778999 0.9394371    0.9479540 1.0000000    1.0000000        1     0.9812846 ENSG00000237491   LINC01409
+6 -0.41096317 -0.4109299      -0.4109306 -0.4109624       2.5739309  -0.3823990       -0.4109189    0.6829849   0.6830091       0.68300855  0.68298553       0.01329982    0.7039054         0.6830171 0.8759776 0.9394371    0.9479540 1.0000000    0.6020436        1     0.9812846 ENSG00000177757      FAM87B
 [1] 23901    21
- Abpos-both      Abpos-next_Abpos Abpos-next_both Abpos-next_pTpos Abpos-none      Abpos-pTpos     both-next_Abpos both-next_both  both-next_pTpos both-none       both-pTpos      next_Abpos-next_both next_Abpos-next_pTpos next_Abpos-none next_Abpos-pTpos next_both-next_pTpos next_both-none  next_both-pTpos next_pTpos-none next_pTpos-pTpos none-pTpos     
- Mode :logical   Mode :logical    Mode :logical   Mode :logical    Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical        Mode :logical         Mode :logical   Mode :logical    Mode :logical        Mode :logical   Mode :logical   Mode :logical   Mode :logical    Mode :logical  
- FALSE:23901     FALSE:23901      FALSE:23901     FALSE:23901      FALSE:23900     FALSE:23898     FALSE:23901     FALSE:23901     FALSE:23901     FALSE:23898     FALSE:23900     FALSE:23901          FALSE:23901           FALSE:23900     FALSE:23901      FALSE:23901          FALSE:23900     FALSE:23898     FALSE:23899     FALSE:23898      FALSE:23897    
-                                                                   TRUE :1         TRUE :3                                                         TRUE :3         TRUE :1                                                    TRUE :1                                               TRUE :1         TRUE :3         TRUE :2         TRUE :3          TRUE :4        
- [1] "t_stat_Abpos-both"             "t_stat_Abpos-next_Abpos"       "t_stat_Abpos-next_both"        "t_stat_Abpos-next_pTpos"       "t_stat_Abpos-none"             "t_stat_Abpos-pTpos"            "t_stat_both-next_Abpos"        "t_stat_both-next_both"         "t_stat_both-next_pTpos"        "t_stat_both-none"              "t_stat_both-pTpos"             "t_stat_next_Abpos-next_both"  
-[13] "t_stat_next_Abpos-next_pTpos"  "t_stat_next_Abpos-none"        "t_stat_next_Abpos-pTpos"       "t_stat_next_both-next_pTpos"   "t_stat_next_both-none"         "t_stat_next_both-pTpos"        "t_stat_next_pTpos-none"        "t_stat_next_pTpos-pTpos"       "t_stat_none-pTpos"             "p_value_Abpos-both"            "p_value_Abpos-next_Abpos"      "p_value_Abpos-next_both"      
-[25] "p_value_Abpos-next_pTpos"      "p_value_Abpos-none"            "p_value_Abpos-pTpos"           "p_value_both-next_Abpos"       "p_value_both-next_both"        "p_value_both-next_pTpos"       "p_value_both-none"             "p_value_both-pTpos"            "p_value_next_Abpos-next_both"  "p_value_next_Abpos-next_pTpos" "p_value_next_Abpos-none"       "p_value_next_Abpos-pTpos"     
-[37] "p_value_next_both-next_pTpos"  "p_value_next_both-none"        "p_value_next_both-pTpos"       "p_value_next_pTpos-none"       "p_value_next_pTpos-pTpos"      "p_value_none-pTpos"            "fdr_Abpos-both"                "fdr_Abpos-next_Abpos"          "fdr_Abpos-next_both"           "fdr_Abpos-next_pTpos"          "fdr_Abpos-none"                "fdr_Abpos-pTpos"              
-[49] "fdr_both-next_Abpos"           "fdr_both-next_both"            "fdr_both-next_pTpos"           "fdr_both-none"                 "fdr_both-pTpos"                "fdr_next_Abpos-next_both"      "fdr_next_Abpos-next_pTpos"     "fdr_next_Abpos-none"           "fdr_next_Abpos-pTpos"          "fdr_next_both-next_pTpos"      "fdr_next_both-none"            "fdr_next_both-pTpos"          
-[61] "fdr_next_pTpos-none"           "fdr_next_pTpos-pTpos"          "fdr_none-pTpos"                "ensembl"                       "gene"                         
-           Abpos-both      Abpos-next_Abpos       Abpos-next_both      Abpos-next_pTpos       both-next_Abpos        both-next_both       both-next_pTpos  next_Abpos-next_both next_Abpos-next_pTpos      next_Abpos-pTpos  next_both-next_pTpos            Abpos-none            both-pTpos       next_Abpos-none        next_both-none       next_pTpos-none           Abpos-pTpos             both-none 
-                    0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     1                     1                     1                     1                     2                     3                     3 
-      next_both-pTpos      next_pTpos-pTpos            none-pTpos 
+ none-Abpos      none-next_Abpos none-pTpos      none-next_pTpos none-both       none-next_both  Abpos-next_Abpos Abpos-pTpos     Abpos-next_pTpos Abpos-both      Abpos-next_both next_Abpos-pTpos next_Abpos-next_pTpos next_Abpos-both next_Abpos-next_both pTpos-next_pTpos pTpos-both      pTpos-next_both next_pTpos-both next_pTpos-next_both both-next_both 
+ Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical    Mode :logical   Mode :logical    Mode :logical   Mode :logical   Mode :logical    Mode :logical         Mode :logical   Mode :logical        Mode :logical    Mode :logical   Mode :logical   Mode :logical   Mode :logical        Mode :logical  
+ FALSE:23900     FALSE:23900     FALSE:23897     FALSE:23900     FALSE:23898     FALSE:23900     FALSE:23901      FALSE:23898     FALSE:23901      FALSE:23901     FALSE:23901     FALSE:23901      FALSE:23901           FALSE:23901     FALSE:23901          FALSE:23898      FALSE:23900     FALSE:23898     FALSE:23901     FALSE:23901          FALSE:23901    
+ TRUE :1         TRUE :1         TRUE :4         TRUE :1         TRUE :3         TRUE :1                          TRUE :3                                                                                                                                      TRUE :3          TRUE :1         TRUE :3                                                             
+ [1] "t_stat_none-Abpos"             "t_stat_none-next_Abpos"        "t_stat_none-pTpos"             "t_stat_none-next_pTpos"        "t_stat_none-both"              "t_stat_none-next_both"         "t_stat_Abpos-next_Abpos"       "t_stat_Abpos-pTpos"            "t_stat_Abpos-next_pTpos"       "t_stat_Abpos-both"             "t_stat_Abpos-next_both"        "t_stat_next_Abpos-pTpos"      
+[13] "t_stat_next_Abpos-next_pTpos"  "t_stat_next_Abpos-both"        "t_stat_next_Abpos-next_both"   "t_stat_pTpos-next_pTpos"       "t_stat_pTpos-both"             "t_stat_pTpos-next_both"        "t_stat_next_pTpos-both"        "t_stat_next_pTpos-next_both"   "t_stat_both-next_both"         "p_value_none-Abpos"            "p_value_none-next_Abpos"       "p_value_none-pTpos"           
+[25] "p_value_none-next_pTpos"       "p_value_none-both"             "p_value_none-next_both"        "p_value_Abpos-next_Abpos"      "p_value_Abpos-pTpos"           "p_value_Abpos-next_pTpos"      "p_value_Abpos-both"            "p_value_Abpos-next_both"       "p_value_next_Abpos-pTpos"      "p_value_next_Abpos-next_pTpos" "p_value_next_Abpos-both"       "p_value_next_Abpos-next_both" 
+[37] "p_value_pTpos-next_pTpos"      "p_value_pTpos-both"            "p_value_pTpos-next_both"       "p_value_next_pTpos-both"       "p_value_next_pTpos-next_both"  "p_value_both-next_both"        "fdr_none-Abpos"                "fdr_none-next_Abpos"           "fdr_none-pTpos"                "fdr_none-next_pTpos"           "fdr_none-both"                 "fdr_none-next_both"           
+[49] "fdr_Abpos-next_Abpos"          "fdr_Abpos-pTpos"               "fdr_Abpos-next_pTpos"          "fdr_Abpos-both"                "fdr_Abpos-next_both"           "fdr_next_Abpos-pTpos"          "fdr_next_Abpos-next_pTpos"     "fdr_next_Abpos-both"           "fdr_next_Abpos-next_both"      "fdr_pTpos-next_pTpos"          "fdr_pTpos-both"                "fdr_pTpos-next_both"          
+[61] "fdr_next_pTpos-both"           "fdr_next_pTpos-next_both"      "fdr_both-next_both"            "ensembl"                       "gene"                         
+     Abpos-next_Abpos      Abpos-next_pTpos            Abpos-both       Abpos-next_both      next_Abpos-pTpos next_Abpos-next_pTpos       next_Abpos-both  next_Abpos-next_both       next_pTpos-both  next_pTpos-next_both        both-next_both            none-Abpos       none-next_Abpos       none-next_pTpos        none-next_both            pTpos-both             none-both           Abpos-pTpos 
+                    0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     1                     1                     1                     1                     1                     3                     3 
+     pTpos-next_pTpos       pTpos-next_both            none-pTpos 
                     3                     3                     4 
           n        ratio
 FALSE 23899 9.999163e-01
 TRUE      2 8.367851e-05
 Sum   23901 1.000000e+00
   f_stat_noWM p_value_noWM  fdr_noWM noWM_AveExpr         ensembl        gene
-1   0.9883114    0.4456267 0.9665588    0.6515295 ENSG00000243485 MIR1302-2HG
-2   0.5404204    0.7743719 1.0000000    1.1652509 ENSG00000238009  AL627309.1
-3   0.8907760    0.5104643 0.9665588    0.6407770 ENSG00000239945  AL627309.3
-4   0.4802991    0.8191213 1.0000000    1.9572611 ENSG00000241860  AL627309.5
-5   0.6430285    0.6952143 0.9796481    2.9180726 ENSG00000237491   LINC01409
-6   0.9839825    0.4483826 0.9665588    0.6494224 ENSG00000177757      FAM87B
+1   0.9869124    0.4465161 0.9693482    0.6515295 ENSG00000243485 MIR1302-2HG
+2   0.5380727    0.7761528 1.0000000    1.1652509 ENSG00000238009  AL627309.1
+3   0.8895656    0.5113036 0.9693482    0.6407770 ENSG00000239945  AL627309.3
+4   0.4802442    0.8191612 1.0000000    1.9572611 ENSG00000241860  AL627309.5
+5   0.6432525    0.6950403 0.9812435    2.9180726 ENSG00000237491   LINC01409
+6   0.9827187    0.4491895 0.9693482    0.6494224 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-22 21:49:04 EDT"
+[1] "2022-04-22 22:13:02 EDT"
    user  system elapsed 
- 14.881   0.816  17.481 
+ 15.160   0.920  17.858 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -216,4 +216,4 @@ Sum   23901 1.000000e+00
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 21:49:06 EDT 2022
+Fri Apr 22 22:13:03 EDT 2022

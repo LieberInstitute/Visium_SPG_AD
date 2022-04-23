@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 21:46:58 EDT 2022
+Fri Apr 22 22:09:27 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922887
+Job id: 9922908
 Job name: explore_expr_variability_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -113,17 +113,12 @@ Scale for 'colour' is already present. Adding another scale for 'colour',
 which will replace the existing scale.
 null device 
           1 
-Warning message:
-In beachmat_internal_FUN(X[[3]], ...) :
-  ignoring 'path_groups' with fewer than 2 unique levels
-Warning message:
-Removed 23901 rows containing non-finite values (stat_density). 
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-04-22 21:47:52 EDT"
+[1] "2022-04-22 22:10:21 EDT"
    user  system elapsed 
- 46.664   1.429  52.605 
+ 47.653   1.490  52.724 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -235,4 +230,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 21:47:56 EDT 2022
+Fri Apr 22 22:10:22 EDT 2022

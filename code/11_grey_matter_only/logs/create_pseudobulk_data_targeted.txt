@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 21:43:43 EDT 2022
+Fri Apr 22 22:06:27 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922886
+Job id: 9922907
 Job name: create_pseudobulk_data_targeted
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -116,13 +116,16 @@ The following object is masked from ‘package:SingleCellExperiment’:
 Loading required package: rafalib
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
+[1] 21897   111
+     none       Ab+  next_Ab+       pT+  next_pT+      both next_both 
+     4289      1097      2377      8877      3395       730      1132 
 Warning message:
 In filterByExpr.DGEList(y, design = design, group = group, lib.size = lib.size,  :
   All samples appear to belong to the same group.
    Mode   FALSE    TRUE 
 logical   22722     763 
 [1] 22722    48
-2022-04-22 21:46:16 % of variance explained for the top 20 PCs:
+2022-04-22 22:08:53 % of variance explained for the top 20 PCs:
 list()
 $PCA_var_explained
  [1] 36.90  4.24  2.76  2.47  2.45  2.38  2.37  2.32  2.30  2.16  2.05  1.94
@@ -138,9 +141,9 @@ $PCA_var_explained
 +     6:7, 4:5)], c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", 
 +     "both", "next_both"))
 [1] "Reproducibility information:"
-[1] "2022-04-22 21:46:19 EDT"
+[1] "2022-04-22 22:08:54 EDT"
    user  system elapsed 
-136.011   3.176 154.391 
+134.545   3.125 145.503 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -332,4 +335,4 @@ $PCA_var_explained
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 21:46:28 EDT 2022
+Fri Apr 22 22:09:00 EDT 2022
