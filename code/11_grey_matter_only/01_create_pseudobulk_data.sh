@@ -16,7 +16,7 @@ for spetype in "wholegenome" "targeted"; do #had to include quotes here manually
     cat > ${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=15G,h_vmem=15G,h_fsize=100G
+#$ -l bluejay,mem_free=7G,h_vmem=7G,h_fsize=100G
 #$ -N ${SHORT}
 #$ -o logs/${SHORT}.txt
 #$ -e logs/${SHORT}.txt
