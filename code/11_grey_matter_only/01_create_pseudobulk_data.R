@@ -78,6 +78,22 @@ spe <- cluster_import(
     prefix = ""
 )
 
+## Convert from character to a factor, so they appear in the order
+## we want
+spe$path_groups <-
+    factor(
+        spe$path_groups,
+        levels = c(
+            "none",
+            "Ab+",
+            "next_Ab+",
+            "pT+",
+            "next_pT+",
+            "both",
+            "next_both"
+        )
+    )
+
 ## subset spe data based on subject and cluster 1 for k = 2
 spe <- spe[, !spe$subject == "Br3874"]
 
@@ -86,6 +102,7 @@ if (opt$spetype == "wholegenome") {
 } else {
     spe <- spe[, spe$BayesSpace_harmony_k04 != 4]
 }
+dim(colData(spe))
 
 # > dim(colData(spe))
 # [1] 38115   111
@@ -95,6 +112,8 @@ if (opt$spetype == "wholegenome") {
 ## > unique(spe$path_groups)
 # [1] "none"      "next_Ab+"  "Ab+"       "both"      "pT+"       "next_both"
 # [7] "next_pT+"
+summary(spe$path_groups)
+stopifnot(is.factor(spe$path_groups))
 
 
 ## pseudobulk across pathology labels
@@ -131,12 +150,9 @@ pca_pseudo <- pca$x[, seq_len(20)]
 colnames(pca_pseudo) <- paste0("PC", sprintf("%02d", seq_len(ncol(pca_pseudo))))
 reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
 
-## Set the same levels
-sce_pseudo$path_groups <- factor(sce_pseudo$path_groups, levels = levels(spe$path_groups))
-
 ## We don't want to model the pathology groups as integers / numeric
 ## so let's double check this
-stopifnot(is.factor(sce_pseudo$path_groups) || is.character(sce_pseudo$path_groups))
+stopifnot(is.factor(sce_pseudo$path_groups))
 
 ## Add APOe genotype info
 sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
@@ -174,9 +190,7 @@ colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
-spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
-sce_pseudo$path_groups_colors <-
-    spe$path_groups_colors[match(sce_pseudo$path_groups, spe$path_groups)]
+sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_groups)]
 
 ## save RDS file
 saveRDS(
