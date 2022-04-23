@@ -79,17 +79,17 @@ spe <- cluster_import(
 )
 
 ## subset spe data based on subject and cluster 1 for k = 2
-spe_new <- spe[, !spe$subject == "Br3874"]
+spe <- spe[, !spe$subject == "Br3874"]
 
 if (opt$spetype == "wholegenome") {
-    spe_new <- spe_new[, spe_new$BayesSpace_harmony_k02 != 2]
+    spe <- spe[, spe$BayesSpace_harmony_k02 != 2]
 } else {
-    spe_new <- spe_new[, spe_new$BayesSpace_harmony_k04 != 4]
+    spe <- spe[, spe$BayesSpace_harmony_k04 != 4]
 }
 
 # > dim(colData(spe))
 # [1] 38115   111
-# # > dim(colData(spe_new))
+# # > dim(colData(spe))
 # [1] 21086   111
 
 ## > unique(spe$path_groups)
@@ -99,10 +99,10 @@ if (opt$spetype == "wholegenome") {
 
 ## pseudobulk across pathology labels
 sce_pseudo <- aggregateAcrossCells(
-    spe_new,
+    spe,
     DataFrame(
-        path_groups = spe_new$path_groups,
-        sample_id = spe_new$sample_id
+        path_groups = spe$path_groups,
+        sample_id = spe$sample_id
     )
 )
 x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
