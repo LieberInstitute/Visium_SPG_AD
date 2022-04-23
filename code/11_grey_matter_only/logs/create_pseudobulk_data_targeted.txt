@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 13:42:19 EDT 2022
+Fri Apr 22 21:43:43 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922242
+Job id: 9922886
 Job name: create_pseudobulk_data_targeted
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -122,16 +122,25 @@ In filterByExpr.DGEList(y, design = design, group = group, lib.size = lib.size, 
    Mode   FALSE    TRUE 
 logical   22722     763 
 [1] 22722    48
-2022-04-22 13:44:43 % of variance explained for the top 20 PCs:
+2022-04-22 21:46:16 % of variance explained for the top 20 PCs:
 list()
 $PCA_var_explained
  [1] 36.90  4.24  2.76  2.47  2.45  2.38  2.37  2.32  2.30  2.16  2.05  1.94
 [13]  1.90  1.87  1.83  1.78  1.71  1.66  1.61  1.56
 
+
+> if (!requireNamespace("paletteer", quietly = TRUE)) {
++     install.packages("paletteer")
++ }
+
+> colors_pathology <- setNames(c("grey90", paletteer::paletteer_d("dichromat::SteppedSequential_5")[rep(c(6, 
++     18), each = 2) + c(0, 3)], paletteer::paletteer_d("beyonce::X7")[4:5])[c(1:3, 
++     6:7, 4:5)], c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", 
++     "both", "next_both"))
 [1] "Reproducibility information:"
-[1] "2022-04-22 13:46:30 EDT"
+[1] "2022-04-22 21:46:19 EDT"
    user  system elapsed 
-239.174   3.129 249.511 
+136.011   3.176 154.391 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -192,10 +201,11 @@ $PCA_var_explained
  dqrng                    0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils             1.15.2   2021-11-08 [2] Bioconductor
  DT                       0.22     2022-03-28 [2] CRAN (R 4.2.0)
- edgeR                  * 3.37.2   2022-04-20 [2] Bioconductor
+ edgeR                  * 3.37.3   2022-04-21 [1] Bioconductor
  ellipsis                 0.3.2    2021-04-29 [2] CRAN (R 4.2.0)
  ExperimentHub            2.3.7    2022-04-08 [2] Bioconductor
  fansi                    1.0.3    2022-03-24 [2] CRAN (R 4.2.0)
+ farver                   2.1.0    2021-02-28 [2] CRAN (R 4.1.0)
  fastmap                  1.1.0    2021-01-25 [2] CRAN (R 4.1.0)
  fields                   13.3     2021-10-30 [2] CRAN (R 4.2.0)
  filelock                 1.0.2    2018-10-05 [2] CRAN (R 4.1.0)
@@ -203,7 +213,7 @@ $PCA_var_explained
  fs                       1.5.2    2021-12-08 [2] CRAN (R 4.2.0)
  gargle                   1.2.0    2021-07-02 [2] CRAN (R 4.2.0)
  generics                 0.1.2    2022-01-31 [2] CRAN (R 4.2.0)
- GenomeInfoDb           * 1.31.7   2022-04-01 [2] Bioconductor
+ GenomeInfoDb           * 1.31.10  2022-04-21 [1] Bioconductor
  GenomeInfoDbData         1.2.8    2022-04-16 [2] Bioconductor
  GenomicAlignments        1.31.2   2021-11-05 [2] Bioconductor
  GenomicRanges          * 1.47.6   2022-01-12 [2] Bioconductor
@@ -247,12 +257,13 @@ $PCA_var_explained
  memoise                  2.0.1    2021-11-26 [2] CRAN (R 4.2.0)
  mime                     0.12     2021-09-28 [2] CRAN (R 4.2.0)
  munsell                  0.5.0    2018-06-12 [2] CRAN (R 4.1.0)
+ paletteer                1.4.0    2021-07-20 [1] CRAN (R 4.2.0)
  pillar                   1.7.0    2022-02-01 [2] CRAN (R 4.2.0)
  pkgconfig                2.0.3    2019-09-22 [2] CRAN (R 4.1.0)
  pkgload                  1.2.4    2021-11-30 [2] CRAN (R 4.2.0)
  plotly                   4.10.0   2021-10-09 [2] CRAN (R 4.2.0)
  png                      0.1-7    2013-12-03 [2] CRAN (R 4.1.0)
- Polychrome               1.3.1    2021-07-16 [1] CRAN (R 4.2.0)
+ prismatic                1.1.0    2021-10-17 [1] CRAN (R 4.2.0)
  promises                 1.2.0.1  2021-02-11 [2] CRAN (R 4.1.0)
  purrr                    0.3.4    2020-04-17 [2] CRAN (R 4.1.0)
  R.methodsS3              1.8.1    2020-08-26 [2] CRAN (R 4.1.0)
@@ -264,6 +275,7 @@ $PCA_var_explained
  RColorBrewer             1.1-3    2022-04-03 [2] CRAN (R 4.2.0)
  Rcpp                     1.0.8.3  2022-03-17 [2] CRAN (R 4.2.0)
  RCurl                    1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
+ rematch2                 2.1.2    2020-05-01 [2] CRAN (R 4.1.0)
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
  rhdf5                    2.39.6   2022-03-09 [2] Bioconductor
  rhdf5filters             1.7.0    2021-10-26 [2] Bioconductor
@@ -282,7 +294,6 @@ $PCA_var_explained
  ScaledMatrix             1.3.0    2021-10-26 [2] Bioconductor
  scales                   1.2.0    2022-04-13 [2] CRAN (R 4.2.0)
  scater                   1.23.6   2022-03-15 [2] Bioconductor
- scatterplot3d            0.3-41   2018-03-14 [1] CRAN (R 4.2.0)
  scuttle                * 1.5.2    2022-04-18 [2] Bioconductor
  segmented                1.4-1    2022-03-24 [1] CRAN (R 4.2.0)
  sessioninfo            * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
@@ -292,7 +303,7 @@ $PCA_var_explained
  spam                     2.8-0    2022-01-06 [2] CRAN (R 4.2.0)
  sparseMatrixStats        1.7.0    2021-10-26 [2] Bioconductor
  SpatialExperiment      * 1.5.4    2022-03-11 [1] Bioconductor
- spatialLIBD            * 1.7.15   2022-04-08 [1] Github (LieberInstitute/spatialLIBD@b9c1503)
+ spatialLIBD            * 1.7.18   2022-04-23 [1] Github (LieberInstitute/spatialLIBD@4b69a09)
  stringi                  1.7.6    2021-11-29 [2] CRAN (R 4.2.0)
  stringr                  1.4.0    2019-02-10 [2] CRAN (R 4.1.0)
  SummarizedExperiment   * 1.25.3   2021-12-08 [2] Bioconductor
@@ -321,4 +332,4 @@ $PCA_var_explained
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 13:46:31 EDT 2022
+Fri Apr 22 21:46:28 EDT 2022

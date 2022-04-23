@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 13:46:48 EDT 2022
+Fri Apr 22 21:46:58 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922243
+Job id: 9922887
 Job name: explore_expr_variability_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -113,12 +113,17 @@ Scale for 'colour' is already present. Adding another scale for 'colour',
 which will replace the existing scale.
 null device 
           1 
+Warning message:
+In beachmat_internal_FUN(X[[3]], ...) :
+  ignoring 'path_groups' with fewer than 2 unique levels
+Warning message:
+Removed 23901 rows containing non-finite values (stat_density). 
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-04-22 13:48:41 EDT"
+[1] "2022-04-22 21:47:52 EDT"
    user  system elapsed 
-108.291   1.785 111.165 
+ 46.664   1.429  52.605 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -154,12 +159,12 @@ null device
  dplyr                  1.0.8    2022-02-08 [2] CRAN (R 4.2.0)
  dqrng                  0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils           1.15.2   2021-11-08 [2] Bioconductor
- edgeR                  3.37.2   2022-04-20 [2] Bioconductor
+ edgeR                  3.37.3   2022-04-21 [1] Bioconductor
  ellipsis               0.3.2    2021-04-29 [2] CRAN (R 4.2.0)
  fansi                  1.0.3    2022-03-24 [2] CRAN (R 4.2.0)
  farver                 2.1.0    2021-02-28 [2] CRAN (R 4.1.0)
  generics               0.1.2    2022-01-31 [2] CRAN (R 4.2.0)
- GenomeInfoDb         * 1.31.7   2022-04-01 [2] Bioconductor
+ GenomeInfoDb         * 1.31.10  2022-04-21 [1] Bioconductor
  GenomeInfoDbData       1.2.8    2022-04-16 [2] Bioconductor
  GenomicRanges        * 1.47.6   2022-01-12 [2] Bioconductor
  getopt               * 1.20.3   2019-03-22 [2] CRAN (R 4.1.0)
@@ -230,4 +235,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 13:48:42 EDT 2022
+Fri Apr 22 21:47:56 EDT 2022

@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 13:52:07 EDT 2022
+Fri Apr 22 21:48:45 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922247
+Job id: 9922891
 Job name: parse_model_results_wholegenome
 Hostname: compute-098.cm.cluster
 Task id: undefined
@@ -144,9 +144,9 @@ Sum   23901 1.000000e+00
 5   0.6430285    0.6952143 0.9796481    2.9180726 ENSG00000237491   LINC01409
 6   0.9839825    0.4483826 0.9665588    0.6494224 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-22 13:53:26 EDT"
+[1] "2022-04-22 21:49:04 EDT"
    user  system elapsed 
- 75.195   1.444  77.002 
+ 14.881   0.816  17.481 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -174,8 +174,8 @@ Sum   23901 1.000000e+00
  DelayedMatrixStats     1.17.0   2021-10-26 [2] Bioconductor
  dqrng                  0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils           1.15.2   2021-11-08 [2] Bioconductor
- edgeR                  3.37.2   2022-04-20 [2] Bioconductor
- GenomeInfoDb         * 1.31.7   2022-04-01 [2] Bioconductor
+ edgeR                  3.37.3   2022-04-21 [1] Bioconductor
+ GenomeInfoDb         * 1.31.10  2022-04-21 [1] Bioconductor
  GenomeInfoDbData       1.2.8    2022-04-16 [2] Bioconductor
  GenomicRanges        * 1.47.6   2022-01-12 [2] Bioconductor
  getopt               * 1.20.3   2019-03-22 [2] CRAN (R 4.1.0)
@@ -216,4 +216,4 @@ Sum   23901 1.000000e+00
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 13:53:26 EDT 2022
+Fri Apr 22 21:49:06 EDT 2022
