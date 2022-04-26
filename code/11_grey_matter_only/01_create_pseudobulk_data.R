@@ -194,8 +194,8 @@ sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_g
 ## save RDS file
 saveRDS(
     sce_pseudo,
-    file = here::here(
-        "processed-data", "11_grey_matter_only", opt$spetype,
+    file = file.path(
+        dir_rdata,
         paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
     )
 )

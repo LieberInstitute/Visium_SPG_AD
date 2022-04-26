@@ -51,10 +51,8 @@ load(file.path(dir_rdata, "pathology_model_results_raw.Rdata"), verbose = TRUE)
 ## load spe data
 sce_pseudo <-
     readRDS(
-        here::here(
-            "processed-data",
-            "11_grey_matter_only",
-            opt$spetype,
+        file.path(
+            dir_rdata,
             paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
         )
     )
