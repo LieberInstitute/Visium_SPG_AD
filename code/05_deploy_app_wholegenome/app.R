@@ -38,6 +38,8 @@ z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
 write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
 
 vars <- colnames(colData(spe))
+path_vars <- vars[grep("^path_", vars)]
+path_vars <- path_vars[!grepl("_colors$", path_vars)]
 
 ## Compute some reduced dims
 set.seed(20220423)
@@ -52,7 +54,7 @@ spatialLIBD::run_app(
     sig_genes = sig_genes,
     title = "Visium IF AD, Kwon SH et al, 2022",
     spe_discrete_vars = c(
-        vars[grep("^path_", vars)],
+        path_vars,
         "ManualAnnotation",
         vars[grep("^BayesSpace_", vars)],
         vars[grep("^graph_", vars)],
