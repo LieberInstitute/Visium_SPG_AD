@@ -125,21 +125,30 @@ sce_pseudo <- aggregateAcrossCells(
         sample_id = spe$sample_id
     )
 )
-x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
 
-stopifnot(identical(rownames(x), rownames(sce_pseudo)))
-## Fix the column names. DGEList will have samples names as Sample1 Sample2 etc
-dimnames(x) <- dimnames(sce_pseudo)
-## Store the log normalized counts on the SingleCellExperiment object
-logcounts(sce_pseudo) <- x
+## Drop combinations that are very low (very few spots were pseudo-bulked)
+## From
+## http://bioconductor.org/books/3.14/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis
+summary(sce_pseudo$ncells)
+sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >= 10]
 
 ## From
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
 rowData(sce_pseudo)$low_expr <- filterByExpr(sce_pseudo)
 rowData(sce_pseudo)$low_expr_group_sample_id <- filterByExpr(sce_pseudo, group = sce_pseudo$sample_id)
-with(rowData(sce_pseudo), table(low_expr, low_expr_group_sample_id))
-sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr_group_sample_id), ]
+rowData(sce_pseudo)$low_expr_group_path_groups <- filterByExpr(sce_pseudo, group = sce_pseudo$path_groups)
+with(rowData(sce_pseudo), table(low_expr, low_expr_group_path_groups))
+with(rowData(sce_pseudo), table(low_expr_group_sample_id, low_expr_group_path_groups))
+sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr_group_path_groups), ]
 dim(sce_pseudo)
+
+## Normalize
+x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
+stopifnot(identical(rownames(x), rownames(sce_pseudo)))
+## Fix the column names. DGEList will have samples names as Sample1 Sample2 etc
+dimnames(x) <- dimnames(sce_pseudo)
+## Store the log normalized counts on the SingleCellExperiment object
+logcounts(sce_pseudo) <- x
 
 ## Compute PCs
 ## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
