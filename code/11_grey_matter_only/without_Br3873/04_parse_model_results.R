@@ -38,10 +38,10 @@ library("SingleCellExperiment")
 
 
 ## output directory
-dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
+dir_rdata <- here::here("processed-data", "11_grey_matter_only", "without_Br3873", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
-dir_plots <- here::here("plots", "11_grey_matter_only", opt$spetype)
+dir_plots <- here::here("plots", "11_grey_matter_only", "without_Br3873", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_plots))
 
@@ -51,10 +51,8 @@ load(file.path(dir_rdata, "pathology_model_results_raw.Rdata"), verbose = TRUE)
 ## load spe data
 sce_pseudo <-
     readRDS(
-        here::here(
-            "processed-data",
-            "11_grey_matter_only",
-            opt$spetype,
+        file.path(
+            dir_rdata,
             paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
         )
     )

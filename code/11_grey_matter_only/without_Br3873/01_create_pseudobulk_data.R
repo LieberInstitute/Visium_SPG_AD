@@ -42,7 +42,7 @@ library("sessioninfo")
 library("jaffelab")
 
 ## output directory
-dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
+dir_rdata <- here::here("processed-data", "11_grey_matter_only", "without_Br3873", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
 
@@ -95,7 +95,7 @@ spe$path_groups <-
     )
 
 ## subset spe data based on subject and cluster 1 for k = 2
-spe <- spe[, !spe$subject == "Br3874"]
+spe <- spe[, !spe$subject %in% c("Br3874", "Br3873")] ## Also drop Br3873
 
 if (opt$spetype == "wholegenome") {
     spe <- spe[, spe$BayesSpace_harmony_k02 != 2]
@@ -194,8 +194,8 @@ sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_g
 ## save RDS file
 saveRDS(
     sce_pseudo,
-    file = here::here(
-        "processed-data", "11_grey_matter_only", opt$spetype,
+    file = file.path(
+        dir_rdata,
         paste0("sce_pseudo_pathology_", opt$spetype, ".rds")
     )
 )
