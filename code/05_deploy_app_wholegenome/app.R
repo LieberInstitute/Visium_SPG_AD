@@ -11,8 +11,21 @@ options(repos = BiocManager::repositories())
 
 ## Load the data
 load("spe.Rdata", verbose = TRUE)
-load("Visium_IF_AD_modeling_results.Rdata", verbose = TRUE)
-sce_pseudo <- readRDS("sce_pseudo_pathology_wholegenome.rds")
+local <- FALSE ## For doing things locally and ability to change input dirs
+if(local) {
+    ## Local tests
+    dir_rdata <- here::here(
+        "processed-data",
+        "11_grey_matter_only",
+        "without_Br3873",
+        "wholegenome"
+    )
+} else {
+    ## For shinyapps.io
+    dir_rdata <- getwd()
+}
+load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"), verbose = TRUE)
+sce_pseudo <- readRDS(file.path(dir_rdata, "sce_pseudo_pathology_wholegenome.rds"))
 
 ## For sig_genes_extract_all() to work
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
@@ -35,7 +48,7 @@ fix_csv <- function(df) {
     return(df)
 }
 z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
-write.csv(z, file = "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv")
+write.csv(z, file = file.path(dir_rdata, "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv"))
 
 vars <- colnames(colData(spe))
 path_vars <- vars[grep("^path_", vars)]
