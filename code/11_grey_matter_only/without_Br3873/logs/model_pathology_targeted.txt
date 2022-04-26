@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Apr 26 15:52:50 EDT 2022
+Tue Apr 26 16:07:49 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9936070
+Job id: 9936096
 Job name: model_pathology_targeted
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -105,24 +105,24 @@ The following object is masked from ‘package:BiocGenerics’:
     plotMA
 
 Loading required package: SpatialExperiment
-2022-04-26 15:53:04 running duplicateCorrelation()
-Detected correlation: 0.0100751235595158
-2022-04-26 15:53:41 running the enrichment model
-2022-04-26 15:53:43 runnign the baseline pairwise model
-2022-04-26 15:53:43 run pairwise models
-2022-04-26 15:53:45 starting the model run
-2022-04-26 15:54:12 correlation: 0.0182559632485631
+2022-04-26 16:08:02 running duplicateCorrelation()
+Detected correlation: 0.0522830223744733
+2022-04-26 16:08:39 running the enrichment model
+2022-04-26 16:08:40 runnign the baseline pairwise model
+2022-04-26 16:08:40 run pairwise models
+2022-04-26 16:08:42 starting the model run
+2022-04-26 16:09:09 correlation: 0.000386817881737247
         noWM_f noWM_p_value  noWM_fdr noWM_AveExpr         ensembl       gene
-1 7.584741e-01   0.60824354 0.7676179     2.793113 ENSG00000238009 AL627309.1
-2 2.345951e+00   0.05770446 0.2060778     2.994343 ENSG00000241860 AL627309.5
-3 1.175759e+00   0.34677090 0.6619189     3.265107 ENSG00000237491  LINC01409
-4 8.506352e-26   1.00000000 1.0000000     2.699170 ENSG00000177757     FAM87B
-5 8.434323e-01   0.54720830 0.7200651     3.672286 ENSG00000228794  LINC01128
-6 9.526146e-01   0.47408971 0.6748158     2.743004 ENSG00000225880  LINC00115
+1 7.298416e-01   0.62945823 0.7689703     5.671621 ENSG00000238009 AL627309.1
+2 2.513592e+00   0.04456106 0.1374164     5.875884 ENSG00000241860 AL627309.5
+3 1.433540e+00   0.23656223 0.4647364     6.134088 ENSG00000237491  LINC01409
+4 7.132108e-26   1.00000000 1.0000000     5.581380 ENSG00000177757     FAM87B
+5 1.340689e+00   0.27201258 0.5170439     6.515259 ENSG00000228794  LINC01128
+6 9.327213e-01   0.48691264 0.6572204     5.623724 ENSG00000225880  LINC00115
 [1] "Reproducibility information:"
-[1] "2022-04-26 15:54:20 EDT"
+[1] "2022-04-26 16:09:14 EDT"
    user  system elapsed 
- 82.275   1.452  86.416 
+ 81.782   1.446  83.756 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -195,4 +195,4 @@ Detected correlation: 0.0100751235595158
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Apr 26 15:54:20 EDT 2022
+Tue Apr 26 16:09:15 EDT 2022

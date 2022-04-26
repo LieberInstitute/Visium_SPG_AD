@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Apr 26 15:54:32 EDT 2022
+Tue Apr 26 16:10:04 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9936063
+Job id: 9936089
 Job name: parse_model_results_wholegenome
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -104,49 +104,49 @@ Loading objects:
 Loading required package: SpatialExperiment
     none            Ab+           next_Ab+          pT+         
  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
- FALSE:20322     FALSE:20340     FALSE:20340     FALSE:20026    
- TRUE :18                                        TRUE :314      
+ FALSE:19248     FALSE:19254     FALSE:19254     FALSE:18794    
+ TRUE :6                                         TRUE :460      
   next_pT+          both         next_both      
  Mode :logical   Mode :logical   Mode :logical  
- FALSE:20336     FALSE:20338     FALSE:20339    
- TRUE :4         TRUE :2         TRUE :1        
-  t_stat_none t_stat_Ab+ t_stat_next_Ab+ t_stat_pT+ t_stat_next_pT+ t_stat_both t_stat_next_both p_value_none p_value_Ab+ p_value_next_Ab+ p_value_pT+ p_value_next_pT+ p_value_both p_value_next_both  fdr_none   fdr_Ab+ fdr_next_Ab+   fdr_pT+ fdr_next_pT+  fdr_both fdr_next_both         ensembl        gene
-1 -0.41455400 -0.4145417       2.5725048 -0.4145495      -0.4145383  -0.3614805       -0.4145393    0.6803737   0.6803827       0.01335045  0.68037704       0.68038517    0.7193768         0.6803844 0.9049536 0.9175122    0.5883169 1.0000000    1.0000000 0.9743537     0.9557948 ENSG00000243485 MIR1302-2HG
-2 -0.73010144 -1.0789524       0.3642059  0.4897976       0.6085199   1.0153444       -0.6097875    0.4689887   0.2861711       0.71735434  0.62657893       0.54580243    0.3151931         0.5449695 0.9049536 0.9175122    0.9554760 1.0000000    1.0000000 0.9743537     0.9557948 ENSG00000238009  AL627309.1
-3 -0.40363789 -0.4035288      -0.4035304  2.5183625      -0.4035159  -0.3716576       -0.4035170    0.6883283   0.6884080       0.68840684  0.01529082       0.68841738    0.7118352         0.6884166 0.9049536 0.9175122    0.9371031 0.2024839    1.0000000 0.9743537     0.9557948 ENSG00000239945  AL627309.3
-4  0.07478134 -0.1833016      -1.2063645  0.4152663       1.1985955   0.3555541       -0.6339357    0.9407093   0.8553579       0.23377578  0.67985605       0.23675521    0.7237816         0.5292275 1.0000000 1.0000000    0.9371031 1.0000000    1.0000000 0.9763923     0.9557948 ENSG00000241860  AL627309.5
-5  1.29235836 -0.4992354      -0.4782336 -0.8336896      -0.9037239   0.7516480        0.7330334    0.2026153   0.6199662       0.63472359  0.40871606       0.37079767    0.4560485         0.4672157 0.7285125 0.9175122    0.9371031 1.0000000    1.0000000 0.9743537     0.9557948 ENSG00000237491   LINC01409
-6 -0.41138899 -0.4113728      -0.4113732 -0.4113856       2.5730392  -0.3788722       -0.4113700    0.6826763   0.6826882       0.68268782  0.68267889       0.01333251    0.7065064         0.6826902 0.9049536 0.9175122    0.9371031 1.0000000    0.5145793 0.9743537     0.9557948 ENSG00000177757      FAM87B
-[1] 20340    21
+ FALSE:19245     FALSE:19249     FALSE:19253    
+ TRUE :9         TRUE :5         TRUE :1        
+  t_stat_none t_stat_Ab+ t_stat_next_Ab+ t_stat_pT+ t_stat_next_pT+ t_stat_both t_stat_next_both p_value_none p_value_Ab+ p_value_next_Ab+ p_value_pT+ p_value_next_pT+ p_value_both p_value_next_both  fdr_none   fdr_Ab+ fdr_next_Ab+    fdr_pT+ fdr_next_pT+  fdr_both fdr_next_both         ensembl        gene
+1 -0.46331374 -0.4633138       2.4055032 -0.3336327      -0.4283948  -0.3336120       -0.3738264    0.6455587   0.6455585       0.02068523 0.740335668       0.67057762    0.7403511         0.7104354 0.9139588 0.8502391    0.3700019 0.91881923    1.0000000 0.9640336     0.9712265 ENSG00000243485 MIR1302-2HG
+2 -0.93473418 -1.2995367      -0.1977302  1.3846189       0.9538643   1.0506372       -0.6027684    0.3553292   0.2009279       0.84422083 0.173564218       0.34567212    0.2995012         0.5499406 0.9139588 0.7858995    1.0000000 0.41379667    1.0000000 0.9640336     0.9712265 ENSG00000238009  AL627309.1
+3 -0.43304885 -0.4330162      -0.4330006  3.0080743      -0.4004095  -0.3669203       -0.4003883    0.6672203   0.6672438       0.66725503 0.004452011       0.69090747    0.7155416         0.6909230 0.9139588 0.8502391    0.8743248 0.05129804    1.0000000 0.9640336     0.9712265 ENSG00000239945  AL627309.3
+4  0.03276876 -1.1181139      -2.0394212  2.2401492       1.1408353   0.5984240       -0.4205659    0.9740160   0.2699449       0.04780464 0.030492548       0.26047526    0.5528073         0.6762406 1.0000000 0.8367328    0.4883419 0.21193292    1.0000000 0.9640336     0.9712265 ENSG00000241860  AL627309.5
+5  1.27921098 -1.0774482      -1.1932933  0.7952851      -0.3202682   1.2323170       -0.4849223    0.2079246   0.2874993       0.23952735 0.430970108       0.75037102    0.2247626         0.6302798 0.8413552 0.8502391    0.8284282 0.72667700    1.0000000 0.9640336     0.9712265 ENSG00000237491   LINC01409
+6 -0.43755757 -0.4375562      -0.4375550 -0.3707899       2.6924040  -0.3707595       -0.4045926    0.6639744   0.6639754       0.66397614 0.712678900       0.01018292    0.7127014         0.6878535 0.9139588 0.8502391    0.8743248 0.91881923    0.3748793 0.9640336     0.9712265 ENSG00000177757      FAM87B
+[1] 19254    21
  none-Abpos      none-next_Abpos none-pTpos      none-next_pTpos none-both       none-next_both  Abpos-next_Abpos Abpos-pTpos     Abpos-next_pTpos Abpos-both      Abpos-next_both next_Abpos-pTpos next_Abpos-next_pTpos next_Abpos-both next_Abpos-next_both pTpos-next_pTpos pTpos-both      pTpos-next_both next_pTpos-both next_pTpos-next_both both-next_both 
  Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical    Mode :logical   Mode :logical    Mode :logical   Mode :logical   Mode :logical    Mode :logical         Mode :logical   Mode :logical        Mode :logical    Mode :logical   Mode :logical   Mode :logical   Mode :logical        Mode :logical  
- FALSE:20339     FALSE:20339     FALSE:20334     FALSE:20338     FALSE:20337     FALSE:20339     FALSE:20340      FALSE:20337     FALSE:20340      FALSE:20340     FALSE:20340     FALSE:20340      FALSE:20340           FALSE:20340     FALSE:20340          FALSE:20337      FALSE:20339     FALSE:20337     FALSE:20340     FALSE:20340          FALSE:20340    
- TRUE :1         TRUE :1         TRUE :6         TRUE :2         TRUE :3         TRUE :1                          TRUE :3                                                                                                                                      TRUE :3          TRUE :1         TRUE :3                                                             
+ FALSE:19247     FALSE:19252     FALSE:19155     FALSE:19253     FALSE:19250     FALSE:19254     FALSE:19254      FALSE:18691     FALSE:19253      FALSE:19254     FALSE:19254     FALSE:18768      FALSE:19253           FALSE:19254     FALSE:19254          FALSE:19169      FALSE:19156     FALSE:19147     FALSE:19253     FALSE:19253          FALSE:19254    
+ TRUE :7         TRUE :2         TRUE :99        TRUE :1         TRUE :4                                          TRUE :563       TRUE :1                                          TRUE :486        TRUE :1                                                    TRUE :85         TRUE :98        TRUE :107       TRUE :1         TRUE :1                             
  [1] "t_stat_none-Abpos"             "t_stat_none-next_Abpos"        "t_stat_none-pTpos"             "t_stat_none-next_pTpos"        "t_stat_none-both"              "t_stat_none-next_both"         "t_stat_Abpos-next_Abpos"       "t_stat_Abpos-pTpos"            "t_stat_Abpos-next_pTpos"       "t_stat_Abpos-both"             "t_stat_Abpos-next_both"        "t_stat_next_Abpos-pTpos"      
 [13] "t_stat_next_Abpos-next_pTpos"  "t_stat_next_Abpos-both"        "t_stat_next_Abpos-next_both"   "t_stat_pTpos-next_pTpos"       "t_stat_pTpos-both"             "t_stat_pTpos-next_both"        "t_stat_next_pTpos-both"        "t_stat_next_pTpos-next_both"   "t_stat_both-next_both"         "p_value_none-Abpos"            "p_value_none-next_Abpos"       "p_value_none-pTpos"           
 [25] "p_value_none-next_pTpos"       "p_value_none-both"             "p_value_none-next_both"        "p_value_Abpos-next_Abpos"      "p_value_Abpos-pTpos"           "p_value_Abpos-next_pTpos"      "p_value_Abpos-both"            "p_value_Abpos-next_both"       "p_value_next_Abpos-pTpos"      "p_value_next_Abpos-next_pTpos" "p_value_next_Abpos-both"       "p_value_next_Abpos-next_both" 
 [37] "p_value_pTpos-next_pTpos"      "p_value_pTpos-both"            "p_value_pTpos-next_both"       "p_value_next_pTpos-both"       "p_value_next_pTpos-next_both"  "p_value_both-next_both"        "fdr_none-Abpos"                "fdr_none-next_Abpos"           "fdr_none-pTpos"                "fdr_none-next_pTpos"           "fdr_none-both"                 "fdr_none-next_both"           
 [49] "fdr_Abpos-next_Abpos"          "fdr_Abpos-pTpos"               "fdr_Abpos-next_pTpos"          "fdr_Abpos-both"                "fdr_Abpos-next_both"           "fdr_next_Abpos-pTpos"          "fdr_next_Abpos-next_pTpos"     "fdr_next_Abpos-both"           "fdr_next_Abpos-next_both"      "fdr_pTpos-next_pTpos"          "fdr_pTpos-both"                "fdr_pTpos-next_both"          
 [61] "fdr_next_pTpos-both"           "fdr_next_pTpos-next_both"      "fdr_both-next_both"            "ensembl"                       "gene"                         
-     Abpos-next_Abpos      Abpos-next_pTpos            Abpos-both       Abpos-next_both      next_Abpos-pTpos next_Abpos-next_pTpos       next_Abpos-both  next_Abpos-next_both       next_pTpos-both  next_pTpos-next_both        both-next_both            none-Abpos       none-next_Abpos        none-next_both            pTpos-both       none-next_pTpos             none-both           Abpos-pTpos 
-                    0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     1                     1                     1                     1                     2                     3                     3 
-     pTpos-next_pTpos       pTpos-next_both            none-pTpos 
-                    3                     3                     6 
-          n        ratio
-FALSE 20336 0.9998033432
-TRUE      4 0.0001966568
-Sum   20340 1.0000000000
+       none-next_both      Abpos-next_Abpos            Abpos-both       Abpos-next_both       next_Abpos-both  next_Abpos-next_both        both-next_both       none-next_pTpos      Abpos-next_pTpos next_Abpos-next_pTpos       next_pTpos-both  next_pTpos-next_both       none-next_Abpos             none-both            none-Abpos      pTpos-next_pTpos            pTpos-both            none-pTpos 
+                    0                     0                     0                     0                     0                     0                     0                     1                     1                     1                     1                     1                     2                     4                     7                    85                    98                    99 
+      pTpos-next_both      next_Abpos-pTpos           Abpos-pTpos 
+                  107                   486                   563 
+          n       ratio
+FALSE 19138 0.993975278
+TRUE    116 0.006024722
+Sum   19254 1.000000000
   f_stat_noWM p_value_noWM  fdr_noWM noWM_AveExpr         ensembl        gene
-1   0.9880584    0.4457999 0.9359207    0.6515295 ENSG00000243485 MIR1302-2HG
-2   0.5281467    0.7836538 1.0000000    1.1652509 ENSG00000238009  AL627309.1
-3   0.9451227    0.4736494 0.9359207    0.6407770 ENSG00000239945  AL627309.3
-4   0.4796094    0.8196186 1.0000000    1.9572611 ENSG00000241860  AL627309.5
-5   0.6436289    0.6947477 0.9619368    2.9180726 ENSG00000237491   LINC01409
-6   0.9865690    0.4467470 0.9359207    0.6494224 ENSG00000177757      FAM87B
+1   0.8450356    0.5437512 0.7627658     5.494271 ENSG00000243485 MIR1302-2HG
+2   0.9418485    0.4773985 0.7627658     6.086113 ENSG00000238009  AL627309.1
+3   1.3061501    0.2790872 0.6237911     5.481197 ENSG00000239945  AL627309.3
+4   1.8026032    0.1258282 0.5336335     6.878373 ENSG00000241860  AL627309.5
+5   0.9151967    0.4951422 0.7627658     7.874770 ENSG00000237491   LINC01409
+6   1.0434897    0.4136803 0.7237620     5.491718 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-26 15:54:51 EDT"
+[1] "2022-04-26 16:10:21 EDT"
    user  system elapsed 
- 14.365   0.910  17.128 
+ 14.428   0.872  15.659 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -216,4 +216,4 @@ Sum   20340 1.0000000000
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Apr 26 15:54:52 EDT 2022
+Tue Apr 26 16:10:22 EDT 2022

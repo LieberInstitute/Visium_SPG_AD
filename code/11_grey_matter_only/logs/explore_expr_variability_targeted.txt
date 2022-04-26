@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Tue Apr 26 15:50:48 EDT 2022
+Tue Apr 26 16:06:38 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9936060
+Job id: 9936086
 Job name: explore_expr_variability_targeted
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -116,13 +116,13 @@ null device
 Warning messages:
 1: In self$trans$transform(x) : NaNs produced
 2: Transformation introduced infinite values in continuous x-axis 
-3: Removed 15036 rows containing non-finite values (stat_density). 
+3: Removed 12900 rows containing non-finite values (stat_density). 
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-04-26 15:51:45 EDT"
+[1] "2022-04-26 16:07:35 EDT"
    user  system elapsed 
- 47.545   1.597  55.464 
+ 48.068   1.709  55.632 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -234,4 +234,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Apr 26 15:51:49 EDT 2022
+Tue Apr 26 16:07:36 EDT 2022
