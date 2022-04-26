@@ -135,8 +135,9 @@ logcounts(sce_pseudo) <- x
 ## From
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
 rowData(sce_pseudo)$low_expr <- filterByExpr(sce_pseudo)
-summary(rowData(sce_pseudo)$low_expr)
-sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr), ]
+rowData(sce_pseudo)$low_expr_group_sample_id <- filterByExpr(sce_pseudo, group = sce_pseudo$sample_id)
+with(rowData(sce_pseudo), table(low_expr, low_expr_group_sample_id))
+sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr_group_sample_id), ]
 dim(sce_pseudo)
 
 ## Compute PCs
@@ -149,6 +150,11 @@ metadata(sce_pseudo)
 pca_pseudo <- pca$x[, seq_len(20)]
 colnames(pca_pseudo) <- paste0("PC", sprintf("%02d", seq_len(ncol(pca_pseudo))))
 reducedDims(sce_pseudo) <- list(PCA = pca_pseudo)
+
+## Compute some reduced dims
+set.seed(20220423)
+sce_pseudo <- scater::runMDS(sce_pseudo, ncomponents = 20)
+sce_pseudo <- scater::runPCA(sce_pseudo, name = "runPCA")
 
 ## We don't want to model the pathology groups as integers / numeric
 ## so let's double check this

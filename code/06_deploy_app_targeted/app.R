@@ -41,11 +41,6 @@ vars <- colnames(colData(spe))
 path_vars <- vars[grep("^path_", vars)]
 path_vars <- path_vars[!grepl("_colors$", path_vars)]
 
-## Compute some reduced dims
-set.seed(20220423)
-sce_pseudo <- scater::runMDS(sce_pseudo, ncomponents = 20)
-sce_pseudo <- scater::runPCA(sce_pseudo, name = "runPCA")
-
 ## Deploy the website
 spatialLIBD::run_app(
     spe,
