@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 22:06:27 EDT 2022
+Tue Apr 26 15:48:02 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922907
+Job id: 9936058
 Job name: create_pseudobulk_data_targeted
-Hostname: compute-098.cm.cluster
+Hostname: compute-095.cm.cluster
 Task id: undefined
 Unloading conda_R/devel
 Loading conda_R/devel
@@ -122,15 +122,22 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
 Warning message:
 In filterByExpr.DGEList(y, design = design, group = group, lib.size = lib.size,  :
   All samples appear to belong to the same group.
-   Mode   FALSE    TRUE 
-logical   22722     763 
-[1] 22722    48
-2022-04-22 22:08:53 % of variance explained for the top 20 PCs:
+        low_expr_group_sample_id
+low_expr FALSE  TRUE
+   FALSE 21613  1109
+   TRUE      0   763
+[1] 21613    48
+2022-04-26 15:50:28 % of variance explained for the top 20 PCs:
 list()
 $PCA_var_explained
- [1] 36.90  4.24  2.76  2.47  2.45  2.38  2.37  2.32  2.30  2.16  2.05  1.94
-[13]  1.90  1.87  1.83  1.78  1.71  1.66  1.61  1.56
+ [1] 34.90  2.91  2.67  2.49  2.47  2.42  2.38  2.32  2.29  2.26  2.22  2.16
+[13]  2.13  2.07  2.00  1.90  1.80  1.69  1.64  1.57
 
+Warning in (function (A, nv = 5, nu = nv, maxit = 1000, work = nv + 7, reorth = TRUE,  :
+  You're computing too large a percentage of total singular values, use a standard svd instead.
+Warning message:
+In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
+  more singular values/vectors requested than available
 
 > if (!requireNamespace("paletteer", quietly = TRUE)) {
 +     install.packages("paletteer")
@@ -141,9 +148,9 @@ $PCA_var_explained
 +     6:7, 4:5)], c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", 
 +     "both", "next_both"))
 [1] "Reproducibility information:"
-[1] "2022-04-22 22:08:54 EDT"
+[1] "2022-04-26 15:50:31 EDT"
    user  system elapsed 
-134.545   3.125 145.503 
+137.177   4.653 147.055 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -154,13 +161,13 @@ $PCA_var_explained
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-04-22
+ date     2022-04-26
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
  package                * version  date (UTC) lib source
  AnnotationDbi            1.57.1   2021-10-29 [2] Bioconductor
- AnnotationHub            3.3.11   2022-04-08 [2] Bioconductor
+ AnnotationHub            3.3.12   2022-04-22 [2] Bioconductor
  assertthat               0.2.1    2019-03-21 [2] CRAN (R 4.1.0)
  attempt                  0.3.1    2020-05-03 [1] CRAN (R 4.2.0)
  beachmat                 2.11.0   2021-10-26 [2] Bioconductor
@@ -168,7 +175,7 @@ $PCA_var_explained
  benchmarkme              1.0.7    2021-03-21 [1] CRAN (R 4.2.0)
  benchmarkmeData          1.0.4    2020-04-23 [1] CRAN (R 4.2.0)
  Biobase                * 2.55.2   2022-04-07 [1] Bioconductor
- BiocFileCache            2.3.4    2022-01-20 [2] Bioconductor
+ BiocFileCache            2.3.5    2022-04-22 [2] Bioconductor
  BiocGenerics           * 0.41.2   2021-11-15 [2] Bioconductor
  BiocIO                   1.5.0    2021-10-26 [2] Bioconductor
  BiocManager              1.30.17  2022-04-22 [2] CRAN (R 4.2.0)
@@ -184,7 +191,7 @@ $PCA_var_explained
  brio                     1.1.3    2021-11-30 [2] CRAN (R 4.2.0)
  bslib                    0.3.1    2021-10-06 [2] CRAN (R 4.2.0)
  cachem                   1.0.6    2021-08-19 [2] CRAN (R 4.2.0)
- cli                      3.2.0    2022-02-14 [2] CRAN (R 4.2.0)
+ cli                      3.3.0    2022-04-25 [2] CRAN (R 4.2.0)
  codetools                0.2-18   2020-11-04 [3] CRAN (R 4.2.0)
  colorspace               2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
  config                   0.3.1    2020-12-17 [1] CRAN (R 4.2.0)
@@ -253,7 +260,7 @@ $PCA_var_explained
  magick                   2.7.3    2021-08-18 [2] CRAN (R 4.2.0)
  magrittr                 2.0.3    2022-03-30 [2] CRAN (R 4.2.0)
  maps                     3.4.0    2021-09-25 [2] CRAN (R 4.2.0)
- MASS                     7.3-56   2022-03-23 [3] CRAN (R 4.2.0)
+ MASS                     7.3-57   2022-04-22 [3] CRAN (R 4.2.0)
  Matrix                   1.4-1    2022-03-23 [3] CRAN (R 4.2.0)
  MatrixGenerics         * 1.7.0    2021-10-26 [2] Bioconductor
  matrixStats            * 0.62.0   2022-04-19 [2] CRAN (R 4.2.0)
@@ -335,4 +342,4 @@ $PCA_var_explained
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 22:09:00 EDT 2022
+Tue Apr 26 15:50:34 EDT 2022

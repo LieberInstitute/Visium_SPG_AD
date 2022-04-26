@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=15G,h_vmem=15G,h_fsize=100G
+#$ -l bluejay,mem_free=2G,h_vmem=2G,h_fsize=100G
 #$ -N model_pathology_wholegenome
 #$ -o logs/model_pathology_wholegenome.txt
 #$ -e logs/model_pathology_wholegenome.txt

@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 22:09:13 EDT 2022
+Tue Apr 26 15:51:32 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922909
+Job id: 9936068
 Job name: explore_expr_variability_targeted
-Hostname: compute-098.cm.cluster
+Hostname: compute-095.cm.cluster
 Task id: undefined
 Unloading conda_R/devel
 Loading conda_R/devel
@@ -116,13 +116,13 @@ null device
 Warning messages:
 1: In self$trans$transform(x) : NaNs produced
 2: Transformation introduced infinite values in continuous x-axis 
-3: Removed 15036 rows containing non-finite values (stat_density). 
+3: Removed 17664 rows containing non-finite values (stat_density). 
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-04-22 22:10:06 EDT"
+[1] "2022-04-26 15:52:26 EDT"
    user  system elapsed 
- 46.912   1.417  52.059 
+ 46.454   1.319  52.602 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -133,7 +133,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-04-22
+ date     2022-04-26
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -147,7 +147,7 @@ null device
  BiocParallel           1.29.21  2022-04-19 [2] Bioconductor
  BiocSingular           1.11.0   2021-10-26 [2] Bioconductor
  bitops                 1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
- cli                    3.2.0    2022-02-14 [2] CRAN (R 4.2.0)
+ cli                    3.3.0    2022-04-25 [2] CRAN (R 4.2.0)
  colorspace             2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
  cowplot                1.1.1    2020-12-30 [2] CRAN (R 4.2.0)
  crayon                 1.5.1    2022-03-26 [2] CRAN (R 4.2.0)
@@ -234,4 +234,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 22:10:09 EDT 2022
+Tue Apr 26 15:52:27 EDT 2022

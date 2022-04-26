@@ -6,12 +6,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Fri Apr 22 22:10:28 EDT 2022
+Tue Apr 26 15:52:19 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9922910
+Job id: 9936061
 Job name: model_pathology_wholegenome
-Hostname: compute-098.cm.cluster
+Hostname: compute-095.cm.cluster
 Task id: undefined
 Unloading conda_R/devel
 Loading conda_R/devel
@@ -105,24 +105,24 @@ The following object is masked from ‘package:BiocGenerics’:
     plotMA
 
 Loading required package: SpatialExperiment
-2022-04-22 22:10:42 running duplicateCorrelation()
-Detected correlation: 0.0180569455434699
-2022-04-22 22:11:31 running the enrichment model
-2022-04-22 22:11:34 runnign the baseline pairwise model
-2022-04-22 22:11:34 run pairwise models
-2022-04-22 22:11:36 starting the model run
-2022-04-22 22:12:30 correlation: 0.0297627743380233
+2022-04-26 15:52:33 running duplicateCorrelation()
+Detected correlation: 0.00694683508485709
+2022-04-26 15:53:14 running the enrichment model
+2022-04-26 15:53:17 runnign the baseline pairwise model
+2022-04-26 15:53:17 run pairwise models
+2022-04-26 15:53:19 starting the model run
+2022-04-26 15:54:06 correlation: 0.0155531408311019
      noWM_f noWM_p_value  noWM_fdr noWM_AveExpr         ensembl        gene
-1 0.9869124    0.4465161 0.9693482    0.6515295 ENSG00000243485 MIR1302-2HG
-2 0.5380727    0.7761528 1.0000000    1.1652509 ENSG00000238009  AL627309.1
-3 0.8895656    0.5113036 0.9693482    0.6407770 ENSG00000239945  AL627309.3
-4 0.4802442    0.8191612 1.0000000    1.9572611 ENSG00000241860  AL627309.5
-5 0.6432525    0.6950403 0.9812435    2.9180726 ENSG00000237491   LINC01409
-6 0.9827187    0.4491895 0.9693482    0.6494224 ENSG00000177757      FAM87B
+1 0.9880584    0.4457999 0.9359207    0.6515295 ENSG00000243485 MIR1302-2HG
+2 0.5281467    0.7836538 1.0000000    1.1652509 ENSG00000238009  AL627309.1
+3 0.9451227    0.4736494 0.9359207    0.6407770 ENSG00000239945  AL627309.3
+4 0.4796094    0.8196186 1.0000000    1.9572611 ENSG00000241860  AL627309.5
+5 0.6436289    0.6947477 0.9619368    2.9180726 ENSG00000237491   LINC01409
+6 0.9865690    0.4467470 0.9359207    0.6494224 ENSG00000177757      FAM87B
 [1] "Reproducibility information:"
-[1] "2022-04-22 22:12:37 EDT"
+[1] "2022-04-26 15:54:14 EDT"
    user  system elapsed 
-123.569   1.457 127.598 
+106.967   1.481 112.364 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -133,7 +133,7 @@ Detected correlation: 0.0180569455434699
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-04-22
+ date     2022-04-26
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -143,7 +143,7 @@ Detected correlation: 0.0180569455434699
  BiocGenerics         * 0.41.2   2021-11-15 [2] Bioconductor
  BiocParallel           1.29.21  2022-04-19 [2] Bioconductor
  bitops                 1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
- cli                    3.2.0    2022-02-14 [2] CRAN (R 4.2.0)
+ cli                    3.3.0    2022-04-25 [2] CRAN (R 4.2.0)
  colorspace             2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
  DBI                    1.1.2    2021-12-20 [2] CRAN (R 4.2.0)
  DelayedArray           0.21.2   2021-11-16 [2] Bioconductor
@@ -195,4 +195,4 @@ Detected correlation: 0.0180569455434699
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Apr 22 22:12:37 EDT 2022
+Tue Apr 26 15:54:15 EDT 2022
