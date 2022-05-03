@@ -76,6 +76,10 @@ for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
 
+## Drop images we don't really use in the app
+imgData(spe) <- imgData(spe)[
+    !imgData(spe)$image_id %in% c("hires", "detected", "aligned"),
+]
 
 ## Save the final object for the shiny app
 if (suffix == "wholegenome") {
