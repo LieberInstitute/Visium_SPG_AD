@@ -224,11 +224,11 @@ if (check_code) {
 sce_pseudo <- sce_pseudo[rowData(sce_pseudo)$low_expr_group_path_groups, ]
 dim(sce_pseudo)
 
-## Normalize
-x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
-stopifnot(identical(rownames(x), rownames(sce_pseudo)))
 ## Store the log normalized counts on the SingleCellExperiment object
-logcounts(sce_pseudo) <- x
+logcounts(sce_pseudo) <-
+    edgeR::cpm(edgeR::calcNormFactors(sce_pseudo),
+        log = TRUE,
+        prior.count = 1)
 
 if (check_code) {
     sce_path <- logNormCounts(sce_path)

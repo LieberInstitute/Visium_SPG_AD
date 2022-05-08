@@ -103,12 +103,7 @@ if (opt$spetype == "wholegenome") {
 } else {
     spe <- spe[, spe$BayesSpace_harmony_k04 != 4]
 }
-dim(colData(spe))
-
-# > dim(colData(spe))
-# [1] 38115   111
-# # > dim(colData(spe))
-# [1] 21086   111
+dim(spe)
 
 ## > unique(spe$path_groups)
 # [1] "none"      "next_Ab+"  "Ab+"       "both"      "pT+"       "next_both"
@@ -125,6 +120,7 @@ sce_pseudo <- aggregateAcrossCells(
         sample_id = spe$sample_id
     )
 )
+colnames(sce_pseudo) <- paste0(sce_pseudo$sample_id, "_", sce_pseudo$path_groups)
 
 ## Drop combinations that are very low (very few spots were pseudo-bulked)
 ## From
@@ -139,16 +135,14 @@ rowData(sce_pseudo)$low_expr_group_sample_id <- filterByExpr(sce_pseudo, group =
 rowData(sce_pseudo)$low_expr_group_path_groups <- filterByExpr(sce_pseudo, group = sce_pseudo$path_groups)
 with(rowData(sce_pseudo), table(low_expr, low_expr_group_path_groups))
 with(rowData(sce_pseudo), table(low_expr_group_sample_id, low_expr_group_path_groups))
-sce_pseudo <- sce_pseudo[which(!rowData(sce_pseudo)$low_expr_group_path_groups), ]
+sce_pseudo <- sce_pseudo[rowData(sce_pseudo)$low_expr_group_path_groups, ]
 dim(sce_pseudo)
 
-## Normalize
-x <- edgeR::cpm(edgeR::calcNormFactors(sce_pseudo), log = TRUE, prior.count = 1)
-stopifnot(identical(rownames(x), rownames(sce_pseudo)))
-## Fix the column names. DGEList will have samples names as Sample1 Sample2 etc
-dimnames(x) <- dimnames(sce_pseudo)
 ## Store the log normalized counts on the SingleCellExperiment object
-logcounts(sce_pseudo) <- x
+logcounts(sce_pseudo) <-
+    edgeR::cpm(edgeR::calcNormFactors(sce_pseudo),
+        log = TRUE,
+        prior.count = 1)
 
 ## Compute PCs
 ## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
