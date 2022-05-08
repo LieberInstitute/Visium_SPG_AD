@@ -88,6 +88,16 @@ sh 02_explore_expr_variability.sh
 sh 03_model_pathology.sh
 sh 04_parse_model_results.sh
 
+cd ${CODEDIR}/11_grey_matter_only/without_Br3873
+rm logs/create_pseudobulk_data*.txt
+rm logs/explore_expr_variability*.txt
+rm logs/model_pathology*.txt
+rm logs/parse_model_results*.txt
+sh 01_create_pseudobulk_data.sh
+sh 02_explore_expr_variability.sh
+sh 03_model_pathology.sh
+sh 04_parse_model_results.sh
+
 ## Add future steps here
 ## TODO
 

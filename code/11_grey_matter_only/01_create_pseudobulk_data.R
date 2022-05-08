@@ -28,6 +28,7 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
+check_code <- FALSE
 if (FALSE) {
     opt <- list(spetype = "wholegenome")
     check_code <- TRUE
