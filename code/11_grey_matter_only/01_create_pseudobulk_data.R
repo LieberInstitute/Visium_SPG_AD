@@ -122,6 +122,7 @@ sce_pseudo <- aggregateAcrossCells(
         sample_id = spe$sample_id
     )
 )
+colnames(sce_pseudo) <- paste0(sce_pseudo$sample_id, "_", sce_pseudo$path_groups)
 dim(sce_pseudo)
 
 if (check_code) {
@@ -155,7 +156,7 @@ if (check_code) {
     ## Objects are not in the same order
     stopifnot(identical(colnames(umiComb), colnames(sce_path)))
     m_sce <- match(
-        paste0(sce_pseudo$sample_id, "_", sce_pseudo$path_groups),
+        colnames(sce_pseudo),
         colnames(sce_path)
     )
     stopifnot(!any(is.na(m_sce)))

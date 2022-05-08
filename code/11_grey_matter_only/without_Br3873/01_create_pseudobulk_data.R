@@ -121,11 +121,13 @@ sce_pseudo <- aggregateAcrossCells(
     )
 )
 colnames(sce_pseudo) <- paste0(sce_pseudo$sample_id, "_", sce_pseudo$path_groups)
+dim(sce_pseudo)
 
 ## Drop combinations that are very low (very few spots were pseudo-bulked)
 ## From
 ## http://bioconductor.org/books/3.14/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis
 summary(sce_pseudo$ncells)
+table(sce_pseudo$ncells >= 10)
 sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >= 10]
 
 ## From
