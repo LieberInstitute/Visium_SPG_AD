@@ -203,8 +203,8 @@ as.data.frame(colData(sce_pseudo))
 ## From
 ## http://bioconductor.org/books/3.14/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis
 summary(sce_pseudo$ncells)
-table(sce_pseudo$ncells >= 10)
-sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >= 10]
+table(">= 10" = sce_pseudo$ncells >= 10, ">=15" = sce_pseudo$ncells >= 15)
+sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >=15]
 
 ## From
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
