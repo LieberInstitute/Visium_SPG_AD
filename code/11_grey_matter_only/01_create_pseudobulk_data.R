@@ -174,6 +174,31 @@ if (check_code) {
     sce_path <- sce_path[, sce_pseudo$ncells >= 10]
 }
 
+## Add APOe genotype info
+sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
+
+## Simplify the colData()  for the pseudo-bulked data
+colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
+    "age",
+    "sample_id",
+    "path_groups",
+    "subject",
+    "sex",
+    "pmi",
+    "APOe",
+    "race",
+    "diagnosis",
+    "rin",
+    "BCrating",
+    "braak",
+    "cerad",
+    "ncells"
+))]
+
+## Explore the resulting data
+options(width = 400)
+as.data.frame(colData(sce_pseudo))
+
 ## Drop combinations that are very low (very few spots were pseudo-bulked)
 ## From
 ## http://bioconductor.org/books/3.14/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis
@@ -361,9 +386,6 @@ sce_pseudo <- scater::runPCA(sce_pseudo, name = "runPCA")
 ## so let's double check this
 stopifnot(is.factor(sce_pseudo$path_groups))
 
-## Add APOe genotype info
-sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[sce_pseudo$subject]
-
 ## For the spatialLIBD shiny app
 rowData(sce_pseudo)$gene_search <-
     paste0(
@@ -375,23 +397,6 @@ rowData(sce_pseudo)$gene_search <-
 ## Drop things we don't need
 spatialCoords(sce_pseudo) <- NULL
 imgData(sce_pseudo) <- NULL
-
-## Simplify the colData()  for the pseudo-bulked data
-colData(sce_pseudo) <- colData(sce_pseudo)[, sort(c(
-    "age",
-    "sample_id",
-    "path_groups",
-    "subject",
-    "sex",
-    "pmi",
-    "APOe",
-    "race",
-    "diagnosis",
-    "rin",
-    "BCrating",
-    "braak",
-    "cerad"
-))]
 
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
