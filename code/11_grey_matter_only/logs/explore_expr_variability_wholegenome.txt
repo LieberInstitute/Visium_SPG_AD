@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Sun May  8 15:11:00 EDT 2022
+Wed May 18 13:13:48 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9981618
+Job id: 210398
 Job name: explore_expr_variability_wholegenome
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -116,9 +116,9 @@ null device
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2022-05-08 15:11:51 EDT"
+[1] "2022-05-18 13:14:38 EDT"
    user  system elapsed 
- 47.458   1.504  49.782 
+ 46.163   1.432  48.224 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -129,7 +129,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-05-08
+ date     2022-05-18
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -140,7 +140,7 @@ null device
  Biobase              * 2.56.0   2022-04-26 [1] Bioconductor
  BiocGenerics         * 0.42.0   2022-04-26 [2] Bioconductor
  BiocNeighbors          1.14.0   2022-04-26 [2] Bioconductor
- BiocParallel           1.30.0   2022-04-26 [2] Bioconductor
+ BiocParallel           1.30.2   2022-05-15 [2] Bioconductor
  BiocSingular           1.12.0   2022-04-26 [2] Bioconductor
  bitops                 1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
  cli                    3.3.0    2022-04-25 [2] CRAN (R 4.2.0)
@@ -159,7 +159,7 @@ null device
  fansi                  1.0.3    2022-03-24 [2] CRAN (R 4.2.0)
  farver                 2.1.0    2021-02-28 [2] CRAN (R 4.1.0)
  generics               0.1.2    2022-01-31 [2] CRAN (R 4.2.0)
- GenomeInfoDb         * 1.32.0   2022-04-26 [1] Bioconductor
+ GenomeInfoDb         * 1.32.1   2022-04-28 [1] Bioconductor
  GenomeInfoDbData       1.2.8    2022-04-16 [2] Bioconductor
  GenomicRanges        * 1.48.0   2022-04-26 [2] Bioconductor
  getopt               * 1.20.3   2019-03-22 [2] CRAN (R 4.1.0)
@@ -176,7 +176,7 @@ null device
  labeling               0.4.2    2020-10-20 [2] CRAN (R 4.1.0)
  lattice                0.20-45  2021-09-22 [3] CRAN (R 4.2.0)
  lifecycle              1.0.1    2021-09-24 [2] CRAN (R 4.2.0)
- limma                  3.52.0   2022-04-26 [2] Bioconductor
+ limma                  3.52.1   2022-05-15 [2] Bioconductor
  locfit                 1.5-9.5  2022-03-03 [2] CRAN (R 4.2.0)
  magick                 2.7.3    2021-08-18 [2] CRAN (R 4.2.0)
  magrittr               2.0.3    2022-03-30 [2] CRAN (R 4.2.0)
@@ -198,7 +198,7 @@ null device
  rematch2               2.1.2    2020-05-01 [2] CRAN (R 4.1.0)
  rhdf5                  2.40.0   2022-04-26 [2] Bioconductor
  rhdf5filters           1.8.0    2022-04-26 [2] Bioconductor
- Rhdf5lib               1.18.0   2022-04-26 [2] Bioconductor
+ Rhdf5lib               1.18.2   2022-05-15 [2] Bioconductor
  rjson                  0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
  rlang                  1.0.2    2022-03-04 [2] CRAN (R 4.2.0)
  rprojroot              2.0.3    2022-04-02 [2] CRAN (R 4.2.0)
@@ -207,7 +207,7 @@ null device
  ScaledMatrix           1.4.0    2022-04-26 [2] Bioconductor
  scales                 1.2.0    2022-04-13 [2] CRAN (R 4.2.0)
  scater               * 1.24.0   2022-04-26 [2] Bioconductor
- scuttle              * 1.6.0    2022-04-26 [2] Bioconductor
+ scuttle              * 1.6.2    2022-05-15 [2] Bioconductor
  sessioninfo          * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
  SingleCellExperiment * 1.18.0   2022-04-26 [2] Bioconductor
  sparseMatrixStats      1.8.0    2022-04-26 [2] Bioconductor
@@ -230,4 +230,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Sun May  8 15:11:52 EDT 2022
+Wed May 18 13:14:39 EDT 2022

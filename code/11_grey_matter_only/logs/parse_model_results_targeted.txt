@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Sun May  8 15:12:30 EDT 2022
+Wed May 18 13:15:33 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9981623
+Job id: 210403
 Job name: parse_model_results_targeted
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -104,48 +104,49 @@ Loading objects:
 Loading required package: SpatialExperiment
     none            Ab+           next_Ab+          pT+         
  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
- FALSE:2601      FALSE:2591      FALSE:2478      FALSE:2601     
-                 TRUE :10        TRUE :123                      
+ FALSE:2691      FALSE:2398      FALSE:2030      FALSE:2691     
+                 TRUE :293       TRUE :661                      
   next_pT+          both         next_both      
  Mode :logical   Mode :logical   Mode :logical  
- FALSE:2601      FALSE:2601      FALSE:2601     
+ FALSE:2691      FALSE:2691      FALSE:2691     
                                                 
-  t_stat_none t_stat_Ab+ t_stat_next_Ab+ t_stat_pT+ t_stat_next_pT+ t_stat_both t_stat_next_both p_value_none p_value_Ab+ p_value_next_Ab+ p_value_pT+ p_value_next_pT+ p_value_both p_value_next_both  fdr_none   fdr_Ab+ fdr_next_Ab+   fdr_pT+ fdr_next_pT+  fdr_both fdr_next_both         ensembl     gene
-1   0.5939929 -1.5479400     -1.36055482  1.3167247      0.06932243  0.50119537       0.68069029   0.55542948 0.128494810       0.18030358   0.1944705       0.94503399    0.6186274         0.4994838 0.8306943 0.5338898    0.4392338 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000175756 AURKAIP1
-2   1.4214316 -1.8911777     -1.02352608  0.9263883     -0.37665587  0.86343921       0.27619662   0.16194175 0.064912187       0.31142758   0.3590918       0.70816435    0.3923828         0.7836357 0.8252113 0.4123153    0.5684373 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000242485   MRPL20
-3   1.7522048 -0.7030703     -2.64215732  1.1259752      0.49160544  0.07438596      -0.02275291   0.08640855 0.485557744       0.01123022   0.2660314       0.62534017    0.9410263         0.9819459 0.8252113 0.8270699    0.1014272 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000160075    SSU72
-4   0.5162092 -0.8829016     -1.07309973  1.3205910     -0.23138507  0.59878707      -0.01364875   0.60818319 0.381883638       0.28884017   0.1931876       0.81804367    0.5522569         0.9891693 0.8404919 0.7766914    0.5506879 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000078369     GNB1
-5   0.9895975 -1.3004637      0.08523281  0.9868713     -0.52207539  0.73638578      -0.83738615   0.32755246 0.199924596       0.93244729   0.3288818       0.60412744    0.4652407         0.4067105 0.8252113 0.6299761    0.9681818 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000067606    PRKCZ
-6   0.7983488 -2.7395046     -1.66266398  1.1192778      1.96634719  0.19161138       0.50356539   0.42877427 0.008729044       0.10319993   0.2688474       0.05532049    0.8488912         0.6169728 0.8252113 0.1773769    0.3159417 0.7803872    0.9958508 0.9986966     0.9969914 ENSG00000158109   TPRG1L
-[1] 2601   21
+  t_stat_none t_stat_Ab+ t_stat_next_Ab+ t_stat_pT+ t_stat_next_pT+  t_stat_both t_stat_next_both p_value_none p_value_Ab+ p_value_next_Ab+ p_value_pT+ p_value_next_pT+ p_value_both p_value_next_both  fdr_none    fdr_Ab+ fdr_next_Ab+  fdr_pT+ fdr_next_pT+  fdr_both fdr_next_both         ensembl     gene
+1   0.4151387  -2.015187      -1.8079651  1.3693378       1.3334140  0.501968988        0.5813769    0.6801071 0.050166371     0.0776224128   0.1780186       0.18942693    0.6182536         0.5640257 0.9600996 0.17464127  0.169135152 0.749763    0.8009747 0.9839389     0.9454530 ENSG00000175756 AURKAIP1
+2   1.1294862  -2.871830      -1.7367870  0.8838447       0.5599721  0.832916163        1.4314682    0.2649621 0.006312818     0.0895976483   0.3817057       0.57840832    0.4095009         0.1595340 0.9488618 0.05557867  0.187195087 0.749763    0.8027532 0.9839389     0.9454530 ENSG00000242485   MRPL20
+3   1.4640592  -1.378574      -3.8950299  1.1513514       1.7106695 -0.004051298        0.9667068    0.1504596 0.175159357     0.0003384988   0.2559631       0.09435891    0.9967863         0.3391035 0.9488618 0.36119067  0.006155554 0.749763    0.8009747 0.9974781     0.9454530 ENSG00000160075    SSU72
+4   0.3799070  -1.529683      -1.6314125  1.4256115       0.6698471  0.624504048        0.3668388    0.7058868 0.133422168     0.1101201375   0.1612152       0.50654169    0.5356009         0.7155407 0.9600996 0.30765986  0.215671972 0.749763    0.8009747 0.9839389     0.9480355 ENSG00000078369     GNB1
+5   0.8672975  -1.786952      -0.1611729  1.0147451       0.6888469  0.762760311       -1.2975063    0.3905993 0.080998934     0.8727134838   0.3159153       0.49462504    0.4497764         0.2013839 0.9488618 0.23359973  0.911320134 0.749763    0.8009747 0.9839389     0.9454530 ENSG00000067606    PRKCZ
+6   1.0817455  -2.688403      -1.5116694  1.2627061       1.3888873  0.319916467        0.3950839    0.2854024 0.010174154     0.1379462846   0.2135141       0.17202912    0.7505831         0.6947366 0.9488618 0.07281555  0.252698061 0.749763    0.8009747 0.9892306     0.9473721 ENSG00000158109   TPRG1L
+[1] 2691   21
  none-Abpos      none-next_Abpos none-pTpos      none-next_pTpos none-both       none-next_both  Abpos-next_Abpos Abpos-pTpos     Abpos-next_pTpos Abpos-both      Abpos-next_both next_Abpos-pTpos next_Abpos-next_pTpos next_Abpos-both next_Abpos-next_both pTpos-next_pTpos pTpos-both      pTpos-next_both next_pTpos-both next_pTpos-next_both both-next_both 
  Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical    Mode :logical   Mode :logical    Mode :logical   Mode :logical   Mode :logical    Mode :logical         Mode :logical   Mode :logical        Mode :logical    Mode :logical   Mode :logical   Mode :logical   Mode :logical        Mode :logical  
- FALSE:2601      FALSE:2601      FALSE:2601      FALSE:2601      FALSE:2601      FALSE:2601      FALSE:2598       FALSE:2601      FALSE:2601       FALSE:2601      FALSE:2601      FALSE:2601       FALSE:2598            FALSE:2601      FALSE:2601           FALSE:2601       FALSE:2601      FALSE:2601      FALSE:2601      FALSE:2601           FALSE:2601     
-                                                                                                 TRUE :3                                                                                            TRUE :3                                                                                                                                                         
+ FALSE:2678      FALSE:2619      FALSE:2691      FALSE:2691      FALSE:2691      FALSE:2691      FALSE:2646       FALSE:2678      FALSE:2668       FALSE:2676      FALSE:2676      FALSE:2343       FALSE:2474            FALSE:2470      FALSE:2588           FALSE:2691       FALSE:2691      FALSE:2691      FALSE:2691      FALSE:2691           FALSE:2691     
+ TRUE :13        TRUE :72                                                                        TRUE :45         TRUE :13        TRUE :23         TRUE :15        TRUE :15        TRUE :348        TRUE :217             TRUE :221       TRUE :103                                                                                                                 
  [1] "t_stat_none-Abpos"             "t_stat_none-next_Abpos"        "t_stat_none-pTpos"             "t_stat_none-next_pTpos"        "t_stat_none-both"              "t_stat_none-next_both"         "t_stat_Abpos-next_Abpos"       "t_stat_Abpos-pTpos"            "t_stat_Abpos-next_pTpos"       "t_stat_Abpos-both"             "t_stat_Abpos-next_both"        "t_stat_next_Abpos-pTpos"      
 [13] "t_stat_next_Abpos-next_pTpos"  "t_stat_next_Abpos-both"        "t_stat_next_Abpos-next_both"   "t_stat_pTpos-next_pTpos"       "t_stat_pTpos-both"             "t_stat_pTpos-next_both"        "t_stat_next_pTpos-both"        "t_stat_next_pTpos-next_both"   "t_stat_both-next_both"         "p_value_none-Abpos"            "p_value_none-next_Abpos"       "p_value_none-pTpos"           
 [25] "p_value_none-next_pTpos"       "p_value_none-both"             "p_value_none-next_both"        "p_value_Abpos-next_Abpos"      "p_value_Abpos-pTpos"           "p_value_Abpos-next_pTpos"      "p_value_Abpos-both"            "p_value_Abpos-next_both"       "p_value_next_Abpos-pTpos"      "p_value_next_Abpos-next_pTpos" "p_value_next_Abpos-both"       "p_value_next_Abpos-next_both" 
 [37] "p_value_pTpos-next_pTpos"      "p_value_pTpos-both"            "p_value_pTpos-next_both"       "p_value_next_pTpos-both"       "p_value_next_pTpos-next_both"  "p_value_both-next_both"        "fdr_none-Abpos"                "fdr_none-next_Abpos"           "fdr_none-pTpos"                "fdr_none-next_pTpos"           "fdr_none-both"                 "fdr_none-next_both"           
 [49] "fdr_Abpos-next_Abpos"          "fdr_Abpos-pTpos"               "fdr_Abpos-next_pTpos"          "fdr_Abpos-both"                "fdr_Abpos-next_both"           "fdr_next_Abpos-pTpos"          "fdr_next_Abpos-next_pTpos"     "fdr_next_Abpos-both"           "fdr_next_Abpos-next_both"      "fdr_pTpos-next_pTpos"          "fdr_pTpos-both"                "fdr_pTpos-next_both"          
 [61] "fdr_next_pTpos-both"           "fdr_next_pTpos-next_both"      "fdr_both-next_both"            "ensembl"                       "gene"                         
-           none-Abpos       none-next_Abpos            none-pTpos       none-next_pTpos             none-both        none-next_both           Abpos-pTpos      Abpos-next_pTpos            Abpos-both       Abpos-next_both      next_Abpos-pTpos       next_Abpos-both  next_Abpos-next_both      pTpos-next_pTpos            pTpos-both       pTpos-next_both       next_pTpos-both  next_pTpos-next_both 
-                    0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0                     0 
-       both-next_both      Abpos-next_Abpos next_Abpos-next_pTpos 
-                    0                     3                     3 
-         n ratio
-FALSE 2601     1
-Sum   2601     1
+           none-pTpos       none-next_pTpos             none-both        none-next_both      pTpos-next_pTpos            pTpos-both       pTpos-next_both       next_pTpos-both  next_pTpos-next_both        both-next_both            none-Abpos           Abpos-pTpos            Abpos-both       Abpos-next_both      Abpos-next_pTpos      Abpos-next_Abpos       none-next_Abpos  next_Abpos-next_both 
+                    0                     0                     0                     0                     0                     0                     0                     0                     0                     0                    13                    13                    15                    15                    23                    45                    72                   103 
+next_Abpos-next_pTpos       next_Abpos-both      next_Abpos-pTpos 
+                  217                   221                   348 
+         n       ratio
+FALSE 2684 0.997398737
+TRUE     7 0.002601263
+Sum   2691 1.000000000
   f_stat_noWM p_value_noWM  fdr_noWM noWM_AveExpr         ensembl     gene
-1   0.8764323   0.52031693 0.9761928     6.021249 ENSG00000175756 AURKAIP1
-2   1.1935301   0.32835255 0.9761928     5.932349 ENSG00000242485   MRPL20
-3   1.6178856   0.16594420 0.9761928     5.701689 ENSG00000160075    SSU72
-4   0.3944691   0.87842612 0.9817833    11.178898 ENSG00000078369     GNB1
-5   0.6277313   0.70711263 0.9761928     6.060637 ENSG00000067606    PRKCZ
-6   2.2463891   0.05700764 0.9453470     5.956878 ENSG00000158109   TPRG1L
+1   1.5040592  0.201893307 0.5659322     6.028464 ENSG00000175756 AURKAIP1
+2   2.4291107  0.042795626 0.3225855     6.039585 ENSG00000242485   MRPL20
+3   3.5438528  0.006631977 0.1525355     5.792925 ENSG00000160075    SSU72
+4   0.5478393  0.768594784 0.9195421    11.171139 ENSG00000078369     GNB1
+5   0.9233750  0.488663058 0.7879679     6.071006 ENSG00000067606    PRKCZ
+6   2.0854258  0.076650196 0.4054114     5.797702 ENSG00000158109   TPRG1L
 [1] "Reproducibility information:"
-[1] "2022-05-08 15:12:43 EDT"
+[1] "2022-05-18 13:15:46 EDT"
    user  system elapsed 
- 10.920   0.626  12.056 
+ 11.002   0.677  12.040 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -156,7 +157,7 @@ Sum   2601     1
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-05-08
+ date     2022-05-18
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -164,7 +165,7 @@ Sum   2601     1
  beachmat               2.12.0   2022-04-26 [2] Bioconductor
  Biobase              * 2.56.0   2022-04-26 [1] Bioconductor
  BiocGenerics         * 0.42.0   2022-04-26 [2] Bioconductor
- BiocParallel           1.30.0   2022-04-26 [2] Bioconductor
+ BiocParallel           1.30.2   2022-05-15 [2] Bioconductor
  bitops                 1.0-7    2021-04-24 [2] CRAN (R 4.2.0)
  cli                    3.3.0    2022-04-25 [2] CRAN (R 4.2.0)
  colorspace             2.0-3    2022-02-21 [2] CRAN (R 4.2.0)
@@ -174,7 +175,7 @@ Sum   2601     1
  dqrng                  0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils           1.16.0   2022-04-26 [2] Bioconductor
  edgeR                  3.38.0   2022-04-26 [1] Bioconductor
- GenomeInfoDb         * 1.32.0   2022-04-26 [1] Bioconductor
+ GenomeInfoDb         * 1.32.1   2022-04-28 [1] Bioconductor
  GenomeInfoDbData       1.2.8    2022-04-16 [2] Bioconductor
  GenomicRanges        * 1.48.0   2022-04-26 [2] Bioconductor
  getopt               * 1.20.3   2019-03-22 [2] CRAN (R 4.1.0)
@@ -182,7 +183,7 @@ Sum   2601     1
  here                 * 1.0.1    2020-12-13 [1] CRAN (R 4.2.0)
  IRanges              * 2.30.0   2022-04-26 [2] Bioconductor
  lattice                0.20-45  2021-09-22 [3] CRAN (R 4.2.0)
- limma                  3.52.0   2022-04-26 [2] Bioconductor
+ limma                  3.52.1   2022-05-15 [2] Bioconductor
  locfit                 1.5-9.5  2022-03-03 [2] CRAN (R 4.2.0)
  magick                 2.7.3    2021-08-18 [2] CRAN (R 4.2.0)
  magrittr               2.0.3    2022-03-30 [2] CRAN (R 4.2.0)
@@ -196,11 +197,11 @@ Sum   2601     1
  RCurl                  1.98-1.6 2022-02-08 [2] CRAN (R 4.2.0)
  rhdf5                  2.40.0   2022-04-26 [2] Bioconductor
  rhdf5filters           1.8.0    2022-04-26 [2] Bioconductor
- Rhdf5lib               1.18.0   2022-04-26 [2] Bioconductor
+ Rhdf5lib               1.18.2   2022-05-15 [2] Bioconductor
  rjson                  0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
  rprojroot              2.0.3    2022-04-02 [2] CRAN (R 4.2.0)
  S4Vectors            * 0.34.0   2022-04-26 [2] Bioconductor
- scuttle                1.6.0    2022-04-26 [2] Bioconductor
+ scuttle                1.6.2    2022-05-15 [2] Bioconductor
  sessioninfo          * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
  SingleCellExperiment * 1.18.0   2022-04-26 [2] Bioconductor
  sparseMatrixStats      1.8.0    2022-04-26 [2] Bioconductor
@@ -215,4 +216,4 @@ Sum   2601     1
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Sun May  8 15:12:44 EDT 2022
+Wed May 18 13:15:47 EDT 2022

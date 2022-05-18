@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/devel
 **** Job starts ****
-Sun May  8 15:08:15 EDT 2022
+Wed May 18 13:10:59 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 9981616
+Job id: 210396
 Job name: create_pseudobulk_data_wholegenome
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -128,28 +128,77 @@ Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite i
      none       Ab+  next_Ab+       pT+  next_pT+      both next_both 
      3874      1072      2284      8810      3217       727      1102 
 [1] 27853    48
+                                age  APOe BCrating braak cerad diagnosis ncells path_groups  pmi    race rin           sample_id sex subject
+V10A27004_D1_Br3880_none      90.47 E3/E3  Prob AD    B3    C3        AD    205        none 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_none      65.75 E3/E4   Def AD    B3    C3        AD    640        none 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_none      88.78 E3/E3   Def AD    B3    C3        AD    709        none 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_none      90.47 E3/E3  Prob AD    B3    C3        AD    277        none 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_none      65.75 E3/E4   Def AD    B3    C3        AD    376        none 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_none      88.78 E3/E3   Def AD    B3    C3        AD   1448        none 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_none      90.47 E3/E3  Prob AD    B3    C3        AD    219        none 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_Ab+       90.47 E3/E3  Prob AD    B3    C3        AD     45         Ab+ 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_Ab+       65.75 E3/E4   Def AD    B3    C3        AD     49         Ab+ 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_Ab+       88.78 E3/E3   Def AD    B3    C3        AD    581         Ab+ 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_Ab+       90.47 E3/E3  Prob AD    B3    C3        AD     73         Ab+ 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_Ab+       65.75 E3/E4   Def AD    B3    C3        AD     30         Ab+ 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_Ab+       88.78 E3/E3   Def AD    B3    C3        AD    279         Ab+ 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_Ab+       90.47 E3/E3  Prob AD    B3    C3        AD     15         Ab+ 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_next_Ab+  90.47 E3/E3  Prob AD    B3    C3        AD     35    next_Ab+ 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_next_Ab+  65.75 E3/E4   Def AD    B3    C3        AD     55    next_Ab+ 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_next_Ab+  88.78 E3/E3   Def AD    B3    C3        AD   1193    next_Ab+ 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_next_Ab+  90.47 E3/E3  Prob AD    B3    C3        AD     57    next_Ab+ 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_next_Ab+  65.75 E3/E4   Def AD    B3    C3        AD     44    next_Ab+ 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_next_Ab+  88.78 E3/E3   Def AD    B3    C3        AD    883    next_Ab+ 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_next_Ab+  90.47 E3/E3  Prob AD    B3    C3        AD     17    next_Ab+ 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_pT+       90.47 E3/E3  Prob AD    B3    C3        AD   2112         pT+ 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_pT+       65.75 E3/E4   Def AD    B3    C3        AD    709         pT+ 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_pT+       88.78 E3/E3   Def AD    B3    C3        AD      2         pT+ 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_pT+       90.47 E3/E3  Prob AD    B3    C3        AD   1776         pT+ 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_pT+       65.75 E3/E4   Def AD    B3    C3        AD   1757         pT+ 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_pT+       88.78 E3/E3   Def AD    B3    C3        AD      4         pT+ 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_pT+       90.47 E3/E3  Prob AD    B3    C3        AD   2450         pT+ 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_next_pT+  90.47 E3/E3  Prob AD    B3    C3        AD    556    next_pT+ 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_next_pT+  65.75 E3/E4   Def AD    B3    C3        AD    438    next_pT+ 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_next_pT+  88.78 E3/E3   Def AD    B3    C3        AD      3    next_pT+ 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_next_pT+  90.47 E3/E3  Prob AD    B3    C3        AD    666    next_pT+ 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_next_pT+  65.75 E3/E4   Def AD    B3    C3        AD    831    next_pT+ 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_next_pT+  88.78 E3/E3   Def AD    B3    C3        AD     11    next_pT+ 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_next_pT+  90.47 E3/E3  Prob AD    B3    C3        AD    712    next_pT+ 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_both      90.47 E3/E3  Prob AD    B3    C3        AD    173        both 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_both      65.75 E3/E4   Def AD    B3    C3        AD    156        both 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_both      88.78 E3/E3   Def AD    B3    C3        AD      1        both 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_both      90.47 E3/E3  Prob AD    B3    C3        AD    148        both 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_both      65.75 E3/E4   Def AD    B3    C3        AD    132        both 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_D1_Br3880_both      90.47 E3/E3  Prob AD    B3    C3        AD    117        both 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+V10A27004_D1_Br3880_next_both 90.47 E3/E3  Prob AD    B3    C3        AD    216   next_both 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_next_both 65.75 E3/E4   Def AD    B3    C3        AD    309   next_both 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_C1_Br3873_next_both 88.78 E3/E3   Def AD    B3    C3        AD     12   next_both 29.0 EA/CAUC 7.2 V10A27106_C1_Br3873   F  Br3873
+V10A27106_D1_Br3880_next_both 90.47 E3/E3  Prob AD    B3    C3        AD    301   next_both 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_next_both 65.75 E3/E4   Def AD    B3    C3        AD    137   next_both 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_C1_Br3873_next_both 88.78 E3/E3   Def AD    B3    C3        AD      6   next_both 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
+V10T31036_D1_Br3880_next_both 90.47 E3/E3  Prob AD    B3    C3        AD    121   next_both 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    1.00   44.75  189.00  439.29  646.50 2450.00 
-
-FALSE  TRUE 
-    5    43 
+       >=15
+>= 10   FALSE TRUE
+  FALSE     5    0
+  TRUE      2   41
 Warning message:
 In filterByExpr.DGEList(y, design = design, group = group, lib.size = lib.size,  :
   All samples appear to belong to the same group.
         low_expr_group_path_groups
 low_expr FALSE  TRUE
-   FALSE 19254  3790
-   TRUE      0  4809
+   FALSE 19410  3458
+   TRUE      0  4985
                         low_expr_group_path_groups
 low_expr_group_sample_id FALSE  TRUE
-                   FALSE 18771     0
-                   TRUE    483  8599
-[1] 8599   43
-2022-05-08 15:10:53 % of variance explained for the top 20 PCs:
+                   FALSE 18316     0
+                   TRUE   1094  8443
+[1] 8443   41
+2022-05-18 13:13:38 % of variance explained for the top 20 PCs:
 list()
 $PCA_var_explained
- [1] 31.900  9.360  8.320  7.660  7.470  6.270  4.580  3.310  3.070  2.730
-[11]  2.190  1.800  1.400  1.190  1.080  0.974  0.941  0.721  0.691  0.531
+ [1] 29.600 11.600 10.600 10.100  6.170  4.390  4.030  3.600  2.840  2.340  1.810  1.600  1.420  1.260  1.210  0.929  0.898  0.693  0.612  0.490
 
 Warning in (function (A, nv = 5, nu = nv, maxit = 1000, work = nv + 7, reorth = TRUE,  :
   You're computing too large a percentage of total singular values, use a standard svd instead.
@@ -166,9 +215,9 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
 +     6:7, 4:5)], c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", 
 +     "both", "next_both"))
 [1] "Reproducibility information:"
-[1] "2022-05-08 15:10:54 EDT"
+[1] "2022-05-18 13:13:39 EDT"
    user  system elapsed 
-149.626   3.735 157.361 
+148.081   3.810 158.438 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R Under development (unstable) (2021-11-06 r81149)
@@ -179,7 +228,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2022-05-08
+ date     2022-05-18
  pandoc   2.11.0.4 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -198,7 +247,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  BiocIO                   1.6.0    2022-04-26 [2] Bioconductor
  BiocManager              1.30.17  2022-04-22 [2] CRAN (R 4.2.0)
  BiocNeighbors            1.14.0   2022-04-26 [2] Bioconductor
- BiocParallel             1.30.0   2022-04-26 [2] Bioconductor
+ BiocParallel             1.30.2   2022-05-15 [2] Bioconductor
  BiocSingular             1.12.0   2022-04-26 [2] Bioconductor
  BiocVersion              3.15.2   2022-03-29 [2] Bioconductor
  Biostrings               2.64.0   2022-04-26 [2] Bioconductor
@@ -228,7 +277,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  dplyr                    1.0.9    2022-04-28 [2] CRAN (R 4.2.0)
  dqrng                    0.3.0    2021-05-01 [2] CRAN (R 4.2.0)
  DropletUtils             1.16.0   2022-04-26 [2] Bioconductor
- DT                       0.22     2022-03-28 [2] CRAN (R 4.2.0)
+ DT                       0.23     2022-05-10 [2] CRAN (R 4.2.0)
  edgeR                  * 3.38.0   2022-04-26 [1] Bioconductor
  ellipsis                 0.3.2    2021-04-29 [2] CRAN (R 4.2.0)
  ExperimentHub            2.4.0    2022-04-26 [2] Bioconductor
@@ -241,7 +290,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  fs                       1.5.2    2021-12-08 [2] CRAN (R 4.2.0)
  gargle                   1.2.0    2021-07-02 [2] CRAN (R 4.2.0)
  generics                 0.1.2    2022-01-31 [2] CRAN (R 4.2.0)
- GenomeInfoDb           * 1.32.0   2022-04-26 [1] Bioconductor
+ GenomeInfoDb           * 1.32.1   2022-04-28 [1] Bioconductor
  GenomeInfoDbData         1.2.8    2022-04-16 [2] Bioconductor
  GenomicAlignments        1.32.0   2022-04-26 [2] Bioconductor
  GenomicRanges          * 1.48.0   2022-04-26 [2] Bioconductor
@@ -273,7 +322,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  lattice                  0.20-45  2021-09-22 [3] CRAN (R 4.2.0)
  lazyeval                 0.2.2    2019-03-15 [2] CRAN (R 4.1.0)
  lifecycle                1.0.1    2021-09-24 [2] CRAN (R 4.2.0)
- limma                  * 3.52.0   2022-04-26 [2] Bioconductor
+ limma                  * 3.52.1   2022-05-15 [2] Bioconductor
  locfit                   1.5-9.5  2022-03-03 [2] CRAN (R 4.2.0)
  magick                   2.7.3    2021-08-18 [2] CRAN (R 4.2.0)
  magrittr                 2.0.3    2022-03-30 [2] CRAN (R 4.2.0)
@@ -307,10 +356,10 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  restfulr                 0.0.13   2017-08-06 [2] CRAN (R 4.1.0)
  rhdf5                    2.40.0   2022-04-26 [2] Bioconductor
  rhdf5filters             1.8.0    2022-04-26 [2] Bioconductor
- Rhdf5lib                 1.18.0   2022-04-26 [2] Bioconductor
+ Rhdf5lib                 1.18.2   2022-05-15 [2] Bioconductor
  rjson                    0.2.21   2022-01-09 [2] CRAN (R 4.2.0)
  rlang                    1.0.2    2022-03-04 [2] CRAN (R 4.2.0)
- roxygen2                 7.1.2    2021-09-08 [2] CRAN (R 4.2.0)
+ roxygen2                 7.2.0    2022-05-13 [2] CRAN (R 4.2.0)
  rprojroot                2.0.3    2022-04-02 [2] CRAN (R 4.2.0)
  Rsamtools                2.12.0   2022-04-26 [2] Bioconductor
  RSQLite                  2.2.14   2022-05-07 [2] CRAN (R 4.2.0)
@@ -322,16 +371,16 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  ScaledMatrix             1.4.0    2022-04-26 [2] Bioconductor
  scales                   1.2.0    2022-04-13 [2] CRAN (R 4.2.0)
  scater                 * 1.24.0   2022-04-26 [2] Bioconductor
- scuttle                * 1.6.0    2022-04-26 [2] Bioconductor
+ scuttle                * 1.6.2    2022-05-15 [2] Bioconductor
  segmented                1.5-0    2022-04-11 [1] CRAN (R 4.2.0)
  sessioninfo            * 1.2.2    2021-12-06 [2] CRAN (R 4.2.0)
  shiny                    1.7.1    2021-10-02 [2] CRAN (R 4.2.0)
- shinyWidgets             0.6.4    2022-02-06 [2] CRAN (R 4.2.0)
+ shinyWidgets             0.7.0    2022-05-11 [2] CRAN (R 4.2.0)
  SingleCellExperiment   * 1.18.0   2022-04-26 [2] Bioconductor
  spam                     2.8-0    2022-01-06 [2] CRAN (R 4.2.0)
  sparseMatrixStats        1.8.0    2022-04-26 [2] Bioconductor
  SpatialExperiment      * 1.6.0    2022-04-26 [1] Bioconductor
- spatialLIBD            * 1.7.19   2022-04-26 [1] Bioconductor
+ spatialLIBD            * 1.8.2    2022-05-03 [1] Bioconductor
  stringi                  1.7.6    2021-11-29 [2] CRAN (R 4.2.0)
  stringr                  1.4.0    2019-02-10 [2] CRAN (R 4.1.0)
  SummarizedExperiment   * 1.26.1   2022-04-29 [2] Bioconductor
@@ -346,7 +395,7 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
  viridis                  0.6.2    2021-10-13 [2] CRAN (R 4.2.0)
  viridisLite              0.4.0    2021-04-13 [2] CRAN (R 4.2.0)
  withr                    2.5.0    2022-03-03 [2] CRAN (R 4.2.0)
- xfun                     0.30     2022-03-02 [2] CRAN (R 4.2.0)
+ xfun                     0.31     2022-05-10 [2] CRAN (R 4.2.0)
  XML                      3.99-0.9 2022-02-24 [2] CRAN (R 4.2.0)
  xml2                     1.3.3    2021-11-30 [2] CRAN (R 4.2.0)
  xtable                   1.8-4    2019-04-21 [2] CRAN (R 4.1.0)
@@ -360,4 +409,4 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Sun May  8 15:10:56 EDT 2022
+Wed May 18 13:13:40 EDT 2022
