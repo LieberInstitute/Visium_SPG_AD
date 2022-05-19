@@ -96,7 +96,8 @@ create_plots <- function(pathology) {
         ) + guides(colour = guide_legend(override.aes = list(size = 2)))
         plot <- facet(
             plot + theme_bw(base_size = 20) +
-                theme(strip.text.x = element_text(size = 20)),
+                theme(strip.text.x = element_text(size = 20),
+                      panel.spacing.x = unit(7, "mm")),
 
             facet.by = "sample_id",
             short.panel.labs = TRUE
@@ -118,7 +119,8 @@ create_plots <- function(pathology) {
 
         plot <- facet(
             plot + theme_bw(base_size = 20) +
-                theme(strip.text.x = element_text(size = 20)),
+                theme(strip.text.x = element_text(size = 20),
+                      panel.spacing.x = unit(7, "mm")),
             facet.by = "sample_id",
             short.panel.labs = TRUE,
 
