@@ -59,9 +59,9 @@ n_Abeta <- 1
 p_Abeta <- 0.108
 
 path_df <- path_df |> mutate(Abeta_outliers = case_when(
-    NAbeta > n_Abeta & PAbeta > p_Abeta ~ "n and %",
+    NAbeta > n_Abeta & PAbeta > p_Abeta ~ "n and p",
     NAbeta > n_Abeta & PAbeta <= p_Abeta ~ "n",
-    NAbeta <= n_Abeta & PAbeta > p_Abeta ~ "%",
+    NAbeta <= n_Abeta & PAbeta > p_Abeta ~ "p",
     NAbeta <= n_Abeta & PAbeta <= p_Abeta ~ "none"
 ))
 
@@ -69,18 +69,18 @@ n_pTau <- 8
 p_pTau <- 0.0143
 
 path_df <- path_df |> mutate(pTau_outliers = case_when(
-    NpTau > n_pTau & PpTau > p_pTau ~ "n and %",
+    NpTau > n_pTau & PpTau > p_pTau ~ "n and p",
     NpTau > n_pTau & PpTau <= p_pTau ~ "n",
-    NpTau <= n_pTau & PpTau > p_pTau ~ "%",
+    NpTau <= n_pTau & PpTau > p_pTau ~ "p",
     NpTau <= n_pTau & PpTau <= p_pTau ~ "none"
 ))
 
 path_df$diagnosis <- factor(path_df$diagnosis, levels = c("Control", "AD"))
 path_df$Abeta_outliers <- factor(path_df$Abeta_outliers,
-    levels = c("n", "%", "n and %", "none")
+    levels = c("n", "p", "n and p", "none")
 )
 path_df$pTau_outliers <- factor(path_df$pTau_outliers,
-    levels = c("n", "%", "n and %", "none")
+    levels = c("n", "p", "n and p", "none")
 )
 
 
@@ -99,8 +99,8 @@ create_plots <- function(pathology) {
             x = "NAbeta", y = "PAbeta",
             color = "Abeta_outliers", size = 0.5,
             xlab = "Number of Abeta per spot (n)",
-            ylab = "Percentage of Abeta per spot (%)"
-        )
+            ylab = "Proportion of Abeta per spot (p)"
+        ) + guides(colour = guide_legend(override.aes = list(size=2)))
         plot <- facet(plot + theme_bw(base_size = 20)+
                           theme(strip.text.x = element_text(size = 20)),
 
@@ -118,8 +118,8 @@ create_plots <- function(pathology) {
             x = "NpTau", y = "PpTau",
             color = "pTau_outliers", size = 0.5,
             xlab = "Number of pTau per spot (n)",
-            ylab = "Percentage of pTau per spot (%)"
-        )
+            ylab = "Proportion of pTau per spot (p)"
+        ) + guides(colour = guide_legend(override.aes = list(size=2)))
 
         plot <- facet(plot + theme_bw(base_size = 20) +
                           theme(strip.text.x = element_text(size = 20)),
