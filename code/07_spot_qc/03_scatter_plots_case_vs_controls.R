@@ -15,6 +15,7 @@ library("ggplot2")
 library("dplyr")
 library("spatialLIBD")
 library("sessioninfo")
+library("colorblindr") # remotes::install_github("clauswilke/colorblindr")
 library("getopt")
 
 
@@ -87,7 +88,10 @@ path_df$pTau_outliers <- factor(path_df$pTau_outliers,
 ## Create scatter plots to view outlier information
 create_plots <- function(pathology) {
     # pathology can be 'Abeta' or 'pTau'
-    colors_hex <- c("#00AFBB", "#E7B800", "#FC4E07", "#CC79A7")
+    colors_hex <- c("#E69F00", "#56B4E9", "#D55E00", "#999999")
+    #palette.colors(NULL, "Okabe-Ito")
+    #the colorblindr packages suggests using colors from the Okabe-Ito palette
+    #for colorblind-friendliness.
 
 
     if (pathology == "Abeta") {
@@ -134,12 +138,14 @@ create_plots <- function(pathology) {
 }
 
 
-
 for (path in c("Abeta", "pTau")) {
     pdf(file.path(dir_plots, paste0("case_vs_control_", path, "_", "scatter", ".pdf")), width = 14)
     print(create_plots(path))
     dev.off()
 }
+
+
+
 
 
 ## Reproducibility information
