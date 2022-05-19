@@ -91,8 +91,8 @@ create_plots <- function(pathology) {
             y = "PAbeta",
             color = "Abeta_outliers",
             size = 0.5,
-            xlab = "Number of Abeta per spot (n)",
-            ylab = "Proportion of Abeta per spot (p)"
+            xlab = expression(paste("Number of A", beta , " per spot (n)")),
+            ylab = expression(paste("Proportion of A", beta , " per spot (p)"))
         ) + guides(colour = guide_legend(override.aes = list(size = 2)))
         plot <- facet(
             plot + theme_bw(base_size = 20) +
