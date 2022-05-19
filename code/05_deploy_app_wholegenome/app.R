@@ -27,6 +27,13 @@ if(local) {
 load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"), verbose = TRUE)
 sce_pseudo <- readRDS(file.path(dir_rdata, "sce_pseudo_pathology_wholegenome.rds"))
 
+## Fix column names
+colnames(modeling_results$pairwise) <- gsub(
+    "pos",
+    "+",
+    colnames(modeling_results$pairwise)
+)
+
 ## For sig_genes_extract_all() to work
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
 sig_genes <- sig_genes_extract_all(
