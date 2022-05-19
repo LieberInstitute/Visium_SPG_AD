@@ -97,7 +97,9 @@ create_plots <- function(pathology) {
             xlab = "Number of Abeta per spot (n)",
             ylab = "Percentage of Abeta per spot (%)"
         )
-        plot <- facet(plot + theme_bw(),
+        plot <- facet(plot + theme_bw(base_size = 20)+
+                          theme(strip.text.x = element_text(size = 20)),
+
             facet.by = "diagnosis",
             short.panel.labs = TRUE
         )
@@ -115,9 +117,11 @@ create_plots <- function(pathology) {
             ylab = "Percentage of pTau per spot (%)"
         )
 
-        plot <- facet(plot + theme_bw(),
+        plot <- facet(plot + theme_bw(base_size = 20) +
+                          theme(strip.text.x = element_text(size = 20)),
             facet.by = "diagnosis",
-            short.panel.labs = TRUE
+            short.panel.labs = TRUE,
+
         )
 
         plot <- plot + scale_color_manual(
