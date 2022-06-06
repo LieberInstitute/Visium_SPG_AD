@@ -4,7 +4,16 @@ library('here')
 library('readxl')
 library('SpatialExperiment')
 library('spatialLIBD')
-library('ggplot2')
+library('ggpubr')
+library('dplyr')
+
+
+#### create output directory ####
+dir.create(here::here("plots","13_tge_panel"),
+           showWarnings = FALSE,
+           recursive =TRUE )
+dir_plots <- here::here("plots","13_tge_panel")
+
 
 ####load data####
 ##load tge data
@@ -43,7 +52,7 @@ m_wholegenome <-  m_wholegenome[!is.na(m_wholegenome)]
 
 total_wholegenome <- colSums(counts(spe_wholegenome))
 total_tge_wholgenome <- colSums(counts(spe_wholegenome[m_wholegenome, ]))
-percent_wholegenome <- total_tge / total * 100
+percent_wholegenome <- total_tge_wholgenome / total * 100
 
 
 #### match tge genes to spe targeted rowdata####
@@ -53,11 +62,31 @@ m_targeted <-  m_targeted[!is.na(m_targeted)]
 
 total_targeted <- colSums(counts(spe_targeted))
 total_tge_targeted<- colSums(counts(spe_targeted[m_targeted, ]))
-percent_targeted <- total_tge / total * 100
+percent_targeted <- total_tge_targeted/ total * 100
 
-#### join percent columns to colData####
+#### add percent columns to colData and create dfs. ####
 spe_wholegenome$percent_tge <- percent_wholegenome
 spe_targeted$percent_tge <- percent_targeted
+
+#check if row names of both vectors follow same order
+#identical(rownames(colData(spe_wholegenome)),
+#         rownames(colData(spe_targeted)))
+#TRUE
+
+df<- tibble(sample_id =spe_wholegenome$sample_id_short,
+                percent_wholegenome =spe_wholegenome$percent_tge,
+               percent_targeted =spe_targeted$percent_tge)
+
+df<- df |> group_by(sample_id) |> summarize(across(everything(), mean))
+
+
+#### create plots and save pdf####
+pdf(file.path(dir_plots, paste0("percent_reads_assigned.pdf")), width = 14)
+
+ggplot()
+
+
+dev.off()
 
 
 
