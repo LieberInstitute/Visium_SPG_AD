@@ -1,6 +1,7 @@
 library("spatialLIBD")
 library("scater") ## to compute some reduced dimensions
 library("dplyr")
+library("tidyr")
 
 #### Load the data ####
 
@@ -20,14 +21,22 @@ colnames(modeling_results$enrichment) <- gsub(
     colnames(modeling_results$enrichment)
 )
 
-## For sig_genes_extract_all() to work
-sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
-sig_genes <- sig_genes_extract_all(
-    n = nrow(sce_pseudo),
-    modeling_results = modeling_results,
-    sce_layer = sce_pseudo
+
+#### extract gene name, pvalues ####
+pvalues <- as_tibble(modeling_results$enrichment) |>
+    select(starts_with('p_val') |
+    contains('gene'))
+
+colnames(pvalues) <- gsub(
+    "p_value_",
+    "",
+    colnames(pvalues)
 )
 
-enrichment_results <- modeling_results$enrichment
+#### apply pivot longer ####
+pvalues <- pvalues|>
+    pivot_longer(!gene, names_to = "pathology_type",
+                 values_to = "pvalue")
+
 
 
