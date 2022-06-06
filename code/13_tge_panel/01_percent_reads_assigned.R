@@ -83,7 +83,13 @@ df<- df |> group_by(sample_id) |> summarize(across(everything(), mean))
 #### create plots and save pdf####
 pdf(file.path(dir_plots, paste0("percent_reads_assigned.pdf")), width = 14)
 
-ggplot()
+ggpaired(df,
+         cond1 ="percent_targeted",
+         cond2 = "percent_wholegenome",
+         line.color = "gray", line.size = 0.4,
+         palette = "npg",
+         xlab = "spe type",
+         ylab = "mean percent tge reads per sample")
 
 
 dev.off()
