@@ -87,9 +87,11 @@ ggpaired(df,
          cond1 ="percent_targeted",
          cond2 = "percent_wholegenome",
          line.color = "gray", line.size = 0.4,
-         palette = "npg",
          xlab = "spe type",
-         ylab = "mean percent tge reads per sample")
+         ylab = "mean percent tge reads per sample",
+         label = "sample_id",
+         add = "jitter",
+         repel = TRUE, font.label = list(size = 5))
 
 
 dev.off()
