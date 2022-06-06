@@ -41,9 +41,9 @@ spe_targeted <-
 m_wholegenome <- match(tge_data$gene_name, rowData(spe_wholegenome)$gene_name)
 m_wholegenome <-  m_wholegenome[!is.na(m_wholegenome)]
 
-total <- colSums(counts(spe_wholegenome))
-total_tge <- colSums(counts(spe_wholegenome[m_wholegenome, ]))
-percent <- total_tge / total * 100
+total_wholegenome <- colSums(counts(spe_wholegenome))
+total_tge_wholgenome <- colSums(counts(spe_wholegenome[m_wholegenome, ]))
+percent_wholegenome <- total_tge / total * 100
 
 
 #### match tge genes to spe targeted rowdata####
@@ -51,6 +51,13 @@ percent <- total_tge / total * 100
 m_targeted <- match(tge_data$gene_name, rowData(spe_targeted)$gene_name)
 m_targeted <-  m_targeted[!is.na(m_targeted)]
 
-total <- colSums(counts(spe_targeted))
-total_tge <- colSums(counts(spe_targeted[m_targeted, ]))
-percent <- total_tge / total * 100
+total_targeted <- colSums(counts(spe_targeted))
+total_tge_targeted<- colSums(counts(spe_targeted[m_targeted, ]))
+percent_targeted <- total_tge / total * 100
+
+#### join percent columns to colData####
+spe_wholegenome$percent_tge <- percent_wholegenome
+spe_targeted$percent_tge <- percent_targeted
+
+
+
