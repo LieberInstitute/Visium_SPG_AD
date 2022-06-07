@@ -1,4 +1,4 @@
-pathology_type	gene
+Set	Gene
 Ab	DHRS11
 Ab	GASK1B
 Ab	PSMC4
