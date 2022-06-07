@@ -1,9 +1,11 @@
+
+## load library
 library("spatialLIBD")
 library("scater") ## to compute some reduced dimensions
 library("dplyr")
 library("tidyr")
 
-#### Load the data ####
+##Load the data
 
 dir_rdata <- here::here(
         "processed-data",
@@ -14,15 +16,15 @@ dir_rdata <- here::here(
 load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"), verbose = TRUE)
 sce_pseudo <- readRDS(file.path(dir_rdata, "sce_pseudo_pathology_wholegenome.rds"))
 
-#### Fix column names ####
+## Fix column names
 colnames(modeling_results$enrichment) <- gsub(
     "pos",
-    "+",
+    "",
     colnames(modeling_results$enrichment)
 )
 
 
-#### extract gene name, pvalues ####
+## extract gene name, pvalues
 pvalues <- as_tibble(modeling_results$enrichment) |>
     select(starts_with('p_val') |
     contains('gene'))
@@ -33,10 +35,22 @@ colnames(pvalues) <- gsub(
     colnames(pvalues)
 )
 
-#### apply pivot longer ####
+## apply pivot longer
 pvalues <- pvalues|>
     pivot_longer(!gene, names_to = "pathology_type",
                  values_to = "pvalue")
 
+## group by pathology and filter top 100 smallest values
+pvalue_top_100 <- pvalues |>
+    arrange(pvalue) |>
+    group_by(pathology_type) |>
+    slice(1:100)
+
+##rearrange and drop p-value column
+pvalue_top_100 <- pvalue_top_100[, c(2,1)]
 
 
+## write out
+write.table(pvalue_top_100, file=here::here("code","magma",
+                                      "pvalues_top_100.txt"), sep="\t",
+            row.names=F, col.names=T, quote=F)
