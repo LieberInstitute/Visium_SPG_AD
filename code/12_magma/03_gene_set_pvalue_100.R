@@ -48,6 +48,8 @@ pvalue_top_100 <- pvalues |>
 ##rearrange and drop p-value column
 pvalue_top_100 <- pvalue_top_100[, c(2,1)]
 
+##rename columns as Set and Gene
+colnames(pvalue_top_100) <- c("Set", "Gene")
 
 ## write out
 write.table(pvalue_top_100, file=here::here("code","12_magma",
