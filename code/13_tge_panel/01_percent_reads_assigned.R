@@ -1,3 +1,13 @@
+# library('sgejobs')
+# sgejobs::job_single(
+#     "01_percent_reads_assigned",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "10G",
+#     command = "Rscript 01_percent_reads_assigned.R",
+#     create_logdir = TRUE
+# )
+
 
 ####load relevant libraries####
 library('here')
