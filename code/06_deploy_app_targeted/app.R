@@ -1,7 +1,6 @@
 library("spatialLIBD")
 library("markdown") ## Hm... to avoid this error
 # 2021-11-11T05:30:50.218127+00:00 shinyapps[5096402]: Warning: Error in loadNamespace: there is no package called ‘markdown’
-library("scater") ## to compute some reduced dimensions
 
 ## spatialLIBD uses golem
 options("golem.app.prod" = TRUE)
@@ -45,17 +44,17 @@ sig_genes <- sig_genes_extract_all(
 ## Extract FDR < 5%
 ## From
 ## https://github.com/LieberInstitute/brainseq_phase2/blob/be2b7f972bb2a0ede320633bf06abe1d4ef2c067/supp_tabs/create_supp_tables.R#L173-L181
-fix_csv <- function(df) {
-    for (i in seq_len(ncol(df))) {
-        if (any(grepl(",", df[, i]))) {
-            message(paste(Sys.time(), "fixing column", colnames(df)[i]))
-            df[, i] <- gsub(",", ";", df[, i])
-        }
-    }
-    return(df)
-}
-z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
-write.csv(z, file.path(dir_rdata, "Visium_IF_AD_targeted_model_results_FDR5perc.csv"))
+# fix_csv <- function(df) {
+#     for (i in seq_len(ncol(df))) {
+#         if (any(grepl(",", df[, i]))) {
+#             message(paste(Sys.time(), "fixing column", colnames(df)[i]))
+#             df[, i] <- gsub(",", ";", df[, i])
+#         }
+#     }
+#     return(df)
+# }
+# z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
+# write.csv(z, file.path(dir_rdata, "Visium_IF_AD_targeted_model_results_FDR5perc.csv"))
 
 vars <- colnames(colData(spe))
 path_vars <- vars[grep("^path_", vars)]
