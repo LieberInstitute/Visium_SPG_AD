@@ -23,11 +23,19 @@ BFILE=/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesse
 
 setcol=1
 genecol=2
+<<<<<<< HEAD
 gs_ad=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt
 SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/GWAS_Results/AD_sumstats_Jansenetal_2019sept.txt
 
 
 echo "MNT comment 29May2022: just run steps 1-2 to confirm concordance b/tw GWAS SNP and reference SNP IDs"
+=======
+gs_ad=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_100.txt
+SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/GWAS_Results/AD_sumstats_Jansenetal_2019sept.txt
+
+
+#echo "MNT comment 29May2022: just run steps 1-2 to confirm concordance b/tw GWAS SNP and reference SNP IDs"
+>>>>>>> 688abd933e142b03c8e937c6ccce53c75088a983
 
 ## Step 1 - Annotation (SNP : gene mapping)
 # magma --annotate window=35,10 --snp-loc ./GWAS_Results/Alzheimers_PGC-IGAP-ADSP-UKB_2019.snploc --gene-loc $ANNO --out SNP_Data/AD_Jansen2019_LC
@@ -37,7 +45,12 @@ echo "MNT comment 29May2022: just run steps 1-2 to confirm concordance b/tw GWAS
 
 
 ## Step 3 - Gene set analyses (using gene-level output)
+<<<<<<< HEAD
 magma --gene-results SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_ad gene-col=${genecol} set-col=${setcol} --out Results/lc_Alzheimers
+=======
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_ad gene-col=${genecol} set-col=${setcol} --out code/magma/ad_gwas
+
+>>>>>>> 688abd933e142b03c8e937c6ccce53c75088a983
 
 echo "**** Job ends ****"
 date

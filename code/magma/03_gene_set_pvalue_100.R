@@ -19,7 +19,11 @@ load(file.path(dir_rdata,
 ## extract gene name, pvalues
 pvalues <- as_tibble(modeling_results$enrichment) |>
     select(starts_with('p_val') |
+<<<<<<< HEAD
     contains('gene'))
+=======
+    contains('ensembl'))
+>>>>>>> 688abd933e142b03c8e937c6ccce53c75088a983
 
 ##fix column names
 colnames(pvalues) <- gsub(
@@ -36,7 +40,11 @@ colnames(pvalues) <- gsub(
 
 ## apply pivot longer
 pvalues <- pvalues|>
+<<<<<<< HEAD
     pivot_longer(!gene, names_to = "pathology_type",
+=======
+    pivot_longer(!ensembl, names_to = "pathology_type",
+>>>>>>> 688abd933e142b03c8e937c6ccce53c75088a983
                  values_to = "pvalue")
 
 ## group by pathology and filter top 100 smallest values
@@ -52,6 +60,10 @@ pvalue_top_100 <- pvalue_top_100[, c(2,1)]
 colnames(pvalue_top_100) <- c("Set", "Gene")
 
 ## write out
+<<<<<<< HEAD
 write.table(pvalue_top_100, file=here::here("code","12_magma",
+=======
+write.table(pvalue_top_100, file=here::here("code","magma",
+>>>>>>> 688abd933e142b03c8e937c6ccce53c75088a983
                                       "pvalues_top_100.txt"), sep="\t",
             row.names=F, col.names=T, quote=F)
