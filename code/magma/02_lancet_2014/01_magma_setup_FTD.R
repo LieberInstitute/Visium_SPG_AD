@@ -1,6 +1,16 @@
 # GWAS for FTD () ===
 
 library(sgejobs)
+sgejobs::job_single(
+    "01_magma_setup_FTD",
+    create_shell = TRUE,
+    queue = "bluejay",
+    memory = "20G",
+    command = "Rscript 01_percent_reads_assigned.R",
+    create_logdir = TRUE
+)
+
+
 library(rtracklayer)
 library(GenomicRanges)
 library(dplyr)
@@ -86,15 +96,15 @@ dim(sumStats.FTD.keep)
 (nrow(sumStats.FTD.keep) / nrow(sumStats.FTD)) * 100
 
 snploc.FTD <- sumStats.FTD.keep[ ,c("rsID", "chr", "Bp")]
-write.table(snploc.FTD, file=here("code","magma","GWAS_Results","FTD_Lancet2014.snploc"),
+write.table(snploc.FTD, file=here("code","magma","02_lancet_2014","FTD_Lancet2014.snploc"),
             sep="\t", col.names=T, row.names=F, quote=F)
 
 ## Create an 'Neff' using METAL's recommended computation for meta-GWAS (https://doi.org/10.1093/bioinformatics/btq340)
 #      instead of sum(N_cases, N_controls)
-sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
+#sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
 
 # Save
-write.table(sumStats.FTD.keep, file=here("code","magma","GWAS_Results",
+write.table(sumStats.FTD.keep, file=here("code","magma","02_lancet_2014",
                                         "FTD-IFGC-and-rsID-ADDED.tab"),
             sep="\t", col.names=T, row.names=F, quote=F)
 
