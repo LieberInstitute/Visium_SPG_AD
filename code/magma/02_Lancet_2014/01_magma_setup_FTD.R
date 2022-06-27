@@ -23,7 +23,7 @@ library(here)
 #BiocManager::install("SNPlocs.Hsapiens.dbSNP144.GRCh37")
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 #BiocManager::install("SNPlocs.Hsapiens.dbSNP151.GRCh38")
-library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
+#library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
 here()
 
 #sumStats.FTD <- read.table(here("raw-data","magma_GWAS_files","FTD_GWAS_META.txt"), header=T)
@@ -44,22 +44,22 @@ unique(sumStats.FTD$chr)  # 1:22
 snps <- SNPlocs.Hsapiens.dbSNP144.GRCh37
 snpcount(snps)
 
-snps_38 <- SNPlocs.Hsapiens.dbSNP151.GRCh38
-snpcount(snps_38)
+# snps_38 <- SNPlocs.Hsapiens.dbSNP151.GRCh38
+# snpcount(snps_38)
 # Try it with the smallest autosome:
-chr21_snps_38 <- snpsBySeqname(snps_38, "21")
-class(chr21_snps_38)
-head(chr21_snps_38)
+chr21_snps <- snpsBySeqname(snps, "21")
+class(chr21_snps)
+head(chr21_snps)
 
-chr21_snps_38 <- as.data.frame(chr21_snps_38)
-chr21_snps_38$chr.bp <- paste0("chr",chr21_snps_38$seqnames,":",chr21_snps_38$pos)
+chr21_snps <- as.data.frame(chr21_snps)
+chr21_snps$chr.bp <- paste0("chr",chr21_snps$seqnames,":",chr21_snps$pos)
 
 table(sumStats.FTD$chr == "21")
 
 sumStats.FTD.chr21 <- sumStats.FTD[sumStats.FTD$chr=="21", ]
 
 
-table(sumStats.FTD.chr21$marker %in% chr21_snps_38$chr.bp)
+table(sumStats.FTD.chr21$marker %in% chr21_snps$chr.bp)
 # FALSE  TRUE
 # 70014 15597
 
@@ -109,3 +109,11 @@ write.table(sumStats.FTD.keep, file=here("code","magma","02_lancet_2014",
             sep="\t", col.names=T, row.names=F, quote=F)
 
 rm(list=ls(pattern=".PD"))
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
+
