@@ -1,14 +1,14 @@
 # GWAS for FTD () ===
 
-library(sgejobs)
-sgejobs::job_single(
-    "01_magma_setup_FTD",
-    create_shell = TRUE,
-    queue = "bluejay",
-    memory = "20G",
-    command = "Rscript 01_percent_reads_assigned.R",
-    create_logdir = TRUE
-)
+# library(sgejobs)
+# sgejobs::job_single(
+#     "01_magma_setup_FTD",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 01_percent_reads_assigned.R",
+#     create_logdir = TRUE
+# )
 
 
 library(rtracklayer)
