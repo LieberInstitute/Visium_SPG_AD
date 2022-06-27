@@ -1,0 +1,38 @@
+Welcome to MAGMA v1.10 (linux/s)
+Using flags:
+	--gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_50.txt gene-col=2 set-col=1
+	--out code/magma/01_Jansen_2019/ad_gwas_50
+
+Start time is 12:00:09, Thursday 23 Jun 2022
+
+Reading file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw... 
+	30917 genes read from file
+Loading gene-set annotation...
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_50.txt... 
+	detected 2 variables in file
+	using variable: variable 2 (gene ID)
+	using variable: variable 1 (set ID)
+	WARNING: gene set Set contains no genes defined in genotype data
+	8 gene-set definitions read from file
+	found 7 gene sets containing genes defined in genotype data (containing a total of 314 unique genes)
+Preparing variables for analysis...
+	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
+	truncating covariate values more than 5 standard deviations from the mean
+	total variables available for analysis: 7 gene sets
+
+Parsing model specifications...
+Inverting gene-gene correlation matrix...
+Performing regression analysis...
+	testing direction: one-sided, positive (sets), two-sided (covar)
+	conditioning on internal variables:
+		gene size, log(gene size)
+		gene density, log(gene density)
+		sample size, log(sample size)
+		inverse mac, log(inverse mac)
+	analysing individual variables
+
+	analysing single-variable models (number of models: 7)
+	writing results to file code/magma/01_Jansen_2019/ad_gwas_50.gsa.out
+
+End time is 12:01:39, Thursday 23 Jun 2022 (elapsed: 00:01:30)
