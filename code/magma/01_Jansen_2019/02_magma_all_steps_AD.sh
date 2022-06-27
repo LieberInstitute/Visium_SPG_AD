@@ -24,8 +24,9 @@ BFILE=/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesse
 setcol=1
 genecol=2
 
-gs_ad=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_100.txt
+gs_ad=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt
 SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/GWAS_Results/AD_sumstats_Jansenetal_2019sept.txt
+##
 
 ## Step 1 - Annotation (SNP : gene mapping)
 # magma --annotate window=35,10 --snp-loc ./GWAS_Results/Alzheimers_PGC-IGAP-ADSP-UKB_2019.snploc --gene-loc $ANNO --out SNP_Data/AD_Jansen2019_LC
@@ -35,7 +36,8 @@ SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/GWAS_Resu
 
 
 ## Step 3 - Gene set analyses (using gene-level output)
-magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_ad gene-col=${genecol} set-col=${setcol} --out code/magma/ad_gwas
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_ad gene-col=${genecol} set-col=${setcol} --out code/magma/01_Jansen_2019/ad_gwas_200
+#magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/PD_Nalls2019_LC_snp-wise.genes.raw --set-annot $gs_ad gene-col=${genecol} set-col=${setcol} --out code/magma/03_Nalls_2019/pd_gwas_200
 
 
 echo "**** Job ends ****"
