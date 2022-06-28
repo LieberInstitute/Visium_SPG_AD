@@ -95,6 +95,20 @@ for(i in seqnames(snps)){
 dim(sumStats.FTD.keep)
 (nrow(sumStats.FTD.keep) / nrow(sumStats.FTD)) * 100
 
+
+n_case = 2532
+n_control =  4308
+#n_eff = 4/(1/Ncases+1/Nctrls)
+n_effective = 4/(1/n_case + 1/n_control)
+sumStats.FTD.keep$N_effective = rep(n_effective,nrow(sumStats.FTD.keep))
+
+# Save
+write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
+                                         "FTD-IFGC-and-rsID-ADDED.tab"),
+            append = FALSE,
+            sep="\t", col.names=T, row.names=F, quote=F)
+
+
 snploc.FTD <- sumStats.FTD.keep[ ,c("rsID", "chr", "Bp")]
 write.table(snploc.FTD, file=here("code","magma","02_Lancet_2014","FTD_Lancet2014.snploc"),
             append =FALSE,
@@ -104,13 +118,9 @@ write.table(snploc.FTD, file=here("code","magma","02_Lancet_2014","FTD_Lancet201
 #      instead of sum(N_cases, N_controls)
 #sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
 
-# Save
-write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
-                                        "FTD-IFGC-and-rsID-ADDED.tab"),
-            append = FALSE,
-            sep="\t", col.names=T, row.names=F, quote=F)
 
-rm(list=ls(pattern=".PD"))
+
+rm(list=ls(pattern=".FTD"))
 
 ## Reproducibility information
 print("Reproducibility information:")
