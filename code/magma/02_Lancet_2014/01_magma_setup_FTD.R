@@ -96,7 +96,8 @@ dim(sumStats.FTD.keep)
 (nrow(sumStats.FTD.keep) / nrow(sumStats.FTD)) * 100
 
 snploc.FTD <- sumStats.FTD.keep[ ,c("rsID", "chr", "Bp")]
-write.table(snploc.FTD, file=here("code","magma","02_lancet_2014","FTD_Lancet2014.snploc"),
+write.table(snploc.FTD, file=here("code","magma","02_Lancet_2014","FTD_Lancet2014.snploc"),
+            append =FALSE,
             sep="\t", col.names=T, row.names=F, quote=F)
 
 ## Create an 'Neff' using METAL's recommended computation for meta-GWAS (https://doi.org/10.1093/bioinformatics/btq340)
@@ -104,8 +105,9 @@ write.table(snploc.FTD, file=here("code","magma","02_lancet_2014","FTD_Lancet201
 #sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
 
 # Save
-write.table(sumStats.FTD.keep, file=here("code","magma","02_lancet_2014",
+write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
                                         "FTD-IFGC-and-rsID-ADDED.tab"),
+            append = FALSE,
             sep="\t", col.names=T, row.names=F, quote=F)
 
 rm(list=ls(pattern=".PD"))
