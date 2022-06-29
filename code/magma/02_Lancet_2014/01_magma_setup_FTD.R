@@ -20,8 +20,10 @@ library(liftOver)
 library(jaffelab)
 library(sessioninfo)
 library(here)
-#BiocManager::install("SNPlocs.Hsapiens.dbSNP144.GRCh37")
+BiocManager::install("SNPlocs.Hsapiens.dbSNP144.GRCh37")
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
+# BiocManager::install("SNPlocs.Hsapiens.dbSNP142.GRCh37")
+# library(SNPlocs.Hsapiens.dbSNP142.GRCh37)
 #BiocManager::install("SNPlocs.Hsapiens.dbSNP151.GRCh38")
 #library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
 here()
@@ -39,9 +41,25 @@ head(sumStats.FTD)
 unique(sumStats.FTD$chr)  # 1:22
 # [1] 10  1 11 12 13 14 15 16 17 18 19 20  2 21 22  3  4  5  6  7  8  9
 
+# length(grep("rs",sumStats.FTD$marker))
+# # [1] 4812662
+#
+# # > length(grep("chr",sumStats.FTD$marker))
+# # [1] 1213722
+#
+# > nrow(sumStats.FTD)
+# [1] 6026384
+
+#4812662 + 1213722 = 6026384
+
+##so all markers either follow the chr:bp or rsID nomenclature
+
+####Let's subset only the rows that have chr:bp and convert them to rsIDs.
+
+
 ###library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 
-snps <- SNPlocs.Hsapiens.dbSNP144.GRCh37
+snps <- SNPlocs.Hsapiens.dbSNP142.GRCh37
 snpcount(snps)
 
 # snps_38 <- SNPlocs.Hsapiens.dbSNP151.GRCh38
@@ -52,6 +70,8 @@ class(chr21_snps)
 head(chr21_snps)
 
 chr21_snps <- as.data.frame(chr21_snps)
+nrow(chr21_snps)
+
 chr21_snps$chr.bp <- paste0("chr",chr21_snps$seqnames,":",chr21_snps$pos)
 
 table(sumStats.FTD$chr == "21")
@@ -60,9 +80,11 @@ sumStats.FTD.chr21 <- sumStats.FTD[sumStats.FTD$chr=="21", ]
 
 
 table(sumStats.FTD.chr21$marker %in% chr21_snps$chr.bp)
+
+not_in_db <- setdiff(sumStats.FTD.chr21$marker, chr21_snps$chr.bp)
 # FALSE  TRUE
 # 70014 15597
-
+#rs865815009
 sumStats.FTD.keep <- data.frame()
 
 temp.df <- sumStats.FTD.chr21 |> dplyr::filter(marker %in%  chr21_snps$chr.bp)
@@ -101,7 +123,7 @@ n_control =  4308
 #n_eff = 4/(1/Ncases+1/Nctrls)
 n_effective = 4/(1/n_case + 1/n_control)
 sumStats.FTD.keep$N_effective = rep(n_effective,nrow(sumStats.FTD.keep))
-
+sumStats.FTD.keep<- na.omit(sumStats.FTD.keep)
 # Save
 write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
                                          "FTD-IFGC-and-rsID-ADDED.tab"),
@@ -110,6 +132,7 @@ write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
 
 
 snploc.FTD <- sumStats.FTD.keep[ ,c("rsID", "chr", "Bp")]
+snploc.FTD <- na.omit(snploc.FTD)
 write.table(snploc.FTD, file=here("code","magma","02_Lancet_2014","FTD_Lancet2014.snploc"),
             append =FALSE,
             sep="\t", col.names=T, row.names=F, quote=F)
