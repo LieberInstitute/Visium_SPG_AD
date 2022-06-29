@@ -57,11 +57,13 @@ unique(sumStats.FTD$chr)  # 1:22
 ####Let's subset only the rows that have chr:bp and convert them to rsIDs.
 
 
-###library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 
-snps <- SNPlocs.Hsapiens.dbSNP142.GRCh37
+sumStats.FTD.chr <- sumStats.FTD[grep("chr",sumStats.FTD$marker),]
+sumStats.FTD.rsID <- sumStats.FTD[grep("rs",sumStats.FTD$marker),]
+sumStats.FTD.rsID$rsID <- sumStats.FTD.rsID$marker
+
+snps <- SNPlocs.Hsapiens.dbSNP144.GRCh37
 snpcount(snps)
-
 # snps_38 <- SNPlocs.Hsapiens.dbSNP151.GRCh38
 # snpcount(snps_38)
 # Try it with the smallest autosome:
@@ -74,17 +76,13 @@ nrow(chr21_snps)
 
 chr21_snps$chr.bp <- paste0("chr",chr21_snps$seqnames,":",chr21_snps$pos)
 
-table(sumStats.FTD$chr == "21")
+table(sumStats.FTD.chr$chr == "21")
 
-sumStats.FTD.chr21 <- sumStats.FTD[sumStats.FTD$chr=="21", ]
+sumStats.FTD.chr21 <- sumStats.FTD.chr[sumStats.FTD.chr$chr=="21", ]
 
 
 table(sumStats.FTD.chr21$marker %in% chr21_snps$chr.bp)
 
-not_in_db <- setdiff(sumStats.FTD.chr21$marker, chr21_snps$chr.bp)
-# FALSE  TRUE
-# 70014 15597
-#rs865815009
 sumStats.FTD.keep <- data.frame()
 
 temp.df <- sumStats.FTD.chr21 |> dplyr::filter(marker %in%  chr21_snps$chr.bp)
@@ -99,7 +97,7 @@ for(i in seqnames(snps)){
     temp.snps$chr.bp <- paste0("chr",temp.snps$seqnames,":",temp.snps$pos)
 
     # Subset sumStats to quantify % intersecting per chromosome
-    sumStats.temp <- sumStats.FTD[sumStats.FTD$chr==i, ]
+    sumStats.temp <- sumStats.FTD.chr[sumStats.FTD.chr$chr==i, ]
 
     cat(paste0("\tPercent of summary statistics SNPs in chr:",i," with rsIDs:\n"))
     print(table(sumStats.temp$marker %in% temp.snps$chr.bp)["TRUE"] / nrow(sumStats.temp) * 100)
@@ -113,9 +111,14 @@ for(i in seqnames(snps)){
 }
 
 
+
+
 # Total SNPs in summary stats with rsIDs:
 dim(sumStats.FTD.keep)
+
+sumStats.FTD.keep <- rbind(sumStats.FTD.keep, sumStats.FTD.rsID)
 (nrow(sumStats.FTD.keep) / nrow(sumStats.FTD)) * 100
+
 
 
 n_case = 2532
