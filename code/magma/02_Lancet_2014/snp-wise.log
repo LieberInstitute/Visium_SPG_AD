@@ -6,7 +6,7 @@ Using flags:
 	--gene-model snp-wise
 	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise
 
-Start time is 11:37:57, Tuesday 28 Jun 2022
+Start time is 13:46:31, Wednesday 29 Jun 2022
 
 Loading PLINK-format data...
 Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/MAGMA/g1000_eur.fam... 503 individuals read
@@ -23,10 +23,13 @@ Reading SNP p-values from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_
 	using variable: rsID (SNP id)
 	using variable: pValue (p-value)
 	using variable: N_effective (sample size; discarding SNPs with N < 50)
-	read 1223459 lines from file, containing valid SNP p-values for 15283 SNPs in data (1.249% of lines, 0.06743% of SNPs in data)
+	read 4828260 lines from file, containing valid SNP p-values for 4747959 SNPs in data (98.34% of lines, 20.95% of SNPs in data)
+	WARNING: file contained 488 SNPs (same IDs or synonyms) with duplications
+	         dropped all occurrences of each from analysis
+	         writing list of duplicated IDs to supplementary log file
 Loading gene annotation from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014_ITC.genes.annot... 
-	391 gene definitions read from file
-	found 391 genes containing valid SNPs in genotype data
+	30069 gene definitions read from file
+	found 30066 genes containing valid SNPs in genotype data
 
 
 Starting gene analysis... 
@@ -35,4 +38,4 @@ Starting gene analysis...
 	writing intermediate output to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw
 
 
-End time is 11:38:53, Tuesday 28 Jun 2022 (elapsed: 00:00:56)
+End time is 14:14:49, Wednesday 29 Jun 2022 (elapsed: 00:28:18)

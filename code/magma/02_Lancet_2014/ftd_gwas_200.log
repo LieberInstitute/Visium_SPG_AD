@@ -2,27 +2,24 @@ Welcome to MAGMA v1.10 (linux/s)
 Using flags:
 	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw
 	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt gene-col=2 set-col=1
-	--out code/magma/02_Lancet_2014/ftd_gwas_200
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200
 
-Start time is 11:40:19, Tuesday 28 Jun 2022
+Start time is 14:20:15, Wednesday 29 Jun 2022
 
 Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw... 
-	391 genes read from file
+	30066 genes read from file
 Loading gene-set annotation...
 Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt... 
 	detected 2 variables in file
 	using variable: variable 2 (gene ID)
 	using variable: variable 1 (set ID)
 	WARNING: gene set Set contains no genes defined in genotype data
-	WARNING: gene set next_both contains no genes defined in genotype data
 	8 gene-set definitions read from file
-	found 6 gene sets containing genes defined in genotype data (containing a total of 9 unique genes)
+	found 7 gene sets containing genes defined in genotype data (containing a total of 1165 unique genes)
 Preparing variables for analysis...
 	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
-	WARNING: discarding gene set 'Ab' from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt, variance is too low (set contains only one gene used in analysis)
-	WARNING: discarding gene set 'both' from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt, variance is too low (set contains only one gene used in analysis)
 	truncating covariate values more than 5 standard deviations from the mean
-	total variables available for analysis: 4 gene sets
+	total variables available for analysis: 7 gene sets
 
 Parsing model specifications...
 Inverting gene-gene correlation matrix...
@@ -34,7 +31,7 @@ Performing regression analysis...
 		inverse mac, log(inverse mac)
 	analysing individual variables
 
-	analysing single-variable models (number of models: 4)
-	writing results to file code/magma/02_Lancet_2014/ftd_gwas_200.gsa.out
+	analysing single-variable models (number of models: 7)
+	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200.gsa.out
 
-End time is 11:40:19, Tuesday 28 Jun 2022 (elapsed: 00:00:00)
+End time is 14:21:35, Wednesday 29 Jun 2022 (elapsed: 00:01:20)
