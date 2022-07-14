@@ -19,9 +19,9 @@ source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotE
 
 magmaStats <- list()
 
-magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code","magma","03_Nalls_2019","pd_gwas_200.gsa.out"), header=T)
-magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code","magma","02_Lancet_2014","ftd_gwas_200.gsa.out"), header=T)
 magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code","magma","01_Jansen_2019","ad_gwas_200.gsa.out"), header=T)
+magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code","magma","02_Lancet_2014","ftd_gwas_200.gsa.out"), header=T)
+magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code","magma","03_Nalls_2019","pd_gwas_200.gsa.out"), header=T)
 
 
 ## Merge to assess significance thresholds ===
@@ -87,12 +87,13 @@ write.csv(magmaStats_long, file = here("code","magma",
                                        "table_magma-GSA_7pathology_types_3xGWAS.csv"),
           row.names=F, quote=F)
 
+head(magmaStats_long)
 
 #### Make heatmap ####
 midpoint = function(x) x[-length(x)] + diff(x)/2
 
 MAGMAplot = function(region, Pthresh, fdrThresh, ...) {
-    ## Set up -log10(p's)
+    ## Set up -log10(p_value)
     wide_p = sapply(magmaStats[[region]], function(x){cbind(-log10(x$P))})
     rownames(wide_p) <- magmaStats[[region]][[1]]$VARIABLE
     wide_p[wide_p > Pthresh] = Pthresh
@@ -103,9 +104,12 @@ MAGMAplot = function(region, Pthresh, fdrThresh, ...) {
     wide_beta <- sapply(magmaStats[[region]], function(x){cbind(x$BETA)})
     rownames(wide_beta) <- magmaStats[[region]][[1]]$VARIABLE
     wide_beta <- round(wide_beta[rev(sort(rownames(wide_beta))), ], 2)
+    #beta = 0.11 for both
 
-    # # Use empirical cutoff (independentp=0.05) for printing betas
+    # # Use empirical cutoff (independent p=0.05) for printing betas
     wide_beta[wide_p < -log10(0.05)] = ""
+    #anything with independent p-value lower than 0.05 will not be printed in the
+    #heatmap.
     # and Bonf. cutoff for bolding
     customFont <- ifelse(wide_p < -log10(fdrThresh), 1, 2)
     customCex <- ifelse(wide_p < -log10(fdrThresh), 0.9, 1.0)
@@ -118,7 +122,7 @@ MAGMAplot = function(region, Pthresh, fdrThresh, ...) {
 
     # Heatmap of p's
     image.plot(x = seq(0,ncol(wide_p),by=1), y = clusterHeights, z = as.matrix(t(wide_p)),
-               col = mypal,xaxt="n", yaxt="n",xlab = "", ylab="", ...)
+               col = mypal,xaxt="n", yaxt="n",xlab = "", ylab="")
     axis(2, rownames(wide_p), at=midpoint(clusterHeights), las=1)
     axis(1, rep("", ncol(wide_p)), at = seq(0.5,ncol(wide_p)-0.5))
     text(x = seq(0.5,ncol(wide_p)-0.5), y=-1*max(nchar(xlabs))/2, xlabs,
@@ -133,6 +137,7 @@ MAGMAplot = function(region, Pthresh, fdrThresh, ...) {
          cex=customCex,
          # If Bonf, 2 (bold)
          font=customFont)
+
 }
 
 # Plot
