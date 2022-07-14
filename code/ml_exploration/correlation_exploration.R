@@ -86,7 +86,7 @@ spe_counts <- counts(spe_wholegenome)
 # > dim(spe_counts)
 # [1] 27853  1000
 
-spe_cols <- colData(spe_wholegenome)[sampled.cells,]
+spe_cols <- colData(spe_wholegenome)
 # > dim(spe_cols)
 # [1] 1000   81
 
