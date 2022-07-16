@@ -20,14 +20,14 @@ library(Matrix)
 # usethis::edit_r_environ()
 
 
-##first work with correlation plots
+## first work with correlation plots
 spe_wholegenome <-
     readRDS(
         here::here(
             "processed-data",
             "08_harmony_BayesSpace",
             "wholegenome",
-            paste0("spe_harmony_", 'wholegenome', ".rds")
+            paste0("spe_harmony_", "wholegenome", ".rds")
         )
     )
 
@@ -98,9 +98,4 @@ spe_counts <- as.matrix(spe_counts)
 spe_counts <- rbind(spe_counts, spe_cols_mat)
 
 dir.create(here("processed-data", "ml_exploration"))
-saveRDS(spe_counts, file = here("processed-data", "ml_exploration","counts_and_col.RDS"))
-
-
-
-
-
+saveRDS(spe_counts, file = here("processed-data", "ml_exploration", "counts_and_col.RDS"))

@@ -71,17 +71,19 @@ path_df <- path_df |> mutate(
 path_df$diagnosis <-
     factor(path_df$diagnosis, levels = c("Control", "AD"))
 path_df$Abeta_outliers <- factor(path_df$Abeta_outliers,
-                                 levels = c("n", "p", "n and p", "none"))
+    levels = c("n", "p", "n and p", "none")
+)
 path_df$pTau_outliers <- factor(path_df$pTau_outliers,
-                                levels = c("n", "p", "n and p", "none"))
+    levels = c("n", "p", "n and p", "none")
+)
 
 ## Create scatter plots to view outlier information
 create_plots <- function(pathology) {
     # pathology can be 'Abeta' or 'pTau'
     colors_hex <- c("#E69F00", "#56B4E9", "#D55E00", "#999999")
-    #palette.colors(NULL, "Okabe-Ito")
-    #the colorblindr packages suggests using colors from the Okabe-Ito palette
-    #for colorblind-friendliness.
+    # palette.colors(NULL, "Okabe-Ito")
+    # the colorblindr packages suggests using colors from the Okabe-Ito palette
+    # for colorblind-friendliness.
 
 
     if (pathology == "Abeta") {
@@ -91,19 +93,22 @@ create_plots <- function(pathology) {
             y = "PAbeta",
             color = "Abeta_outliers",
             size = 0.5,
-            xlab = expression(paste("Number of A", beta , " per spot (n)")),
-            ylab = expression(paste("Proportion of A", beta , " per spot (p)"))
+            xlab = expression(paste("Number of A", beta, " per spot (n)")),
+            ylab = expression(paste("Proportion of A", beta, " per spot (p)"))
         ) + guides(colour = guide_legend(override.aes = list(size = 2)))
         plot <- facet(
             plot + theme_bw(base_size = 20) +
-                theme(strip.text.x = element_text(size = 20),
-                      panel.spacing.x = unit(7, "mm")),
-
+                theme(
+                    strip.text.x = element_text(size = 20),
+                    panel.spacing.x = unit(7, "mm")
+                ),
             facet.by = "sample_id",
             short.panel.labs = TRUE
         )
-        plot <- plot + scale_color_manual(name = "",
-                                          values = colors_hex)
+        plot <- plot + scale_color_manual(
+            name = "",
+            values = colors_hex
+        )
     }
 
     if (pathology == "pTau") {
@@ -119,15 +124,18 @@ create_plots <- function(pathology) {
 
         plot <- facet(
             plot + theme_bw(base_size = 20) +
-                theme(strip.text.x = element_text(size = 20),
-                      panel.spacing.x = unit(7, "mm")),
+                theme(
+                    strip.text.x = element_text(size = 20),
+                    panel.spacing.x = unit(7, "mm")
+                ),
             facet.by = "sample_id",
             short.panel.labs = TRUE,
-
         )
 
-        plot <- plot + scale_color_manual(name = "",
-                                          values = colors_hex)
+        plot <- plot + scale_color_manual(
+            name = "",
+            values = colors_hex
+        )
     }
 
     return(plot)

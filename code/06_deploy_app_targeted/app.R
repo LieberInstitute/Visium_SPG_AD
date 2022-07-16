@@ -11,7 +11,7 @@ options(repos = BiocManager::repositories())
 ## Load the data
 load("spe.Rdata", verbose = TRUE)
 local <- FALSE ## For doing things locally and ability to change input dirs
-if(local) {
+if (local) {
     ## Local tests
     dir_rdata <- here::here(
         "processed-data",

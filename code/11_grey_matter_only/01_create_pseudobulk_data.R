@@ -131,16 +131,17 @@ if (check_code) {
     ## https://github.com/LieberInstitute/HumanPilot/blob/7049cd42925e00b187c0866f93409196dbcdd526/Analysis/Layer_Guesses/layer_specificity.R#L89-L162
 
     library("rafalib")
-    pathIndexes <- splitit(paste0(spe$sample_id, '_', spe$path_groups))
+    pathIndexes <- splitit(paste0(spe$sample_id, "_", spe$path_groups))
 
-    umiComb <-sapply(pathIndexes, function(ii)
-            rowSums(assays(spe)$counts[, ii, drop = FALSE]))
+    umiComb <- sapply(pathIndexes, function(ii) {
+        rowSums(assays(spe)$counts[, ii, drop = FALSE])
+    })
     stopifnot(identical(dim(umiComb), dim(sce_pseudo)))
 
     library("jaffelab")
     path_df <- data.frame(
-        sample_id = paste0(ss(colnames(umiComb), '_', 1), "_", ss(colnames(umiComb), '_', 2), "_", ss(colnames(umiComb), '_', 3)),
-        path_groups = factor(ss(colnames(umiComb), 'Br[0-9]+_', 2), levels = levels(spe$path_groups)),
+        sample_id = paste0(ss(colnames(umiComb), "_", 1), "_", ss(colnames(umiComb), "_", 2), "_", ss(colnames(umiComb), "_", 3)),
+        path_groups = factor(ss(colnames(umiComb), "Br[0-9]+_", 2), levels = levels(spe$path_groups)),
         stringsAsFactors = FALSE
     )
     m_layer <- match(path_df$sample_id, spe$sample_id)
@@ -204,7 +205,7 @@ as.data.frame(colData(sce_pseudo))
 ## http://bioconductor.org/books/3.14/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis
 summary(sce_pseudo$ncells)
 table(">= 10" = sce_pseudo$ncells >= 10, ">=15" = sce_pseudo$ncells >= 15)
-sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >=15]
+sce_pseudo <- sce_pseudo[, sce_pseudo$ncells >= 15]
 
 ## From
 ## https://github.com/LieberInstitute/spatialDLPFC/blob/e38213e47f780074af6a4575b404765a486590e6/code/analysis/09_region_differential_expression/preliminary_analysis.R#L47-L55
@@ -255,7 +256,8 @@ dim(sce_pseudo)
 logcounts(sce_pseudo) <-
     edgeR::cpm(edgeR::calcNormFactors(sce_pseudo),
         log = TRUE,
-        prior.count = 1)
+        prior.count = 1
+    )
 
 if (check_code) {
     sce_path <- logNormCounts(sce_path)

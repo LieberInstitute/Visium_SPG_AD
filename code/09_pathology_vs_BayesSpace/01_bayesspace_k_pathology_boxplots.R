@@ -56,7 +56,7 @@ cluster_whole_df[cols_whole] <- lapply(cluster_whole_df[cols_whole], factor)
 
 # create plots
 
-measure = "PAbeta"
+measure <- "PAbeta"
 pdf(file.path(dir_plots, paste0("proportion_of_", measure, ".pdf")), width = 18)
 
 for (i in cols_whole) {
@@ -66,18 +66,18 @@ for (i in cols_whole) {
         measure,
         add = "boxplot",
         add.params = list(fill = "white"),
-        ylab = expression(paste("Proportion of A", beta , " per spot "))
+        ylab = expression(paste("Proportion of A", beta, " per spot "))
     )
     plot <- facet(plot + theme_bw(),
-                  facet.by = "sample_id_short",
-                  short.panel.labs = TRUE,
-                  scales = "free_y"
+        facet.by = "sample_id_short",
+        short.panel.labs = TRUE,
+        scales = "free_y"
     )
     print(plot)
 }
 dev.off()
 
-measure = "PpTau"
+measure <- "PpTau"
 
 pdf(file.path(dir_plots, paste0("proportion_of_", measure, ".pdf")), width = 18)
 
@@ -91,9 +91,9 @@ for (i in cols_whole) {
         ylab = expression(paste("Proportion of pTau per spot"))
     )
     plot <- facet(plot + theme_bw(),
-                  facet.by = "sample_id_short",
-                  short.panel.labs = TRUE,
-                  scales = "free_y"
+        facet.by = "sample_id_short",
+        short.panel.labs = TRUE,
+        scales = "free_y"
     )
 
 

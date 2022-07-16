@@ -15,7 +15,7 @@ library(rtracklayer)
 library(GenomicRanges)
 library(dplyr)
 library(biomaRt)
-#BiocManager::install("liftOver")
+# BiocManager::install("liftOver")
 library(liftOver)
 library(jaffelab)
 library(sessioninfo)
@@ -24,21 +24,21 @@ BiocManager::install("SNPlocs.Hsapiens.dbSNP144.GRCh37")
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 # BiocManager::install("SNPlocs.Hsapiens.dbSNP142.GRCh37")
 # library(SNPlocs.Hsapiens.dbSNP142.GRCh37)
-#BiocManager::install("SNPlocs.Hsapiens.dbSNP151.GRCh38")
-#library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
+# BiocManager::install("SNPlocs.Hsapiens.dbSNP151.GRCh38")
+# library(SNPlocs.Hsapiens.dbSNP151.GRCh38)
 here()
 
-#sumStats.FTD <- read.table(here("raw-data","magma_GWAS_files","FTD_GWAS_META.txt"), header=T)
-sumStats.FTD <- read.table(here("raw-data","magma_GWAS_files","FTD_GWAS_META.txt"), header=T)
+# sumStats.FTD <- read.table(here("raw-data","magma_GWAS_files","FTD_GWAS_META.txt"), header=T)
+sumStats.FTD <- read.table(here("raw-data", "magma_GWAS_files", "FTD_GWAS_META.txt"), header = T)
 class(sumStats.FTD)
 dim(sumStats.FTD)
-#[1]  6026384       8
+# [1]  6026384       8
 head(sumStats.FTD)
 # marker Allele1 Allele2   beta1     SE  pValue chr        Bp
 # chr10:100004799       a       c  0.3528 0.2808 0.20890  10 100004799
-##Similar to Matt's PD GWAS, this only has the SNP location information but not the
-##rsIDs.
-unique(sumStats.FTD$chr)  # 1:22
+## Similar to Matt's PD GWAS, this only has the SNP location information but not the
+## rsIDs.
+unique(sumStats.FTD$chr) # 1:22
 # [1] 10  1 11 12 13 14 15 16 17 18 19 20  2 21 22  3  4  5  6  7  8  9
 
 # length(grep("rs",sumStats.FTD$marker))
@@ -50,16 +50,16 @@ unique(sumStats.FTD$chr)  # 1:22
 # > nrow(sumStats.FTD)
 # [1] 6026384
 
-#4812662 + 1213722 = 6026384
+# 4812662 + 1213722 = 6026384
 
-##so all markers either follow the chr:bp or rsID nomenclature
+## so all markers either follow the chr:bp or rsID nomenclature
 
-####Let's subset only the rows that have chr:bp and convert them to rsIDs.
+#### Let's subset only the rows that have chr:bp and convert them to rsIDs.
 
 
 
-sumStats.FTD.chr <- sumStats.FTD[grep("chr",sumStats.FTD$marker),]
-sumStats.FTD.rsID <- sumStats.FTD[grep("rs",sumStats.FTD$marker),]
+sumStats.FTD.chr <- sumStats.FTD[grep("chr", sumStats.FTD$marker), ]
+sumStats.FTD.rsID <- sumStats.FTD[grep("rs", sumStats.FTD$marker), ]
 sumStats.FTD.rsID$rsID <- sumStats.FTD.rsID$marker
 
 snps <- SNPlocs.Hsapiens.dbSNP144.GRCh37
@@ -74,32 +74,32 @@ head(chr21_snps)
 chr21_snps <- as.data.frame(chr21_snps)
 nrow(chr21_snps)
 
-chr21_snps$chr.bp <- paste0("chr",chr21_snps$seqnames,":",chr21_snps$pos)
+chr21_snps$chr.bp <- paste0("chr", chr21_snps$seqnames, ":", chr21_snps$pos)
 
 table(sumStats.FTD.chr$chr == "21")
 
-sumStats.FTD.chr21 <- sumStats.FTD.chr[sumStats.FTD.chr$chr=="21", ]
+sumStats.FTD.chr21 <- sumStats.FTD.chr[sumStats.FTD.chr$chr == "21", ]
 
 
 table(sumStats.FTD.chr21$marker %in% chr21_snps$chr.bp)
 
 sumStats.FTD.keep <- data.frame()
 
-temp.df <- sumStats.FTD.chr21 |> dplyr::filter(marker %in%  chr21_snps$chr.bp)
+temp.df <- sumStats.FTD.chr21 |> dplyr::filter(marker %in% chr21_snps$chr.bp)
 temp.df$rsID <- chr21_snps$RefSNP_id[match(temp.df$marker, chr21_snps$chr.bp)]
 
 # Rbind
 sumStats.FTD.keep <- rbind(sumStats.FTD.keep, temp.df)
 
-for(i in seqnames(snps)){
-    cat("Querying chr: ",i,"...\n")
+for (i in seqnames(snps)) {
+    cat("Querying chr: ", i, "...\n")
     temp.snps <- as.data.frame(snpsBySeqname(snps, i))
-    temp.snps$chr.bp <- paste0("chr",temp.snps$seqnames,":",temp.snps$pos)
+    temp.snps$chr.bp <- paste0("chr", temp.snps$seqnames, ":", temp.snps$pos)
 
     # Subset sumStats to quantify % intersecting per chromosome
-    sumStats.temp <- sumStats.FTD.chr[sumStats.FTD.chr$chr==i, ]
+    sumStats.temp <- sumStats.FTD.chr[sumStats.FTD.chr$chr == i, ]
 
-    cat(paste0("\tPercent of summary statistics SNPs in chr:",i," with rsIDs:\n"))
+    cat(paste0("\tPercent of summary statistics SNPs in chr:", i, " with rsIDs:\n"))
     print(table(sumStats.temp$marker %in% temp.snps$chr.bp)["TRUE"] / nrow(sumStats.temp) * 100)
     cat("\n")
 
@@ -121,32 +121,38 @@ sumStats.FTD.keep <- rbind(sumStats.FTD.keep, sumStats.FTD.rsID)
 
 
 
-n_case = 2532
-n_control =  4308
-#n_eff = 4/(1/Ncases+1/Nctrls)
-n_effective = 4/(1/n_case + 1/n_control)
-sumStats.FTD.keep$N_effective = rep(n_effective,nrow(sumStats.FTD.keep))
-sumStats.FTD.keep<- na.omit(sumStats.FTD.keep)
+n_case <- 2532
+n_control <- 4308
+# n_eff = 4/(1/Ncases+1/Nctrls)
+n_effective <- 4 / (1 / n_case + 1 / n_control)
+sumStats.FTD.keep$N_effective <- rep(n_effective, nrow(sumStats.FTD.keep))
+sumStats.FTD.keep <- na.omit(sumStats.FTD.keep)
 # Save
-write.table(sumStats.FTD.keep, file=here("code","magma","02_Lancet_2014",
-                                         "FTD-IFGC-and-rsID-ADDED.tab"),
-            append = FALSE,
-            sep="\t", col.names=T, row.names=F, quote=F)
+write.table(sumStats.FTD.keep,
+    file = here(
+        "code", "magma", "02_Lancet_2014",
+        "FTD-IFGC-and-rsID-ADDED.tab"
+    ),
+    append = FALSE,
+    sep = "\t", col.names = T, row.names = F, quote = F
+)
 
 
-snploc.FTD <- sumStats.FTD.keep[ ,c("rsID", "chr", "Bp")]
+snploc.FTD <- sumStats.FTD.keep[, c("rsID", "chr", "Bp")]
 snploc.FTD <- na.omit(snploc.FTD)
-write.table(snploc.FTD, file=here("code","magma","02_Lancet_2014","FTD_Lancet2014.snploc"),
-            append =FALSE,
-            sep="\t", col.names=T, row.names=F, quote=F)
+write.table(snploc.FTD,
+    file = here("code", "magma", "02_Lancet_2014", "FTD_Lancet2014.snploc"),
+    append = FALSE,
+    sep = "\t", col.names = T, row.names = F, quote = F
+)
 
 ## Create an 'Neff' using METAL's recommended computation for meta-GWAS (https://doi.org/10.1093/bioinformatics/btq340)
 #      instead of sum(N_cases, N_controls)
-#sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
+# sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
 
 
 
-rm(list=ls(pattern=".FTD"))
+rm(list = ls(pattern = ".FTD"))
 
 ## Reproducibility information
 print("Reproducibility information:")
@@ -154,4 +160,3 @@ Sys.time()
 proc.time()
 options(width = 120)
 session_info()
-

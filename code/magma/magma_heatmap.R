@@ -19,136 +19,151 @@ source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotE
 
 magmaStats <- list()
 
-magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code","magma","01_Jansen_2019","ad_gwas_200.gsa.out"), header=T)
-magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code","magma","02_Lancet_2014","ftd_gwas_200.gsa.out"), header=T)
-magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code","magma","03_Nalls_2019","pd_gwas_200.gsa.out"), header=T)
+magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "magma", "01_Jansen_2019", "ad_gwas_200.gsa.out"), header = T)
+magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code", "magma", "02_Lancet_2014", "ftd_gwas_200.gsa.out"), header = T)
+magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code", "magma", "03_Nalls_2019", "pd_gwas_200.gsa.out"), header = T)
 
 
 ## Merge to assess significance thresholds ===
-magmaStats_list = lapply(magmaStats, function(m) {
-    z = sapply(m, "[[", "P")
-    rownames(z) = m[[1]]$VARIABLE
+magmaStats_list <- lapply(magmaStats, function(m) {
+    z <- sapply(m, "[[", "P")
+    rownames(z) <- m[[1]]$VARIABLE
     z
 })
 
-magmaStats_wide = as.data.frame(do.call("rbind", magmaStats_list))
-magmaStats_wide$Region = rep("ITC",
-                             times = sapply(magmaStats_list, nrow))
-magmaStats_wide$Pathology_Type = rownames(magmaStats_wide)
+magmaStats_wide <- as.data.frame(do.call("rbind", magmaStats_list))
+magmaStats_wide$Region <- rep("ITC",
+    times = sapply(magmaStats_list, nrow)
+)
+magmaStats_wide$Pathology_Type <- rownames(magmaStats_wide)
 ## reshape to long
-magmaStats_long = reshape2::melt(magmaStats_wide)
-colnames(magmaStats_long)[3:4] = c("GWAS", "P")
+magmaStats_long <- reshape2::melt(magmaStats_wide)
+colnames(magmaStats_long)[3:4] <- c("GWAS", "P")
 dim(magmaStats_long)
 
 
-##None of the values have significant FDR values
+## None of the values have significant FDR values
 table(p.adjust(magmaStats_long$P, "fdr") < 0.1)
 # FALSE
 # 21
-#betacut.fdr <- max(magmaStats_long$P[p.adjust(magmaStats_long$P, "fdr") < 0.1])
+# betacut.fdr <- max(magmaStats_long$P[p.adjust(magmaStats_long$P, "fdr") < 0.1])
 
 magmaStats_long$P.adj.fdr <- p.adjust(magmaStats_long$P, "fdr")
 magmaStats_long[which(magmaStats_long$P.adj.fdr < 0.1), ]
 
 
-##Bonferroni significance
+## Bonferroni significance
 table(p.adjust(magmaStats_long$P, "bonf") < 0.1) # none, but otherwise Microglia for AD at < 0.1
 # FALSE
 # 21
 
 
 ######## For betas ===
-magmaStats_list.beta = lapply(magmaStats, function(m) {
-    z = sapply(m, "[[", "BETA")
-    rownames(z) = m[[1]]$VARIABLE
+magmaStats_list.beta <- lapply(magmaStats, function(m) {
+    z <- sapply(m, "[[", "BETA")
+    rownames(z) <- m[[1]]$VARIABLE
     z
 })
-magmaStats_wide.beta = as.data.frame(do.call("rbind", magmaStats_list.beta))
-magmaStats_wide.beta$Region = rep("ITC",
-                                  times = sapply(magmaStats_list.beta, nrow))
-magmaStats_wide.beta$Pathology_Type = rownames(magmaStats_wide.beta)
+magmaStats_wide.beta <- as.data.frame(do.call("rbind", magmaStats_list.beta))
+magmaStats_wide.beta$Region <- rep("ITC",
+    times = sapply(magmaStats_list.beta, nrow)
+)
+magmaStats_wide.beta$Pathology_Type <- rownames(magmaStats_wide.beta)
 ## reshape to long
-magmaStats_long.beta = reshape2::melt(magmaStats_wide.beta)
-colnames(magmaStats_long.beta)[3:4] = c("GWAS", "Beta")
+magmaStats_long.beta <- reshape2::melt(magmaStats_wide.beta)
+colnames(magmaStats_long.beta)[3:4] <- c("GWAS", "Beta")
 
 # Check before appending
-table(paste0(magmaStats_long$Pathology_Type,":",magmaStats_long$GWAS) ==
-          paste0(magmaStats_long.beta$Pathology_Type,":", magmaStats_long.beta$GWAS))
+table(paste0(magmaStats_long$Pathology_Type, ":", magmaStats_long$GWAS) ==
+    paste0(magmaStats_long.beta$Pathology_Type, ":", magmaStats_long.beta$GWAS))
 
 # cbind Beta
 magmaStats_long$Beta <- magmaStats_long.beta$Beta
 # Reorder
-magmaStats_long <- magmaStats_long[ ,c("Region", "Pathology_Type", "GWAS", "Beta", "P", "P.adj.fdr")]
+magmaStats_long <- magmaStats_long[, c("Region", "Pathology_Type", "GWAS", "Beta", "P", "P.adj.fdr")]
 
 
 
 ## Print to CSV ===
-write.csv(magmaStats_long, file = here("code","magma",
-                                       "table_magma-GSA_7pathology_types_3xGWAS.csv"),
-          row.names=F, quote=F)
+write.csv(magmaStats_long,
+    file = here(
+        "code", "magma",
+        "table_magma-GSA_7pathology_types_3xGWAS.csv"
+    ),
+    row.names = F, quote = F
+)
 
 head(magmaStats_long)
 
 #### Make heatmap ####
-midpoint = function(x) x[-length(x)] + diff(x)/2
+midpoint <- function(x) x[-length(x)] + diff(x) / 2
 
-MAGMAplot = function(region, Pthresh, fdrThresh, ...) {
+MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
     ## Set up -log10(p_value)
-    wide_p = sapply(magmaStats[[region]], function(x){cbind(-log10(x$P))})
+    wide_p <- sapply(magmaStats[[region]], function(x) {
+        cbind(-log10(x$P))
+    })
     rownames(wide_p) <- magmaStats[[region]][[1]]$VARIABLE
-    wide_p[wide_p > Pthresh] = Pthresh
+    wide_p[wide_p > Pthresh] <- Pthresh
     wide_p <- round(wide_p[rev(sort(rownames(wide_p))), ], 3)
 
 
     ## Set up betas
-    wide_beta <- sapply(magmaStats[[region]], function(x){cbind(x$BETA)})
+    wide_beta <- sapply(magmaStats[[region]], function(x) {
+        cbind(x$BETA)
+    })
     rownames(wide_beta) <- magmaStats[[region]][[1]]$VARIABLE
     wide_beta <- round(wide_beta[rev(sort(rownames(wide_beta))), ], 2)
-    #beta = 0.11 for both
+    # beta = 0.11 for both
 
     # # Use empirical cutoff (independent p=0.05) for printing betas
-    wide_beta[wide_p < -log10(0.05)] = ""
-    #anything with independent p-value lower than 0.05 will not be printed in the
-    #heatmap.
+    wide_beta[wide_p < -log10(0.05)] <- ""
+    # anything with independent p-value lower than 0.05 will not be printed in the
+    # heatmap.
     # and Bonf. cutoff for bolding
     customFont <- ifelse(wide_p < -log10(fdrThresh), 1, 2)
     customCex <- ifelse(wide_p < -log10(fdrThresh), 0.9, 1.0)
 
 
     ## Plot
-    clusterHeights <- seq(0,160,length.out=nrow(wide_p)+1)
-    mypal = c("white", colorRampPalette(brewer.pal(9,"YlOrRd"))(60))[1:30]
+    clusterHeights <- seq(0, 160, length.out = nrow(wide_p) + 1)
+    mypal <- c("white", colorRampPalette(brewer.pal(9, "YlOrRd"))(60))[1:30]
     xlabs <- colnames(wide_p)
 
     # Heatmap of p's
-    image.plot(x = seq(0,ncol(wide_p),by=1), y = clusterHeights, z = as.matrix(t(wide_p)),
-               col = mypal,xaxt="n", yaxt="n",xlab = "", ylab="")
-    axis(2, rownames(wide_p), at=midpoint(clusterHeights), las=1)
-    axis(1, rep("", ncol(wide_p)), at = seq(0.5,ncol(wide_p)-0.5))
-    text(x = seq(0.5,ncol(wide_p)-0.5), y=-1*max(nchar(xlabs))/2, xlabs,
-         xpd=TRUE, srt=45, cex=1.2, adj= 1)
-    abline(h=clusterHeights,v=0:ncol(wide_p))
+    image.plot(
+        x = seq(0, ncol(wide_p), by = 1), y = clusterHeights, z = as.matrix(t(wide_p)),
+        col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = ""
+    )
+    axis(2, rownames(wide_p), at = midpoint(clusterHeights), las = 1)
+    axis(1, rep("", ncol(wide_p)), at = seq(0.5, ncol(wide_p) - 0.5))
+    text(
+        x = seq(0.5, ncol(wide_p) - 0.5), y = -1 * max(nchar(xlabs)) / 2, xlabs,
+        xpd = TRUE, srt = 45, cex = 1.2, adj = 1
+    )
+    abline(h = clusterHeights, v = 0:ncol(wide_p))
 
     # Print top decile of betas
-    text(x = rep(seq(0.5,ncol(wide_p)-0.5),each = nrow(wide_p)),
-         y = rep(midpoint(clusterHeights), ncol(wide_p)),
-         as.character(wide_beta),
-         # If Bonf, a little bigger
-         cex=customCex,
-         # If Bonf, 2 (bold)
-         font=customFont)
-
+    text(
+        x = rep(seq(0.5, ncol(wide_p) - 0.5), each = nrow(wide_p)),
+        y = rep(midpoint(clusterHeights), ncol(wide_p)),
+        as.character(wide_beta),
+        # If Bonf, a little bigger
+        cex = customCex,
+        # If Bonf, 2 (bold)
+        font = customFont
+    )
 }
 
 # Plot
 dir_output <- dir.create(here("plots", "magma"))
-pdf(here("plots","magma","heatmap_ITC_MAGMA-GSAresults_AD-FTD-PD_GWAS.pdf"), w=6)
-par(mar=c(8.5,7.5,6,1), cex.axis=1.0, cex.lab=0.5)
-MAGMAplot(region="ITC", Pthresh=12, fdrThresh=1) ##set to 1 because didn't want to make a cutoff based on FTD
-abline(v=7,lwd=3)
-text(x = 1.5, y=185, "MAGMA gene set analyses: ITC pathology types", xpd=TRUE, cex=1.5, font=2)
-text(x = 1.5, y=175, "(Betas for empirically significant associations, p < 0.05)", xpd=TRUE, cex=1, font=1)
-grid::grid.text(label="-log10(p-value)", x=0.92, y=0.825, gp=gpar(fontsize=9))
+pdf(here("plots", "magma", "heatmap_ITC_MAGMA-GSAresults_AD-FTD-PD_GWAS.pdf"), w = 6)
+par(mar = c(8.5, 7.5, 6, 1), cex.axis = 1.0, cex.lab = 0.5)
+MAGMAplot(region = "ITC", Pthresh = 12, fdrThresh = 1) ## set to 1 because didn't want to make a cutoff based on FTD
+abline(v = 7, lwd = 3)
+text(x = 1.5, y = 185, "MAGMA gene set analyses: ITC pathology types", xpd = TRUE, cex = 1.5, font = 2)
+text(x = 1.5, y = 175, "(Betas for empirically significant associations, p < 0.05)", xpd = TRUE, cex = 1, font = 1)
+grid::grid.text(label = "-log10(p-value)", x = 0.92, y = 0.825, gp = gpar(fontsize = 9))
 dev.off()
 
 
@@ -156,43 +171,48 @@ dev.off()
 ##### Explore gene-level MAGMA stats =========
 
 spe_wholegenome <- readRDS("/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/wholegenome/spe_harmony_wholegenome.rds")
-pathology_types <- read.csv(here("processed-data","09_pathology_vs_BayesSpace",
-                                 "pathology_levels","path_groups","clusters.csv"))
+pathology_types <- read.csv(here(
+    "processed-data", "09_pathology_vs_BayesSpace",
+    "pathology_levels", "path_groups", "clusters.csv"
+))
 colData(spe_wholegenome)$path_type <- pathology_types$cluster
 
-markers <- as_tibble(read.table(here("code","magma","pvalues_top_200.txt")))
+markers <- as_tibble(read.table(here("code", "magma", "pvalues_top_200.txt")))
 
 markers$gene_name <- rowData(spe_wholegenome)$gene_name[match(markers$V2, rowData(spe_wholegenome)$gene_id)]
 
-####AD Genes
+#### AD Genes
 
 ad.genes.out <- read.table("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.out",
-                          sep="", header=T)
+    sep = "", header = T
+)
 
 head(ad.genes.out)
 
-round(quantile(ad.genes.out$ZSTAT, probs=seq(0.9,1,by=0.01)),3)
+round(quantile(ad.genes.out$ZSTAT, probs = seq(0.9, 1, by = 0.01)), 3)
 # 90%    91%    92%    93%    94%    95%    96%    97%    98%    99%   100%
 # 1.535  1.603  1.679  1.760  1.860  1.990  2.131  2.324  2.638  3.282 10.183
 
 
-round(quantile(ad.genes.out$ZSTAT, probs=seq(0.95,1,by=0.0025)),3)
+round(quantile(ad.genes.out$ZSTAT, probs = seq(0.95, 1, by = 0.0025)), 3)
 # 95% 95.25%  95.5% 95.75%    96% 96.25%  96.5% 96.75%    97% 97.25%  97.5%
 # 1.990  2.020  2.054  2.091  2.131  2.166  2.219  2.267  2.324  2.384  2.444
 # 97.75%    98% 98.25%  98.5% 98.75%    99% 99.25%  99.5% 99.75%   100%
 #     2.542  2.638  2.734  2.850  3.038  3.282  3.606  4.049  4.908 10.183
 
-jansen_sig_loci<- c("ADAMTS4", "CR1", "BIN1", "INPPD5", "HESX1", "CLNK", "HLA-DRB1","TREM2","CD2AP",
-                     "ZCWPW1","EPHA1",'CNTNAP2', 'CLU/PTK2B'	, 'ECHDC3', 'MS4A6A', 'PICALM',"SORL1","SLC24A4",
-                     'ADAM10', 'APH1B', 'KAT8', 'SCIMP', 'ABI3', 'ALPK2', 'ABCA7','APOE' ,
-                     'AC074212.3','CD33', 'CASS4')
-table(jansen_sig_loci  %in% rowData(spe_wholegenome)$gene_name)
+jansen_sig_loci <- c(
+    "ADAMTS4", "CR1", "BIN1", "INPPD5", "HESX1", "CLNK", "HLA-DRB1", "TREM2", "CD2AP",
+    "ZCWPW1", "EPHA1", "CNTNAP2", "CLU/PTK2B", "ECHDC3", "MS4A6A", "PICALM", "SORL1", "SLC24A4",
+    "ADAM10", "APH1B", "KAT8", "SCIMP", "ABI3", "ALPK2", "ABCA7", "APOE",
+    "AC074212.3", "CD33", "CASS4"
+)
+table(jansen_sig_loci %in% rowData(spe_wholegenome)$gene_name)
 # FALSE  TRUE
 # 3    26
 #######
 
 setdiff(jansen_sig_loci, rowData(spe_wholegenome)$gene_name)
-#"INPPD5"     "CLU/PTK2B"  "AC074212.3"
+# "INPPD5"     "CLU/PTK2B"  "AC074212.3"
 
 genes_for_plotting <- intersect(jansen_sig_loci, rowData(spe_wholegenome)$gene_name)
 
@@ -209,30 +229,32 @@ colors_pathology <- setNames(
 )
 Footer
 
-colors2print = colors_pathology
+colors2print <- colors_pathology
 
 
-dir_output<- dir.create(here("plots", "violin_plots"))
-pdf(here("plots","violin_plots","MAGMA_reported_ad_loci.pdf"), width=9, height=8)
-plotExpressionCustom(sce = spe_wholegenome,
-                     exprs_values = "logcounts",
-                     features = genes_for_plotting,
-                     features_name = "",
-                     anno_name = "path_type",
-                     ncol=4, point_alpha=0.4,
-                     scales="free_y", swap_rownames="gene_name") +
+dir_output <- dir.create(here("plots", "violin_plots"))
+pdf(here("plots", "violin_plots", "MAGMA_reported_ad_loci.pdf"), width = 9, height = 8)
+plotExpressionCustom(
+    sce = spe_wholegenome,
+    exprs_values = "logcounts",
+    features = genes_for_plotting,
+    features_name = "",
+    anno_name = "path_type",
+    ncol = 4, point_alpha = 0.4,
+    scales = "free_y", swap_rownames = "gene_name"
+) +
     scale_color_manual(values = colors2print) +
-    ggtitle(label=paste0("AD risk loci expression across pathology domains in ITC")) +
+    ggtitle(label = paste0("AD risk loci expression across pathology domains in ITC")) +
     theme(plot.title = element_text(size = 12))
 dev.off()
 
 
 
-round(quantile(pd.gene.out$ZSTAT, probs=seq(0.9,1,by=0.01)),3)
+round(quantile(pd.gene.out$ZSTAT, probs = seq(0.9, 1, by = 0.01)), 3)
 # 90%   91%   92%   93%   94%   95%   96%   97%   98%   99%  100%
 # 1.368 1.448 1.532 1.629 1.747 1.868 2.016 2.219 2.473 3.048 7.916
 
-round(quantile(pd.gene.out$ZSTAT, probs=seq(0.95,1,by=0.0025)),3)
+round(quantile(pd.gene.out$ZSTAT, probs = seq(0.95, 1, by = 0.0025)), 3)
 # 95% 95.25%  95.5% 95.75%    96% 96.25%  96.5% 96.75%    97% 97.25%  97.5%
 # 1.868  1.898  1.934  1.974  2.016  2.063  2.121  2.169  2.219  2.274  2.337
 # 97.75%    98% 98.25%  98.5% 98.75%    99% 99.25%  99.5% 99.75%   100%
@@ -280,7 +302,4 @@ topGenes.pd
 # [156] NA           "AP001437.2" "DYRK1A"     "AP001437.1"
 
 
-load("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/processed_data/SCE/sce_updated_LC.rda", verbose=T)
-
-
-
+load("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/processed_data/SCE/sce_updated_LC.rda", verbose = T)

@@ -144,7 +144,8 @@ dim(sce_pseudo)
 logcounts(sce_pseudo) <-
     edgeR::cpm(edgeR::calcNormFactors(sce_pseudo),
         log = TRUE,
-        prior.count = 1)
+        prior.count = 1
+    )
 
 ## Compute PCs
 ## Adapted from https://github.com/LieberInstitute/spatialDLPFC/blob/f47daafa19b02e6208c7e0a9bc068367f806206c/code/analysis/09_region_differential_expression/preliminary_analysis.R#L60-L68
