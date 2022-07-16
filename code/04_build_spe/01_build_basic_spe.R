@@ -206,9 +206,9 @@ saveRDS(spe_raw_wholegenome, file.path(dir_rdata, "spe_raw_wholegenome.rds"))
 saveRDS(spe_raw_targeted, file = file.path(dir_rdata, "spe_raw_targeted.rds"))
 
 ## Size in Gb
-lobstr::obj_size(spe_raw_wholegenome) / 1024^3
+lobstr::obj_size(spe_raw_wholegenome) 
 # 1.651702
-lobstr::obj_size(spe_raw_targeted) / 1024^3
+lobstr::obj_size(spe_raw_targeted) 
 # 1.235324
 
 ## Now drop the spots outside the tissue
@@ -233,9 +233,9 @@ if (any(colSums(counts(spe_targeted)) == 0)) {
     dim(spe_targeted)
 }
 
-lobstr::obj_size(spe_wholegenome) / 1024^3
+lobstr::obj_size(spe_wholegenome) 
 # 1.534376
-lobstr::obj_size(spe_targeted) / 1024^3
+lobstr::obj_size(spe_targeted) 
 # 1.198796
 
 saveRDS(spe_wholegenome, file.path(dir_rdata, "spe_wholegenome.rds"))

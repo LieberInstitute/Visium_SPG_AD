@@ -410,7 +410,7 @@ if (opt$spetype == "targeted") {
 
 ## Object size in GB
 ## (do this near the end in case lobstr crashes, it's happened to me once)
-lobstr::obj_size(spe) / 1024^3
+lobstr::obj_size(spe) 
 
 
 ## Reproducibility information
