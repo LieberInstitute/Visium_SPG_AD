@@ -1,18 +1,20 @@
 #### load relevant packages ####
 library('readxl')
-library('limma')
+library('dplyr')
+library('biomaRt')
 library('sessioninfo')
-library('parallel')
+library('here')
+library('RColorBrewer')
+library('ggplot2')
+library('fields')
+library('limma')
 library('jaffelab')
 library('janitor')
 library('lattice')
 library('org.Hs.eg.db')
 library('GenomicFeatures')
 library('scran')
-library('here')
-library('RColorBrewer')
-library('ggplot2')
-library('fields')
+
 
 
 #### read in necessary input files ####
@@ -23,20 +25,26 @@ mostafavi_dir <- here('raw-data', 'GeneSets',
                       '1_Bulk_RNA-seq' ,'Mostafavi_et_al')
 table_s3 <- read_xlsx(paste0(mostafavi_dir, '/Table_S3_M109_390_genes.xlsx'),
                       sheet = 1, col_names = TRUE, skip = 4)
+#nrow
+#13153
+
+table_s3 <- table_s3 |> filter(`Module ID` == 'm109')
+#390
 
 # head(table_s3)
 # # A tibble: 6 × 2
 # `Module ID` `Gene Symbol`
 # <chr>       <chr>
-#     1 m1          RAB4B
-# 2 m1          RAD23A
-# 3 m1          ARFGAP1
-# 4 m1          GLI4
-# 5 m1          PSMB10
-# 6 m1          SMARCAL1
+#     1 m109        RP11-742N3.1
+# 2 m109        SLC39A11
+# 3 m109        HEY2
+# 4 m109        SMARCC1
+# 5 m109        RBM4B
+# 6 m109        SYNRG
 
 table_s8 <-read_xlsx(paste0(mostafavi_dir, '/Table_S8_M109_112_genes.xlsx'),
                      sheet = 1, col_names = TRUE, skip =2 )
+
 
 # # A tibble: 6 × 5
 # `Gene symbol` `Degree in BN` iNs                Astrocytes Microglia
@@ -61,3 +69,27 @@ table_s9 <-read_xlsx(paste0(mostafavi_dir, '/Table_S9_M109_21_genes.xlsx'),
 # 5 NA     E     AGAGCTTTGAACAGGATACTT TRCN0000033502    CDS
 # 6 KIF5B  A     TTACAACTGTGGCCCTATTTA TRCN0000338580    3UTR
 
+
+##### Convert gene names to ENSEMBL IDs ####
+hsapiens_genes <- getBM(attributes = c("ensembl_gene_id",
+                                       "hgnc_symbol"),
+                        mart = useMart("ensembl", dataset = "hsapiens_gene_ensembl"))
+
+hsapiens_genes <- as_tibble(hsapiens_genes)
+
+get_ensemble <- function(table, gene_col){
+
+    table_genes <- hsapiens_genes |> filter(hgnc_symbol %in% table[[gene_col]])
+    table_genes
+    table <- merge(table, table_genes, by.x = gene_col, by.y = "hgnc_symbol", all.x = TRUE)
+
+
+}
+
+
+get_ensemble(table = table_s3, gene_col = "Gene Symbol")
+get_ensemble(table = table_s8, gene_col = "Gene symbol")
+get_ensemble(table = table_s9, gene_col = "Gene")
+
+
+#multiple ENSEMBL IDs?
