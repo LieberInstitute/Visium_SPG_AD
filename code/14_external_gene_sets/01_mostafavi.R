@@ -5,7 +5,6 @@ library('biomaRt')
 library('sessioninfo')
 library('here')
 library('scran')
-library('biomaRt')
 library('spatialLIBD')
 
 # library('RColorBrewer')
@@ -22,12 +21,13 @@ library('spatialLIBD')
 source(here('code/14_external_gene_sets/get_ensemble_function.R'))
 
 #### read in necessary input files ####
-visad_enrichment_stats <- read.csv(here('code','05_deploy_app_wholegenome',
-                                        'Visium_IF_AD_wholegenome_model_results_FDR5perc.csv'))
-head(visad_enrichment_stats)
+load(here('processed-data','11_grey_matter_only','wholegenome',
+          'Visium_IF_AD_modeling_results.Rdata'))
 
 mostafavi_dir <- here('raw-data', 'GeneSets',
                       '1_Bulk_RNA-seq' ,'Mostafavi_et_al')
+
+
 table_s3 <- read_xlsx(paste0(mostafavi_dir, '/Table_S3_M109_390_genes.xlsx'),
                       sheet = 1, col_names = TRUE, skip = 4)
 #nrow
@@ -74,18 +74,71 @@ table_s9 <-read_xlsx(paste0(mostafavi_dir, '/Table_S9_M109_21_genes.xlsx'),
 # 5 NA     E     AGAGCTTTGAACAGGATACTT TRCN0000033502    CDS
 # 6 KIF5B  A     TTACAACTGTGGCCCTATTTA TRCN0000338580    3UTR
 
+#30, 31, 32, 41, 66, 91 128
+
+#### create gene lists # ####
+table_s3_genes <- get_ensemble(table = table_s3, gene_col = "Gene Symbol")
+table_s8_genes <- get_ensemble(table = table_s8, gene_col = "Gene symbol")
+table_s9_genes <- get_ensemble(table = table_s9, gene_col = "Gene")
 
 
-
-get_ensemble(table = table_s3, gene_col = "Gene Symbol")
-get_ensemble(table = table_s8, gene_col = "Gene symbol")
-get_ensemble(table = table_s9, gene_col = "Gene")
-
-gene_set_enrichment(
-    gene_list,
-    fdr_cut = 0.1,
-    modeling_results = fetch_data(type = "modeling_results"),
-    model_type = names(modeling_results)[1],
-    reverse = FALSE
+mostafavi_geneList <- list(
+    mostafavi_table_3 = table_s3_genes,
+    mostafavi_table_8 = table_s8_genes,
+    mostafavi_table_9 = table_s9_genes
 )
-#multiple ENSEMBL IDs?
+
+####calculate enrichment #####
+
+mostafavi_enrichment <- gene_set_enrichment(
+    mostafavi_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment")
+
+# mostafavi_enrichment
+#            OR       Pval      test                ID model_type fdr_cut
+# 1   0.000000 1.00000000      none mostafavi_table_3 enrichment     0.1
+# 2   0.000000 1.00000000      none mostafavi_table_8 enrichment     0.1
+# 3   0.000000 1.00000000      none mostafavi_table_9 enrichment     0.1
+# 4   5.420394 0.18619757       Ab+ mostafavi_table_3 enrichment     0.1
+# 5  18.018732 0.06119092       Ab+ mostafavi_table_8 enrichment     0.1
+# 6   0.000000 1.00000000       Ab+ mostafavi_table_9 enrichment     0.1
+# 7   0.000000 0.63157969  next_Ab+ mostafavi_table_3 enrichment     0.1
+# 8   0.000000 1.00000000  next_Ab+ mostafavi_table_8 enrichment     0.1
+# 9   0.000000 1.00000000  next_Ab+ mostafavi_table_9 enrichment     0.1
+# 10  0.000000 1.00000000       pT+ mostafavi_table_3 enrichment     0.1
+# 11  0.000000 1.00000000       pT+ mostafavi_table_8 enrichment     0.1
+# 12  0.000000 1.00000000       pT+ mostafavi_table_9 enrichment     0.1
+# 13  0.000000 1.00000000  next_pT+ mostafavi_table_3 enrichment     0.1
+# 14  0.000000 1.00000000  next_pT+ mostafavi_table_8 enrichment     0.1
+# 15  0.000000 1.00000000  next_pT+ mostafavi_table_9 enrichment     0.1
+# 16  0.000000 1.00000000      both mostafavi_table_3 enrichment     0.1
+# 17  0.000000 1.00000000      both mostafavi_table_8 enrichment     0.1
+# 18  0.000000 1.00000000      both mostafavi_table_9 enrichment     0.1
+# 19  0.000000 1.00000000 next_both mostafavi_table_3 enrichment     0.1
+# 20  0.000000 1.00000000 next_both mostafavi_table_8 enrichment     0.1
+# 21  0.000000 1.00000000 next_both mostafavi_table_9 enrichment     0.1
+
+
+
+##### Enrichment plotting #####
+#dir.create(here("plots", "14_external_gene_sets"))
+output_dir <- here("plots", "14_external_gene_sets")
+
+
+pdf(paste0(output_dir, "/01_mostafavi.pdf"), width = 9)
+
+gene_set_enrichment_plot(
+    mostafavi_enrichment,
+    xlabs = unique(mostafavi_enrichment$ID),
+    PThresh = 12,
+    ORcut = 3,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(mostafavi_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
+
+dev.off()
