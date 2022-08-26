@@ -64,8 +64,17 @@ sumStats.FTD.rsID$rsID <- sumStats.FTD.rsID$marker
 
 snps <- SNPlocs.Hsapiens.dbSNP144.GRCh37
 snpcount(snps)
-# snps_38 <- SNPlocs.Hsapiens.dbSNP151.GRCh38
-# snpcount(snps_38)
+
+# 1        2        3        4        5        6        7        8
+# 10608552 11307550  9317862  8934852  8345195  7741566  7523385  7269554
+# 9       10       11       12       13       14       15       16
+# 5789347  6326781  6574397  6228871  4446965  4252324  3925441  4468782
+# 17       18       19       20       21       22        X        Y
+# 3923227  3540821  3159370  2990255  1771468  1838410  4797151   192840
+# MT
+# 1760
+
+
 # Try it with the smallest autosome:
 chr21_snps <- snpsBySeqname(snps, "21")
 class(chr21_snps)
@@ -77,14 +86,11 @@ nrow(chr21_snps)
 chr21_snps$chr.bp <- paste0("chr", chr21_snps$seqnames, ":", chr21_snps$pos)
 
 table(sumStats.FTD.chr$chr == "21")
-
+# FALSE    TRUE
+# 1198112   15610
 sumStats.FTD.chr21 <- sumStats.FTD.chr[sumStats.FTD.chr$chr == "21", ]
-
-
 table(sumStats.FTD.chr21$marker %in% chr21_snps$chr.bp)
-
 sumStats.FTD.keep <- data.frame()
-
 temp.df <- sumStats.FTD.chr21 |> dplyr::filter(marker %in% chr21_snps$chr.bp)
 temp.df$rsID <- chr21_snps$RefSNP_id[match(temp.df$marker, chr21_snps$chr.bp)]
 
@@ -111,8 +117,6 @@ for (i in seqnames(snps)) {
 }
 
 
-
-
 # Total SNPs in summary stats with rsIDs:
 dim(sumStats.FTD.keep)
 
@@ -120,8 +124,7 @@ sumStats.FTD.keep <- rbind(sumStats.FTD.keep, sumStats.FTD.rsID)
 (nrow(sumStats.FTD.keep) / nrow(sumStats.FTD)) * 100
 
 
-
-n_case <- 2532
+n_case <- 2154
 n_control <- 4308
 # n_eff = 4/(1/Ncases+1/Nctrls)
 n_effective <- 4 / (1 / n_case + 1 / n_control)
@@ -136,6 +139,17 @@ write.table(sumStats.FTD.keep,
     append = FALSE,
     sep = "\t", col.names = T, row.names = F, quote = F
 )
+
+
+
+sumStats.FTD.keep <- read.table(file = here(
+                "code", "magma", "02_Lancet_2014",
+                "FTD-IFGC-and-rsID-ADDED.tab"
+            ),
+            append = FALSE,
+            sep = "\t", col.names = T, row.names = F, quote = F
+)
+
 
 
 snploc.FTD <- sumStats.FTD.keep[, c("rsID", "chr", "Bp")]
