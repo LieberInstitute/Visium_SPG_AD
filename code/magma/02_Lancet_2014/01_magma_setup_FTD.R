@@ -141,17 +141,6 @@ write.table(sumStats.FTD.keep,
 )
 
 
-
-sumStats.FTD.keep <- read.table(file = here(
-                "code", "magma", "02_Lancet_2014",
-                "FTD-IFGC-and-rsID-ADDED.tab"
-            ),
-            append = FALSE,
-            sep = "\t", col.names = T, row.names = F, quote = F
-)
-
-
-
 snploc.FTD <- sumStats.FTD.keep[, c("rsID", "chr", "Bp")]
 snploc.FTD <- na.omit(snploc.FTD)
 write.table(snploc.FTD,
