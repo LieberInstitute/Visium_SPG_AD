@@ -3,8 +3,9 @@ Using flags:
 	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw
 	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_100.txt gene-col=2 set-col=1
 	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_100
+	--model self-contained
 
-Start time is 14:26:35, Wednesday 29 Jun 2022
+Start time is 00:37:57, Friday 26 Aug 2022
 
 Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw... 
 	30066 genes read from file
@@ -23,6 +24,9 @@ Preparing variables for analysis...
 
 Parsing model specifications...
 Inverting gene-gene correlation matrix...
+Performing self-contained gene-set analysis...
+	analysing all available gene sets (total: 7)
+	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_100.gsa.self.out
 Performing regression analysis...
 	testing direction: one-sided, positive (sets), two-sided (covar)
 	conditioning on internal variables:
@@ -34,4 +38,4 @@ Performing regression analysis...
 	analysing single-variable models (number of models: 7)
 	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_100.gsa.out
 
-End time is 14:27:54, Wednesday 29 Jun 2022 (elapsed: 00:01:19)
+End time is 00:39:44, Friday 26 Aug 2022 (elapsed: 00:01:47)

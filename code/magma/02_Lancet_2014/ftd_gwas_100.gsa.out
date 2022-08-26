@@ -1,4 +1,4 @@
-# MEAN_SAMPLE_SIZE = 6379
+# MEAN_SAMPLE_SIZE = 5744
 # TOTAL_GENES = 30066
 # TEST_DIRECTION = one-sided, positive (set), two-sided (covar)
 # CONDITIONED_INTERNAL = gene size, gene density, inverse mac, log(gene size), log(gene density), log(inverse mac)

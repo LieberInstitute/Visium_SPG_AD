@@ -6,7 +6,7 @@ Using flags:
 	--gene-model snp-wise
 	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise
 
-Start time is 13:46:31, Wednesday 29 Jun 2022
+Start time is 23:57:05, Thursday 25 Aug 2022
 
 Loading PLINK-format data...
 Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/MAGMA/g1000_eur.fam... 503 individuals read
@@ -38,4 +38,4 @@ Starting gene analysis...
 	writing intermediate output to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw
 
 
-End time is 14:14:49, Wednesday 29 Jun 2022 (elapsed: 00:28:18)
+End time is 00:36:11, Friday 26 Aug 2022 (elapsed: 00:39:06)

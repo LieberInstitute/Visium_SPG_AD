@@ -1392,3 +1392,318 @@ Querying chr:  MT ...
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
 Wed Jun 29 12:50:47 EDT 2022
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/devel
+**** Job starts ****
+Thu Aug 25 21:26:46 EDT 2022
+**** JHPCE info ****
+User: sparthib
+Job id: 1618602
+Job name: magma_setup_FTD
+Hostname: compute-095.cm.cluster
+Task id: undefined
+Unloading conda_R/devel
+Loading conda_R/4.1.x
+
+The following have been reloaded with a version change:
+  1) conda_R/devel => conda_R/4.1.x
+
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.6.14
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.1.x
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: gwascat
+gwascat loaded.  Use makeCurrentGwascat() to extract current image.
+ from EBI.  The data folder of this package has some legacy extracts.
+Loading required package: Homo.sapiens
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘AnnotationDbi’
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+Loading required package: OrganismDbi
+Loading required package: GenomicFeatures
+Loading required package: GO.db
+
+Loading required package: org.Hs.eg.db
+
+Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
+Loading required package: rafalib
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cran.rstudio.com
+
+Bioconductor version 3.14 (BiocManager 1.30.18), R 4.1.2 Patched (2021-11-04
+  r81138)
+Installation paths not writeable, unable to update packages
+  path: /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/library
+  packages:
+    MASS, nlme, survival
+  path: /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-4.1.x/R/4.1.x/lib64/R/site-library
+  packages:
+    nloptr
+Old packages: 'paletteer', 'prismatic'
+Warning message:
+package(s) not installed when version(s) same as current; use `force = TRUE` to
+  re-install: 'SNPlocs.Hsapiens.dbSNP144.GRCh37' 
+Loading required package: BSgenome
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "data.frame"
+[1] 6026384       8
+           marker Allele1 Allele2   beta1     SE  pValue chr        Bp
+1 chr10:100004799       a       c  0.3528 0.2808 0.20890  10 100004799
+2 chr10:100011120       a       t  0.0673 0.2327 0.77260  10 100011120
+3 chr10:100011140       a       g  0.3904 0.2612 0.13500  10 100011140
+4 chr10:100011219       t       c  0.2341 0.2346 0.31850  10 100011219
+5  chr10:10002142       a       g -0.1597 0.0796 0.04487  10  10002142
+6 chr10:100021672       t       c  0.0558 0.1017 0.58320  10 100021672
+ [1] 10  1 11 12 13 14 15 16 17 18 19 20  2 21 22  3  4  5  6  7  8  9
+       1        2        3        4        5        6        7        8 
+10608552 11307550  9317862  8934852  8345195  7741566  7523385  7269554 
+       9       10       11       12       13       14       15       16 
+ 5789347  6326781  6574397  6228871  4446965  4252324  3925441  4468782 
+      17       18       19       20       21       22        X        Y 
+ 3923227  3540821  3159370  2990255  1771468  1838410  4797151   192840 
+      MT 
+    1760 
+[1] "UnstitchedGPos"
+attr(,"package")
+[1] "GenomicRanges"
+UnstitchedGPos object with 6 positions and 2 metadata columns:
+      seqnames       pos strand |   RefSNP_id alleles_as_ambig
+         <Rle> <integer>  <Rle> | <character>      <character>
+  [1]       21   9411199      * | rs376129767                Y
+  [2]       21   9411239      * | rs559462325                R
+  [3]       21   9411242      * | rs531773366                M
+  [4]       21   9411243      * | rs191612142                M
+  [5]       21   9411245      * | rs181691356                M
+  [6]       21   9411254      * | rs186126309                R
+  -------
+  seqinfo: 25 sequences (1 circular) from GRCh37.p13 genome
+[1] 1771468
+
+  FALSE    TRUE 
+1198112   15610 
+
+FALSE  TRUE 
+   13 15597 
+Querying chr:  1 ...
+	Percent of summary statistics SNPs in chr:1 with rsIDs:
+    TRUE 
+99.91483 
+
+Querying chr:  2 ...
+	Percent of summary statistics SNPs in chr:2 with rsIDs:
+    TRUE 
+99.95069 
+
+Querying chr:  3 ...
+	Percent of summary statistics SNPs in chr:3 with rsIDs:
+    TRUE 
+99.93593 
+
+Querying chr:  4 ...
+	Percent of summary statistics SNPs in chr:4 with rsIDs:
+    TRUE 
+99.96864 
+
+Querying chr:  5 ...
+	Percent of summary statistics SNPs in chr:5 with rsIDs:
+    TRUE 
+99.96053 
+
+Querying chr:  6 ...
+	Percent of summary statistics SNPs in chr:6 with rsIDs:
+    TRUE 
+94.30878 
+
+Querying chr:  7 ...
+	Percent of summary statistics SNPs in chr:7 with rsIDs:
+    TRUE 
+99.95431 
+
+Querying chr:  8 ...
+	Percent of summary statistics SNPs in chr:8 with rsIDs:
+    TRUE 
+99.95429 
+
+Querying chr:  9 ...
+	Percent of summary statistics SNPs in chr:9 with rsIDs:
+    TRUE 
+99.90846 
+
+Querying chr:  10 ...
+	Percent of summary statistics SNPs in chr:10 with rsIDs:
+   TRUE 
+99.9565 
+
+Querying chr:  11 ...
+	Percent of summary statistics SNPs in chr:11 with rsIDs:
+    TRUE 
+99.93888 
+
+Querying chr:  12 ...
+	Percent of summary statistics SNPs in chr:12 with rsIDs:
+   TRUE 
+99.5855 
+
+Querying chr:  13 ...
+	Percent of summary statistics SNPs in chr:13 with rsIDs:
+    TRUE 
+99.94018 
+
+Querying chr:  14 ...
+	Percent of summary statistics SNPs in chr:14 with rsIDs:
+    TRUE 
+99.93539 
+
+Querying chr:  15 ...
+	Percent of summary statistics SNPs in chr:15 with rsIDs:
+   TRUE 
+99.9595 
+
+Querying chr:  16 ...
+	Percent of summary statistics SNPs in chr:16 with rsIDs:
+    TRUE 
+99.92381 
+
+Querying chr:  17 ...
+	Percent of summary statistics SNPs in chr:17 with rsIDs:
+   TRUE 
+99.7453 
+
+Querying chr:  18 ...
+	Percent of summary statistics SNPs in chr:18 with rsIDs:
+    TRUE 
+99.94936 
+
+Querying chr:  19 ...
+	Percent of summary statistics SNPs in chr:19 with rsIDs:
+    TRUE 
+98.29714 
+
+Querying chr:  20 ...
+	Percent of summary statistics SNPs in chr:20 with rsIDs:
+    TRUE 
+99.92048 
+
+Querying chr:  21 ...
+	Percent of summary statistics SNPs in chr:21 with rsIDs:
+    TRUE 
+99.91672 
+
+Querying chr:  22 ...
+	Percent of summary statistics SNPs in chr:22 with rsIDs:
+    TRUE 
+99.90326 
+
+Querying chr:  X ...
+	Percent of summary statistics SNPs in chr:X with rsIDs:
+[1] NA
+
+Querying chr:  Y ...
+	Percent of summary statistics SNPs in chr:Y with rsIDs:
+[1] NA
+
+Querying chr:  MT ...
+	Percent of summary statistics SNPs in chr:MT with rsIDs:
+[1] NA
+
+[1] 1223458       9
+[1] 100.1616
+Error in read.table(file = here("code", "magma", "02_Lancet_2014", "FTD-IFGC-and-rsID-ADDED.tab"),  : 
+  unused argument (append = FALSE)
+Execution halted
+**** Job ends ****
+Thu Aug 25 22:01:33 EDT 2022
