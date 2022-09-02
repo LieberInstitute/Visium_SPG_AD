@@ -1,4 +1,8 @@
 #### load relevant packages ####
+
+
+
+
 library('readxl')
 library('spatialLIBD')
 library('dplyr')
@@ -6,6 +10,7 @@ library('sessioninfo')
 library('here')
 library('scran')
 library('purrr')
+
 
 
 # Table S2: split by "Trait". There's 3 of them.
@@ -41,6 +46,7 @@ table_s2 <- get_ensembl(table_s2, gene_id, "gene_id")
 unique(table_s2 |> dplyr::filter(!is.na(gene_ensembl_id)) |> dplyr::select(gene_id))
 table_s2_np <- table_s2 |> dplyr::filter(Trait == "NEURITIC PLAQUES")
 table_s2_am <- table_s2 |> dplyr::filter(Trait == "AMYLOID")
+
 table_s2_ta <- table_s2 |> dplyr::filter(Trait == "Tangles")
 
 
@@ -101,15 +107,24 @@ raj_geneList <- list(
 )
 
 
-####calculate enrichment #####
 
+
+
+
+####calculate enrichment #####
 raj_enrichment <- gene_set_enrichment(
     raj_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment")
 
+raj_depleted <- gene_set_enrichment(
+    raj_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment", reverse = TRUE)
 
+reprex()
 
 ##### Enrichment plotting #####
 #dir.create(here("plots", "14_external_gene_sets"))
@@ -120,7 +135,7 @@ gene_set_enrichment_plot(
     raj_enrichment,
     xlabs = unique(raj_enrichment $ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(raj_enrichment $test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
@@ -183,3 +198,7 @@ dev.off()
 # [146] iterators_1.0.14              Polychrome_1.3.1              bluster_1.5.1                 BiocVersion_3.15.2            bit_4.0.4
 # [151] sass_0.4.1                    stringi_1.7.6                 HDF5Array_1.23.2              blob_1.2.3                    BiocSingular_1.11.0
 # [156] AnnotationHub_3.3.11          memoise_2.0.1                 irlba_2.3.5
+
+
+
+
