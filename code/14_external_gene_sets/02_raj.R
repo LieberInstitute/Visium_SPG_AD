@@ -26,8 +26,8 @@ load(here('processed-data','11_grey_matter_only','wholegenome',
           'Visium_IF_AD_modeling_results.Rdata'))
 
 #### read in external gene sets  ####
+table_s2 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S2.xlsx"))
 
-table_s2 <- read_excel("raw-data/GeneSets/1_Bulk_RNA-seq/Raj et al/Table S2.xlsx")
 head(table_s2)
 # intronic_cluster_id            cluster     chr    start      end gene_id    Beta     SE `Z-score`   `P-value`    FDR Trait
 # <chr>                          <chr>     <dbl>    <dbl>    <dbl> <chr>     <dbl>  <dbl>     <dbl>       <dbl>  <dbl> <chr>
@@ -79,7 +79,7 @@ nrow(table_s2)
 # [1] 167
 
 #load table 3
-table_s3 <- read_excel("raw-data/GeneSets/1_Bulk_RNA-seq/Raj et al/Table S3.xlsx")
+table_s3 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S3.xlsx"))
 # intronic_cluster      gene_id       `P-value` `P-value_Benjamini-Hochberg` `P-value_BonferroniAdjusted`
 # <chr>            <chr>             <dbl>                        <dbl>                        <dbl>
 #     1 chr10:clu_8247   PFKP           1.79e-28                     4.95e-24                     4.97e-24
