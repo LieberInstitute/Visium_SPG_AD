@@ -8,8 +8,10 @@ library('here')
 library('scran')
 library('purrr')
 
+here()
 ### load get_ensemble function
-source(here('code/14_external_gene_sets/get_ensemble_function.R'))
+
+source(here('code/14_external_gene_sets/get_ensembl_function.R'))
 
 ### load modeling results
 load(here('processed-data','11_grey_matter_only','wholegenome',
@@ -288,14 +290,24 @@ leung_enrichment
 # 139  0.000000 1.000000000 next_both leung_2_down_s7 enrichment     0.1
 # 140  0.000000 1.000000000 next_both leung_2_down_s8 enrichment     0.1
 
+
+
+leung_depleted <- gene_set_enrichment(
+    leung_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE)
+
+
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
-pdf(paste0(output_dir, "/05_leung.pdf"), width = 15)
+pdf(paste0(output_dir, "/05_leung_enriched.pdf"), width = 15)
 gene_set_enrichment_plot(
     leung_enrichment,
     xlabs = unique(leung_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(leung_enrichment $test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
@@ -305,4 +317,17 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+pdf(paste0(output_dir, "/05_leung_depleted.pdf"), width = 15)
+gene_set_enrichment_plot(
+    leung_depleted,
+    xlabs = unique(leung_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(leung_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
 
+dev.off()

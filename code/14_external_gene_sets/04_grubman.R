@@ -56,47 +56,47 @@ table_s3_grub <-  read_excel(input_data, sheet = "Supplementary Table 3", skip =
 # FDR = false discovery rate using Benajmini-Hochberg Method   "
 
 
-#microglia
-table_s4a <-read_excel(input_data, sheet = "Supplementary Table 4a", skip = 6,
-col_names = TRUE)
-# nrow(table_s4a)
-# [1] 146
-nrow(table_s4a |> dplyr::filter(FDR < 0.1))
-# > colnames(table_s4a)
-# [1] "...1"     "cond"     "cellType" "patient"  "geneID"   "logFC"    "FDR"
-
-#astrocytes
-table_s4b <-read_excel(input_data, sheet = "Supplementary Table 4b", skip = 6,
-                       col_names = TRUE)
-# > nrow(table_s4b)
-# [1] 1503
-nrow(table_s4b |> dplyr::filter(FDR < 0.1))
-
-#neurons
-table_s4c <-read_excel(input_data, sheet = "Supplementary Table 4c", skip = 6,
-                       col_names = TRUE)
-nrow(table_s4c |> dplyr::filter(FDR < 0.1))
-
-# > nrow(table_s4c)
-# [1] 496
-# > unique(table_s4c$cellType)
-# [1] "neuron"
-#neurons aren't divided into excitatory and inhibitory
-
-#oligos
-table_s4d <-read_excel(input_data, sheet = "Supplementary Table 4d", skip = 6,
-                       col_names = TRUE)
-# > nrow(table_s4d)
-# [1] 2076
-
-nrow(table_s4d |> dplyr::filter(FDR < 0.1))
-#opc
-table_s4e <-read_excel(input_data, sheet = "Supplementary Table 4e", skip = 6,
-                       col_names = TRUE)
-
-nrow(table_s4e |> dplyr::filter(FDR < 0.1))
-# > nrow(table_s4e)
-# [1] 379
+# #microglia
+# table_s4a <-read_excel(input_data, sheet = "Supplementary Table 4a", skip = 6,
+# col_names = TRUE)
+# # nrow(table_s4a)
+# # [1] 146
+# nrow(table_s4a |> dplyr::filter(FDR < 0.1))
+# # > colnames(table_s4a)
+# # [1] "...1"     "cond"     "cellType" "patient"  "geneID"   "logFC"    "FDR"
+#
+# #astrocytes
+# table_s4b <-read_excel(input_data, sheet = "Supplementary Table 4b", skip = 6,
+#                        col_names = TRUE)
+# # > nrow(table_s4b)
+# # [1] 1503
+# nrow(table_s4b |> dplyr::filter(FDR < 0.1))
+#
+# #neurons
+# table_s4c <-read_excel(input_data, sheet = "Supplementary Table 4c", skip = 6,
+#                        col_names = TRUE)
+# nrow(table_s4c |> dplyr::filter(FDR < 0.1))
+#
+# # > nrow(table_s4c)
+# # [1] 496
+# # > unique(table_s4c$cellType)
+# # [1] "neuron"
+# #neurons aren't divided into excitatory and inhibitory
+#
+# #oligos
+# table_s4d <-read_excel(input_data, sheet = "Supplementary Table 4d", skip = 6,
+#                        col_names = TRUE)
+# # > nrow(table_s4d)
+# # [1] 2076
+#
+# nrow(table_s4d |> dplyr::filter(FDR < 0.1))
+# #opc
+# table_s4e <-read_excel(input_data, sheet = "Supplementary Table 4e", skip = 6,
+#                        col_names = TRUE)
+#
+# nrow(table_s4e |> dplyr::filter(FDR < 0.1))
+# # > nrow(table_s4e)
+# # [1] 379
 
 ##Already filtered for FRD
 # > nrow(table_s4a |> dplyr::filter(FDR < 0.1))
@@ -127,27 +127,13 @@ df_mathys_list <- list(table_s3_grubman_astro, table_s3_grubman_mg, table_s3_gru
 res_1 <- purrr::map(df_mathys_list, get_ensembl, Genes, "Genes")
 
 
-df_list <- list(table_s4a, table_s4b, table_s4c,
-                table_s4d, table_s4e)
-
-res_2 <- purrr::map(df_list , get_ensembl, geneID, "geneID")
-
-
-
 grubman_geneList <- list(
     grubman_mathys_astro = res_1[[1]]$gene_ensembl_id,
     grubman_mathys_mg = res_1[[2]]$gene_ensembl_id,
     grubman_mathys_ex = res_1[[3]]$gene_ensembl_id,
     grubman_mathys_inh = res_1[[4]]$gene_ensembl_id,
     grubman_mathys_oligo = res_1[[5]]$gene_ensembl_id,
-    grubman_mathys_OPC = res_1[[6]]$gene_ensembl_id,
-
-    table_4_astro = res_2[[2]]$gene_ensembl_id,
-    table_4_mg = res_2[[1]]$gene_ensembl_id,
-
-    table_4_neurons = res_2[[3]]$gene_ensembl_id,
-    table_4_oli = res_2[[4]]$gene_ensembl_id,
-    table_4_OPC = res_2[[5]]$gene_ensembl_id
+    grubman_mathys_OPC = res_1[[6]]$gene_ensembl_id
 )
 
 
@@ -156,6 +142,13 @@ grubman_enrichment <- gene_set_enrichment(
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment")
+
+grubman_depleted <- gene_set_enrichment(
+    grubman_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE)
 
 #### grubman_enrichment ####
 # > grubman_enrichment
@@ -241,14 +234,14 @@ grubman_enrichment <- gene_set_enrichment(
 
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
-pdf(paste0(output_dir, "/04_grubman.pdf"), width = 15)
+pdf(paste0(output_dir, "/04_grubman_enriched.pdf"), width = 15)
 gene_set_enrichment_plot(
-    grub_enrichment,
+    grubman_enrichment,
     xlabs = unique(grubman_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grub_enrichment $test)))) * 15,
+    layerHeights = c(0, seq_len(length(unique(grubman_enrichment $test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
                                                                              "YlOrRd")))(50)),
     cex = 1.2
@@ -256,3 +249,18 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+
+pdf(paste0(output_dir, "/04_grubman_depleted.pdf"), width = 15)
+gene_set_enrichment_plot(
+    grubman_depleted,
+    xlabs = unique(grubman_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(grubman_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
+
+dev.off()

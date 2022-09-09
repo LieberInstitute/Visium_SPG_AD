@@ -245,7 +245,7 @@ gene_set_enrichment_plot(
     mathys_enrichment,
     xlabs = unique(mathys_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(mathys_enrichment $test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
