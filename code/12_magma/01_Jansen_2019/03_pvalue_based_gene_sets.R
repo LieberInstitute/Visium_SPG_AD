@@ -1,3 +1,13 @@
+library(sgejobs)
+# sgejobs::job_single(
+#     "pvalue_based_gene_sets",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 03_pvalue_based_gene_sets.R",
+#     create_logdir = TRUE
+# )
+
 
 ## load library
 library("spatialLIBD")
