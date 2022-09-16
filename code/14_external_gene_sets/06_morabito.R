@@ -1,4 +1,14 @@
-#load libraries
+#### load relevant packages ####
+
+library("sgejobs")
+
+# sgejobs::job_single(
+#     "morabito",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 06_morabito.R"
+# )
 
 library('readxl')
 library('spatialLIBD')
@@ -82,6 +92,7 @@ table_1_down_MG <- table_1_down  |> dplyr::filter(celltype == "MG") #222
 table_1_down_OPC <- table_1_down  |> dplyr::filter(celltype == "OPC") #133
 table_1_down_INH <- table_1_down  |> dplyr::filter(celltype == "INH") #181
 table_1_down_EX <- table_1_down  |> dplyr::filter(celltype == "EX") #336
+
 table_1_down_ASC <- table_1_down  |> dplyr::filter(celltype == "ASC") #437
 table_1_down_PER.END <- table_1_down  |> dplyr::filter(celltype == "PER.END") #1 drop?
 
@@ -122,6 +133,13 @@ morabito_enrichment <- gene_set_enrichment(
     modeling_results = modeling_results,
     model_type = "enrichment")
 
+morabito_depleted <- gene_set_enrichment(
+    morabito_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE)
+
 # 15 0.000000 1.00000000       Ab+       table_1_up_ODC enrichment     0.1
 # 16 0.000000 1.00000000       Ab+        table_1_up_MG enrichment     0.1
 # 17 0.000000 1.00000000       Ab+       table_1_up_OPC enrichment     0.1
@@ -151,21 +169,21 @@ morabito_enrichment <- gene_set_enrichment(
 # 41 3.160512 0.04568396  next_Ab+     table_1_down_ASC enrichment     0.1
 # 42 0.000000 1.00000000  next_Ab+ table_1_down_PER.END enrichment     0.1
 
-morabito_enrichment_subsetted <- morabito_enrichment[15:42,]
+
 
 table_5  <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S5_snATACseq.xlsx",
                        col_names = TRUE, skip = 2)
 
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
-pdf(paste0(output_dir, "/06_morabito.pdf"), width = 12)
+pdf(paste0(output_dir, "/06_morabito_enriched.pdf"), width = 12)
 gene_set_enrichment_plot(
-    morabito_enrichment_subsetted ,
-    xlabs = unique(morabito_enrichment_subsetted$ID),
+    morabito_enrichment ,
+    xlabs = unique(morabito_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(morabito_enrichment_subsetted$test)))) * 15,
+    layerHeights = c(0, seq_len(length(unique(morabito_enrichment$test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
                                                                              "YlOrRd")))(50)),
     cex = 1.2
@@ -173,6 +191,21 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+
+pdf(paste0(output_dir, "/06_morabito_depleted.pdf"), width = 12)
+gene_set_enrichment_plot(
+    morabito_depleted ,
+    xlabs = unique(morabito_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(morabito_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
+
+dev.off()
 ###snRNAseq
 
 #Table S1_snRNA-seq -> on the "Supplementary Data 1e" sheet.

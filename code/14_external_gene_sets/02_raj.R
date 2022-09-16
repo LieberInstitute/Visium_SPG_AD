@@ -1,7 +1,13 @@
 #### load relevant packages ####
+library("sgejobs")
 
-
-
+# sgejobs::job_single(
+#     "raj",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 02_raj.R"
+# )
 
 library('readxl')
 library('spatialLIBD')
@@ -29,7 +35,8 @@ load(here('processed-data','11_grey_matter_only','wholegenome',
           'Visium_IF_AD_modeling_results.Rdata'))
 
 #### read in external gene sets  ####
-table_s2 <- read_excel("raw-data/GeneSets/1_Bulk_RNA-seq/Raj et al/Table S2.xlsx")
+table_s2 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S2.xlsx"))
+
 head(table_s2)
 # intronic_cluster_id            cluster     chr    start      end gene_id    Beta     SE `Z-score`   `P-value`    FDR Trait
 # <chr>                          <chr>     <dbl>    <dbl>    <dbl> <chr>     <dbl>  <dbl>     <dbl>       <dbl>  <dbl> <chr>
@@ -81,7 +88,7 @@ nrow(table_s2)
 # [1] 167
 
 #load table 3
-table_s3 <- read_excel("raw-data/GeneSets/1_Bulk_RNA-seq/Raj et al/Table S3.xlsx")
+table_s3 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S3.xlsx"))
 # intronic_cluster      gene_id       `P-value` `P-value_Benjamini-Hochberg` `P-value_BonferroniAdjusted`
 # <chr>            <chr>             <dbl>                        <dbl>                        <dbl>
 #     1 chr10:clu_8247   PFKP           1.79e-28                     4.95e-24                     4.97e-24
@@ -124,12 +131,11 @@ raj_depleted <- gene_set_enrichment(
     modeling_results = modeling_results,
     model_type = "enrichment", reverse = TRUE)
 
-reprex()
 
 ##### Enrichment plotting #####
 #dir.create(here("plots", "14_external_gene_sets"))
 output_dir <- here("plots", "14_external_gene_sets")
-pdf(paste0(output_dir, "/02_raj.pdf"), width = 11)
+pdf(paste0(output_dir, "/02_raj_enriched.pdf"), width = 11)
 
 gene_set_enrichment_plot(
     raj_enrichment,
@@ -145,6 +151,21 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+pdf(paste0(output_dir, "/02_raj_depleted.pdf"), width = 11)
+
+gene_set_enrichment_plot(
+    raj_depleted,
+    xlabs = unique(raj_depleted $ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(raj_depleted $test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
+
+dev.off()
 # > sessionInfo()
 # R version 4.2.0 beta (2022-04-11 r82151)
 # Platform: x86_64-apple-darwin17.0 (64-bit)

@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -N magma_setup_FTD
-#$ -o logs/01_magma_setup_FTD.txt
-#$ -e logs/01_magma_setup_FTD.txt
+#$ -N grubman
+#$ -o logs/grubman.txt
+#$ -e logs/grubman.txt
 #$ -m e
 
 echo "**** Job starts ****"
@@ -17,13 +17,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.1.x
+module load conda_R/4.2
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript 01_magma_setup_FTD.R
+Rscript 04_grubman.R
 
 echo "**** Job ends ****"
 date

@@ -1,5 +1,18 @@
 #### load relevant packages ####
 library('readxl')
+#### load relevant packages ####
+
+library("sgejobs")
+
+# sgejobs::job_single(
+#     "mathys",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 03_mathys.R"
+# )
+
+
 library('spatialLIBD')
 library('dplyr')
 library('sessioninfo')
@@ -51,6 +64,43 @@ change_col_names <- function(df){
 df.list <- list(mathys_ex, mathys_in, mathys_ast, mathys_oli, mathys_opc, mathys_mic)
 df.list <- purrr::map(df.list, change_col_names)
 
+
+##print number of NAs
+
+# for( df in df.list){
+#     print(sum(is.na(df$gene_set_np_v_ep)))
+#     print(sum(is.na(df$gene_set_np_v_p)))
+#     print(sum(is.na(df$gene_set_ep_v_lp)))
+# }
+
+#mathys_ex
+# [1] 122
+# [1] 0
+# [1] 524
+# mathys_in
+# [1] 242
+# [1] 0
+# [1] 1018
+#
+# mathys_ast
+# [1] 323
+# [1] 0
+# [1] 1190
+#
+# mathys_oli
+# [1] 367
+# [1] 0
+# [1] 1068
+#
+# mathys_opc
+# [1] 319
+# [1] 0
+# [1] 1339
+#
+# mathys_mic
+# [1] 776
+# [1] 0
+# [1] 2009
 
 # colnames(df.list[[1]])
 # [1] "gene_set_np_v_p"           "IndModel.adj.pvals...2"
@@ -245,7 +295,7 @@ gene_set_enrichment_plot(
     mathys_enrichment,
     xlabs = unique(mathys_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(mathys_enrichment $test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,

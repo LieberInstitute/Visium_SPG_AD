@@ -1,4 +1,16 @@
+library("sgejobs")
+# sgejobs::job_single(
+#     "mostafavi",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 01_mostafavi.R",
+#     create_logdir = TRUE
+# )
+
+
 #### load relevant packages ####
+
 library('readxl')
 library('sessioninfo')
 library('here')
@@ -82,12 +94,19 @@ mostafavi_geneList <- list(
 )
 
 ####calculate enrichment #####
-
 mostafavi_enrichment <- gene_set_enrichment(
     mostafavi_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment")
+    model_type = "enrichment", reverse = FALSE)
+
+
+mostafavi_depleted <- gene_set_enrichment(
+    mostafavi_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE)
 
 #> mostafavi_enrichment
 # OR       Pval      test                ID model_type fdr_cut
@@ -113,21 +132,61 @@ mostafavi_enrichment <- gene_set_enrichment(
 # 20  0.000000 1.00000000 next_both mostafavi_table_8 enrichment     0.1
 # 21  0.000000 1.00000000 next_both mostafavi_table_9 enrichment     0.1
 
+# > mostafavi_depleted
+# OR        Pval      test                ID model_type fdr_cut
+# 1  0.0000000 1.000000000      none mostafavi_table_3  depletion     0.1
+# 2  0.0000000 1.000000000      none mostafavi_table_8  depletion     0.1
+# 3  0.0000000 1.000000000      none mostafavi_table_9  depletion     0.1
+# 4  1.1454394 0.595813046       Ab+ mostafavi_table_3  depletion     0.1
+# 5  1.0456800 0.812156912       Ab+ mostafavi_table_8  depletion     0.1
+# 6  0.0000000 0.615843932       Ab+ mostafavi_table_9  depletion     0.1
+# 7  0.6046274 0.005802193  next_Ab+ mostafavi_table_3  depletion     0.1
+# 8  0.7404868 0.383057105  next_Ab+ mostafavi_table_8  depletion     0.1
+# 9  0.0000000 0.045245738  next_Ab+ mostafavi_table_9  depletion     0.1
+# 10 0.0000000 1.000000000       pT+ mostafavi_table_3  depletion     0.1
+# 11 0.0000000 1.000000000       pT+ mostafavi_table_8  depletion     0.1
+# 12 0.0000000 1.000000000       pT+ mostafavi_table_9  depletion     0.1
+# 13 0.0000000 1.000000000  next_pT+ mostafavi_table_3  depletion     0.1
+# 14 0.0000000 1.000000000  next_pT+ mostafavi_table_8  depletion     0.1
+# 15 0.0000000 1.000000000  next_pT+ mostafavi_table_9  depletion     0.1
+# 16 0.0000000 1.000000000      both mostafavi_table_3  depletion     0.1
+# 17 0.0000000 1.000000000      both mostafavi_table_8  depletion     0.1
+# 18 0.0000000 1.000000000      both mostafavi_table_9  depletion     0.1
+# 19 0.0000000 1.000000000 next_both mostafavi_table_3  depletion     0.1
+# 20 0.0000000 1.000000000 next_both mostafavi_table_8  depletion     0.1
+# 21 0.0000000 1.000000000 next_both mostafavi_table_9  depletion     0.1
+
 
 ##### Enrichment plotting #####
 #dir.create(here("plots", "14_external_gene_sets"))
 output_dir <- here("plots", "14_external_gene_sets")
 
 
-pdf(paste0(output_dir, "/01_mostafavi.pdf"), width = 9)
+pdf(paste0(output_dir, "/01_mostafavi_enriched.pdf"), width = 9)
 
 gene_set_enrichment_plot(
     mostafavi_enrichment,
     xlabs = unique(mostafavi_enrichment$ID),
     PThresh = 12,
-    ORcut = 3,
+    ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(mostafavi_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
+                                                                             "YlOrRd")))(50)),
+    cex = 1.2
+)
+
+dev.off()
+
+pdf(paste0(output_dir, "/01_mostafavi_depleted.pdf"), width = 9)
+
+gene_set_enrichment_plot(
+    mostafavi_depleted,
+    xlabs = unique(mostafavi_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(mostafavi_depleted$test)))) * 15,
     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
                                                                              "YlOrRd")))(50)),
     cex = 1.2
