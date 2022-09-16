@@ -1,10 +1,9 @@
 #!/bin/bash
 #$ -cwd
-#$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -N magma_setup_FTD
-#$ -o logs/01_magma_setup_FTD.txt
-#$ -e logs/01_magma_setup_FTD.txt
-#$ -m e
+#$ -N magma_
+#$ -o ./logs/magma-gsa_steps1-3_ADHD_MNT06Jun2022.o
+#$ -e ./logs/magma-gsa_steps1-3_ADHD_MNT06Jun2022.e
+#$ -l bluejay,mem_free=16G,h_vmem=20G
 
 echo "**** Job starts ****"
 date

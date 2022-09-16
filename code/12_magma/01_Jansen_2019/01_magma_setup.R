@@ -79,13 +79,13 @@ table(annoTab.full$seqlevel)
 # 1          1          1          1          1          2          1
 # KI270726.1 KI270727.1 KI270728.1 KI270731.1 KI270734.1
 # 2          4          6          1          3
-dir.create(here("code", "magma", "annotation"))
+dir.create(here("code", "12_magma", "annotation"))
 
 #### ####
 
 write.table(annoTab.full,
     file = here(
-        "code", "magma", "annotation",
+        "code", "12_magma", "annotation",
         "GRCh38_gencode.v32_Ensembl98_GENES_all-36601.gene.loc"
     ),
     sep = "\t",
@@ -95,7 +95,7 @@ write.table(annoTab.full,
 
 ## Define all expressed genes
 
-marker_list <- read.table(here("code", "magma", "01_Jansen_2019", "pvalues_top_100.txt"),
+marker_list <- read.table(here("code", "12_magma", "01_Jansen_2019", "pvalues_top_100.txt"),
     header = TRUE
 )
 
