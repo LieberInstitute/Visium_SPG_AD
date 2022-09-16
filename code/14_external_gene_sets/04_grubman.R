@@ -1,4 +1,15 @@
 #### load relevant packages ####
+
+library("sgejobs")
+
+# sgejobs::job_single(
+#     "grubman",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 04_grubman.R"
+# )
+
 library('readxl')
 library('spatialLIBD')
 library('dplyr')

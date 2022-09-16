@@ -1,4 +1,13 @@
 #### load relevant packages ####
+library("sgejobs")
+
+# sgejobs::job_single(
+#     "raj",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 02_raj.R"
+# )
 
 library('readxl')
 library('spatialLIBD')

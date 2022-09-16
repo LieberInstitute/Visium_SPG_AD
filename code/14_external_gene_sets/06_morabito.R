@@ -1,4 +1,14 @@
-#load libraries
+#### load relevant packages ####
+
+library("sgejobs")
+
+# sgejobs::job_single(
+#     "morabito",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 06_morabito.R"
+# )
 
 library('readxl')
 library('spatialLIBD')

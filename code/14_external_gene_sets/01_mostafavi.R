@@ -1,3 +1,14 @@
+library("sgejobs")
+# sgejobs::job_single(
+#     "mostafavi",
+#     create_shell = TRUE,
+#     queue = "bluejay",
+#     memory = "20G",
+#     command = "Rscript 01_mostafavi.R",
+#     create_logdir = TRUE
+# )
+
+
 #### load relevant packages ####
 
 library('readxl')
