@@ -145,7 +145,6 @@ snploc.FTD <- sumStats.FTD.keep[, c("rsID", "chr", "Bp")]
 snploc.FTD <- na.omit(snploc.FTD)
 write.table(snploc.FTD,
     file = here("code", "12_magma", "02_Lancet_2014", "FTD_Lancet2014.snploc"),
-    append = FALSE,
     sep = "\t", col.names = T, row.names = F, quote = F
 )
 
