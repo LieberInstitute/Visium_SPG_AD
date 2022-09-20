@@ -8,7 +8,7 @@ Using flags:
 Start time is 13:45:18, Wednesday 29 Jun 2022
 
 Starting annotation...
-Reading gene locations from file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/annotation/GRCh38_gencode.v32_Ensembl98_LIFTED-to-hg19_expressedGenes.gene.loc... 
+Reading gene locations from file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/annotation/GRCh38_gencode.v32_Ensembl98_LIFTED-to-hg19_expressedGenes.gene.loc...
 	adding window: 35000bp (before), 10000bp (after)
 	WARNING: on line 32054, chromosome code 'M' not recognised; skipping gene (ID = ENSG00000198888)
 	WARNING: on line 32055, chromosome code 'M' not recognised; skipping gene (ID = ENSG00000198763)
@@ -48,7 +48,7 @@ Reading gene locations from file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus
 	chromosome 22: 742 genes
 	chromosome  X: 954 genes
 	chromosome  Y: 61 genes
-Reading SNP locations from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014.snploc... 
+Reading SNP locations from file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014.snploc...
 	WARNING: on line 1, chromosome code 'CHR' not recognised; skipping SNP (ID = SNP)
 	4828259 SNP locations read from file
 	of those, 3582601 (74.2%) mapped to at least one gene
