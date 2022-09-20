@@ -152,8 +152,6 @@ write.table(snploc.FTD,
 #      instead of sum(N_cases, N_controls)
 # sumStats.FTD.keep$N_effective <- 4/(1/sumStats.PD.keep$N_cases + 1/sumStats.PD.keep$N_controls)
 
-
-
 rm(list = ls(pattern = ".FTD"))
 
 ## Reproducibility information
