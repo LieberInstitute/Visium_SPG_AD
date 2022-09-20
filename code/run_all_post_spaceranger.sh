@@ -98,8 +98,45 @@ sh 02_explore_expr_variability.sh
 sh 03_model_pathology.sh
 sh 04_parse_model_results.sh
 
-## Add future steps here
-## TODO
+##MAGMA Analysis
+cd ${CODEDIR}/12_magma/01_Jansen_2019
+rm logs/pvalue_based_gene_sets.txt
+rm ad_gwas_50.log
+rm ad_gwas_100.log
+rm ad_gwas_200.log
+sh 03_pvalue_based_gene_sets.sh
+sh 02_magma_step_2_AD.sh
+
+cd ${CODEDIR}/12_magma/02_Lancet_2014
+rm logs/01_magma_setup.FTD.txt
+rm ftd_gwas_50.log
+rm ftd_gwas_100.log
+rm ftd_gwas_200.log
+rm snp-wise.log
+rm snp-wise.log.suppl
+sh 01_magma_setup_FTD.sh
+sh 02_magma_all_steps_FTD.sh
+
+cd ${CODEDIR}/12_magma/03_Nalls_2019
+rm logs/01_magma_setup.FTD.txt
+rm pd_gwas_50.log
+rm pd_gwas_100.log
+rm pd_gwas_200.log
+sh 02_magma_step_3_PD.sh
+
+cd ${CODEDIR}/12_magma
+rm logs/magma_heatmap.txt
+sh magma_heatmap.sh
+
+
+##TGE panel exploration
+cd ${CODEDIR}/13_tge_panel
+
+
+##External Gene Sets
+cd ${CODEDIR}/14_external_gene_sets
+
+
 
 ## Delete SPE versions for shiny
 rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
