@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -cwd
-#$ -N magma_
-#$ -o ./logs/magma-gsa_steps1-3_ADHD_MNT06Jun2022.o
-#$ -e ./logs/magma-gsa_steps1-3_ADHD_MNT06Jun2022.e
+#$ -N magma_setup_FTD
+#$ -o ./logs/magma_setup_FTD.o
+#$ -e ./logs/magma_setup_FTD.e
 #$ -l bluejay,mem_free=16G,h_vmem=20G
 
 echo "**** Job starts ****"
