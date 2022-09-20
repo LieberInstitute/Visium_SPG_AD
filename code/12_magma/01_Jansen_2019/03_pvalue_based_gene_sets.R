@@ -117,3 +117,12 @@ write.table(pvalue_top_200,
     ), sep = "\t",
     row.names = F, col.names = T, quote = F
 )
+
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
+
