@@ -59,12 +59,12 @@ barplots_spe <- function(suffix) {
             spe$path_groups,
             levels = c(
                 "none",
-                "Ab+",
-                "next_Ab+",
-                "pT+",
-                "next_pT+",
+                "Ab",
+                "n_Ab",
+                "pTau",
+                "n_pTau",
                 "both",
-                "next_both"
+                "n_both"
             )
         )
 

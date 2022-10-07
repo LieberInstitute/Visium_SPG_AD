@@ -11,5 +11,5 @@ colors_pathology <- setNames(
         paletteer::paletteer_d("dichromat::SteppedSequential_5")[rep(c(6, 18), each = 2) + c(0, 3)],
         paletteer::paletteer_d("beyonce::X7")[4:5]
     )[c(1:3, 6:7, 4:5)],
-    c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "both", "next_both")
+    c("none", "Ab", "n_Ab", "pTau", "n_pTau", "both", "n_both")
 )

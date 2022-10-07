@@ -74,23 +74,23 @@ stopifnot(identical(path_neighbor_any, sort(unique(path_neighbors_all[!path_neig
 stopifnot(identical(path_neighbor_any, sort(union(path_neighbor_Abeta, path_neighbor_pTau))))
 
 ## Add the neighbors
-spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_both)] <- "next_pT+"
-spe$path_groups[setdiff(path_neighbor_Abeta, path_neighbor_both)] <- "next_Ab+"
-spe$path_groups[path_neighbor_both] <- "next_both"
+spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_both)] <- "n_pTau"
+spe$path_groups[setdiff(path_neighbor_Abeta, path_neighbor_both)] <- "n_Ab"
+spe$path_groups[path_neighbor_both] <- "n_both"
 
 ## Check that things match
-stopifnot(identical(length(path_neighbor_any), length(grep("next_", spe$path_groups))))
+stopifnot(identical(length(path_neighbor_any), length(grep("n_", spe$path_groups))))
 
 ## Simplify some groups even more
-spe$path_groups <- gsub("pT-_Ab\\+", "Ab+", gsub("pT\\+_Ab-", "pT+", gsub("pT-_Ab-", "none", gsub("pT\\+_Ab\\+", "both", spe$path_groups))))
+spe$path_groups <- gsub("pT-_Ab\\+", "Ab", gsub("pT\\+_Ab-", "pTau", gsub("pT-_Ab-", "none", gsub("pT\\+_Ab\\+", "both", spe$path_groups))))
 
-spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "both", "next_both"))
+spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab", "n_Ab", "pTau", "n_pTau", "both", "n_both"))
 addmargins(table(spe$path_groups))
-#  none       Ab+  next_Ab+       pT+  next_pT+      both next_both       Sum
-# 19244      1279      3066      8960      3638       736      1192     38115
+ # none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
+ # 19244   1279   3066   8960   3638    736   1192  38115
 round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
-#  none       Ab+  next_Ab+       pT+  next_pT+      both next_both       Sum
-# 50.49      3.36      8.04     23.51      9.54      1.93      3.13    100.00
+ #  none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
+ # 50.49   3.36   8.04  23.51   9.54   1.93   3.13 100.00
 
 ## Load pathology colors
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
@@ -155,24 +155,24 @@ which_neighbors <- function(var, values, has_path) {
 path_neighbor_Abeta <- which_neighbors("path_Abeta", "Abeta+", which(spe$path_Abeta == "Abeta+"))
 ## Prioritize re-labeling the next_Ab+ spots over any pTau signal, aka:
 ## relabel some pT+_Ab- spots as next to Ab+, and no longer consider them pTau+
-spe$path_groups[path_neighbor_Abeta] <- "next_Ab+"
+spe$path_groups[path_neighbor_Abeta] <- "n_Ab"
 path_neighbor_pTau <- which_neighbors("path_groups", "pT+_Ab-", has_path)
 path_neighbor_both <- intersect(path_neighbor_Abeta, path_neighbor_pTau)
 
 ## Add the neighbors
-spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_Abeta)] <- "next_pT+"
-spe$path_groups[path_neighbor_both] <- "next_both"
+spe$path_groups[setdiff(path_neighbor_pTau, path_neighbor_Abeta)] <- "n_pTau"
+spe$path_groups[path_neighbor_both] <- "n_both"
 
 ## Simplify some groups even more
-spe$path_groups <- gsub("pT-_Ab\\+", "Ab+", gsub("pT\\+_Ab-", "pT+", gsub("pT-_Ab-", "none", spe$path_groups)))
+spe$path_groups <- gsub("pT-_Ab\\+", "Ab", gsub("pT\\+_Ab-", "pTau", gsub("pT-_Ab-", "none", spe$path_groups)))
 
-spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab+", "next_Ab+", "pT+", "next_pT+", "next_both"))
+spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab", "n_Ab", "pTau", "n_pTau", "n_both"))
 addmargins(table(spe$path_groups))
-#  none       Ab+  next_Ab+       pT+  next_pT+ next_both       Sum
-# 19407      2015      6141      6381      3475       696     38115
+ # none     Ab   n_Ab   pTau n_pTau n_both    Sum
+ # 19407   2015   6141   6381   3475    696  38115
 round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
-#  none       Ab+  next_Ab+       pT+  next_pT+ next_both       Sum
-# 50.92      5.29     16.11     16.74      9.12      1.83    100.00
+ #  none     Ab   n_Ab   pTau n_pTau n_both    Sum
+ # 50.92   5.29  16.11  16.74   9.12   1.83 100.00
 
 
 vis_grid_clus(
