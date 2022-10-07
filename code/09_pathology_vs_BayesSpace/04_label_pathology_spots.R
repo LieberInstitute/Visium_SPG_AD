@@ -86,11 +86,11 @@ spe$path_groups <- gsub("pT-_Ab\\+", "Ab", gsub("pT\\+_Ab-", "pTau", gsub("pT-_A
 
 spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab", "n_Ab", "pTau", "n_pTau", "both", "n_both"))
 addmargins(table(spe$path_groups))
- # none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
- # 19244   1279   3066   8960   3638    736   1192  38115
+# none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
+# 19244   1279   3066   8960   3638    736   1192  38115
 round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
- #  none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
- # 50.49   3.36   8.04  23.51   9.54   1.93   3.13 100.00
+#  none     Ab   n_Ab   pTau n_pTau   both n_both    Sum
+# 50.49   3.36   8.04  23.51   9.54   1.93   3.13 100.00
 
 ## Load pathology colors
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
@@ -168,11 +168,11 @@ spe$path_groups <- gsub("pT-_Ab\\+", "Ab", gsub("pT\\+_Ab-", "pTau", gsub("pT-_A
 
 spe$path_groups <- factor(spe$path_groups, levels = c("none", "Ab", "n_Ab", "pTau", "n_pTau", "n_both"))
 addmargins(table(spe$path_groups))
- # none     Ab   n_Ab   pTau n_pTau n_both    Sum
- # 19407   2015   6141   6381   3475    696  38115
+# none     Ab   n_Ab   pTau n_pTau n_both    Sum
+# 19407   2015   6141   6381   3475    696  38115
 round(addmargins(table(spe$path_groups)) / ncol(spe) * 100, 2)
- #  none     Ab   n_Ab   pTau n_pTau n_both    Sum
- # 50.92   5.29  16.11  16.74   9.12   1.83 100.00
+#  none     Ab   n_Ab   pTau n_pTau n_both    Sum
+# 50.92   5.29  16.11  16.74   9.12   1.83 100.00
 
 
 vis_grid_clus(
