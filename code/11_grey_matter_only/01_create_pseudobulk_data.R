@@ -32,14 +32,10 @@ if (FALSE) {
     opt <- list(spetype = "wholegenome")
 }
 
-
-library("SpatialExperiment")
 library("here")
 library("spatialLIBD")
-library("scuttle")
-library("edgeR")
+stopifnot(packageVersion("spatialLIBD") >= "1.9.18")
 library("sessioninfo")
-library("jaffelab")
 library("scater")
 
 ## output directory
