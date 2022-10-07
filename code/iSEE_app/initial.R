@@ -5,7 +5,7 @@ initial <- list()
 ################################################################################
 
 initial[["ReducedDimensionPlot1"]] <- new("ReducedDimensionPlot",
-    Type = "PCA", XAxis = 1L, YAxis = 2L,
+    Type = "runPCA", XAxis = 1L, YAxis = 2L,
     FacetRowByColData = "APOe", FacetColumnByColData = "APOe",
     ColorByColumnData = "path_groups", ColorByFeatureNameAssay = "logcounts",
     ColorBySampleNameColor = "#FF0000", ShapeByColumnData = "APOe",
@@ -63,14 +63,15 @@ initial[["ComplexHeatmapPlot1"]] <- new("ComplexHeatmapPlot",
 ################################################################################
 
 initial[["RowDataTable1"]] <- new("RowDataTable",
-    Selected = "SNAP25", Search = "", SearchColumns = c(
+    Selected = "RPN2", Search = "", SearchColumns = c(
         "",
-        "", "", "", "", "", "", "", "", ""
-    ), HiddenColumns = character(0),
-    VersionInfo = list(iSEE = structure(list(c(2L, 8L, 0L)), class = c(
-        "package_version",
-        "numeric_version"
-    ))), PanelId = c(RowDataTable = 1L), PanelHeight = 600L,
+        "", "", "", "", "", ""
+    ), HiddenColumns = character(0), VersionInfo = list(
+        iSEE = structure(list(c(2L, 8L, 0L)), class = c(
+            "package_version",
+            "numeric_version"
+        ))
+    ), PanelId = c(RowDataTable = 1L), PanelHeight = 600L,
     PanelWidth = 4L, SelectionBoxOpen = FALSE, RowSelectionSource = "---",
     ColumnSelectionSource = "---", DataBoxOpen = FALSE, RowSelectionDynamicSource = FALSE,
     ColumnSelectionDynamicSource = FALSE, RowSelectionRestrict = FALSE,
@@ -85,7 +86,7 @@ initial[["FeatureAssayPlot1"]] <- new("FeatureAssayPlot",
     Assay = "logcounts", XAxis = "Column data",
     XAxisColumnData = "path_groups", XAxisFeatureName = "LINC01128",
     XAxisFeatureSource = "---", XAxisFeatureDynamicSource = FALSE,
-    YAxisFeatureName = "SNAP25", YAxisFeatureSource = "RowDataTable1",
+    YAxisFeatureName = "RPN2", YAxisFeatureSource = "RowDataTable1",
     YAxisFeatureDynamicSource = TRUE, FacetRowByColData = "APOe",
     FacetColumnByColData = "APOe", ColorByColumnData = "path_groups",
     ColorByFeatureNameAssay = "logcounts", ColorBySampleNameColor = "#FF0000",
