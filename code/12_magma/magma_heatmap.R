@@ -27,7 +27,7 @@ source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotE
 
 magmaStats <- list()
 
-gene_num = c("50",  "100", "200")
+gene_num <- c("50", "100", "200")
 
 
 magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "12_magma", "01_Jansen_2019", paste0("ad_gwas_", gene_num[SGE_TASK_ID], ".gsa.out")), header = T)
@@ -50,7 +50,7 @@ magmaStats_wide$Region <- rep("ITC",
 magmaStats_wide$Pathology_Type <- rownames(magmaStats_wide)
 
 
-##Compute disorder-wise FDRs and Bonferronis
+## Compute disorder-wise FDRs and Bonferronis
 magmaStats_wide$FDR_AD <- p.adjust(magmaStats_wide$AD.Jansen.2019, "fdr")
 magmaStats_wide$FDR_FTD <- p.adjust(magmaStats_wide$FTD.Ferrari.2014, "fdr")
 magmaStats_wide$FDR_PD <- p.adjust(magmaStats_wide$PD.Nalls.2019, "fdr")
@@ -163,7 +163,7 @@ magmaStats_wide.beta$Region <- rep("ITC",
 )
 magmaStats_wide.beta$Pathology_Type <- rownames(magmaStats_wide.beta)
 
-####betas for top 200 ####
+#### betas for top 200 ####
 # AD.Jansen.2019 FTD.Ferrari.2014 PD.Nalls.2019 Region Pathology_Type
 # Ab             0.0542280       -0.0384820      0.055908    ITC             Ab
 # both          -0.0661240        0.1026800      0.106150    ITC           both
@@ -201,11 +201,11 @@ write.csv(magmaStats_long,
 )
 
 write.csv(magmaStats_wide,
-          file = here(
-              "code", "12_magma",
-              "GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies.csv"
-          ),
-          row.names = F, quote = F
+    file = here(
+        "code", "12_magma",
+        "GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies.csv"
+    ),
+    row.names = F, quote = F
 )
 
 head(magmaStats_long)
@@ -214,7 +214,7 @@ head(magmaStats_long)
 midpoint <- function(x) x[-length(x)] + diff(x) / 2
 
 MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
-    ####what does magmaStats[[region]] look like? ####
+    #### what does magmaStats[[region]] look like? ####
     # $AD.Jansen.2019
     # VARIABLE TYPE NGENES       BETA    BETA_STD       SE       P
     # 1        Ab  SET    194  0.0542280  0.00428220 0.055285 0.16333
@@ -269,7 +269,7 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
     rownames(wide_beta) <- magmaStats[[region]][[1]]$VARIABLE
     wide_beta <- round(wide_beta[rev(sort(rownames(wide_beta))), ], 2)
     # beta = 0.11 for both
-    ####what does wide_beta look like for top 200? ####
+    #### what does wide_beta look like for top 200? ####
     # AD.Jansen.2019 FTD.Ferrari.2014 PD.Nalls.2019
     # pT                  0.00             0.00         -0.02
     # none                0.04             0.11          0.09

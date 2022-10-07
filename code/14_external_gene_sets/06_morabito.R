@@ -10,13 +10,13 @@ library("sgejobs")
 #     command = "Rscript 06_morabito.R"
 # )
 
-library('readxl')
-library('spatialLIBD')
-library('dplyr')
-library('sessioninfo')
-library('here')
-library('scran')
-library('purrr')
+library("readxl")
+library("spatialLIBD")
+library("dplyr")
+library("sessioninfo")
+library("here")
+library("scran")
+library("purrr")
 
 
 # Number of sets: 6 cell types * direction (3) * 2 assays (ATAC and RNA) = 36 sets
@@ -27,7 +27,7 @@ library('purrr')
 # Direction available: avg_logFC
 # Statistics available: p_val_adj (looks filtered already)
 
-#Table S5: try it with and without direction
+# Table S5: try it with and without direction
 # Direction available: avg_logFC
 # Statistics available: p_val_adj
 # Genes are not assigned. We have the Peak coordinates. We could use GenomicRanges::findOverlaps() to compare against the annotation.
@@ -37,14 +37,17 @@ library('purrr')
 
 
 ### load get_ensemble function
-source(here('code/14_external_gene_sets/get_ensembl_function.R'))
+source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 
 ### load modeling results
-load(here('processed-data','11_grey_matter_only','wholegenome',
-          'Visium_IF_AD_modeling_results.Rdata'))
+load(here(
+    "processed-data", "11_grey_matter_only", "wholegenome",
+    "Visium_IF_AD_modeling_results.Rdata"
+))
 
 table_1 <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S1_snRNAseq.xlsx",
-                      sheet = "Supplementary Data 1e", col_names = TRUE, skip = 2)
+    sheet = "Supplementary Data 1e", col_names = TRUE, skip = 2
+)
 head(table_1)
 # > nrow(table_1)
 # [1] 3085
@@ -60,8 +63,8 @@ head(table_1)
 # 6     0     0.328 0.379 0.212         0 CHOR… 0.167  ODC
 
 
-#filter by FDR
-table_1  <- table_1 |> dplyr::filter(p_val_adj < 0.1)
+# filter by FDR
+table_1 <- table_1 |> dplyr::filter(p_val_adj < 0.1)
 
 
 
@@ -77,31 +80,33 @@ nrow(table_1_down)
 
 #### Sort gene sets ####
 unique(table_1$celltype)
-#"ODC"     "MG"      "OPC"     "INH"     "EX"      "ASC"     "PER.END"
+# "ODC"     "MG"      "OPC"     "INH"     "EX"      "ASC"     "PER.END"
 
-table_1_up_ODC <- table_1_up  |> dplyr::filter(celltype == "ODC") #327
-table_1_up_MG <- table_1_up  |> dplyr::filter(celltype == "MG") #246
-table_1_up_OPC <- table_1_up  |> dplyr::filter(celltype == "OPC") #175
-table_1_up_INH <- table_1_up  |> dplyr::filter(celltype == "INH") #125
-table_1_up_EX <- table_1_up  |> dplyr::filter(celltype == "EX") #231
-table_1_up_ASC <- table_1_up  |> dplyr::filter(celltype == "ASC") #384
-table_1_up_PER.END <- table_1_up  |> dplyr::filter(celltype == "PER.END") #7 drop?
+table_1_up_ODC <- table_1_up |> dplyr::filter(celltype == "ODC") # 327
+table_1_up_MG <- table_1_up |> dplyr::filter(celltype == "MG") # 246
+table_1_up_OPC <- table_1_up |> dplyr::filter(celltype == "OPC") # 175
+table_1_up_INH <- table_1_up |> dplyr::filter(celltype == "INH") # 125
+table_1_up_EX <- table_1_up |> dplyr::filter(celltype == "EX") # 231
+table_1_up_ASC <- table_1_up |> dplyr::filter(celltype == "ASC") # 384
+table_1_up_PER.END <- table_1_up |> dplyr::filter(celltype == "PER.END") # 7 drop?
 
-table_1_down_ODC <- table_1_down  |> dplyr::filter(celltype == "ODC") #280
-table_1_down_MG <- table_1_down  |> dplyr::filter(celltype == "MG") #222
-table_1_down_OPC <- table_1_down  |> dplyr::filter(celltype == "OPC") #133
-table_1_down_INH <- table_1_down  |> dplyr::filter(celltype == "INH") #181
-table_1_down_EX <- table_1_down  |> dplyr::filter(celltype == "EX") #336
+table_1_down_ODC <- table_1_down |> dplyr::filter(celltype == "ODC") # 280
+table_1_down_MG <- table_1_down |> dplyr::filter(celltype == "MG") # 222
+table_1_down_OPC <- table_1_down |> dplyr::filter(celltype == "OPC") # 133
+table_1_down_INH <- table_1_down |> dplyr::filter(celltype == "INH") # 181
+table_1_down_EX <- table_1_down |> dplyr::filter(celltype == "EX") # 336
 
-table_1_down_ASC <- table_1_down  |> dplyr::filter(celltype == "ASC") #437
-table_1_down_PER.END <- table_1_down  |> dplyr::filter(celltype == "PER.END") #1 drop?
+table_1_down_ASC <- table_1_down |> dplyr::filter(celltype == "ASC") # 437
+table_1_down_PER.END <- table_1_down |> dplyr::filter(celltype == "PER.END") # 1 drop?
 
 
 #### Create gene ensembl sets ####
-df_list<- list(table_1_up_ODC, table_1_up_MG ,table_1_up_OPC , table_1_up_INH,table_1_up_EX,
-               table_1_up_ASC, table_1_up_PER.END,
-               table_1_down_ODC, table_1_down_MG ,table_1_down_OPC , table_1_down_INH,table_1_down_EX,
-               table_1_down_ASC, table_1_down_PER.END )
+df_list <- list(
+    table_1_up_ODC, table_1_up_MG, table_1_up_OPC, table_1_up_INH, table_1_up_EX,
+    table_1_up_ASC, table_1_up_PER.END,
+    table_1_down_ODC, table_1_down_MG, table_1_down_OPC, table_1_down_INH, table_1_down_EX,
+    table_1_down_ASC, table_1_down_PER.END
+)
 
 res_1 <- purrr::map(df_list, get_ensembl, gene, "gene")
 
@@ -112,17 +117,15 @@ morabito_geneList <- list(
     table_1_up_OPC = res_1[[3]]$gene_ensembl_id,
     table_1_up_INH = res_1[[4]]$gene_ensembl_id,
     table_1_up_EX = res_1[[5]]$gene_ensembl_id,
-    table_1_up_ASC= res_1[[6]]$gene_ensembl_id,
-    table_1_up_PER.END= res_1[[7]]$gene_ensembl_id,
-
+    table_1_up_ASC = res_1[[6]]$gene_ensembl_id,
+    table_1_up_PER.END = res_1[[7]]$gene_ensembl_id,
     table_1_down_ODC = res_1[[8]]$gene_ensembl_id,
     table_1_down_MG = res_1[[9]]$gene_ensembl_id,
     table_1_down_OPC = res_1[[10]]$gene_ensembl_id,
     table_1_down_INH = res_1[[11]]$gene_ensembl_id,
     table_1_down_EX = res_1[[12]]$gene_ensembl_id,
-    table_1_down_ASC= res_1[[13]]$gene_ensembl_id,
-    table_1_down_PER.END= res_1[[14]]$gene_ensembl_id
-
+    table_1_down_ASC = res_1[[13]]$gene_ensembl_id,
+    table_1_down_PER.END = res_1[[14]]$gene_ensembl_id
 )
 
 
@@ -131,14 +134,16 @@ morabito_enrichment <- gene_set_enrichment(
     morabito_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment")
+    model_type = "enrichment"
+)
 
 morabito_depleted <- gene_set_enrichment(
     morabito_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment",
-    reverse = TRUE)
+    reverse = TRUE
+)
 
 # 15 0.000000 1.00000000       Ab+       table_1_up_ODC enrichment     0.1
 # 16 0.000000 1.00000000       Ab+        table_1_up_MG enrichment     0.1
@@ -171,21 +176,24 @@ morabito_depleted <- gene_set_enrichment(
 
 
 
-table_5  <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S5_snATACseq.xlsx",
-                       col_names = TRUE, skip = 2)
+table_5 <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S5_snATACseq.xlsx",
+    col_names = TRUE, skip = 2
+)
 
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
 pdf(paste0(output_dir, "/06_morabito_enriched.pdf"), width = 12)
 gene_set_enrichment_plot(
-    morabito_enrichment ,
+    morabito_enrichment,
     xlabs = unique(morabito_enrichment$ID),
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(morabito_enrichment$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -194,21 +202,23 @@ dev.off()
 
 pdf(paste0(output_dir, "/06_morabito_depleted.pdf"), width = 12)
 gene_set_enrichment_plot(
-    morabito_depleted ,
+    morabito_depleted,
     xlabs = unique(morabito_depleted$ID),
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(morabito_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
 dev.off()
-###snRNAseq
+### snRNAseq
 
-#Table S1_snRNA-seq -> on the "Supplementary Data 1e" sheet.
-#ODC for oligodendrocytes; EX for excitatory neurons;
-#MG for microglia; ASC for astrocytes; INH for inhibitory neurons;
-#OPC for Oligodendrocyte precursor cells
+# Table S1_snRNA-seq -> on the "Supplementary Data 1e" sheet.
+# ODC for oligodendrocytes; EX for excitatory neurons;
+# MG for microglia; ASC for astrocytes; INH for inhibitory neurons;
+# OPC for Oligodendrocyte precursor cells

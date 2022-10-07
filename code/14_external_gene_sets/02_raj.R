@@ -9,13 +9,13 @@ library("sgejobs")
 #     command = "Rscript 02_raj.R"
 # )
 
-library('readxl')
-library('spatialLIBD')
-library('dplyr')
-library('sessioninfo')
-library('here')
-library('scran')
-library('purrr')
+library("readxl")
+library("spatialLIBD")
+library("dplyr")
+library("sessioninfo")
+library("here")
+library("scran")
+library("purrr")
 
 
 
@@ -28,11 +28,13 @@ library('purrr')
 
 
 ### load get_ensemble function
-source(here('code/14_external_gene_sets/get_ensembl_function.R'))
+source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 
 #### load modeling results ####
-load(here('processed-data','11_grey_matter_only','wholegenome',
-          'Visium_IF_AD_modeling_results.Rdata'))
+load(here(
+    "processed-data", "11_grey_matter_only", "wholegenome",
+    "Visium_IF_AD_modeling_results.Rdata"
+))
 
 #### read in external gene sets  ####
 table_s2 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S2.xlsx"))
@@ -45,7 +47,7 @@ head(table_s2)
 # 3 10_3147351_3147585_clu_8247    clu_8247     10  3147351  3147585 PFKP     0.0898 0.0175      5.13 0.000000430 0.0134 NEURITIC PLAQUES
 
 unique(table_s2$Trait)
-#"NEURITIC PLAQUES",  "AMYLOID", "Tangles"
+# "NEURITIC PLAQUES",  "AMYLOID", "Tangles"
 
 
 table_s2 <- table_s2 |> dplyr::filter(FDR < 0.1)
@@ -87,7 +89,7 @@ nrow(table_s2)
 # > nrow(table_s2_ta)
 # [1] 167
 
-#load table 3
+# load table 3
 table_s3 <- read_excel(here("raw-data", "GeneSets", "1_Bulk_RNA-seq", "Raj et al", "Table S3.xlsx"))
 # intronic_cluster      gene_id       `P-value` `P-value_Benjamini-Hochberg` `P-value_BonferroniAdjusted`
 # <chr>            <chr>             <dbl>                        <dbl>                        <dbl>
@@ -110,7 +112,6 @@ raj_geneList <- list(
     raj_table_2_am = table_s2_am$gene_ensembl_id,
     raj_table_2_ta = table_s2_ta$gene_ensembl_id,
     raj_table_3 = table_s3$gene_ensembl_id
-
 )
 
 
@@ -118,34 +119,38 @@ raj_geneList <- list(
 
 
 
-####calculate enrichment #####
+#### calculate enrichment #####
 raj_enrichment <- gene_set_enrichment(
     raj_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment")
+    model_type = "enrichment"
+)
 
 raj_depleted <- gene_set_enrichment(
     raj_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment", reverse = TRUE)
+    model_type = "enrichment", reverse = TRUE
+)
 
 
 ##### Enrichment plotting #####
-#dir.create(here("plots", "14_external_gene_sets"))
+# dir.create(here("plots", "14_external_gene_sets"))
 output_dir <- here("plots", "14_external_gene_sets")
 pdf(paste0(output_dir, "/02_raj_enriched.pdf"), width = 11)
 
 gene_set_enrichment_plot(
     raj_enrichment,
-    xlabs = unique(raj_enrichment $ID),
+    xlabs = unique(raj_enrichment$ID),
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(raj_enrichment $test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    layerHeights = c(0, seq_len(length(unique(raj_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -155,13 +160,15 @@ pdf(paste0(output_dir, "/02_raj_depleted.pdf"), width = 11)
 
 gene_set_enrichment_plot(
     raj_depleted,
-    xlabs = unique(raj_depleted $ID),
+    xlabs = unique(raj_depleted$ID),
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(raj_depleted $test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    layerHeights = c(0, seq_len(length(unique(raj_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -219,7 +226,3 @@ dev.off()
 # [146] iterators_1.0.14              Polychrome_1.3.1              bluster_1.5.1                 BiocVersion_3.15.2            bit_4.0.4
 # [151] sass_0.4.1                    stringi_1.7.6                 HDF5Array_1.23.2              blob_1.2.3                    BiocSingular_1.11.0
 # [156] AnnotationHub_3.3.11          memoise_2.0.1                 irlba_2.3.5
-
-
-
-

@@ -37,15 +37,15 @@ iSEE(
     appTitle = "Kwon2022_pseudobulk_AD_pathology_wholegenome",
     initial = initial,
     colormap = ExperimentColorMap(colData = list(
-    subject = function(n) {
-        cols <- paletteer::paletteer_d(
-            palette = "RColorBrewer::Dark2",
-            n = length(unique(sce_IF$subject))
-        )
-        cols <- as.vector(cols)
-        names(cols) <- levels(sce_IF$subject)
-        return(cols)
-    },
+        subject = function(n) {
+            cols <- paletteer::paletteer_d(
+                palette = "RColorBrewer::Dark2",
+                n = length(unique(sce_IF$subject))
+            )
+            cols <- as.vector(cols)
+            names(cols) <- levels(sce_IF$subject)
+            return(cols)
+        },
         path_groups = function(n) {
             return(colData(sce_IF)$path_groups_colors)
         }

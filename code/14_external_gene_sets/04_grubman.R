@@ -10,21 +10,23 @@ library("sgejobs")
 #     command = "Rscript 04_grubman.R"
 # )
 
-library('readxl')
-library('spatialLIBD')
-library('dplyr')
-library('sessioninfo')
-library('here')
-library('scran')
-library('purrr')
+library("readxl")
+library("spatialLIBD")
+library("dplyr")
+library("sessioninfo")
+library("here")
+library("scran")
+library("purrr")
 
 
 ### load get_ensemble function
-source(here('code/14_external_gene_sets/get_ensembl_function.R'))
+source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 
 ### load modeling results
-load(here('processed-data','11_grey_matter_only','wholegenome',
-          'Visium_IF_AD_modeling_results.Rdata'))
+load(here(
+    "processed-data", "11_grey_matter_only", "wholegenome",
+    "Visium_IF_AD_modeling_results.Rdata"
+))
 
 # Number of sets: 6 cell types * concordance (2 options) = 12 sets + direction 6 sets = 18 sets
 #
@@ -33,7 +35,7 @@ load(here('processed-data','11_grey_matter_only','wholegenome',
 # Direction available: Grubman.LogFC (AD vs Control a priori). There's not that many genes.
 #
 # Statistics available: No. But we have Concordance.
-##Correction: We have concordance only for the Mathys comparison. FDR available all others.
+## Correction: We have concordance only for the Mathys comparison. FDR available all others.
 #
 #  For each cell type, use all genes (ignore Concordance)
 #  For each cell type, filter to Concordance == TRUE
@@ -41,9 +43,11 @@ load(here('processed-data','11_grey_matter_only','wholegenome',
 
 input_data <- "raw-data/GeneSets/2_snRNA-seq/2_Grubman et al_Entorhinal/Grubman et al.xlsx"
 
-#comparison with Mathys
-table_s3_grub <-  read_excel(input_data, sheet = "Supplementary Table 3", skip = 10,
-                             col_names = TRUE)
+# comparison with Mathys
+table_s3_grub <- read_excel(input_data,
+    sheet = "Supplementary Table 3", skip = 10,
+    col_names = TRUE
+)
 # > nrow(table_s3_grub)
 # [1] 94                                                     col_names = TRUE)
 
@@ -109,7 +113,7 @@ table_s3_grub <-  read_excel(input_data, sheet = "Supplementary Table 3", skip =
 # # > nrow(table_s4e)
 # # [1] 379
 
-##Already filtered for FRD
+## Already filtered for FRD
 # > nrow(table_s4a |> dplyr::filter(FDR < 0.1))
 # [1] 146
 # > nrow(table_s4b |> dplyr::filter(FDR < 0.1))
@@ -125,15 +129,17 @@ table_s3_grub <-  read_excel(input_data, sheet = "Supplementary Table 3", skip =
 # > unique(table_s3_grub$`cell type`)
 # [1] "astro"               "mg"                  "neuron (excitatory)"
 # [4] "neuron (inhibitory)" "oligo"               "OPC"
-table_s3_grubman_astro  <- table_s3_grub |> dplyr::filter(`cell type` == "astro")
-table_s3_grubman_mg  <- table_s3_grub |> dplyr::filter(`cell type` == "mg")
-table_s3_grubman_ex  <- table_s3_grub |> dplyr::filter(`cell type` ==  "neuron (excitatory)")
-table_s3_grubman_inh  <- table_s3_grub |> dplyr::filter(`cell type` == "neuron (inhibitory)")
-table_s3_grubman_oligo  <- table_s3_grub |> dplyr::filter(`cell type` == "oligo")
-table_s3_grubman_OPC  <- table_s3_grub |> dplyr::filter(`cell type` == "OPC")
+table_s3_grubman_astro <- table_s3_grub |> dplyr::filter(`cell type` == "astro")
+table_s3_grubman_mg <- table_s3_grub |> dplyr::filter(`cell type` == "mg")
+table_s3_grubman_ex <- table_s3_grub |> dplyr::filter(`cell type` == "neuron (excitatory)")
+table_s3_grubman_inh <- table_s3_grub |> dplyr::filter(`cell type` == "neuron (inhibitory)")
+table_s3_grubman_oligo <- table_s3_grub |> dplyr::filter(`cell type` == "oligo")
+table_s3_grubman_OPC <- table_s3_grub |> dplyr::filter(`cell type` == "OPC")
 
-df_mathys_list <- list(table_s3_grubman_astro, table_s3_grubman_mg, table_s3_grubman_ex, table_s3_grubman_inh,
-                table_s3_grubman_oligo, table_s3_grubman_OPC)
+df_mathys_list <- list(
+    table_s3_grubman_astro, table_s3_grubman_mg, table_s3_grubman_ex, table_s3_grubman_inh,
+    table_s3_grubman_oligo, table_s3_grubman_OPC
+)
 
 res_1 <- purrr::map(df_mathys_list, get_ensembl, Genes, "Genes")
 
@@ -152,14 +158,16 @@ grubman_enrichment <- gene_set_enrichment(
     grubman_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment")
+    model_type = "enrichment"
+)
 
 grubman_depleted <- gene_set_enrichment(
     grubman_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment",
-    reverse = TRUE)
+    reverse = TRUE
+)
 
 #### grubman_enrichment ####
 # > grubman_enrichment
@@ -252,9 +260,11 @@ gene_set_enrichment_plot(
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grubman_enrichment $test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    layerHeights = c(0, seq_len(length(unique(grubman_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -269,8 +279,10 @@ gene_set_enrichment_plot(
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(grubman_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 

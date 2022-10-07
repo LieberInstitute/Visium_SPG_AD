@@ -10,22 +10,24 @@ library("sgejobs")
 #     command = "Rscript 05_leung.R"
 # )
 
-library('readxl')
-library('spatialLIBD')
-library('dplyr')
-library('sessioninfo')
-library('here')
-library('scran')
-library('purrr')
+library("readxl")
+library("spatialLIBD")
+library("dplyr")
+library("sessioninfo")
+library("here")
+library("scran")
+library("purrr")
 
 here()
 ### load get_ensemble function
 
-source(here('code/14_external_gene_sets/get_ensembl_function.R'))
+source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 
 ### load modeling results
-load(here('processed-data','11_grey_matter_only','wholegenome',
-          'Visium_IF_AD_modeling_results.Rdata'))
+load(here(
+    "processed-data", "11_grey_matter_only", "wholegenome",
+    "Visium_IF_AD_modeling_results.Rdata"
+))
 
 # Number of sets: 2 + 9 subpopulations * direction = 2 + 18 = 20 sets
 # Note: snRNA-seq
@@ -38,13 +40,14 @@ load(here('processed-data','11_grey_matter_only','wholegenome',
 # Ignore the comparison for now since some of them are very small
 
 
-#braak comparison's of interest
+# braak comparison's of interest
 # 197:371
 # 474:552
 
 
 leung_1 <- read_excel("raw-data/GeneSets/2_snRNA-seq/3_Leung et al/Leung et al.xlsx",
-                      sheet = "Supplementary Table 1", col_names = TRUE)
+    sheet = "Supplementary Table 1", col_names = TRUE
+)
 # nrow(leung_1)
 # # [1] 434
 leung_1 <- leung_1 |> dplyr::filter(FDR < 0.1)
@@ -52,7 +55,7 @@ leung_1 <- leung_1 |> dplyr::filter(FDR < 0.1)
 # # [1] 434
 
 leung_1_up <- leung_1 |> dplyr::filter(logFC > 0)
-#nrow(leung_1_up)
+# nrow(leung_1_up)
 # [1] 195
 
 leung_1_down <- leung_1 |> dplyr::filter(logFC <= 0)
@@ -61,7 +64,8 @@ leung_1_down <- leung_1 |> dplyr::filter(logFC <= 0)
 
 
 leung_2 <- read_excel("raw-data/GeneSets/2_snRNA-seq/3_Leung et al/Leung et al.xlsx",
-                      sheet = "Supplementary Table 2", col_names = TRUE)
+    sheet = "Supplementary Table 2", col_names = TRUE
+)
 leung_2 <- leung_2 |> dplyr::filter(globalFDR < 0.1)
 nrow(leung_2)
 # 1117
@@ -92,32 +96,34 @@ nrow(leung_2_down)
 # leung_2_s8 <- leung_2 |> dplyr::filter(subpopulation == "EC:Exc.s8")
 
 
-leung_2_up_s0 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s0") #58
-leung_2_up_s1 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s1") #33
-leung_2_up_s2 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s2") #79
-leung_2_up_s3 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s3") #60
-leung_2_up_s4 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s4") #48
-leung_2_up_s5 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s5") #108
-leung_2_up_s6 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s6") #48
-leung_2_up_s7 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s7") #73
-leung_2_up_s8 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s8") #107
+leung_2_up_s0 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s0") # 58
+leung_2_up_s1 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s1") # 33
+leung_2_up_s2 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s2") # 79
+leung_2_up_s3 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s3") # 60
+leung_2_up_s4 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s4") # 48
+leung_2_up_s5 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s5") # 108
+leung_2_up_s6 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s6") # 48
+leung_2_up_s7 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s7") # 73
+leung_2_up_s8 <- leung_2_up |> dplyr::filter(subpopulation == "EC:Exc.s8") # 107
 
 
-leung_2_down_s0 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s0") #51
-leung_2_down_s1 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s1") #49
-leung_2_down_s2 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s2") #108
-leung_2_down_s3 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s3") #24
-leung_2_down_s4 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s4") #41
-leung_2_down_s5 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s5") #64
-leung_2_down_s6 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s6") #35
-leung_2_down_s7 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s7") #61
-leung_2_down_s8 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s8") #70
+leung_2_down_s0 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s0") # 51
+leung_2_down_s1 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s1") # 49
+leung_2_down_s2 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s2") # 108
+leung_2_down_s3 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s3") # 24
+leung_2_down_s4 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s4") # 41
+leung_2_down_s5 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s5") # 64
+leung_2_down_s6 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s6") # 35
+leung_2_down_s7 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s7") # 61
+leung_2_down_s8 <- leung_2_down |> dplyr::filter(subpopulation == "EC:Exc.s8") # 70
 
 #### Create gene ensembl sets ####
-df_list<- list(leung_1_up, leung_1_down,leung_2_up_s0, leung_2_up_s1, leung_2_up_s2,
-                  leung_2_up_s3, leung_2_up_s4, leung_2_up_s5, leung_2_up_s6, leung_2_up_s7,
-               leung_2_up_s8, leung_2_down_s0, leung_2_down_s1, leung_2_down_s2, leung_2_down_s3,
-               leung_2_down_s4, leung_2_down_s5, leung_2_down_s6, leung_2_down_s7, leung_2_down_s8)
+df_list <- list(
+    leung_1_up, leung_1_down, leung_2_up_s0, leung_2_up_s1, leung_2_up_s2,
+    leung_2_up_s3, leung_2_up_s4, leung_2_up_s5, leung_2_up_s6, leung_2_up_s7,
+    leung_2_up_s8, leung_2_down_s0, leung_2_down_s1, leung_2_down_s2, leung_2_down_s3,
+    leung_2_down_s4, leung_2_down_s5, leung_2_down_s6, leung_2_down_s7, leung_2_down_s8
+)
 
 res_1 <- purrr::map(df_list, get_ensembl, gene, "gene")
 
@@ -129,33 +135,30 @@ leung_geneList <- list(
     leung_2_up_s0 = res_1[[3]]$gene_ensembl_id,
     leung_2_up_s1 = res_1[[4]]$gene_ensembl_id,
     leung_2_up_s2 = res_1[[5]]$gene_ensembl_id,
-    leung_2_up_s3= res_1[[6]]$gene_ensembl_id,
-
+    leung_2_up_s3 = res_1[[6]]$gene_ensembl_id,
     leung_2_up_s4 = res_1[[7]]$gene_ensembl_id,
-    leung_2_up_s5= res_1[[8]]$gene_ensembl_id,
-
+    leung_2_up_s5 = res_1[[8]]$gene_ensembl_id,
     leung_2_up_s6 = res_1[[9]]$gene_ensembl_id,
     leung_2_up_s7 = res_1[[10]]$gene_ensembl_id,
     leung_2_up_s8 = res_1[[11]]$gene_ensembl_id,
-
     leung_2_down_s0 = res_1[[12]]$gene_ensembl_id,
     leung_2_down_s1 = res_1[[13]]$gene_ensembl_id,
     leung_2_down_s2 = res_1[[14]]$gene_ensembl_id,
-    leung_2_down_s3= res_1[[15]]$gene_ensembl_id,
-
+    leung_2_down_s3 = res_1[[15]]$gene_ensembl_id,
     leung_2_down_s4 = res_1[[16]]$gene_ensembl_id,
-    leung_2_down_s5= res_1[[17]]$gene_ensembl_id,
-
+    leung_2_down_s5 = res_1[[17]]$gene_ensembl_id,
     leung_2_down_s6 = res_1[[18]]$gene_ensembl_id,
     leung_2_down_s7 = res_1[[19]]$gene_ensembl_id,
-    leung_2_down_s8 = res_1[[20]]$gene_ensembl_id)
+    leung_2_down_s8 = res_1[[20]]$gene_ensembl_id
+)
 
 #### Perform enrichment analysis ####
 leung_enrichment <- gene_set_enrichment(
     leung_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment")
+    model_type = "enrichment"
+)
 
 leung_enrichment
 # OR        Pval      test              ID model_type fdr_cut
@@ -307,7 +310,8 @@ leung_depleted <- gene_set_enrichment(
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment",
-    reverse = TRUE)
+    reverse = TRUE
+)
 
 
 ##### enrichment plotting #####
@@ -319,9 +323,11 @@ gene_set_enrichment_plot(
     PThresh = 12,
     ORcut = 1.30103,
     enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(leung_enrichment $test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    layerHeights = c(0, seq_len(length(unique(leung_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -335,8 +341,10 @@ gene_set_enrichment_plot(
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(leung_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 

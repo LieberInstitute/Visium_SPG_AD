@@ -11,33 +11,38 @@ library("sgejobs")
 
 #### load relevant packages ####
 
-library('readxl')
-library('sessioninfo')
-library('here')
-library('spatialLIBD')
-library('dplyr')
-library('scran')
-library('purrr')
+library("readxl")
+library("sessioninfo")
+library("here")
+library("spatialLIBD")
+library("dplyr")
+library("scran")
+library("purrr")
 
 
 ### load get_ensemble function
-source(here('code/14_external_gene_sets/get_ensembl_function.R'))
+source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 
 #### read in necessary input files ####
-load(here('processed-data','11_grey_matter_only','wholegenome',
-          'Visium_IF_AD_modeling_results.Rdata'))
+load(here(
+    "processed-data", "11_grey_matter_only", "wholegenome",
+    "Visium_IF_AD_modeling_results.Rdata"
+))
 
-mostafavi_dir <- here('raw-data', 'GeneSets',
-                      '1_Bulk_RNA-seq' ,'Mostafavi_et_al')
+mostafavi_dir <- here(
+    "raw-data", "GeneSets",
+    "1_Bulk_RNA-seq", "Mostafavi_et_al"
+)
 
 
-table_s3 <- read_xlsx(paste0(mostafavi_dir, '/Table_S3_M109_390_genes.xlsx'),
-                      sheet = 1, col_names = TRUE, skip = 4)
-#nrow
-#13153
+table_s3 <- read_xlsx(paste0(mostafavi_dir, "/Table_S3_M109_390_genes.xlsx"),
+    sheet = 1, col_names = TRUE, skip = 4
+)
+# nrow
+# 13153
 
-table_s3 <- table_s3 |> dplyr::filter(`Module ID` == 'm109')
-#390
+table_s3 <- table_s3 |> dplyr::filter(`Module ID` == "m109")
+# 390
 
 # head(table_s3)
 # # A tibble: 6 × 2
@@ -50,8 +55,9 @@ table_s3 <- table_s3 |> dplyr::filter(`Module ID` == 'm109')
 # 5 m109        RBM4B
 # 6 m109        SYNRG
 
-table_s8 <-read_xlsx(paste0(mostafavi_dir, '/Table_S8_M109_112_genes.xlsx'),
-                     sheet = 1, col_names = TRUE, skip =2 )
+table_s8 <- read_xlsx(paste0(mostafavi_dir, "/Table_S8_M109_112_genes.xlsx"),
+    sheet = 1, col_names = TRUE, skip = 2
+)
 # A tibble: 112 × 5
 # `Gene symbol` `Degree in BN` iNs                Astrocytes Microglia
 # <chr>                  <dbl> <chr>              <chr>      <chr>
@@ -62,8 +68,9 @@ table_s8 <-read_xlsx(paste0(mostafavi_dir, '/Table_S8_M109_112_genes.xlsx'),
 # 5 CCDC85C                   11 0.34               0.71       1.44
 # 6 HMG20B                    11 3.37               7.83       0.57999999999999996
 
-table_s9 <-read_xlsx(paste0(mostafavi_dir, '/Table_S9_M109_21_genes.xlsx'),
-                     sheet = 1, col_names = TRUE, skip = 4)
+table_s9 <- read_xlsx(paste0(mostafavi_dir, "/Table_S9_M109_21_genes.xlsx"),
+    sheet = 1, col_names = TRUE, skip = 4
+)
 
 table_s9 <- table_s9 |> na.omit(Gene)
 nrow(table_s9)
@@ -80,7 +87,7 @@ nrow(table_s9)
 
 
 #### create gene lists # ####
-table_s3_genes <- get_ensembl(table = table_s3, `Gene Symbol` , "Gene Symbol" )
+table_s3_genes <- get_ensembl(table = table_s3, `Gene Symbol`, "Gene Symbol")
 table_s8_genes <- get_ensembl(table = table_s8, `Gene symbol`, "Gene symbol")
 table_s9_genes <- get_ensembl(table = table_s9, Gene, "Gene")
 
@@ -93,12 +100,13 @@ mostafavi_geneList <- list(
     mostafavi_table_9 = table_s9_genes
 )
 
-####calculate enrichment #####
+#### calculate enrichment #####
 mostafavi_enrichment <- gene_set_enrichment(
     mostafavi_geneList,
     fdr_cut = 0.1,
     modeling_results = modeling_results,
-    model_type = "enrichment", reverse = FALSE)
+    model_type = "enrichment", reverse = FALSE
+)
 
 
 mostafavi_depleted <- gene_set_enrichment(
@@ -106,7 +114,8 @@ mostafavi_depleted <- gene_set_enrichment(
     fdr_cut = 0.1,
     modeling_results = modeling_results,
     model_type = "enrichment",
-    reverse = TRUE)
+    reverse = TRUE
+)
 
 #> mostafavi_enrichment
 # OR       Pval      test                ID model_type fdr_cut
@@ -158,7 +167,7 @@ mostafavi_depleted <- gene_set_enrichment(
 
 
 ##### Enrichment plotting #####
-#dir.create(here("plots", "14_external_gene_sets"))
+# dir.create(here("plots", "14_external_gene_sets"))
 output_dir <- here("plots", "14_external_gene_sets")
 
 
@@ -171,8 +180,10 @@ gene_set_enrichment_plot(
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(mostafavi_enrichment$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
@@ -187,8 +198,10 @@ gene_set_enrichment_plot(
     ORcut = 1.30103,
     enrichOnly = FALSE,
     layerHeights = c(0, seq_len(length(unique(mostafavi_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(9,
-                                                                             "YlOrRd")))(50)),
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
     cex = 1.2
 )
 
