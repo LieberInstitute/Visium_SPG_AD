@@ -35,6 +35,7 @@ if (FALSE) {
 library("here")
 library("sessioninfo")
 library("spatialLIBD")
+stopifnot(packageVersion("spatialLIBD") >= "1.9.19")
 
 
 ## output directory
