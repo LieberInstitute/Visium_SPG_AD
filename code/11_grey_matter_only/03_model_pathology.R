@@ -63,7 +63,7 @@ sce_pseudo$registration_sample_id <- sce_pseudo$sample_id
 covars <- NULL
 gene_ensembl <- "gene_id"
 gene_name <- "gene_name"
-prefix <- "noWM"
+suffix <- "noWM"
 
 ## Taken from spatialLIBD::registration_wrapper()
 ## https://github.com/LieberInstitute/spatialLIBD/blob/master/R/registration_wrapper.R
@@ -96,7 +96,7 @@ results_anova <-
         covars = covars,
         gene_ensembl = gene_ensembl,
         gene_name = gene_name,
-        prefix = prefix
+        suffix = suffix
     )
 
 modeling_results <- list(
