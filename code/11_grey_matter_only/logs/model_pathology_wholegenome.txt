@@ -6,10 +6,10 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.2
 **** Job starts ****
-Fri Oct  7 17:22:42 EDT 2022
+Fri Oct  7 17:55:04 EDT 2022
 **** JHPCE info ****
 User: lcollado
-Job id: 183100
+Job id: 183115
 Job name: model_pathology_wholegenome
 Hostname: compute-095.cm.cluster
 Task id: undefined
@@ -99,18 +99,18 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-2022-10-07 17:23:07 create model matrix
-2022-10-07 17:23:07 run duplicateCorrelation()
-2022-10-07 17:23:27 The estimated correlation is: 0.103216818531391
-2022-10-07 17:23:27 computing enrichment statistics
-2022-10-07 17:23:28 extract and reformat enrichment results
-2022-10-07 17:23:28 running the baseline pairwise model
-2022-10-07 17:23:28 computing pairwise statistics
-2022-10-07 17:23:29 computing F-statistics
+2022-10-07 17:55:29 create model matrix
+2022-10-07 17:55:29 run duplicateCorrelation()
+2022-10-07 17:55:49 The estimated correlation is: 0.103216818531391
+2022-10-07 17:55:49 computing enrichment statistics
+2022-10-07 17:55:50 extract and reformat enrichment results
+2022-10-07 17:55:50 running the baseline pairwise model
+2022-10-07 17:55:50 computing pairwise statistics
+2022-10-07 17:55:51 computing F-statistics
 [1] "Reproducibility information:"
-[1] "2022-10-07 17:23:30 EDT"
+[1] "2022-10-07 17:55:52 EDT"
    user  system elapsed 
- 42.432   1.814  46.524 
+ 42.328   1.874  46.571 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.2.1 Patched (2022-08-30 r82775)
@@ -264,7 +264,7 @@ The following objects are masked from ‘package:matrixStats’:
  spam                     2.9-1     2022-08-07 [2] CRAN (R 4.2.1)
  sparseMatrixStats        1.8.0     2022-04-26 [2] Bioconductor
  SpatialExperiment      * 1.6.1     2022-08-09 [2] Bioconductor
- spatialLIBD            * 1.9.18    2022-10-07 [1] Github (LieberInstitute/spatialLIBD@9ba5fbe)
+ spatialLIBD            * 1.9.19    2022-10-07 [1] Github (LieberInstitute/spatialLIBD@e2f179b)
  statmod                  1.4.37    2022-08-12 [2] CRAN (R 4.2.1)
  stringi                  1.7.8     2022-07-11 [2] CRAN (R 4.2.1)
  stringr                  1.4.1     2022-08-20 [2] CRAN (R 4.2.1)
@@ -292,4 +292,4 @@ The following objects are masked from ‘package:matrixStats’:
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Oct  7 17:23:31 EDT 2022
+Fri Oct  7 17:55:53 EDT 2022
