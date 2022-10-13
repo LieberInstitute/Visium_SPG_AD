@@ -3,22 +3,9 @@ library("dplyr")
 library("biomaRt")
 library("EnsDb.Hsapiens.v79")
 
-# Check for build
-# ensembl <- useEnsembl(biomart = "ensembl")
-# biomaRt::searchDatasets( mart = ensembl, pattern = "hsapiens")
-# dataset              description    version
-# 81 hsapiens_gene_ensembl Human genes (GRCh38.p13) GRCh38.p13
-
-# hsapiens_genes <- getBM(attributes = c("ensembl_gene_id",
-#                                        "hgnc_symbol"),
-#                         mart = useMart("ensembl", dataset = "hsapiens_gene_ensembl"))
-#
-# hsapiens_genes <- as_tibble(hsapiens_genes)
-
-
 get_ensembl <- function(table, gene_col, gene_char) {
     gene_col <- enexpr(gene_col)
-    gene_sym_list <- as.data.frame(table |> dplyr::select(!!gene_col))
+    gene_sym_list <- as.data.frame(table |> dplyr::select(!!gene_col)) |> na.omit(!!gene_col)
     gene_sym_list <- c(gene_sym_list[, 1])
 
     genes_and_IDs <- ensembldb::select(EnsDb.Hsapiens.v79,
@@ -28,67 +15,6 @@ get_ensembl <- function(table, gene_col, gene_char) {
     table <- merge(table, genes_and_IDs, by.x = gene_char, by.y = "symbol", all.x = TRUE)
     table <- table |> distinct(!!gene_col, .keep_all = TRUE)
 }
-
-
-
-# The following object is masked from ‘package:dplyr’:
-#
-#     select
-#
-# Loading required package: AnnotationFilter
-#
-# Attaching package: 'ensembldb'
-#
-# The following object is masked from 'package:dplyr':
-#
-#     filter
-
-#### explore EnsDb.Hsapiens.v86 ####
-# library("EnsDb.Hsapiens.v86")
-#> EnsDb.Hsapiens.v86
-# EnsDb for Ensembl:
-#     |Backend: SQLite
-# |Db type: EnsDb
-# |Type of Gene ID: Ensembl Gene ID
-# |Supporting package: ensembldb
-# |Db created by: ensembldb package from Bioconductor
-# |script_version: 0.3.0
-# |Creation time: Thu May 18 16:32:27 2017
-# |ensembl_version: 86
-# |ensembl_host: localhost
-# |Organism: homo_sapiens
-# |taxonomy_id: 9606
-# |genome_build: GRCh38
-# |DBSCHEMAVERSION: 2.0
-# | No. of genes: 63970.
-# | No. of transcripts: 216741.
-# |Protein data available.
-
-#### explore EnsDb.Hsapiens.v79 ####
-# BiocManager::install("EnsDb.Hsapiens.v79")
-#
-# EnsDb.Hsapiens.v79
-# EnsDb for Ensembl:
-#     |Backend: SQLite
-# |Db type: EnsDb
-# |Type of Gene ID: Ensembl Gene ID
-# |Supporting package: ensembldb
-# |Db created by: ensembldb package from Bioconductor
-# |script_version: 0.3.0
-# |Creation time: Thu May 18 12:42:51 2017
-# |ensembl_version: 79
-# |ensembl_host: localhost
-# |Organism: homo_sapiens
-# |taxonomy_id: 9606
-# |genome_build: GRCh38
-# |DBSCHEMAVERSION: 2.0
-# | No. of genes: 65774.
-# | No. of transcripts: 214285.
-# |Protein data available.
-
-#############
-
-# v79 has more genes than 86. both GRCh38
 
 
 # > sessionInfo()
