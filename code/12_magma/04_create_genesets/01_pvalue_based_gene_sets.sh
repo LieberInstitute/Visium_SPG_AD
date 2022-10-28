@@ -23,7 +23,7 @@ module load conda_R/4.2
 module list
 
 ## Edit with your job command
-Rscript 03_pvalue_based_gene_sets.R
+Rscript 01_pvalue_based_gene_sets.R
 
 echo "**** Job ends ****"
 date

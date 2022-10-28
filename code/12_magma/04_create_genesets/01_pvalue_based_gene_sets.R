@@ -4,7 +4,7 @@
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "20G",
-#     command = "Rscript 03_pvalue_based_gene_sets.R",
+#     command = "Rscript 01_pvalue_based_gene_sets.R",
 #     create_logdir = TRUE
 # )
 
