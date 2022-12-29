@@ -225,3 +225,11 @@ dev.off()
 # ODC for oligodendrocytes; EX for excitatory neurons;
 # MG for microglia; ASC for astrocytes; INH for inhibitory neurons;
 # OPC for Oligodendrocyte precursor cells
+
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
