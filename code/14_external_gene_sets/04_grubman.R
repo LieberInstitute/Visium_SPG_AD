@@ -1,6 +1,5 @@
-#### load relevant packages ####
 
-library("sgejobs")
+# library("sgejobs")
 
 # sgejobs::job_single(
 #     "grubman",
@@ -9,6 +8,8 @@ library("sgejobs")
 #     memory = "20G",
 #     command = "Rscript 04_grubman.R"
 # )
+
+#### load relevant packages ####
 
 library("readxl")
 library("spatialLIBD")

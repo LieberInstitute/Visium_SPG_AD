@@ -1,8 +1,4 @@
-#### load relevant packages ####
-library("readxl")
-#### load relevant packages ####
-
-library("sgejobs")
+# library("sgejobs")
 
 # sgejobs::job_single(
 #     "mathys",
@@ -12,7 +8,8 @@ library("sgejobs")
 #     command = "Rscript 03_mathys.R"
 # )
 
-
+#### load relevant packages ####
+library("readxl")
 library("spatialLIBD")
 library("dplyr")
 library("sessioninfo")

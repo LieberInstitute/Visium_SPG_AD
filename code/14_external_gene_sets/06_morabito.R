@@ -1,6 +1,4 @@
-#### load relevant packages ####
-
-library("sgejobs")
+# library("sgejobs")
 
 # sgejobs::job_single(
 #     "morabito",
@@ -10,6 +8,8 @@ library("sgejobs")
 #     command = "Rscript 06_morabito.R"
 # )
 
+
+#### load relevant packages ####
 library("readxl")
 library("spatialLIBD")
 library("dplyr")
