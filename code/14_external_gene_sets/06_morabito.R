@@ -179,9 +179,9 @@ morabito_depleted <- gene_set_enrichment(
 
 
 
-table_5 <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S5_snATACseq.xlsx",
-    col_names = TRUE, skip = 2
-)
+# table_5 <- read_excel("raw-data/GeneSets/3_snATAC-seq/Table S5_snATACseq.xlsx",
+#     col_names = TRUE, skip = 2
+# )
 
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
