@@ -23,7 +23,7 @@ module load conda_R/4.2
 module list
 
 ## Edit with your job command
-Rscript 02_raj.R
+Rscript 01_mostafavi.R
 
 echo "**** Job ends ****"
 date
