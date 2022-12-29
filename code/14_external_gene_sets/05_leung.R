@@ -46,7 +46,10 @@ load(here(
 # 474:552
 
 
-leung_1 <- read_excel("raw-data/GeneSets/2_snRNA-seq/3_Leung et al/Leung et al.xlsx",
+input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
+                  "3_Leung et al", "Leung et al.xlsx")
+
+leung_1 <- read_excel(input_dir,
     sheet = "Supplementary Table 1", col_names = TRUE
 )
 # nrow(leung_1)
@@ -64,7 +67,7 @@ leung_1_down <- leung_1 |> dplyr::filter(logFC <= 0)
 # 239
 
 
-leung_2 <- read_excel("raw-data/GeneSets/2_snRNA-seq/3_Leung et al/Leung et al.xlsx",
+leung_2 <- read_excel(input_dir,
     sheet = "Supplementary Table 2", col_names = TRUE
 )
 leung_2 <- leung_2 |> dplyr::filter(globalFDR < 0.1)

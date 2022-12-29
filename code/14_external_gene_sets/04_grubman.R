@@ -41,11 +41,11 @@ load(here(
 #  For each cell type, use all genes (ignore Concordance)
 #  For each cell type, filter to Concordance == TRUE
 #  For each cell type, use all genes (ignore Concordance), and separate by direction.
-
-input_data <- "raw-data/GeneSets/2_snRNA-seq/2_Grubman et al_Entorhinal/Grubman et al.xlsx"
+input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
+                  "2_Grubman et al_Entorhinal", "Grubman et al.xlsx")
 
 # comparison with Mathys
-table_s3_grub <- read_excel(input_data,
+table_s3_grub <- read_excel(input_dir,
     sheet = "Supplementary Table 3", skip = 10,
     col_names = TRUE
 )
