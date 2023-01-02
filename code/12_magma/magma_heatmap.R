@@ -198,8 +198,7 @@ magmaStats_wide$PD_Beta <- magmaStats_wide.beta$PD.Nalls.2019
 write.csv(magmaStats_long,
     file = here(
         "code", "12_magma",
-        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv"),
-    ),
+        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv")),
     row.names = F, quote = F
 )
 
