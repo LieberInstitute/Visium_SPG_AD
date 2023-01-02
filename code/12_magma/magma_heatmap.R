@@ -206,9 +206,7 @@ write.csv(magmaStats_long,
 write.csv(magmaStats_wide,
     file = here(
         "code", "12_magma",
-        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv"),
-
-    ),
+        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv")),
     row.names = F, quote = F
 )
 
