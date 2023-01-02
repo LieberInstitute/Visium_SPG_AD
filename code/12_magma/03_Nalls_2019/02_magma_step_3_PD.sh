@@ -21,8 +21,8 @@ model="snp-wise"
 # ANNO=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/annotation/GRCh38_gencode.v32_Ensembl98_LIFTED-to-hg19_expressedGenes.gene.loc
 # BFILE=/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/MAGMA/g1000_eur
 #
-# setcol=1
-# genecol=2
+setcol=1
+genecol=2
 
 here=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma
 gs_200=$here/pvalues_top_200.txt
