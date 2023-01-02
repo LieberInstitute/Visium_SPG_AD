@@ -1,12 +1,12 @@
-# library(sgejobs)
-# sgejobs::job_single(
-#     "pvalue_based_gene_sets",
-#     create_shell = TRUE,
-#     queue = "bluejay",
-#     memory = "20G",
-#     command = "Rscript 01_pvalue_based_gene_sets.R",
-#     create_logdir = TRUE
-# )
+library(sgejobs)
+sgejobs::job_single(
+    "02_fdr_based_gene_sets",
+    create_shell = TRUE,
+    queue = "bluejay",
+    memory = "20G",
+    command = "Rscript 02_fdr_based_gene_sets.R",
+    create_logdir = TRUE
+)
 
 
 ## load library
