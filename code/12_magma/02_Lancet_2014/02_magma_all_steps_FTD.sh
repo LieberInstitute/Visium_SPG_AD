@@ -32,10 +32,12 @@ genecol=2
 gs_200=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt
 gs_50=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_50.txt
 gs_100=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_100.txt
+fdr_set=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt
 SUMMSTATS=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD-IFGC-and-rsID-ADDED.tab
 STEP3OUT_200=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200
 STEP3OUT_50=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_50
 STEP3OUT_100=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_100
+STEP3OUT_FDR=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_fdr
 
 ## Step 1 - Annotation (SNP : gene mapping)
 magma --annotate window=35,10 --snp-loc $SNPLOC --gene-loc $ANNO --out $STEP1OUT
@@ -46,11 +48,14 @@ magma --bfile $BFILE --gene-annot $ANNOT --pval $SUMMSTATS use=rsID,pValue ncol=
 
 ## Step 3 - Gene set analyses (using gene-level output) - Self-contained
 #for top 200
-magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_200 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_200 --model "self-contained"
+magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_200 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_200
 #for top 100
-magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_100 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_100 --model "self-contained"
+magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_100 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_100
 #for top 50
-magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_50 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_50 --model "self-contained"
+magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $gs_50 gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_50
+
+#fdr geneset
+magma --gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw --set-annot $fdr_set gene-col=${genecol} set-col=${setcol} --out $STEP3OUT_FDR
 
 
 echo "**** Job ends ****"
