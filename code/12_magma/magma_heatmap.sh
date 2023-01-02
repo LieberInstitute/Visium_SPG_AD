@@ -5,7 +5,7 @@
 #$ -o logs/magma_heatmap.$TASK_ID.txt
 #$ -e logs/magma_heatmap.$TASK_ID.txt
 #$ -m e
-#$ -t 1-3
+#$ -t 1-4
 #$ -tc 20
 
 echo "**** Job starts ****"
