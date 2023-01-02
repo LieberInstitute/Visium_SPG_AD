@@ -1,0 +1,196 @@
+**** Job starts ****
+Mon Jan  2 04:36:24 EST 2023
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+**** Job ends ****
+Mon Jan  2 04:36:25 EST 2023
+**** Job starts ****
+Mon Jan  2 04:41:48 EST 2023
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+
+ERROR - parsing arguments: directory 'code/12_magma/01_Jansen_2019/' specified in --out does not exist or is not a directory.
+
+Terminating program.
+**** Job ends ****
+Mon Jan  2 04:41:50 EST 2023
+**** Job starts ****
+Mon Jan  2 05:03:46 EST 2023
+Welcome to MAGMA v1.10 (linux/s)
+Using flags:
+	--gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_200.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_200
+
+Start time is 05:03:47, Monday 02 Jan 2023
+
+Reading file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw... 
+	30917 genes read from file
+Loading gene-set annotation...
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_200.txt... 
+	detected 2 variables in file
+	using variable: variable 2 (gene ID)
+	using variable: variable 1 (set ID)
+	WARNING: gene set Set contains no genes defined in genotype data
+	8 gene-set definitions read from file
+	found 7 gene sets containing genes defined in genotype data (containing a total of 1178 unique genes)
+Preparing variables for analysis...
+	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
+	truncating covariate values more than 5 standard deviations from the mean
+	total variables available for analysis: 7 gene sets
+
+Parsing model specifications...
+Inverting gene-gene correlation matrix...
+	processing block 1 of 24	processing block 2 of 24	processing block 3 of 24	processing block 4 of 24	processing block 5 of 24	processing block 6 of 24	processing block 7 of 24	processing block 8 of 24	processing block 9 of 24	processing block 10 of 24	processing block 11 of 24	processing block 12 of 24	processing block 13 of 24	processing block 14 of 24	processing block 15 of 24	processing block 16 of 24	processing block 17 of 24	processing block 18 of 24	processing block 19 of 24	processing block 20 of 24	processing block 21 of 24	processing block 22 of 24	processing block 23 of 24	processing block 24 of 24                                                                                                                   Performing regression analysis...
+	testing direction: one-sided, positive (sets), two-sided (covar)
+	conditioning on internal variables:
+		gene size, log(gene size)
+		gene density, log(gene density)
+		sample size, log(sample size)
+		inverse mac, log(inverse mac)
+	analysing individual variables
+
+	analysing single-variable models (number of models: 7)
+                                                                                                                   	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_200.gsa.out
+
+End time is 05:06:17, Monday 02 Jan 2023 (elapsed: 00:02:30)
+Welcome to MAGMA v1.10 (linux/s)
+Using flags:
+	--gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_100
+
+Start time is 05:06:17, Monday 02 Jan 2023
+
+Reading file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw... 
+	30917 genes read from file
+Loading gene-set annotation...
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt... 
+	detected 2 variables in file
+	using variable: variable 2 (gene ID)
+	using variable: variable 1 (set ID)
+	WARNING: gene set Set contains no genes defined in genotype data
+	8 gene-set definitions read from file
+	found 7 gene sets containing genes defined in genotype data (containing a total of 613 unique genes)
+Preparing variables for analysis...
+	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
+	truncating covariate values more than 5 standard deviations from the mean
+	total variables available for analysis: 7 gene sets
+
+Parsing model specifications...
+Inverting gene-gene correlation matrix...
+	processing block 1 of 24	processing block 2 of 24	processing block 3 of 24	processing block 4 of 24	processing block 5 of 24	processing block 6 of 24	processing block 7 of 24	processing block 8 of 24	processing block 9 of 24	processing block 10 of 24	processing block 11 of 24	processing block 12 of 24	processing block 13 of 24	processing block 14 of 24	processing block 15 of 24	processing block 16 of 24	processing block 17 of 24	processing block 18 of 24	processing block 19 of 24	processing block 20 of 24	processing block 21 of 24	processing block 22 of 24	processing block 23 of 24	processing block 24 of 24                                                                                                                   Performing regression analysis...
+	testing direction: one-sided, positive (sets), two-sided (covar)
+	conditioning on internal variables:
+		gene size, log(gene size)
+		gene density, log(gene density)
+		sample size, log(sample size)
+		inverse mac, log(inverse mac)
+	analysing individual variables
+
+	analysing single-variable models (number of models: 7)
+                                                                                                                   	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_100.gsa.out
+
+End time is 05:08:49, Monday 02 Jan 2023 (elapsed: 00:02:32)
+Welcome to MAGMA v1.10 (linux/s)
+Using flags:
+	--gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_50.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_50
+
+Start time is 05:08:49, Monday 02 Jan 2023
+
+Reading file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw... 
+	30917 genes read from file
+Loading gene-set annotation...
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_50.txt... 
+	detected 2 variables in file
+	using variable: variable 2 (gene ID)
+	using variable: variable 1 (set ID)
+	WARNING: gene set Set contains no genes defined in genotype data
+	8 gene-set definitions read from file
+	found 7 gene sets containing genes defined in genotype data (containing a total of 314 unique genes)
+Preparing variables for analysis...
+	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
+	truncating covariate values more than 5 standard deviations from the mean
+	total variables available for analysis: 7 gene sets
+
+Parsing model specifications...
+Inverting gene-gene correlation matrix...
+	processing block 1 of 24	processing block 2 of 24	processing block 3 of 24	processing block 4 of 24	processing block 5 of 24	processing block 6 of 24	processing block 7 of 24	processing block 8 of 24	processing block 9 of 24	processing block 10 of 24	processing block 11 of 24	processing block 12 of 24	processing block 13 of 24	processing block 14 of 24	processing block 15 of 24	processing block 16 of 24	processing block 17 of 24	processing block 18 of 24	processing block 19 of 24	processing block 20 of 24	processing block 21 of 24	processing block 22 of 24	processing block 23 of 24	processing block 24 of 24                                                                                                                   Performing regression analysis...
+	testing direction: one-sided, positive (sets), two-sided (covar)
+	conditioning on internal variables:
+		gene size, log(gene size)
+		gene density, log(gene density)
+		sample size, log(sample size)
+		inverse mac, log(inverse mac)
+	analysing individual variables
+
+	analysing single-variable models (number of models: 7)
+                                                                                                                   	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_50.gsa.out
+
+End time is 05:11:17, Monday 02 Jan 2023 (elapsed: 00:02:28)
+Welcome to MAGMA v1.10 (linux/s)
+Using flags:
+	--gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/fdr_gene_set.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_fdr
+
+Start time is 05:11:17, Monday 02 Jan 2023
+
+Reading file /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw... 
+	30917 genes read from file
+Loading gene-set annotation...
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/fdr_gene_set.txt... 
+	detected 2 variables in file
+	using variable: variable 2 (gene ID)
+	using variable: variable 1 (set ID)
+	WARNING: gene set Set contains no genes defined in genotype data
+	3 gene-set definitions read from file
+	found 2 gene sets containing genes defined in genotype data (containing a total of 2948 unique genes)
+Preparing variables for analysis...
+	truncating Z-scores 3 points below zero or 6 standard deviations above the mean
+	truncating covariate values more than 5 standard deviations from the mean
+	total variables available for analysis: 2 gene sets
+
+Parsing model specifications...
+Inverting gene-gene correlation matrix...
+	processing block 1 of 24	processing block 2 of 24	processing block 3 of 24	processing block 4 of 24	processing block 5 of 24	processing block 6 of 24	processing block 7 of 24	processing block 8 of 24	processing block 9 of 24	processing block 10 of 24	processing block 11 of 24	processing block 12 of 24	processing block 13 of 24	processing block 14 of 24	processing block 15 of 24	processing block 16 of 24	processing block 17 of 24	processing block 18 of 24	processing block 19 of 24	processing block 20 of 24	processing block 21 of 24	processing block 22 of 24	processing block 23 of 24	processing block 24 of 24                                                                                                                   Performing regression analysis...
+	testing direction: one-sided, positive (sets), two-sided (covar)
+	conditioning on internal variables:
+		gene size, log(gene size)
+		gene density, log(gene density)
+		sample size, log(sample size)
+		inverse mac, log(inverse mac)
+	analysing individual variables
+
+	analysing single-variable models (number of models: 2)
+                                                                                                                   	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/01_Jansen_2019/ad_gwas_fdr.gsa.out
+
+End time is 05:13:43, Monday 02 Jan 2023 (elapsed: 00:02:26)
+**** Job ends ****
+Mon Jan  2 05:13:43 EST 2023
