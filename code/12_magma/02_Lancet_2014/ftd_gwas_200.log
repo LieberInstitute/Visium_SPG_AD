@@ -1,16 +1,15 @@
 Welcome to MAGMA v1.10 (linux/s)
 Using flags:
-	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw
-	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt gene-col=2 set-col=1
-	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200
-	--model self-contained
+	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_200.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/ftd_gwas_200
 
-Start time is 00:36:11, Friday 26 Aug 2022
+Start time is 06:29:12, Monday 02 Jan 2023
 
-Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/snp-wise.genes.raw... 
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw... 
 	30066 genes read from file
 Loading gene-set annotation...
-Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/pvalues_top_200.txt... 
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_200.txt... 
 	detected 2 variables in file
 	using variable: variable 2 (gene ID)
 	using variable: variable 1 (set ID)
@@ -24,9 +23,6 @@ Preparing variables for analysis...
 
 Parsing model specifications...
 Inverting gene-gene correlation matrix...
-Performing self-contained gene-set analysis...
-	analysing all available gene sets (total: 7)
-	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200.gsa.self.out
 Performing regression analysis...
 	testing direction: one-sided, positive (sets), two-sided (covar)
 	conditioning on internal variables:
@@ -36,6 +32,6 @@ Performing regression analysis...
 	analysing individual variables
 
 	analysing single-variable models (number of models: 7)
-	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/ftd_gwas_200.gsa.out
+	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/ftd_gwas_200.gsa.out
 
-End time is 00:37:57, Friday 26 Aug 2022 (elapsed: 00:01:46)
+End time is 06:31:04, Monday 02 Jan 2023 (elapsed: 00:01:52)
