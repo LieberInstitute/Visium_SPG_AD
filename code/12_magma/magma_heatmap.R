@@ -28,7 +28,9 @@ source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotE
 magmaStats <- list()
 
 k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
+print(k)
 gene_set <- c("50", "100", "200", "fdr")
+print(gene_set[k])
 
 
 magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "12_magma", "01_Jansen_2019", paste0("ad_gwas_", gene_set[k], ".gsa.out")), header = T)
@@ -196,7 +198,7 @@ magmaStats_wide$PD_Beta <- magmaStats_wide.beta$PD.Nalls.2019
 write.csv(magmaStats_long,
     file = here(
         "code", "12_magma",
-        "Global_FDRs_Bonf_3GWAS_x_7_Pathologies.csv"
+        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv"),
     ),
     row.names = F, quote = F
 )
@@ -204,7 +206,8 @@ write.csv(magmaStats_long,
 write.csv(magmaStats_wide,
     file = here(
         "code", "12_magma",
-        "GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies.csv"
+        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv"),
+
     ),
     row.names = F, quote = F
 )
