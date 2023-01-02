@@ -7,7 +7,7 @@
 #     memory = "20G",
 #     command = "Rscript magma_heatmap.R",
 #     create_logdir = TRUE,
-#     task_num = 3
+#     task_num = 4
 # )
 
 # library(rtracklayer)
@@ -27,12 +27,13 @@ source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotE
 
 magmaStats <- list()
 
+k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
 gene_set <- c("50", "100", "200", "fdr")
 
 
-magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "12_magma", "01_Jansen_2019", paste0("ad_gwas_", gene_set[SGE_TASK_ID], ".gsa.out")), header = T)
-magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code", "12_magma", "02_Lancet_2014", paste0("ftd_gwas_", gene_set[SGE_TASK_ID], ".gsa.out")), header = T)
-magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code", "12_magma", "03_Nalls_2019", paste0("pd_gwas_", gene_set[SGE_TASK_ID], ".gsa.out")), header = T)
+magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "12_magma", "01_Jansen_2019", paste0("ad_gwas_", gene_set[k], ".gsa.out")), header = T)
+magmaStats[["ITC"]][["FTD.Ferrari.2014"]] <- read.table(here("code", "12_magma", "02_Lancet_2014", paste0("ftd_gwas_", gene_set[k], ".gsa.out")), header = T)
+magmaStats[["ITC"]][["PD.Nalls.2019"]] <- read.table(here("code", "12_magma", "03_Nalls_2019", paste0("pd_gwas_", gene_set[k], ".gsa.out")), header = T)
 
 
 ## Merge to assess significance thresholds ===
@@ -331,7 +332,7 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
 
 # Plot
 dir_output <- dir.create(here("plots", "magma"))
-pdf(here("plots", "magma", paste0("heatmap_", "top_", gene_num[SGE_TASK_ID], "_genes", ".pdf"), w = 6))
+pdf(here("plots", "magma", paste0("heatmap_", "top_", gene_num[k], "_genes", ".pdf"), w = 6))
 par(mar = c(8.5, 7.5, 6, 1), cex.axis = 1.0, cex.lab = 0.5)
 MAGMAplot(region = "ITC", Pthresh = 12, fdrThresh = 1) ## set to 1 because didn't want to make a cutoff based on FDR/Bonf
 abline(v = 7, lwd = 3)
