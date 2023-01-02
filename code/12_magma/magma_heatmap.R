@@ -313,7 +313,7 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
     xlabs <- colnames(wide_p)
 
     # Heatmap of p's
-    image.plot(
+    fields::image.plot(
         x = seq(0, ncol(wide_p), by = 1), y = clusterHeights, z = as.matrix(t(wide_p)),
         col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = ""
     )
