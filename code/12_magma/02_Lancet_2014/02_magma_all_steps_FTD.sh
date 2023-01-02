@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -cwd
-#$ -N magma_all_steps_AD
-#$ -o ./logs/magma_all_steps_AD.o
-#$ -e ./logs/magma_all_steps_AD.e
+#$ -N magma_all_steps_FTD
+#$ -o ./logs/magma_all_steps_FTD.o
+#$ -e ./logs/magma_all_steps_FTD.e
 #$ -l bluejay,mem_free=16G,h_vmem=20G
 
 #borrowed from Matt's script here https://github.com/lmweber/locus-c/blob/main/
