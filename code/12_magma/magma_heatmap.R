@@ -197,15 +197,15 @@ magmaStats_wide$PD_Beta <- magmaStats_wide.beta$PD.Nalls.2019
 ## Print to CSV ===
 write.csv(magmaStats_long,
     file = here(
-        "code", "12_magma",
-        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv")),
+        "code", "12_magma", "heatmaps",
+        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k],".csv")),
     row.names = F, quote = F
 )
 
 write.csv(magmaStats_wide,
     file = here(
-        "code", "12_magma",
-        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies", gene_set[k],".csv")),
+        "code", "12_magma","heatmaps",
+        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k],".csv")),
     row.names = F, quote = F
 )
 
