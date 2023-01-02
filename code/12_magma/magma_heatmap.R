@@ -17,10 +17,17 @@
 # library(fields)
 library(reshape2)
 library(RColorBrewer)
+library(rtracklayer)
+library(GenomicRanges)
+library(jaffelab)
+library(SingleCellExperiment)
+library(fields)
+library(RColorBrewer)
+library(dplyr)
 library(grid)
 library(sessioninfo)
 library(here)
-library(dplyr)
+
 here()
 
 source("/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/analyses_sn/plotExpressionCustom.R")
@@ -341,3 +348,10 @@ text(x = 1.5, y = 175, "(Betas for empirically significant associations, p < 0.0
 grid::grid.text(label = "-log10(p-value)", x = 0.92, y = 0.825, gp = gpar(fontsize = 9))
 dev.off()
 
+
+## Reproducibility information ====
+print('Reproducibility information:')
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
