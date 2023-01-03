@@ -61,9 +61,6 @@ magmaStats_wide$Bonf_AD <- p.adjust(magmaStats_wide$AD.Jansen.2019, "bonf")
 magmaStats_wide$Bonf_FTD <- p.adjust(magmaStats_wide$FTD.Ferrari.2014, "bonf")
 magmaStats_wide$Bonf_PD <- p.adjust(magmaStats_wide$PD.Nalls.2019, "bonf")
 
-magmaStats_wide
-
-
 
 #### reshape to long ####
 magmaStats_long <- reshape2::melt(magmaStats_wide[, 1:5])
@@ -74,8 +71,7 @@ dim(magmaStats_long)
 magmaStats_long$P.adj.fdr <- p.adjust(magmaStats_long$P, "fdr")
 magmaStats_long$P.adj.bonf <- p.adjust(magmaStats_long$P, "bonf")
 
-##magmaStats_long##
-magmaStats_long
+
 
 #### Extract and shape all the Beta values from the magma output ####
 magmaStats_list.beta <- lapply(magmaStats, function(m) {
@@ -110,6 +106,11 @@ magmaStats_wide$AD_Beta <- magmaStats_wide.beta$AD.Jansen.2019
 magmaStats_wide$FTD_Beta <- magmaStats_wide.beta$FTD.Ferrari.2014
 magmaStats_wide$PD_Beta <- magmaStats_wide.beta$PD.Nalls.2019
 
+print("magmaStats_wide")
+magmaStats_wide
+
+print("magmaStats_long")
+magmaStats_long
 
 ## Print to CSV ===
 write.csv(magmaStats_long,
@@ -129,7 +130,7 @@ write.csv(magmaStats_wide,
 head(magmaStats_long)
 
 #### Make heatmap ####
-midpoint <- function(x) x[-length(x)] + diff(x) / 2
+midpoint = function(x) x[-length(x)] + diff(x) / 2
 
 MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
 
@@ -164,8 +165,7 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
     # Heatmap of p's
     fields::image.plot(
         x = seq(0, ncol(wide_p), by = 1), y = clusterHeights, z = as.matrix(t(wide_p)),
-        col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = ""
-    )
+        col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = "", ... )
     axis(2, rownames(wide_p), at = midpoint(clusterHeights), las = 1)
     axis(1, rep("", ncol(wide_p)), at = seq(0.5, ncol(wide_p) - 0.5))
     text(
