@@ -196,3 +196,423 @@ Calls: MAGMAplot
 Execution halted
 **** Job ends ****
 Mon Jan  2 08:09:43 EST 2023
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/devel
+**** Job starts ****
+Tue Jan  3 00:04:10 EST 2023
+**** JHPCE info ****
+User: sparthib
+Job id: 1385675
+Job name: magma_heatmap
+Hostname: compute-098.cm.cluster
+Task id: 2
+Unloading conda_R/devel
+Loading conda_R/4.2
+
+The following have been reloaded with a version change:
+  1) conda/3-4.6.14 => conda/3-4.11.0     2) conda_R/devel => conda_R/4.2
+
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.11.0
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.2
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Error in library(jaffelab) : there is no package called ‘jaffelab’
+Execution halted
+**** Job ends ****
+Tue Jan  3 00:04:25 EST 2023
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/devel
+**** Job starts ****
+Tue Jan  3 00:13:40 EST 2023
+**** JHPCE info ****
+User: sparthib
+Job id: 1385695
+Job name: magma_heatmap
+Hostname: compute-095.cm.cluster
+Task id: 2
+Unloading conda_R/devel
+Loading conda_R/4.2
+
+The following have been reloaded with a version change:
+  1) conda/3-4.6.14 => conda/3-4.11.0     2) conda_R/devel => conda_R/4.2
+
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.11.0
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.2
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: rafalib
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: spam
+Spam version 2.9-1 (2022-08-07) is loaded.
+Type 'help( Spam)' or 'demo( spam)' for a short introduction 
+and overview of this package.
+Help for individual functions is also obtained by adding the
+suffix '.spam' to the function name, e.g. 'help( chol.spam)'.
+
+Attaching package: ‘spam’
+
+The following object is masked from ‘package:stats4’:
+
+    mle
+
+The following objects are masked from ‘package:base’:
+
+    backsolve, forwardsolve
+
+Loading required package: viridis
+Loading required package: viridisLite
+
+Try help(fields) to get started.
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:Biobase’:
+
+    combine
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] 2
+[1] "Geneset: 100"
+Using Region, Pathology_Type as id variables
+[1] 21  4
+Using Region, Pathology_Type as id variables
+   Region Pathology_Type             GWAS      Beta
+1     ITC             Ab   AD.Jansen.2019  0.041632
+2     ITC           both   AD.Jansen.2019 -0.042155
+3     ITC        next_Ab   AD.Jansen.2019 -0.134540
+4     ITC      next_both   AD.Jansen.2019  0.043430
+5     ITC        next_pT   AD.Jansen.2019 -0.040185
+6     ITC           none   AD.Jansen.2019  0.171060
+7     ITC             pT   AD.Jansen.2019  0.010953
+8     ITC             Ab FTD.Ferrari.2014 -0.081655
+9     ITC           both FTD.Ferrari.2014  0.246000
+10    ITC        next_Ab FTD.Ferrari.2014 -0.048469
+11    ITC      next_both FTD.Ferrari.2014 -0.081445
+12    ITC        next_pT FTD.Ferrari.2014  0.107230
+13    ITC           none FTD.Ferrari.2014  0.056173
+14    ITC             pT FTD.Ferrari.2014 -0.061994
+15    ITC             Ab    PD.Nalls.2019  0.052558
+16    ITC           both    PD.Nalls.2019  0.134520
+17    ITC        next_Ab    PD.Nalls.2019  0.059134
+18    ITC      next_both    PD.Nalls.2019  0.048019
+19    ITC        next_pT    PD.Nalls.2019 -0.034587
+20    ITC           none    PD.Nalls.2019  0.162640
+21    ITC             pT    PD.Nalls.2019 -0.012478
+
+TRUE 
+  21 
+[1] "magmaStats_wide"
+          AD.Jansen.2019 FTD.Ferrari.2014 PD.Nalls.2019 Region Pathology_Type
+Ab              0.289260         0.765570      0.272020    ITC             Ab
+both            0.696740         0.010701      0.067224    ITC           both
+next_Ab         0.950070         0.677650      0.245110    ITC        next_Ab
+next_both       0.288460         0.791890      0.278450    ITC      next_both
+next_pT         0.691490         0.139700      0.645650    ITC        next_pT
+none            0.014898         0.289230      0.031440    ITC           none
+pT              0.445470         0.746460      0.555750    ITC             pT
+             FDR_AD  FDR_FTD   FDR_PD  Bonf_AD Bonf_FTD  Bonf_PD   AD_Beta
+Ab        0.6749400 0.791890 0.389830 1.000000 1.000000 1.000000  0.041632
+both      0.8128633 0.074907 0.235284 1.000000 0.074907 0.470568 -0.042155
+next_Ab   0.9500700 0.791890 0.389830 1.000000 1.000000 1.000000 -0.134540
+next_both 0.6749400 0.791890 0.389830 1.000000 1.000000 1.000000  0.043430
+next_pT   0.8128633 0.488950 0.645650 1.000000 0.977900 1.000000 -0.040185
+none      0.1042860 0.674870 0.220080 0.104286 1.000000 0.220080  0.171060
+pT        0.7795725 0.791890 0.645650 1.000000 1.000000 1.000000  0.010953
+           FTD_Beta   PD_Beta
+Ab        -0.081655  0.052558
+both       0.246000  0.134520
+next_Ab   -0.048469  0.059134
+next_both -0.081445  0.048019
+next_pT    0.107230 -0.034587
+none       0.056173  0.162640
+pT        -0.061994 -0.012478
+[1] "magmaStats_long"
+   Region Pathology_Type             GWAS      Beta        P P.adj.fdr
+1     ITC             Ab   AD.Jansen.2019  0.041632 0.289260 0.5522236
+2     ITC           both   AD.Jansen.2019 -0.042155 0.696740 0.8314845
+3     ITC        next_Ab   AD.Jansen.2019 -0.134540 0.950070 0.9500700
+4     ITC      next_both   AD.Jansen.2019  0.043430 0.288460 0.5522236
+5     ITC        next_pT   AD.Jansen.2019 -0.040185 0.691490 0.8314845
+6     ITC           none   AD.Jansen.2019  0.171060 0.014898 0.1564290
+7     ITC             pT   AD.Jansen.2019  0.010953 0.445470 0.7795725
+8     ITC             Ab FTD.Ferrari.2014 -0.081655 0.765570 0.8314845
+9     ITC           both FTD.Ferrari.2014  0.246000 0.010701 0.1564290
+10    ITC        next_Ab FTD.Ferrari.2014 -0.048469 0.677650 0.8314845
+11    ITC      next_both FTD.Ferrari.2014 -0.081445 0.791890 0.8314845
+12    ITC        next_pT FTD.Ferrari.2014  0.107230 0.139700 0.5522236
+13    ITC           none FTD.Ferrari.2014  0.056173 0.289230 0.5522236
+14    ITC             pT FTD.Ferrari.2014 -0.061994 0.746460 0.8314845
+15    ITC             Ab    PD.Nalls.2019  0.052558 0.272020 0.5522236
+16    ITC           both    PD.Nalls.2019  0.134520 0.067224 0.3529260
+17    ITC        next_Ab    PD.Nalls.2019  0.059134 0.245110 0.5522236
+18    ITC      next_both    PD.Nalls.2019  0.048019 0.278450 0.5522236
+19    ITC        next_pT    PD.Nalls.2019 -0.034587 0.645650 0.8314845
+20    ITC           none    PD.Nalls.2019  0.162640 0.031440 0.2200800
+21    ITC             pT    PD.Nalls.2019 -0.012478 0.555750 0.8314845
+  Region Pathology_Type           GWAS      Beta        P P.adj.fdr
+1    ITC             Ab AD.Jansen.2019  0.041632 0.289260 0.5522236
+2    ITC           both AD.Jansen.2019 -0.042155 0.696740 0.8314845
+3    ITC        next_Ab AD.Jansen.2019 -0.134540 0.950070 0.9500700
+4    ITC      next_both AD.Jansen.2019  0.043430 0.288460 0.5522236
+5    ITC        next_pT AD.Jansen.2019 -0.040185 0.691490 0.8314845
+6    ITC           none AD.Jansen.2019  0.171060 0.014898 0.1564290
+Warning message:
+In dir.create(here("plots", "magma")) :
+  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/magma' already exists
+null device 
+          1 
+[1] "Reproducibility information:"
+[1] "2023-01-03 00:14:00 EST"
+   user  system elapsed 
+ 14.211   1.002  18.716 
+─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.1 Patched (2022-08-30 r82775)
+ os       CentOS Linux 7 (Core)
+ system   x86_64, linux-gnu
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       US/Eastern
+ date     2023-01-03
+ pandoc   2.19.2 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/bin/pandoc
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package              * version   date (UTC) lib source
+ assertthat             0.2.1     2019-03-21 [2] CRAN (R 4.2.1)
+ Biobase              * 2.56.0    2022-04-26 [2] Bioconductor
+ BiocGenerics         * 0.42.0    2022-04-26 [2] Bioconductor
+ BiocIO                 1.6.0     2022-04-26 [2] Bioconductor
+ BiocParallel           1.30.3    2022-06-05 [2] Bioconductor
+ Biostrings             2.64.1    2022-08-18 [2] Bioconductor
+ bitops                 1.0-7     2021-04-24 [2] CRAN (R 4.2.1)
+ cli                    3.3.0     2022-04-25 [2] CRAN (R 4.2.1)
+ codetools              0.2-18    2020-11-04 [3] CRAN (R 4.2.1)
+ colorspace             2.0-3     2022-02-21 [2] CRAN (R 4.2.1)
+ crayon                 1.5.1     2022-03-26 [2] CRAN (R 4.2.1)
+ DBI                    1.1.3     2022-06-18 [2] CRAN (R 4.2.1)
+ DelayedArray           0.22.0    2022-04-26 [2] Bioconductor
+ dotCall64              1.0-1     2021-02-11 [2] CRAN (R 4.2.1)
+ dplyr                * 1.0.9     2022-04-28 [2] CRAN (R 4.2.1)
+ fansi                  1.0.3     2022-03-24 [2] CRAN (R 4.2.1)
+ fields               * 14.1      2022-08-12 [2] CRAN (R 4.2.1)
+ fs                     1.5.2     2021-12-08 [2] CRAN (R 4.2.1)
+ gargle                 1.2.0     2021-07-02 [2] CRAN (R 4.2.1)
+ generics               0.1.3     2022-07-05 [2] CRAN (R 4.2.1)
+ GenomeInfoDb         * 1.32.3    2022-08-09 [2] Bioconductor
+ GenomeInfoDbData       1.2.8     2022-08-30 [2] Bioconductor
+ GenomicAlignments      1.32.1    2022-07-24 [2] Bioconductor
+ GenomicRanges        * 1.48.0    2022-04-26 [2] Bioconductor
+ ggplot2                3.3.6     2022-05-03 [2] CRAN (R 4.2.1)
+ glue                   1.6.2     2022-02-24 [2] CRAN (R 4.2.1)
+ googledrive            2.0.0     2021-07-08 [2] CRAN (R 4.2.1)
+ gridExtra              2.3       2017-09-09 [2] CRAN (R 4.2.1)
+ gtable                 0.3.0     2019-03-25 [2] CRAN (R 4.2.1)
+ here                 * 1.0.1     2020-12-13 [2] CRAN (R 4.2.1)
+ IRanges              * 2.30.1    2022-08-18 [2] Bioconductor
+ jaffelab             * 0.99.32   2023-01-03 [1] Github (LieberInstitute/jaffelab@7b7afe3)
+ lattice                0.20-45   2021-09-22 [3] CRAN (R 4.2.1)
+ lifecycle              1.0.1     2021-09-24 [2] CRAN (R 4.2.1)
+ limma                  3.52.2    2022-06-19 [2] Bioconductor
+ magrittr               2.0.3     2022-03-30 [2] CRAN (R 4.2.1)
+ maps                   3.4.0     2021-09-25 [2] CRAN (R 4.2.1)
+ MASS                   7.3-58.1  2022-08-03 [3] CRAN (R 4.2.1)
+ Matrix                 1.4-1     2022-03-23 [3] CRAN (R 4.2.1)
+ MatrixGenerics       * 1.8.1     2022-06-26 [2] Bioconductor
+ matrixStats          * 0.62.0    2022-04-19 [2] CRAN (R 4.2.1)
+ munsell                0.5.0     2018-06-12 [2] CRAN (R 4.2.1)
+ nlme                   3.1-158   2022-06-15 [3] CRAN (R 4.2.1)
+ pillar                 1.8.1     2022-08-19 [2] CRAN (R 4.2.1)
+ pkgconfig              2.0.3     2019-09-22 [2] CRAN (R 4.2.1)
+ plyr                   1.8.7     2022-03-24 [2] CRAN (R 4.2.1)
+ purrr                  0.3.4     2020-04-17 [2] CRAN (R 4.2.1)
+ R6                     2.5.1     2021-08-19 [2] CRAN (R 4.2.1)
+ rafalib              * 1.0.0     2015-08-09 [1] CRAN (R 4.2.1)
+ RColorBrewer         * 1.1-3     2022-04-03 [2] CRAN (R 4.2.1)
+ Rcpp                   1.0.9     2022-07-08 [2] CRAN (R 4.2.1)
+ RCurl                  1.98-1.8  2022-07-30 [2] CRAN (R 4.2.1)
+ reshape2             * 1.4.4     2020-04-09 [2] CRAN (R 4.2.1)
+ restfulr               0.0.15    2022-06-16 [2] CRAN (R 4.2.1)
+ rjson                  0.2.21    2022-01-09 [2] CRAN (R 4.2.1)
+ rlang                  1.0.4     2022-07-12 [2] CRAN (R 4.2.1)
+ rprojroot              2.0.3     2022-04-02 [2] CRAN (R 4.2.1)
+ Rsamtools              2.12.0    2022-04-26 [2] Bioconductor
+ rtracklayer          * 1.56.1    2022-06-23 [2] Bioconductor
+ S4Vectors            * 0.34.0    2022-04-26 [2] Bioconductor
+ scales                 1.2.1     2022-08-20 [2] CRAN (R 4.2.1)
+ segmented              1.6-2     2022-12-09 [1] CRAN (R 4.2.1)
+ sessioninfo          * 1.2.2     2021-12-06 [2] CRAN (R 4.2.1)
+ SingleCellExperiment * 1.18.0    2022-04-26 [2] Bioconductor
+ spam                 * 2.9-1     2022-08-07 [2] CRAN (R 4.2.1)
+ stringi                1.7.8     2022-07-11 [2] CRAN (R 4.2.1)
+ stringr                1.4.1     2022-08-20 [2] CRAN (R 4.2.1)
+ SummarizedExperiment * 1.26.1    2022-04-29 [2] Bioconductor
+ tibble                 3.1.8     2022-07-22 [2] CRAN (R 4.2.1)
+ tidyselect             1.1.2     2022-02-21 [2] CRAN (R 4.2.1)
+ utf8                   1.2.2     2021-07-24 [2] CRAN (R 4.2.1)
+ vctrs                  0.4.1     2022-04-13 [2] CRAN (R 4.2.1)
+ viridis              * 0.6.2     2021-10-13 [2] CRAN (R 4.2.1)
+ viridisLite          * 0.4.1     2022-08-22 [2] CRAN (R 4.2.1)
+ XML                    3.99-0.10 2022-06-09 [2] CRAN (R 4.2.1)
+ XVector                0.36.0    2022-04-26 [2] Bioconductor
+ yaml                   2.3.5     2022-02-21 [2] CRAN (R 4.2.1)
+ zlibbioc               1.42.0    2022-04-26 [2] Bioconductor
+
+ [1] /users/sparthib/R/4.2
+ [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/R/4.2/lib64/R/site-library
+ [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/R/4.2/lib64/R/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+**** Job ends ****
+Tue Jan  3 00:14:02 EST 2023
