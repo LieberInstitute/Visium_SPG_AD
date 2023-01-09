@@ -1,4 +1,22 @@
 
+
+# Number of sets: 6 cell types * concordance (2 options) = 12 sets + direction 6 sets = 18 sets
+#
+# Note: snRNA-seq
+#
+# Direction available: Grubman.LogFC (AD vs Control a priori). There's not that many genes.
+#
+# Statistics available: No. But we have Concordance.
+## Correction: We have concordance only for the Mathys comparison. FDR available all others.
+#
+#  For each cell type, use all genes (ignore Concordance)
+#  For each cell type, filter to Concordance == TRUE
+
+### not enough genes with Concordance == FALSE
+
+
+#  For each cell type, use all genes (ignore Concordance), and separate by direction.
+
 # library("sgejobs")
 
 # sgejobs::job_single(
@@ -29,26 +47,24 @@ load(here(
     "Visium_IF_AD_modeling_results.Rdata"
 ))
 
-# Number of sets: 6 cell types * concordance (2 options) = 12 sets + direction 6 sets = 18 sets
-#
-# Note: snRNA-seq
-#
-# Direction available: Grubman.LogFC (AD vs Control a priori). There's not that many genes.
-#
-# Statistics available: No. But we have Concordance.
-## Correction: We have concordance only for the Mathys comparison. FDR available all others.
-#
-#  For each cell type, use all genes (ignore Concordance)
-#  For each cell type, filter to Concordance == TRUE
-#  For each cell type, use all genes (ignore Concordance), and separate by direction.
+
 input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
                   "2_Grubman et al_Entorhinal", "Grubman et al.xlsx")
 
 # comparison with Mathys
-table_s3_grub <- read_excel(input_dir,
+table_s3_grubman <- read_excel(input_dir,
     sheet = "Supplementary Table 3", skip = 10,
     col_names = TRUE
 )
+
+##renaming column for readability
+table_s3_grubman$grubman_logfc <- table_s3_grub$`Grubman.LogFC (AD vs Control a priori)`
+table_s3_grubman <- table_s3_grubman |> subset(select = -`Grubman.LogFC (AD vs Control a priori)`)
+
+
+
+#### NOTES ON TABLES ####
+
 # > nrow(table_s3_grub)
 # [1] 94                                                     col_names = TRUE)
 
@@ -57,85 +73,36 @@ table_s3_grub <- read_excel(input_dir,
 # [3] "Concordance"                             "Grubman.LogFC (AD vs Control a priori)"
 # [5] "Mathys.LogFC(no pathology vs pathology)" "cell type"
 
-
 # > unique(table_s3_grub$`cell type`)
 # [1] "astro"               "mg"                  "neuron (excitatory)"
 # [4] "neuron (inhibitory)" "oligo"               "OPC"
 
 
-# "Legend:
-# cond = a priori condition (AD or Control)
-# cellType = identified cell type using BRETIGEA markers
-# patient = patient for which gene is associated with
-# geneID = gene symbol
-# logFC = log2FoldChange
-# FDR = false discovery rate using Benajmini-Hochberg Method   "
 
 
-# #microglia
-# table_s4a <-read_excel(input_data, sheet = "Supplementary Table 4a", skip = 6,
-# col_names = TRUE)
-# # nrow(table_s4a)
-# # [1] 146
-# nrow(table_s4a |> dplyr::filter(FDR < 0.1))
-# # > colnames(table_s4a)
-# # [1] "...1"     "cond"     "cellType" "patient"  "geneID"   "logFC"    "FDR"
-#
-# #astrocytes
-# table_s4b <-read_excel(input_data, sheet = "Supplementary Table 4b", skip = 6,
-#                        col_names = TRUE)
-# # > nrow(table_s4b)
-# # [1] 1503
-# nrow(table_s4b |> dplyr::filter(FDR < 0.1))
-#
-# #neurons
-# table_s4c <-read_excel(input_data, sheet = "Supplementary Table 4c", skip = 6,
-#                        col_names = TRUE)
-# nrow(table_s4c |> dplyr::filter(FDR < 0.1))
-#
-# # > nrow(table_s4c)
-# # [1] 496
-# # > unique(table_s4c$cellType)
-# # [1] "neuron"
-# #neurons aren't divided into excitatory and inhibitory
-#
-# #oligos
-# table_s4d <-read_excel(input_data, sheet = "Supplementary Table 4d", skip = 6,
-#                        col_names = TRUE)
-# # > nrow(table_s4d)
-# # [1] 2076
-#
-# nrow(table_s4d |> dplyr::filter(FDR < 0.1))
-# #opc
-# table_s4e <-read_excel(input_data, sheet = "Supplementary Table 4e", skip = 6,
-#                        col_names = TRUE)
-#
-# nrow(table_s4e |> dplyr::filter(FDR < 0.1))
-# # > nrow(table_s4e)
-# # [1] 379
 
-## Already filtered for FRD
-# > nrow(table_s4a |> dplyr::filter(FDR < 0.1))
-# [1] 146
-# > nrow(table_s4b |> dplyr::filter(FDR < 0.1))
-# [1] 1503
-# > nrow(table_s4c |> dplyr::filter(FDR < 0.1))
-# [1] 496
-# > nrow(table_s4d |> dplyr::filter(FDR < 0.1))
-# [1] 2076
-# > nrow(table_s4e |> dplyr::filter(FDR < 0.1))
-# [1] 379
+#### ALL GENES  ####
+table_s3_grubman_astro <- table_s3_grubman |> dplyr::filter(`cell type` == "astro")
+table_s3_grubman_mg <- table_s3_grubman |> dplyr::filter(`cell type` == "mg")
+table_s3_grubman_ex <- table_s3_grubman |> dplyr::filter(`cell type` == "neuron (excitatory)")
+table_s3_grubman_inh <- table_s3_grubman |> dplyr::filter(`cell type` == "neuron (inhibitory)")
+table_s3_grubman_oligo <- table_s3_grubman |> dplyr::filter(`cell type` == "oligo")
+table_s3_grubman_OPC <- table_s3_grubman |> dplyr::filter(`cell type` == "OPC")
+
+# > nrow(table_s3_grubman_astro )
+# [1] 32
+# > nrow(table_s3_grubman_mg)
+# [1] 11
+# > nrow(table_s3_grubman_ex)
+# [1] 21
+# > nrow(table_s3_grubman_inh )
+# [1] 4
+# > nrow(table_s3_grubman_oligo)
+# [1] 22
+# > nrow(table_s3_grubman_OPC)
+# [1] 4
 
 
-# > unique(table_s3_grub$`cell type`)
-# [1] "astro"               "mg"                  "neuron (excitatory)"
-# [4] "neuron (inhibitory)" "oligo"               "OPC"
-table_s3_grubman_astro <- table_s3_grub |> dplyr::filter(`cell type` == "astro")
-table_s3_grubman_mg <- table_s3_grub |> dplyr::filter(`cell type` == "mg")
-table_s3_grubman_ex <- table_s3_grub |> dplyr::filter(`cell type` == "neuron (excitatory)")
-table_s3_grubman_inh <- table_s3_grub |> dplyr::filter(`cell type` == "neuron (inhibitory)")
-table_s3_grubman_oligo <- table_s3_grub |> dplyr::filter(`cell type` == "oligo")
-table_s3_grubman_OPC <- table_s3_grub |> dplyr::filter(`cell type` == "OPC")
 
 df_mathys_list <- list(
     table_s3_grubman_astro, table_s3_grubman_mg, table_s3_grubman_ex, table_s3_grubman_inh,
@@ -288,6 +255,234 @@ gene_set_enrichment_plot(
 )
 
 dev.off()
+
+
+#### GENES SPLIT BY DIRECTION  ####
+
+table_s3_grubman_astro_pos <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "astro" & grubman_logfc > 0)
+
+table_s3_grubman_mg_pos <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "mg"& grubman_logfc > 0)
+
+table_s3_grubman_ex_pos  <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc > 0)
+
+table_s3_grubman_inh_pos <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc > 0)
+
+table_s3_grubman_oligo_pos <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "oligo" & grubman_logfc > 0)
+
+table_s3_grubman_OPC_pos <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "OPC" & grubman_logfc > 0)
+
+#---------------
+table_s3_grubman_astro_neg <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "astro" & grubman_logfc <= 0)
+
+table_s3_grubman_mg_neg <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "mg"& grubman_logfc <= 0)
+
+table_s3_grubman_ex_neg  <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc <= 0)
+
+table_s3_grubman_inh_neg <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc <= 0)
+
+table_s3_grubman_oligo_neg <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "oligo" & grubman_logfc <= 0)
+
+table_s3_grubman_OPC_neg <- table_s3_grubman|>
+    dplyr::filter(`cell type` == "OPC" & grubman_logfc <= 0)
+
+
+
+df_mathys_list_directions <- list(
+    table_s3_grubman_astro_pos, table_s3_grubman_mg_pos, table_s3_grubman_ex_pos, table_s3_grubman_inh_pos,
+    table_s3_grubman_oligo_pos, table_s3_grubman_OPC_pos, table_s3_grubman_astro_neg,
+    table_s3_grubman_mg_neg, table_s3_grubman_ex_neg, table_s3_grubman_inh_neg,
+    table_s3_grubman_oligo_neg, table_s3_grubman_OPC_neg
+)
+
+res_2 <- purrr::map(df_mathys_list_directions, get_ensembl, Genes, "Genes")
+
+
+grubman_directions_geneList <- list(
+    grubman_mathys_astro_pos = res_2[[1]]$gene_ensembl_id,
+    grubman_mathys_mg_pos = res_2[[2]]$gene_ensembl_id,
+    grubman_mathys_ex_pos = res_2[[3]]$gene_ensembl_id,
+    grubman_mathys_inh_pos = res_2[[4]]$gene_ensembl_id,
+    grubman_mathys_oligo_pos = res_2[[5]]$gene_ensembl_id,
+    grubman_mathys_OPC_pos = res_2[[6]]$gene_ensembl_id,
+    grubman_mathys_astro_neg = res_2[[7]]$gene_ensembl_id,
+    grubman_mathys_mg_neg = res_2[[8]]$gene_ensembl_id,
+    grubman_mathys_ex_neg = res_2[[9]]$gene_ensembl_id,
+    grubman_mathys_inh_neg = res_2[[10]]$gene_ensembl_id,
+    grubman_mathys_oligo_neg = res_2[[11]]$gene_ensembl_id,
+    grubman_mathys_OPC_neg = res_2[[12]]$gene_ensembl_id
+
+)
+
+
+grubman_directions_enrichment <- gene_set_enrichment(
+    grubman_directions_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment"
+)
+
+grubman_directions_depleted <- gene_set_enrichment(
+    grubman_directions_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE
+)
+
+
+##### enrichment plotting #####
+output_dir <- here("plots", "14_external_gene_sets")
+pdf(paste0(output_dir, "/04_grubman_directions_enriched.pdf"), width = 15)
+gene_set_enrichment_plot(
+    grubman_directions_enrichment,
+    xlabs = unique(grubman_directions_enrichment$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(grubman_directions_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
+    cex = 1.2
+)
+
+dev.off()
+
+
+pdf(paste0(output_dir, "/04_grubman_directions_depleted.pdf"), width = 15)
+gene_set_enrichment_plot(
+    grubman_directions_depleted,
+    xlabs = unique(grubman_directions_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(grubman_directions_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
+    cex = 1.2
+)
+
+dev.off()
+
+
+
+#### GENES WITH CONCORDANCE == TRUE  ####
+table_s3_grubman_astro_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "astro" & Concordance == TRUE)
+
+table_s3_grubman_mg_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "mg"& Concordance == TRUE)
+
+table_s3_grubman_ex_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "neuron (excitatory)" & Concordance == TRUE)
+
+table_s3_grubman_inh_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "neuron (inhibitory)" & Concordance == TRUE)
+
+table_s3_grubman_oligo_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "oligo" & Concordance == TRUE)
+
+table_s3_grubman_OPC_conc <- table_s3_grubman |>
+    dplyr::filter(`cell type` == "OPC" & Concordance == TRUE)
+
+
+# > nrow(table_s3_grubman_astro_conc )
+# [1] 32
+# > nrow(table_s3_grubman_mg_conc)
+# [1] 10
+# > nrow(table_s3_grubman_ex_conc)
+# [1] 20
+# > nrow(table_s3_grubman_inh_conc)
+# [1] 3
+# > nrow(table_s3_grubman_oligo_conc)
+# [1] 20
+# > nrow(table_s3_grubman_OPC_conc)
+# [1] 4
+
+
+df_mathys_concordance_list <- list(
+    table_s3_grubman_astro_conc, table_s3_grubman_mg_conc, table_s3_grubman_ex_conc,
+    table_s3_grubman_inh_conc, table_s3_grubman_oligo_conc, table_s3_grubman_OPC_conc
+)
+
+res_3 <- purrr::map(df_mathys_concordance_list, get_ensembl, Genes, "Genes")
+
+grubman_geneList <- list(
+    grubman_mathys_astro_conc = res_3[[1]]$gene_ensembl_id,
+    grubman_mathys_mg_conc = res_3[[2]]$gene_ensembl_id,
+    grubman_mathys_ex_conc = res_3[[3]]$gene_ensembl_id,
+    grubman_mathys_inh_conc = res_3[[4]]$gene_ensembl_id,
+    grubman_mathys_oligo_conc = res_3[[5]]$gene_ensembl_id,
+    grubman_mathys_OPC_conc = res_3[[6]]$gene_ensembl_id
+)
+
+
+grubman_concordance_enrichment <- gene_set_enrichment(
+    grubman_conc_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment"
+)
+
+grubman_concordance_depleted <- gene_set_enrichment(
+    grubman_conc_geneList,
+    fdr_cut = 0.1,
+    modeling_results = modeling_results,
+    model_type = "enrichment",
+    reverse = TRUE
+)
+
+##### enrichment plotting #####
+pdf(paste0(output_dir, "/04_grubman_concordance_enriched.pdf"), width = 15)
+gene_set_enrichment_plot(
+    grubman_concordance_enrichment,
+    xlabs = unique(grubman_concordance_enrichment$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(grubman_concordance_enrichment$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
+    cex = 1.2
+)
+
+dev.off()
+
+
+pdf(paste0(output_dir, "/04_grubman_concordance_depleted.pdf"), width = 15)
+gene_set_enrichment_plot(
+    grubman_concordance_depleted,
+    xlabs = unique(grubman_concordance_depleted$ID),
+    PThresh = 12,
+    ORcut = 1.30103,
+    enrichOnly = FALSE,
+    layerHeights = c(0, seq_len(length(unique(grubman_concordance_depleted$test)))) * 15,
+    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+        9,
+        "YlOrRd"
+    )))(50)),
+    cex = 1.2
+)
+
+dev.off()
+
+
 
 ## Reproducibility information
 print("Reproducibility information:")
