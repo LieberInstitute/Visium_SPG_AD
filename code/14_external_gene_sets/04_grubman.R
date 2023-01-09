@@ -58,7 +58,7 @@ table_s3_grubman <- read_excel(input_dir,
 )
 
 ##renaming column for readability
-table_s3_grubman$grubman_logfc <- table_s3_grub$`Grubman.LogFC (AD vs Control a priori)`
+table_s3_grubman$grubman_logfc <- table_s3_grubman$`Grubman.LogFC (AD vs Control a priori)`
 table_s3_grubman <- table_s3_grubman |> subset(select = -`Grubman.LogFC (AD vs Control a priori)`)
 
 
