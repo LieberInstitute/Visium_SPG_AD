@@ -277,6 +277,48 @@ table_s3_grubman_oligo_pos <- table_s3_grubman|>
 table_s3_grubman_OPC_pos <- table_s3_grubman|>
     dplyr::filter(`cell type` == "OPC" & grubman_logfc > 0)
 
+nrow(table_s3_grubman_astro_neg )
+
+nrow(table_s3_grubman_mg_neg)
+
+nrow(table_s3_grubman_ex_neg)
+
+nrow(table_s3_grubman_inh_neg )
+
+nrow(table_s3_grubman_oligo_neg)
+
+nrow(table_s3_grubman_OPC_neg)
+
+# > nrow(table_s3_grubman_astro_pos )
+# [1] 17
+# > nrow(table_s3_grubman_mg_pos)
+# [1] 9
+# > nrow(table_s3_grubman_ex_pos)
+# [1] 14
+# > nrow(table_s3_grubman_inh_pos )
+# [1] 2
+# > nrow(table_s3_grubman_oligo_pos)
+# [1] 18
+# > nrow(table_s3_grubman_OPC_pos)
+# [1] 3
+
+# > nrow(table_s3_grubman_astro_neg )
+# >
+#     [1] 15
+# > nrow(table_s3_grubman_mg_neg)
+# [1] 2
+# >
+#     > nrow(table_s3_grubman_ex_neg)
+# [1] 7
+# >
+#     > nrow(table_s3_grubman_inh_neg )
+# > [1] 2
+#
+# > nrow(table_s3_grubman_oligo_neg)
+# > [1] 4
+#
+# > nrow(table_s3_grubman_OPC_neg)
+# [1] 1
 #---------------
 table_s3_grubman_astro_neg <- table_s3_grubman|>
     dplyr::filter(`cell type` == "astro" & grubman_logfc <= 0)
@@ -398,6 +440,8 @@ table_s3_grubman_oligo_conc <- table_s3_grubman |>
 
 table_s3_grubman_OPC_conc <- table_s3_grubman |>
     dplyr::filter(`cell type` == "OPC" & Concordance == TRUE)
+
+
 
 
 # > nrow(table_s3_grubman_astro_conc )
