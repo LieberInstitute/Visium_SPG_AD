@@ -421,7 +421,7 @@ df_mathys_concordance_list <- list(
 
 res_3 <- purrr::map(df_mathys_concordance_list, get_ensembl, Genes, "Genes")
 
-grubman_geneList <- list(
+grubman_conc_geneList <- list(
     grubman_mathys_astro_conc = res_3[[1]]$gene_ensembl_id,
     grubman_mathys_mg_conc = res_3[[2]]$gene_ensembl_id,
     grubman_mathys_ex_conc = res_3[[3]]$gene_ensembl_id,
