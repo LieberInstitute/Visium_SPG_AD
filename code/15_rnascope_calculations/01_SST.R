@@ -68,4 +68,30 @@ sst_log <- sst |> mutate(across(-c("subject_id"), function(x) log2(x+1)))
 # 5      3.91         5.29         1          3           3.58           1         1    Br3854
 # 6      2            3.32         1          1           1              1         3.32 Br3854
 
+#find total number of non-NA values for each subject id in each radius
+sst_non_nas <-sst_log |> group_by(subject_id) |> summarise_each(list(non_na_count = ~sum(!is.na(.))))
 
+# subject_id `0-21.25_non_na_count` `21.25-42.5_non_na_count` `42.5-63.75_non_na_count` `63.75-85_non_na_count` `85-106.25_non_na_count` `106.25-127.5_non_na_count` `127.5<x_non_n…`
+# <chr>                       <int>                     <int>                     <int>                   <int>                    <int>                       <int>            <int>
+# 1 Br3854                       1618                      2850                      3045                    2827                     2429                        1944             5830
+# 2 Br3873                       2933                      5073                      4168                    2483                     1195                         552              762
+# 3 Br3880                       3495                      5433                      4943                    3989                     2978                        2250             9910
+# 4 Br8549                       2931                      5073                      6102                    5427                     4429                        3266             7580
+
+sst_sums <- sst_log |> group_by(subject_id) |>
+    summarise(across(everything(), .f = list(sum = sum), na.rm = TRUE))
+
+# print.data.frame(sst_sums) using this function to display exact number
+#instead of round-offs
+# subject_id 0-21.25_sum 21.25-42.5_sum 42.5-63.75_sum 63.75-85_sum 85-106.25_sum 106.25-127.5_sum 127.5<x_sum
+# 1     Br3854    215.9338       531.2156       430.5595     446.4865      403.7622        277.74336    800.1906
+# 2     Br3873    463.0638       799.7641       700.2117     462.0430      215.2291         75.01866    169.2095
+# 3     Br3880    390.9158       648.5557       450.0825     309.9367      284.4061        163.26961    514.6885
+# 4     Br8549    263.5176       529.1033       575.0915     543.0129      470.4267        291.63762    746.0366
+
+as.matrix(sst_sums[2:8])/as.matrix(sst_non_nas[2:8])
+#       0-21.25_sum 21.25-42.5_sum 42.5-63.75_sum 63.75-85_sum 85-106.25_sum 106.25-127.5_sum 127.5<x_sum
+# [1,]  0.13345725      0.1863914     0.14139886   0.15793652     0.1662257       0.14287210  0.13725396  Br3854
+# [2,]  0.15788060      0.1576511     0.16799705   0.18608257     0.1801080       0.13590337  0.22205975   Br3873
+# [3,]  0.11185001      0.1193734     0.09105453   0.07769783     0.0955024       0.07256427  0.05193628   Br3880
+# [4,]  0.08990705      0.1042979     0.09424639   0.10005765     0.1062151       0.08929505  0.09842171   Br8549
