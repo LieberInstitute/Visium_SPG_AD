@@ -96,3 +96,20 @@ as.matrix(sst_sums[2:8])/as.matrix(sst_non_nas[2:8])
 # [2,]  0.15788060      0.1576511     0.16799705   0.18608257     0.1801080       0.13590337  0.22205975   Br3873
 # [3,]  0.11185001      0.1193734     0.09105453   0.07769783     0.0955024       0.07256427  0.05193628   Br3880
 # [4,]  0.08990705      0.1042979     0.09424639   0.10005765     0.1062151       0.08929505  0.09842171   Br8549
+
+
+#### across all 4 donors(ignoring subject id) ####
+sst_non_nas_all <-sst_log  |> summarise_each(list(non_na_count = ~sum(!is.na(.))))
+# `0-21.25_non_na_count` `21.25-42.5_non_na_count` `42.5-63.75_non_na_c…` `63.75-85_non_…` `85-106.25_non…` `106.25-127.5_…` `127.5<x_non_n…` subject_id_non_…
+# <int>                     <int>                  <int>            <int>            <int>            <int>            <int>            <int>
+#     1                  10977                     18429                  18258            14726            11031             8012            24082            28420
+
+sst_sums_all <- sst_log |> summarise(across(-c(subject_id), .f = list(sum = sum), na.rm = TRUE))
+# > print.data.frame(sst_sums_all)
+# 0-21.25_sum 21.25-42.5_sum 42.5-63.75_sum 63.75-85_sum 85-106.25_sum 106.25-127.5_sum 127.5<x_sum
+# 1    1333.431       2508.639       2155.945     1761.479      1373.824         807.6693    2230.125
+
+sst_avg <- as.matrix(sst_sums_all)/as.matrix(sst_non_nas_all[1:7])
+# 0-21.25_sum 21.25-42.5_sum 42.5-63.75_sum 63.75-85_sum 85-106.25_sum 106.25-127.5_sum 127.5<x_sum
+# [1,]    0.121475      0.1361245      0.1180822    0.1196169     0.1245421        0.1008074  0.09260548
+
