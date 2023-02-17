@@ -1,3 +1,13 @@
+library("here")
+library("sessioninfo")
+library("SpatialExperiment")
+
+## Locate data directory
+dir_rdata <- here::here(
+        "code",
+        "05_deploy_app_wholegenome"
+    )
+
 load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
     verbose = TRUE
 )
@@ -12,3 +22,10 @@ sig_genes <- sig_genes_extract_all(
     modeling_results = modeling_results,
     sce_layer = sce_pseudo
 )
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
