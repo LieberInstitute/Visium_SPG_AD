@@ -32,7 +32,7 @@ make_volcano <- function(testname) {
     subset_sig <- subset(sig_genes, test == testname & model_type == "enrichment")
     df <- data.frame(
         gene = subset_sig$gene,
-        stat = subset_sig$stat,
+        logFC = subset_sig$logFC,
         FDR = subset_sig$fdr,
         sig = subset_sig$fdr < 0.05
     )
@@ -40,9 +40,9 @@ make_volcano <- function(testname) {
     ## Adapted from https://github.com/LieberInstitute/spatial_hpc/blob/62334e88788c2a7010f2d500418639769121ecf1/code/08_pseudobulk/PRECAST/plot_volcano.R#L580-L591
     EnhancedVolcano(df,
         lab = df$gene,
-        x = 'stat',
+        x = 'logFC',
         y = 'FDR',
-        FCcutoff = 2,
+        FCcutoff = 1,
         pCutoff = 0.05,
         ylab = "-log10 FDR",
         legendLabels = c('Not sig.','Log (base 2) FC','FDR',
