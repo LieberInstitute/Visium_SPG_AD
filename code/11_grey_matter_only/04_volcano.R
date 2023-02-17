@@ -45,8 +45,8 @@ make_volcano <- function(testname) {
         FCcutoff = 1,
         pCutoff = 0.05,
         ylab = "-log10 FDR",
-        legendLabels = c('Not sig.','Log (base 2) FC','FDR',
-            'FDR & Log (base 2) FC'),
+        legendLabels = c('Not sig.','Log2FC < 1', 'FDR < 0.05 & Log2FC < 1',
+            'FDR < 0.05 & Log2FC > 1'),
         title = paste(testname, "vs others"),
         subtitle = ""
     )
