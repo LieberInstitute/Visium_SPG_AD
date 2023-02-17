@@ -1,6 +1,6 @@
 library("here")
 library("sessioninfo")
-library("SpatialExperiment")
+library("spatialLIBD")
 
 ## Locate data directory
 dir_rdata <- here::here(
