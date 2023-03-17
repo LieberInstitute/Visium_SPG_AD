@@ -27,6 +27,10 @@ load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
 sce_pseudo <-
     readRDS(file.path(dir_rdata, "sce_pseudo_pathology_wholegenome.rds"))
 
+## Change Braak info based on latest information from LIBD pathology
+sce_pseudo$BCrating <- NULL ## This variable was removed from the phenotype table
+sce_pseudo$braak <- c("Br3854" = "Stage VI", "Br3873" = "Stage V", "Br3880" = "Stage VI", "Br3874" = "Stage IV")[sce_pseudo$subject]
+sce_pseudo$cerad <- c("Br3854" = "Frequent", "Br3873" = "Frequent", "Br3880" = "Frequent", "Br3874" = "None")[sce_pseudo$subject]
 
 ## For sig_genes_extract_all() to work
 sce_pseudo$spatialLIBD <- sce_pseudo$path_groups
