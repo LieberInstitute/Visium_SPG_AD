@@ -1,5 +1,5 @@
 ---
-title: spatialDLPFC
+title: Visium_SPG_AD
 output:
   github_document:
     html_preview: true
@@ -26,9 +26,9 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-<img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp09.png" align="left" width="300px" />
+<img src="http://research.libd.org/Visium_SPG_AD/img/Br6255_ant_Sp09.png" align="left" width="300px" />
 
-Welcome to the `spatialDLPFC` project! This project involves 3 data types as well as several interactive websites, all of which you are publicly accessible for you to browse and download.
+Welcome to the `Visium_SPG_AD` project! This project involves 3 data types as well as several interactive websites, all of which you are publicly accessible for you to browse and download.
 
 In this project we studied spatially resolved and single nucleus transcriptomics data from the dorsolateral prefrontal cortex (DLPFC) from postmortem human brain samples. From 10 neurotypical controls we generated spatially-resolved transcriptomics data using using [10x Genomics **Visium**](https://www.10xgenomics.com/products/spatial-gene-expression) across the anterior, middle, and posterior DLPFC (n = 30). We also generated single nucleus RNA-seq (**snRNA-seq**) data using [10x Genomics **Chromium**](https://www.10xgenomics.com/products/single-cell-gene-expression) from 19 of these tissue blocks. We further generated data from 4 adjacent tissue slices with [10x Genomics **Visium Spatial Proteogenomics** (SPG)](https://www.10xgenomics.com/products/spatial-proteogenomics), that can be used to benchmark spot deconvolution algorithms. This work is being was performed by the [Keri Martinowich](https://www.libd.org/team/keri-martinowich-phd/), [Leonardo Collado-Torres](http://lcolladotor.github.io/), and [Kristen Maynard](https://www.libd.org/team/kristen-maynard-phd/) teams at the [Lieber Institute for Brain Development](libd.org) as well as [Stephanie Hicks](https://www.stephaniehicks.com/)'s group from [JHBSPH's Biostatistics Department](https://publichealth.jhu.edu/departments/biostatistics).
 
@@ -44,7 +44,7 @@ Thank you for your interest in our work!
 
 ## Study Design
 
-<img src="http://research.libd.org/spatialDLPFC/img/study_overview.png" width="1000px" align="left" />
+<img src="http://research.libd.org/Visium_SPG_AD/img/study_overview.png" width="1000px" align="left" />
 
 **Study design to generate paired single nucleus RNA-sequencing (snRNA-seq) and spatially-resolved transcriptomic data across DLPFC**. (**A**) DLPFC tissue blocks were dissected across the rostral-caudal axis from 10 adult neurotypical control postmortem human brains, including anterior (Ant), middle (Mid), and posterior (Post) positions (n=3 blocks per donor, n=30 blocks total). The same tissue blocks were used for snRNA-seq (10x Genomics 3’ gene expression assay, n=1-2 blocks per donor, n=19 samples) and spatial transcriptomics (10x Genomics Visium spatial gene expression assay, n=3 blocks per donor, n=30 samples). (**B**) Paired snRNA-seq and Visium data were used to identify data-driven spatial domains (SpDs) and cell types, perform spot deconvolution, conduct cell-cell communication analyses, and spatially register companion PsychENCODE snRNA-seq DLPFC data. (**C**) _t_-distributed stochastic neighbor embedding (t-SNE) summarizing layer resolution cell types identified by snRNA-seq. (**D**) Tissue block orientation and morphology was confirmed by hematoxylin and eosin (H&E) staining and single molecule fluorescent in situ hybridization (smFISH) with RNAscope (_SLC17A7_ marking excitatory neurons in pink, _MBP_ marking white matter (WM) in green, _RELN_ marking layer (L)1 in yellow, and _NR4A2_ marking L6 in orange). Scale bar is 2mm. Spotplots depicting log transformed normalized expression (logcounts) of _SNAP25_, _MBP_, and _PCP4_ in the Visium data confirm the presence of gray matter, WM, and cortical layers, respectively. (**E**) Schematic of unsupervised SpD identification and registration using _BayesSpace_ SpDs at _k_=7. Enrichment _t_-statistics computed on _BayesSpace_ SpDs were correlated with manual histological layer annotations from ([Maynard, Collado-Torres et al., 2021, _Nat Neuro_](https://doi.org/10.1038/s41593-020-00787-0)) to map SpDs to known histological layers. The heatmap of correlation values summarizes the relationship between BayesSpace SpDs and classic histological layers. Higher confidence annotations (⍴ > 0.25, merge ratio = 0.1) are marked with an “X”.
 
@@ -264,7 +264,7 @@ p09 <- spatialLIBD::vis_clus(
 p09
 ```
 
-<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09"><img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp09.png" width="800px" align="center" /></a>
+<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09"><img src="http://research.libd.org/Visium_SPG_AD/img/Br6255_ant_Sp09.png" width="800px" align="center" /></a>
 
 ```{r "p16", fig.height = 8, fig.width = 9, eval = FALSE}
 ## Repeat but for Sp16
@@ -291,7 +291,7 @@ ggplot2::ggsave(here::here("img", "Br6255_ant_Sp16.png"),
 )
 ```
 
-<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp16"><img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp16.png" width="800px" align="center" /></a>
+<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp16"><img src="http://research.libd.org/Visium_SPG_AD/img/Br6255_ant_Sp16.png" width="800px" align="center" /></a>
 
 
 ### Raw data
