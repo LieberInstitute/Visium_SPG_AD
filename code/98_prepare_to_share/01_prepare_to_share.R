@@ -79,6 +79,22 @@ for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
     colData(spe)[[i]] <- factor(colData(spe)[[i]])
 }
 
+## Change Braak info based on latest information from LIBD pathology
+unique(spe$subject)
+
+
+unique(spe$BCrating)
+unique(spe$braak)
+unique(spe$cerad)
+spe$BCrating <- NULL ## This variable was removed from the phenotype table
+spe$braak <- c("Br3854" = "Stage VI", "Br3873" = "Stage V", "Br3880" = "Stage VI", "Br3874" = "Stage IV")[spe$subject]
+spe$cerad <- c("Br3854" = "Frequent", "Br3873" = "Frequent", "Br3880" = "Frequent", "Br3874" = "None")[spe$subject]
+unique(spe$braak)
+unique(spe$cerad)
+
+## Add APOe genotype info
+sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[spe$subject]
+
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
