@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![DOI](https://zenodo.org/badge/314001778.svg)](https://zenodo.org/badge/latestdoi/314001778)
+[![DOI](https://zenodo.org/badge/377886452.svg)](https://zenodo.org/badge/latestdoi/377886452)
 
 ## Overview
 
