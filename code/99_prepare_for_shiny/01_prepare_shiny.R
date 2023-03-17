@@ -8,7 +8,7 @@ suffix <-
     ifelse(as.numeric(Sys.getenv("SGE_TASK_ID")) == 1, "wholegenome", "targeted")
 
 ## Load the data
-spe <- load(here::here(
+load(here::here(
     "processed-data",
     "98_prepare_to_share",
     suffix,
