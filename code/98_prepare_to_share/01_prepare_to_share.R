@@ -93,7 +93,7 @@ unique(spe$braak)
 unique(spe$cerad)
 
 ## Add APOe genotype info
-sce_pseudo$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[spe$subject]
+spe$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[spe$subject]
 
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
