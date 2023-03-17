@@ -129,6 +129,11 @@ cd ${CODEDIR}/14_external_gene_sets
 ## Delete SPE versions for shiny
 rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
 
+## prepare to share the data through spatialLIBD
+cd ${CODEDIR}/98_prepare_to_share
+rm logs/prepare_to_share*.txt
+qsub 01_prepare_to_share.sh
+
 ## Prepare the inputs for shiny (steps 05 and 06)
 ## (this will likely be the last step)
 cd ${CODEDIR}/99_prepare_for_shiny

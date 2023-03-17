@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=7G,h_vmem=7G,h_fsize=100G
-#$ -N prepare_shiny
-#$ -o logs/prepare_shiny.$TASK_ID.txt
-#$ -e logs/prepare_shiny.$TASK_ID.txt
+#$ -N prepare_to_share
+#$ -o logs/prepare_to_share.$TASK_ID.txt
+#$ -e logs/prepare_to_share.$TASK_ID.txt
 #$ -m e
 #$ -hold_jid label_pathology_spots
 #$ -t 1-2
@@ -20,13 +20,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.2
+module load conda_R/4.2.x
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript 01_prepare_shiny.R
+Rscript 01_prepare_to_share.R
 
 echo "**** Job ends ****"
 date

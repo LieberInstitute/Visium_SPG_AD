@@ -3,9 +3,17 @@ library("spatialLIBD")
 library("SpatialExperiment")
 library("sessioninfo")
 
+## Create output directory
+dir_rdata <- here("processed-data", "98_prepare_to_share")
+dir.create(dir_rdata, showWarnings = FALSE)
+
+
 ## Determine the suffix
 suffix <-
     ifelse(as.numeric(Sys.getenv("SGE_TASK_ID")) == 1, "wholegenome", "targeted")
+
+## Create output directory
+dir.create(file.path(dir_rdata, suffix), showWarnings = FALSE)
 
 ## Load the data
 spe <- readRDS(here::here(
@@ -76,20 +84,8 @@ for (i in colnames(colData(spe))[grep("^path_", colnames(colData(spe)))]) {
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
 
-## Drop images we don't really use in the app
-imgData(spe) <- imgData(spe)[
-    !imgData(spe)$image_id %in% c("hires", "detected", "aligned"),
-]
-
-## Save the final object for the shiny app
-if (suffix == "wholegenome") {
-    save(spe,
-        file = here("code", "05_deploy_app_wholegenome", "spe.Rdata")
-    )
-} else {
-    save(spe, file = here("code", "06_deploy_app_targeted", "spe.Rdata"))
-}
-
+## Save the final object that we can share through spatialLIBD
+save(spe, file = file.path(dir_rdata, suffix, "spe.Rdata"))
 
 ## Reproducibility information
 print("Reproducibility information:")

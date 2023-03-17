@@ -5,7 +5,7 @@
 #$ -o logs/prepare_shiny.$TASK_ID.txt
 #$ -e logs/prepare_shiny.$TASK_ID.txt
 #$ -m e
-#$ -hold_jid label_pathology_spots
+#$ -hold_jid prepare_to_share
 #$ -t 1-2
 #$ -tc 2
 
@@ -20,7 +20,7 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.2
+module load conda_R/4.2.x
 
 ## List current modules for reproducibility
 module list
