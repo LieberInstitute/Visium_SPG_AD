@@ -12,9 +12,6 @@ dir.create(dir_rdata, showWarnings = FALSE)
 suffix <-
     ifelse(as.numeric(Sys.getenv("SGE_TASK_ID")) == 1, "wholegenome", "targeted")
 
-## Create output directory
-dir.create(file.path(dir_rdata, suffix), showWarnings = FALSE)
-
 ## Load the data
 spe <- readRDS(here::here(
     "processed-data",
@@ -101,7 +98,7 @@ source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500
 spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
 
 ## Save the final object that we can share through spatialLIBD
-save(spe, file = file.path(dir_rdata, suffix, "spe.Rdata"))
+save(spe, file = file.path(dir_rdata, paste0("Visium_SPG_AD_spe_", suffix, ".Rdata")))
 
 ## Reproducibility information
 print("Reproducibility information:")

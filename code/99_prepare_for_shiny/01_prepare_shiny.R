@@ -11,8 +11,7 @@ suffix <-
 load(here::here(
     "processed-data",
     "98_prepare_to_share",
-    suffix,
-    "spe.Rdata"
+    paste0("Visium_SPG_AD_spe_", suffix, ".Rdata")
 ), verbose = TRUE)
 
 ## Drop images we don't really use in the app
