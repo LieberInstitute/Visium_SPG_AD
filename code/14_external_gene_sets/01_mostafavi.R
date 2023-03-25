@@ -92,13 +92,13 @@ table_s8_genes <- get_ensembl(table = table_s8, `Gene symbol`, "Gene symbol")
 table_s9_genes <- get_ensembl(table = table_s9, Gene, "Gene")
 
 
-
-
 mostafavi_geneList <- list(
     mostafavi_table_3 = table_s3_genes,
     mostafavi_table_8 = table_s8_genes,
     mostafavi_table_9 = table_s9_genes
 )
+
+
 
 #### calculate enrichment #####
 mostafavi_enrichment <- gene_set_enrichment(
@@ -116,6 +116,8 @@ mostafavi_depleted <- gene_set_enrichment(
     model_type = "enrichment",
     reverse = TRUE
 )
+
+
 
 #> mostafavi_enrichment
 # OR       Pval      test                ID model_type fdr_cut
