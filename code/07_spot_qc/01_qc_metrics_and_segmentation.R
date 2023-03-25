@@ -3,7 +3,7 @@
 #     create_shell = TRUE,
 #     queue = "bluejay",
 #     memory = "80G",
-#     command = "Rscript qc_metrics_and_segmentation.R",
+#     command = "Rscript 01_qc_metrics_and_segmentation.R",
 #     create_logdir = TRUE
 # )
 
