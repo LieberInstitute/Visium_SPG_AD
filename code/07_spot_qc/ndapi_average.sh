@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -N grubman
-#$ -o logs/grubman.txt
-#$ -e logs/grubman.txt
+#$ -N ndapi_average
+#$ -o logs/ndapi_average.txt
+#$ -e logs/ndapi_average.txt
 #$ -m e
 
 echo "**** Job starts ****"
@@ -17,13 +17,13 @@ echo "Hostname: ${HOSTNAME}"
 echo "Task id: ${SGE_TASK_ID}"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
-module load conda_R/4.2
+module load conda_R/devel
 
 ## List current modules for reproducibility
 module list
 
 ## Edit with your job command
-Rscript 04_grubman.R
+Rscript 04_ndapi_average.R
 
 echo "**** Job ends ****"
 date

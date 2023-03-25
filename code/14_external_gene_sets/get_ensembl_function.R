@@ -14,6 +14,7 @@ get_ensembl <- function(table, gene_col, gene_char) {
     colnames(genes_and_IDs) <- c("symbol", "gene_ensembl_id")
     table <- merge(table, genes_and_IDs, by.x = gene_char, by.y = "symbol", all.x = TRUE)
     table <- table |> distinct(!!gene_col, .keep_all = TRUE)
+    table$gene_ensembl_id
 }
 
 
