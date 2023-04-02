@@ -117,6 +117,19 @@ mostafavi_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
+dummy_nAb_row <- data.frame(OR = 2,
+                             Pval = 0.065 ,
+                             test = "none" ,
+                             NumSig = 0  ,
+                             SetSize = 0 ,
+                             ID = "dummy",
+                             model_type = "depletion" ,
+                             fdr_cut = 0.1)
+
+
+mostafavi_depleted  = rbind(mostafavi_depleted ,dummy_nAb_row)
+
+
 
 
 ##### Enrichment plotting #####
@@ -160,11 +173,16 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+print ("##### results #####")
+
+print("mostafavi_depleted")
+print(mostafavi_depleted)
+
+print("mostafavi_enrichment")
+print(mostafavi_enrichment)
 
 
 ## Reproducibility information
-print(mostafavi_depleted)
-print(mostafavi_enrichment)
 print("Reproducibility information:")
 Sys.time()
 proc.time()
