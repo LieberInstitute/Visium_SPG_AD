@@ -521,7 +521,9 @@ dev.off()
 
 
 
-## Reproducibility information
+####### Reproducibility information #####
+print(grubman_enrichment)
+print(grubman_depleted)
 print("Reproducibility information:")
 Sys.time()
 proc.time()
