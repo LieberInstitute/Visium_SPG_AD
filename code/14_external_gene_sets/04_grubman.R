@@ -113,12 +113,12 @@ res_1 <- purrr::map(df_mathys_list, get_ensembl, Genes, "Genes")
 
 
 grubman_geneList <- list(
-    grubman_mathys_astro = res_1[[1]]$gene_ensembl_id,
-    grubman_mathys_mg = res_1[[2]]$gene_ensembl_id,
-    grubman_mathys_ex = res_1[[3]]$gene_ensembl_id,
-    grubman_mathys_inh = res_1[[4]]$gene_ensembl_id,
-    grubman_mathys_oligo = res_1[[5]]$gene_ensembl_id,
-    grubman_mathys_OPC = res_1[[6]]$gene_ensembl_id
+    grubman_mathys_astro = res_1[[1]],
+    grubman_mathys_mg = res_1[[2]],
+    grubman_mathys_ex = res_1[[3]],
+    grubman_mathys_inh = res_1[[4]],
+    grubman_mathys_oligo = res_1[[5]],
+    grubman_mathys_OPC = res_1[[6]]
 )
 
 
@@ -130,6 +130,8 @@ grubman_enrichment <- gene_set_enrichment(
     model_type = "enrichment"
 )
 
+print(grubman_enrichment)
+
 grubman_depleted <- gene_set_enrichment(
     grubman_geneList,
     fdr_cut = 0.1,
@@ -137,6 +139,9 @@ grubman_depleted <- gene_set_enrichment(
     model_type = "enrichment",
     reverse = TRUE
 )
+
+
+print(grubman_depleted)
 
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
@@ -434,8 +439,7 @@ dev.off()
 
 
 # ####### Reproducibility information #####
-print(grubman_enrichment)
-print(grubman_depleted)
+
 print("Reproducibility information:")
 Sys.time()
 proc.time()
