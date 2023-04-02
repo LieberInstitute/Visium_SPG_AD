@@ -138,96 +138,6 @@ grubman_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
-# > grubman_enrichment
-# OR       Pval   test NumSig SetSize                   ID model_type fdr_cut
-# 1   0.000000 1.00000000   none      0      26 grubman_mathys_astro enrichment     0.1
-# 2   0.000000 1.00000000   none      0       8    grubman_mathys_mg enrichment     0.1
-# 3   0.000000 1.00000000   none      0      19    grubman_mathys_ex enrichment     0.1
-# 4   0.000000 1.00000000   none      0       2   grubman_mathys_inh enrichment     0.1
-# 5   0.000000 1.00000000   none      0      19 grubman_mathys_oligo enrichment     0.1
-# 6   0.000000 1.00000000   none      0       1   grubman_mathys_OPC enrichment     0.1
-# 7   0.000000 1.00000000     Ab      0      26 grubman_mathys_astro enrichment     0.1
-# 8   0.000000 1.00000000     Ab      0       8    grubman_mathys_mg enrichment     0.1
-# 9   0.000000 1.00000000     Ab      0      19    grubman_mathys_ex enrichment     0.1
-# 10  0.000000 1.00000000     Ab      0       2   grubman_mathys_inh enrichment     0.1
-# 11  0.000000 1.00000000     Ab      0      19 grubman_mathys_oligo enrichment     0.1
-# 12  0.000000 1.00000000     Ab      0       1   grubman_mathys_OPC enrichment     0.1
-# 13  6.689132 0.14594855   n_Ab      1      26 grubman_mathys_astro enrichment     0.1
-# 14 23.886371 0.04733386   n_Ab      1       8    grubman_mathys_mg enrichment     0.1
-# 15  9.297019 0.10884859   n_Ab      1      19    grubman_mathys_ex enrichment     0.1
-# 16  0.000000 1.00000000   n_Ab      0       2   grubman_mathys_inh enrichment     0.1
-# 17  0.000000 1.00000000   n_Ab      0      19 grubman_mathys_oligo enrichment     0.1
-# 18  0.000000 1.00000000   n_Ab      0       1   grubman_mathys_OPC enrichment     0.1
-# 19  0.000000 1.00000000   pTau      0      26 grubman_mathys_astro enrichment     0.1
-# 20  0.000000 1.00000000   pTau      0       8    grubman_mathys_mg enrichment     0.1
-# 21  0.000000 1.00000000   pTau      0      19    grubman_mathys_ex enrichment     0.1
-# 22  0.000000 1.00000000   pTau      0       2   grubman_mathys_inh enrichment     0.1
-# 23  0.000000 1.00000000   pTau      0      19 grubman_mathys_oligo enrichment     0.1
-# 24  0.000000 1.00000000   pTau      0       1   grubman_mathys_OPC enrichment     0.1
-# 25  0.000000 1.00000000 n_pTau      0      26 grubman_mathys_astro enrichment     0.1
-# 26  0.000000 1.00000000 n_pTau      0       8    grubman_mathys_mg enrichment     0.1
-# 27  0.000000 1.00000000 n_pTau      0      19    grubman_mathys_ex enrichment     0.1
-# 28  0.000000 1.00000000 n_pTau      0       2   grubman_mathys_inh enrichment     0.1
-# 29  0.000000 1.00000000 n_pTau      0      19 grubman_mathys_oligo enrichment     0.1
-# 30  0.000000 1.00000000 n_pTau      0       1   grubman_mathys_OPC enrichment     0.1
-# 31  0.000000 1.00000000   both      0      26 grubman_mathys_astro enrichment     0.1
-# 32  0.000000 1.00000000   both      0       8    grubman_mathys_mg enrichment     0.1
-# 33  0.000000 1.00000000   both      0      19    grubman_mathys_ex enrichment     0.1
-# 34  0.000000 1.00000000   both      0       2   grubman_mathys_inh enrichment     0.1
-# 35  0.000000 1.00000000   both      0      19 grubman_mathys_oligo enrichment     0.1
-# 36  0.000000 1.00000000   both      0       1   grubman_mathys_OPC enrichment     0.1
-# 37  0.000000 1.00000000 n_both      0      26 grubman_mathys_astro enrichment     0.1
-# 38  0.000000 1.00000000 n_both      0       8    grubman_mathys_mg enrichment     0.1
-# 39  0.000000 1.00000000 n_both      0      19    grubman_mathys_ex enrichment     0.1
-# 40  0.000000 1.00000000 n_both      0       2   grubman_mathys_inh enrichment     0.1
-# 41  0.000000 1.00000000 n_both      0      19 grubman_mathys_oligo enrichment     0.1
-# 42  0.000000 1.00000000 n_both      0       1   grubman_mathys_OPC enrichment     0.1
-# > grubman_depleted
-# OR       Pval   test NumSig SetSize                   ID model_type fdr_cut
-# 1  0.0000000 1.00000000   none      0      26 grubman_mathys_astro  depletion     0.1
-# 2  0.0000000 1.00000000   none      0       8    grubman_mathys_mg  depletion     0.1
-# 3  0.0000000 1.00000000   none      0      19    grubman_mathys_ex  depletion     0.1
-# 4  0.0000000 1.00000000   none      0       2   grubman_mathys_inh  depletion     0.1
-# 5  0.0000000 1.00000000   none      0      19 grubman_mathys_oligo  depletion     0.1
-# 6  0.0000000 1.00000000   none      0       1   grubman_mathys_OPC  depletion     0.1
-# 7  2.0585992 0.15660948     Ab      4      26 grubman_mathys_astro  depletion     0.1
-# 8  0.0000000 1.00000000     Ab      0       8    grubman_mathys_mg  depletion     0.1
-# 9  0.6267158 1.00000000     Ab      1      19    grubman_mathys_ex  depletion     0.1
-# 10 0.0000000 1.00000000     Ab      0       2   grubman_mathys_inh  depletion     0.1
-# 11 0.6267158 1.00000000     Ab      1      19 grubman_mathys_oligo  depletion     0.1
-# 12 0.0000000 1.00000000     Ab      0       1   grubman_mathys_OPC  depletion     0.1
-# 13 0.7870312 0.82613870   n_Ab      6      26 grubman_mathys_astro  depletion     0.1
-# 14 0.3748170 0.45846455   n_Ab      1       8    grubman_mathys_mg  depletion     0.1
-# 15 2.3676713 0.06967118   n_Ab      9      19    grubman_mathys_ex  depletion     0.1
-# 16 2.6255142 0.47563017   n_Ab      1       2   grubman_mathys_inh  depletion     0.1
-# 17 1.2120873 0.79726101   n_Ab      6      19 grubman_mathys_oligo  depletion     0.1
-# 18 0.0000000 1.00000000   n_Ab      0       1   grubman_mathys_OPC  depletion     0.1
-# 19 0.0000000 1.00000000   pTau      0      26 grubman_mathys_astro  depletion     0.1
-# 20 0.0000000 1.00000000   pTau      0       8    grubman_mathys_mg  depletion     0.1
-# 21 0.0000000 1.00000000   pTau      0      19    grubman_mathys_ex  depletion     0.1
-# 22 0.0000000 1.00000000   pTau      0       2   grubman_mathys_inh  depletion     0.1
-# 23 0.0000000 1.00000000   pTau      0      19 grubman_mathys_oligo  depletion     0.1
-# 24 0.0000000 1.00000000   pTau      0       1   grubman_mathys_OPC  depletion     0.1
-# 25 0.0000000 1.00000000 n_pTau      0      26 grubman_mathys_astro  depletion     0.1
-# 26 0.0000000 1.00000000 n_pTau      0       8    grubman_mathys_mg  depletion     0.1
-# 27 0.0000000 1.00000000 n_pTau      0      19    grubman_mathys_ex  depletion     0.1
-# 28 0.0000000 1.00000000 n_pTau      0       2   grubman_mathys_inh  depletion     0.1
-# 29 0.0000000 1.00000000 n_pTau      0      19 grubman_mathys_oligo  depletion     0.1
-# 30 0.0000000 1.00000000 n_pTau      0       1   grubman_mathys_OPC  depletion     0.1
-# 31 0.0000000 1.00000000   both      0      26 grubman_mathys_astro  depletion     0.1
-# 32 0.0000000 1.00000000   both      0       8    grubman_mathys_mg  depletion     0.1
-# 33 0.0000000 1.00000000   both      0      19    grubman_mathys_ex  depletion     0.1
-# 34 0.0000000 1.00000000   both      0       2   grubman_mathys_inh  depletion     0.1
-# 35 0.0000000 1.00000000   both      0      19 grubman_mathys_oligo  depletion     0.1
-# 36 0.0000000 1.00000000   both      0       1   grubman_mathys_OPC  depletion     0.1
-# 37 0.0000000 1.00000000 n_both      0      26 grubman_mathys_astro  depletion     0.1
-# 38 0.0000000 1.00000000 n_both      0       8    grubman_mathys_mg  depletion     0.1
-# 39 0.0000000 1.00000000 n_both      0      19    grubman_mathys_ex  depletion     0.1
-# 40 0.0000000 1.00000000 n_both      0       2   grubman_mathys_inh  depletion     0.1
-# 41 0.0000000 1.00000000 n_both      0      19 grubman_mathys_oligo  depletion     0.1
-# 42 0.0000000 1.00000000 n_both      0       1   grubman_mathys_OPC  depletion     0.1
-
-
 ##### enrichment plotting #####
 output_dir <- here("plots", "14_external_gene_sets")
 pdf(paste0(output_dir, "/04_grubman_enriched.pdf"), width = 15)
@@ -266,262 +176,264 @@ gene_set_enrichment_plot(
 dev.off()
 
 
-#### GENES SPLIT BY DIRECTION  ####
-
-table_s3_grubman_astro_pos <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "astro" & grubman_logfc > 0)
-
-table_s3_grubman_mg_pos <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "mg"& grubman_logfc > 0)
-
-table_s3_grubman_ex_pos  <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc > 0)
-
-table_s3_grubman_inh_pos <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc > 0)
-
-table_s3_grubman_oligo_pos <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "oligo" & grubman_logfc > 0)
-
-table_s3_grubman_OPC_pos <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "OPC" & grubman_logfc > 0)
-
-nrow(table_s3_grubman_astro_neg )
-
-nrow(table_s3_grubman_mg_neg)
-
-nrow(table_s3_grubman_ex_neg)
-
-nrow(table_s3_grubman_inh_neg )
-
-nrow(table_s3_grubman_oligo_neg)
-
-nrow(table_s3_grubman_OPC_neg)
-
-# > nrow(table_s3_grubman_astro_pos )
-# [1] 17
-# > nrow(table_s3_grubman_mg_pos)
-# [1] 9
-# > nrow(table_s3_grubman_ex_pos)
-# [1] 14
-# > nrow(table_s3_grubman_inh_pos )
-# [1] 2
-# > nrow(table_s3_grubman_oligo_pos)
-# [1] 18
-# > nrow(table_s3_grubman_OPC_pos)
-# [1] 3
-
-# > nrow(table_s3_grubman_astro_neg )
-# >
-#     [1] 15
-# > nrow(table_s3_grubman_mg_neg)
-# [1] 2
-# >
-#     > nrow(table_s3_grubman_ex_neg)
-# [1] 7
-# >
-#     > nrow(table_s3_grubman_inh_neg )
-# > [1] 2
+# #### GENES SPLIT BY DIRECTION  ####
 #
-# > nrow(table_s3_grubman_oligo_neg)
-# > [1] 4
+# table_s3_grubman_astro_pos <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "astro" & grubman_logfc > 0)
 #
-# > nrow(table_s3_grubman_OPC_neg)
-# [1] 1
-#---------------
-table_s3_grubman_astro_neg <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "astro" & grubman_logfc <= 0)
+# table_s3_grubman_mg_pos <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "mg"& grubman_logfc > 0)
+#
+# table_s3_grubman_ex_pos  <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc > 0)
+#
+# table_s3_grubman_inh_pos <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc > 0)
+#
+# table_s3_grubman_oligo_pos <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "oligo" & grubman_logfc > 0)
+#
+# table_s3_grubman_OPC_pos <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "OPC" & grubman_logfc > 0)
+#
+# nrow(table_s3_grubman_astro_neg )
+#
+# nrow(table_s3_grubman_mg_neg)
+#
+# nrow(table_s3_grubman_ex_neg)
+#
+# nrow(table_s3_grubman_inh_neg )
+#
+# nrow(table_s3_grubman_oligo_neg)
+#
+# nrow(table_s3_grubman_OPC_neg)
+#
+# # > nrow(table_s3_grubman_astro_pos )
+# # [1] 17
+# # > nrow(table_s3_grubman_mg_pos)
+# # [1] 9
+# # > nrow(table_s3_grubman_ex_pos)
+# # [1] 14
+# # > nrow(table_s3_grubman_inh_pos )
+# # [1] 2
+# # > nrow(table_s3_grubman_oligo_pos)
+# # [1] 18
+# # > nrow(table_s3_grubman_OPC_pos)
+# # [1] 3
+#
+# # > nrow(table_s3_grubman_astro_neg )
+# # >
+# #     [1] 15
+# # > nrow(table_s3_grubman_mg_neg)
+# # [1] 2
+# # >
+# #     > nrow(table_s3_grubman_ex_neg)
+# # [1] 7
+# # >
+# #     > nrow(table_s3_grubman_inh_neg )
+# # > [1] 2
+# #
+# # > nrow(table_s3_grubman_oligo_neg)
+# # > [1] 4
+# #
+# # > nrow(table_s3_grubman_OPC_neg)
+# # [1] 1
+# #---------------
+# table_s3_grubman_astro_neg <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "astro" & grubman_logfc <= 0)
+#
+# table_s3_grubman_mg_neg <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "mg"& grubman_logfc <= 0)
+#
+# table_s3_grubman_ex_neg  <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc <= 0)
+#
+# table_s3_grubman_inh_neg <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc <= 0)
+#
+# table_s3_grubman_oligo_neg <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "oligo" & grubman_logfc <= 0)
+#
+# table_s3_grubman_OPC_neg <- table_s3_grubman|>
+#     dplyr::filter(`cell type` == "OPC" & grubman_logfc <= 0)
+#
+#
+#
+# df_mathys_list_directions <- list(
+#     table_s3_grubman_astro_pos, table_s3_grubman_mg_pos, table_s3_grubman_ex_pos, table_s3_grubman_inh_pos,
+#     table_s3_grubman_oligo_pos, table_s3_grubman_OPC_pos, table_s3_grubman_astro_neg,
+#     table_s3_grubman_mg_neg, table_s3_grubman_ex_neg, table_s3_grubman_inh_neg,
+#     table_s3_grubman_oligo_neg, table_s3_grubman_OPC_neg
+# )
+#
+# res_2 <- purrr::map(df_mathys_list_directions, get_ensembl, Genes, "Genes")
+#
+#
+# grubman_directions_geneList <- list(
+#     grubman_mathys_astro_pos = res_2[[1]]$gene_ensembl_id,
+#     grubman_mathys_mg_pos = res_2[[2]]$gene_ensembl_id,
+#     grubman_mathys_ex_pos = res_2[[3]]$gene_ensembl_id,
+#     grubman_mathys_inh_pos = res_2[[4]]$gene_ensembl_id,
+#     grubman_mathys_oligo_pos = res_2[[5]]$gene_ensembl_id,
+#     grubman_mathys_OPC_pos = res_2[[6]]$gene_ensembl_id,
+#     grubman_mathys_astro_neg = res_2[[7]]$gene_ensembl_id,
+#     grubman_mathys_mg_neg = res_2[[8]]$gene_ensembl_id,
+#     grubman_mathys_ex_neg = res_2[[9]]$gene_ensembl_id,
+#     grubman_mathys_inh_neg = res_2[[10]]$gene_ensembl_id,
+#     grubman_mathys_oligo_neg = res_2[[11]]$gene_ensembl_id,
+#     grubman_mathys_OPC_neg = res_2[[12]]$gene_ensembl_id
+#
+# )
+#
+#
+# grubman_directions_enrichment <- gene_set_enrichment(
+#     grubman_directions_geneList,
+#     fdr_cut = 0.1,
+#     modeling_results = modeling_results,
+#     model_type = "enrichment"
+# )
+#
+# grubman_directions_depleted <- gene_set_enrichment(
+#     grubman_directions_geneList,
+#     fdr_cut = 0.1,
+#     modeling_results = modeling_results,
+#     model_type = "enrichment",
+#     reverse = TRUE
+# )
+#
+#
+# ##### enrichment plotting #####
+# output_dir <- here("plots", "14_external_gene_sets")
+# pdf(paste0(output_dir, "/04_grubman_directions_enriched.pdf"), width = 15)
+# gene_set_enrichment_plot(
+#     grubman_directions_enrichment,
+#     xlabs = unique(grubman_directions_enrichment$ID),
+#     PThresh = 12,
+#     ORcut = 1.30103,
+#     enrichOnly = FALSE,
+#     layerHeights = c(0, seq_len(length(unique(grubman_directions_enrichment$test)))) * 15,
+#     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+#         9,
+#         "YlOrRd"
+#     )))(50)),
+#     cex = 1.2
+# )
+#
+# dev.off()
+#
+#
+# pdf(paste0(output_dir, "/04_grubman_directions_depleted.pdf"), width = 15)
+# gene_set_enrichment_plot(
+#     grubman_directions_depleted,
+#     xlabs = unique(grubman_directions_depleted$ID),
+#     PThresh = 12,
+#     ORcut = 1.30103,
+#     enrichOnly = FALSE,
+#     layerHeights = c(0, seq_len(length(unique(grubman_directions_depleted$test)))) * 15,
+#     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+#         9,
+#         "YlOrRd"
+#     )))(50)),
+#     cex = 1.2
+# )
+#
+# dev.off()
+#
+#
+#
+# #### GENES WITH CONCORDANCE == TRUE  ####
+# table_s3_grubman_astro_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "astro" & Concordance == TRUE)
+#
+# table_s3_grubman_mg_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "mg"& Concordance == TRUE)
+#
+# table_s3_grubman_ex_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "neuron (excitatory)" & Concordance == TRUE)
+#
+# table_s3_grubman_inh_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "neuron (inhibitory)" & Concordance == TRUE)
+#
+# table_s3_grubman_oligo_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "oligo" & Concordance == TRUE)
+#
+# table_s3_grubman_OPC_conc <- table_s3_grubman |>
+#     dplyr::filter(`cell type` == "OPC" & Concordance == TRUE)
+#
+#
+# df_mathys_concordance_list <- list(
+#     table_s3_grubman_astro_conc, table_s3_grubman_mg_conc, table_s3_grubman_ex_conc,
+#     table_s3_grubman_inh_conc, table_s3_grubman_oligo_conc, table_s3_grubman_OPC_conc
+# )
+#
+# res_3 <- purrr::map(df_mathys_concordance_list, get_ensembl, Genes, "Genes")
+#
+# grubman_conc_geneList <- list(
+#     grubman_mathys_astro_conc = res_3[[1]]$gene_ensembl_id,
+#     grubman_mathys_mg_conc = res_3[[2]]$gene_ensembl_id,
+#     grubman_mathys_ex_conc = res_3[[3]]$gene_ensembl_id,
+#     grubman_mathys_inh_conc = res_3[[4]]$gene_ensembl_id,
+#     grubman_mathys_oligo_conc = res_3[[5]]$gene_ensembl_id,
+#     grubman_mathys_OPC_conc = res_3[[6]]$gene_ensembl_id
+# )
+#
+#
+# grubman_concordance_enrichment <- gene_set_enrichment(
+#     grubman_conc_geneList,
+#     fdr_cut = 0.1,
+#     modeling_results = modeling_results,
+#     model_type = "enrichment"
+# )
+#
+# grubman_concordance_depleted <- gene_set_enrichment(
+#     grubman_conc_geneList,
+#     fdr_cut = 0.1,
+#     modeling_results = modeling_results,
+#     model_type = "enrichment",
+#     reverse = TRUE
+# )
+#
+# ##### enrichment plotting #####
+# pdf(paste0(output_dir, "/04_grubman_concordance_enriched.pdf"), width = 15)
+# gene_set_enrichment_plot(
+#     grubman_concordance_enrichment,
+#     xlabs = unique(grubman_concordance_enrichment$ID),
+#     PThresh = 12,
+#     ORcut = 1.30103,
+#     enrichOnly = FALSE,
+#     layerHeights = c(0, seq_len(length(unique(grubman_concordance_enrichment$test)))) * 15,
+#     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+#         9,
+#         "YlOrRd"
+#     )))(50)),
+#     cex = 1.2
+# )
+#
+# dev.off()
+#
+#
+# pdf(paste0(output_dir, "/04_grubman_concordance_depleted.pdf"), width = 15)
+# gene_set_enrichment_plot(
+#     grubman_concordance_depleted,
+#     xlabs = unique(grubman_concordance_depleted$ID),
+#     PThresh = 12,
+#     ORcut = 1.30103,
+#     enrichOnly = FALSE,
+#     layerHeights = c(0, seq_len(length(unique(grubman_concordance_depleted$test)))) * 15,
+#     mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
+#         9,
+#         "YlOrRd"
+#     )))(50)),
+#     cex = 1.2
+# )
+#
+# dev.off()
+#
+#
+#
 
-table_s3_grubman_mg_neg <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "mg"& grubman_logfc <= 0)
 
-table_s3_grubman_ex_neg  <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "neuron (excitatory)" & grubman_logfc <= 0)
-
-table_s3_grubman_inh_neg <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "neuron (inhibitory)" & grubman_logfc <= 0)
-
-table_s3_grubman_oligo_neg <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "oligo" & grubman_logfc <= 0)
-
-table_s3_grubman_OPC_neg <- table_s3_grubman|>
-    dplyr::filter(`cell type` == "OPC" & grubman_logfc <= 0)
-
-
-
-df_mathys_list_directions <- list(
-    table_s3_grubman_astro_pos, table_s3_grubman_mg_pos, table_s3_grubman_ex_pos, table_s3_grubman_inh_pos,
-    table_s3_grubman_oligo_pos, table_s3_grubman_OPC_pos, table_s3_grubman_astro_neg,
-    table_s3_grubman_mg_neg, table_s3_grubman_ex_neg, table_s3_grubman_inh_neg,
-    table_s3_grubman_oligo_neg, table_s3_grubman_OPC_neg
-)
-
-res_2 <- purrr::map(df_mathys_list_directions, get_ensembl, Genes, "Genes")
-
-
-grubman_directions_geneList <- list(
-    grubman_mathys_astro_pos = res_2[[1]]$gene_ensembl_id,
-    grubman_mathys_mg_pos = res_2[[2]]$gene_ensembl_id,
-    grubman_mathys_ex_pos = res_2[[3]]$gene_ensembl_id,
-    grubman_mathys_inh_pos = res_2[[4]]$gene_ensembl_id,
-    grubman_mathys_oligo_pos = res_2[[5]]$gene_ensembl_id,
-    grubman_mathys_OPC_pos = res_2[[6]]$gene_ensembl_id,
-    grubman_mathys_astro_neg = res_2[[7]]$gene_ensembl_id,
-    grubman_mathys_mg_neg = res_2[[8]]$gene_ensembl_id,
-    grubman_mathys_ex_neg = res_2[[9]]$gene_ensembl_id,
-    grubman_mathys_inh_neg = res_2[[10]]$gene_ensembl_id,
-    grubman_mathys_oligo_neg = res_2[[11]]$gene_ensembl_id,
-    grubman_mathys_OPC_neg = res_2[[12]]$gene_ensembl_id
-
-)
-
-
-grubman_directions_enrichment <- gene_set_enrichment(
-    grubman_directions_geneList,
-    fdr_cut = 0.1,
-    modeling_results = modeling_results,
-    model_type = "enrichment"
-)
-
-grubman_directions_depleted <- gene_set_enrichment(
-    grubman_directions_geneList,
-    fdr_cut = 0.1,
-    modeling_results = modeling_results,
-    model_type = "enrichment",
-    reverse = TRUE
-)
-
-
-##### enrichment plotting #####
-output_dir <- here("plots", "14_external_gene_sets")
-pdf(paste0(output_dir, "/04_grubman_directions_enriched.pdf"), width = 15)
-gene_set_enrichment_plot(
-    grubman_directions_enrichment,
-    xlabs = unique(grubman_directions_enrichment$ID),
-    PThresh = 12,
-    ORcut = 1.30103,
-    enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grubman_directions_enrichment$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
-        9,
-        "YlOrRd"
-    )))(50)),
-    cex = 1.2
-)
-
-dev.off()
-
-
-pdf(paste0(output_dir, "/04_grubman_directions_depleted.pdf"), width = 15)
-gene_set_enrichment_plot(
-    grubman_directions_depleted,
-    xlabs = unique(grubman_directions_depleted$ID),
-    PThresh = 12,
-    ORcut = 1.30103,
-    enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grubman_directions_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
-        9,
-        "YlOrRd"
-    )))(50)),
-    cex = 1.2
-)
-
-dev.off()
-
-
-
-#### GENES WITH CONCORDANCE == TRUE  ####
-table_s3_grubman_astro_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "astro" & Concordance == TRUE)
-
-table_s3_grubman_mg_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "mg"& Concordance == TRUE)
-
-table_s3_grubman_ex_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "neuron (excitatory)" & Concordance == TRUE)
-
-table_s3_grubman_inh_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "neuron (inhibitory)" & Concordance == TRUE)
-
-table_s3_grubman_oligo_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "oligo" & Concordance == TRUE)
-
-table_s3_grubman_OPC_conc <- table_s3_grubman |>
-    dplyr::filter(`cell type` == "OPC" & Concordance == TRUE)
-
-
-df_mathys_concordance_list <- list(
-    table_s3_grubman_astro_conc, table_s3_grubman_mg_conc, table_s3_grubman_ex_conc,
-    table_s3_grubman_inh_conc, table_s3_grubman_oligo_conc, table_s3_grubman_OPC_conc
-)
-
-res_3 <- purrr::map(df_mathys_concordance_list, get_ensembl, Genes, "Genes")
-
-grubman_conc_geneList <- list(
-    grubman_mathys_astro_conc = res_3[[1]]$gene_ensembl_id,
-    grubman_mathys_mg_conc = res_3[[2]]$gene_ensembl_id,
-    grubman_mathys_ex_conc = res_3[[3]]$gene_ensembl_id,
-    grubman_mathys_inh_conc = res_3[[4]]$gene_ensembl_id,
-    grubman_mathys_oligo_conc = res_3[[5]]$gene_ensembl_id,
-    grubman_mathys_OPC_conc = res_3[[6]]$gene_ensembl_id
-)
-
-
-grubman_concordance_enrichment <- gene_set_enrichment(
-    grubman_conc_geneList,
-    fdr_cut = 0.1,
-    modeling_results = modeling_results,
-    model_type = "enrichment"
-)
-
-grubman_concordance_depleted <- gene_set_enrichment(
-    grubman_conc_geneList,
-    fdr_cut = 0.1,
-    modeling_results = modeling_results,
-    model_type = "enrichment",
-    reverse = TRUE
-)
-
-##### enrichment plotting #####
-pdf(paste0(output_dir, "/04_grubman_concordance_enriched.pdf"), width = 15)
-gene_set_enrichment_plot(
-    grubman_concordance_enrichment,
-    xlabs = unique(grubman_concordance_enrichment$ID),
-    PThresh = 12,
-    ORcut = 1.30103,
-    enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grubman_concordance_enrichment$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
-        9,
-        "YlOrRd"
-    )))(50)),
-    cex = 1.2
-)
-
-dev.off()
-
-
-pdf(paste0(output_dir, "/04_grubman_concordance_depleted.pdf"), width = 15)
-gene_set_enrichment_plot(
-    grubman_concordance_depleted,
-    xlabs = unique(grubman_concordance_depleted$ID),
-    PThresh = 12,
-    ORcut = 1.30103,
-    enrichOnly = FALSE,
-    layerHeights = c(0, seq_len(length(unique(grubman_concordance_depleted$test)))) * 15,
-    mypal = c("white", (grDevices::colorRampPalette(RColorBrewer::brewer.pal(
-        9,
-        "YlOrRd"
-    )))(50)),
-    cex = 1.2
-)
-
-dev.off()
-
-
-
-####### Reproducibility information #####
+# ####### Reproducibility information #####
 print(grubman_enrichment)
 print(grubman_depleted)
 print("Reproducibility information:")
