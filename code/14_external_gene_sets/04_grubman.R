@@ -130,6 +130,19 @@ grubman_enrichment <- gene_set_enrichment(
     model_type = "enrichment"
 )
 
+dummy_row_enrichment <- data.frame(OR = 2,
+                                   Pval = 0.01 ,
+                                   test = "none" ,
+                                   NumSig = 0  ,
+                                   SetSize = 0 ,
+                                   ID = "dummy",
+                                   model_type = "enrichment" ,
+                                   fdr_cut = 0.1)
+
+grubman_enrichment  = rbind(grubman_enrichment,
+                              dummy_row_enrichment)
+
+print("grubman_enrichment")
 print(grubman_enrichment)
 
 grubman_depleted <- gene_set_enrichment(
@@ -140,7 +153,19 @@ grubman_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
+dummy_row_depleted <- data.frame(OR = 2,
+                                 Pval = 0.01 ,
+                                 test = "none" ,
+                                 NumSig = 0  ,
+                                 SetSize = 0 ,
+                                 ID = "dummy",
+                                 model_type = "depletion" ,
+                                 fdr_cut = 0.1)
+grubman_depleted  = rbind(grubman_depleted,
+                            dummy_row_depleted)
 
+
+print("grubman_depleted")
 print(grubman_depleted)
 
 ##### enrichment plotting #####
