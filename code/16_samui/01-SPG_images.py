@@ -12,8 +12,8 @@ from loopy.sample import Sample
 from loopy.utils.utils import remove_dupes
 
 spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
-img_channels = ['Lipofuscin', 'DAPI', 'GFAP', 'NeuN', 'OLIG2', 'TMEM119']
-default_channels = {'blue': 'DAPI', 'red': 'NeuN'}
+img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
+default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 
 sample_info_path = here(
     'raw-data', 'Visium_IF_AD_ITG_MasterExcelSummarySheet.xlsx'
@@ -38,6 +38,7 @@ out_dir = here('processed-data', '16_samui', '{}')
 
 #   Read in sample info, subset to relevant columns, and clean
 sample_info = (pd.read_excel(sample_info_path)
+    .query('`Sequenced? ` == "Yes"')
     .filter(["Br####", "Slide SN #", "Array #"])
     #   Clean up column names
     .rename(
