@@ -4,8 +4,8 @@
 #$ -o ../../processed-data/16_samui/logs/01-SPG_images_$TASK_ID.log
 #$ -e ../../processed-data/16_samui/logs/01-SPG_images_$TASK_ID.log
 #$ -l mf=10G,h_vmem=10G
-#$ -t 1
-#$ -tc 1
+#$ -t 1-10
+#$ -tc 3
 
 echo "**** Job starts ****"
 date

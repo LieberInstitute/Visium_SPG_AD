@@ -39,13 +39,14 @@ out_dir = here('processed-data', '16_samui', '{}')
 #   Read in sample info, subset to relevant columns, and clean
 sample_info = (pd.read_excel(sample_info_path)
     .query('`Sequenced? ` == "Yes"')
-    .filter(["Br####", "Slide SN #", "Array #"])
+    .filter(["Br####", "Slide SN #", "Array #", "Sample #"])
     #   Clean up column names
     .rename(
         columns = {
             "Br####": "br_num",
             "Slide SN #": "sample_id",
-            "Array #": "array_num"
+            "Array #": "array_num",
+            "Sample #": "sample_num"
         }
     )
 )
@@ -53,19 +54,22 @@ sample_info = (pd.read_excel(sample_info_path)
 #   Prepend "Br" tp brain number and make a string
 sample_info['br_num'] = "Br" + sample_info['br_num'].astype(str)
 
+#   Fix the experiment number column (use strings of integers)
+sample_info['experiment_num'] = ((sample_info['sample_num'] - 1) // 4  + 1).astype(str)
+
 #   Different forms of sample IDs appear to be used for spaceranger outputs
 #   and raw images
 sample_info = (sample_info
     .assign(
         spaceranger_id = sample_info['sample_id'].transform(lambda x: x.replace('-', '')) +
             '_' + sample_info['array_num'] + '_' + sample_info['br_num'],
-        image_id = 'VIFAD1_' + sample_info['sample_id'] + '_' + sample_info['array_num']
+        image_id = 'VIFAD' + sample_info['experiment_num'] + '_' + sample_info['sample_id'] + '_' + sample_info['array_num']
     )
 )
 
 #   Subset both types of IDs to this sample only
-sample_id_spaceranger = sample_info['spaceranger_id'][int(os.environ['SGE_TASK_ID']) - 1]
-sample_id_image = sample_info['image_id'][int(os.environ['SGE_TASK_ID']) - 1]
+sample_id_spaceranger = sample_info['spaceranger_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
+sample_id_image = sample_info['image_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
 
 #   Update paths for this sample ID
 out_dir = Path(str(out_dir).format(sample_id_spaceranger))
