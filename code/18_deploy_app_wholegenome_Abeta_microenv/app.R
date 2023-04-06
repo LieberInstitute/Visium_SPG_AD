@@ -60,11 +60,23 @@ if (local) {
             "Visium_SPG_AD_wholegenome_model_results_FDR5perc.csv"
         )
     )
+    dim(z)
+    # [1] 318  13
+    table(z$model_type, z$test)
+  #               Ab_env Ab_env-both Ab_env-none both both-Ab_env none none-Ab_env none-pTau noWM pTau-none
+  # anova           0           0           0    0           0    0           0         0    1         0
+  # enrichment    275           0           0    9           0    3           0         0    0         0
+  # pairwise        0          13           1    0          13    0           1         1    0         1
 }
 
 vars <- colnames(colData(spe))
 path_vars <- vars[grep("^path_", vars)]
 path_vars <- path_vars[!grepl("_colors$", path_vars)]
+
+## Fix colors
+to_fix <- is.na(sce_pseudo$path_groups_colors)
+sce_pseudo$path_groups_colors[to_fix] <- "#99700FFF"
+names(sce_pseudo$path_groups_colors)[to_fix] <- "Ab_env"
 
 ## Deploy the website
 spatialLIBD::run_app(
@@ -72,7 +84,7 @@ spatialLIBD::run_app(
     sce_layer = sce_pseudo,
     modeling_results = modeling_results,
     sig_genes = sig_genes,
-    title = "Visium IF AD, Kwon SH et al, 2022",
+    title = "Visium SPG AD (Abeta microenv), Kwon SH et al, 2023",
     spe_discrete_vars = c(
         path_vars,
         "ManualAnnotation",
