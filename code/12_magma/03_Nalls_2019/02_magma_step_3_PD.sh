@@ -24,7 +24,7 @@ model="snp-wise"
 setcol=1
 genecol=2
 
-here=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma
+here=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma
 gs_200=$here/pvalues_top_200.txt
 gs_50=$here/pvalues_top_50.txt
 gs_100=$here/pvalues_top_100.txt

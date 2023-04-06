@@ -98,7 +98,7 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 NULL
 NULL
 [1] "Reproducibility information:"

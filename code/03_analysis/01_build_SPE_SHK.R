@@ -1,5 +1,5 @@
 # qrsh -l mem_free=20G,h_vmem=40G
-# cd/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD
+# cd/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD
 # module load conda_R/devel
 
 
@@ -699,7 +699,7 @@ session_info()
 # [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-devel/R/devel/lib64/R/library
 
 # load(here::here("processed-data", "rdata", "spe", "spe.Rdata"), verbose = TRUE)
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe.Rdata")
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/processed-data/rdata/spe/spe.Rdata")
 
 Sys.time()
 g_k50 <- buildSNNGraph(spe, k = 50, use.dimred = "PCA")
@@ -717,8 +717,8 @@ Sys.time()
 # [1] "2019-11-14 12:05:23 EST"
 
 clust_k50 <- sort_clusters(g_walk_k50$membership)
-save(g_k50, g_walk_k50, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata")
-load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/g_k50.Rdata")
+save(g_k50, g_walk_k50, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/processed-data/rdata/g_k50.Rdata")
+load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/processed-data/rdata/g_k50.Rdata")
 
 ### For the SNN graph with K = 50, find which nested subset best matches
 ## the clusters from 10x Genomics labeled by Kristen Maynard and Keri Martinowich
@@ -727,7 +727,7 @@ clust_k5_list <- lapply(4:28, function(n) {
     sort_clusters(igraph::cut_at(g_walk_k50, n = n))
 })
 names(clust_k5_list) <- paste0("k", 4:28)
-save(clust_k5_list, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/clust_k5_list.Rdata")
+save(clust_k5_list, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/processed-data/rdata/clust_k5_list.Rdata")
 load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/processed-data/rdata/clust_k5_list.Rdata")
 
 ## Add clusters to spe colData
@@ -739,5 +739,5 @@ for (i in seq_along(col.names)) {
 col.names <- paste0("SNN_k50_k", 4:28)
 colnames(colData(spe))[18:42] <- col.names
 
-save(spe, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/processed-data/rdata/spe/spe_SNN_clusters.Rdata")
+save(spe, file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/processed-data/rdata/spe/spe_SNN_clusters.Rdata")
 load(file = "/dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/spatialDLPFC/processed-data/rdata/spe/spe_SNN_clusters.Rdata")

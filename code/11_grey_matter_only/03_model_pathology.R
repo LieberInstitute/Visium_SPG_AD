@@ -110,7 +110,7 @@ save(
     modeling_results,
     file = file.path(
         dir_rdata,
-        "Visium_IF_AD_modeling_results.Rdata"
+        "Visium_SPG_AD_modeling_results.Rdata"
     )
 )
 

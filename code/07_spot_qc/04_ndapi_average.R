@@ -9,7 +9,7 @@ library(sgejobs)
 # )
 
 
-##looking for NDAPI outliers, related to https://github.com/LieberInstitute/Visium_IF_AD/issues/78
+##looking for NDAPI outliers, related to https://github.com/LieberInstitute/Visium_SPG_AD/issues/78
 
 ## Load remaining required packages
 library("here")

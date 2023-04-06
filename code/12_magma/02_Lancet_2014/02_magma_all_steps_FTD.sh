@@ -20,16 +20,16 @@ module load magma/1.10
 model="snp-wise"
 
 ANNO=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/annotation/GRCh38_gencode.v32_Ensembl98_LIFTED-to-hg19_expressedGenes.gene.loc
-SNPLOC=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014.snploc
-STEP1OUT=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014_ITC
+SNPLOC=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_Lancet_2014/FTD_Lancet2014.snploc
+STEP1OUT=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_Lancet_2014/FTD_Lancet2014_ITC
 
 BFILE=/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/MAGMA/g1000_eur
-ANNOT=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD_Lancet2014_ITC.genes.annot
+ANNOT=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_Lancet_2014/FTD_Lancet2014_ITC.genes.annot
 
 setcol=1
 genecol=2
 
-here=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma
+here=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma
 gs_200=$here/pvalues_top_200.txt
 gs_50=$here/pvalues_top_50.txt
 gs_100=$here/pvalues_top_100.txt
@@ -44,7 +44,7 @@ STEP3OUT_FDR=$here/02_Lancet_2014/ftd_gwas_fdr
 magma --annotate window=35,10 --snp-loc $SNPLOC --gene-loc $ANNO --out $STEP1OUT
 
 ## Step 2 - Gene analysis (from SNP-level summary stats)
-magma --bfile $BFILE --gene-annot $ANNOT --pval $SUMMSTATS use=rsID,pValue ncol=N_effective --gene-model ${model} --out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/${model}
+magma --bfile $BFILE --gene-annot $ANNOT --pval $SUMMSTATS use=rsID,pValue ncol=N_effective --gene-model ${model} --out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_Lancet_2014/${model}
 
 
 ## Step 3 - Gene set analyses (using gene-level output) - Self-contained

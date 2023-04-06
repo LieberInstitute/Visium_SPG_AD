@@ -13,7 +13,7 @@ library(here)
 # BiocManager::install("SNPlocs.Hsapiens.dbSNP144.GRCh37")
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 here()
-# [1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+# [1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 
 
 

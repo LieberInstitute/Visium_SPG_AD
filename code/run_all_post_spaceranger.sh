@@ -19,7 +19,7 @@ echo "Task id: ${SGE_TASK_ID}"
 ## List current modules for reproducibility
 module list
 
-MAINDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+MAINDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 CODEDIR="${MAINDIR}/code"
 PROCESSEDIR="${MAINDIR}/processed-data"
 

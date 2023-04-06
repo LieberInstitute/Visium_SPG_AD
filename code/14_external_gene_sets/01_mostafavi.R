@@ -26,7 +26,7 @@ source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 #### read in necessary input files ####
 load(here(
     "processed-data", "11_grey_matter_only", "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ))
 
 mostafavi_dir <- here(

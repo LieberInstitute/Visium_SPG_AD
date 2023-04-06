@@ -21,7 +21,7 @@ if (local) {
     ## For shinyapps.io
     dir_rdata <- getwd()
 }
-load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
+load(file.path(dir_rdata, "Visium_SPG_AD_modeling_results.Rdata"),
     verbose = TRUE
 )
 sce_pseudo <-
@@ -57,7 +57,7 @@ if (local) {
     write.csv(z[, !grepl("^in_rows", colnames(z))],
         file = file.path(
             dir_rdata,
-            "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv"
+            "Visium_SPG_AD_wholegenome_model_results_FDR5perc.csv"
         )
     )
 }

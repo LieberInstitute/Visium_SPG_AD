@@ -21,7 +21,7 @@ load("sig_genes_subset_k09.Rdata", verbose = TRUE)
 
 spe$BayesSpace <- spe$BayesSpace_harmony_09
 vars <- colnames(colData(spe))
-# https://github.com/LieberInstitute/Visium_IF_AD/blob/5e3518a9d379e90f593f5826cc24ec958f81f4aa/code/05_deploy_app_wholegenome/app.R#L61-L72
+# https://github.com/LieberInstitute/Visium_SPG_AD/blob/5e3518a9d379e90f593f5826cc24ec958f81f4aa/code/05_deploy_app_wholegenome/app.R#L61-L72
 
 colors_BayesSpace <- Polychrome::palette36.colors(28)
 names(colors_BayesSpace) <- c(1:28)

@@ -17,7 +17,7 @@ dir_rdata <- here::here(
         "05_deploy_app_wholegenome"
     )
 
-load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
+load(file.path(dir_rdata, "Visium_SPG_AD_modeling_results.Rdata"),
     verbose = TRUE
 )
 sce_pseudo <-

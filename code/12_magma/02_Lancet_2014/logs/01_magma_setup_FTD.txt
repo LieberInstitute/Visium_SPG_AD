@@ -147,7 +147,7 @@ Loading required package: org.Hs.eg.db
 
 Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
 Loading required package: rafalib
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: BSgenome
 Loading required package: Biostrings
 Loading required package: XVector
@@ -166,7 +166,7 @@ The following objects are masked from ‘package:SNPlocs.Hsapiens.dbSNP144.GRCh3
     .loadAlleles, .loadLoc, COMPATIBLE_BSGENOMES, getSNPcount,
     getSNPlocs, rsid2alleles, rsid2loc, rsidsToGRanges
 
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 [1] "data.frame"
 [1] 6026384       8
            marker Allele1 Allele2   beta1     SE  pValue chr        Bp
@@ -350,7 +350,7 @@ Loading required package: org.Hs.eg.db
 
 Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
 Loading required package: rafalib
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: BSgenome
 Loading required package: Biostrings
 Loading required package: XVector
@@ -361,7 +361,7 @@ The following object is masked from ‘package:base’:
 
     strsplit
 
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 [1] "data.frame"
 [1] 6026384       8
            marker Allele1 Allele2   beta1     SE  pValue chr        Bp
@@ -529,7 +529,7 @@ Error in file(file, ifelse(append, "a", "w")) :
 Calls: write.table -> file
 In addition: Warning message:
 In file(file, ifelse(append, "a", "w")) :
-  cannot open file '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_lancet_2014/FTD_Lancet2014.snploc': No such file or directory
+  cannot open file '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_lancet_2014/FTD_Lancet2014.snploc': No such file or directory
 Execution halted
 **** Job ends ****
 Mon Jun 27 17:41:55 EDT 2022
@@ -649,7 +649,7 @@ Loading required package: org.Hs.eg.db
 
 Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
 Loading required package: rafalib
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: BSgenome
 Loading required package: Biostrings
 Loading required package: XVector
@@ -660,7 +660,7 @@ The following object is masked from ‘package:base’:
 
     strsplit
 
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 [1] "data.frame"
 [1] 6026384       8
            marker Allele1 Allele2   beta1     SE  pValue chr        Bp
@@ -1069,7 +1069,7 @@ Loading required package: org.Hs.eg.db
 
 Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
 Loading required package: rafalib
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 'getOption("repos")' replaces Bioconductor standard repositories, see
 '?repositories' for details
 
@@ -1098,7 +1098,7 @@ The following object is masked from ‘package:base’:
 
     strsplit
 
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 [1] "data.frame"
 [1] 6026384       8
            marker Allele1 Allele2   beta1     SE  pValue chr        Bp
@@ -1508,7 +1508,7 @@ Loading required package: org.Hs.eg.db
 
 Loading required package: TxDb.Hsapiens.UCSC.hg19.knownGene
 Loading required package: rafalib
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 'getOption("repos")' replaces Bioconductor standard repositories, see
 '?repositories' for details
 
@@ -1538,7 +1538,7 @@ The following object is masked from ‘package:base’:
 
     strsplit
 
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 [1] "data.frame"
 [1] 6026384       8
            marker Allele1 Allele2   beta1     SE  pValue chr        Bp
