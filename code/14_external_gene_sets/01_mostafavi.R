@@ -92,13 +92,13 @@ table_s8_genes <- get_ensembl(table = table_s8, `Gene symbol`, "Gene symbol")
 table_s9_genes <- get_ensembl(table = table_s9, Gene, "Gene")
 
 
-
-
 mostafavi_geneList <- list(
     mostafavi_table_3 = table_s3_genes,
     mostafavi_table_8 = table_s8_genes,
     mostafavi_table_9 = table_s9_genes
 )
+
+
 
 #### calculate enrichment #####
 mostafavi_enrichment <- gene_set_enrichment(
@@ -108,6 +108,17 @@ mostafavi_enrichment <- gene_set_enrichment(
     model_type = "enrichment", reverse = FALSE
 )
 
+dummy_row_enrichment <- data.frame(OR = 2,
+                            Pval = 0.01 ,
+                            test = "none" ,
+                            NumSig = 0  ,
+                            SetSize = 0 ,
+                            ID = "dummy",
+                            model_type = "enrichment" ,
+                            fdr_cut = 0.1)
+
+mostafavi_enrichment  = rbind(mostafavi_enrichment,
+                              dummy_row_enrichment)
 
 mostafavi_depleted <- gene_set_enrichment(
     mostafavi_geneList,
@@ -117,53 +128,20 @@ mostafavi_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
-#> mostafavi_enrichment
-# OR       Pval      test                ID model_type fdr_cut
-# 1   0.000000 1.00000000      none mostafavi_table_3 enrichment     0.1
-# 2   0.000000 1.00000000      none mostafavi_table_8 enrichment     0.1
-# 3   0.000000 1.00000000      none mostafavi_table_9 enrichment     0.1
-# 4   5.278728 0.19062682       Ab+ mostafavi_table_3 enrichment     0.1
-# 5  18.018732 0.06119092       Ab+ mostafavi_table_8 enrichment     0.1
-# 6   0.000000 1.00000000       Ab+ mostafavi_table_9 enrichment     0.1
-# 7   0.000000 0.63325367  next_Ab+ mostafavi_table_3 enrichment     0.1
-# 8   0.000000 1.00000000  next_Ab+ mostafavi_table_8 enrichment     0.1
-# 9   0.000000 1.00000000  next_Ab+ mostafavi_table_9 enrichment     0.1
-# 10  0.000000 1.00000000       pT+ mostafavi_table_3 enrichment     0.1
-# 11  0.000000 1.00000000       pT+ mostafavi_table_8 enrichment     0.1
-# 12  0.000000 1.00000000       pT+ mostafavi_table_9 enrichment     0.1
-# 13  0.000000 1.00000000  next_pT+ mostafavi_table_3 enrichment     0.1
-# 14  0.000000 1.00000000  next_pT+ mostafavi_table_8 enrichment     0.1
-# 15  0.000000 1.00000000  next_pT+ mostafavi_table_9 enrichment     0.1
-# 16  0.000000 1.00000000      both mostafavi_table_3 enrichment     0.1
-# 17  0.000000 1.00000000      both mostafavi_table_8 enrichment     0.1
-# 18  0.000000 1.00000000      both mostafavi_table_9 enrichment     0.1
-# 19  0.000000 1.00000000 next_both mostafavi_table_3 enrichment     0.1
-# 20  0.000000 1.00000000 next_both mostafavi_table_8 enrichment     0.1
-# 21  0.000000 1.00000000 next_both mostafavi_table_9 enrichment     0.1
+dummy_row_depleted <- data.frame(OR = 2,
+                             Pval = 0.01 ,
+                             test = "none" ,
+                             NumSig = 0  ,
+                             SetSize = 0 ,
+                             ID = "dummy",
+                             model_type = "depletion" ,
+                             fdr_cut = 0.1)
 
-# > mostafavi_depleted
-# OR        Pval      test                ID model_type fdr_cut
-# 1  0.0000000 1.000000000      none mostafavi_table_3  depletion     0.1
-# 2  0.0000000 1.000000000      none mostafavi_table_8  depletion     0.1
-# 3  0.0000000 1.000000000      none mostafavi_table_9  depletion     0.1
-# 4  1.1454394 0.595813046       Ab+ mostafavi_table_3  depletion     0.1
-# 5  1.0456800 0.812156912       Ab+ mostafavi_table_8  depletion     0.1
-# 6  0.0000000 0.615843932       Ab+ mostafavi_table_9  depletion     0.1
-# 7  0.6046274 0.005802193  next_Ab+ mostafavi_table_3  depletion     0.1
-# 8  0.7404868 0.383057105  next_Ab+ mostafavi_table_8  depletion     0.1
-# 9  0.0000000 0.045245738  next_Ab+ mostafavi_table_9  depletion     0.1
-# 10 0.0000000 1.000000000       pT+ mostafavi_table_3  depletion     0.1
-# 11 0.0000000 1.000000000       pT+ mostafavi_table_8  depletion     0.1
-# 12 0.0000000 1.000000000       pT+ mostafavi_table_9  depletion     0.1
-# 13 0.0000000 1.000000000  next_pT+ mostafavi_table_3  depletion     0.1
-# 14 0.0000000 1.000000000  next_pT+ mostafavi_table_8  depletion     0.1
-# 15 0.0000000 1.000000000  next_pT+ mostafavi_table_9  depletion     0.1
-# 16 0.0000000 1.000000000      both mostafavi_table_3  depletion     0.1
-# 17 0.0000000 1.000000000      both mostafavi_table_8  depletion     0.1
-# 18 0.0000000 1.000000000      both mostafavi_table_9  depletion     0.1
-# 19 0.0000000 1.000000000 next_both mostafavi_table_3  depletion     0.1
-# 20 0.0000000 1.000000000 next_both mostafavi_table_8  depletion     0.1
-# 21 0.0000000 1.000000000 next_both mostafavi_table_9  depletion     0.1
+
+mostafavi_depleted  = rbind(mostafavi_depleted,
+                            dummy_row_depleted)
+
+
 
 
 ##### Enrichment plotting #####
@@ -207,6 +185,13 @@ gene_set_enrichment_plot(
 
 dev.off()
 
+print ("##### results #####")
+
+print("mostafavi_depleted")
+print(mostafavi_depleted)
+
+print("mostafavi_enrichment")
+print(mostafavi_enrichment)
 
 
 ## Reproducibility information
