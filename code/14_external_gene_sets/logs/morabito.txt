@@ -135,7 +135,7 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: scuttle
 
 Attaching package: ‘purrr’
@@ -311,7 +311,7 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: scuttle
 
 Attaching package: ‘purrr’
@@ -499,7 +499,7 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: scuttle
 
 Attaching package: ‘purrr’
@@ -689,7 +689,7 @@ The following objects are masked from ‘package:base’:
 
     intersect, setdiff, setequal, union
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: scuttle
 
 Attaching package: ‘purrr’
