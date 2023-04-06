@@ -16,7 +16,7 @@ img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 
 sample_info_path = here(
-    'raw-data', 'Visium_IF_AD_ITG_MasterExcelSummarySheet.xlsx'
+    'raw-data', 'Visium_SPG_AD_ITG_MasterExcelSummarySheet.xlsx'
 )
 
 img_path = here(

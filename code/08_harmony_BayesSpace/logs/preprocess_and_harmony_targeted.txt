@@ -25,7 +25,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -239,7 +239,7 @@ Running cluster_walktrap()
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Warning message:
 In dir.create(outdir, recursive = TRUE) :
-  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/targeted/clusters_graphbased/SNN_k10' already exists
+  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/08_harmony_BayesSpace/targeted/clusters_graphbased/SNN_k10' already exists
 Running cut_at() from k = 4 to 28
 2022-03-03 02:30:17 n = 4
 2022-03-03 02:30:17 n = 5

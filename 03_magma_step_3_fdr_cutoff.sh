@@ -23,7 +23,7 @@ BFILE=/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesse
 
 setcol=1
 genecol=2
-fdr_gs=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/fdr_gene_set.txt
+fdr_gs=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/fdr_gene_set.txt
 SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/12_magma/GWAS_Results/AD_sumstats_Jansenetal_2019sept.txt
 
 

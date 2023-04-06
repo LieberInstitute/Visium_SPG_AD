@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -pe local 5
 #$ -l mem_free=20G,h_vmem=20G,h_fsize=100G
-#$ -o /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/spatialLIBD.txt
-#$ -e /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/VistoSeg/logs/spatialLIBD.txt
+#$ -o /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/VistoSeg/logs/spatialLIBD.txt
+#$ -e /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/VistoSeg/logs/spatialLIBD.txt
 #$ -m e
 #$ -M madhavitippani28@gmail.com
 

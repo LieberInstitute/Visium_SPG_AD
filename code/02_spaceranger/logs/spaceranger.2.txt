@@ -388,21 +388,21 @@ Copyright (C) 2019 Genome Research Ltd.
 2021-09-21 18:40:52 [runtime] (join_complete)   ID.V10A27004_D1_Br3880.SPATIAL_RNA_COUNTER_CS.CLOUPE_PREPROCESS
 
 Outputs:
-- Run summary HTML:                         /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/web_summary.html
-- Outputs of spatial pipeline:              /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/spatial
-- Run summary CSV:                          /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/metrics_summary.csv
-- BAM:                                      /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/possorted_genome_bam.bam
-- BAM index:                                /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/possorted_genome_bam.bam.bai
-- Filtered feature-barcode matrices MEX:    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/filtered_feature_bc_matrix
-- Filtered feature-barcode matrices HDF5:   /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/filtered_feature_bc_matrix.h5
-- Unfiltered feature-barcode matrices MEX:  /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/raw_feature_bc_matrix
-- Unfiltered feature-barcode matrices HDF5: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/raw_feature_bc_matrix.h5
-- Secondary analysis output CSV:            /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/analysis
-- Per-molecule read information:            /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/molecule_info.h5
-- Loupe Browser file:                       /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/cloupe.cloupe
+- Run summary HTML:                         /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/web_summary.html
+- Outputs of spatial pipeline:              /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/spatial
+- Run summary CSV:                          /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/metrics_summary.csv
+- BAM:                                      /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/possorted_genome_bam.bam
+- BAM index:                                /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/possorted_genome_bam.bam.bai
+- Filtered feature-barcode matrices MEX:    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/filtered_feature_bc_matrix
+- Filtered feature-barcode matrices HDF5:   /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/filtered_feature_bc_matrix.h5
+- Unfiltered feature-barcode matrices MEX:  /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/raw_feature_bc_matrix
+- Unfiltered feature-barcode matrices HDF5: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/raw_feature_bc_matrix.h5
+- Secondary analysis output CSV:            /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/analysis
+- Per-molecule read information:            /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/molecule_info.h5
+- Loupe Browser file:                       /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/cloupe.cloupe
 - Target Panel file:                        null
 - Probe Set file:                           null
-- Spatial Enrichment (Moran's I) CSV:       /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/spatial_enrichment.csv
+- Spatial Enrichment (Moran's I) CSV:       /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/02_spaceranger/V10A27004_D1_Br3880/outs/spatial_enrichment.csv
 
 Waiting 6 seconds for UI to do final refresh.
 Pipestance completed successfully!

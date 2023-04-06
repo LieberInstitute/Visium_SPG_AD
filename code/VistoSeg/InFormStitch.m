@@ -7,7 +7,7 @@ function InFormStitch(filename,O,P,fname)
 % O{5} = 'MAP2';
 % O{6} = 'Lipofuscin';
 
-%filename = '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/InForm/VIFAD1_V10A27-004/20210204_Visium-IF_Scan1*component_data.tif';
+%filename = '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/InForm/VIFAD1_V10A27-004/20210204_Visium-IF_Scan1*component_data.tif';
 
 myfiles = dir(filename);
 

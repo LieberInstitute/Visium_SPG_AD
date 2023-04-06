@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -cwd
 #$ -l bluejay,mem_free=10G,h_vmem=10G,h_fsize=200G
-#$ -N update_backup_Visium_IF_AD
+#$ -N update_backup_Visium_SPG_AD
 #$ -o logs/update_backup.txt
 #$ -e logs/update_backup.txt
 #$ -m e

@@ -26,7 +26,7 @@ dir_rdata <- here::here(
 load(file.path(
     dir_rdata,
     "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ), verbose = TRUE)
 
 ## extract gene name, pvalues

@@ -27,7 +27,7 @@ source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 ### load modeling results
 load(here(
     "processed-data", "11_grey_matter_only", "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ))
 
 # Number of sets: 2 + 9 subpopulations * direction = 2 + 18 = 20 sets

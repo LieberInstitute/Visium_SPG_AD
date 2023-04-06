@@ -1,15 +1,15 @@
 Welcome to MAGMA v1.10 (linux/s)
 Using flags:
-	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw
-	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt gene-col=2 set-col=1
-	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/ftd_gwas_100
+	--gene-results /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw
+	--set-annot /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/pvalues_top_100.txt gene-col=2 set-col=1
+	--out /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/02_Lancet_2014/ftd_gwas_100
 
 Start time is 06:31:04, Monday 02 Jan 2023
 
-Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw... 
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/02_Lancet_2014/snp-wise.genes.raw... 
 	30066 genes read from file
 Loading gene-set annotation...
-Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/pvalues_top_100.txt... 
+Reading file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/pvalues_top_100.txt... 
 	detected 2 variables in file
 	using variable: variable 2 (gene ID)
 	using variable: variable 1 (set ID)
@@ -32,6 +32,6 @@ Performing regression analysis...
 	analysing individual variables
 
 	analysing single-variable models (number of models: 7)
-	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/12_magma/02_Lancet_2014/ftd_gwas_100.gsa.out
+	writing results to file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/12_magma/02_Lancet_2014/ftd_gwas_100.gsa.out
 
 End time is 06:32:53, Monday 02 Jan 2023 (elapsed: 00:01:49)

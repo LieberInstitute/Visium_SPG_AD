@@ -97,7 +97,7 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 [1] "2022-03-02 21:26:53 EST"
 2022-03-02 21:26:54 SpatialExperiment::read10xVisium: reading basic data from SpaceRanger
 2022-03-02 21:31:59 read10xVisiumAnalysis: reading analysis output from SpaceRanger

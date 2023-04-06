@@ -19,10 +19,10 @@ rsconnect::deployApp(
     appFiles = c(
         "app.R",
         "spe.Rdata",
-        "Visium_IF_AD_modeling_results.Rdata",
+        "Visium_SPG_AD_modeling_results.Rdata",
         "sce_pseudo_pathology_wholegenome.rds"
     ),
-    appName = "Visium_IF_AD_Kwon2022",
+    appName = "Visium_SPG_AD_Kwon2022",
     account = "libd",
     server = "shinyapps.io"
 )
