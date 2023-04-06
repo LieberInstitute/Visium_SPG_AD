@@ -91,12 +91,6 @@ spatialLIBD::run_app(
         "PAbeta",
         "NDAPI",
         "PDAPI",
-        "NGFAP",
-        "PGFAP",
-        "NLipofuscin",
-        "PLipofuscin",
-        "NMAP2",
-        "PMAP2",
         "NpTau",
         "PpTau",
         "edge_distance"

@@ -92,6 +92,14 @@ unique(spe$cerad)
 ## Add APOe genotype info
 spe$APOe <- c("Br3854" = "E3/E4", "Br3873" = "E3/E3", "Br3880" = "E3/E3", "Br3874" = "E2/E3")[spe$subject]
 
+## Drop variables that are empty and thus just add confusion to other work later on
+spe$NGFAP <- NULL
+spe$PGFAP <- NULL
+spe$NLipofuscin <- NULL
+spe$PLipofuscin <- NULL
+spe$NMAP2 <- NULL
+spe$PMAP2 <- NULL
+
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
