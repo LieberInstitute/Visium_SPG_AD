@@ -41,10 +41,10 @@ library("scater")
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 
 ## output directory
-dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
+dir_rdata <- here::here("processed-data", "17_grey_matter_only_Abeta_microenv", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
-dir_plots <- here::here("plots", "11_grey_matter_only", opt$spetype)
+dir_plots <- here::here("plots", "17_grey_matter_only_Abeta_microenv", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_plots))
 

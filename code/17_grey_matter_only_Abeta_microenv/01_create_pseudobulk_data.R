@@ -39,7 +39,7 @@ library("sessioninfo")
 library("scater")
 
 ## output directory
-dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
+dir_rdata <- here::here("processed-data", "17_grey_matter_only_Abeta_microenv", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
 
@@ -75,6 +75,9 @@ spe <- cluster_import(
     prefix = ""
 )
 
+## Collapse Ab and n_Ab as a single group. This is the Abeta microenvironment.
+spe$path_groups[spe$path_groups %in% c("n_Ab", "Ab")] <- "Ab_env"
+
 ## Convert from character to a factor, so they appear in the order
 ## we want
 spe$path_groups <-
@@ -82,8 +85,7 @@ spe$path_groups <-
         spe$path_groups,
         levels = c(
             "none",
-            "Ab",
-            "n_Ab",
+            "Ab_env",
             "pTau",
             "n_pTau",
             "both",
