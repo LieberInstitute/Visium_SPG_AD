@@ -124,6 +124,14 @@ cd ${CODEDIR}/13_tge_panel
 ##External Gene Sets
 cd ${CODEDIR}/14_external_gene_sets
 
+## Grey matter only analysis with the Abeta micro environment
+cd ${CODEDIR}/17_grey_matter_only_Abeta_microenv
+rm logs/create_pseudobulk_data*.txt
+rm logs/explore_expr_variability*.txt
+rm logs/model_pathology*.txt
+sh 01_create_pseudobulk_data.sh
+sh 02_explore_expr_variability.sh
+sh 03_model_pathology.sh
 
 
 ## Delete SPE versions for shiny
