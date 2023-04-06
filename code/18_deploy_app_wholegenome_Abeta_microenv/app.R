@@ -15,7 +15,7 @@ if (local) {
     ## Local tests
     dir_rdata <- here::here(
         "code",
-        "05_deploy_app_wholegenome"
+        "18_deploy_app_wholegenome_Abeta_microenv"
     )
 } else {
     ## For shinyapps.io

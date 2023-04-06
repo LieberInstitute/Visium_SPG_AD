@@ -15,7 +15,7 @@ options(repos = BiocManager::repositories())
 
 ## Deploy the app, that is, upload it to shinyapps.io
 rsconnect::deployApp(
-    appDir = here("code", "05_deploy_app_wholegenome"),
+    appDir = here("code", "18_deploy_app_wholegenome_Abeta_microenv"),
     appFiles = c(
         "app.R",
         "spe.Rdata",
