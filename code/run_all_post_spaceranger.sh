@@ -135,7 +135,7 @@ sh 03_model_pathology.sh
 
 
 ## Delete SPE versions for shiny
-rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
+rm ${CODEDIR}/*_deploy_app*/spe*.Rdata
 
 ## prepare to share the data through spatialLIBD
 cd ${CODEDIR}/98_prepare_to_share
