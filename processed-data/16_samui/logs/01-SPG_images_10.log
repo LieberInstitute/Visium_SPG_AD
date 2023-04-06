@@ -1,29 +1,29 @@
 **** Job starts ****
-Mon Apr  3 14:30:23 EDT 2023
+Tue Apr  4 13:58:46 EDT 2023
 **** JHPCE info ****
 User: neagles
-Job id: 3094821
+Job id: 3097657
 Job name: SPG_images
-Hostname: compute-143.cm.cluster
+Hostname: compute-121.cm.cluster
 Task id: 10
 Loading LIBD module for loopy/1.0.0-next.15
-[14:30:29] INFO     V10T31036_D1_Br3880 Adding coords 'coords'      logger.py:27
-[14:30:43] INFO     Transforming                                    logger.py:27
+[13:59:11] INFO     V10T31036_D1_Br3880 Adding coords 'coords'      logger.py:27
+[13:59:23] INFO     Transforming                                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880/VIFAD3_V10T31-036_D1.t             
                     if to COG.                                                  
-           INFO     Writing uncompressed GeoTIFF                    logger.py:27
+[13:59:24] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880/VIFAD3_V10T31-036_D1_1             
                     .tif                                                        
-[14:30:55] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+[13:59:37] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880/VIFAD3_V10T31-036_D1_2             
                     .tif                                                        
-[14:31:01] INFO     Writing COG                                     logger.py:27
+[13:59:43] INFO     Writing COG                                     logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880/VIFAD3_V10T31-036_D1_1             
@@ -33,11 +33,11 @@ Loading LIBD module for loopy/1.0.0-next.15
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880/VIFAD3_V10T31-036_D1_2             
                     .tif                                                        
-[14:31:44] INFO     'V10T31036_D1_Br3880' Executing queued          logger.py:27
+[14:00:20] INFO     'V10T31036_D1_Br3880' Executing queued          logger.py:27
                     functions                                                   
            INFO     'V10T31036_D1_Br3880' written to                logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_IF_AD/code/16_samui/../../processed-data/16_s             
                     amui/V10T31036_D1_Br3880                                    
 **** Job ends ****
-Mon Apr  3 14:31:45 EDT 2023
+Tue Apr  4 14:00:21 EDT 2023

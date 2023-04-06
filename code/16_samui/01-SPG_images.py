@@ -12,7 +12,7 @@ from loopy.sample import Sample
 from loopy.utils.utils import remove_dupes
 
 spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
-img_channels = ['Abeta', 'DAPI', 'GFAP', 'Lipofuscin', 'MAP2', 'pTau']
+img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 
 sample_info_path = here(
