@@ -72,7 +72,7 @@ spatialLIBD::run_app(
     sce_layer = sce_pseudo,
     modeling_results = modeling_results,
     sig_genes = sig_genes,
-    title = "Visium IF AD (TGE), Kwon SH et al, 2022",
+    title = "Visium SPG AD (TGE), Kwon SH et al, 2023",
     spe_discrete_vars = c(
         path_vars,
         "ManualAnnotation",
