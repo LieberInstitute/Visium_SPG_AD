@@ -1,0 +1,5 @@
+.deploy_info.Rdata
+rsconnect
+spe*.Rdata
+sce*rds
+*modeling_results.Rdata
