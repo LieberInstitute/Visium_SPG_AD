@@ -131,7 +131,7 @@ labeled with emojis:
     pathological categories.
 - 🔍 `samui`
   - [Visium SPG AD on
-    Samui](https://samuibrowser.com/from?url=data2.loopybrowser.com/VisiumIF/&s=Br2720_Ant_IF&s=Br6432_Ant_IF&s=Br6522_Ant_IF&s=Br8667_Post_IF):
+    Samui](https://samuibrowser.com/from?url=data2.loopybrowser.com/TODO):
     [`samui`](https://github.com/chaichontat/samui) website that allows
     to zoom in the raw immunostaining image data at the Visium spot
     level.
