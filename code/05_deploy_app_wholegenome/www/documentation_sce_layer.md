@@ -1,7 +1,7 @@
-Spatial domain-level documentation
-==================================
+Pathology-level `spatialLIBD` documentation
+===========================================
 
-This document describes the layer-level portion of the shiny web application made by the  [`spatialLIBD`](https://bioconductor.org/packages/spatialLIBD) Bioconductor package. You can either find the documentation about this package through [Bioconductor](https://bioconductor.org/packages/spatialLIBD) or at the [`spatialLIBD` documentation website](http://lieberinstitute.github.io/spatialLIBD). Below we explain the options common across tabs and each of the tabs at the layer-level data. As explained in the documentation, the layer-level data is the result of pseudo-bulking the spot-level data to compress it, reduce sparsity and power more analyses.
+This document describes the layer-level portion of the shiny web application made by the  [`spatialLIBD`](https://bioconductor.org/packages/spatialLIBD) Bioconductor package. Here, “layer-level” refers to “pathology-level” data in which we spatially resolved the Visium-SPG transcriptomic data by 7 different pathological categories of Ab and pTau pathology: they are used interchangeably in this context. You can either find the documentation about this package through [Bioconductor](https://bioconductor.org/packages/spatialLIBD) or at the [`spatialLIBD` documentation website](http://lieberinstitute.github.io/spatialLIBD). Below we explain the options common across tabs and each of the tabs at the layer-level data. As explained in the documentation, the layer-level data is the result of pseudo-bulking the spot-level data using the 7 AD pathology categories to compress it, reduce sparsity, and power more analyses.
 
 ## Slides and videos
 
@@ -23,14 +23,14 @@ You might also be interested in this video demonstration of `spatialLIBD` for th
 
 ## Raw summary
 
-Before the documentation, this tab displays the [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) object that contains the spatial domain-level data (layer-level in other `spatialLIBD` apps). It's basically useful to know that the data has been loaded and that you can start navigating the app. If you wish to download this data, use the following command.
+Before the documentation, this tab displays the [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) object that contains the pathology-level data (layer-level in other `spatialLIBD` apps). It's basically useful to know that the data has been loaded and that you can start navigating the app. If you wish to download this data, use the following command.
 
 ```{r}
 ## Check that you have a recent version of spatialLIBD installed
-stopifnot(packageVersion("spatialLIBD") >= "1.11.6")
+stopifnot(packageVersion("spatialLIBD") >= "1.11.12")
 
 ## Download sce data
-sce_pseudo <- spatialLIBD::fetch_data(type = "spatialDLPFC_Visium_pseudobulk")
+sce_pseudo <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_pseudobulk_spe")
 ```
 
 Throughout the rest of this document, we'll refer to this object by the name `sce_pseudo`.
@@ -39,7 +39,7 @@ This tab also shows the statistical modeling results, described below, that you 
 
 ```{r}
 ## Reproduce locally with
-modeling_results <- fetch_data("spatialDLPFC_Visium_modeling_results"")
+modeling_results <- fetch_data("Visium_SPG_AD_Visium_wholegenome_modeling_results")
 sig_genes <-
         spatialLIBD::sig_genes_extract_all(
             n = nrow(sce_pseudo),
@@ -51,22 +51,30 @@ sig_genes <-
 ## Common options
 
 * `Model results`: the statistical modeling results to use. We computed three different types of models:
-  1. `enrichment`: one spatial domain against all the the other spatial domains. Results in t-statistics.
-  2. `pairwise`: one spatial domain against another one. Results in t-statistics with two-sided p-values.
-  3. `anova`: changes among the spatial domains (adjusting for the mean expression) using the data from all spatial domains (`all`). Note that great changes between the white matter and grey matter will greatly influence these results.
+  1. `enrichment`: one pathological category against all the other 6 pathological categories. Results in t-statistics. `n_Ab`, for example, represents enriched and depleted genes in the `n_Ab` (`next_Ab`) category against all the other 6 pathological categories based on this enrichment modeling method.
+  2. `pairwise`: one pathological category against another one. Results in t-statistics with two-sided p-values. SNF8 in `Ab` vs `both`, for example, compares gene expression of SNF8 between the `Ab` (`Abeta`) and `both` (both `Abeta` and `pTau`) categories. 
+  3. `anova`: changes among the pathological categories (adjusting for the mean expression) using the data from all 7 pathological categories (`full`) after dropping pathology-associated spots in the white matter layer (`noWM`).
 
 ## Reduced dim
 
-In this panel you can visualize the spatial domain-level data (`sce_pseudo`) across reduced dimensionality representations derived from the gene expression data from the spatial domain-level pseudo-bulked data. Select which dimensionality reduction method to use with `Reduced Dimension` (PCA, MDS or with the `scater::runPCA` function which provides more stable results and shows the percent of variable explained). Then use `Color by` to choose which variable to color data by, which can be useful to identify groups of pseudo-bulked samples. The options are:
+In this panel you can visualize the pathology-level data (`sce_pseudo`) across reduced dimensionality representations derived from the gene expression data from the pathology-level pseudo-bulked data. Select which dimensionality reduction method to use with `Reduced Dimension` (PCA, MDS or with the `scater::runPCA` function which provides more stable results and shows the percent of variable explained). Then use `Color by` to choose which variable to color data by, which can be useful to identify groups of pseudo-bulked samples. The options are:
 
-* `BayesSpace`: the main spatial domain resolution used in this website
-* `age`: age of the n = 10 donors
-* `diagnosis`: all donors are neurotypical controls in this dataset
-* `ncells`: number of spots that were combined when pseudo-bulking
-* `position`: whether the sample is from anterior, middle or posterior
-* `sample_id`: sample identifier
-* `sex`: sex of the n = 10 donors
-* `subject`: donor identified
+* `age`: age of death of n = 3 donors with AD.
+* `APOe`: APOE genotype of n = 3 donors with AD.
+* `BCrating`: Braak and CERAD metrics of n = 3 donors with AD.
+  - `Br3854`: Braak VI and CERAD Frequent.
+  - `Br3873`: Braak V and CERAD Frequent.
+  - `Br3880`: Braak VI and CERAD Frequent.
+* `Diagnosis`: clinical diagnosis of n = 3 donors with AD.
+* `ncells`: number of spots that were combined when pseudo-bulking.
+* `path_groups`: 7 pathological categories of AD-related neuropathology.
+* `pmi`: post-mortem interval of n = 3 donors with AD.
+* `race`: race of n = 3 donors with AD.
+* `rin`: RNA integrity number of n = 3 donors with AD.
+* `sample_id`: sample identifier of n = 7 samples from n = 3 donors with AD.
+* `sex`: sex of n = 3 donors with AD.
+* `subject`: donor brain of n = 3 donors with AD.
+
 
 ```{r}
 ## Reproduce locally with
@@ -75,7 +83,8 @@ scater::plotReducedDim(sce_pseudo)
 
 ## Model boxplots
 
-This tab allows you to make a boxplot of the `logcounts` gene expression from the spatial domain-level data (`sce_pseudo`) for a given `gene`; you can search your gene by typing either the symbol or the Ensembl gene ID. The model result information displayed in the title of the plot is based on which `model results` you selected and whether you are using the short title version or not (controlled by a checkbox). We provide two different color scales you can use: the color blind friendly `viridis` as well as a custom one we used for the `paper`. Through the `Model test` selector, you can choose which particular comparison to display. For example, `Sp09D01` for the `enrichment` model means that you would display the results of comparing Sp09D01 against the rest of the spatial domains. `Sp09D01-Sp09D02` for the `pairwise` model means that you would display the results of Sp09D01 being greater than Sp09D02, while `Sp09D02-Sp09D01` is the reverse scenario. Under `pairwise`, the spatial domains not used are display in gray.
+This tab allows you to make a boxplot of the `logcounts` gene expression from the spatial domain-level data (`sce_pseudo`) for a given `gene`; you can search your gene by typing either the symbol or the Ensembl gene ID. The model result information displayed in the title of the plot is based on which `model results` you selected and whether you are using the short title version or not (controlled by a checkbox). We provide two different color scales you can use: the color blind friendly `viridis` as well as a custom one we used for the `paper`. Through the `Model test` selector, you can choose which particular comparison to display. For example, `Ab` for the enrichment model means that you would display the results of comparing `Ab` against the rest of the 6 pathological categories. `Ab`-`both` for the pairwise model means that you would display the results of the `Ab` category being greater than the `both` category, while `both`-`Ab` is the reverse scenario. Under pairwise, the unused pathological categories are displayed in gray.
+
 
 Below the plot you can find the subset of the table of results  (`sig_genes` from earlier), sort the table by the different columns, and download it as a CSV if you want. For more details about what each of these columns mean, check the [`spatialLIBD` vignette documentation](http://LieberInstitute.github.io/spatialLIBD/articles/spatialLIBD.html#extract-significant-genes).
 
