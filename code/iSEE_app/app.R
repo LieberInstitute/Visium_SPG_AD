@@ -34,7 +34,7 @@ sce_IF <- registerAppOptions(sce_IF, color.maxlevels = length(colData(sce_IF)$pa
 
 iSEE(
     sce_IF,
-    appTitle = "Kwon2022_pseudobulk_AD_pathology_wholegenome",
+    appTitle = "Visium_SPG_AD pseudobulk AD pathology",
     initial = initial,
     colormap = ExperimentColorMap(colData = list(
         subject = function(n) {
