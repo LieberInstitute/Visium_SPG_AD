@@ -341,12 +341,14 @@ p_pathology
 <a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp_pathology"><img src="http://research.libd.org/Visium_SPG_AD/img/Br3880_D1_pathology.png" width="800px" align="center" /></a>
 
 ``` r
-## Repeat but for Sp_BayesSpace
+## Repeat but for BayesSpace at k = 28 (max 28 clusters, can be less)
+k_observed <- unique(spe$BayesSpace_harmony_k28)
 p_BayesSpace <- spatialLIBD::vis_clus(
     spe = spe,
     clustervar = "BayesSpace_harmony_k28",
     sampleid = "V10A27106_D1_Br3880",
     spatial = FALSE,
+    colors = setNames(Polychrome::palette36.colors(length(k_observed)), k_observed),
     ... = " Visium SPG AD\nBayesSpace k28 -- made with spatialLIBD"
 )
 p_BayesSpace
