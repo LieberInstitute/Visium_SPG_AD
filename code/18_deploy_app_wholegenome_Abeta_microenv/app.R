@@ -107,5 +107,6 @@ spatialLIBD::run_app(
         "PpTau",
         "edge_distance"
     ),
-    default_cluster = "path_groups"
+    default_cluster = "path_groups",
+    docs_path = "www"
 )
