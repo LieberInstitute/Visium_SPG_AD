@@ -104,11 +104,12 @@ marker_list <- read.table(here("code", "12_magma", "01_Jansen_2019", "pvalues_to
 ### Lift coordinates from GRCh38 (hg38) > GRCh37 (hg19) ===
 # (because GWAS are still run w/ summary stats in hg19 coords)
 # - Also only use those for expressed genes - otherwise MTC penalizes stats
-gene_df <- read.delim(here(
-    "code", "magma", "annotation",
-    "GRCh38_gencode.v32_Ensembl98_GENES_all-36601.gene.loc"
-),
-header = FALSE
+gene_df <- read.delim(
+    here(
+        "code", "magma", "annotation",
+        "GRCh38_gencode.v32_Ensembl98_GENES_all-36601.gene.loc"
+    ),
+    header = FALSE
 )
 colnames(gene_df) <- c("GeneID", "Chr", "Start", "End", "Strand", "Symbol")
 

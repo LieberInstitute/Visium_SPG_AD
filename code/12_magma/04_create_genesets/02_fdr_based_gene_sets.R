@@ -46,13 +46,13 @@ colnames(fdrs) <- gsub(
 ## apply pivot longer
 fdrs_long <- fdrs |>
     pivot_longer(!ensembl,
-                 names_to = "pathology_type",
-                 values_to = "fdr"
+        names_to = "pathology_type",
+        values_to = "fdr"
     )
 
 ## filter out any value greater than or equal to 0.1 and group by pathology
 fdrs_filtered <- fdrs_long |>
-    filter(fdr< 0.1) |>
+    filter(fdr < 0.1) |>
     group_by(pathology_type)
 
 nrow(fdrs_filtered |> filter(pathology_type == "n_Ab"))
@@ -66,11 +66,11 @@ colnames(fdr_gene_set) <- c("Set", "Gene")
 
 ## write out
 write.table(fdr_gene_set,
-            file = here::here(
-                "code", "12_magma",
-                "fdr_gene_set.txt"
-            ), sep = "\t",
-            row.names = F, col.names = T, quote = F
+    file = here::here(
+        "code", "12_magma",
+        "fdr_gene_set.txt"
+    ), sep = "\t",
+    row.names = F, col.names = T, quote = F
 )
 
 

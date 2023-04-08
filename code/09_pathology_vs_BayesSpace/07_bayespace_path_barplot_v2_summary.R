@@ -79,8 +79,10 @@ bayes_cols <-
     cluster_df |> select(matches("BayesSpace_harmony"))
 
 
-GM_WM_separate <- cluster_df |> select(path_groups, BayesSpace_harmony_k02) |>
-    group_by(BayesSpace_harmony_k02) |> count(path_groups)
+GM_WM_separate <- cluster_df |>
+    select(path_groups, BayesSpace_harmony_k02) |>
+    group_by(BayesSpace_harmony_k02) |>
+    count(path_groups)
 
 # A tibble: 14 × 3
 # Groups:   BayesSpace_harmony_k02 [2]
@@ -103,10 +105,12 @@ GM_WM_separate <- cluster_df |> select(path_groups, BayesSpace_harmony_k02) |>
 
 # k = 1 is GM, K =2 is WM
 
-#_____________
+# _____________
 
 ## GM and WM grouped together
-GMandWM <- cluster_df |> select(path_groups, BayesSpace_harmony_k02) |> count(path_groups)
+GMandWM <- cluster_df |>
+    select(path_groups, BayesSpace_harmony_k02) |>
+    count(path_groups)
 # > GMandWM
 # path_groups    n
 # 1        none 6335

@@ -1,5 +1,3 @@
-
-
 # Number of sets: 6 cell types * concordance (2 options) = 12 sets + direction 6 sets = 18 sets
 #
 # Note: snRNA-seq
@@ -48,8 +46,10 @@ load(here(
 ))
 
 
-input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
-                  "2_Grubman et al_Entorhinal", "Grubman et al.xlsx")
+input_dir <- here(
+    "raw-data", "GeneSets", "2_snRNA-seq",
+    "2_Grubman et al_Entorhinal", "Grubman et al.xlsx"
+)
 
 # comparison with Mathys
 table_s3_grubman <- read_excel(input_dir,
@@ -57,7 +57,7 @@ table_s3_grubman <- read_excel(input_dir,
     col_names = TRUE
 )
 
-##renaming column for readability
+## renaming column for readability
 table_s3_grubman$grubman_logfc <- table_s3_grubman$`Grubman.LogFC (AD vs Control a priori)`
 table_s3_grubman <- table_s3_grubman |> subset(select = -`Grubman.LogFC (AD vs Control a priori)`)
 
@@ -130,17 +130,21 @@ grubman_enrichment <- gene_set_enrichment(
     model_type = "enrichment"
 )
 
-dummy_row_enrichment <- data.frame(OR = 2,
-                                   Pval = 0.01 ,
-                                   test = "none" ,
-                                   NumSig = 0  ,
-                                   SetSize = 0 ,
-                                   ID = "dummy",
-                                   model_type = "enrichment" ,
-                                   fdr_cut = 0.1)
+dummy_row_enrichment <- data.frame(
+    OR = 2,
+    Pval = 0.01,
+    test = "none",
+    NumSig = 0,
+    SetSize = 0,
+    ID = "dummy",
+    model_type = "enrichment",
+    fdr_cut = 0.1
+)
 
-grubman_enrichment  = rbind(grubman_enrichment,
-                              dummy_row_enrichment)
+grubman_enrichment <- rbind(
+    grubman_enrichment,
+    dummy_row_enrichment
+)
 
 print("grubman_enrichment")
 print(grubman_enrichment)
@@ -153,16 +157,20 @@ grubman_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
-dummy_row_depleted <- data.frame(OR = 2,
-                                 Pval = 0.01 ,
-                                 test = "none" ,
-                                 NumSig = 0  ,
-                                 SetSize = 0 ,
-                                 ID = "dummy",
-                                 model_type = "depletion" ,
-                                 fdr_cut = 0.1)
-grubman_depleted  = rbind(grubman_depleted,
-                            dummy_row_depleted)
+dummy_row_depleted <- data.frame(
+    OR = 2,
+    Pval = 0.01,
+    test = "none",
+    NumSig = 0,
+    SetSize = 0,
+    ID = "dummy",
+    model_type = "depletion",
+    fdr_cut = 0.1
+)
+grubman_depleted <- rbind(
+    grubman_depleted,
+    dummy_row_depleted
+)
 
 
 print("grubman_depleted")

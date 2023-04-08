@@ -1,4 +1,3 @@
-
 library("SingleCellExperiment")
 library("iSEE")
 library("shiny")

@@ -63,10 +63,10 @@ if (local) {
     dim(z)
     # [1] 318  13
     table(z$model_type, z$test)
-  #               Ab_env Ab_env-both Ab_env-none both both-Ab_env none none-Ab_env none-pTau noWM pTau-none
-  # anova           0           0           0    0           0    0           0         0    1         0
-  # enrichment    275           0           0    9           0    3           0         0    0         0
-  # pairwise        0          13           1    0          13    0           1         1    0         1
+    #               Ab_env Ab_env-both Ab_env-none both both-Ab_env none none-Ab_env none-pTau noWM pTau-none
+    # anova           0           0           0    0           0    0           0         0    1         0
+    # enrichment    275           0           0    9           0    3           0         0    0         0
+    # pairwise        0          13           1    0          13    0           1         1    0         1
 }
 
 vars <- colnames(colData(spe))

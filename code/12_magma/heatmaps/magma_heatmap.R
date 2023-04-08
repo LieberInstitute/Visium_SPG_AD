@@ -26,10 +26,10 @@ here()
 
 magmaStats <- list()
 
-k <-  as.numeric(Sys.getenv("SGE_TASK_ID"))
+k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 print(k)
 gene_set <- c("50", "100", "200", "fdr")
-print( paste0("Geneset: ", gene_set[k]))
+print(paste0("Geneset: ", gene_set[k]))
 
 
 magmaStats[["ITC"]][["AD.Jansen.2019"]] <- read.table(here("code", "12_magma", "01_Jansen_2019", paste0("ad_gwas_", gene_set[k], ".gsa.out")), header = T)
@@ -87,7 +87,7 @@ magmaStats_wide.beta$Pathology_Type <- rownames(magmaStats_wide.beta)
 
 
 
-##magmaStats_long.beta##
+## magmaStats_long.beta##
 magmaStats_long.beta <- reshape2::melt(magmaStats_wide.beta)
 colnames(magmaStats_long.beta)[3:4] <- c("GWAS", "Beta")
 magmaStats_long.beta
@@ -116,24 +116,25 @@ magmaStats_long
 write.csv(magmaStats_long,
     file = here(
         "code", "12_magma", "heatmaps",
-        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k],".csv")),
+        paste0("Global_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k], ".csv")
+    ),
     row.names = F, quote = F
 )
 
 write.csv(magmaStats_wide,
     file = here(
-        "code", "12_magma","heatmaps",
-        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k],".csv")),
+        "code", "12_magma", "heatmaps",
+        paste0("GWAS_wise_FDRs_Bonf_3GWAS_x_7_Pathologies_", gene_set[k], ".csv")
+    ),
     row.names = F, quote = F
 )
 
 head(magmaStats_long)
 
 #### Make heatmap ####
-midpoint = function(x) x[-length(x)] + diff(x) / 2
+midpoint <- function(x) x[-length(x)] + diff(x) / 2
 
 MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
-
     #### Set up -log10(p_value) ####
     wide_p <- sapply(magmaStats[[region]], function(x) {
         cbind(-log10(x$P))
@@ -165,7 +166,8 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
     # Heatmap of p's
     fields::image.plot(
         x = seq(0, ncol(wide_p), by = 1), y = clusterHeights, z = as.matrix(t(wide_p)),
-        col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = "", ... )
+        col = mypal, xaxt = "n", yaxt = "n", xlab = "", ylab = "", ...
+    )
     axis(2, rownames(wide_p), at = midpoint(clusterHeights), las = 1)
     axis(1, rep("", ncol(wide_p)), at = seq(0.5, ncol(wide_p) - 0.5))
     text(
@@ -199,7 +201,7 @@ dev.off()
 
 
 ## Reproducibility information ====
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)

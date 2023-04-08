@@ -1,4 +1,3 @@
-
 # library("sgejobs")
 
 # sgejobs::job_single(
@@ -46,8 +45,10 @@ load(here(
 # 474:552
 
 
-input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
-                  "3_Leung et al", "Leung et al.xlsx")
+input_dir <- here(
+    "raw-data", "GeneSets", "2_snRNA-seq",
+    "3_Leung et al", "Leung et al.xlsx"
+)
 
 leung_1 <- read_excel(input_dir,
     sheet = "Supplementary Table 1", col_names = TRUE
