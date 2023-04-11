@@ -72,6 +72,7 @@ magmaStats_long$P.adj.fdr <- p.adjust(magmaStats_long$P, "fdr")
 magmaStats_long$P.adj.bonf <- p.adjust(magmaStats_long$P, "bonf")
 
 
+table(p.adjust(magmaStats_long$P, "fdr") < 0.1)
 
 #### Extract and shape all the Beta values from the magma output ####
 magmaStats_list.beta <- lapply(magmaStats, function(m) {
