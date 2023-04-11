@@ -110,6 +110,10 @@ gene_df = pd.DataFrame(
     columns = spe.var['gene_name']
 )
 
+#   Some gene symbols are actually duplicated. Just take the first column in
+#   any duplicated cases
+gene_df = gene_df.loc[: , ~gene_df.columns.duplicated()].copy()
+
 assert default_gene in gene_df.columns, "Default gene not in AnnData"
 
 ################################################################################
