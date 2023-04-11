@@ -190,8 +190,8 @@ MAGMAplot <- function(region, Pthresh, fdrThresh, ...) {
 }
 
 # Plot
-dir_output <- dir.create(here("plots", "magma"))
-pdf(here("plots", "magma", paste0("heatmap_", "top_", gene_set[k], "_genes", ".pdf")), w = 6)
+dir_output <- dir.create(here("plots", "12_magma"))
+pdf(here("plots", "12_magma", paste0("heatmap_", "top_", gene_set[k], "_genes", ".pdf")), w = 6)
 par(mar = c(8.5, 7.5, 6, 1), cex.axis = 1.0, cex.lab = 0.5)
 MAGMAplot(region = "ITC", Pthresh = 12, fdrThresh = 1) ## set to 1 because didn't want to make a cutoff based on FDR/Bonf
 abline(v = 7, lwd = 3)
