@@ -52,7 +52,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -197,7 +197,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -548,7 +548,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -628,7 +628,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics

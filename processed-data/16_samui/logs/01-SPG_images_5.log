@@ -1,0 +1,43 @@
+**** Job starts ****
+Tue Apr  4 13:54:27 EDT 2023
+**** JHPCE info ****
+User: neagles
+Job id: 3097657
+Job name: SPG_images
+Hostname: compute-149.cm.cluster
+Task id: 5
+Loading LIBD module for loopy/1.0.0-next.15
+[13:54:35] INFO     V10A27106_C1_Br3873 Adding coords 'coords'      logger.py:27
+[13:54:44] INFO     Transforming                                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873/VIFAD2_V10A27-106_C1.t             
+                    if to COG.                                                  
+           INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873/VIFAD2_V10A27-106_C1_1             
+                    .tif                                                        
+[13:54:55] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873/VIFAD2_V10A27-106_C1_2             
+                    .tif                                                        
+[13:55:00] INFO     Writing COG                                     logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873/VIFAD2_V10A27-106_C1_1             
+                    .tif                                                        
+           INFO     Writing COG                                     logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873/VIFAD2_V10A27-106_C1_2             
+                    .tif                                                        
+[13:55:43] INFO     'V10A27106_C1_Br3873' Executing queued          logger.py:27
+                    functions                                                   
+           INFO     'V10A27106_C1_Br3873' written to                logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_IF_AD/code/16_samui/../../processed-data/16_s             
+                    amui/V10A27106_C1_Br3873                                    
+**** Job ends ****
+Tue Apr  4 13:55:43 EDT 2023

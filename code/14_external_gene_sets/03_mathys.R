@@ -23,7 +23,7 @@ source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 ### load modeling results
 load(here(
     "processed-data", "11_grey_matter_only", "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ))
 
 # Number of sets: 6 cell types * 4 models = 24 sets * direction (2) = 48 sets
@@ -42,8 +42,10 @@ load(here(
 # no-pathology vs early-pathology differential expression = np vs ep, 12
 # early-pathology vs late-pathology differential expression = ep vs lp, 23
 
-input_dir <- here("raw-data", "GeneSets", "2_snRNA-seq",
-            "1_Mathys et al_PFC", "Mathys et al.xlsx")
+input_dir <- here(
+    "raw-data", "GeneSets", "2_snRNA-seq",
+    "1_Mathys et al_PFC", "Mathys et al.xlsx"
+)
 
 mathys_ex <- read_excel(input_dir, sheet = "Ex", skip = 1)
 mathys_in <- read_excel(input_dir, sheet = "In", skip = 1)

@@ -139,7 +139,7 @@ rs3098019	rs76185201
 rs73541461	rs587759063
 
 ##### #####  SNP p-value file  ##### #####
-# Following SNPs had duplications entries in file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/code/magma/02_Lancet_2014/FTD-IFGC-and-rsID-ADDED.tab
+# Following SNPs had duplications entries in file /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/code/magma/02_Lancet_2014/FTD-IFGC-and-rsID-ADDED.tab
 # Duplicates may have been synonyms; listing all synonymous IDs in data for SNP on each line
 # All occurrences were dropped from analysis
 rs12098962	rs12104049	rs35219432	rs36169790	rs57652856	rs60566156	rs71463380	rs4653286

@@ -25,7 +25,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -107,8 +107,8 @@ Calculating labels using iterations 1000 through 50000.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Warning message:
 In dir.create(outdir, recursive = TRUE) :
-  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/08_harmony_BayesSpace/targeted/clusters_BayesSpace/BayesSpace_harmony_k15' already exists
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/targeted/BayesSpace_harmony_k15.pdf"
+  '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/08_harmony_BayesSpace/targeted/clusters_BayesSpace/BayesSpace_harmony_k15' already exists
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/plots/08_harmony_BayesSpace/targeted/BayesSpace_harmony_k15.pdf"
 [1] "Reproducibility information:"
 [1] "2022-03-09 14:53:35 EST"
      user    system   elapsed 

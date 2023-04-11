@@ -34,7 +34,7 @@ sample_info$sample_path <-
 stopifnot(all(file.exists(sample_info$sample_path)))
 
 ## Define the donor info using information from
-## https://github.com/LieberInstitute/Visium_IF_AD/blob/master/raw-data/Visium_IF_AD_ITG_MasterExcelSummarySheet.xlsx
+## https://github.com/LieberInstitute/Visium_SPG_AD/blob/master/raw-data/Visium_SPG_AD_ITG_MasterExcelSummarySheet.xlsx
 donor_info <- data.frame(
     subject = c("Br3854", "Br3873", "Br3880", "Br3874"),
     age = c(65.75, 88.78, 90.47, 73.05),

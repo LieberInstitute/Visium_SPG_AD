@@ -42,11 +42,13 @@ source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 ### load modeling results
 load(here(
     "processed-data", "11_grey_matter_only", "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ))
 
-input_dir <- here("raw-data", "GeneSets", "3_snATAC-seq",
-                  "Table S1_snRNAseq.xlsx")
+input_dir <- here(
+    "raw-data", "GeneSets", "3_snATAC-seq",
+    "Table S1_snRNAseq.xlsx"
+)
 
 table_1 <- read_excel(input_dir,
     sheet = "Supplementary Data 1e", col_names = TRUE, skip = 2

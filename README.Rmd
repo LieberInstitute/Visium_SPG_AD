@@ -1,5 +1,5 @@
 ---
-title: spatialDLPFC
+title: Visium_SPG_AD
 output:
   github_document:
     html_preview: true
@@ -26,27 +26,26 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-<img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp09.png" align="left" width="300px" />
+<img src="http://research.libd.org/Visium_SPG_AD/img/Br3880_D1_pathology.png" align="left" width="300px" />
 
-Welcome to the `spatialDLPFC` project! This project involves 3 data types as well as several interactive websites, all of which you are publicly accessible for you to browse and download.
+Welcome to the `Visium_SPG_AD` project! This project involves several interactive websites, which are publicly accessible for you to browse and download.
 
-In this project we studied spatially resolved and single nucleus transcriptomics data from the dorsolateral prefrontal cortex (DLPFC) from postmortem human brain samples. From 10 neurotypical controls we generated spatially-resolved transcriptomics data using using [10x Genomics **Visium**](https://www.10xgenomics.com/products/spatial-gene-expression) across the anterior, middle, and posterior DLPFC (n = 30). We also generated single nucleus RNA-seq (**snRNA-seq**) data using [10x Genomics **Chromium**](https://www.10xgenomics.com/products/single-cell-gene-expression) from 19 of these tissue blocks. We further generated data from 4 adjacent tissue slices with [10x Genomics **Visium Spatial Proteogenomics** (SPG)](https://www.10xgenomics.com/products/spatial-proteogenomics), that can be used to benchmark spot deconvolution algorithms. This work is being was performed by the [Keri Martinowich](https://www.libd.org/team/keri-martinowich-phd/), [Leonardo Collado-Torres](http://lcolladotor.github.io/), and [Kristen Maynard](https://www.libd.org/team/kristen-maynard-phd/) teams at the [Lieber Institute for Brain Development](libd.org) as well as [Stephanie Hicks](https://www.stephaniehicks.com/)'s group from [JHBSPH's Biostatistics Department](https://publichealth.jhu.edu/departments/biostatistics).
+We spatially resolved transcriptomics of the inferior temporal cortex (ITC) from postmortem human brain tissue to study local gene expression profiles of brain microenvironments associated with Alzheimer’s disease (AD) related neuropathology bearing abnormal protein aggregation of amyloid beta (Abeta; Ab) and phosphorylated Tau (pTau). Using a total of 10 tissue samples from 3 donors with late-stage Alzheimer's disease (AD) and 1 age-matched control (Br3874), we generated proteomic-based, spatially-resolved transcriptome-scale (SRT) maps of the human ITC in which the immunofluorescence staining of Ab and pTau was integrated into the complementary SRT data of the identical tissue sections. With Visium Spatial Proteogenomics ([Visium-SPG](https://www.10xgenomics.com/products/spatial-proteogenomics)), we utilized a within-subjects design to study gene expression changes associated with spatially localized brain neuropathology across the 3 donors with AD (Br3854, Br3873, and Br3880). Here, using _BayesSpace_ to identify the gray-matter associated spots in a data-driven manner, we discovered statistically significant differentially expressed genes in the core (Ab spots) and peripheral (next_Ab spots) compartments of Ab-associated microenvironment in the gray matter of ITC. For more detailed information about study design and experimental results, please refer to our [manuscript](https://doi.org/10.1101/TODO). This work was performed by the [Keri Martinowich](https://www.libd.org/team/keri-martinowich-phd/), [Kristen Maynard](https://www.libd.org/team/kristen-maynard-phd/), and [Leonardo Collado-Torres](http://lcolladotor.github.io/) teams at the [Lieber Institute for Brain Development](libd.org) as well as [Stephanie Hicks](https://www.stephaniehicks.com/)'s group from [JHBSPH's Biostatistics Department](https://publichealth.jhu.edu/departments/biostatistics). This project was done in collaboration with [10x Genomics](https://www.10xgenomics.com/).
 
-This project involves the GitHub repositories [LieberInstitute/spatialDLPFC](https://github.com/LieberInstitute/spatialDLPFC) and [LieberInstitute/DLPFC_snRNAseq](https://github.com/LieberInstitute/DLPFC_snRNAseq).
+This project involves the [LieberInstitute/Visium_SPG_AD](https://github.com/LieberInstitute/Visium_SPG_AD) GitHub repository.
 
 If you tweet about this website, the data or the R package please use
-the <code>\#spatialDLPFC</code> hashtag. You can find previous tweets
+the <code>\#Visium_SPG_AD</code> hashtag. You can find previous tweets
 that way as shown
-<a href="https://twitter.com/search?q=%23spatialDLPFC&src=typed_query">here</a>.
-
+<a href="https://twitter.com/search?q=%23Visium_SPG_AD&src=typed_query">here</a>.
 
 Thank you for your interest in our work!
 
 ## Study Design
 
-<img src="http://research.libd.org/spatialDLPFC/img/study_overview.png" width="1000px" align="left" />
+<img src="http://research.libd.org/Visium_SPG_AD/img/study_overview.png" width="1000px" align="left" />
 
-**Study design to generate paired single nucleus RNA-sequencing (snRNA-seq) and spatially-resolved transcriptomic data across DLPFC**. (**A**) DLPFC tissue blocks were dissected across the rostral-caudal axis from 10 adult neurotypical control postmortem human brains, including anterior (Ant), middle (Mid), and posterior (Post) positions (n=3 blocks per donor, n=30 blocks total). The same tissue blocks were used for snRNA-seq (10x Genomics 3’ gene expression assay, n=1-2 blocks per donor, n=19 samples) and spatial transcriptomics (10x Genomics Visium spatial gene expression assay, n=3 blocks per donor, n=30 samples). (**B**) Paired snRNA-seq and Visium data were used to identify data-driven spatial domains (SpDs) and cell types, perform spot deconvolution, conduct cell-cell communication analyses, and spatially register companion PsychENCODE snRNA-seq DLPFC data. (**C**) _t_-distributed stochastic neighbor embedding (t-SNE) summarizing layer resolution cell types identified by snRNA-seq. (**D**) Tissue block orientation and morphology was confirmed by hematoxylin and eosin (H&E) staining and single molecule fluorescent in situ hybridization (smFISH) with RNAscope (_SLC17A7_ marking excitatory neurons in pink, _MBP_ marking white matter (WM) in green, _RELN_ marking layer (L)1 in yellow, and _NR4A2_ marking L6 in orange). Scale bar is 2mm. Spotplots depicting log transformed normalized expression (logcounts) of _SNAP25_, _MBP_, and _PCP4_ in the Visium data confirm the presence of gray matter, WM, and cortical layers, respectively. (**E**) Schematic of unsupervised SpD identification and registration using _BayesSpace_ SpDs at _k_=7. Enrichment _t_-statistics computed on _BayesSpace_ SpDs were correlated with manual histological layer annotations from ([Maynard, Collado-Torres et al., 2021, _Nat Neuro_](https://doi.org/10.1038/s41593-020-00787-0)) to map SpDs to known histological layers. The heatmap of correlation values summarizes the relationship between BayesSpace SpDs and classic histological layers. Higher confidence annotations (⍴ > 0.25, merge ratio = 0.1) are marked with an “X”.
+**Spatial transcriptomics combined with immunodetection of Ab and pTau in the human inferior temporal cortex (ITC)**. (**A**) Schematic of experimental design using Visium Spatial Proteogenomics (Visium-SPG) to investigate the impact of Ab and pTau aggregates on the local microenvironment transcriptome in the post-mortem human brain. Human ITC blocks were acquired from 3 donors with AD and 1 age-matched neurotypical control. Tissue blocks were cryosectioned at 10μm to obtain 2-3 replicates per donor and sections were collected onto individual capture arrays of a Visium spatial gene expression slide, yielding a total of 3 gene expression experiments. The entire slide (4 tissue sections) was stained and scanned using multispectral imaging methods to detect Ab and pTau immunofluorescence (IF) signals as well as autofluorescence. Following imaging, tissue sections were permeabilized and subjected to on-slide cDNA synthesis after which libraries were generated and sequenced. Transcriptomic data was aligned with the respective IF image data to generate gene expression maps of the local transcriptome with respect to Ab plaques and pTau elements, including neurofibrillary tangles. (**B**) High magnification images show Ab plaques (white triangles) and various neurofibrillary elements such as tangles (white arrowheads), neuropil threads (red arrowheads), and neuritic tau plaques (yellow arrowheads). Lipofuscin (cyan) was identified through spectral unmixing and pixels confounded with this autofluorescent signal were excluded from analysis, scale bar, 20μm. (**C**) ITC tissue block from Br3880 (left) and corresponding spotplots (right) from the Visium data show gene expression of _MOBP_ and _SNAP25_, which demarcates the border between gray matter (GM) and white matter (WM), scale bar, 1mm. Color scale indicates spot-level gene expression in logcounts. (**D**) Image processing and quantification of Ab and pTau per Visium spot. Ab and pTau signals were thresholded in their single IF channels for segmentation against autofluorescence background, including lipofuscin. Thresholded Ab and pTau signals were aligned to the gene expression map of the same tissue section from Br3880 and quantified as the proportion of number of pixels per Visium spot, which is visualized in a spotplot, scale bar, 1mm.
 
 
 ## Interactive Websites
@@ -54,25 +53,20 @@ Thank you for your interest in our work!
 All of these interactive websites are powered by open source software, namely:
 
 * 🔭 [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w)
-* 🔍 [`samui`](https://github.com/chaichontat/samui)
 * 👀 [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1)
+* 🔍 [`samui`](https://github.com/chaichontat/samui)
 
-We provide the following interactive websites, organized by dataset with software labeled by emojis:
+We provide the following interactive websites, organized by software labeled with emojis:
 
-* Visium (n = 30)
-  - 🔭 [spatialDLPFC_Visium_Sp09](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website showing the spatially-resolved Visium data (n = 30) with statistical results comparing the Sp09 domains.
-  - 🔭 [spatialDLPFC_Visium_Sp16](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp16): similar but with the Sp16 domains.
-  - 🔭 [spatialDLPFC_Visium_Sp09_position](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09_position): similar to _spatialDLPFC_Visium_Sp09_ but with statistical results across the _position_ (anterior, middle, posterior) adjusting for the Sp09 domains.
-  - 🔭 [spatialDLPFC_Visium_Sp09_position_noWM](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09_position_noWM): similar to _spatialDLPFC_Visium_Sp09_position_ but after dropping the `SP28D06`, `SP28D16`, `SP28D17`, `SP28D20` and `SP28D28` spots which correspond to white matter (hence the `noWM` acronym).
-  - 👀 [spatialDLPFC_Visium_Sp09_pseudobulk](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09_pseudobulk): [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1) website showing the pseudo-bulked Sp09 domains spatial data.
-  - 👀 [spatialDLPFC_Visium_Sp16_pseudobulk](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp16_pseudobulk): similar to _spatialDLPFC_Visium_Sp09_pseudobulk_ but with the Sp16 domains data.
-  - 👀 [spatialDLPFC_Visium_Sp28_pseudobulk](https://libd.shinyapps.io/spatialDLPFC_Visium_Sp28_pseudobulk): similar to _spatialDLPFC_Visium_Sp09_pseudobulk_ but with the Sp28 domains data.
-  - 🔍 [spatialDLPFC Visium on Samui](https://samuibrowser.com/from?url=data2.loopybrowser.com/spatialDLPFC/&s=Br2720_ant&s=Br2720_mid&s=Br2720_post&s=Br2743_ant&s=Br2743_mid&s=Br2743_post&s=Br3942_ant&s=Br3942_mid&s=Br3942_post&s=Br6423_ant&s=Br6423_mid&s=Br6423_post&s=Br6432_ant&s=Br6432_mid&s=Br6432_post&s=Br6471_ant&s=Br6471_mid&s=Br6471_post&s=Br6522_ant&s=Br6522_mid&s=Br6522_post&s=Br8325_ant&s=Br8325_mid&s=Br8325_post&s=Br8492_ant&s=Br8492_mid&s=Br8492_post&s=Br8667_ant&s=Br8667_mid&s=Br8667_post): [`samui`](https://github.com/chaichontat/samui) website that allows to zoom in at the spot or cell level.
-* snRNA-seq (n = 19)
-  - 👀 [spatialDLPFC_snRNA-seq](https://libd.shinyapps.io/spatialDLPFC_snRNA-seq): [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1) website showing the n = 19 snRNA-seq samples at single nucleus resolution.
-* Visium SPG (n = 4)
-  - 🔭 [spatialDLPFC_Visium_SPG](https://libd.shinyapps.io/spatialDLPFC_Visium_SPG): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website showing the spatially-resolved data Visium SPG (n = 4).
-  - 🔍 [spatialDLPFC Visium SPG on Samui](https://samuibrowser.com/from?url=data2.loopybrowser.com/VisiumIF/&s=Br2720_Ant_IF&s=Br6432_Ant_IF&s=Br6522_Ant_IF&s=Br8667_Post_IF): [`samui`](https://github.com/chaichontat/samui) website that allows to zoom in at the spot or cell level.
+
+* 🔭 `spatialLIBD`
+  - [Visium_SPG_AD_wholegenome](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website showing the spatially-resolved Visium-SPG data (n = 10 tissue sections from 3 AD donors and 1 age-matched control) with statistical results comparing the 7 different spot categories bearing Ab and pTau pathology within donors with AD. This version shows the whole genome gene expression data.
+  - [Visium_SPG_AD_TGE](https://libd.shinyapps.io/Visium_SPG_AD_TGE): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website that the same as the previous one, but with the targeted gene expression (TGE) panel data.
+  - [Visium_SPG_AD_wholegenome_Abeta_microenv](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome_Abeta_microenv): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website similar to `Visium_SPG_AD_wholegenome`, but with the `Ab` and `next_Ab` pathologies collapsed into a single one `Ab_env` for studying the Abeta micro environment.
+* 👀 `iSEE`
+  - [Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome](https://libd.shinyapps.io/Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome): [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1) website showing the pseudo-bulked spatial data of the 7 different pathological categories.
+* 🔍 `samui`
+  - [Visium SPG AD on Samui](https://samuibrowser.com/from?url=data2.loopybrowser.com/TODO): [`samui`](https://github.com/chaichontat/samui) website that allows to zoom in the raw immunostaining image data at the Visium spot level.
 
 
 ### Local `spatialLIBD` apps
@@ -83,14 +77,12 @@ If you are interested in running the [`spatialLIBD`](https://doi.org/10.1186/s12
 ## Run this web application locally with:
 spatialLIBD::run_app()
 ## You will have more control about the length of the session and memory usage.
-## See http://research.libd.org/spatialLIBD/reference/run_app.html#examples
-## for the full R code to run https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09
-## locally. See also:
-## * https://github.com/LieberInstitute/spatialDLPFC/tree/main/code/deploy_app_k09
-## * https://github.com/LieberInstitute/spatialDLPFC/tree/main/code/deploy_app_k09_position
-## * https://github.com/LieberInstitute/spatialDLPFC/tree/main/code/deploy_app_k09_position_noWM
-## * https://github.com/LieberInstitute/spatialDLPFC/tree/main/code/deploy_app_k16
-## * https://github.com/LieberInstitute/spatialDLPFC/tree/main/code/analysis_IF/03_spatialLIBD_app
+## See http://research.libd.org/spatialLIBD/reference/run_app.html#examples.
+## See also:
+## * https://github.com/LieberInstitute/Visium_SPG_AD/tree/master/code/05_deploy_app_wholegenome
+## * https://github.com/LieberInstitute/Visium_SPG_AD/tree/master/code/06_deploy_app_targeted
+## * https://github.com/LieberInstitute/Visium_SPG_AD/tree/master/code/18_deploy_app_wholegenome_Abeta_microenv
+## 
 ## You could also use spatialLIBD::run_app() to visualize your
 ## own data given some requirements described
 ## in detail in the package vignette documentation
@@ -99,28 +91,19 @@ spatialLIBD::run_app()
 
 ## Contact
 
-We value public questions, as they allow other users to learn from the answers. If you have any questions, please ask them at [LieberInstitute/spatialDLPFC/issues](https://github.com/LieberInstitute/spatialDLPFC/issues) and refrain from emailing us. Thank you again for your interest in our work!
+We value public questions, as they allow other users to learn from the answers. If you have any questions, please ask them at [LieberInstitute/Visium_SPG_AD/issues](https://github.com/LieberInstitute/Visium_SPG_AD/issues) and refrain from emailing us. Thank you again for your interest in our work!
 
 
 ## Citing our work
 
-Please cite this [manuscript](https://doi.org/10.1101/2023.02.15.528722) if you use data from this project.
+Please cite this [manuscript](https://doi.org/10.1101/TODO) if you use data from this project.
 
-> Integrated single cell and unsupervised spatial transcriptomic analysis defines molecular anatomy of the human dorsolateral prefrontal cortex
-> Louise A. Huuki-Myers, Abby Spangler, Nicholas J. Eagles, Kelsey D. Montgomery, Sang Ho Kwon, Boyi Guo, Melissa Grant-Peters, Heena R. Divecha, Madhavi Tippani, Chaichontat Sriworarat, Annie B. Nguyen, Prashanthi Ravichandran, Matthew N. Tran, Arta Seyedian, PsychENCODE Consortium, Thomas M. Hyde, Joel E. Kleinman, Alexis Battle, Stephanie C. Page, Mina Ryten, Stephanie C. Hicks, Keri Martinowich, Leonardo Collado-Torres, Kristen R. Maynard
-> bioRxiv 2023.02.15.528722; doi: https://doi.org/10.1101/2023.02.15.528722
+> TODO
+
 Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
 
 ```
-@article {Huuki-Myers2023.02.15.528722,
-	author = {Huuki-Myers, Louise A. and Spangler, Abby and Eagles, Nicholas J. and Montgomery, Kelsey D. and Kwon, Sang Ho and Guo, Boyi and Grant-Peters, Melissa and Divecha, Heena R. and Tippani, Madhavi and Sriworarat, Chaichontat and Nguyen, Annie B. and Ravichandran, Prashanthi and Tran, Matthew N. and Seyedian, Arta and , and Hyde, Thomas M. and Kleinman, Joel E. and Battle, Alexis and Page, Stephanie C. and Ryten, Mina and Hicks, Stephanie C. and Martinowich, Keri and Collado-Torres, Leonardo and Maynard, Kristen R.},
-	title = {Integrated single cell and unsupervised spatial transcriptomic analysis defines molecular anatomy of the human dorsolateral prefrontal cortex},
-	elocation-id = {2023.02.15.528722},
-	year = {2023},
-	doi = {10.1101/2023.02.15.528722},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2023/02/15/2023.02.15.528722},
-	eprint = {https://www.biorxiv.org/content/early/2023/02/15/2023.02.15.528722.full.pdf},
+@article {TODO,
 	journal = {bioRxiv}
 }
 ```
@@ -130,34 +113,10 @@ Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
 Below is the citation output from using `citation('spatialLIBD')` in R. Please run this yourself to check for any updates on how to cite __spatialLIBD__.
 
 ```{r 'citation_spatialLIBD'}
-print(citation("spatialLIBD"), bibtex = TRUE)
+print(citation("spatialLIBD")[1], bibtex = TRUE)
 ```
 
 Please note that the `spatialLIBD` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing the package.
-
-### Cite `Samui`
-
-To cite [`samui`](https://github.com/chaichontat/samui) please use:
-
-> Performant web-based interactive visualization tool for spatially-resolved transcriptomics experiments
-> Chaichontat Sriworarat, Annie Nguyen, Nicholas J. Eagles, Leonardo Collado-Torres, Keri Martinowich, Kristen R. Maynard, Stephanie C. Hicks
-> bioRxiv 2023.01.28.525943; doi: https://doi.org/10.1101/2023.01.28.525943
-
-Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
-
-```
-@article {Sriworarat2023.01.28.525943,
-	author = {Sriworarat, Chaichontat and Nguyen, Annie and Eagles, Nicholas J. and Collado-Torres, Leonardo and Martinowich, Keri and Maynard, Kristen R. and Hicks, Stephanie C.},
-	title = {Performant web-based interactive visualization tool for spatially-resolved transcriptomics experiments},
-	elocation-id = {2023.01.28.525943},
-	year = {2023},
-	doi = {10.1101/2023.01.28.525943},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2023/01/29/2023.01.28.525943},
-	eprint = {https://www.biorxiv.org/content/early/2023/01/29/2023.01.28.525943.full.pdf},
-	journal = {bioRxiv}
-}
-```
 
 ### Cite `VistoSeg`
 
@@ -192,9 +151,7 @@ We highly value open data sharing and believe that doing so accelerates science,
 
 [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) also allows you to access the data from this project as ready to use R objects. That is, a:
 
-* [`SpatialExperiment`](https://doi.org/10.1093/bioinformatics/btac299) object for the Visium samples (n = 30)
-* [`SpatialExperiment`](https://doi.org/10.1093/bioinformatics/btac299) object for the Visium SPG samples (n = 4)
-* [`SingleCellExperiment`](https://www.nature.com/articles/s41592-019-0654-x) object for the snRNA-seq samples (n = 19)
+* [`SpatialExperiment`](https://doi.org/10.1093/bioinformatics/btac299) object for the Visium-SPG samples (n = 10)
 
 You can use the [`zellkonverter`](https://bioconductor.org/packages/zellkonverter/) Bioconductor package to convert any of them into Python [`AnnData`](https://anndata.readthedocs.io/en/latest/) objects. If you browse our code, you can find examples of such conversions.
 
@@ -229,116 +186,97 @@ details, check the help file for `fetch_data()`.
 
 ```{r 'access_data', message=FALSE, fig.height = 8, fig.width = 9, eval = FALSE}
 ## Check that you have a recent version of spatialLIBD installed
-stopifnot(packageVersion("spatialLIBD") >= "1.11.6")
+stopifnot(packageVersion("spatialLIBD") >= "1.11.12")
 ## Download the spot-level data
-spe <- spatialLIBD::fetch_data(type = "spatialDLPFC_Visium")
+spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
+
 ## This is a SpatialExperiment object
 spe
-#> class: SpatialExperiment
-#> dim: 28916 113927
-#> metadata(1): BayesSpace.data
+#> class: SpatialExperiment 
+#> dim: 27853 38115 
+#> metadata(0):
 #> assays(2): counts logcounts
-#> rownames(28916): ENSG00000243485 ENSG00000238009 ... ENSG00000278817 ENSG00000277196
+#> rownames(27853): ENSG00000243485 ENSG00000238009 ... ENSG00000278817
+#>   ENSG00000277196
 #> rowData names(7): source type ... gene_type gene_search
-#> colnames(113927): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ... TTGTTTGTATTACACG-1 TTGTTTGTGTAAATTC-1
-#> colData names(155): age array_col ... VistoSeg_proportion wrinkle_type
-#> reducedDimNames(8): 10x_pca 10x_tsne ... HARMONY UMAP.HARMONY
+#> colnames(38115): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ... TTGTTTGTATTACACG-1
+#>   TTGTTTGTGTAAATTC-1
+#> colData names(113): key sample_id ... APOe path_groups_colors
+#> reducedDimNames(15): 10x_pca 10x_tsne ... TSNE_perplexity50.HARMONY
+#>   TSNE_perplexity80.HARMONY
 #> mainExpName: NULL
 #> altExpNames(0):
 #> spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
 #> imgData names(4): sample_id image_id data scaleFactor
-## Note the memory size
 lobstr::obj_size(spe)
-#> 6.97 GB
-## Set the cluster colors
-colors_BayesSpace <- Polychrome::palette36.colors(28)
-names(colors_BayesSpace) <- seq_len(28)
-## Remake the logo image with histology information
-p09 <- spatialLIBD::vis_clus(
+#> 2.29 GB
+
+## Remake the logo image
+p_pathology <- spatialLIBD::vis_clus(
     spe = spe,
-    clustervar = "BayesSpace_harmony_09",
-    sampleid = "Br6522_ant",
-    colors = colors_BayesSpace,
-    ... = " spatialDLPFC Human Brain\nSp09 domains -- made with spatialLIBD"
+    clustervar = "path_groups",
+    sampleid = "V10A27106_D1_Br3880",
+    colors = spe$path_groups_colors[!duplicated(spe$path_groups_colors)],
+    spatial = FALSE,
+    ... = " Visium SPG AD\nPathology groups -- made with spatialLIBD"
 )
-p09
+p_pathology
 ```
 
-<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp09"><img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp09.png" width="800px" align="center" /></a>
+<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp_pathology"><img src="http://research.libd.org/Visium_SPG_AD/img/Br3880_D1_pathology.png" width="800px" align="center" /></a>
 
-```{r "p16", fig.height = 8, fig.width = 9, eval = FALSE}
-## Repeat but for Sp16
-p16 <- spatialLIBD::vis_clus(
+```{r "p_BayesSpace", fig.height = 8, fig.width = 9, eval = FALSE}
+## Repeat but for BayesSpace at k = 28 (max 28 clusters, can be less)
+k_observed <- unique(spe$BayesSpace_harmony_k28)
+p_BayesSpace <- spatialLIBD::vis_clus(
     spe = spe,
-    clustervar = "BayesSpace_harmony_16",
-    sampleid = "Br6522_ant",
-    colors = colors_BayesSpace,
-    ... = " spatialDLPFC Human Brain\nSp16 domains -- made with spatialLIBD"
+    clustervar = "BayesSpace_harmony_k28",
+    sampleid = "V10A27106_D1_Br3880",
+    spatial = FALSE,
+    colors = setNames(Polychrome::palette36.colors(length(k_observed)), k_observed),
+    ... = " Visium SPG AD\nBayesSpace k28 -- made with spatialLIBD"
 )
-p16
+p_BayesSpace
 ```
 
 ```{r "save_plots", include = FALSE, eval = FALSE}
-ggplot2::ggsave(here::here("img", "Br6255_ant_Sp09.png"),
-    p09,
+ggplot2::ggsave(here::here("img", "Br3880_D1_pathology.png"),
+    p_pathology,
     width = 8,
     height = 7
 )
-ggplot2::ggsave(here::here("img", "Br6255_ant_Sp16.png"),
-    p16,
+ggplot2::ggsave(here::here("img", "Br3880_D1_BayesSpace.png"),
+    p_BayesSpace,
     width = 8,
     height = 7
 )
 ```
 
-<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp16"><img src="http://research.libd.org/spatialDLPFC/img/Br6255_ant_Sp16.png" width="800px" align="center" /></a>
+<a href="https://libd.shinyapps.io/spatialDLPFC_Visium_Sp_BayesSpace"><img src="http://research.libd.org/Visium_SPG_AD/img/Br3880_D1_BayesSpace.png" width="800px" align="center" /></a>
 
 
 ### Raw data
 
-The source data described in this manuscript are available via the PsychENCODE Knowledge Portal (https://PsychENCODE.synapse.org/). The PsychENCODE Knowledge Portal is a platform for accessing data, analyses, and tools generated through grants funded by the National Institute of Mental Health (NIMH) PsychENCODE Consortium. Data is available for general research use according to the following requirements for data access and data attribution: (https://PsychENCODE.synapse.org/DataAccess). For access to content described in this manuscript see: https://www.synapse.org/#!Synapse:syn51032055/datasets/. All figure and table files are available from https://www.synapse.org/#!Synapse:syn50908929.
-
-You can also access all the raw data through [Globus](http://research.libd.org/globus/) (`jhpce#spatialDLPFC` and `jhpce#DLPFC_snRNAseq`). This includes all the input FASTQ files as well as the outputs from tools such as [`SpaceRanger`](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger) or [`CellRanger`](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger). The files are _mostly_ organized following the [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project) project structure.
-
+You can access all the raw data through [Globus](http://research.libd.org/globus/) ([jhpce#Visium_SPG_AD](http://research.libd.org/globus/jhpce_Visium_SPG_AD/index.html)). This includes all the input FASTQ files as well as the outputs from tools such as [`SpaceRanger`](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger). The files are organized following the [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project) project structure.
 
 ## Internal
 
-* JHPCE locations:
-  - `/dcs04/lieber/lcolladotor/spatialDLPFC_LIBD4035/spatialDLPFC`
-  - `/dcs04/lieber/lcolladotor/deconvolution_LIBD4030/DLPFC_snRNAseq`
-* Slack channel: [`libd_dlpfc_spatial`](https://jhu-genomics.slack.com/archives/C01EA7VDJNT).
+* JHPCE locations: `/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD`
+* Slack channel: [`libd_visium_if_ad_itg`](https://jhu-genomics.slack.com/archives/C01GJ0F731Q).
 
-### Files: [`spatialDLPFC`](https://github.com/LieberInstitute/spatialDLPFC)
+### Files:
 
 - `code`: R, python, and shell scripts for running various analyses.
-  * `spot_deconvo`: cell-type deconvolution within Visium spots, enabled by tools like [`tangram`](https://doi.org/10.1038/s41592-021-01264-7), [`cell2location`](https://doi.org/10.1038/s41587-021-01139-4), [`cellpose`](https://cellpose.readthedocs.io/en/latest/), and [`SPOTlight`](https://doi.org/10.1093/nar/gkab043)
-  * `spython`: older legacy testing scripts mostly replaced by `spot_deconvo`
-- `plots`: plots generated by RMarkdown or R analysis scripts in `.pdf` or `.png` format
+- `plots`: plots generated by R analysis scripts in `.pdf` or `.png` format
 - `processed-data`
-  * `images_spatialLIBD`: images used for running `SpaceRanger`
-  * `NextSeq`: `SpaceRanger` output files
-  * `rdata`: R objects
+  * `Images`: images used for running `SpaceRanger` and other images
+  * `spaceranger`: `SpaceRanger` output files
 - `raw-data`
-  * `FASTQ`: FASTQ files from `NextSeq` runs.
-  * `FASTQ_renamed`: renamed symbolic links to the original FASTQs, with consistent nomenclature
-  * `Images`: raw images from the scanner in `.tif` format and around 3 GB per sample.
-  * `images_raw_align_json`
-  * `psychENCODE`: external data from PsychENCODE (doi: [10.7303/syn2787333](https://doi.org/10.7303/syn2787333)).
-  * `sample_info`: spreadsheet with information about samples (sample ID, sample name, slide serial number, capture area ID)
-
-This GitHub repository is organized along the [_R/Bioconductor-powered Team Data Science_ group guidelines](https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.Yaf9fPHMIdk).  It aims to follow the [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project) structure, though most of the `code/analysis` output is saved at `processed-data/rdata/spe` directory unlike what's specified in the template structure. This is due to historical reasons.
-
-### Files: [`DLPFC_snRNAseq`](https://github.com/LieberInstitute/DLPFC_snRNAseq)
-
-- `code`: R scripts for running various analyses.
-- `plots`: plots generated by RMarkdown or R analysis scripts in `.pdf` or `.png` format
-- `processed-data`
-  * `cellranger`: `CellRanger` output files
-- `raw-data`
+  * `10x_files`: files 10x Genomics transferred to us.
   * `FASTQ`: FASTQ files.
-  * `sample_info`: spreadsheet with information about samples (sample ID, sample name)
+  * `Images`: raw images from the scanner in `.tif` format for each Visium-SPG slide (around 8GB each). Each slide contains the image for four capture areas.
 
-This GitHub repository is organized along the [_R/Bioconductor-powered Team Data Science_ group guidelines](https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.Yaf9fPHMIdk). It aims to follow the [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project) structure.
+This GitHub repository is organized along the [_R/Bioconductor-powered Team Data Science_ group guidelines](https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.Yaf9fPHMIdk).  It follows the [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project) structure.
 
 ### Other related files
 

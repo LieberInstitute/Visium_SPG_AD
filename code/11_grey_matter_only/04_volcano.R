@@ -13,11 +13,11 @@ stopifnot(file.exists(dir_plots))
 
 ## Locate data directory
 dir_rdata <- here::here(
-        "code",
-        "05_deploy_app_wholegenome"
-    )
+    "code",
+    "05_deploy_app_wholegenome"
+)
 
-load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
+load(file.path(dir_rdata, "Visium_SPG_AD_modeling_results.Rdata"),
     verbose = TRUE
 )
 sce_pseudo <-
@@ -105,7 +105,7 @@ make_volcano <- function(testname) {
         pval = subset_sig$pval
     )
 
-    if(testname == "Ab") {
+    if (testname == "Ab") {
         selected <- c("UBE2A", "PSMC4", "IDI1", "NINJ1")
     } else if (testname == "n_Ab") {
         selected <- c("C3", "PPP3CA", "UCHL1", "SST")
@@ -118,13 +118,15 @@ make_volcano <- function(testname) {
     ## Adapted from https://github.com/LieberInstitute/spatial_hpc/blob/62334e88788c2a7010f2d500418639769121ecf1/code/08_pseudobulk/PRECAST/plot_volcano.R#L580-L591
     EnhancedVolcano(df,
         lab = df$gene,
-        x = 'logFC',
-        y = 'pval',
+        x = "logFC",
+        y = "pval",
         FCcutoff = 0,
         pCutoff = p_cut,
         ylab = "-log10 pval",
-        legendLabels = c('Not sig.','Not sig.', 'FDR < 0.1',
-            'FDR < 0.1'),
+        legendLabels = c(
+            "Not sig.", "Not sig.", "FDR < 0.1",
+            "FDR < 0.1"
+        ),
         col = c("grey30", "grey30", "royalblue", "red2"),
         title = paste(testname, "> rest"),
         subtitle = "",
@@ -138,7 +140,7 @@ make_volcano <- function(testname) {
 }
 
 pdf(file.path(dir_plots, "volcano_plots.pdf"), width = 5)
-for(i in sort(unique(subset_sig$test))) {
+for (i in sort(unique(subset_sig$test))) {
     message(Sys.time(), " making volcano plot for ", i)
     print(make_volcano(i))
 }

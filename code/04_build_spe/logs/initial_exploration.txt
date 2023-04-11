@@ -97,7 +97,7 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
            V10A271061            V10A271062            V10A271063 
 "V10A27106_A1_Br3874" "V10A27106_B1_Br3854" "V10A27106_C1_Br3873" 
            V10A271064            V10T310361            V10T310362 
@@ -107,9 +107,9 @@ here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
            V10A270042 
 "V10A27004_D1_Br3880" 
 [1] 9
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/04_build_spe/wholegenome_graph_based.pdf"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/plots/04_build_spe/wholegenome_graph_based.pdf"
 [1] 6
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/04_build_spe/targeted_graph_based.pdf"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/plots/04_build_spe/targeted_graph_based.pdf"
 New names:
 * `` -> ...3
            TargetedSequencing

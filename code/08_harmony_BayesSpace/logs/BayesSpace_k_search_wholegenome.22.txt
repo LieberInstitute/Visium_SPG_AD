@@ -25,7 +25,7 @@ Currently Loaded Modules:
 
  
 
-here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
 Loading required package: SingleCellExperiment
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -105,7 +105,7 @@ Fitting model...
 Calculating labels using iterations 1000 through 50000.
 [1] "2022-03-10 16:37:00 EST"
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
-[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k22.pdf"
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/plots/08_harmony_BayesSpace/wholegenome/BayesSpace_harmony_k22.pdf"
 [1] "Reproducibility information:"
 [1] "2022-03-10 16:37:19 EST"
      user    system   elapsed 

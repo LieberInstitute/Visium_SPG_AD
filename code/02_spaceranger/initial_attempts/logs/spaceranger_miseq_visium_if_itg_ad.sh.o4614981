@@ -241,18 +241,18 @@ Copyright (C) 2019 Genome Research Ltd.
 2021-03-15 10:39:58 [runtime] (join_complete)   ID.Br3854_ITG_montage.SPATIAL_RNA_COUNTER_CS.CLOUPE_PREPROCESS
 
 Outputs:
-- Run summary HTML:                         /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/web_summary.html
-- Outputs of spatial pipeline:              /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/spatial
-- Run summary CSV:                          /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/metrics_summary.csv
-- BAM:                                      /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/possorted_genome_bam.bam
-- BAM index:                                /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/possorted_genome_bam.bam.bai
-- Filtered feature-barcode matrices MEX:    /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/filtered_feature_bc_matrix
-- Filtered feature-barcode matrices HDF5:   /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/filtered_feature_bc_matrix.h5
-- Unfiltered feature-barcode matrices MEX:  /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/raw_feature_bc_matrix
-- Unfiltered feature-barcode matrices HDF5: /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/raw_feature_bc_matrix.h5
-- Secondary analysis output CSV:            /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/analysis
-- Per-molecule read information:            /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/molecule_info.h5
-- Loupe Browser file:                       /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_IF_AD/outputs/MiSeq/Br3854_ITG_montage/outs/cloupe.cloupe
+- Run summary HTML:                         /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/web_summary.html
+- Outputs of spatial pipeline:              /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/spatial
+- Run summary CSV:                          /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/metrics_summary.csv
+- BAM:                                      /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/possorted_genome_bam.bam
+- BAM index:                                /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/possorted_genome_bam.bam.bai
+- Filtered feature-barcode matrices MEX:    /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/filtered_feature_bc_matrix
+- Filtered feature-barcode matrices HDF5:   /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/filtered_feature_bc_matrix.h5
+- Unfiltered feature-barcode matrices MEX:  /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/raw_feature_bc_matrix
+- Unfiltered feature-barcode matrices HDF5: /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/raw_feature_bc_matrix.h5
+- Secondary analysis output CSV:            /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/analysis
+- Per-molecule read information:            /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/molecule_info.h5
+- Loupe Browser file:                       /dcl02/lieber/ajaffe/SpatialTranscriptomics/LIBD/Visium_SPG_AD/outputs/MiSeq/Br3854_ITG_montage/outs/cloupe.cloupe
 - Target Panel File:                        null
 
 Waiting 6 seconds for UI to do final refresh.

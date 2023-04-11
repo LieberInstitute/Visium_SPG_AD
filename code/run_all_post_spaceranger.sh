@@ -19,7 +19,7 @@ echo "Task id: ${SGE_TASK_ID}"
 ## List current modules for reproducibility
 module list
 
-MAINDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD"
+MAINDIR="/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
 CODEDIR="${MAINDIR}/code"
 PROCESSEDIR="${MAINDIR}/processed-data"
 
@@ -124,10 +124,18 @@ cd ${CODEDIR}/13_tge_panel
 ##External Gene Sets
 cd ${CODEDIR}/14_external_gene_sets
 
+## Grey matter only analysis with the Abeta micro environment
+cd ${CODEDIR}/17_grey_matter_only_Abeta_microenv
+rm logs/create_pseudobulk_data*.txt
+rm logs/explore_expr_variability*.txt
+rm logs/model_pathology*.txt
+sh 01_create_pseudobulk_data.sh
+sh 02_explore_expr_variability.sh
+sh 03_model_pathology.sh
 
 
 ## Delete SPE versions for shiny
-rm ${CODEDIR}/0*_deploy_app*/spe*.Rdata
+rm ${CODEDIR}/*_deploy_app*/spe*.Rdata
 
 ## prepare to share the data through spatialLIBD
 cd ${CODEDIR}/98_prepare_to_share

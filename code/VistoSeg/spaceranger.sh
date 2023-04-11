@@ -33,11 +33,11 @@ module load spaceranger
 spaceranger count \
 --id=VIFAD3_V10T31-036_A1 \
 --transcriptome=/dcl02/lieber/ajaffe/SpatialTranscriptomics/refdata-gex-GRCh38-2020-A \
---fastqs=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/raw-data/FASTQ/spaceranger_our_alignments_nocr11/V10T31036_A1_Br3874/1145930_1160915_0_1_H5GKNDSX2/ \
---darkimage=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD3_V10T31-036_A1.tif \
+--fastqs=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/raw-data/FASTQ/spaceranger_our_alignments_nocr11/V10T31036_A1_Br3874/1145930_1160915_0_1_H5GKNDSX2/ \
+--darkimage=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD3_V10T31-036_A1.tif \
 --slide=V10T31-036 \
 --area=A1 \
---loupe-alignment=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/loupe_alignment/VIFAD3_V10T31-036_A1.json \
+--loupe-alignment=/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/loupe_alignment/VIFAD3_V10T31-036_A1.json \
 --jobmode=local \
 --localcores=8 \
 --localmem=64

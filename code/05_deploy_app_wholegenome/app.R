@@ -21,7 +21,7 @@ if (local) {
     ## For shinyapps.io
     dir_rdata <- getwd()
 }
-load(file.path(dir_rdata, "Visium_IF_AD_modeling_results.Rdata"),
+load(file.path(dir_rdata, "Visium_SPG_AD_modeling_results.Rdata"),
     verbose = TRUE
 )
 sce_pseudo <-
@@ -57,7 +57,7 @@ if (local) {
     write.csv(z[, !grepl("^in_rows", colnames(z))],
         file = file.path(
             dir_rdata,
-            "Visium_IF_AD_wholegenome_model_results_FDR5perc.csv"
+            "Visium_SPG_AD_wholegenome_model_results_FDR5perc.csv"
         )
     )
 }
@@ -72,7 +72,7 @@ spatialLIBD::run_app(
     sce_layer = sce_pseudo,
     modeling_results = modeling_results,
     sig_genes = sig_genes,
-    title = "Visium IF AD, Kwon SH et al, 2022",
+    title = "Visium SPG AD, Kwon SH et al, 2023",
     spe_discrete_vars = c(
         path_vars,
         "ManualAnnotation",
@@ -91,15 +91,10 @@ spatialLIBD::run_app(
         "PAbeta",
         "NDAPI",
         "PDAPI",
-        "NGFAP",
-        "PGFAP",
-        "NLipofuscin",
-        "PLipofuscin",
-        "NMAP2",
-        "PMAP2",
         "NpTau",
         "PpTau",
         "edge_distance"
     ),
-    default_cluster = "path_groups"
+    default_cluster = "path_groups",
+    docs_path = "www"
 )

@@ -14,7 +14,7 @@ Job name: countSpots.sh
 Hostname: compute-121.cm.cluster
 Task id: 8
 ****
-Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD3_V10T31-036_B1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_B1_Br3854/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_IF_AD/processed-data/spaceranger/V10T31036_B1_Br3854/outs/spatial/tissue_positions_list.csv
+Sample id: /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/VistoSeg/Segmentations/VIFAD3_V10T31-036_B1_segmentation.mat	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/spaceranger/V10T31036_B1_Br3854/outs/spatial/scalefactors_json.json	/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/spaceranger/V10T31036_B1_Br3854/outs/spatial/tissue_positions_list.csv
 ****
 
 Currently Loaded Modules:

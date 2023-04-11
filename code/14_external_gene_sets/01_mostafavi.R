@@ -26,7 +26,7 @@ source(here("code/14_external_gene_sets/get_ensembl_function.R"))
 #### read in necessary input files ####
 load(here(
     "processed-data", "11_grey_matter_only", "wholegenome",
-    "Visium_IF_AD_modeling_results.Rdata"
+    "Visium_SPG_AD_modeling_results.Rdata"
 ))
 
 mostafavi_dir <- here(
@@ -108,17 +108,21 @@ mostafavi_enrichment <- gene_set_enrichment(
     model_type = "enrichment", reverse = FALSE
 )
 
-dummy_row_enrichment <- data.frame(OR = 2,
-                            Pval = 0.01 ,
-                            test = "none" ,
-                            NumSig = 0  ,
-                            SetSize = 0 ,
-                            ID = "dummy",
-                            model_type = "enrichment" ,
-                            fdr_cut = 0.1)
+dummy_row_enrichment <- data.frame(
+    OR = 2,
+    Pval = 0.01,
+    test = "none",
+    NumSig = 0,
+    SetSize = 0,
+    ID = "dummy",
+    model_type = "enrichment",
+    fdr_cut = 0.1
+)
 
-mostafavi_enrichment  = rbind(mostafavi_enrichment,
-                              dummy_row_enrichment)
+mostafavi_enrichment <- rbind(
+    mostafavi_enrichment,
+    dummy_row_enrichment
+)
 
 mostafavi_depleted <- gene_set_enrichment(
     mostafavi_geneList,
@@ -128,18 +132,22 @@ mostafavi_depleted <- gene_set_enrichment(
     reverse = TRUE
 )
 
-dummy_row_depleted <- data.frame(OR = 2,
-                             Pval = 0.01 ,
-                             test = "none" ,
-                             NumSig = 0  ,
-                             SetSize = 0 ,
-                             ID = "dummy",
-                             model_type = "depletion" ,
-                             fdr_cut = 0.1)
+dummy_row_depleted <- data.frame(
+    OR = 2,
+    Pval = 0.01,
+    test = "none",
+    NumSig = 0,
+    SetSize = 0,
+    ID = "dummy",
+    model_type = "depletion",
+    fdr_cut = 0.1
+)
 
 
-mostafavi_depleted  = rbind(mostafavi_depleted,
-                            dummy_row_depleted)
+mostafavi_depleted <- rbind(
+    mostafavi_depleted,
+    dummy_row_depleted
+)
 
 
 
@@ -185,7 +193,7 @@ gene_set_enrichment_plot(
 
 dev.off()
 
-print ("##### results #####")
+print("##### results #####")
 
 print("mostafavi_depleted")
 print(mostafavi_depleted)
