@@ -43,16 +43,16 @@ SUMMSTATS=/dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/GWAS_Resu
 ## Step 3 - Gene set analyses (using gene-level output)
 
 #top 200
-magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_200 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/ad_gwas_200
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_200 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/step3_results/ad_gwas_200
 
 #top 100
-magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_100 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/ad_gwas_100
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_100 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/step3_results/ad_gwas_100
 
 #top 50
-magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_50 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/ad_gwas_50
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $gs_50 gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/step3_results/ad_gwas_50
 
 #fdr geneset
-magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $fdr_set gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/ad_gwas_fdr
+magma --gene-results /dcs04/lieber/lcolladotor/pilotLC_LIBD001/locus-c/code/magma/SNP_Data/AD_Jansen2019_LC_snp-wise.genes.raw --set-annot $fdr_set gene-col=${genecol} set-col=${setcol} --out $here/01_Jansen_2019/step3_results/ad_gwas_fdr
 
 echo "**** Job ends ****"
 date
