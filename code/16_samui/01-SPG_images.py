@@ -14,11 +14,15 @@ from loopy.utils.utils import remove_dupes
 spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
 img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
+default_gene = 'SNAP25'
+spe_cont_features = ['PpTau', 'PAbeta']
+spe_disc_features = ['path_groups']
 
 sample_info_path = here(
-    'raw-data', 'Visium_SPG_AD_ITG_MasterExcelSummarySheet.xlsx'
+    'raw-data', 'Visium_IF_AD_ITG_MasterExcelSummarySheet.xlsx'
 )
 
+spe_path = here('processed-data', '16_samui', 'spe.h5ad')
 img_path = here(
     'processed-data', 'Images', 'VistoSeg', 'Capture_Areas', '{}.tif'
 )
@@ -26,10 +30,7 @@ json_path = here(
     'processed-data', 'spaceranger', '{}', 'outs', 'spatial',
     'scalefactors_json.json'
 )
-tissue_path = here(
-    'processed-data', 'spaceranger', '{}', 'outs', 'spatial',
-    'tissue_positions_list.csv'
-)
+
 out_dir = here('processed-data', '16_samui', '{}')
 
 ################################################################################
@@ -75,33 +76,41 @@ sample_id_image = sample_info['image_id'].iloc[int(os.environ['SGE_TASK_ID']) - 
 out_dir = Path(str(out_dir).format(sample_id_spaceranger))
 json_path = Path(str(json_path).format(sample_id_spaceranger))
 img_path = Path(str(img_path).format(sample_id_image))
-tissue_path = Path(str(tissue_path).format(sample_id_spaceranger))
 
 out_dir.mkdir(exist_ok = True)
 
 #   All paths should exist
-assert all([x.exists() for x in [out_dir, json_path, img_path, tissue_path]])
+assert all([x.exists() for x in [out_dir, json_path, img_path]])
 
 ################################################################################
-#   Read in spatial coordinates and scale-factors info
+#   Read in scale-factors info
 ################################################################################
 
-#   Read in the tissue positions file to get spatial coordinates. Index by
-#   barcode
-tissue_positions = pd.read_csv(
-    tissue_path,
-    header = None,
-    names = ["in_tissue", "row", "col", "y", "x"], # Note the switch of x and y
-    index_col = 0
-)
-tissue_positions.index.name = "barcode"
-
-#   Read in the spaceranger JSON, ultimately to calculate meters per pixel for
+#   Read in the spaceranger JSON to calculate meters per pixel for
 #   the full-resolution image
 with open(json_path, 'r') as f:
     spaceranger_json = json.load(f)
 
 m_per_px = spot_diameter_m / spaceranger_json['spot_diameter_fullres']
+
+################################################################################
+#   Gather gene-expression data into a DataFrame to later as a feature
+################################################################################
+
+#   Read in AnnData and subset to this sample
+spe = sc.read(spe_path)
+spe = spe[spe.obs['sample_id'] == sample_id_spaceranger, :]
+spe.obs.index.name = "barcode"
+
+#   Convert the sparse gene-expression matrix to pandas DataFrame, with the
+#   gene symbols as column names
+gene_df = pd.DataFrame(
+    spe.X.toarray(),
+    index = spe.obs.index,
+    columns = spe.var['gene_name']
+)
+
+assert default_gene in gene_df.columns, "Default gene not in AnnData"
 
 ################################################################################
 #   Use the Samui API to create the importable directory for this sample
@@ -110,7 +119,10 @@ m_per_px = spot_diameter_m / spaceranger_json['spot_diameter_fullres']
 this_sample = Sample(name = sample_id_spaceranger, path = out_dir)
 
 this_sample.add_coords(
-    tissue_positions, name = "coords", mPerPx = m_per_px, size = spot_diameter_m
+    spe.obsm['spatial'].rename(
+        columns = {'pxl_col_in_fullres': 'x', 'pxl_row_in_fullres': 'y'}
+    ),
+    name = "coords", mPerPx = m_per_px, size = spot_diameter_m
 )
 
 #   Add the IF image for this sample
@@ -119,6 +131,21 @@ this_sample.add_image(
     defaultChannels = default_channels
 )
 
-#this_sample.set_default_feature(group = "Genes", feature = "SNAP25")
+#   Add gene expression results (multiple columns) as a feature
+this_sample.add_csv_feature(
+    gene_df, name = "Genes", coordName = "coords", dataType = "quantitative"
+)
+
+#   Add additional requested observational columns (colData columns)
+this_sample.add_csv_feature(
+    spe.obs[spe_cont_features], name = "Spot Coverage", coordName = "coords",
+    dataType = "quantitative"
+)
+this_sample.add_csv_feature(
+    spe.obs[spe_disc_features], name = "Groups", coordName = "coords",
+    dataType = "categorical"
+)
+
+this_sample.set_default_feature(group = "Genes", feature = default_gene)
 
 this_sample.write()
