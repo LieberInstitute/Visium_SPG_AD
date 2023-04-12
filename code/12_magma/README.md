@@ -1,4 +1,5 @@
 README
+
 MAGMA is a self-contained executable and does not need to be installed. 
 If the magma file is placed in a directory that is included in the PATH variable, it can be called from anywhere by simply entering 'magma' followed by the desired arguments at the command line. 
 Otherwise, the path to the file must be added (eg. './magma' if it is in the current directory.
