@@ -51,13 +51,13 @@ unique(table_s2$Trait)
 
 
 table_s2 <- table_s2 |> dplyr::filter(FDR < 0.1)
-unique(table_s2 |> dplyr::filter(!is.na(gene_ensembl_id)) |> dplyr::select(gene_id))
 table_s2_np <- table_s2 |> dplyr::filter(Trait == "NEURITIC PLAQUES")
 table_s2_am <- table_s2 |> dplyr::filter(Trait == "AMYLOID")
 genes_s2_am <- get_ensembl(table_s2_am, gene_id, "gene_id")
+genes_s2_am <- unique(genes_s2_am, na.rm = TRUE)
 table_s2_ta <- table_s2 |> dplyr::filter(Trait == "Tangles")
 genes_s2_ta <- get_ensembl(table_s2_ta, gene_id, "gene_id")
-
+genes_s2_ta <- unique(genes_s2_ta, na.rm = TRUE)
 
 # gene_id
 # 1     AC015936
@@ -113,9 +113,6 @@ raj_geneList <- list(
     raj_table_2_ta = genes_s2_ta,
     raj_table_3 = table_s3
 )
-
-
-
 
 
 
