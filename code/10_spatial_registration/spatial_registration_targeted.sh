@@ -7,17 +7,18 @@
 #$ -m e
 #$ -t 2-28
 #$ -tc 20
+#$ -hold_jid BayesSpace_k_search_targeted
 
 
 echo "**** Job starts ****"
 date
 
 echo "**** JHPCE info ****"
-echo "User: lcollado"
-echo "Job id: "
-echo "Job name: "
-echo "Hostname: compute-122.cm.cluster"
-echo "Task id: "
+echo "User: sparthib"
+echo "Job id: 3115891"
+echo "Job name: ${SHORT}"
+echo "Hostname: compute-095.cm.cluster"
+echo "Task id: 26"
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
 module load conda_R/4.2
