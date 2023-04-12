@@ -8,7 +8,7 @@ External gene set enrichment analyses were performed from various findings liste
 
 `04_grubman`   : https://www.nature.com/articles/s41593-019-0539-4
 
-`05_leung`    : https://www.nature.com/articles/s41593-020-00764-7
+`05_leng`    : https://www.nature.com/articles/s41593-020-00764-7
 
 `06_morabito`  : https://www.nature.com/articles/s41588-021-00894-z
 
