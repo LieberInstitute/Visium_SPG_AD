@@ -32,7 +32,7 @@ library(sessioninfo)
 
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
-spetype <- args = commandArgs(trailingOnly=TRUE)
+spetype <- commandArgs(trailingOnly=TRUE)
 spe <-
     readRDS(
         here::here(
