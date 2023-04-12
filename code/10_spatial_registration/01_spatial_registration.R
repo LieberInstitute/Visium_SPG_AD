@@ -11,23 +11,6 @@
 #
 # )
 
-# Required libraries
-library("getopt")
-
-## Specify parameters
-spec <- matrix(c(
-    "spetype", "s", 2, "character", "SPE type: wholegenome or targeted",
-    "help", "h", 0, "logical", "Display help"
-), byrow = TRUE, ncol = 5)
-opt <- getopt(spec)
-
-## if help was asked for print a friendly message
-## and exit with a non-zero error code
-if (!is.null(opt$help)) {
-    cat(getopt(spec, usage = TRUE))
-    q(status = 1)
-}
-
 
 library(SpatialExperiment)
 library(here)
@@ -49,14 +32,14 @@ library(sessioninfo)
 
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
-
+spetype <- args = commandArgs(trailingOnly=TRUE)
 spe <-
     readRDS(
         here::here(
             "processed-data",
             "08_harmony_BayesSpace",
             opt$spe_type,
-            paste0("spe_harmony_", opt$type, ".rds")
+            paste0("spe_harmony_", spetype, ".rds")
         )
     )
 
@@ -65,7 +48,7 @@ spe <- cluster_import(
     cluster_dir = here::here(
         "processed-data",
         "08_harmony_BayesSpace",
-        opt$spe_type,
+        spetype,
         "clusters_BayesSpace"
     ),
     prefix = ""
@@ -233,7 +216,7 @@ cor_stats_layer <- layer_stat_cor(
 
 ## plot output directory
 dir_plots <-
-    here::here("plots", "10_spatial_registration", opt$spetype)
+    here::here("plots", "10_spatial_registration", spetype)
 # dir.create(dir_plots, showWarnings = FALSE)
 
 # http://research.libd.org/spatialLIBD/reference/layer_stat_cor_plot.html newer function for plotting
@@ -245,7 +228,7 @@ pdf(
         paste0(
             "enrichment_analysis_k_",
             k_nice, "_",
-            opt$spetype,
+            spetype,
             ".pdf"
         )
     ),
