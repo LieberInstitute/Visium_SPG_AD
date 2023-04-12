@@ -38,7 +38,7 @@ spe <-
         here::here(
             "processed-data",
             "08_harmony_BayesSpace",
-            spe_type,
+            spetype,
             paste0("spe_harmony_", spetype, ".rds")
         )
     )
