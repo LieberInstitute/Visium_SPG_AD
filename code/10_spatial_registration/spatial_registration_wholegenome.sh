@@ -13,10 +13,10 @@ echo "**** Job starts ****"
 date
 
 echo "**** JHPCE info ****"
-echo "User: lcollado"
+echo "User: sparthib"
 echo "Job id: "
 echo "Job name: "
-echo "Hostname: compute-122.cm.cluster"
+echo "Hostname: "
 echo "Task id: "
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
