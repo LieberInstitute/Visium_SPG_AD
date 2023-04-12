@@ -26,7 +26,7 @@ module load conda_R/4.2
 module list
 
 ## Edit with your job command
-Rscript 01_spatial_registration.R -s targeted
+Rscript 01_spatial_registration.R "targeted"
 
 echo "**** Job ends ****"
 date
