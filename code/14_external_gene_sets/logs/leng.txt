@@ -1,0 +1,534 @@
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.9
+Loading LIBD module for ruby/2.6.4p104
+Loading conda_R/devel
+**** Job starts ****
+Wed Apr 12 08:44:56 EDT 2023
+**** JHPCE info ****
+User: sparthib
+Job id: 3116828
+Job name: leung
+Hostname: compute-095.cm.cluster
+Task id: undefined
+Unloading conda_R/devel
+Loading conda_R/4.2
+
+The following have been reloaded with a version change:
+  1) conda/3-4.6.14 => conda/3-4.11.0     2) conda_R/devel => conda_R/4.2
+
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/2.6.4p104
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.9
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.11.0
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.2
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: SpatialExperiment
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:Biobase’:
+
+    combine
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
+Loading required package: scuttle
+
+Attaching package: ‘purrr’
+
+The following object is masked from ‘package:GenomicRanges’:
+
+    reduce
+
+The following object is masked from ‘package:IRanges’:
+
+    reduce
+
+[1] "/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD"
+Loading required package: ensembldb
+Loading required package: GenomicFeatures
+Loading required package: AnnotationDbi
+
+Attaching package: ‘AnnotationDbi’
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+Loading required package: AnnotationFilter
+
+Attaching package: 'ensembldb'
+
+The following object is masked from 'package:dplyr':
+
+    filter
+
+The following object is masked from 'package:stats':
+
+    filter
+
+[1] "Reproducibility information:"
+[1] 1117
+[1] "EC:Exc.s0" "EC:Exc.s1" "EC:Exc.s2" "EC:Exc.s3" "EC:Exc.s4" "EC:Exc.s5" "EC:Exc.s6" "EC:Exc.s7" "EC:Exc.s8"
+[1] 614
+[1] 503
+Warning message:
+In gene_set_enrichment(leng_geneList, fdr_cut = 0.1, modeling_results = modeling_results,  :
+  Gene list with n < 25 may have insufficent power for enrichment analysis: leng_1_up ,leng_1_down ,leng_2_up_s0 ,leng_2_up_s1 ,leng_2_up_s2 ,leng_2_up_s3 ,leng_2_up_s4 ,leng_2_up_s5 ,leng_2_up_s6 ,leng_2_up_s7 ,leng_2_up_s8 ,leng_2_down_s0 ,leng_2_down_s1 ,leng_2_down_s2 ,leng_2_down_s3 ,leng_2_down_s4 ,leng_2_down_s5 ,leng_2_down_s6 ,leng_2_down_s7 ,leng_2_down_s8
+           OR        Pval   test NumSig SetSize             ID model_type fdr_cut
+1    0.000000 1.000000000   none      0     137      leng_1_up enrichment     0.1
+2    0.000000 1.000000000   none      0     143    leng_1_down enrichment     0.1
+3    0.000000 1.000000000   none      0      22   leng_2_up_s0 enrichment     0.1
+4    0.000000 1.000000000   none      0       8   leng_2_up_s1 enrichment     0.1
+5    0.000000 1.000000000   none      0      28   leng_2_up_s2 enrichment     0.1
+6    0.000000 1.000000000   none      0      23   leng_2_up_s3 enrichment     0.1
+7    0.000000 1.000000000   none      0      11   leng_2_up_s4 enrichment     0.1
+8    0.000000 1.000000000   none      0      38   leng_2_up_s5 enrichment     0.1
+9    0.000000 1.000000000   none      0      10   leng_2_up_s6 enrichment     0.1
+10   0.000000 1.000000000   none      0      21   leng_2_up_s7 enrichment     0.1
+11   0.000000 1.000000000   none      0      13   leng_2_up_s8 enrichment     0.1
+12   0.000000 1.000000000   none      0      31 leng_2_down_s0 enrichment     0.1
+13   0.000000 1.000000000   none      0      39 leng_2_down_s1 enrichment     0.1
+14   0.000000 1.000000000   none      0      99 leng_2_down_s2 enrichment     0.1
+15   0.000000 1.000000000   none      0      17 leng_2_down_s3 enrichment     0.1
+16   0.000000 1.000000000   none      0      30 leng_2_down_s4 enrichment     0.1
+17   0.000000 1.000000000   none      0      58 leng_2_down_s5 enrichment     0.1
+18   0.000000 1.000000000   none      0      21 leng_2_down_s6 enrichment     0.1
+19   0.000000 1.000000000   none      0      37 leng_2_down_s7 enrichment     0.1
+20   0.000000 1.000000000   none      0      45 leng_2_down_s8 enrichment     0.1
+21   0.000000 1.000000000     Ab      0     137      leng_1_up enrichment     0.1
+22   0.000000 1.000000000     Ab      0     143    leng_1_down enrichment     0.1
+23   0.000000 1.000000000     Ab      0      22   leng_2_up_s0 enrichment     0.1
+24   0.000000 1.000000000     Ab      0       8   leng_2_up_s1 enrichment     0.1
+25   0.000000 1.000000000     Ab      0      28   leng_2_up_s2 enrichment     0.1
+26   0.000000 1.000000000     Ab      0      23   leng_2_up_s3 enrichment     0.1
+27   0.000000 1.000000000     Ab      0      11   leng_2_up_s4 enrichment     0.1
+28   0.000000 1.000000000     Ab      0      38   leng_2_up_s5 enrichment     0.1
+29   0.000000 1.000000000     Ab      0      10   leng_2_up_s6 enrichment     0.1
+30   0.000000 1.000000000     Ab      0      21   leng_2_up_s7 enrichment     0.1
+31   0.000000 1.000000000     Ab      0      13   leng_2_up_s8 enrichment     0.1
+32   0.000000 1.000000000     Ab      0      31 leng_2_down_s0 enrichment     0.1
+33   0.000000 1.000000000     Ab      0      39 leng_2_down_s1 enrichment     0.1
+34   0.000000 1.000000000     Ab      0      99 leng_2_down_s2 enrichment     0.1
+35   0.000000 1.000000000     Ab      0      17 leng_2_down_s3 enrichment     0.1
+36   0.000000 1.000000000     Ab      0      30 leng_2_down_s4 enrichment     0.1
+37   0.000000 1.000000000     Ab      0      58 leng_2_down_s5 enrichment     0.1
+38   0.000000 1.000000000     Ab      0      21 leng_2_down_s6 enrichment     0.1
+39   0.000000 1.000000000     Ab      0      37 leng_2_down_s7 enrichment     0.1
+40   0.000000 1.000000000     Ab      0      45 leng_2_down_s8 enrichment     0.1
+41   0.000000 1.000000000   n_Ab      0     137      leng_1_up enrichment     0.1
+42   1.161948 0.582638915   n_Ab      1     143    leng_1_down enrichment     0.1
+43   0.000000 1.000000000   n_Ab      0      22   leng_2_up_s0 enrichment     0.1
+44   0.000000 1.000000000   n_Ab      0       8   leng_2_up_s1 enrichment     0.1
+45   0.000000 1.000000000   n_Ab      0      28   leng_2_up_s2 enrichment     0.1
+46   0.000000 1.000000000   n_Ab      0      23   leng_2_up_s3 enrichment     0.1
+47   0.000000 1.000000000   n_Ab      0      11   leng_2_up_s4 enrichment     0.1
+48  14.902987 0.001509311   n_Ab      3      38   leng_2_up_s5 enrichment     0.1
+49   0.000000 1.000000000   n_Ab      0      10   leng_2_up_s6 enrichment     0.1
+50   8.365086 0.119606858   n_Ab      1      21   leng_2_up_s7 enrichment     0.1
+51  13.951439 0.075794583   n_Ab      1      13   leng_2_up_s8 enrichment     0.1
+52   0.000000 1.000000000   n_Ab      0      31 leng_2_down_s0 enrichment     0.1
+53   0.000000 1.000000000   n_Ab      0      39 leng_2_down_s1 enrichment     0.1
+54   0.000000 1.000000000   n_Ab      0      99 leng_2_down_s2 enrichment     0.1
+55   0.000000 1.000000000   n_Ab      0      17 leng_2_down_s3 enrichment     0.1
+56   0.000000 1.000000000   n_Ab      0      30 leng_2_down_s4 enrichment     0.1
+57   0.000000 1.000000000   n_Ab      0      58 leng_2_down_s5 enrichment     0.1
+58   0.000000 1.000000000   n_Ab      0      21 leng_2_down_s6 enrichment     0.1
+59   0.000000 1.000000000   n_Ab      0      37 leng_2_down_s7 enrichment     0.1
+60   0.000000 1.000000000   n_Ab      0      45 leng_2_down_s8 enrichment     0.1
+61   0.000000 1.000000000   pTau      0     137      leng_1_up enrichment     0.1
+62   0.000000 1.000000000   pTau      0     143    leng_1_down enrichment     0.1
+63   0.000000 1.000000000   pTau      0      22   leng_2_up_s0 enrichment     0.1
+64   0.000000 1.000000000   pTau      0       8   leng_2_up_s1 enrichment     0.1
+65   0.000000 1.000000000   pTau      0      28   leng_2_up_s2 enrichment     0.1
+66   0.000000 1.000000000   pTau      0      23   leng_2_up_s3 enrichment     0.1
+67   0.000000 1.000000000   pTau      0      11   leng_2_up_s4 enrichment     0.1
+68   0.000000 1.000000000   pTau      0      38   leng_2_up_s5 enrichment     0.1
+69   0.000000 1.000000000   pTau      0      10   leng_2_up_s6 enrichment     0.1
+70   0.000000 1.000000000   pTau      0      21   leng_2_up_s7 enrichment     0.1
+71   0.000000 1.000000000   pTau      0      13   leng_2_up_s8 enrichment     0.1
+72   0.000000 1.000000000   pTau      0      31 leng_2_down_s0 enrichment     0.1
+73   0.000000 1.000000000   pTau      0      39 leng_2_down_s1 enrichment     0.1
+74   0.000000 1.000000000   pTau      0      99 leng_2_down_s2 enrichment     0.1
+75   0.000000 1.000000000   pTau      0      17 leng_2_down_s3 enrichment     0.1
+76   0.000000 1.000000000   pTau      0      30 leng_2_down_s4 enrichment     0.1
+77   0.000000 1.000000000   pTau      0      58 leng_2_down_s5 enrichment     0.1
+78   0.000000 1.000000000   pTau      0      21 leng_2_down_s6 enrichment     0.1
+79   0.000000 1.000000000   pTau      0      37 leng_2_down_s7 enrichment     0.1
+80   0.000000 1.000000000   pTau      0      45 leng_2_down_s8 enrichment     0.1
+81   0.000000 1.000000000 n_pTau      0     137      leng_1_up enrichment     0.1
+82   0.000000 1.000000000 n_pTau      0     143    leng_1_down enrichment     0.1
+83   0.000000 1.000000000 n_pTau      0      22   leng_2_up_s0 enrichment     0.1
+84   0.000000 1.000000000 n_pTau      0       8   leng_2_up_s1 enrichment     0.1
+85   0.000000 1.000000000 n_pTau      0      28   leng_2_up_s2 enrichment     0.1
+86   0.000000 1.000000000 n_pTau      0      23   leng_2_up_s3 enrichment     0.1
+87   0.000000 1.000000000 n_pTau      0      11   leng_2_up_s4 enrichment     0.1
+88   0.000000 1.000000000 n_pTau      0      38   leng_2_up_s5 enrichment     0.1
+89   0.000000 1.000000000 n_pTau      0      10   leng_2_up_s6 enrichment     0.1
+90   0.000000 1.000000000 n_pTau      0      21   leng_2_up_s7 enrichment     0.1
+91   0.000000 1.000000000 n_pTau      0      13   leng_2_up_s8 enrichment     0.1
+92   0.000000 1.000000000 n_pTau      0      31 leng_2_down_s0 enrichment     0.1
+93   0.000000 1.000000000 n_pTau      0      39 leng_2_down_s1 enrichment     0.1
+94   0.000000 1.000000000 n_pTau      0      99 leng_2_down_s2 enrichment     0.1
+95   0.000000 1.000000000 n_pTau      0      17 leng_2_down_s3 enrichment     0.1
+96   0.000000 1.000000000 n_pTau      0      30 leng_2_down_s4 enrichment     0.1
+97   0.000000 1.000000000 n_pTau      0      58 leng_2_down_s5 enrichment     0.1
+98   0.000000 1.000000000 n_pTau      0      21 leng_2_down_s6 enrichment     0.1
+99   0.000000 1.000000000 n_pTau      0      37 leng_2_down_s7 enrichment     0.1
+100  0.000000 1.000000000 n_pTau      0      45 leng_2_down_s8 enrichment     0.1
+101  0.000000 1.000000000   both      0     137      leng_1_up enrichment     0.1
+102  0.000000 1.000000000   both      0     143    leng_1_down enrichment     0.1
+103  0.000000 1.000000000   both      0      22   leng_2_up_s0 enrichment     0.1
+104  0.000000 1.000000000   both      0       8   leng_2_up_s1 enrichment     0.1
+105  0.000000 1.000000000   both      0      28   leng_2_up_s2 enrichment     0.1
+106  0.000000 1.000000000   both      0      23   leng_2_up_s3 enrichment     0.1
+107  0.000000 1.000000000   both      0      11   leng_2_up_s4 enrichment     0.1
+108  0.000000 1.000000000   both      0      38   leng_2_up_s5 enrichment     0.1
+109  0.000000 1.000000000   both      0      10   leng_2_up_s6 enrichment     0.1
+110  0.000000 1.000000000   both      0      21   leng_2_up_s7 enrichment     0.1
+111  0.000000 1.000000000   both      0      13   leng_2_up_s8 enrichment     0.1
+112  0.000000 1.000000000   both      0      31 leng_2_down_s0 enrichment     0.1
+113  0.000000 1.000000000   both      0      39 leng_2_down_s1 enrichment     0.1
+114  0.000000 1.000000000   both      0      99 leng_2_down_s2 enrichment     0.1
+115  0.000000 1.000000000   both      0      17 leng_2_down_s3 enrichment     0.1
+116  0.000000 1.000000000   both      0      30 leng_2_down_s4 enrichment     0.1
+117  0.000000 1.000000000   both      0      58 leng_2_down_s5 enrichment     0.1
+118  0.000000 1.000000000   both      0      21 leng_2_down_s6 enrichment     0.1
+119  0.000000 1.000000000   both      0      37 leng_2_down_s7 enrichment     0.1
+120  0.000000 1.000000000   both      0      45 leng_2_down_s8 enrichment     0.1
+121  0.000000 1.000000000 n_both      0     137      leng_1_up enrichment     0.1
+122  0.000000 1.000000000 n_both      0     143    leng_1_down enrichment     0.1
+123  0.000000 1.000000000 n_both      0      22   leng_2_up_s0 enrichment     0.1
+124  0.000000 1.000000000 n_both      0       8   leng_2_up_s1 enrichment     0.1
+125  0.000000 1.000000000 n_both      0      28   leng_2_up_s2 enrichment     0.1
+126  0.000000 1.000000000 n_both      0      23   leng_2_up_s3 enrichment     0.1
+127  0.000000 1.000000000 n_both      0      11   leng_2_up_s4 enrichment     0.1
+128  0.000000 1.000000000 n_both      0      38   leng_2_up_s5 enrichment     0.1
+129  0.000000 1.000000000 n_both      0      10   leng_2_up_s6 enrichment     0.1
+130  0.000000 1.000000000 n_both      0      21   leng_2_up_s7 enrichment     0.1
+131  0.000000 1.000000000 n_both      0      13   leng_2_up_s8 enrichment     0.1
+132  0.000000 1.000000000 n_both      0      31 leng_2_down_s0 enrichment     0.1
+133  0.000000 1.000000000 n_both      0      39 leng_2_down_s1 enrichment     0.1
+134  0.000000 1.000000000 n_both      0      99 leng_2_down_s2 enrichment     0.1
+135  0.000000 1.000000000 n_both      0      17 leng_2_down_s3 enrichment     0.1
+136  0.000000 1.000000000 n_both      0      30 leng_2_down_s4 enrichment     0.1
+137  0.000000 1.000000000 n_both      0      58 leng_2_down_s5 enrichment     0.1
+138  0.000000 1.000000000 n_both      0      21 leng_2_down_s6 enrichment     0.1
+139  0.000000 1.000000000 n_both      0      37 leng_2_down_s7 enrichment     0.1
+140  0.000000 1.000000000 n_both      0      45 leng_2_down_s8 enrichment     0.1
+Warning message:
+In gene_set_enrichment(leng_geneList, fdr_cut = 0.1, modeling_results = modeling_results,  :
+  Gene list with n < 25 may have insufficent power for enrichment analysis: leng_1_up ,leng_1_down ,leng_2_up_s0 ,leng_2_up_s1 ,leng_2_up_s2 ,leng_2_up_s3 ,leng_2_up_s4 ,leng_2_up_s5 ,leng_2_up_s6 ,leng_2_up_s7 ,leng_2_up_s8 ,leng_2_down_s0 ,leng_2_down_s1 ,leng_2_down_s2 ,leng_2_down_s3 ,leng_2_down_s4 ,leng_2_down_s5 ,leng_2_down_s6 ,leng_2_down_s7 ,leng_2_down_s8
+null device 
+          1 
+null device 
+          1 
+[1] "Reproducibility information:"
+[1] "2023-04-12 08:45:38 EDT"
+   user  system elapsed 
+ 26.787   2.161  38.928 
+─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.1 Patched (2022-08-30 r82775)
+ os       CentOS Linux 7 (Core)
+ system   x86_64, linux-gnu
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       US/Eastern
+ date     2023-04-12
+ pandoc   2.19.2 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/bin/pandoc
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package                * version   date (UTC) lib source
+ AnnotationDbi          * 1.58.0    2022-04-26 [2] Bioconductor
+ AnnotationFilter       * 1.20.0    2022-04-26 [2] Bioconductor
+ AnnotationHub            3.4.0     2022-04-26 [2] Bioconductor
+ assertthat               0.2.1     2019-03-21 [2] CRAN (R 4.2.1)
+ attempt                  0.3.1     2020-05-03 [2] CRAN (R 4.2.1)
+ beachmat                 2.12.0    2022-04-26 [2] Bioconductor
+ beeswarm                 0.4.0     2021-06-01 [2] CRAN (R 4.2.1)
+ benchmarkme              1.0.8     2022-06-12 [2] CRAN (R 4.2.1)
+ benchmarkmeData          1.0.4     2020-04-23 [2] CRAN (R 4.2.1)
+ Biobase                * 2.56.0    2022-04-26 [2] Bioconductor
+ BiocFileCache            2.4.0     2022-04-26 [2] Bioconductor
+ BiocGenerics           * 0.42.0    2022-04-26 [2] Bioconductor
+ BiocIO                   1.6.0     2022-04-26 [2] Bioconductor
+ BiocManager              1.30.18   2022-05-18 [2] CRAN (R 4.2.1)
+ BiocNeighbors            1.14.0    2022-04-26 [2] Bioconductor
+ BiocParallel             1.30.3    2022-06-05 [2] Bioconductor
+ BiocSingular             1.12.0    2022-04-26 [2] Bioconductor
+ BiocVersion              3.15.2    2022-03-29 [2] Bioconductor
+ biomaRt                * 2.52.0    2022-04-26 [2] Bioconductor
+ Biostrings               2.64.1    2022-08-18 [2] Bioconductor
+ bit                      4.0.4     2020-08-04 [2] CRAN (R 4.2.1)
+ bit64                    4.0.5     2020-08-30 [2] CRAN (R 4.2.1)
+ bitops                   1.0-7     2021-04-24 [2] CRAN (R 4.2.1)
+ blob                     1.2.3     2022-04-10 [2] CRAN (R 4.2.1)
+ bluster                  1.6.0     2022-04-26 [2] Bioconductor
+ bslib                    0.4.0     2022-07-16 [2] CRAN (R 4.2.1)
+ cachem                   1.0.6     2021-08-19 [2] CRAN (R 4.2.1)
+ cellranger               1.1.0     2016-07-27 [2] CRAN (R 4.2.1)
+ cli                      3.3.0     2022-04-25 [2] CRAN (R 4.2.1)
+ cluster                  2.1.4     2022-08-22 [3] CRAN (R 4.2.1)
+ codetools                0.2-18    2020-11-04 [3] CRAN (R 4.2.1)
+ colorspace               2.0-3     2022-02-21 [2] CRAN (R 4.2.1)
+ config                   0.3.1     2020-12-17 [2] CRAN (R 4.2.1)
+ cowplot                  1.1.1     2020-12-30 [2] CRAN (R 4.2.1)
+ crayon                   1.5.1     2022-03-26 [2] CRAN (R 4.2.1)
+ curl                     4.3.2     2021-06-23 [2] CRAN (R 4.2.1)
+ data.table               1.14.2    2021-09-27 [2] CRAN (R 4.2.1)
+ DBI                      1.1.3     2022-06-18 [2] CRAN (R 4.2.1)
+ dbplyr                   2.2.1     2022-06-27 [2] CRAN (R 4.2.1)
+ DelayedArray             0.22.0    2022-04-26 [2] Bioconductor
+ DelayedMatrixStats       1.18.0    2022-04-26 [2] Bioconductor
+ desc                     1.4.1     2022-03-06 [2] CRAN (R 4.2.1)
+ digest                   0.6.29    2021-12-01 [2] CRAN (R 4.2.1)
+ doParallel               1.0.17    2022-02-07 [2] CRAN (R 4.2.1)
+ dotCall64                1.0-1     2021-02-11 [2] CRAN (R 4.2.1)
+ dplyr                  * 1.0.9     2022-04-28 [2] CRAN (R 4.2.1)
+ dqrng                    0.3.0     2021-05-01 [2] CRAN (R 4.2.1)
+ DropletUtils             1.16.0    2022-04-26 [2] Bioconductor
+ DT                       0.24      2022-08-09 [2] CRAN (R 4.2.1)
+ edgeR                    3.38.4    2022-08-07 [2] Bioconductor
+ ellipsis                 0.3.2     2021-04-29 [2] CRAN (R 4.2.1)
+ EnsDb.Hsapiens.v79     * 2.99.0    2022-12-29 [1] Bioconductor
+ ensembldb              * 2.20.2    2022-06-16 [2] Bioconductor
+ ExperimentHub            2.4.0     2022-04-26 [2] Bioconductor
+ fansi                    1.0.3     2022-03-24 [2] CRAN (R 4.2.1)
+ fastmap                  1.1.0     2021-01-25 [2] CRAN (R 4.2.1)
+ fields                   14.1      2022-08-12 [2] CRAN (R 4.2.1)
+ filelock                 1.0.2     2018-10-05 [2] CRAN (R 4.2.1)
+ foreach                  1.5.2     2022-02-02 [2] CRAN (R 4.2.1)
+ fs                       1.5.2     2021-12-08 [2] CRAN (R 4.2.1)
+ generics                 0.1.3     2022-07-05 [2] CRAN (R 4.2.1)
+ GenomeInfoDb           * 1.32.3    2022-08-09 [2] Bioconductor
+ GenomeInfoDbData         1.2.8     2022-08-30 [2] Bioconductor
+ GenomicAlignments        1.32.1    2022-07-24 [2] Bioconductor
+ GenomicFeatures        * 1.48.3    2022-05-31 [2] Bioconductor
+ GenomicRanges          * 1.48.0    2022-04-26 [2] Bioconductor
+ ggbeeswarm               0.6.0     2017-08-07 [2] CRAN (R 4.2.1)
+ ggplot2                  3.3.6     2022-05-03 [2] CRAN (R 4.2.1)
+ ggrepel                  0.9.1     2021-01-15 [2] CRAN (R 4.2.1)
+ glue                     1.6.2     2022-02-24 [2] CRAN (R 4.2.1)
+ golem                    0.3.3     2022-07-13 [2] CRAN (R 4.2.1)
+ gridExtra                2.3       2017-09-09 [2] CRAN (R 4.2.1)
+ gtable                   0.3.0     2019-03-25 [2] CRAN (R 4.2.1)
+ HDF5Array                1.24.2    2022-08-02 [2] Bioconductor
+ here                   * 1.0.1     2020-12-13 [2] CRAN (R 4.2.1)
+ hms                      1.1.2     2022-08-19 [2] CRAN (R 4.2.1)
+ htmltools                0.5.3     2022-07-18 [2] CRAN (R 4.2.1)
+ htmlwidgets              1.5.4     2021-09-08 [2] CRAN (R 4.2.1)
+ httpuv                   1.6.5     2022-01-05 [2] CRAN (R 4.2.1)
+ httr                     1.4.4     2022-08-17 [2] CRAN (R 4.2.1)
+ igraph                   1.3.4     2022-07-19 [2] CRAN (R 4.2.1)
+ interactiveDisplayBase   1.34.0    2022-04-26 [2] Bioconductor
+ IRanges                * 2.30.1    2022-08-18 [2] Bioconductor
+ irlba                    2.3.5     2021-12-06 [2] CRAN (R 4.2.1)
+ iterators                1.0.14    2022-02-05 [2] CRAN (R 4.2.1)
+ jquerylib                0.1.4     2021-04-26 [2] CRAN (R 4.2.1)
+ jsonlite                 1.8.0     2022-02-22 [2] CRAN (R 4.2.1)
+ KEGGREST                 1.36.3    2022-07-12 [2] Bioconductor
+ knitr                    1.40      2022-08-24 [2] CRAN (R 4.2.1)
+ later                    1.3.0     2021-08-18 [2] CRAN (R 4.2.1)
+ lattice                  0.20-45   2021-09-22 [3] CRAN (R 4.2.1)
+ lazyeval                 0.2.2     2019-03-15 [2] CRAN (R 4.2.1)
+ lifecycle                1.0.1     2021-09-24 [2] CRAN (R 4.2.1)
+ limma                    3.52.2    2022-06-19 [2] Bioconductor
+ locfit                   1.5-9.6   2022-07-11 [2] CRAN (R 4.2.1)
+ magick                   2.7.3     2021-08-18 [2] CRAN (R 4.2.1)
+ magrittr                 2.0.3     2022-03-30 [2] CRAN (R 4.2.1)
+ maps                     3.4.0     2021-09-25 [2] CRAN (R 4.2.1)
+ Matrix                   1.4-1     2022-03-23 [3] CRAN (R 4.2.1)
+ MatrixGenerics         * 1.8.1     2022-06-26 [2] Bioconductor
+ matrixStats            * 0.62.0    2022-04-19 [2] CRAN (R 4.2.1)
+ memoise                  2.0.1     2021-11-26 [2] CRAN (R 4.2.1)
+ metapod                  1.4.0     2022-04-26 [2] Bioconductor
+ mime                     0.12      2021-09-28 [2] CRAN (R 4.2.1)
+ munsell                  0.5.0     2018-06-12 [2] CRAN (R 4.2.1)
+ paletteer                1.4.1     2022-08-15 [2] CRAN (R 4.2.1)
+ pillar                   1.8.1     2022-08-19 [2] CRAN (R 4.2.1)
+ pkgconfig                2.0.3     2019-09-22 [2] CRAN (R 4.2.1)
+ pkgload                  1.3.0     2022-06-27 [2] CRAN (R 4.2.1)
+ plotly                   4.10.0    2021-10-09 [2] CRAN (R 4.2.1)
+ png                      0.1-7     2013-12-03 [2] CRAN (R 4.2.1)
+ prettyunits              1.1.1     2020-01-24 [2] CRAN (R 4.2.1)
+ progress                 1.2.2     2019-05-16 [2] CRAN (R 4.2.1)
+ promises                 1.2.0.1   2021-02-11 [2] CRAN (R 4.2.1)
+ ProtGenerics             1.28.0    2022-04-26 [2] Bioconductor
+ purrr                  * 0.3.4     2020-04-17 [2] CRAN (R 4.2.1)
+ R.methodsS3              1.8.2     2022-06-13 [2] CRAN (R 4.2.1)
+ R.oo                     1.25.0    2022-06-12 [2] CRAN (R 4.2.1)
+ R.utils                  2.12.0    2022-06-28 [2] CRAN (R 4.2.1)
+ R6                       2.5.1     2021-08-19 [2] CRAN (R 4.2.1)
+ rappdirs                 0.3.3     2021-01-31 [2] CRAN (R 4.2.1)
+ RColorBrewer             1.1-3     2022-04-03 [2] CRAN (R 4.2.1)
+ Rcpp                     1.0.9     2022-07-08 [2] CRAN (R 4.2.1)
+ RCurl                    1.98-1.8  2022-07-30 [2] CRAN (R 4.2.1)
+ readxl                 * 1.4.1     2022-08-17 [2] CRAN (R 4.2.1)
+ rematch2                 2.1.2     2020-05-01 [2] CRAN (R 4.2.1)
+ restfulr                 0.0.15    2022-06-16 [2] CRAN (R 4.2.1)
+ rhdf5                    2.40.0    2022-04-26 [2] Bioconductor
+ rhdf5filters             1.8.0     2022-04-26 [2] Bioconductor
+ Rhdf5lib                 1.18.2    2022-05-15 [2] Bioconductor
+ rjson                    0.2.21    2022-01-09 [2] CRAN (R 4.2.1)
+ rlang                    1.0.4     2022-07-12 [2] CRAN (R 4.2.1)
+ roxygen2                 7.2.1     2022-07-18 [2] CRAN (R 4.2.1)
+ rprojroot                2.0.3     2022-04-02 [2] CRAN (R 4.2.1)
+ Rsamtools                2.12.0    2022-04-26 [2] Bioconductor
+ RSQLite                  2.2.16    2022-08-17 [2] CRAN (R 4.2.1)
+ rstudioapi               0.14      2022-08-22 [2] CRAN (R 4.2.1)
+ rsvd                     1.0.5     2021-04-16 [2] CRAN (R 4.2.1)
+ rtracklayer              1.56.1    2022-06-23 [2] Bioconductor
+ S4Vectors              * 0.34.0    2022-04-26 [2] Bioconductor
+ sass                     0.4.2     2022-07-16 [2] CRAN (R 4.2.1)
+ ScaledMatrix             1.4.0     2022-04-26 [2] Bioconductor
+ scales                   1.2.1     2022-08-20 [2] CRAN (R 4.2.1)
+ scater                   1.24.0    2022-04-26 [2] Bioconductor
+ scran                  * 1.24.0    2022-04-26 [2] Bioconductor
+ scuttle                * 1.6.3     2022-08-23 [2] Bioconductor
+ sessioninfo            * 1.2.2     2021-12-06 [2] CRAN (R 4.2.1)
+ shiny                    1.7.2     2022-07-19 [2] CRAN (R 4.2.1)
+ shinyWidgets             0.7.2     2022-08-07 [2] CRAN (R 4.2.1)
+ SingleCellExperiment   * 1.18.0    2022-04-26 [2] Bioconductor
+ spam                     2.9-1     2022-08-07 [2] CRAN (R 4.2.1)
+ sparseMatrixStats        1.8.0     2022-04-26 [2] Bioconductor
+ SpatialExperiment      * 1.6.1     2022-08-09 [2] Bioconductor
+ spatialLIBD            * 1.11.12   2023-03-25 [1] Github (LieberInstitute/spatialLIBD@4b5d6e5)
+ statmod                  1.4.37    2022-08-12 [2] CRAN (R 4.2.1)
+ stringi                  1.7.8     2022-07-11 [2] CRAN (R 4.2.1)
+ stringr                  1.4.1     2022-08-20 [2] CRAN (R 4.2.1)
+ SummarizedExperiment   * 1.26.1    2022-04-29 [2] Bioconductor
+ tibble                   3.1.8     2022-07-22 [2] CRAN (R 4.2.1)
+ tidyr                    1.2.0     2022-02-01 [2] CRAN (R 4.2.1)
+ tidyselect               1.1.2     2022-02-21 [2] CRAN (R 4.2.1)
+ usethis                  2.1.6     2022-05-25 [2] CRAN (R 4.2.1)
+ utf8                     1.2.2     2021-07-24 [2] CRAN (R 4.2.1)
+ vctrs                    0.4.1     2022-04-13 [2] CRAN (R 4.2.1)
+ vipor                    0.4.5     2017-03-22 [2] CRAN (R 4.2.1)
+ viridis                  0.6.2     2021-10-13 [2] CRAN (R 4.2.1)
+ viridisLite              0.4.1     2022-08-22 [2] CRAN (R 4.2.1)
+ xfun                     0.32      2022-08-10 [2] CRAN (R 4.2.1)
+ XML                      3.99-0.10 2022-06-09 [2] CRAN (R 4.2.1)
+ xml2                     1.3.3     2021-11-30 [2] CRAN (R 4.2.1)
+ xtable                   1.8-4     2019-04-21 [2] CRAN (R 4.2.1)
+ XVector                  0.36.0    2022-04-26 [2] Bioconductor
+ yaml                     2.3.5     2022-02-21 [2] CRAN (R 4.2.1)
+ zlibbioc                 1.42.0    2022-04-26 [2] Bioconductor
+
+ [1] /users/sparthib/R/4.2
+ [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/R/4.2/lib64/R/site-library
+ [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.2/R/4.2/lib64/R/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+**** Job ends ****
+Wed Apr 12 08:45:39 EDT 2023
