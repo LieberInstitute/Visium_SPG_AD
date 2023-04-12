@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -l bluejay,mem_free=20G,h_vmem=20G,h_fsize=100G
 #$ -N leung
-#$ -o logs/leung.txt
-#$ -e logs/leung.txt
+#$ -o logs/leng.txt
+#$ -e logs/leng.txt
 #$ -m e
 
 echo "**** Job starts ****"
@@ -23,7 +23,7 @@ module load conda_R/4.2
 module list
 
 ## Edit with your job command
-Rscript 05_leung.R
+Rscript 05_leng.R
 
 echo "**** Job ends ****"
 date
