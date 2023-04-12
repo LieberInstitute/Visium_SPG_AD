@@ -40,6 +40,7 @@ library(limma)
 library(RColorBrewer)
 library(lattice)
 library(edgeR)
+library(sessioninfo)
 
 # ##create directories
 # dir.create(here::here("processed-data","10_spatial_registration", opt$spetype), showWarnings = FALSE)
