@@ -24,10 +24,10 @@ library(edgeR)
 library(sessioninfo)
 
 # ##create directories
-# dir.create(here::here("processed-data","10_spatial_registration", opt$spetype), showWarnings = FALSE)
-# dir.create(here::here("processed-data","10_spatial_registration", "pseudo_bulked", opt$spetype), showWarnings = FALSE)
-# dir.create(here::here("processed-data", "10_spatial_registration", "dupCor", opt$spetype), showWarnings = FALSE)
-# dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts", opt$spetype), showWarnings = FALSE)
+# dir.create(here::here("processed-data","10_spatial_registration", spetype), showWarnings = FALSE)
+# dir.create(here::here("processed-data","10_spatial_registration", "pseudo_bulked", spetype), showWarnings = FALSE)
+# dir.create(here::here("processed-data", "10_spatial_registration", "dupCor", spetype), showWarnings = FALSE)
+# dir.create(here::here("processed-data","10_spatial_registration", "specific_Ts", spetype), showWarnings = FALSE)
 # dir.create(here::here("code", "10_spatial_registration"))
 
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
@@ -38,7 +38,7 @@ spe <-
         here::here(
             "processed-data",
             "08_harmony_BayesSpace",
-            opt$spe_type,
+            spe_type,
             paste0("spe_harmony_", spetype, ".rds")
         )
     )
@@ -81,7 +81,7 @@ summary(rowData(sce_pseudo)$low_expr)
 #         "processed-data",
 #         "10_spatial_registration",
 #         "pseudo_bulked",
-#         paste0("sce_pseudobulked_BayesSpace", k_nice, opt$spetype, ".RDS")
+#         paste0("sce_pseudobulked_BayesSpace", k_nice, spetype, ".RDS")
 #     )
 # )
 
@@ -131,7 +131,7 @@ message("Detected correlation: ", corfit$consensus.correlation)
 #         "processed-data",
 #         "10_spatial_registration",
 #         "dupCor",
-#         paste0("pseudobulked_dupCor_k", k_nice, opt$spetype ,".RDS")
+#         paste0("pseudobulked_dupCor_k", k_nice, spetype ,".RDS")
 #     )
 # )
 
@@ -168,7 +168,7 @@ eb0_list_cluster <- lapply(cluster_idx, function(x) {
 #         "processed-data",
 #         "10_spatial_registration",
 #         "specific_Ts",
-#         paste0("pseudobulked_specific_Ts_k", k_nice, opt$spetype,".RDS")
+#         paste0("pseudobulked_specific_Ts_k", k_nice, spetype,".RDS")
 #     )
 # )
 #
