@@ -74,24 +74,24 @@ res_3 <- purrr::map(df.list, get_ensembl, gene_set_ep_v_lp, "gene_set_ep_v_lp")
 # mathys_ex, mathys_in, mathys_ast, mathys_oli, mathys_opc, mathys_mic
 
 mathys_geneList <- list(
-    np_v_p_ex = res_1[[1]]$gene_ensembl_id,
-    np_v_p_in = res_1[[2]]$gene_ensembl_id,
-    np_v_p_ast = res_1[[3]]$gene_ensembl_id,
-    np_v_p_oli = res_1[[4]]$gene_ensembl_id,
-    np_v_p_opc = res_1[[5]]$gene_ensembl_id,
-    np_v_p_mic = res_1[[6]]$gene_ensembl_id,
-    np_v_ep_ex = res_2[[1]]$gene_ensembl_id,
-    np_v_ep_in = res_2[[2]]$gene_ensembl_id,
-    np_v_ep_ast = res_2[[3]]$gene_ensembl_id,
-    np_v_ep_oli = res_2[[4]]$gene_ensembl_id,
-    np_v_ep_opc = res_2[[5]]$gene_ensembl_id,
-    np_v_ep_mic = res_2[[6]]$gene_ensembl_id,
-    ep_v_lp_ex = res_3[[1]]$gene_ensembl_id,
-    ep_v_lp_in = res_3[[2]]$gene_ensembl_id,
-    ep_v_lp_ast = res_3[[3]]$gene_ensembl_id,
-    ep_v_lp_oli = res_3[[4]]$gene_ensembl_id,
-    ep_v_lp_opc = res_3[[5]]$gene_ensembl_id,
-    ep_v_lp_mic = res_3[[6]]$gene_ensembl_id
+    np_v_p_ex = res_1[[1]],
+    np_v_p_in = res_1[[2]],
+    np_v_p_ast = res_1[[3]],
+    np_v_p_oli = res_1[[4]],
+    np_v_p_opc = res_1[[5]],
+    np_v_p_mic = res_1[[6]],
+    np_v_ep_ex = res_2[[1]],
+    np_v_ep_in = res_2[[2]],
+    np_v_ep_ast = res_2[[3]],
+    np_v_ep_oli = res_2[[4]],
+    np_v_ep_opc = res_2[[5]],
+    np_v_ep_mic = res_2[[6]],
+    ep_v_lp_ex = res_3[[1]],
+    ep_v_lp_in = res_3[[2]],
+    ep_v_lp_ast = res_3[[3]],
+    ep_v_lp_oli = res_3[[4]],
+    ep_v_lp_opc = res_3[[5]],
+    ep_v_lp_mic = res_3[[6]]
 )
 
 mathys_enrichment <- gene_set_enrichment(

@@ -117,20 +117,20 @@ res_1 <- purrr::map(df_list, get_ensembl, gene, "gene")
 
 
 morabito_geneList <- list(
-    table_1_up_ODC = res_1[[1]]$gene_ensembl_id,
-    table_1_up_MG = res_1[[2]]$gene_ensembl_id,
-    table_1_up_OPC = res_1[[3]]$gene_ensembl_id,
-    table_1_up_INH = res_1[[4]]$gene_ensembl_id,
-    table_1_up_EX = res_1[[5]]$gene_ensembl_id,
-    table_1_up_ASC = res_1[[6]]$gene_ensembl_id,
-    table_1_up_PER.END = res_1[[7]]$gene_ensembl_id,
-    table_1_down_ODC = res_1[[8]]$gene_ensembl_id,
-    table_1_down_MG = res_1[[9]]$gene_ensembl_id,
-    table_1_down_OPC = res_1[[10]]$gene_ensembl_id,
-    table_1_down_INH = res_1[[11]]$gene_ensembl_id,
-    table_1_down_EX = res_1[[12]]$gene_ensembl_id,
-    table_1_down_ASC = res_1[[13]]$gene_ensembl_id,
-    table_1_down_PER.END = res_1[[14]]$gene_ensembl_id
+    table_1_up_ODC = res_1[[1]],
+    table_1_up_MG = res_1[[2]],
+    table_1_up_OPC = res_1[[3]],
+    table_1_up_INH = res_1[[4]],
+    table_1_up_EX = res_1[[5]],
+    table_1_up_ASC = res_1[[6]],
+    table_1_up_PER.END = res_1[[7]],
+    table_1_down_ODC = res_1[[8]],
+    table_1_down_MG = res_1[[9]],
+    table_1_down_OPC = res_1[[10]],
+    table_1_down_INH = res_1[[11]],
+    table_1_down_EX = res_1[[12]],
+    table_1_down_ASC = res_1[[13]],
+    table_1_down_PER.END = res_1[[14]]
 )
 
 
