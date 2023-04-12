@@ -29,8 +29,6 @@ if (!is.null(opt$help)) {
 }
 
 
-
-
 library(SpatialExperiment)
 library(here)
 library(spatialLIBD)
