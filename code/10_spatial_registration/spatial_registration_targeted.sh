@@ -13,12 +13,8 @@
 echo "**** Job starts ****"
 date
 
-echo "**** JHPCE info ****"
-echo "User: sparthib"
-echo "Job id: 3115891"
-echo "Job name: ${SHORT}"
-echo "Hostname: compute-095.cm.cluster"
-echo "Task id: 26"
+echo "**** JHPCE info ****"echo "User: ${USER}"echo "Job id: ${JOB_ID}"echo "Job name: ${JOB_NAME}"echo "Hostname: ${HOSTNAME}"echo "Task id: ${SGE_TASK_ID}"
+
 
 ## Load the R module (absent since the JHPCE upgrade to CentOS v7)
 module load conda_R/4.2
