@@ -15,8 +15,16 @@ spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
 img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 default_gene = 'SNAP25'
+
+#   Names of continuous and discrete features, respectively, expected to be
+#   columns in the observation data (colData) of the AnnData
 spe_cont_features = ['PpTau', 'PAbeta']
 spe_disc_features = ['path_groups']
+
+#   Diagnosis by brain number (not included in the sample_info sheet)
+sample_dx = {
+    'Br3854': 'AD', 'Br3873': 'AD', 'Br3880': 'AD', 'Br3874': 'control'
+}
 
 sample_info_path = here(
     'raw-data', 'Visium_IF_AD_ITG_MasterExcelSummarySheet.xlsx'
@@ -55,6 +63,9 @@ sample_info = (pd.read_excel(sample_info_path)
 #   Prepend "Br" tp brain number and make a string
 sample_info['br_num'] = "Br" + sample_info['br_num'].astype(str)
 
+#   Add diagnosis using brain number
+sample_info['diagnosis'] = sample_info['br_num'].replace(sample_dx)
+
 #   Fix the experiment number column (use strings of integers)
 sample_info['experiment_num'] = ((sample_info['sample_num'] - 1) // 4  + 1).astype(str)
 
@@ -68,12 +79,13 @@ sample_info = (sample_info
     )
 )
 
-#   Subset both types of IDs to this sample only
+#   Subset all types of IDs to this sample only
 sample_id_spaceranger = sample_info['spaceranger_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
 sample_id_image = sample_info['image_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
+sample_id_samui = sample_id_spaceranger + '_' + sample_info['diagnosis'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
 
 #   Update paths for this sample ID
-out_dir = Path(str(out_dir).format(sample_id_spaceranger))
+out_dir = Path(str(out_dir).format(sample_id_samui))
 json_path = Path(str(json_path).format(sample_id_spaceranger))
 img_path = Path(str(img_path).format(sample_id_image))
 
@@ -114,13 +126,17 @@ gene_df = pd.DataFrame(
 #   any duplicated cases
 gene_df = gene_df.loc[: , ~gene_df.columns.duplicated()].copy()
 
+#   Samui seems to break when using > ~ 5,000 genes. Take just the genes where
+#   at least 10% of spots have nonzero counts
+gene_df = gene_df.loc[:, np.sum(gene_df > 0, axis = 0) > (gene_df.shape[0] * 0.1)].copy()
+
 assert default_gene in gene_df.columns, "Default gene not in AnnData"
 
 ################################################################################
 #   Use the Samui API to create the importable directory for this sample
 ################################################################################
 
-this_sample = Sample(name = sample_id_spaceranger, path = out_dir)
+this_sample = Sample(name = sample_id_samui, path = out_dir)
 
 this_sample.add_coords(
     spe.obsm['spatial'].rename(
