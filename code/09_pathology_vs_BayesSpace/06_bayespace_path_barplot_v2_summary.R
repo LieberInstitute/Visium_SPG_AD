@@ -1,3 +1,15 @@
+library("sgejobs")
+
+sgejobs::job_single(
+    "bayespace_path_barplot_v2_summary",
+    create_shell = TRUE,
+    queue = "bluejay",
+    memory = "10G",
+    command = "Rscript 06_bayespace_path_barplot_v2_summary.R",
+    create_logdir = TRUE
+)
+
+
 ## import required libraries
 library("here")
 library("sessioninfo")
@@ -120,3 +132,10 @@ GMandWM <- cluster_df |>
 # 5      n_pTau 3632
 # 6        both  736
 # 7      n_both 1192
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
