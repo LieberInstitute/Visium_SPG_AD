@@ -1,3 +1,6 @@
 AD_RsFISHIF_RawData/ImageData/*.tif
 AD_RsFISHIF_RawData/*/*.pdf
 AD_RsFISHIF_RawData/*/*.docx
+AD_RsFISHIF_RawData/*.docx
+AD_RsFISHIF_RawData/*DS_Store
+AD_RsFISHIF_RawData/*/*DS_Store
