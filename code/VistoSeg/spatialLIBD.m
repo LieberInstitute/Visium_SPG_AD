@@ -12,7 +12,7 @@ lx = floor(L*x); ly = floor(L*y);
 hx = ceil(H*x); hy = ceil(H*y);
 
 AbetaL = imresize(Abeta,[ly lx]);  
-AbetaH = imresize(Abeta,[hy hx]); 
+AbetaH = imresize(Abeta,[hy hx]);
 imwrite(AbetaL, ['/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/spatialLIBD_images/',n,'_Abeta_seg_lowres.png'])
 imwrite(AbetaH, ['/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/spatialLIBD_images/',n,'_Abeta_seg_hires.png'])
 
@@ -32,7 +32,6 @@ imwrite(mergeL, ['/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/proces
 imwrite(mergeH, ['/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/spatialLIBD_images/',n,'_merge_seg_hires.png'])
 
 clear AbetaH AbetaL Abeta pTauH pTauL pTau DAPI dapiH dapiL
-
 %filename1 = '/dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD/processed-data/Images/VistoSeg/Capture_Areas/VIFAD2_V10A27-106_B1.mat';
 load(filename1)
 
