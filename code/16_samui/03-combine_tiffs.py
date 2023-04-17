@@ -5,6 +5,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 import session_info
+import os
 
 #   Images are too large to open with default PIL settings
 Image.MAX_IMAGE_PIXELS = None
@@ -93,13 +94,13 @@ raw_img = tifffile.imread(raw_img_path)
 segmented_img = Image.open(segmented_img_path)
 
 #   Grab just the Abeta channel
-segmented_img.seek(2)
+segmented_img.seek(1)
 abeta = np.array(
         segmented_img, dtype = np.uint8
     ).reshape((1, segmented_img.size[1], segmented_img.size[0])) * 255
 
 #   Grab just the pTau channel
-segmented_img.seek(3)
+segmented_img.seek(2)
 ptau = np.array(
         segmented_img, dtype = np.uint8
     ).reshape((1, segmented_img.size[1], segmented_img.size[0])) * 255

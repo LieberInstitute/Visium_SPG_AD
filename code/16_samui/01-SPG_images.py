@@ -12,7 +12,10 @@ from loopy.sample import Sample
 from loopy.utils.utils import remove_dupes
 
 spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
-img_channels = ['DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin']
+img_channels = [
+    'DAPI', 'Abeta', 'pTau', 'GFAP', 'MAP2', 'Lipofuscin', 'segmented_Abeta',
+    'segmented_pTau'
+]
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 default_gene = 'SNAP25'
 
@@ -31,9 +34,7 @@ sample_info_path = here(
 )
 
 spe_path = here('processed-data', '16_samui', 'spe.h5ad')
-img_path = here(
-    'processed-data', 'Images', 'VistoSeg', 'Capture_Areas', '{}.tif'
-)
+img_path = here('processed-data', '16_samui', 'combined_tiffs', '{}.tif')
 json_path = here(
     'processed-data', 'spaceranger', '{}', 'outs', 'spatial',
     'scalefactors_json.json'
