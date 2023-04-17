@@ -1,43 +1,51 @@
 **** Job starts ****
-Tue Apr  4 13:54:27 EDT 2023
+Mon Apr 17 16:47:57 EDT 2023
 **** JHPCE info ****
 User: neagles
-Job id: 3097657
+Job id: 3124418
 Job name: SPG_images
-Hostname: compute-151.cm.cluster
+Hostname: compute-122.cm.cluster
 Task id: 6
-Loading LIBD module for loopy/1.0.0-next.15
-[13:54:54] INFO     V10A27106_D1_Br3880 Adding coords 'coords'      logger.py:27
-[13:55:01] INFO     Transforming                                    logger.py:27
+Loading LIBD module for loopy/1.0.0-next.24
+/jhpce/shared/jhpce/libd/loopy/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1828: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  utils.warn_names_duplicates("obs")
+[16:48:17] INFO     Transforming                                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880/VIFAD2_V10A27-106_D1.t             
-                    if to COG.                                                  
-[13:55:05] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
+                    D1.tif to COG.                                              
+           INFO     'V10A27106_D1_Br3880_AD' Executing queued       logger.py:27
+                    functions                                                   
+           INFO     V10A27106_D1_Br3880_AD Adding coords 'coords'   logger.py:27
+           INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880/VIFAD2_V10A27-106_D1_1             
-                    .tif                                                        
-[13:55:21] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
+                    D1_1.tif                                                    
+[16:48:25] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880/VIFAD2_V10A27-106_D1_2             
-                    .tif                                                        
-[13:55:29] INFO     Writing COG                                     logger.py:27
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
+                    D1_2.tif                                                    
+[16:48:34] INFO     Writing COG                                     logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880/VIFAD2_V10A27-106_D1_1             
-                    .tif                                                        
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
+                    D1_1.tif                                                    
            INFO     Writing COG                                     logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880/VIFAD2_V10A27-106_D1_2             
-                    .tif                                                        
-[13:56:12] INFO     'V10A27106_D1_Br3880' Executing queued          logger.py:27
-                    functions                                                   
-           INFO     'V10A27106_D1_Br3880' written to                logger.py:27
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
+                    D1_2.tif                                                    
+[16:49:06] INFO     V10A27106_D1_Br3880_AD Adding csv feature       logger.py:27
+                    'Genes'                                                     
+[16:49:29] INFO     V10A27106_D1_Br3880_AD Adding csv feature 'Spot logger.py:27
+                    Coverage'                                                   
+           INFO     V10A27106_D1_Br3880_AD Adding csv feature       logger.py:27
+                    'Groups'                                                    
+           INFO     'V10A27106_D1_Br3880_AD' written to             logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
-                    m_IF_AD/code/16_samui/../../processed-data/16_s             
-                    amui/V10A27106_D1_Br3880                                    
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10A27106_D1_Br3880_AD                                
 **** Job ends ****
-Tue Apr  4 13:56:12 EDT 2023
+Mon Apr 17 16:49:30 EDT 2023
