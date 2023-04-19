@@ -1,0 +1,23 @@
+**** Job starts ****
+Wed Apr 19 11:21:16 EDT 2023
+**** JHPCE info ****
+User: neagles
+Job id: 3129036
+Job name: combine_tiffs
+Hostname: compute-057.cm.cluster
+Task id: 8
+Loading LIBD module for loopy/1.0.0-next.24
+-----
+PIL                 9.4.0
+numpy               1.23.5
+pandas              1.5.3
+pyhere              1.0.0
+session_info        1.0.0
+tifffile            2023.2.3
+-----
+Python 3.10.9 | packaged by conda-forge | (main, Feb  2 2023, 20:20:04) [GCC 11.3.0]
+Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.17
+-----
+Session information updated at 2023-04-19 11:21
+**** Job ends ****
+Wed Apr 19 11:21:51 EDT 2023
