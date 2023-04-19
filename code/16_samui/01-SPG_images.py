@@ -19,10 +19,9 @@ img_channels = [
 default_channels = {'blue': 'DAPI', 'red': 'Abeta'}
 default_gene = 'SNAP25'
 
-#   Names of continuous and discrete features, respectively, expected to be
-#   columns in the observation data (colData) of the AnnData
+#   Names of continuous features expected to be columns in the observation 
+#   data (colData) of the AnnData
 spe_cont_features = ['PpTau', 'PAbeta']
-spe_disc_features = ['path_groups']
 
 #   Diagnosis by brain number (not included in the sample_info sheet)
 sample_dx = {
@@ -161,10 +160,6 @@ this_sample.add_csv_feature(
 this_sample.add_csv_feature(
     spe.obs[spe_cont_features], name = "Spot Coverage", coordName = "coords",
     dataType = "quantitative"
-)
-this_sample.add_csv_feature(
-    spe.obs[spe_disc_features], name = "Groups", coordName = "coords",
-    dataType = "categorical"
 )
 
 this_sample.set_default_feature(group = "Genes", feature = default_gene)
