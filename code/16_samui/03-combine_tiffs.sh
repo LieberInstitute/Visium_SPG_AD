@@ -4,8 +4,8 @@
 #$ -o ../../processed-data/16_samui/logs/03-combine_tiffs_$TASK_ID.log
 #$ -e ../../processed-data/16_samui/logs/03-combine_tiffs_$TASK_ID.log
 #$ -l mf=20G,h_vmem=20G
-#$ -t 6
-#$ -tc 1
+#$ -t 7-10
+#$ -tc 3
 
 echo "**** Job starts ****"
 date
