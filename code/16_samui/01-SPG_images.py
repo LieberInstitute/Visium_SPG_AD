@@ -9,7 +9,7 @@ import pandas as pd
 from rasterio import Affine
 
 from loopy.sample import Sample
-from loopy.utils.utils import remove_dupes
+from loopy.utils.utils import remove_dupes, Url
 
 spot_diameter_m = 55e-6 # 55-micrometer diameter for Visium spot
 img_channels = [
@@ -33,6 +33,7 @@ sample_info_path = here(
 )
 
 spe_path = here('processed-data', '16_samui', 'spe.h5ad')
+notes_path = str(Path(here('code', '16_samui', 'feature_notes.md')).resolve())
 img_path = here('processed-data', '16_samui', 'combined_tiffs', '{}.tif')
 json_path = here(
     'processed-data', 'spaceranger', '{}', 'outs', 'spatial',
@@ -133,7 +134,7 @@ gene_df = gene_df.loc[:, np.sum(gene_df > 0, axis = 0) > (gene_df.shape[0] * 0.1
 
 assert default_gene in gene_df.columns, "Default gene not in AnnData"
 
-print('Usiing {} genes as features.'.format(gene_df.shape[1]))
+print('Using {} genes as features.'.format(gene_df.shape[1]))
 
 ################################################################################
 #   Split 'path_groups' column into binary columns for each of its values
@@ -150,7 +151,9 @@ for path_group in path_groups:
 #   Use the Samui API to create the importable directory for this sample
 ################################################################################
 
-this_sample = Sample(name = sample_id_samui, path = out_dir)
+this_sample = Sample(
+    name = sample_id_samui, path = out_dir, notesMd = Url(notes_path)
+)
 
 this_sample.add_coords(
     spe.obsm['spatial'].rename(
