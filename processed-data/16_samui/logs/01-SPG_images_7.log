@@ -1,0 +1,53 @@
+**** Job starts ****
+Thu Apr 20 14:06:44 EDT 2023
+**** JHPCE info ****
+User: neagles
+Job id: 3130410
+Job name: SPG_images
+Hostname: compute-122.cm.cluster
+Task id: 7
+Loading LIBD module for loopy/1.0.0-next.24
+/jhpce/shared/jhpce/libd/loopy/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1828: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  utils.warn_names_duplicates("obs")
+Using 1903 genes as features.
+[14:07:03] INFO     Transforming                                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control/VIFAD3_V10T31             
+                    -036_A1.tif to COG.                                         
+           INFO     'V10T31036_A1_Br3874_control' Executing queued  logger.py:27
+                    functions                                                   
+           INFO     V10T31036_A1_Br3874_control Adding coords       logger.py:27
+                    'coords'                                                    
+           INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control/VIFAD3_V10T31             
+                    -036_A1_1.tif                                               
+[14:07:14] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control/VIFAD3_V10T31             
+                    -036_A1_2.tif                                               
+[14:07:26] INFO     Writing COG                                     logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control/VIFAD3_V10T31             
+                    -036_A1_1.tif                                               
+           INFO     Writing COG                                     logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control/VIFAD3_V10T31             
+                    -036_A1_2.tif                                               
+[14:07:58] INFO     V10T31036_A1_Br3874_control Adding csv feature  logger.py:27
+                    'Genes'                                                     
+[14:08:18] INFO     V10T31036_A1_Br3874_control Adding csv feature  logger.py:27
+                    'Spot Coverage'                                             
+           INFO     V10T31036_A1_Br3874_control Adding csv feature  logger.py:27
+                    'Pathology Group'                                           
+[14:08:24] INFO     'V10T31036_A1_Br3874_control' written to        logger.py:27
+                    /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
+                    m_SPG_AD/code/16_samui/../../processed-data/16_             
+                    samui/V10T31036_A1_Br3874_control                           
+**** Job ends ****
+Thu Apr 20 14:08:25 EDT 2023
