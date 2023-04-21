@@ -1,0 +1,13 @@
+**** Job starts ****
+Fri Apr 21 11:19:53 EDT 2023
+**** JHPCE info ****
+User: neagles
+Job id: 3131897
+Job name: samui_link
+Hostname: compute-121.cm.cluster
+Loading conda_R/4.2.x
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
+[1] "Full URL:"
+[1] "https://samuibrowser.com/from?url=[AWS URL HERE]/Visium_SPG_AD/&s=V10A27106_D1_Br3880_AD&s=V10A27004_A1_Br3874_control&s=V10A27004_D1_Br3880_AD&s=V10A27106_A1_Br3874_control&s=V10A27106_B1_Br3854_AD&s=V10A27106_C1_Br3873_AD&s=V10T31036_A1_Br3874_control&s=V10T31036_B1_Br3854_AD&s=V10T31036_C1_Br3873_AD&s=V10T31036_D1_Br3880_AD"
+**** Job ends ****
+Fri Apr 21 11:19:54 EDT 2023

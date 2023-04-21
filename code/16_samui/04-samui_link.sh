@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -cwd
 #$ -N "samui_link"
-#$ -o ../../processed-data/16_samui/logs/04-samui_link_$TASK_ID.log
-#$ -e ../../processed-data/16_samui/logs/04-samui_link_$TASK_ID.log
+#$ -o ../../processed-data/16_samui/logs/04-samui_link.log
+#$ -e ../../processed-data/16_samui/logs/04-samui_link.log
 #$ -l mf=3G,h_vmem=3G
 
 echo "**** Job starts ****"

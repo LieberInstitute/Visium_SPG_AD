@@ -1,8 +1,9 @@
 library('here')
 
-aws_url = ''
+aws_url = '[AWS URL HERE]'
 project_name = 'Visium_SPG_AD'
 samui_url = 'https://samuibrowser.com'
+first_id = 'V10A27106_D1_Br3880_AD'
 
 #   Get Samui sample IDs simply from existing files rather than reading in and
 #   cleaning the sample-info excel sheet
@@ -11,15 +12,13 @@ samui_ids = list.files(
     pattern = '^V.*_[A-D]1_Br[0-9]{4}_(AD|control)$'
 )
 
-#   We want to show the Br3880 D1 sample by default when loading Samui (so we
-#   put it first) 
-is_first_id = grepl('Br3880_D1', samui_ids)
-samui_ids = c(samui_ids[is_first_id], samui_ids[!is_first_id])
+stopifnot(first_id %in% samui_ids)
+samui_ids = c(first_id, samui_ids[samui_ids != first_id])
 
 #   Construct the full link we'll share
 full_url = paste0(
     samui_url, '/from?url=', aws_url, '/', project_name, '/&s=',
-    paste(samui_ids, sep = '&s=')
+    paste(samui_ids, collapse = '&s=')
 )
 
 print('Full URL:')
