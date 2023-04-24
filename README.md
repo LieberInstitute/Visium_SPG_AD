@@ -33,8 +33,8 @@ discovered statistically significant differentially expressed genes in
 the core (Ab spots) and peripheral (next_Ab spots) compartments of
 Ab-associated microenvironment in the gray matter of ITC. For more
 detailed information about study design and experimental results, please
-refer to our [manuscript](https://doi.org/10.1101/TODO). This work was
-performed by the [Keri
+refer to our [manuscript](https://doi.org/10.1101/2023.04.20.537710).
+This work was performed by the [Keri
 Martinowich](https://www.libd.org/team/keri-martinowich-phd/), [Kristen
 Maynard](https://www.libd.org/team/kristen-maynard-phd/), and [Leonardo
 Collado-Torres](http://lcolladotor.github.io/) teams at the [Lieber
@@ -172,14 +172,29 @@ work!
 
 ## Citing our work
 
-Please cite this [manuscript](https://doi.org/10.1101/TODO) if you use
-data from this project.
+Please cite this [manuscript](https://doi.org/10.1101/2023.04.20.537710)
+if you use data from this project.
 
-> TODO
+> Influence of Alzheimer’s disease related neuropathology on local
+> microenvironment gene expression in the human inferior temporal
+> cortex. Sang Ho Kwon, Sowmya Parthiban, Madhavi Tippani, Heena R
+> Divecha, Nicholas J Eagles, Jashandeep S Lobana, Stephen R Williams,
+> Michelle Mark, Rahul A Bharadwaj, Joel E Kleinman, Thomas M Hyde,
+> Stephanie C Page, Stephanie C Hicks, Keri Martinowich, Kristen R
+> Maynard, Leonardo Collado-Torres. bioRxiv 2023.04.20.537710; doi:
+> <https://doi.org/10.1101/2023.04.20.537710>
 
 Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
 
-    @article {TODO,
+    @article {Kwon2023.04.20.537710,
+        author = {Sang Ho Kwon and Sowmya Parthiban and Madhavi Tippani and Heena R Divecha and Nicholas J Eagles and Jashandeep S Lobana and Stephen R Williams and Michelle Mark and Rahul A Bharadwaj and Joel E Kleinman and Thomas M Hyde and Stephanie C Page and Stephanie C Hicks and Keri Martinowich and Kristen R Maynard and Leonardo Collado-Torres},
+        title = {Influence of Alzheimer{\textquoteright}s disease related neuropathology on local microenvironment gene expression in the human inferior temporal cortex},
+        elocation-id = {2023.04.20.537710},
+        year = {2023},
+        doi = {10.1101/2023.04.20.537710},
+        publisher = {Cold Spring Harbor Laboratory},
+        URL = {https://www.biorxiv.org/content/early/2023/04/20/2023.04.20.537710},
+        eprint = {https://www.biorxiv.org/content/early/2023/04/20/2023.04.20.537710.full.pdf},
         journal = {bioRxiv}
     }
 
