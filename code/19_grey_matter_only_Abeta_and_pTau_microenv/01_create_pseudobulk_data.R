@@ -79,7 +79,10 @@ spe <- cluster_import(
 spe$path_groups[spe$path_groups %in% c("n_Ab", "Ab")] <- "Ab_env"
 
 ## Collapse pT and n_pT as a single group. This is the pTau microenvironment.
-spe$path_groups[spe$path_groups %in% c("n_pT", "pT")] <- "pT_env"
+spe$path_groups[spe$path_groups %in% c("n_pTau", "pTau")] <- "pTau_env"
+
+## Check that this worked ok
+stopifnot(sum(table(spe$path_groups)) == ncol(spe))
 
 ## Convert from character to a factor, so they appear in the order
 ## we want
@@ -175,7 +178,7 @@ rowData(sce_pseudo)$gene_search <-
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 ## Fix colors
-colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF", "pT_env" = "#96ABC6FF")
+colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF", "pTau_env" = "#96ABC6FF")
 sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_groups)]
 
 ## save RDS file
