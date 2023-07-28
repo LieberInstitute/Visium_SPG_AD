@@ -4,12 +4,12 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.3
 **** Job starts ****
-Fri Jul 28 16:43:37 EDT 2023
+Fri Jul 28 17:18:29 EDT 2023
 **** JHPCE info ****
 User: lcollado
-Job id: 3652505
+Job id: 3652534
 Job name: model_pathology_targeted
-Hostname: compute-096.cm.cluster
+Hostname: compute-093.cm.cluster
 Task id: undefined
 Unloading conda_R/4.3
 Loading conda_R/4.3
@@ -101,18 +101,18 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-2023-07-28 16:44:30.569176 create model matrix
-2023-07-28 16:44:30.699475 run duplicateCorrelation()
-2023-07-28 16:44:36.152393 The estimated correlation is: 0.366122386032781
-2023-07-28 16:44:36.205753 computing enrichment statistics
-2023-07-28 16:44:36.652173 extract and reformat enrichment results
-2023-07-28 16:44:36.679436 running the baseline pairwise model
-2023-07-28 16:44:36.71502 computing pairwise statistics
-2023-07-28 16:44:36.892684 computing F-statistics
+2023-07-28 17:19:05.817639 create model matrix
+2023-07-28 17:19:05.933576 run duplicateCorrelation()
+2023-07-28 17:19:12.611765 The estimated correlation is: 0.224806256959131
+2023-07-28 17:19:12.647989 computing enrichment statistics
+2023-07-28 17:19:12.985893 extract and reformat enrichment results
+2023-07-28 17:19:13.014809 running the baseline pairwise model
+2023-07-28 17:19:13.054084 computing pairwise statistics
+2023-07-28 17:19:13.239609 computing F-statistics
 [1] "Reproducibility information:"
-[1] "2023-07-28 16:44:37 EDT"
+[1] "2023-07-28 17:19:13 EDT"
    user  system elapsed 
- 27.561   1.805  57.904 
+ 27.501   1.785  41.373 
 pandoc: the current resource limit for virtual memory ('ulimit -v' or RLIMIT_AS) is too low.
 Please make sure that at least 2304MiB of virtual memory are available.
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -289,4 +289,4 @@ Warning message:
 In system2(path, "--version", stdout = TRUE) :
   running command ''/jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/bin/pandoc' --version' had status 1
 **** Job ends ****
-Fri Jul 28 16:44:43 EDT 2023
+Fri Jul 28 17:19:16 EDT 2023

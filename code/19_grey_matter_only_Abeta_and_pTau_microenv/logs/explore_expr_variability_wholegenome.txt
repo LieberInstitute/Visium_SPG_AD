@@ -4,12 +4,12 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.3
 **** Job starts ****
-Fri Jul 28 16:58:09 EDT 2023
+Fri Jul 28 17:17:10 EDT 2023
 **** JHPCE info ****
 User: lcollado
-Job id: 3652515
+Job id: 3652531
 Job name: explore_expr_variability_wholegenome
-Hostname: compute-096.cm.cluster
+Hostname: compute-098.cm.cluster
 Task id: undefined
 Unloading conda_R/4.3
 Loading conda_R/4.3
@@ -118,9 +118,9 @@ null device
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2023-07-28 16:59:21 EDT"
+[1] "2023-07-28 17:18:37 EDT"
    user  system elapsed 
- 59.940   1.550  67.965 
+ 76.192   2.301  84.158 
 pandoc: the current resource limit for virtual memory ('ulimit -v' or RLIMIT_AS) is too low.
 Please make sure that at least 2304MiB of virtual memory are available.
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -235,4 +235,4 @@ Warning message:
 In system2(path, "--version", stdout = TRUE) :
   running command ''/jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/bin/pandoc' --version' had status 1
 **** Job ends ****
-Fri Jul 28 16:59:23 EDT 2023
+Fri Jul 28 17:18:40 EDT 2023

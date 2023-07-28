@@ -4,10 +4,10 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.3
 **** Job starts ****
-Fri Jul 28 16:38:53 EDT 2023
+Fri Jul 28 17:14:05 EDT 2023
 **** JHPCE info ****
 User: lcollado
-Job id: 3652501
+Job id: 3652530
 Job name: create_pseudobulk_data_targeted
 Hostname: compute-096.cm.cluster
 Task id: undefined
@@ -106,13 +106,13 @@ Loading required package: ggplot2
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 [1] 23485 21897
-    none   Ab_env pTau_env     both   n_both 
-    4289     3474    12272      730     1132 
-2023-07-28 16:41:20.302849 make pseudobulk object
-2023-07-28 16:41:26.110698 dropping 4 pseudo-bulked samples that are below 'min_ncells'.
-2023-07-28 16:41:26.192691 drop lowly expressed genes
-2023-07-28 16:41:26.563543 normalize expression
-[1] 2187   30
+    none   Ab_env pTau_env both_env 
+    4289     3474    12272     1862 
+2023-07-28 17:16:39.568413 make pseudobulk object
+2023-07-28 17:16:44.91595 dropping 3 pseudo-bulked samples that are below 'min_ncells'.
+2023-07-28 17:16:45.037504 drop lowly expressed genes
+2023-07-28 17:16:45.391989 normalize expression
+[1] 3075   25
                                age  APOe BCrating braak cerad diagnosis ncells path_groups  pmi    race rin           sample_id sex subject
 V10A27004_D1_Br3880_none     90.47 E3/E3  Prob AD    B3    C3        AD    226        none 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
 V10A27106_B1_Br3854_none     65.75 E3/E4   Def AD    B3    C3        AD    734        none 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
@@ -134,20 +134,15 @@ V10A27106_D1_Br3880_pTau_env 90.47 E3/E3  Prob AD    B3    C3        AD   2503  
 V10T31036_B1_Br3854_pTau_env 65.75 E3/E4   Def AD    B3    C3        AD   2657    pTau_env 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
 V10T31036_C1_Br3873_pTau_env 88.78 E3/E3   Def AD    B3    C3        AD     15    pTau_env 29.0 EA/CAUC 7.2 V10T31036_C1_Br3873   F  Br3873
 V10T31036_D1_Br3880_pTau_env 90.47 E3/E3  Prob AD    B3    C3        AD   3230    pTau_env 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
-V10A27004_D1_Br3880_both     90.47 E3/E3  Prob AD    B3    C3        AD    173        both 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
-V10A27106_B1_Br3854_both     65.75 E3/E4   Def AD    B3    C3        AD    156        both 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
-V10A27106_D1_Br3880_both     90.47 E3/E3  Prob AD    B3    C3        AD    150        both 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
-V10T31036_B1_Br3854_both     65.75 E3/E4   Def AD    B3    C3        AD    133        both 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
-V10T31036_D1_Br3880_both     90.47 E3/E3  Prob AD    B3    C3        AD    117        both 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
-V10A27004_D1_Br3880_n_both   90.47 E3/E3  Prob AD    B3    C3        AD    216      n_both 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
-V10A27106_B1_Br3854_n_both   65.75 E3/E4   Def AD    B3    C3        AD    314      n_both 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
-V10A27106_D1_Br3880_n_both   90.47 E3/E3  Prob AD    B3    C3        AD    308      n_both 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
-V10T31036_B1_Br3854_n_both   65.75 E3/E4   Def AD    B3    C3        AD    142      n_both 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
-V10T31036_D1_Br3880_n_both   90.47 E3/E3  Prob AD    B3    C3        AD    134      n_both 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
-2023-07-28 16:41:27.18319 % of variance explained for the top 20 PCs:
+V10A27004_D1_Br3880_both_env 90.47 E3/E3  Prob AD    B3    C3        AD    389    both_env 35.0 EA/CAUC 7.1 V10A27004_D1_Br3880   M  Br3880
+V10A27106_B1_Br3854_both_env 65.75 E3/E4   Def AD    B3    C3        AD    470    both_env 31.5 EA/CAUC 7.0 V10A27106_B1_Br3854   F  Br3854
+V10A27106_D1_Br3880_both_env 90.47 E3/E3  Prob AD    B3    C3        AD    458    both_env 35.0 EA/CAUC 7.1 V10A27106_D1_Br3880   M  Br3880
+V10T31036_B1_Br3854_both_env 65.75 E3/E4   Def AD    B3    C3        AD    275    both_env 31.5 EA/CAUC 7.0 V10T31036_B1_Br3854   F  Br3854
+V10T31036_D1_Br3880_both_env 90.47 E3/E3  Prob AD    B3    C3        AD    251    both_env 35.0 EA/CAUC 7.1 V10T31036_D1_Br3880   M  Br3880
+2023-07-28 17:16:45.882213 % of variance explained for the top 20 PCs:
 list()
 $PCA_var_explained
- [1] 29.800 21.000 10.500  8.700  4.550  3.140  2.770  2.520  2.310  1.850  1.620  1.550  1.370  1.270  1.030  0.950  0.849  0.837  0.665  0.578
+ [1] 34.800 17.200 12.300 10.600  5.560  3.940  2.910  2.360  1.640  1.500  1.200  1.070  1.020  0.755  0.740  0.566  0.405  0.373  0.315  0.235
 
 Warning in (function (A, nv = 5, nu = nv, maxit = 1000, work = nv + 7, reorth = TRUE,  :
   You're computing too large a percentage of total singular values, use a standard svd instead.
@@ -164,9 +159,9 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
 +     6:7, 4:5)], c("none", "Ab", "n_Ab", "pTau", "n_pTau", "both", 
 +     "n_both"))
 [1] "Reproducibility information:"
-[1] "2023-07-28 16:41:28 EDT"
+[1] "2023-07-28 17:16:47 EDT"
    user  system elapsed 
-138.220   3.947 151.871 
+137.189   3.779 160.222 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.3.1 Patched (2023-07-27 r84774)
@@ -349,4 +344,4 @@ In check_numbers(k = k, nu = nu, nv = nv, limit = min(dim(x)) -  :
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Fri Jul 28 16:41:31 EDT 2023
+Fri Jul 28 17:16:54 EDT 2023
