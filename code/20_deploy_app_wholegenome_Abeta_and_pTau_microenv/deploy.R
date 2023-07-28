@@ -14,8 +14,14 @@ rsconnect::setAccountInfo(
 options(repos = BiocManager::repositories())
 
 ## Deploy the app, that is, upload it to shinyapps.io
-options(rsconnect.packrat = TRUE)
+# options(rsconnect.packrat = TRUE)
 ## from http://rstudio.github.io/rsconnect/news/index.html#new-features-1-0-0
+## The above looks like is only needed to get more informative error messages
+## from what I see at https://github.com/rstudio/rsconnect/issues/934#issuecomment-1654104704
+## and from what I saw myself. For example with that option set, I got this error:
+#### ## End Task Log #########################################################################################################################################################################
+#### Error: Unhandled Exception: Child Task 1322356013 failed: Error building image: Error fetching S4Arrays (1.0.4) source. Error downloading package source. Please update your BioConductor packages to the latest version and try again: <BioconductorPackageSource rep
+## which I wasn't getting with renv.
 rsconnect::deployApp(
     appDir = here("code", "20_deploy_app_wholegenome_Abeta_and_pTau_microenv"),
     appFiles = c(
