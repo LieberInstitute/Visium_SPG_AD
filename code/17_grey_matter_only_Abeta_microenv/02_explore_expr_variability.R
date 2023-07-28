@@ -67,7 +67,8 @@ vars <- c(
     "subject",
     "sex",
     "pmi",
-    "APOe"
+    "APOe",
+    "ncells"
 )
 
 ## Plot PCs with different colors
