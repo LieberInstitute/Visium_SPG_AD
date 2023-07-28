@@ -39,6 +39,8 @@ library("scater")
 
 ## Load pathology colors
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
+## Fix colors
+colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF", "pTau_env" = "#96ABC6FF")
 
 ## output directory
 dir_rdata <- here::here("processed-data", "19_grey_matter_only_Abeta_and_pTau_microenv", opt$spetype)
