@@ -172,6 +172,8 @@ rowData(sce_pseudo)$gene_search <-
 ## Load pathology colors
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
+## Fix colors
+colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF")
 sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_groups)]
 
 ## save RDS file

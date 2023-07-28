@@ -73,11 +73,6 @@ vars <- colnames(colData(spe))
 path_vars <- vars[grep("^path_", vars)]
 path_vars <- path_vars[!grepl("_colors$", path_vars)]
 
-## Fix colors
-to_fix <- is.na(sce_pseudo$path_groups_colors)
-sce_pseudo$path_groups_colors[to_fix] <- "#99700FFF"
-names(sce_pseudo$path_groups_colors)[to_fix] <- "Ab_env"
-
 ## Deploy the website
 spatialLIBD::run_app(
     spe,
