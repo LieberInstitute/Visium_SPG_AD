@@ -78,8 +78,11 @@ spe <- cluster_import(
 ## Collapse Ab and n_Ab as a single group. This is the Abeta microenvironment.
 spe$path_groups[spe$path_groups %in% c("n_Ab", "Ab")] <- "Ab_env"
 
-## Collapse pT and n_pT as a single group. This is the pTau microenvironment.
+## Collapse pTau and n_pTau as a single group. This is the pTau microenvironment.
 spe$path_groups[spe$path_groups %in% c("n_pTau", "pTau")] <- "pTau_env"
+
+## Collapse both and n_both as a single group. This is the both microenvironment.
+spe$path_groups[spe$path_groups %in% c("n_both", "both")] <- "both_env"
 
 ## Check that this worked ok
 stopifnot(sum(table(spe$path_groups)) == ncol(spe))
@@ -93,8 +96,7 @@ spe$path_groups <-
             "none",
             "Ab_env",
             "pTau_env",
-            "both",
-            "n_both"
+            "both_env"
         )
     )
 
@@ -178,7 +180,7 @@ rowData(sce_pseudo)$gene_search <-
 ## This info is used by spatialLIBD v1.7.18 or newer
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 ## Fix colors
-colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF", "pTau_env" = "#96ABC6FF")
+colors_pathology <- c(colors_pathology, "Ab_env" = "#99700FFF", "pTau_env" = "#96ABC6FF", "both_env" = "#A852CCFF")
 sce_pseudo$path_groups_colors <- colors_pathology[as.character(sce_pseudo$path_groups)]
 
 ## save RDS file
