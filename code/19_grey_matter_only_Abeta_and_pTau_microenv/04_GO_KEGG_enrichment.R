@@ -8,7 +8,7 @@ library("ggplot2")
 ## Plot output directory
 dir_plots <- here::here(
     "plots",
-    "17_grey_matter_only_Abeta_microenv",
+    "19_grey_matter_only_Abeta_and_pTau_microenv",
     "wholegenome"
 )
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
@@ -16,7 +16,7 @@ dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 ## Locate data directory
 dir_rdata <- here::here(
     "code",
-    "18_deploy_app_wholegenome_Abeta_microenv"
+    "20_deploy_app_wholegenome_Abeta_and_pTau_microenv"
 )
 
 load(file.path(dir_rdata, "Visium_SPG_AD_modeling_results.Rdata"),
@@ -119,7 +119,7 @@ kegg <- compareCluster(sigGene,
 ## Save Rdata with gene ontology enrichment results
 save(go, kegg, file = here::here(
     "processed-data",
-    "17_grey_matter_only_Abeta_microenv",
+    "19_grey_matter_only_Abeta_and_pTau_microenv",
     "wholegenome",
     "gene_ontology_enrichment_objects.Rdata"
 ))

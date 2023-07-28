@@ -39,10 +39,10 @@ stopifnot(packageVersion("spatialLIBD") >= "1.9.19")
 
 
 ## output directory
-dir_rdata <- here::here("processed-data", "17_grey_matter_only_Abeta_microenv", opt$spetype)
+dir_rdata <- here::here("processed-data", "19_grey_matter_only_Abeta_and_pTau_microenv", opt$spetype)
 dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_rdata)) ## Check that it was created successfully
-dir_plots <- here::here("plots", "17_grey_matter_only_Abeta_microenv", opt$spetype)
+dir_plots <- here::here("plots", "19_grey_matter_only_Abeta_and_pTau_microenv", opt$spetype)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 stopifnot(file.exists(dir_plots))
 

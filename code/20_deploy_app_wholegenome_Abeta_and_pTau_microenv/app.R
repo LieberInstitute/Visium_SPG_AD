@@ -15,7 +15,7 @@ if (local) {
     ## Local tests
     dir_rdata <- here::here(
         "code",
-        "18_deploy_app_wholegenome_Abeta_microenv"
+        "20_deploy_app_wholegenome_Abeta_and_pTau_microenv"
     )
 } else {
     ## For shinyapps.io
@@ -84,7 +84,7 @@ spatialLIBD::run_app(
     sce_layer = sce_pseudo,
     modeling_results = modeling_results,
     sig_genes = sig_genes,
-    title = "Visium SPG AD (Abeta microenv), Kwon SH et al, 2023",
+    title = "Visium SPG AD (Abeta & pTau microenv), Kwon SH et al, 2023",
     spe_discrete_vars = c(
         path_vars,
         "ManualAnnotation",

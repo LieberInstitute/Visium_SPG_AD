@@ -15,7 +15,7 @@ options(repos = BiocManager::repositories())
 
 ## Deploy the app, that is, upload it to shinyapps.io
 rsconnect::deployApp(
-    appDir = here("code", "18_deploy_app_wholegenome_Abeta_microenv"),
+    appDir = here("code", "20_deploy_app_wholegenome_Abeta_and_pTau_microenv"),
     appFiles = c(
         "app.R",
         "spe.Rdata",
@@ -23,7 +23,7 @@ rsconnect::deployApp(
         "sce_pseudo_pathology_wholegenome.rds",
         withr::with_dir(here("code", "05_deploy_app_wholegenome"), dir("www", full.names = TRUE))
     ),
-    appName = "Visium_SPG_AD_wholegenome_Abeta_microenv",
+    appName = "Visium_SPG_AD_wholegenome_Abeta_and_pTau_microenv",
     account = "libd",
     server = "shinyapps.io"
 )
