@@ -14,6 +14,8 @@ rsconnect::setAccountInfo(
 options(repos = BiocManager::repositories())
 
 ## Deploy the app, that is, upload it to shinyapps.io
+options(rsconnect.packrat = TRUE)
+## from http://rstudio.github.io/rsconnect/news/index.html#new-features-1-0-0
 rsconnect::deployApp(
     appDir = here("code", "20_deploy_app_wholegenome_Abeta_and_pTau_microenv"),
     appFiles = c(
