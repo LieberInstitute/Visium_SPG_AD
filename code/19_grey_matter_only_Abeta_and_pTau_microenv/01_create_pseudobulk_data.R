@@ -92,7 +92,7 @@ spe$path_groups <-
         levels = c(
             "none",
             "Ab_env",
-            "pT_env",
+            "pTau_env",
             "both",
             "n_both"
         )
