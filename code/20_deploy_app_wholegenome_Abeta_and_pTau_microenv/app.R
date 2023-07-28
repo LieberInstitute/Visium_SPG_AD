@@ -53,20 +53,30 @@ if (local) {
         }
         return(df)
     }
-    z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.05)))
+    z <- fix_csv(as.data.frame(subset(sig_genes, fdr < 0.2)))
     write.csv(z[, !grepl("^in_rows", colnames(z))],
         file = file.path(
             dir_rdata,
-            "Visium_SPG_AD_wholegenome_model_results_FDR5perc.csv"
+            "Visium_SPG_AD_wholegenome_model_results_FDR20perc.csv"
         )
     )
     dim(z)
-    # [1] 318  13
+    # [1] 8  13
     table(z$model_type, z$test)
-    #               Ab_env Ab_env-both Ab_env-none both both-Ab_env none none-Ab_env none-pTau noWM pTau-none
-    # anova           0           0           0    0           0    0           0         0    1         0
-    # enrichment    275           0           0    9           0    3           0         0    0         0
-    # pairwise        0          13           1    0          13    0           1         1    0         1
+    #                Ab_env Ab_env-both_env Ab_env-none Ab_env-pTau_env both_env-Ab_env none-Ab_env noWM pTau_env-Ab_env
+    # anova           0               0           0               0               0           0    1               0
+    # enrichment      1               0           0               0               0           0    0               0
+    # pairwise        0               1           1               1               1           1    0               1
+    z[, !colnames(z) %in% c("in_rows", "results", "in_rows_top20")]
+    #        top model_type            test    gene      stat         pval         fdr gene_index     logFC         ensembl
+    # 1 9978 enrichment          Ab_env TMEM163 -6.503638 8.038351e-07 0.008020666       1360 -2.869182 ENSG00000152128
+    # 2    1   pairwise     none-Ab_env    ISLR  5.341039 1.980015e-05 0.197565867       7045  1.173030 ENSG00000129009
+    # 3 9978   pairwise Ab_env-pTau_env TMEM163 -5.395948 1.729706e-05 0.172590047       1360 -2.995160 ENSG00000152128
+    # 4 9978   pairwise Ab_env-both_env TMEM163 -5.526484 1.255591e-05 0.125282837       1360 -3.237372 ENSG00000152128
+    # 5 9978   pairwise     Ab_env-none    ISLR -5.341039 1.980015e-05 0.197565867       7045  1.173030 ENSG00000129009
+    # 6    1   pairwise pTau_env-Ab_env TMEM163  5.395948 1.729706e-05 0.172590047       1360 -2.995160 ENSG00000152128
+    # 7    1   pairwise both_env-Ab_env TMEM163  5.526484 1.255591e-05 0.125282837       1360 -3.237372 ENSG00000152128
+    # 8    1      anova            noWM TMEM163 14.475536 1.611407e-05 0.160786190       1360        NA ENSG00000152128
 }
 
 vars <- colnames(colData(spe))
