@@ -6,6 +6,7 @@ library(reticulate)
 library(basilisk)
 library(here)
 library(sessioninfo)
+library(SpatialExperiment)
 
 mathys_dir = '/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/mathys'
 out_dir = here('processed-data', '21_spot_deconvo')
@@ -81,11 +82,52 @@ sce = SingleCellExperiment(
 )
 rownames(sce) = genes
 
+################################################################################
+#   Filter and prepare spatial and single-nucleus objects for deconvolution
+################################################################################
+
 #   zellkonverter doesn't know how to convert the 'spatialCoords' slot. We'd
 #   ultimately like the spatialCoords in the .obsm['spatial'] slot of the
 #   resulting AnnData, which corresponds to reducedDims(spe)$spatial in R
 spe = readRDS(spe_in)
 reducedDims(spe)$spatial = spatialCoords(spe)
+
+#   Filter out mitochondrial genes (which in single-nucleus data must be
+#   technical artifacts, and therefore don't make meaningful markers or training
+#   genes for spot deconvolution)
+keep = !grepl('^MT-', rownames(sce))
+perc_keep <- 100 * (1 - length(which(keep)) / length(keep))
+message(
+    paste0(
+        "Dropped ", perc_keep, "% of total genes when filtering out ",
+        "mitochondrial genes"
+    )
+)
+sce = sce[keep, ]
+
+#   Only take the intersection of genes in spatial and single-nucleus objects
+shared_symbols = rowData(spe)$gene_name[
+    rowData(spe)$gene_name %in% rownames(sce)
+]
+
+perc_keep = round(100 * (1 - length(shared_symbols) / nrow(sce)), 1)
+message(
+    paste0(
+        "Dropped ", perc_keep, "% of potential marker genes ",
+        "that were not present in the spatial data"
+    )
+)
+
+sce = sce[shared_symbols, ]
+spe = spe[rowData(spe)$gene_name %in% rownames(sce), ]
+
+#   Since genes now line up and rowData(sce) is empty, just take rowData from
+#   'spe'
+stopifnot(all(rowData(spe)$gene_name == rownames(sce)))
+rowData(sce) = rowData(spe)
+
+#   Use EnsemblID for rownames
+rownames(sce) = rowData(sce)$gene_id
 
 saveRDS(sce, file.path(out_dir, 'sce_mathys.rds'))
 write_anndata(sce, file.path(out_dir, 'adata_mathys.h5ad'))
