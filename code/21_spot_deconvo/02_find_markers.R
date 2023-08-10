@@ -6,6 +6,11 @@ library("here")
 library("HDF5Array")
 library("spatialLIBD")
 library("cowplot")
+library("colorspace")
+
+#   Adds the 'spot_plot' function (and more), a wrapper for 'vis_gene' or
+#   'vis_clus' with consistent manuscript-appropriate settings
+source(here("code", "21_spot_deconvo", "shared_functions.R"))
 
 sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
 spe_in = here('processed-data', '04_build_spe', 'spe_wholegenome.rds')
@@ -14,6 +19,7 @@ plot_dir = here('plots', '21_spot_deconvo')
 
 cell_type_var = "broad.cell.type"
 find_markers_model = "~individualID"
+discrete_cell_palette = "Dark 2"
 
 #   Number of marker genes to use per cell type
 n_markers_per_type = 25
@@ -54,8 +60,8 @@ write_markers <- function(n_markers, out_path) {
 }
 
 my_plot_expression <- function(
-        sce, genes, assay = "logcounts", ct = "cellType", fill_colors = NULL,
-        title = NULL, marker_stats
+        sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
+        marker_stats
     ) {
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
@@ -84,6 +90,7 @@ my_plot_expression <- function(
             ),
             size = 10, hjust = 1, vjust = 1
         ) +
+        scale_fill_discrete_qualitative(palette = discrete_cell_palette) +
         facet_wrap(
             ~Var1,
             ncol = 5, scales = "free_y",
@@ -101,25 +108,19 @@ my_plot_expression <- function(
         ) +
         stat_summary(fun = median, geom = "crossbar", width = 0.3)
 
-    if (!is.null(fill_colors)) {
-        expression_violin <- expression_violin + scale_fill_manual(
-            values = fill_colors
-        )
-    }
-
     # expression_violin
     return(expression_violin)
 }
 
 #   Plot mean-ratio distribution by cell type/ layer
-boxplot_mean_ratio <- function(n_markers, plot_path, colors_col) {
+boxplot_mean_ratio <- function(n_markers, plot_path) {
     p <- marker_stats |>
         filter(rank_ratio <= n_markers) |>
         mutate(ratio, ratio = log(ratio)) |>
         ggplot(aes(cellType.target, ratio, color = cellType.target)) +
         geom_boxplot() +
         geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-        scale_color_manual(values = metadata(sce)[[colors_col]]) +
+        scale_color_discrete_qualitative(palette = discrete_cell_palette) +
         labs(y = "log(Mean Ratio)") +
         theme_bw(base_size = 25) +
         guides(color = "none")
@@ -133,7 +134,7 @@ boxplot_mean_ratio <- function(n_markers, plot_path, colors_col) {
 
 dir.create(plot_dir, showWarnings = FALSE)
 
-load(sce_in, verbose = TRUE)
+sce = readRDS(sce_in)
 
 message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
 marker_stats = get_mean_ratio2(
@@ -168,9 +169,9 @@ plot_list <- lapply(
             ) |>
             pull(gene)
         my_plotExpression(
-            sce, genes,
+            sce,
+            genes,
             ct = cell_type_var,
-            fill_colors = metadata(sce)[[colors_col]],
             title = paste("Top", length(genes), "for", ct),
             marker_stats = marker_stats |>
                 filter(
@@ -190,3 +191,86 @@ pdf(
 )
 print(plot_list)
 dev.off()
+
+#   Plot mean ratio against log fold-change for all genes, split by target cell
+#   type and colored by whether each gene will be used as a marker
+p <- marker_stats |>
+    mutate(
+        Marker = case_when(
+            rank_ratio <= n_markers_per_type ~ paste0(
+                "Top-", n_markers_per_type, " Marker"
+            ),
+            TRUE ~ "Not Marker"
+        )
+    ) |>
+    ggplot(aes(ratio, std.logFC, color = Marker)) +
+    geom_point(size = 0.5, alpha = 0.5) +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+    geom_vline(xintercept = 1, linetype = "dashed", color = "red") +
+    facet_wrap(~cellType.target, scales = "free_x", ncol = 4) +
+    labs(x = "Mean Ratio") +
+    theme_bw(base_size = 16) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+    guides(col = guide_legend(override.aes = list(size = 2)))
+
+pdf(file.path(plot_dir, paste0("mean_ratio_vs_1vall.pdf")), width = 10)
+print(p)
+dev.off()
+
+#   Plot mean-ratio distibution by cell type
+boxplot_mean_ratio(n_markers_per_type, "mean_ratio_boxplot")
+
+#-------------------------------------------------------------------------------
+#   For IF, show a grid of plots summarizing how sparsely marker genes
+#   for each cell type are expressed spatially. Repeat these plots for different
+#   numbers of markers per cell type: 15, 25, 50
+#-------------------------------------------------------------------------------
+
+for (n_markers in c(15, 25, 50)) {
+    plot_list <- list()
+    i <- 1
+
+    #   Plot proportion of markers having nonzero expression for each cell type
+    for (ct in cell_types) {
+        #   Get markers for this cell type
+        markers <- marker_stats |>
+            filter(
+                cellType.target == ct,
+                rank_ratio <= n_markers,
+                ratio > 1
+            ) |>
+            pull(gene)
+
+        for (sample_id in unique(spe$sample_id)) {
+            spe_small <- spe[markers, spe$sample_id == sample_id]
+
+            #   For each spot, compute proportion of marker genes with nonzero
+            #   expression
+            spe_small$prop_nonzero_marker <- colMeans(
+                assays(spe_small)$counts > 0
+            )
+
+            plot_list[[i]] <- spot_plot(
+                spe_small,
+                sample_id = sample_id,
+                var_name = "prop_nonzero_marker", include_legend = TRUE,
+                is_discrete = FALSE, minCount = 0,
+                title = paste0(
+                    "Prop. markers w/ nonzero exp:\n", ct, " (", sample_id, ")"
+                )
+            )
+
+            i <- i + 1
+        }
+    }
+    n_sample <- length(unique(spe$sample_id))
+    n_rows <- length(unique(marker_stats$cellType.target))
+
+    write_spot_plots(
+        plot_list = plot_list, n_col = n_sample, plot_dir = plot_dir,
+        file_prefix = paste0("marker_spatial_sparsity_n", n_markers),
+        include_individual = TRUE
+    )
+}
+
+session_info()
