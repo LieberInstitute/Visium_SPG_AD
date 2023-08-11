@@ -28,7 +28,7 @@ n_markers_per_type = 25
 #   Functions
 ################################################################################
 
-write_markers <- function(n_markers, out_path) {
+write_markers <- function(marker_stats, n_markers, out_path) {
     #   Take top N marker genes for each cell type
     marker_stats_temp <- marker_stats |>
         filter(
@@ -50,7 +50,7 @@ write_markers <- function(n_markers, out_path) {
             )
         )
         message("Number of markers per cell type:")
-        message(num_markers_table)
+        print(num_markers_table)
     }
 
     stopifnot(all(num_markers_table$num_markers > 0))
@@ -60,7 +60,7 @@ write_markers <- function(n_markers, out_path) {
 }
 
 my_plot_expression <- function(
-        sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
+        sce, genes, assay = "counts", ct = "cellType", title = NULL,
         marker_stats
     ) {
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
@@ -112,8 +112,8 @@ my_plot_expression <- function(
     return(expression_violin)
 }
 
-#   Plot mean-ratio distribution by cell type/ layer
-boxplot_mean_ratio <- function(n_markers, plot_path) {
+#   Plot mean-ratio distribution by cell type
+boxplot_mean_ratio <- function(marker_stats, n_markers, plot_path) {
     p <- marker_stats |>
         filter(rank_ratio <= n_markers) |>
         mutate(ratio, ratio = log(ratio)) |>
@@ -151,7 +151,7 @@ marker_stats <- left_join(
 
 #   Save 'marker_stats' table and the markers themselves (just gene symbols)
 saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
-write_markers(marker_stats, file.path(out_dir, 'markers.txt'))
+write_markers(marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt'))
 
 ################################################################################
 #   Visually check quality of markers
@@ -159,7 +159,7 @@ write_markers(marker_stats, file.path(out_dir, 'markers.txt'))
 
 #   Explore how markers look for each cell type
 plot_list <- lapply(
-    sce[[cell_type_var]],
+    unique(sce[[cell_type_var]]),
     function(ct) {
         genes <- marker_stats |>
             filter(
@@ -168,7 +168,7 @@ plot_list <- lapply(
                 ratio > 1
             ) |>
             pull(gene)
-        my_plotExpression(
+        my_plot_expression(
             sce,
             genes,
             ct = cell_type_var,
@@ -213,25 +213,30 @@ p <- marker_stats |>
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
     guides(col = guide_legend(override.aes = list(size = 2)))
 
-pdf(file.path(plot_dir, paste0("mean_ratio_vs_1vall.pdf")), width = 10)
+pdf(file.path(plot_dir, "mean_ratio_vs_1vall.pdf"), width = 10)
 print(p)
 dev.off()
 
 #   Plot mean-ratio distibution by cell type
-boxplot_mean_ratio(n_markers_per_type, "mean_ratio_boxplot")
+boxplot_mean_ratio(
+    marker_stats, n_markers_per_type,
+    file.path(plot_dir, "mean_ratio_boxplot.pdf")
+)
 
 #-------------------------------------------------------------------------------
-#   For IF, show a grid of plots summarizing how sparsely marker genes
-#   for each cell type are expressed spatially. Repeat these plots for different
-#   numbers of markers per cell type: 15, 25, 50
+#   Make a grid of plots summarizing how sparsely marker genes for each cell
+#   type are expressed spatially. Repeat these plots for different numbers of
+#   markers per cell type: 15, 25, 50
 #-------------------------------------------------------------------------------
+
+spe = readRDS(spe_in)
 
 for (n_markers in c(15, 25, 50)) {
     plot_list <- list()
     i <- 1
 
     #   Plot proportion of markers having nonzero expression for each cell type
-    for (ct in cell_types) {
+    for (ct in unique(sce[[cell_type_var]])) {
         #   Get markers for this cell type
         markers <- marker_stats |>
             filter(
