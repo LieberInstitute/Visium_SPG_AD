@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 #$ -cwd
 #$ -N "c2l_prepare_anndata"
@@ -30,7 +30,7 @@ echo "Job id: ${job_id}"
 echo "Job name: ${job_name}"
 echo "Hostname: ${HOSTNAME}"
 
-module load cell2location/0.8a0
+module load cell2location/0.1.3
 python 03_c2l_prepare_anndata.py
 
 echo "**** Job ends ****"
