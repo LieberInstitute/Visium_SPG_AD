@@ -137,21 +137,22 @@ dir.create(plot_dir, showWarnings = FALSE)
 
 sce = readRDS(sce_in)
 
-message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
-marker_stats = get_mean_ratio2(
-    sce, cellType_col = cell_type_var, assay_name = "counts"
-)
-marker_stats_1vall <- findMarkers_1vAll(
-    sce, cellType_col = cell_type_var, assay_name = "counts",
-    mod = find_markers_model
-)
-marker_stats <- left_join(
-    marker_stats, marker_stats_1vall,
-    by = c("gene", "cellType.target")
-)
+# message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
+# marker_stats = get_mean_ratio2(
+#     sce, cellType_col = cell_type_var, assay_name = "counts"
+# )
+# marker_stats_1vall <- findMarkers_1vAll(
+#     sce, cellType_col = cell_type_var, assay_name = "counts",
+#     mod = find_markers_model
+# )
+# marker_stats <- left_join(
+#     marker_stats, marker_stats_1vall,
+#     by = c("gene", "cellType.target")
+# )
 
-#   Save 'marker_stats' table and the markers themselves (just gene symbols)
-saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
+# #   Save 'marker_stats' table and the markers themselves (just gene symbols)
+# saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
+marker_stats = readRDS(file.path(out_dir, 'marker_stats.rds'))
 write_markers(marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt'))
 
 ################################################################################
