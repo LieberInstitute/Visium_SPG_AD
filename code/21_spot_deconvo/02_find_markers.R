@@ -20,6 +20,7 @@ plot_dir = here('plots', '21_spot_deconvo')
 cell_type_var = "broad.cell.type"
 find_markers_model = "~individualID"
 discrete_cell_palette = "Dark 2"
+best_looking_sample_id = "V10A27106_D1_Br3880"
 
 #   Number of marker genes to use per cell type
 n_markers_per_type = 25
@@ -274,8 +275,80 @@ for (n_markers in c(15, 25, 50)) {
     write_spot_plots(
         plot_list = plot_list, n_col = n_sample, plot_dir = plot_dir,
         file_prefix = paste0("marker_spatial_sparsity_n", n_markers),
-        include_individual = TRUE
+        include_individual = FALSE
     )
 }
+
+#-------------------------------------------------------------------------------
+#   Plot marker sparsity for 15, 20, 50 markers per cell type for all cell types
+#   for the best-looking sample
+#-------------------------------------------------------------------------------
+
+plot_list <- list()
+max_list <- list()
+i <- 1
+
+for (n_markers in c(15, 25, 50)) {
+    for (cell_type in unique(sce[[cell_type_var]])) {
+        #   Get markers for this cell type
+        markers <- marker_stats |>
+            filter(
+                cellType.target == cell_type,
+                rank_ratio <= n_markers,
+                ratio > 1
+            ) |>
+            pull(gene)
+
+        spe_small <- spe[markers, spe$sample_id == best_looking_sample_id]
+
+        #   For each spot, compute proportion of marker genes with nonzero
+        #   expression
+        spe_small$prop_nonzero_marker <- colMeans(
+            assays(spe_small)$counts > 0
+        )
+
+        max_list[[i]] <- max(spe_small$prop_nonzero_marker)
+
+        plot_list[[i]] <- spot_plot(
+            spe_small,
+            sample_id = best_looking_sample_id,
+            var_name = "prop_nonzero_marker", include_legend = TRUE,
+            is_discrete = FALSE, minCount = 0,
+            title = sprintf(
+                "Prop. %s markers w/ >0 counts (n = %s markers)",
+                cell_type, n_markers
+            )
+        )
+
+        i <- i + 1
+    }
+}
+
+max_mat <- matrix(
+    unlist(max_list),
+    ncol = length(unique(sce[[cell_type_var]])), byrow = TRUE
+)
+
+#   Now loop back through the plot list (which will be displayed in 2D)
+#   and overwrite the scale to go as high as the largest value in the
+#   column. This allows for easy comparison between number of markers for
+#   the same cell types
+for (i_col in 1:length(unique(sce[[cell_type_var]]))) {
+    for (i_row in 1:3) {
+        index <- (i_row - 1) * length(unique(sce[[cell_type_var]])) + i_col
+        upper_limit <- max(max_mat[, i_col])
+
+        plot_list[[index]] <- overwrite_scale(
+            plot_list[[index]],
+            upper_limit = upper_limit, min_count = 0
+        )
+    }
+}
+
+write_spot_plots(
+    plot_list = plot_list, n_col = length(unique(sce[[cell_type_var]])),
+    plot_dir = plot_dir, file_prefix = "sparsity_figure",
+    include_individual = FALSE
+)
 
 session_info()
