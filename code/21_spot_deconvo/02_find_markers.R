@@ -17,9 +17,6 @@ sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
 spe_in = here('processed-data', '04_build_spe', 'spe_wholegenome.rds')
 out_dir = here('processed-data', '21_spot_deconvo')
 plot_dir = here('plots', '21_spot_deconvo')
-their_degs_path = here(
-    'processed-data', '21_spot_deconvo', 'mathys_supp_tab_2.xlsx'
-)
 sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
 
 cell_type_var = "broad.cell.type"
@@ -27,11 +24,10 @@ find_markers_model = "~individualID"
 discrete_cell_palette = "Dark 2"
 best_looking_sample_id = "V10A27106_D1_Br3880"
 
-#   Number of marker genes to use per cell type
-n_markers_per_type = 25
-
-#   Those for which there are DEGs computed in the Mathys et al paper
-cell_types_mathys = c("Ex", "Oli", "In", "Mic", "Opc", "Ast")
+#   Number of marker genes to use per cell type, and to show in violin plots,
+#   respectively
+n_markers_per_type = 15
+n_markers_per_type_violin = 25
 
 ################################################################################
 #   Functions
@@ -69,7 +65,7 @@ write_markers <- function(marker_stats, n_markers, out_path) {
 }
 
 my_plot_expression <- function(
-        sce, genes, assay = "counts", ct = "cellType", title = NULL,
+        sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
         marker_stats
     ) {
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
@@ -149,91 +145,24 @@ sce = readRDS(sce_in)
 #   Rank genes as potential markers with DeconvoBuddies functions
 #-------------------------------------------------------------------------------
 
-# message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
-# marker_stats = get_mean_ratio2(
-#     sce, cellType_col = cell_type_var, assay_name = "counts"
-# )
-# marker_stats_1vall <- findMarkers_1vAll(
-#     sce, cellType_col = cell_type_var, assay_name = "counts",
-#     mod = find_markers_model
-# )
-# marker_stats <- left_join(
-#     marker_stats, marker_stats_1vall,
-#     by = c("gene", "cellType.target")
-# )
-# marker_stats$symbol = rowData(sce)$gene_name[
-#     match(marker_stats$gene, rownames(sce))
-# ]
-
-#-------------------------------------------------------------------------------
-#   Exclude Mathys et al DEgs as potential markers
-#-------------------------------------------------------------------------------
-
-#   The Mathys et al paper includes cell-type-specific diagnosis-associated
-#   DEGs. We dont want to use any of these as markers for any cell types,
-#   because it could result in confounding gene-expression profiles with
-#   diagnosis-related signal. We want markers that work equally well in AD and
-#   controls!
-
-#   Form a list of cell-type-specific diagnosis-associated DEGs from Mathys et
-#   al manuscript (specifically https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-019-1195-2/MediaObjects/41586_2019_1195_MOESM4_ESM.xlsx )
-mathys_deg_list = list()
-for (cell_type in cell_types_mathys) {
-    mathys_deg_list[[cell_type]] = read_excel(
-            file.path(out_dir, 'mathys_supp_tab_2.xlsx'),
-            sheet = cell_type,
-            skip = 1
-        ) |>
-        #   Take DEGs that pass criteria listed in their methods
-        filter(DEGs.Ind.Model...8, DEGs.Ind.Mix.models...9) |>
-        #   Grab just the gene symbols
-        pull(...1)
-}
-mathys_degs = unlist(mathys_deg_list)
-
-marker_stats = readRDS(file.path(out_dir, 'marker_stats_raw.rds')) |>
-    #   Add gene symbol
-    mutate(symbol = rowData(sce)$gene_name[match(gene, rownames(sce))])
-
-#   Explore how many existing markers were DEGs found in Mathys
-message(
-    sprintf(
-        "Number of Mathys DEGs in unfiltered, top-%s markers:",
-        n_markers_per_type
-    )
+message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
+marker_stats = get_mean_ratio2(
+    sce, cellType_col = cell_type_var, assay_name = "logcounts"
 )
-marker_stats |>
-    group_by(cellType.target) |>
-    filter(rank_ratio <= n_markers_per_type, ratio > 1) |>
-    summarize(num_degs = sum(symbol %in% mathys_degs)) |>
-    print()
+marker_stats_1vall <- findMarkers_1vAll(
+    sce, cellType_col = cell_type_var, assay_name = "logcounts",
+    mod = find_markers_model
+)
+marker_stats <- left_join(
+    marker_stats, marker_stats_1vall,
+    by = c("gene", "cellType.target")
+)
+marker_stats$symbol = rowData(sce)$gene_name[
+    match(marker_stats$gene, rownames(sce))
+]
 
-#   Exclude DEGs from Mathys
-marker_stats = marker_stats |>
-    filter(!(symbol %in% mathys_degs))
-
-#   "Re-rank" rank_ratio, since there may be missing ranks now after filtering.
-#   It would've made more sense to filter before calling 'get_mean_ratio2', but
-#   due to time pressure, we'll do this faster but uglier workaround
-for (ct in unique(sce[[cell_type_var]])) {
-    old_ranks <- marker_stats |>
-        filter(cellType.target == ct) |>
-        pull(rank_ratio) |>
-        sort()
-
-    for (i in 1:length(which((marker_stats$cellType.target == ct)))) {
-        index <- which(
-            (marker_stats$cellType.target == ct) &
-                (marker_stats$rank_ratio == old_ranks[i])
-        )
-        stopifnot(length(index) == 1)
-        marker_stats[index, "rank_ratio"] <- i
-    }
-}
-
-#   Save 'marker_stats' table and the markers themselves (just gene symbols)
+#   Save 'marker_stats' table and the markers themselves (just Ensembl IDs)
 saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
-
 write_markers(
     marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt')
 )
@@ -248,7 +177,7 @@ plot_list <- lapply(
     function(ct) {
         genes <- marker_stats |>
             filter(
-                rank_ratio <= n_markers_per_type,
+                rank_ratio <= n_markers_per_type_violin,
                 cellType.target == ct,
                 ratio > 1
             ) |>
@@ -260,7 +189,7 @@ plot_list <- lapply(
             title = paste("Top", length(genes), "for", ct),
             marker_stats = marker_stats |>
                 filter(
-                    rank_ratio <= n_markers_per_type,
+                    rank_ratio <= n_markers_per_type_violin,
                     cellType.target == ct,
                     ratio > 1
                 )
@@ -271,7 +200,10 @@ plot_list <- lapply(
 #   Write a multi-page PDF with violin plots for each cell group and all
 #   markers
 pdf(
-    file.path(plot_dir, paste0("marker_gene_violin.pdf")),
+    file.path(
+        plot_dir,
+        sprintf("marker_gene_violin_n%s.pdf", n_markers_per_type_violin)
+    ),
     width = 35, height = 35
 )
 print(plot_list)

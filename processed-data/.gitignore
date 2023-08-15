@@ -4,3 +4,4 @@
 21_spot_deconvo/*.h5ad
 21_spot_deconvo/mathys_supp_tab_2.xlsx
 21_spot_deconvo/sce_mathys.rds
+21_spot_deconvo/spe_norm.rds
