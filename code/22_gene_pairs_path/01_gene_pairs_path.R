@@ -23,28 +23,6 @@ co_expr_v2 <- pair_1 & pair_2
 identical(co_expr_loop, co_expr_v2)
 
 
-gene_combn <- combn(1000, 2)
-ncol(gene_combn)
-# [1] [1] 499500
-
-Sys.time()
-# [1] "2023-08-15 12:25:31 EDT"
-pair_1 <- assay(spe_expr, "expr")[gene_combn[1, ], ]
-Sys.time()
-# [1] "2023-08-15 12:25:37 EDT"
-lobstr::obj_size(pair_1)
-# 11.35 GB
-Sys.time()
-pair_2 <- assay(spe_expr, "expr")[gene_combn[2, ], ]
-Sys.time()
-# [1] "2023-08-15 12:26:30 EDT"
-lobstr::obj_size(pair_2)
-# 11.34 GB
-Sys.time()
-co_expr <- pair_1 & pair_2
-# Error: vector memory exhausted (limit reached?)
-Sys.time()
-
 
 
 
