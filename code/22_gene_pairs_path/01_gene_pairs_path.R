@@ -224,6 +224,12 @@ for(i in seq(0, 90, by = 10)) {
 }
 dev.off()
 
+## Save object for later
+saveRDS(
+    co_expr_se,
+    file = file.path(dir_rdata, paste0("co_expr_se_", path_name, ".rds"))
+)
+
 ## Reproducibility information
 print("Reproducibility information:")
 Sys.time()
