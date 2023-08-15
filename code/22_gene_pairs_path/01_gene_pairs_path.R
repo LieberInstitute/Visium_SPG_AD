@@ -1,6 +1,7 @@
 library("spatialLIBD")
 library("lobstr")
 library("rafalib")
+library("ggplot2")
 library("sessioninfo")
 
 ## Read in the data
@@ -41,7 +42,7 @@ dim(spe_expr)
 lobstr::obj_size(spe_expr)
 
 ## We no longer need the spe object
-# rm(spe)
+rm(spe)
 
 ## Compute the combinations of gene pairs
 gene_combn <- combn(k, 2)
@@ -59,9 +60,7 @@ co_expr <- pair_1 & pair_2
 message(Sys.time(), " - done computing co_expr")
 lobstr::obj_size(co_expr)
 
-## Set the rownames for the gene combination
-rownames(co_expr) <- paste0(rownames(pair_1), "_", rownames(pair_2))
-
+## Build a SummarizedExperiment object with the gene co-expression pairs
 co_expr_se <- SummarizedExperiment(
     assays = SimpleList(co_expr = co_expr),
     rowData = DataFrame(
@@ -72,22 +71,36 @@ co_expr_se <- SummarizedExperiment(
     ),
     colData = colData(spe_expr)
 )
+rowData(co_expr_se)$gene_name_combn <- paste0(
+    rowData(co_expr_se)$gene_name_1,
+    "_",
+    rowData(co_expr_se)$gene_name_2
+)
+## Set the rownames for the gene combination
+rownames(co_expr_se) <- paste0(rownames(pair_1), "_", rownames(pair_2))
+
+message("Memory for co_expr_se:")
 lobstr::obj_size(co_expr_se)
 
 ## Remove objects we don't need anymore
-rm(pair_1, pair_2)
+rm(pair_1, pair_2, co_expr)
 
 ## Calculate mean of co-expression across groups of interest
 path_list <- rafalib::splitit(spe_expr$path_groups)
 co_expr_means <- do.call(cbind, lapply(path_list, function(ii) {
-    rowMeans(co_expr[, ii])
+    rowMeans(assay(co_expr_se, "co_expr")[, ii])
 }))
 dim(co_expr_means)
 
 ## Find highest (max) and second highest for each gene pair
 rowData(co_expr_se)$highest <- apply(co_expr_means, 1, max)
+rowData(co_expr_se)$which_highest <- colnames(co_expr_means)[apply(co_expr_means, 1, which.max)]
 rowData(co_expr_se)$second <- apply(co_expr_means, 1, function(x) {
     max(x[x != max(x)])
+})
+rowData(co_expr_se)$which_second <- apply(co_expr_means, 1, function(x) {
+    removed_max <- x[x != max(x)]
+    names(which.max(removed_max))
 })
 rowData(co_expr_se)$ratio <- rowData(co_expr_se)$highest / rowData(co_expr_se)$second
 message("Summary of ratio of highest / second highest:")
@@ -102,24 +115,26 @@ head(sort(rowData(co_expr_se)$ratio, decreasing = TRUE))
 message("Full co_expr_se size:")
 lobstr::obj_size(co_expr_se)
 
-
+## Plotting function with code adapted from
+## https://github.com/LieberInstitute/Visium_SPG_AD/blob/7f4017344675764da592d27677d34993589e44a5/code/21_spot_deconvo/02_find_markers.R#L71-L122
 my_plot_expression <- function(
         sce, genes, assay = "counts", ct = "cellType", title = NULL,
         marker_stats
     ) {
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
+    expression_long$value <- as.integer(expression_long$value)
 
     cat <- cat_df[expression_long$Var2, ]
     expression_long <- cbind(expression_long, cat)
 
     #   Use gene symbols for labels, not Ensembl ID
-    symbols <- rowData(sce)$gene_name[match(genes, rownames(sce))]
+    symbols <- rowData(sce)$gene_name_combn[match(genes, rownames(sce))]
     names(symbols) <- genes
 
     #   Add a data frame for adding mean-ratio labels to each gene
-    text_df <- marker_stats
-    text_df$ratio <- paste0("Mean ratio: ", round(text_df$ratio, 2))
+    text_df <- marker_stats[marker_stats$gene %in% genes, ]
+    # text_df$ratio <- paste0("Mean ratio: ", round(text_df$ratio, 2))
     text_df$Var1 <- factor(text_df$gene, levels = levels(expression_long$Var1))
 
     expression_violin <- ggplot(
@@ -132,9 +147,9 @@ my_plot_expression <- function(
                 x = length(unique(sce[[ct]])), y = Inf, fill = NULL,
                 label = ratio
             ),
-            size = 10, hjust = 1, vjust = 1
+            size = 8, hjust = 1, vjust = 1.3
         ) +
-        scale_fill_discrete_qualitative(palette = discrete_cell_palette) +
+        scale_fill_manual(values = discrete_cell_palette) +
         facet_wrap(
             ~Var1,
             ncol = 5, scales = "free_y",
@@ -155,6 +170,33 @@ my_plot_expression <- function(
     # expression_violin
     return(expression_violin)
 }
+
+## Identify the colors for the pathology groups
+cols <- unique(co_expr_se$path_groups_colors)
+names(cols) <- sapply(cols, function(x) {
+    names(co_expr_se$path_groups_colors[co_expr_se$path_groups_colors == x])[1]
+})
+
+discrete_cell_palette <- cols
+
+my_plot_expression(
+    sce = co_expr_se,
+    genes = names(head(sort(rowData(co_expr_se)$ratio, decreasing = TRUE), 10)),
+    assay = "co_expr",
+    ct = "path_groups",
+    marker_stats = data.frame(
+        ratio = paste0(
+            round(rowData(co_expr_se)$ratio, 3),
+            "(",
+            rowData(co_expr_se)$which_highest,
+            "/",
+            rowData(co_expr_se)$which_second,
+            ")"
+        ),
+        gene = rownames(co_expr_se)
+    )
+
+)
 
 ## Reproducibility information
 print("Reproducibility information:")
