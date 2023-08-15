@@ -126,7 +126,39 @@ sce = sce[!(genes %in% mathys_degs), sce$broad.cell.type %in% cell_types_mathys]
 ################################################################################
 
 #-------------------------------------------------------------------------------
-#   Compute log normalized counts in SpatialExperiment
+#   Compute log normalized counts in SingleCellExperiment
+#-------------------------------------------------------------------------------
+
+message("Running quickCluster()")
+Sys.time()
+sce$scran_quick_cluster <- quickCluster(
+    sce,
+    BPPARAM = MulticoreParam(num_cores),
+    block = sce$sample_id,
+    block.BPPARAM = MulticoreParam(num_cores)
+)
+Sys.time()
+
+message("Running computeSumFactors()")
+Sys.time()
+sce <-
+    computeSumFactors(
+        sce,
+        clusters = sce$scran_quick_cluster,
+        BPPARAM = MulticoreParam(num_cores)
+    )
+Sys.time()
+
+table(sce$scran_quick_cluster)
+
+message("Running checking sizeFactors()")
+summary(sizeFactors(sce))
+
+message("Running logNormCounts()")
+sce <- logNormCounts(sce)
+
+#-------------------------------------------------------------------------------
+#   Filter objects: overlapping, non-mitochondrial genes
 #-------------------------------------------------------------------------------
 
 #   zellkonverter doesn't know how to convert the 'spatialCoords' slot. We'd
@@ -134,38 +166,6 @@ sce = sce[!(genes %in% mathys_degs), sce$broad.cell.type %in% cell_types_mathys]
 #   resulting AnnData, which corresponds to reducedDims(spe)$spatial in R
 spe = readRDS(spe_in)
 reducedDims(spe)$spatial = spatialCoords(spe)
-
-message("Running quickCluster()")
-Sys.time()
-spe$scran_quick_cluster <- quickCluster(
-    spe,
-    BPPARAM = MulticoreParam(num_cores),
-    block = spe$sample_id,
-    block.BPPARAM = MulticoreParam(num_cores)
-)
-Sys.time()
-
-message("Running computeSumFactors()")
-Sys.time()
-spe <-
-    computeSumFactors(
-        spe,
-        clusters = spe$scran_quick_cluster,
-        BPPARAM = MulticoreParam(num_cores)
-    )
-Sys.time()
-
-table(spe$scran_quick_cluster)
-
-message("Running checking sizeFactors()")
-summary(sizeFactors(spe))
-
-message("Running logNormCounts()")
-spe <- logNormCounts(spe)
-
-#-------------------------------------------------------------------------------
-#   Filter objects: overlapping, non-mitochondrial genes
-#-------------------------------------------------------------------------------
 
 #   Filter out mitochondrial genes (which in single-nucleus data must be
 #   technical artifacts, and therefore don't make meaningful markers or training
