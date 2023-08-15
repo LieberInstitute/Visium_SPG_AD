@@ -1,45 +1,65 @@
 library("spatialLIBD")
+library("lobstr")
 library("sessioninfo")
+
+## Read in the data
 spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
-sce_pseudo <- spatialLIBD::fetch_data("Visium_SPG_AD_Visium_wholegenome_pseudobulk_spe")
+# lobstr::obj_size(spe)
+# 2.29 GB
 
-## Subset to genes observed
-spe_expr <- spe[rownames(sce_pseudo), spe$diagnosis == "AD"]
+## Identify pathology group of interest
+path_i <- as.integer(Sys.getenv("SGE_TASK_ID"))
+if(is.na(path_i)) {
+    levels(spe$path_groups)
+    # [1] "none"   "Ab"     "n_Ab"   "pTau"   "n_pTau" "both"   "n_both"
+    warning("Testing with path_i = 2 which is Ab")
+    path_i <- 2
+}
+path_name <- levels(spe$path_groups)[path_i]
+
+## Subset to AD only for the given pathology group of interest
+spe_expr_group <- spe[, spe$diagnosis == "AD" & spe$path_groups == path_name]
+
+## Identify which genes have nonzero counts in each spot
+assay(spe_expr_group, "expr") <- counts(spe_expr_group) > 0
+
+## Identify top genes expressed in this pathology group
+expr_mean <- rowMeans(assay(spe_expr_group, "expr"))
+k <- 300
+top_k <- sort(expr_mean, decreasing = TRUE)[seq_len(k)]
+head(top_k)
+summary(top_k)
+## We don't need this object anymore
+rm(spe_expr_group)
+
+## Subset to genes with highest mean expressed proportion
+spe_expr <- spe[names(top_k), spe$diagnosis == "AD"]
 assay(spe_expr, "expr") <- counts(spe_expr) > 0
+## Final dimensions
+dim(spe_expr)
+lobstr::obj_size(spe_expr)
 
+## We no longer need the spe object
+# rm(spe)
 
+## Compute the combinations of gene pairs
+gene_combn <- combn(k, 2)
+message("Number of gene combinations: ", ncol(gene_combn))
 
-
-
-
-
-
-gene_combn <- combn(500, 2)
-ncol(gene_combn)
-# [1] 124750
-
-Sys.time()
-# [1] "2023-08-15 12:32:14 EDT"
+## Find the combination of genes that are co-expressed
+message(Sys.time(), " - computing pair_1")
 pair_1 <- assay(spe_expr, "expr")[gene_combn[1, ], ]
-Sys.time()
-# [1] "2023-08-15 12:32:15 EDT"
 lobstr::obj_size(pair_1)
-# 2.91 GB
-Sys.time()
-# [1] "2023-08-15 12:32:15 EDT"
+message(Sys.time(), " - computing pair_2")
 pair_2 <- assay(spe_expr, "expr")[gene_combn[2, ], ]
-Sys.time()
-# [1] "2023-08-15 12:32:22 EDT"
 lobstr::obj_size(pair_2)
-# 2.71 GB
-Sys.time()
-# [1] "2023-08-15 12:32:22 EDT"
+message(Sys.time(), " - computing co_expr")
 co_expr <- pair_1 & pair_2
-# Error: vector memory exhausted (limit reached?)
-Sys.time()
-# [1] "2023-08-15 12:32:56 EDT"
+message(Sys.time(), " - done computing co_expr")
 lobstr::obj_size(co_expr)
-# 389.46 MB
+
+## Remove objects we don't need anymore
+rm(pair_1, pair_2)
 
 ## Reproducibility information
 print("Reproducibility information:")
