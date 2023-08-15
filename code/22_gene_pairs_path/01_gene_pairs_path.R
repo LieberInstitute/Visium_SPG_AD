@@ -59,6 +59,21 @@ co_expr <- pair_1 & pair_2
 message(Sys.time(), " - done computing co_expr")
 lobstr::obj_size(co_expr)
 
+## Set the rownames for the gene combination
+rownames(co_expr) <- paste0(rownames(pair_1), "_", rownames(pair_2))
+
+co_expr_se <- SummarizedExperiment(
+    assays = SimpleList(co_expr = co_expr),
+    rowData = DataFrame(
+        gene_id_1 = rownames(pair_1),
+        gene_id_2 = rownames(pair_2),
+        gene_name_1 = rowData(spe_expr)$gene_name[gene_combn[1, ]],
+        gene_name_2 = rowData(spe_expr)$gene_name[gene_combn[2, ]]
+    ),
+    colData = colData(spe_expr)
+)
+lobstr::obj_size(co_expr_se)
+
 ## Remove objects we don't need anymore
 rm(pair_1, pair_2)
 
@@ -70,13 +85,22 @@ co_expr_means <- do.call(cbind, lapply(path_list, function(ii) {
 dim(co_expr_means)
 
 ## Find highest (max) and second highest for each gene pair
-highest <- apply(co_expr_means, 1, max)
-second <- apply(co_expr_means, 1, function(x) {
+rowData(co_expr_se)$highest <- apply(co_expr_means, 1, max)
+rowData(co_expr_se)$second <- apply(co_expr_means, 1, function(x) {
     max(x[x != max(x)])
 })
-ratio <- highest / second
+rowData(co_expr_se)$ratio <- rowData(co_expr_se)$highest / rowData(co_expr_se)$second
 message("Summary of ratio of highest / second highest:")
-summary(ratio)
+summary(rowData(co_expr_se)$ratio)
+
+head(sort(rowData(co_expr_se)$ratio, decreasing = TRUE))
+# ENSG00000127585_ENSG00000089737 ENSG00000102003_ENSG00000089737 ENSG00000127585_ENSG00000145920
+#                        1.285471                        1.278619                        1.266584
+# ENSG00000089157_ENSG00000089737 ENSG00000111716_ENSG00000089737 ENSG00000137409_ENSG00000089737
+#                        1.258635                        1.257425                        1.251863
+
+message("Full co_expr_se size:")
+lobstr::obj_size(co_expr_se)
 
 
 
