@@ -9,6 +9,7 @@ library(sessioninfo)
 library(SpatialExperiment)
 library(scran)
 library(readxl)
+library(BiocParallel)
 
 mathys_dir = '/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/mathys'
 out_dir = here('processed-data', '21_spot_deconvo')

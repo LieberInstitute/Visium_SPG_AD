@@ -4,10 +4,12 @@
 #$ -N "read_data"
 #$ -o ../../processed-data/21_spot_deconvo/logs/01_read_data.log
 #$ -e ../../processed-data/21_spot_deconvo/logs/01_read_data.log
-#$ -l mf=40G,h_vmem=40G,h_fsize=50G
+#$ -pe local 4
+#$ -l mf=10G,h_vmem=10G,h_fsize=50G
 
 #SBATCH -q shared
 #SBATCH --mem=40G
+#SBATCH -c 4
 #SBATCH --job-name=read_data
 #SBATCH -o ../../processed-data/21_spot_deconvo/logs/01_read_data.log
 #SBATCH -e ../../processed-data/21_spot_deconvo/logs/01_read_data.log
