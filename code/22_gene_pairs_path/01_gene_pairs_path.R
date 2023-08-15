@@ -103,6 +103,58 @@ message("Full co_expr_se size:")
 lobstr::obj_size(co_expr_se)
 
 
+my_plot_expression <- function(
+        sce, genes, assay = "counts", ct = "cellType", title = NULL,
+        marker_stats
+    ) {
+    cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
+    expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
+
+    cat <- cat_df[expression_long$Var2, ]
+    expression_long <- cbind(expression_long, cat)
+
+    #   Use gene symbols for labels, not Ensembl ID
+    symbols <- rowData(sce)$gene_name[match(genes, rownames(sce))]
+    names(symbols) <- genes
+
+    #   Add a data frame for adding mean-ratio labels to each gene
+    text_df <- marker_stats
+    text_df$ratio <- paste0("Mean ratio: ", round(text_df$ratio, 2))
+    text_df$Var1 <- factor(text_df$gene, levels = levels(expression_long$Var1))
+
+    expression_violin <- ggplot(
+        data = expression_long, aes(x = cat, y = value, fill = cat)
+    ) +
+        geom_violin(scale = "width") +
+        geom_text(
+            data = text_df,
+            mapping = aes(
+                x = length(unique(sce[[ct]])), y = Inf, fill = NULL,
+                label = ratio
+            ),
+            size = 10, hjust = 1, vjust = 1
+        ) +
+        scale_fill_discrete_qualitative(palette = discrete_cell_palette) +
+        facet_wrap(
+            ~Var1,
+            ncol = 5, scales = "free_y",
+            labeller = labeller(Var1 = symbols)
+        ) +
+        labs(
+            y = paste0("Expression (", assay, ")"),
+            title = title
+        ) +
+        theme_bw(base_size = 35) +
+        theme(
+            legend.position = "None", axis.title.x = element_blank(),
+            axis.text.x = element_text(angle = 90, hjust = 1),
+            strip.text.x = element_text(face = "italic")
+        ) +
+        stat_summary(fun = median, geom = "crossbar", width = 0.3)
+
+    # expression_violin
+    return(expression_violin)
+}
 
 ## Reproducibility information
 print("Reproducibility information:")
