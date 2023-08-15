@@ -24,8 +24,10 @@ find_markers_model = "~individualID"
 discrete_cell_palette = "Dark 2"
 best_looking_sample_id = "V10A27106_D1_Br3880"
 
-#   Number of marker genes to use per cell type
-n_markers_per_type = 25
+#   Number of marker genes to use per cell type, and to show in violin plots,
+#   respectively
+n_markers_per_type = 15
+n_markers_per_type_violin = 25
 
 ################################################################################
 #   Functions
@@ -175,7 +177,7 @@ plot_list <- lapply(
     function(ct) {
         genes <- marker_stats |>
             filter(
-                rank_ratio <= n_markers_per_type,
+                rank_ratio <= n_markers_per_type_violin,
                 cellType.target == ct,
                 ratio > 1
             ) |>
@@ -187,7 +189,7 @@ plot_list <- lapply(
             title = paste("Top", length(genes), "for", ct),
             marker_stats = marker_stats |>
                 filter(
-                    rank_ratio <= n_markers_per_type,
+                    rank_ratio <= n_markers_per_type_violin,
                     cellType.target == ct,
                     ratio > 1
                 )
@@ -198,7 +200,10 @@ plot_list <- lapply(
 #   Write a multi-page PDF with violin plots for each cell group and all
 #   markers
 pdf(
-    file.path(plot_dir, paste0("marker_gene_violin.pdf")),
+    file.path(
+        plot_dir,
+        sprintf("marker_gene_violin_n%s.pdf", n_markers_per_type_violin)
+    ),
     width = 35, height = 35
 )
 print(plot_list)
