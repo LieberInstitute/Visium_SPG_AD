@@ -85,6 +85,8 @@ rowData(co_expr_se)$gene_name_combn <- paste0(
 )
 ## Set the rownames for the gene combination
 rownames(co_expr_se) <- paste0(rownames(pair_1), "_", rownames(pair_2))
+## Use unique colnames, otherwise the plotting code breaks later on
+colnames(co_expr_se) <- co_expr_se$key
 
 message("Memory for co_expr_se:")
 lobstr::obj_size(co_expr_se)
