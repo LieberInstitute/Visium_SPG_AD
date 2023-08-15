@@ -1,4 +1,5 @@
 library("spatialLIBD")
+library("sessioninfo")
 spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 sce_pseudo <- spatialLIBD::fetch_data("Visium_SPG_AD_Visium_wholegenome_pseudobulk_spe")
 
@@ -39,3 +40,10 @@ Sys.time()
 # [1] "2023-08-15 12:32:56 EDT"
 lobstr::obj_size(co_expr)
 # 389.46 MB
+
+## Reproducibility information
+print("Reproducibility information:")
+Sys.time()
+proc.time()
+options(width = 120)
+session_info()
