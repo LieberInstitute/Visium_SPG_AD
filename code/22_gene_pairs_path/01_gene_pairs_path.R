@@ -1,5 +1,6 @@
 library("spatialLIBD")
 library("lobstr")
+library("rafalib")
 library("sessioninfo")
 
 ## Read in the data
@@ -60,6 +61,24 @@ lobstr::obj_size(co_expr)
 
 ## Remove objects we don't need anymore
 rm(pair_1, pair_2)
+
+## Calculate mean of co-expression across groups of interest
+path_list <- rafalib::splitit(spe_expr$path_groups)
+co_expr_means <- do.call(cbind, lapply(path_list, function(ii) {
+    rowMeans(co_expr[, ii])
+}))
+dim(co_expr_means)
+
+## Find highest (max) and second highest for each gene pair
+highest <- apply(co_expr_means, 1, max)
+second <- apply(co_expr_means, 1, function(x) {
+    max(x[x != max(x)])
+})
+ratio <- highest / second
+message("Summary of ratio of highest / second highest:")
+summary(ratio)
+
+
 
 ## Reproducibility information
 print("Reproducibility information:")
