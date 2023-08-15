@@ -2,7 +2,14 @@ library("spatialLIBD")
 library("lobstr")
 library("rafalib")
 library("ggplot2")
+library("here")
 library("sessioninfo")
+
+## Create output directories
+dir_rdata <- here("processed-data", "22_gene_pairs_path")
+dir_plots <- here("plots", "22_gene_pairs_path")
+dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
+dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 
 ## Read in the data
 spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
@@ -147,7 +154,7 @@ my_plot_expression <- function(
                 x = length(unique(sce[[ct]])), y = Inf, fill = NULL,
                 label = ratio
             ),
-            size = 8, hjust = 1, vjust = 1.3
+            size = 10, hjust = 1, vjust = 1.3
         ) +
         scale_fill_manual(values = discrete_cell_palette) +
         facet_wrap(
@@ -165,7 +172,13 @@ my_plot_expression <- function(
             axis.text.x = element_text(angle = 90, hjust = 1),
             strip.text.x = element_text(face = "italic")
         ) +
-        stat_summary(fun = median, geom = "crossbar", width = 0.3)
+        stat_summary(fun = median, geom = "crossbar", width = 0.3) +
+        stat_summary(
+            fun = "mean",
+            geom = "crossbar",
+            width = 0.5,
+            colour = "red"
+        )
 
     # expression_violin
     return(expression_violin)
@@ -179,24 +192,34 @@ names(cols) <- sapply(cols, function(x) {
 
 discrete_cell_palette <- cols
 
-my_plot_expression(
-    sce = co_expr_se,
-    genes = names(head(sort(rowData(co_expr_se)$ratio, decreasing = TRUE), 10)),
-    assay = "co_expr",
-    ct = "path_groups",
-    marker_stats = data.frame(
-        ratio = paste0(
-            round(rowData(co_expr_se)$ratio, 3),
-            "(",
-            rowData(co_expr_se)$which_highest,
-            "/",
-            rowData(co_expr_se)$which_second,
-            ")"
-        ),
-        gene = rownames(co_expr_se)
-    )
 
+pdf(
+    file.path(dir_plots, paste0("gene_pairs_co-expr_", path_name, ".pdf")),
+    width = 35, height = 35
 )
+for(i in seq(0, 90, by = 10)) {
+    p <- my_plot_expression(
+        sce = co_expr_se,
+        genes = names(
+            sort(rowData(co_expr_se)$ratio, decreasing = TRUE)
+        )[seq_len(10) + i],
+        assay = "co_expr",
+        ct = "path_groups",
+        marker_stats = data.frame(
+            ratio = paste0(
+                round(rowData(co_expr_se)$ratio, 3),
+                " (",
+                rowData(co_expr_se)$which_highest,
+                "/",
+                rowData(co_expr_se)$which_second,
+                ")"
+            ),
+            gene = rownames(co_expr_se)
+        )
+    )
+    print(p)
+}
+dev.off()
 
 ## Reproducibility information
 print("Reproducibility information:")
