@@ -209,7 +209,7 @@ rownames(sce) = rowData(sce)$gene_id
 #-------------------------------------------------------------------------------
 
 saveRDS(sce, file.path(out_dir, 'sce_mathys.rds'))
-saveRDS(spe, file.path(out_dir, 'sce_norm.rds'))
+saveRDS(spe, file.path(out_dir, 'spe_norm.rds'))
 write_anndata(sce, file.path(out_dir, 'adata_mathys.h5ad'))
 write_anndata(spe, file.path(out_dir, 'adata_spatial.h5ad'))
 
