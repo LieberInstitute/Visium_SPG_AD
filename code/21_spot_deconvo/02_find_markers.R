@@ -191,12 +191,25 @@ for (cell_type in cell_types_mathys) {
 }
 mathys_degs = unlist(mathys_deg_list)
 
-# #   Save 'marker_stats' table and the markers themselves (just gene symbols)
-# saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
-marker_stats = readRDS(file.path(out_dir, 'marker_stats.rds')) |>
+marker_stats = readRDS(file.path(out_dir, 'marker_stats_raw.rds')) |>
     #   Add gene symbol
-    mutate(symbol = rowData(sce)$gene_name[match(gene, rownames(sce))]) |>
-    #   Exclude DEGs from Mathys
+    mutate(symbol = rowData(sce)$gene_name[match(gene, rownames(sce))])
+
+#   Explore how many existing markers were DEGs found in Mathys
+message(
+    sprintf(
+        "Number of Mathys DEGs in unfiltered, top-%s markers:",
+        n_markers_per_type
+    )
+)
+marker_stats |>
+    group_by(cellType.target) |>
+    filter(rank_ratio <= n_markers_per_type, ratio > 1) |>
+    summarize(num_degs = sum(symbol %in% mathys_degs)) |>
+    print()
+
+#   Exclude DEGs from Mathys
+marker_stats = marker_stats |>
     filter(!(symbol %in% mathys_degs))
 
 #   "Re-rank" rank_ratio, since there may be missing ranks now after filtering.
@@ -217,6 +230,9 @@ for (ct in unique(sce[[cell_type_var]])) {
         marker_stats[index, "rank_ratio"] <- i
     }
 }
+
+#   Save 'marker_stats' table and the markers themselves (just gene symbols)
+saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
 
 write_markers(
     marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt')
