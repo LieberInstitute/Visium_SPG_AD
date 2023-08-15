@@ -250,15 +250,6 @@ clusters = adata_vis.obs[
     ['sample'] + list(adata_vis.uns['mod']['factor_names'])
 ]
 clusters.index.name = 'key'
-
-clusters_by_id = clusters.groupby('sample')
-
-for sample_id in adata_vis.obs['sample'].cat.categories:
-    clusters_subset = clusters_by_id.get_group(sample_id)
-
-    (processed_dir / sample_id).mkdir(
-        parents=True, exist_ok=True
-    )
-    clusters_subset.to_csv(processed_dir / sample_id + 'clusters.csv')
+clusters.to_csv(processed_dir / 'clusters.csv')
 
 session_info.show(html=False)
