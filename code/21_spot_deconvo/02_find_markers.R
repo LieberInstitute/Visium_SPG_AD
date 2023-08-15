@@ -63,7 +63,7 @@ write_markers <- function(marker_stats, n_markers, out_path) {
 }
 
 my_plot_expression <- function(
-        sce, genes, assay = "counts", ct = "cellType", title = NULL,
+        sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
         marker_stats
     ) {
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
@@ -145,10 +145,10 @@ sce = readRDS(sce_in)
 
 message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
 marker_stats = get_mean_ratio2(
-    sce, cellType_col = cell_type_var, assay_name = "counts"
+    sce, cellType_col = cell_type_var, assay_name = "logcounts"
 )
 marker_stats_1vall <- findMarkers_1vAll(
-    sce, cellType_col = cell_type_var, assay_name = "counts",
+    sce, cellType_col = cell_type_var, assay_name = "logcounts",
     mod = find_markers_model
 )
 marker_stats <- left_join(
