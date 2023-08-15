@@ -130,6 +130,7 @@ my_plot_expression <- function(
         sce, genes, assay = "counts", ct = "cellType", title = NULL,
         marker_stats
     ) {
+    stopifnot(length(unique(colnames(sce))) == ncol(sce))
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
     expression_long$value <- as.integer(expression_long$value)
