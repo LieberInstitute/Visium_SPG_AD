@@ -26,6 +26,8 @@ plot_dir = Path(here('plots', '21_spot_deconvo'))
 batch_key = 'individualID'
 cell_type_var = 'broad.cell.type'
 
+cell_count_var = 'NDAPI'
+
 plot_file_type = 'pdf'
 
 #   For spatial mapping model: tutorial recommends 20 as default but to try 200
@@ -143,14 +145,14 @@ cell2location.models.Cell2location.setup_anndata(
 #   I encountered an error, and so we'll just use average counts (a scalar).
 #
 # N_CELLS_PER_SPOT = np.array(
-#     adata_vis.obs['cell_count'], dtype=np.float32
+#     adata_vis.obs[cell_count_var], dtype=np.float32
 # ).reshape((adata_vis.shape[0], 1))
 
 mod = cell2location.models.Cell2location(
     adata_vis, cell_state_df=inf_aver,
     # the expected average cell abundance: tissue-dependent
     # hyper-prior which can be estimated from paired histology:
-    N_cells_per_location= float(np.mean(adata_vis.obs['cell_count'])), # N_CELLS_PER_SPOT,
+    N_cells_per_location= float(np.mean(adata_vis.obs[cell_count_var])), # N_CELLS_PER_SPOT,
     # hyperparameter controlling normalisation of
     # within-experiment variation in RNA detection:
     detection_alpha=detection_alpha
