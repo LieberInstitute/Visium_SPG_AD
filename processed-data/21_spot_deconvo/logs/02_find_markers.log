@@ -1,10 +1,10 @@
 **** Job starts ****
-Tue Aug 15 01:37:19 PM EDT 2023
+Wed Aug 16 10:26:06 AM EDT 2023
 **** JHPCE info ****
 User: neagles
-Job id: 22754
+Job id: 22814
 Job name: find_markers
-Hostname: compute-153
+Hostname: compute-152
 Loading conda_R/4.3
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -153,19 +153,6 @@ The following object is masked from ‘package:lubridate’:
 
     stamp
 
-Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...
-Warning message:
-In asMethod(object) :
-  sparse->dense coercion: allocating vector of size 8.0 GiB
-Ex - '2023-08-15 13:38:27.214882
-Oli - '2023-08-15 14:29:26.65571
-In - '2023-08-15 15:20:25.387843
-Mic - '2023-08-15 16:11:45.858004
-Opc - '2023-08-15 17:05:15.259004
-Ast - '2023-08-15 17:59:21.88061
-Building Table - 2023-08-15 18:54:52.639479
-** Done! **
-
 [[1]]
 
 [[2]]
@@ -266,7 +253,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/New_York
- date     2023-08-15
+ date     2023-08-16
  pandoc   3.1.3 @ /jhpce/shared/community/core/conda_R/4.3/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────
@@ -451,4 +438,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Aug 15 07:00:33 PM EDT 2023
+Wed Aug 16 10:30:29 AM EDT 2023

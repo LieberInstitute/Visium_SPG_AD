@@ -26,7 +26,7 @@ best_looking_sample_id = "V10A27106_D1_Br3880"
 
 #   Number of marker genes to use per cell type, and to show in violin plots,
 #   respectively
-n_markers_per_type = 15
+n_markers_per_type = 20
 n_markers_per_type_violin = 25
 
 ################################################################################
@@ -68,6 +68,8 @@ my_plot_expression <- function(
         sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
         marker_stats
     ) {
+    stopifnot(length(unique(colnames(sce))) == ncol(sce))
+
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
 
@@ -145,24 +147,25 @@ sce = readRDS(sce_in)
 #   Rank genes as potential markers with DeconvoBuddies functions
 #-------------------------------------------------------------------------------
 
-message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
-marker_stats = get_mean_ratio2(
-    sce, cellType_col = cell_type_var, assay_name = "logcounts"
-)
-marker_stats_1vall <- findMarkers_1vAll(
-    sce, cellType_col = cell_type_var, assay_name = "logcounts",
-    mod = find_markers_model
-)
-marker_stats <- left_join(
-    marker_stats, marker_stats_1vall,
-    by = c("gene", "cellType.target")
-)
-marker_stats$symbol = rowData(sce)$gene_name[
-    match(marker_stats$gene, rownames(sce))
-]
+# message("Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...")
+# marker_stats = get_mean_ratio2(
+#     sce, cellType_col = cell_type_var, assay_name = "logcounts"
+# )
+# marker_stats_1vall <- findMarkers_1vAll(
+#     sce, cellType_col = cell_type_var, assay_name = "logcounts",
+#     mod = find_markers_model
+# )
+# marker_stats <- left_join(
+#     marker_stats, marker_stats_1vall,
+#     by = c("gene", "cellType.target")
+# )
+# marker_stats$symbol = rowData(sce)$gene_name[
+#     match(marker_stats$gene, rownames(sce))
+# ]
 
 #   Save 'marker_stats' table and the markers themselves (just Ensembl IDs)
-saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
+marker_stats = readRDS(file.path(out_dir, 'marker_stats.rds'))
+# saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
 write_markers(
     marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt')
 )
