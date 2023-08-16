@@ -27,8 +27,13 @@ if(is.na(path_i)) {
 }
 path_name <- levels(spe$path_groups)[path_i]
 
-## Subset to AD only for the given pathology group of interest
-spe_expr_group <- spe[, spe$diagnosis == "AD" & spe$path_groups == path_name]
+## Subset to just gray matter spots only in the AD samples
+spe <- spe[, spe$BayesSpace_harmony_k02 != 2 & spe$diagnosis == "AD"]
+# lobstr::obj_size(spe)
+# 756.83 MB
+
+## Subset to the given pathology group of interest
+spe_expr_group <- spe[, spe$path_groups == path_name]
 
 ## Identify which genes have nonzero counts in each spot
 assay(spe_expr_group, "expr") <- counts(spe_expr_group) > 0
@@ -43,11 +48,13 @@ summary(top_k)
 rm(spe_expr_group)
 
 ## Subset to genes with highest mean expressed proportion
-spe_expr <- spe[names(top_k), spe$diagnosis == "AD"]
+spe_expr <- spe[names(top_k), ]
 assay(spe_expr, "expr") <- counts(spe_expr) > 0
 ## Final dimensions
 dim(spe_expr)
+# [1]   300 21086
 lobstr::obj_size(spe_expr)
+# 344.99 MB
 
 ## We no longer need the spe object
 rm(spe)
@@ -55,18 +62,22 @@ rm(spe)
 ## Compute the combinations of gene pairs
 gene_combn <- combn(k, 2)
 message("Number of gene combinations: ", ncol(gene_combn))
+# Number of gene combinations: 44850
 
 ## Find the combination of genes that are co-expressed
 message(Sys.time(), " - computing pair_1")
 pair_1 <- assay(spe_expr, "expr")[gene_combn[1, ], ]
 lobstr::obj_size(pair_1)
+# 5.80 GB
 message(Sys.time(), " - computing pair_2")
 pair_2 <- assay(spe_expr, "expr")[gene_combn[2, ], ]
 lobstr::obj_size(pair_2)
+# 4.58 GB
 message(Sys.time(), " - computing co_expr")
 co_expr <- pair_1 & pair_2
 message(Sys.time(), " - done computing co_expr")
 lobstr::obj_size(co_expr)
+# 3.80 GB
 
 ## Build a SummarizedExperiment object with the gene co-expression pairs
 co_expr_se <- SummarizedExperiment(
@@ -91,6 +102,7 @@ colnames(co_expr_se) <- co_expr_se$key
 
 message("Memory for co_expr_se:")
 lobstr::obj_size(co_expr_se)
+# 3.83 GB
 
 ## Remove objects we don't need anymore
 rm(pair_1, pair_2, co_expr)
@@ -117,10 +129,12 @@ message("Summary of ratio of highest / second highest:")
 summary(rowData(co_expr_se)$ratio)
 
 head(sort(rowData(co_expr_se)$ratio, decreasing = TRUE))
-# ENSG00000127585_ENSG00000089737 ENSG00000102003_ENSG00000089737 ENSG00000127585_ENSG00000145920
-#                        1.285471                        1.278619                        1.266584
-# ENSG00000089157_ENSG00000089737 ENSG00000111716_ENSG00000089737 ENSG00000137409_ENSG00000089737
-#                        1.258635                        1.257425                        1.251863
+# ENSG00000147403_ENSG00000089737 ENSG00000132475_ENSG00000168490
+#                        1.274716                        1.252727
+# ENSG00000089737_ENSG00000167658 ENSG00000111716_ENSG00000089737
+#                        1.251471                        1.249914
+# ENSG00000140988_ENSG00000102003 ENSG00000140988_ENSG00000089737
+#                        1.243723                        1.242848
 
 message("Full co_expr_se size:")
 lobstr::obj_size(co_expr_se)
