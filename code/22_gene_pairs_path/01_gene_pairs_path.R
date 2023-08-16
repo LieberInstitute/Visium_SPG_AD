@@ -12,7 +12,8 @@ dir.create(dir_rdata, showWarnings = FALSE, recursive = TRUE)
 dir.create(dir_plots, showWarnings = FALSE, recursive = TRUE)
 
 ## Read in the data
-spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
+load(here("code", "05_deploy_app_wholegeome", "spe.Rdata"), verbose = TRUE)
+# spe <- spatialLIBD::fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 # lobstr::obj_size(spe)
 # 2.29 GB
 
