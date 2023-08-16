@@ -1,10 +1,10 @@
 **** Job starts ****
-Tue Aug 15 09:39:21 AM EDT 2023
+Tue Aug 15 01:37:19 PM EDT 2023
 **** JHPCE info ****
 User: neagles
-Job id: 22613
+Job id: 22754
 Job name: find_markers
-Hostname: compute-152
+Hostname: compute-153
 Loading conda_R/4.3
 Loading required package: SummarizedExperiment
 Loading required package: MatrixGenerics
@@ -153,214 +153,19 @@ The following object is masked from ‘package:lubridate’:
 
     stamp
 
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-New names:
-• `` -> `...1`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...2`
-• `no.pathology.mean` -> `no.pathology.mean...3`
-• `IndModel.FC` -> `IndModel.FC...5`
-• `MixedModel.z` -> `MixedModel.z...6`
-• `MixedModel.p` -> `MixedModel.p...7`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...8`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...9`
-• `` -> `...10`
-• `` -> `...11`
-• `` -> `...12`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...13`
-• `no.pathology.mean` -> `no.pathology.mean...14`
-• `early.pathology.mean` -> `early.pathology.mean...15`
-• `IndModel.FC` -> `IndModel.FC...16`
-• `MixedModel.z` -> `MixedModel.z...17`
-• `MixedModel.p` -> `MixedModel.p...18`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...19`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...20`
-• `` -> `...21`
-• `` -> `...22`
-• `` -> `...23`
-• `IndModel.adj.pvals` -> `IndModel.adj.pvals...24`
-• `early.pathology.mean` -> `early.pathology.mean...26`
-• `IndModel.FC` -> `IndModel.FC...27`
-• `MixedModel.z` -> `MixedModel.z...28`
-• `MixedModel.p` -> `MixedModel.p...29`
-• `DEGs.Ind.Model` -> `DEGs.Ind.Model...30`
-• `DEGs.Ind.Mix.models` -> `DEGs.Ind.Mix.models...31`
-There were 50 or more warnings (use warnings() to see the first 50)
-Number of Mathys DEGs in unfiltered, top-25 markers:
-# A tibble: 8 × 2
-  cellType.target num_degs
-  <chr>              <int>
-1 Ast                    5
-2 End                    2
-3 Ex                     6
-4 In                     0
-5 Mic                    0
-6 Oli                    3
-7 Opc                    3
-8 Per                    0
-Number of markers per cell type:
-# A tibble: 8 × 2
-  cellType.target num_markers
-  <chr>                 <int>
-1 Ast                      25
-2 End                      14
-3 Ex                       25
-4 In                       25
-5 Mic                      15
-6 Oli                      25
-7 Opc                      25
-8 Per                      15
+Running getMeanRatio2 and findMarkers_1vAll to rank genes as markers...
 Warning message:
-In write_markers(marker_stats, n_markers_per_type, file.path(out_dir,  :
-  Used less than 25 markers for at least one cell type.
+In asMethod(object) :
+  sparse->dense coercion: allocating vector of size 8.0 GiB
+Ex - '2023-08-15 13:38:27.214882
+Oli - '2023-08-15 14:29:26.65571
+In - '2023-08-15 15:20:25.387843
+Mic - '2023-08-15 16:11:45.858004
+Opc - '2023-08-15 17:05:15.259004
+Ast - '2023-08-15 17:59:21.88061
+Building Table - 2023-08-15 18:54:52.639479
+** Done! **
+
 [[1]]
 
 [[2]]
@@ -373,38 +178,10 @@ In write_markers(marker_stats, n_markers_per_type, file.path(out_dir,  :
 
 [[6]]
 
-[[7]]
-
-[[8]]
-
 null device 
           1 
 null device 
           1 
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for colour is already present.
-Adding another scale for colour, which will replace the existing scale.
 Scale for fill is already present.
 Adding another scale for fill, which will replace the existing scale.
 Scale for colour is already present.
@@ -674,4 +451,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Tue Aug 15 09:44:33 AM EDT 2023
+Tue Aug 15 07:00:33 PM EDT 2023
