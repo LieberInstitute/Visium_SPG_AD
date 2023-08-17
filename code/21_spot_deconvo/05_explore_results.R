@@ -60,6 +60,11 @@ results = colData(spe) |>
 #   Exploratory plots
 ################################################################################
 
+#-------------------------------------------------------------------------------
+#   Barplots that show how cell type proportions vary by pathology group and
+#   vice versa
+#-------------------------------------------------------------------------------
+
 norm_results = results |>
     group_by(path_groups) |>
     mutate(count = count / sum(count)) |>
@@ -83,5 +88,39 @@ layer_dist_barplot(
     fill_var = 'path_groups', xlab = 'Cell Type', fill_lab = 'Pathology Group',
     fill_palette = discrete_cell_palette
 )
+
+#-------------------------------------------------------------------------------
+#   Boxplots that show how cell type counts vary by pathology group and
+#   vice versa
+#-------------------------------------------------------------------------------
+
+#   Average counts of each cell type in pathology group
+norm_results = results |>
+    group_by(path_groups, sample_id, cell_type) |>
+    summarize(count = mean(count)) |>
+    ungroup()
+
+#   Create plots for each cell type
+plot_list = list()
+for (cell_type in unique(norm_results$cell_type)) {
+    plot_list[[cell_type]] = ggplot(
+        norm_results |> filter(cell_type == {{ cell_type }}),
+        aes(x = path_groups, y = count)
+    ) +
+        geom_boxplot(outlier.shape = NA) +
+        geom_jitter(width = 0.05) +
+        labs(
+            x = "Pathology Group",
+            y = "Average Predicted Count",
+        ) +
+        #   Facet purely for aesthetic purposes: there is only one cell type
+        facet_wrap(~cell_type) +
+        theme_bw(base_size = 23) +
+        theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+}
+
+pdf(file.path(plot_dir, "pathology_boxplots.pdf"), width = 10)
+print(plot_list)
+dev.off()
 
 session_info()
