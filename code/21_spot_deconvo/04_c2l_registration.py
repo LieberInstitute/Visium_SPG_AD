@@ -1,19 +1,22 @@
 import scanpy as sc
 import numpy as np
+import scvi
+
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+from matplotlib import rcParams
+rcParams['pdf.fonttype'] = 42 # enables correct plotting of text
 
 import cell2location
 from cell2location.models import RegressionModel
 from cell2location.utils import select_slide
 from cell2location.plt import plot_spatial
 
-from matplotlib import rcParams
-rcParams['pdf.fonttype'] = 42 # enables correct plotting of text
-
 from pyhere import here
 from pathlib import Path
 import session_info
+
+scvi.settings.seed = 0
 
 ################################################################################
 #   Variable definitions
@@ -36,6 +39,10 @@ detection_alpha = 20
 #   Number of epochs used to train each portion of the model
 epochs_signature = 250
 epochs_spatial = 30000
+
+#   Default hyperparameters for the cell-signature model
+batch_size_default_signature = 2500
+lr_default_signature = 0.002
 
 ################################################################################
 #   Function definitions
@@ -97,11 +104,22 @@ RegressionModel.setup_anndata(
 mod = RegressionModel(adata_ref)
 RegressionModel.view_anndata_setup(mod)
 
-mod.train(max_epochs=epochs_signature, use_gpu=True)
+#   Our data has far fewer genes than the default batch size recommended in the
+#   tutorial, leading to a much lower effective batch size used in training. To
+#   compensate, scale down learning rate such that (our_batch_size / our_lr) =
+#   (their_batch_size / their_lr). The goal is to roughly match the degree of
+#   noise seen when estimating the gradient at each training step
+assert adata_ref.shape[1] < batch_size_default_signature
+lr_signature = lr_default_signature * adata_ref.shape[1] / batch_size_default_signature
+
+mod.train(
+    max_epochs = epochs_signature, batch_size = adata_ref.shape[1],
+    lr = lr_signature, use_gpu = True
+)
 
 adata_ref, mod = post_training(
     mod, adata_ref, 'adata_ref', epochs_signature,
-    {'num_samples': 1000, 'batch_size': 2500, 'use_gpu': True},
+    {'num_samples': 1000, 'batch_size': adata_ref.shape[1], 'use_gpu': True},
     'cell_signature_training_history'
 )
 

@@ -4,7 +4,7 @@
 #$ -N "c2l_registration"
 #$ -o ../../processed-data/21_spot_deconvo/logs/04_c2l_registration.log
 #$ -e ../../processed-data/21_spot_deconvo/logs/04_c2l_registration.log
-#$ -l caracol,mf=150G,h_vmem=150G,h_fsize=50G
+#$ -l caracol,mf=64G,h_vmem=64G,h_fsize=50G
 
 echo "**** Job starts ****"
 date
@@ -42,8 +42,8 @@ echo "Chose GPU(s): $CUDA_VISIBLE_DEVICES"
 #   Submit the python script
 ###############################################################################
 
-module load cell2location/0.8a0
-python 04-registration_IF.py
+module load cell2location/0.1.3
+python 04_c2l_registration.py
 
 echo "**** Job ends ****"
 date
