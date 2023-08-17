@@ -14,12 +14,13 @@ discrete_cell_palette = "Dark 2"
 #   Functions
 ################################################################################
 
-#   Given a tibble with columns 'label' (manual layer label), 'deconvo_tool',
-#   'cell_type', and 'count', write a set of barplots to PDF under [plot_dir]
-#   with name [filename]. 'ylab' give the y-axis label; 'x_var' is the x-axis
+#   Given a tibble with 2 discrete columns and a continuous 'count' column
+#   representing spot deconvolution results, write a set of barplots to
+#   [out_path]. 'ylab' give the y-axis label; 'x_var' is the x-axis
 #   variable (as a string); 'fill_var' is the fill variable as a string;
-#   'fill_scale' is passed to 'scale_fill_manual(values = [fill_scale])';
-#   'fill_lab' is the fill label; 'xlab' is the x-axis label
+#   'fill_palette' is passed to
+#   'scale_fill_discrete_qualitative(palette = fill_palette)'; 'fill_lab' is the
+#   fill label; 'xlab' is the x-axis label. Returns NULL
 layer_dist_barplot <- function(
         counts_df, out_path, ylab, x_var, fill_var, fill_lab, xlab, fill_palette
     ) {
@@ -50,10 +51,24 @@ spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 spe = cluster_import(spe, dirname(results_in), prefix = 'c2l_')
 spe$c2l_sample = NULL
 
+sample_ids = unique(spe$sample_id)
+
 results = colData(spe) |>
     as_tibble() |>
+    #   Each row becomes a unique cell type
     pivot_longer(
         starts_with('c2l_'), values_to = 'count', names_to = 'cell_type'
+    ) |>
+    #   Clean up cell-type names for plotting
+    mutate(
+        cell_type = case_when(
+            cell_type == 'c2l_ast' ~ 'Astro',
+            cell_type == 'c2l_ex' ~ 'Excit',
+            cell_type == 'c2l_in' ~ 'Inhib',
+            cell_type == 'c2l_mic' ~ 'Micro',
+            cell_type == 'c2l_oli' ~ 'Oligo',
+            cell_type == 'c2l_opc' ~ 'OPC'
+        )
     )
 
 ################################################################################
@@ -66,8 +81,18 @@ results = colData(spe) |>
 #-------------------------------------------------------------------------------
 
 norm_results = results |>
-    group_by(path_groups) |>
+    filter(diagnosis == "AD") |>
+    #   For each pathology group and sample_id, normalize by the total counts of
+    #   all cell types
+    group_by(path_groups, sample_id) |>
     mutate(count = count / sum(count)) |>
+    #   Now for each path group, sample_id and cell type, add up counts for all
+    #   relevant spots
+    group_by(path_groups, cell_type, sample_id) |>
+    summarize(count = sum(count)) |>
+    #   Now average across samples
+    group_by(path_groups, cell_type) |>
+    summarize(count = mean(count)) |>
     ungroup()
 
 layer_dist_barplot(
@@ -78,8 +103,18 @@ layer_dist_barplot(
 )
 
 norm_results = results |>
-    group_by(cell_type) |>
+    filter(diagnosis == "AD") |>
+    #   For each cell type and sample_id, normalize by the total counts of
+    #   cells in all pathology groups
+    group_by(cell_type, sample_id) |>
     mutate(count = count / sum(count)) |>
+    #   Now for each path group, sample_id and cell type, add up counts for all
+    #   relevant spots
+    group_by(path_groups, cell_type, sample_id) |>
+    summarize(count = sum(count)) |>
+    #   Now average across samples
+    group_by(path_groups, cell_type) |>
+    summarize(count = mean(count)) |>
     ungroup()
 
 layer_dist_barplot(
@@ -96,6 +131,7 @@ layer_dist_barplot(
 
 #   Average counts of each cell type in pathology group
 norm_results = results |>
+    filter(diagnosis == "AD") |>
     group_by(path_groups, sample_id, cell_type) |>
     summarize(count = mean(count)) |>
     ungroup()
