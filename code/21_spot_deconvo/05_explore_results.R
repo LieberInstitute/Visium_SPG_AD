@@ -6,7 +6,7 @@ library(spatialLIBD)
 library(sessioninfo)
 
 results_in = here('processed-data', '21_spot_deconvo', 'clusters.csv')
-plot_dir = here('plots', '21_spot_deconvo')
+plot_dir = here('plots', '21_spot_deconvo', 'explore_results')
 
 discrete_cell_palette = "Dark 2"
 
@@ -42,6 +42,8 @@ layer_dist_barplot <- function(
 #   Read in data
 ################################################################################
 
+dir.create(plot_dir, showWarnings = FALSE)
+
 #   Read in spot-deconvolution results and merge with the original
 #   SpatialExperiment object
 spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
@@ -54,6 +56,10 @@ results = colData(spe) |>
         starts_with('c2l_'), values_to = 'count', names_to = 'cell_type'
     )
 
+################################################################################
+#   Exploratory plots
+################################################################################
+
 norm_results = results |>
     group_by(path_groups) |>
     mutate(count = count / sum(count)) |>
@@ -63,6 +69,18 @@ layer_dist_barplot(
     norm_results, out_path = file.path(plot_dir, 'pathology_barplots.pdf'),
     ylab = 'Cell Type Proportion', x_var = 'path_groups',
     fill_var = 'cell_type', xlab = 'Pathology Group', fill_lab = 'Cell Type',
+    fill_palette = discrete_cell_palette
+)
+
+norm_results = results |>
+    group_by(cell_type) |>
+    mutate(count = count / sum(count)) |>
+    ungroup()
+
+layer_dist_barplot(
+    norm_results, out_path = file.path(plot_dir, 'pathology_barplots_inverted.pdf'),
+    ylab = 'Pathology Proportion', x_var = 'cell_type',
+    fill_var = 'path_groups', xlab = 'Cell Type', fill_lab = 'Pathology Group',
     fill_palette = discrete_cell_palette
 )
 
