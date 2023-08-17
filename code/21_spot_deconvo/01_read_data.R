@@ -10,10 +10,10 @@ library(SpatialExperiment)
 library(scran)
 library(readxl)
 library(BiocParallel)
+library(spatialLIBD)
 
 mathys_dir = '/dcs04/lieber/lcolladotor/with10x_LIBD001/HumanPilot/Analysis/Layer_Guesses/mathys'
 out_dir = here('processed-data', '21_spot_deconvo')
-spe_in = here('processed-data', '04_build_spe', 'spe_wholegenome.rds')
 num_cores = 4
 
 #   Those for which there are DEGs computed in the Mathys et al paper
@@ -129,33 +129,33 @@ sce = sce[!(genes %in% mathys_degs), sce$broad.cell.type %in% cell_types_mathys]
 #   Compute log normalized counts in SingleCellExperiment
 #-------------------------------------------------------------------------------
 
-message("Running quickCluster()")
-Sys.time()
-sce$scran_quick_cluster <- quickCluster(
-    sce,
-    BPPARAM = MulticoreParam(num_cores),
-    block = sce$sample_id,
-    block.BPPARAM = MulticoreParam(num_cores)
-)
-Sys.time()
+# message("Running quickCluster()")
+# Sys.time()
+# sce$scran_quick_cluster <- quickCluster(
+#     sce,
+#     BPPARAM = MulticoreParam(num_cores),
+#     block = sce$sample_id,
+#     block.BPPARAM = MulticoreParam(num_cores)
+# )
+# Sys.time()
 
-message("Running computeSumFactors()")
-Sys.time()
-sce <-
-    computeSumFactors(
-        sce,
-        clusters = sce$scran_quick_cluster,
-        BPPARAM = MulticoreParam(num_cores)
-    )
-Sys.time()
+# message("Running computeSumFactors()")
+# Sys.time()
+# sce <-
+#     computeSumFactors(
+#         sce,
+#         clusters = sce$scran_quick_cluster,
+#         BPPARAM = MulticoreParam(num_cores)
+#     )
+# Sys.time()
 
-table(sce$scran_quick_cluster)
+# table(sce$scran_quick_cluster)
 
-message("Running checking sizeFactors()")
-summary(sizeFactors(sce))
+# message("Running checking sizeFactors()")
+# summary(sizeFactors(sce))
 
-message("Running logNormCounts()")
-sce <- logNormCounts(sce)
+# message("Running logNormCounts()")
+# sce <- logNormCounts(sce)
 
 #-------------------------------------------------------------------------------
 #   Filter objects: overlapping, non-mitochondrial genes
@@ -164,7 +164,7 @@ sce <- logNormCounts(sce)
 #   zellkonverter doesn't know how to convert the 'spatialCoords' slot. We'd
 #   ultimately like the spatialCoords in the .obsm['spatial'] slot of the
 #   resulting AnnData, which corresponds to reducedDims(spe)$spatial in R
-spe = readRDS(spe_in)
+spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 reducedDims(spe)$spatial = spatialCoords(spe)
 
 #   Filter out mitochondrial genes (which in single-nucleus data must be
@@ -208,9 +208,8 @@ rownames(sce) = rowData(sce)$gene_id
 #   Save results
 #-------------------------------------------------------------------------------
 
-saveRDS(sce, file.path(out_dir, 'sce_mathys.rds'))
-saveRDS(spe, file.path(out_dir, 'spe_norm.rds'))
-write_anndata(sce, file.path(out_dir, 'adata_mathys.h5ad'))
+# saveRDS(sce, file.path(out_dir, 'sce_mathys.rds'))
+# write_anndata(sce, file.path(out_dir, 'adata_mathys.h5ad'))
 write_anndata(spe, file.path(out_dir, 'adata_spatial.h5ad'))
 
 session_info()

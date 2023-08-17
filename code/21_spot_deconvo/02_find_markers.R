@@ -14,7 +14,6 @@ library("readxl")
 source(here("code", "21_spot_deconvo", "shared_functions.R"))
 
 sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
-spe_in = here('processed-data', '04_build_spe', 'spe_wholegenome.rds')
 out_dir = here('processed-data', '21_spot_deconvo')
 plot_dir = here('plots', '21_spot_deconvo')
 sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
@@ -249,7 +248,7 @@ boxplot_mean_ratio(
 #   markers per cell type: 15, 25, 50
 #-------------------------------------------------------------------------------
 
-spe = readRDS(spe_in)
+spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 
 for (n_markers in c(15, 25, 50)) {
     plot_list <- list()
