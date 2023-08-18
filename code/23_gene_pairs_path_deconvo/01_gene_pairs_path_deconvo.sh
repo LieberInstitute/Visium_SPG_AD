@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l caracol,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -l caracol,mem_free=30G,h_vmem=30G,h_fsize=100G
 #$ -N gene_pairs_path_deconvo
 #$ -o logs/01_gene_pairs_path_deconvo.$TASK_ID.txt
 #$ -e logs/01_gene_pairs_path_deconvo.$TASK_ID.txt
