@@ -239,6 +239,17 @@ for(i in seq(0, 90, by = 10)) {
 }
 dev.off()
 
+## Export for cytospace
+top_pairs <- names(sort(rowData(co_expr_se)$ratio, decreasing = TRUE))[seq_len(100)]
+cyto <- data.frame(
+    source_ensembl = gsub("_.*", "", top_pairs),
+    source_gene_name = rowData(co_expr_se[top_pairs, ])$gene_name_1,
+    target = gsub(".*_", "", top_pairs),
+    target_gene_name = rowData(co_expr_se[top_pairs, ])$gene_name_2,
+    ratio = rowData(co_expr_se[top_pairs, ])$ratio
+)
+write.table(cyto, file = file.path(dir_rdata, paste0("cytoscape_co_expr_se", path_name, ".txt")), row.names = FALSE, sep = "\t", quote = FALSE)
+
 ## Save object for later
 saveRDS(
     co_expr_se,

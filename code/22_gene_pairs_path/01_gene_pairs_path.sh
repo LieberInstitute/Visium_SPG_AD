@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd
-#$ -l mem_free=60G,h_vmem=60G,h_fsize=100G
+#$ -l caracol,mem_free=60G,h_vmem=60G,h_fsize=100G
 #$ -N gene_pairs_path
 #$ -o logs/01_gene_pairs_path.$TASK_ID.txt
 #$ -e logs/01_gene_pairs_path.$TASK_ID.txt
