@@ -4,12 +4,12 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.3
 **** Job starts ****
-Wed Aug 16 15:05:22 EDT 2023
+Fri Aug 18 11:24:07 EDT 2023
 **** JHPCE info ****
 User: lcollado
-Job id: 3685049
+Job id: 3686521
 Job name: gene_pairs_path
-Hostname: compute-127.cm.cluster
+Hostname: compute-126.cm.cluster
 Task id: 2
 Unloading conda_R/4.3
 Loading conda_R/4.3
@@ -112,12 +112,12 @@ ENSG00000198938
 [1]   300 21086
 344.99 MB
 Number of gene combinations: 44850
-2023-08-16 15:06:10.818074 - computing pair_1
+2023-08-18 11:24:38.073004 - computing pair_1
 5.80 GB
-2023-08-16 15:06:17.835164 - computing pair_2
+2023-08-18 11:24:41.339324 - computing pair_2
 4.58 GB
-2023-08-16 15:06:46.940654 - computing co_expr
-2023-08-16 15:10:25.98249 - done computing co_expr
+2023-08-18 11:25:00.147187 - computing co_expr
+2023-08-18 11:26:14.64786 - done computing co_expr
 3.80 GB
 Memory for co_expr_se:
 3.83 GB
@@ -136,12 +136,12 @@ Full co_expr_se size:
 null device 
           1 
 [1] "Reproducibility information:"
-[1] "2023-08-16 15:16:02 EDT"
+[1] "2023-08-18 11:30:59 EDT"
    user  system elapsed 
-560.601  65.558 638.315 
+396.864  11.663 411.175 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.1 Patched (2023-08-16 r84964)
+ version  R version 4.3.1 Patched (2023-08-16 r84985)
  os       CentOS Linux 7 (Core)
  system   x86_64, linux-gnu
  ui       X11
@@ -149,7 +149,7 @@ null device
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       US/Eastern
- date     2023-08-16
+ date     2023-08-18
  pandoc   3.1.1 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/bin/pandoc
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -203,7 +203,7 @@ null device
  fansi                    1.0.4     2023-01-22 [2] CRAN (R 4.3.0)
  farver                   2.1.1     2022-07-06 [2] CRAN (R 4.3.0)
  fastmap                  1.1.1     2023-02-24 [2] CRAN (R 4.3.0)
- fields                   14.1      2022-08-12 [2] CRAN (R 4.3.0)
+ fields                   15.2      2023-08-17 [2] CRAN (R 4.3.1)
  filelock                 1.0.2     2018-10-05 [2] CRAN (R 4.3.0)
  foreach                  1.5.2     2022-02-02 [2] CRAN (R 4.3.0)
  generics                 0.1.3     2022-07-05 [2] CRAN (R 4.3.0)
@@ -278,7 +278,7 @@ null device
  Rsamtools                2.16.0    2023-04-25 [2] Bioconductor
  RSQLite                  2.3.1     2023-04-03 [2] CRAN (R 4.3.0)
  rsvd                     1.0.5     2021-04-16 [2] CRAN (R 4.3.0)
- rtracklayer              1.60.0    2023-04-25 [2] Bioconductor
+ rtracklayer              1.60.1    2023-08-15 [2] Bioconductor
  S4Arrays                 1.0.5     2023-07-24 [2] Bioconductor
  S4Vectors              * 0.38.1    2023-05-02 [2] Bioconductor
  sass                     0.4.7     2023-07-15 [2] CRAN (R 4.3.1)
@@ -319,4 +319,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Wed Aug 16 15:16:20 EDT 2023
+Fri Aug 18 11:31:00 EDT 2023

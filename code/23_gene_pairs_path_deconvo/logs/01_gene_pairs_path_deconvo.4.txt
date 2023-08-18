@@ -1,0 +1,211 @@
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.10
+Loading LIBD module for ruby/3.1.2
+Loading conda_R/4.3
+**** Job starts ****
+Fri Aug 18 11:25:52 EDT 2023
+**** JHPCE info ****
+User: lcollado
+Job id: 3686520
+Job name: gene_pairs_path_deconvo
+Hostname: compute-126.cm.cluster
+Task id: 4
+Unloading conda_R/4.3
+Loading conda_R/4.3
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/3.1.2
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.10
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.11.0
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.3
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: SpatialExperiment
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
+Loading objects:
+  spe
+Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
+[1] "c2l_ast" "c2l_ex"  "c2l_in"  "c2l_mic" "c2l_oli" "c2l_opc"
+    c2l_ast            c2l_ex            c2l_in           c2l_mic       
+ Min.   :0.02672   Min.   :0.00895   Min.   :0.01534   Min.   :0.03808  
+ 1st Qu.:0.14204   1st Qu.:0.13490   1st Qu.:0.11869   1st Qu.:0.16944  
+ Median :0.21631   Median :0.24416   Median :0.18141   Median :0.21673  
+ Mean   :0.25245   Mean   :0.29233   Mean   :0.21439   Mean   :0.23364  
+ 3rd Qu.:0.32461   3rd Qu.:0.39566   3rd Qu.:0.27351   3rd Qu.:0.27773  
+ Max.   :1.48163   Max.   :2.02673   Max.   :1.47782   Max.   :1.14906  
+    c2l_oli            c2l_opc       
+ Min.   :0.004683   Min.   :0.02605  
+ 1st Qu.:0.051622   1st Qu.:0.12517  
+ Median :0.095126   Median :0.17422  
+ Mean   :0.126026   Mean   :0.20105  
+ 3rd Qu.:0.167192   3rd Qu.:0.24741  
+ Max.   :0.961844   Max.   :1.10403  
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.000000 0.000000 0.000332 0.000000 1.000000 
+
+    1     0 
+    7 21079 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02297 0.15346 0.20728 0.21998 0.27175 0.89151 
+
+   15    10     6     3     1     0 
+    5    20    48   171   782 20060 
+
+FALSE  TRUE 
+  244   782 
+
+   15    10     6     3     1     0 
+  447  1475  1971  2732  4139 10322 
+
+FALSE  TRUE 
+ 6625  4139 
+
+   1    0    3   15    6   10 
+2357 2642 3107 3443 3706 5831 
+
+FALSE  TRUE 
+16087  2357 
+
+  15   10    6    3    1    0 
+1283 3171 3280 3369 3615 6368 
+
+FALSE  TRUE 
+11103  3615 
+
+oli_opc  in_oli mic_opc mic_oli  ex_oli  in_opc ast_oli  in_mic ast_opc  ast_in 
+     33      40      86      95     106     106     153     158     257     289 
+ ex_opc ast_mic  ex_mic   ex_in  ast_ex    <NA> 
+    311     400     584     633     888   16947 
+         
+          none   Ab n_Ab pTau n_pTau both n_both
+  ast_ex   125   47  127  387    116   36     50
+  ast_in    42   18   27  146     36    8     12
+  ast_mic   73   22   44  160     76   12     13
+  ast_oli   44    1    4   45     48    2      9
+  ast_opc   40    5   30  100     63    5     14
+  ex_in     73   48   78  301     81   18     34
+  ex_mic   101   31   64  261     74   22     31
+  ex_oli    32    3    6   31     26    2      6
+  ex_opc    34   16   32  156     39   14     20
+  in_mic    26    4    9   90     20    6      3
+  in_oli     7    1    2   20      4    3      3
+  in_opc     8    5    9   58     14    3      9
+  mic_oli   24    5    4   32     25    0      5
+  mic_opc   13    2    6   39     18    5      3
+  oli_opc    5    5    0    9     12    0      2
+  <NA>    3227  859 1842 6975   2565  591    888
+         
+           none    Ab  n_Ab  pTau n_pTau  both n_both
+  ast_ex   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ast_in   TRUE  TRUE  TRUE  TRUE   TRUE FALSE   TRUE
+  ast_mic  TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ast_oli  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  ast_opc  TRUE FALSE  TRUE  TRUE   TRUE FALSE   TRUE
+  ex_in    TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ex_mic   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ex_oli   TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  ex_opc   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  in_mic   TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  in_oli  FALSE FALSE FALSE  TRUE  FALSE FALSE  FALSE
+  in_opc  FALSE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  mic_oli  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  mic_opc  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  oli_opc FALSE FALSE FALSE FALSE   TRUE FALSE  FALSE
+  <NA>     TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+202.56 MB
+ENSG00000198888 ENSG00000198804 ENSG00000198899 ENSG00000198938 ENSG00000198886 
+      1.0000000       1.0000000       1.0000000       1.0000000       1.0000000 
+ENSG00000198712 
+      0.9994524 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.2437  0.3001  0.3902  0.4695  0.5994  1.0000 
+[1] 1000 1826
+Number of gene combinations: 499500
+2023-08-18 11:26:24.682232 - computing pair_1
+4.26 GB
+2023-08-18 11:26:27.416045 - computing pair_2
+2.60 GB
+2023-08-18 11:26:47.658314 - computing co_expr
+Error: cannot allocate vector of size 2.0 Gb
+Execution halted
+**** Job ends ****
+Fri Aug 18 11:26:54 EDT 2023

@@ -1,0 +1,423 @@
+Loading LIBD module for git-status-size/github
+Loading LIBD module for git-lfs/2.8.0
+Loading LIBD module for rmate/1.5.10
+Loading LIBD module for ruby/3.1.2
+Loading conda_R/4.3
+**** Job starts ****
+Fri Aug 18 11:26:07 EDT 2023
+**** JHPCE info ****
+User: lcollado
+Job id: 3686520
+Job name: gene_pairs_path_deconvo
+Hostname: compute-126.cm.cluster
+Task id: 5
+Unloading conda_R/4.3
+Loading conda_R/4.3
+
+Currently Loaded Modules:
+  1) matlab/R2019a     6) COMMUNITY_CENTOS7_DEFAULT_ENV  11) ruby/3.1.2
+  2) stata/17          7) JHPCE_CENTOS7_DEFAULT_ENV      12) rmate/1.5.10
+  3) JHPCE_tools/1.0   8) git-status-size/github         13) conda/3-4.11.0
+  4) sge/8.1.9         9) git/2.28.0                     14) conda_R/4.3
+  5) gcc/4.4.7        10) git-lfs/2.8.0
+
+ 
+
+Loading required package: SpatialExperiment
+Loading required package: SingleCellExperiment
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+here() starts at /dcs04/lieber/lcolladotor/with10x_LIBD001/Visium_SPG_AD
+Loading objects:
+  spe
+Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
+[1] "c2l_ast" "c2l_ex"  "c2l_in"  "c2l_mic" "c2l_oli" "c2l_opc"
+    c2l_ast            c2l_ex            c2l_in           c2l_mic       
+ Min.   :0.02672   Min.   :0.00895   Min.   :0.01534   Min.   :0.03808  
+ 1st Qu.:0.14204   1st Qu.:0.13490   1st Qu.:0.11869   1st Qu.:0.16944  
+ Median :0.21631   Median :0.24416   Median :0.18141   Median :0.21673  
+ Mean   :0.25245   Mean   :0.29233   Mean   :0.21439   Mean   :0.23364  
+ 3rd Qu.:0.32461   3rd Qu.:0.39566   3rd Qu.:0.27351   3rd Qu.:0.27773  
+ Max.   :1.48163   Max.   :2.02673   Max.   :1.47782   Max.   :1.14906  
+    c2l_oli            c2l_opc       
+ Min.   :0.004683   Min.   :0.02605  
+ 1st Qu.:0.051622   1st Qu.:0.12517  
+ Median :0.095126   Median :0.17422  
+ Mean   :0.126026   Mean   :0.20105  
+ 3rd Qu.:0.167192   3rd Qu.:0.24741  
+ Max.   :0.961844   Max.   :1.10403  
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.000000 0.000000 0.000332 0.000000 1.000000 
+
+    1     0 
+    7 21079 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.02297 0.15346 0.20728 0.21998 0.27175 0.89151 
+
+   15    10     6     3     1     0 
+    5    20    48   171   782 20060 
+
+FALSE  TRUE 
+  244   782 
+
+   15    10     6     3     1     0 
+  447  1475  1971  2732  4139 10322 
+
+FALSE  TRUE 
+ 6625  4139 
+
+   1    0    3   15    6   10 
+2357 2642 3107 3443 3706 5831 
+
+FALSE  TRUE 
+16087  2357 
+
+  15   10    6    3    1    0 
+1283 3171 3280 3369 3615 6368 
+
+FALSE  TRUE 
+11103  3615 
+
+oli_opc  in_oli mic_opc mic_oli  ex_oli  in_opc ast_oli  in_mic ast_opc  ast_in 
+     33      40      86      95     106     106     153     158     257     289 
+ ex_opc ast_mic  ex_mic   ex_in  ast_ex    <NA> 
+    311     400     584     633     888   16947 
+         
+          none   Ab n_Ab pTau n_pTau both n_both
+  ast_ex   125   47  127  387    116   36     50
+  ast_in    42   18   27  146     36    8     12
+  ast_mic   73   22   44  160     76   12     13
+  ast_oli   44    1    4   45     48    2      9
+  ast_opc   40    5   30  100     63    5     14
+  ex_in     73   48   78  301     81   18     34
+  ex_mic   101   31   64  261     74   22     31
+  ex_oli    32    3    6   31     26    2      6
+  ex_opc    34   16   32  156     39   14     20
+  in_mic    26    4    9   90     20    6      3
+  in_oli     7    1    2   20      4    3      3
+  in_opc     8    5    9   58     14    3      9
+  mic_oli   24    5    4   32     25    0      5
+  mic_opc   13    2    6   39     18    5      3
+  oli_opc    5    5    0    9     12    0      2
+  <NA>    3227  859 1842 6975   2565  591    888
+         
+           none    Ab  n_Ab  pTau n_pTau  both n_both
+  ast_ex   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ast_in   TRUE  TRUE  TRUE  TRUE   TRUE FALSE   TRUE
+  ast_mic  TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ast_oli  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  ast_opc  TRUE FALSE  TRUE  TRUE   TRUE FALSE   TRUE
+  ex_in    TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ex_mic   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  ex_oli   TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  ex_opc   TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+  in_mic   TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  in_oli  FALSE FALSE FALSE  TRUE  FALSE FALSE  FALSE
+  in_opc  FALSE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  mic_oli  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  mic_opc  TRUE FALSE FALSE  TRUE   TRUE FALSE  FALSE
+  oli_opc FALSE FALSE FALSE FALSE   TRUE FALSE  FALSE
+  <NA>     TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
+185.93 MB
+ENSG00000198804 ENSG00000198712 ENSG00000198938 ENSG00000198886 ENSG00000198899 
+      1.0000000       1.0000000       1.0000000       1.0000000       0.9984568 
+ENSG00000198840 
+      0.9969136 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.2222  0.2731  0.3619  0.4344  0.5451  1.0000 
+[1] 1000  648
+Number of gene combinations: 499500
+2023-08-18 11:26:39.120152 - computing pair_1
+1.41 GB
+2023-08-18 11:26:39.604683 - computing pair_2
+848.35 MB
+2023-08-18 11:26:47.005734 - computing co_expr
+2023-08-18 11:27:04.145931 - done computing co_expr
+549.48 MB
+Memory for co_expr_se:
+642.04 MB
+[1] 499500     14
+Warning messages:
+1: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+2: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+3: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+4: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+5: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+6: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+Summary of ratio of highest / second highest:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.055   1.125   1.190   1.250   4.143 
+ENSG00000153904_ENSG00000139168 ENSG00000065609_ENSG00000026025 
+                       4.142857                        4.142857 
+ENSG00000237949_ENSG00000130956 ENSG00000148672_ENSG00000164402 
+                       4.050000                        3.866667 
+ENSG00000168314_ENSG00000106211 ENSG00000165802_ENSG00000143878 
+                       3.800000                        3.791667 
+Full co_expr_se size:
+690.00 MB
+null device 
+          1 
+[1] "Reproducibility information:"
+[1] "2023-08-18 11:28:26 EDT"
+   user  system elapsed 
+132.951   3.312 138.799 
+─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.3.1 Patched (2023-08-16 r84985)
+ os       CentOS Linux 7 (Core)
+ system   x86_64, linux-gnu
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       US/Eastern
+ date     2023-08-18
+ pandoc   3.1.1 @ /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/bin/pandoc
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package                * version   date (UTC) lib source
+ abind                    1.4-5     2016-07-21 [2] CRAN (R 4.3.0)
+ AnnotationDbi            1.62.2    2023-07-02 [2] Bioconductor
+ AnnotationHub            3.8.0     2023-04-25 [2] Bioconductor
+ attempt                  0.3.1     2020-05-03 [2] CRAN (R 4.3.0)
+ beachmat                 2.16.0    2023-04-25 [2] Bioconductor
+ beeswarm                 0.4.0     2021-06-01 [2] CRAN (R 4.3.0)
+ benchmarkme              1.0.8     2022-06-12 [2] CRAN (R 4.3.0)
+ benchmarkmeData          1.0.4     2020-04-23 [2] CRAN (R 4.3.0)
+ Biobase                * 2.60.0    2023-04-25 [2] Bioconductor
+ BiocFileCache            2.8.0     2023-04-25 [2] Bioconductor
+ BiocGenerics           * 0.46.0    2023-04-25 [2] Bioconductor
+ BiocIO                   1.10.0    2023-04-25 [2] Bioconductor
+ BiocManager              1.30.22   2023-08-08 [2] CRAN (R 4.3.1)
+ BiocNeighbors            1.18.0    2023-04-25 [2] Bioconductor
+ BiocParallel             1.34.2    2023-05-22 [2] Bioconductor
+ BiocSingular             1.16.0    2023-04-25 [2] Bioconductor
+ BiocVersion              3.17.1    2022-11-04 [2] Bioconductor
+ Biostrings               2.68.1    2023-05-16 [2] Bioconductor
+ bit                      4.0.5     2022-11-15 [2] CRAN (R 4.3.0)
+ bit64                    4.0.5     2020-08-30 [2] CRAN (R 4.3.0)
+ bitops                   1.0-7     2021-04-24 [2] CRAN (R 4.3.0)
+ blob                     1.2.4     2023-03-17 [2] CRAN (R 4.3.0)
+ bslib                    0.5.1     2023-08-11 [2] CRAN (R 4.3.1)
+ cachem                   1.0.8     2023-05-01 [2] CRAN (R 4.3.0)
+ cli                      3.6.1     2023-03-23 [2] CRAN (R 4.3.0)
+ codetools                0.2-19    2023-02-01 [3] CRAN (R 4.3.1)
+ colorspace             * 2.1-0     2023-01-23 [2] CRAN (R 4.3.0)
+ config                   0.3.1     2020-12-17 [2] CRAN (R 4.3.0)
+ cowplot                  1.1.1     2020-12-30 [2] CRAN (R 4.3.0)
+ crayon                   1.5.2     2022-09-29 [2] CRAN (R 4.3.0)
+ curl                     5.0.2     2023-08-14 [2] CRAN (R 4.3.1)
+ data.table               1.14.8    2023-02-17 [2] CRAN (R 4.3.0)
+ DBI                      1.1.3     2022-06-18 [2] CRAN (R 4.3.0)
+ dbplyr                   2.3.3     2023-07-07 [2] CRAN (R 4.3.1)
+ DelayedArray             0.26.7    2023-07-28 [2] Bioconductor
+ DelayedMatrixStats       1.22.5    2023-08-10 [2] Bioconductor
+ digest                   0.6.33    2023-07-07 [2] CRAN (R 4.3.1)
+ doParallel               1.0.17    2022-02-07 [2] CRAN (R 4.3.0)
+ dotCall64                1.0-2     2022-10-03 [2] CRAN (R 4.3.0)
+ dplyr                    1.1.2     2023-04-20 [2] CRAN (R 4.3.0)
+ dqrng                    0.3.0     2021-05-01 [2] CRAN (R 4.3.0)
+ DropletUtils             1.20.0    2023-04-25 [2] Bioconductor
+ DT                       0.28      2023-05-18 [2] CRAN (R 4.3.0)
+ edgeR                    3.42.4    2023-05-31 [2] Bioconductor
+ ellipsis                 0.3.2     2021-04-29 [2] CRAN (R 4.3.0)
+ ExperimentHub            2.8.1     2023-07-12 [2] Bioconductor
+ fansi                    1.0.4     2023-01-22 [2] CRAN (R 4.3.0)
+ farver                   2.1.1     2022-07-06 [2] CRAN (R 4.3.0)
+ fastmap                  1.1.1     2023-02-24 [2] CRAN (R 4.3.0)
+ fields                   15.2      2023-08-17 [2] CRAN (R 4.3.1)
+ filelock                 1.0.2     2018-10-05 [2] CRAN (R 4.3.0)
+ foreach                  1.5.2     2022-02-02 [2] CRAN (R 4.3.0)
+ generics                 0.1.3     2022-07-05 [2] CRAN (R 4.3.0)
+ GenomeInfoDb           * 1.36.1    2023-06-21 [2] Bioconductor
+ GenomeInfoDbData         1.2.10    2023-04-11 [2] Bioconductor
+ GenomicAlignments        1.36.0    2023-04-25 [2] Bioconductor
+ GenomicRanges          * 1.52.0    2023-04-25 [2] Bioconductor
+ ggbeeswarm               0.7.2     2023-04-29 [2] CRAN (R 4.3.0)
+ ggplot2                * 3.4.3     2023-08-14 [2] CRAN (R 4.3.1)
+ ggrepel                  0.9.3     2023-02-03 [2] CRAN (R 4.3.0)
+ glue                     1.6.2     2022-02-24 [2] CRAN (R 4.3.0)
+ golem                    0.4.1     2023-06-05 [2] CRAN (R 4.3.0)
+ gridExtra                2.3       2017-09-09 [2] CRAN (R 4.3.0)
+ gtable                   0.3.3     2023-03-21 [2] CRAN (R 4.3.0)
+ HDF5Array                1.28.1    2023-05-01 [2] Bioconductor
+ here                   * 1.0.1     2020-12-13 [2] CRAN (R 4.3.0)
+ htmltools                0.5.6     2023-08-10 [2] CRAN (R 4.3.1)
+ htmlwidgets              1.6.2     2023-03-17 [2] CRAN (R 4.3.0)
+ httpuv                   1.6.11    2023-05-11 [2] CRAN (R 4.3.0)
+ httr                     1.4.7     2023-08-15 [2] CRAN (R 4.3.1)
+ interactiveDisplayBase   1.38.0    2023-04-25 [2] Bioconductor
+ IRanges                * 2.34.1    2023-06-22 [2] Bioconductor
+ irlba                    2.3.5.1   2022-10-03 [2] CRAN (R 4.3.0)
+ iterators                1.0.14    2022-02-05 [2] CRAN (R 4.3.0)
+ jquerylib                0.1.4     2021-04-26 [2] CRAN (R 4.3.0)
+ jsonlite                 1.8.7     2023-06-29 [2] CRAN (R 4.3.1)
+ KEGGREST                 1.40.0    2023-04-25 [2] Bioconductor
+ labeling                 0.4.2     2020-10-20 [2] CRAN (R 4.3.0)
+ later                    1.3.1     2023-05-02 [2] CRAN (R 4.3.0)
+ lattice                  0.21-8    2023-04-05 [3] CRAN (R 4.3.1)
+ lazyeval                 0.2.2     2019-03-15 [2] CRAN (R 4.3.0)
+ lifecycle                1.0.3     2022-10-07 [2] CRAN (R 4.3.0)
+ limma                    3.56.2    2023-06-04 [2] Bioconductor
+ lobstr                 * 1.1.2     2022-06-22 [2] CRAN (R 4.3.0)
+ locfit                   1.5-9.8   2023-06-11 [2] CRAN (R 4.3.1)
+ magick                   2.7.5     2023-08-07 [2] CRAN (R 4.3.1)
+ magrittr                 2.0.3     2022-03-30 [2] CRAN (R 4.3.0)
+ maps                     3.4.1     2022-10-30 [2] CRAN (R 4.3.0)
+ Matrix                   1.6-1     2023-08-14 [3] CRAN (R 4.3.1)
+ MatrixGenerics         * 1.12.3    2023-07-30 [2] Bioconductor
+ matrixStats            * 1.0.0     2023-06-02 [2] CRAN (R 4.3.0)
+ memoise                  2.0.1     2021-11-26 [2] CRAN (R 4.3.0)
+ mime                     0.12      2021-09-28 [2] CRAN (R 4.3.0)
+ munsell                  0.5.0     2018-06-12 [2] CRAN (R 4.3.0)
+ paletteer                1.5.0     2022-10-19 [2] CRAN (R 4.3.0)
+ pillar                   1.9.0     2023-03-22 [2] CRAN (R 4.3.0)
+ pkgconfig                2.0.3     2019-09-22 [2] CRAN (R 4.3.0)
+ plotly                   4.10.2    2023-06-03 [2] CRAN (R 4.3.0)
+ plyr                     1.8.8     2022-11-11 [2] CRAN (R 4.3.0)
+ png                      0.1-8     2022-11-29 [2] CRAN (R 4.3.0)
+ prettyunits              1.1.1     2020-01-24 [2] CRAN (R 4.3.0)
+ promises                 1.2.1     2023-08-10 [2] CRAN (R 4.3.1)
+ purrr                    1.0.2     2023-08-10 [2] CRAN (R 4.3.1)
+ R.methodsS3              1.8.2     2022-06-13 [2] CRAN (R 4.3.0)
+ R.oo                     1.25.0    2022-06-12 [2] CRAN (R 4.3.0)
+ R.utils                  2.12.2    2022-11-11 [2] CRAN (R 4.3.0)
+ R6                       2.5.1     2021-08-19 [2] CRAN (R 4.3.0)
+ rafalib                * 1.0.0     2015-08-09 [1] CRAN (R 4.3.0)
+ rappdirs                 0.3.3     2021-01-31 [2] CRAN (R 4.3.0)
+ RColorBrewer             1.1-3     2022-04-03 [2] CRAN (R 4.3.0)
+ Rcpp                     1.0.11    2023-07-06 [2] CRAN (R 4.3.1)
+ RCurl                    1.98-1.12 2023-03-27 [2] CRAN (R 4.3.0)
+ rematch2                 2.1.2     2020-05-01 [2] CRAN (R 4.3.0)
+ reshape2                 1.4.4     2020-04-09 [2] CRAN (R 4.3.0)
+ restfulr                 0.0.15    2022-06-16 [2] CRAN (R 4.3.0)
+ rhdf5                    2.44.0    2023-04-25 [2] Bioconductor
+ rhdf5filters             1.12.1    2023-04-30 [2] Bioconductor
+ Rhdf5lib                 1.22.0    2023-04-25 [2] Bioconductor
+ rjson                    0.2.21    2022-01-09 [2] CRAN (R 4.3.0)
+ rlang                    1.1.1     2023-04-28 [2] CRAN (R 4.3.0)
+ rprojroot                2.0.3     2022-04-02 [2] CRAN (R 4.3.0)
+ Rsamtools                2.16.0    2023-04-25 [2] Bioconductor
+ RSQLite                  2.3.1     2023-04-03 [2] CRAN (R 4.3.0)
+ rsvd                     1.0.5     2021-04-16 [2] CRAN (R 4.3.0)
+ rtracklayer              1.60.1    2023-08-15 [2] Bioconductor
+ S4Arrays                 1.0.5     2023-07-24 [2] Bioconductor
+ S4Vectors              * 0.38.1    2023-05-02 [2] Bioconductor
+ sass                     0.4.7     2023-07-15 [2] CRAN (R 4.3.1)
+ ScaledMatrix             1.8.1     2023-05-03 [2] Bioconductor
+ scales                   1.2.1     2022-08-20 [2] CRAN (R 4.3.0)
+ scater                   1.28.0    2023-04-25 [2] Bioconductor
+ scuttle                  1.10.2    2023-08-03 [2] Bioconductor
+ sessioninfo            * 1.2.2     2021-12-06 [2] CRAN (R 4.3.0)
+ shiny                    1.7.5     2023-08-12 [2] CRAN (R 4.3.1)
+ shinyWidgets             0.7.6     2023-01-08 [2] CRAN (R 4.3.0)
+ SingleCellExperiment   * 1.22.0    2023-04-25 [2] Bioconductor
+ spam                     2.9-1     2022-08-07 [2] CRAN (R 4.3.0)
+ sparseMatrixStats        1.12.2    2023-07-02 [2] Bioconductor
+ SpatialExperiment      * 1.10.0    2023-04-25 [2] Bioconductor
+ spatialLIBD            * 1.12.0    2023-04-27 [2] Bioconductor
+ statmod                  1.5.0     2023-01-06 [2] CRAN (R 4.3.0)
+ stringi                  1.7.12    2023-01-11 [2] CRAN (R 4.3.0)
+ stringr                  1.5.0     2022-12-02 [2] CRAN (R 4.3.0)
+ SummarizedExperiment   * 1.30.2    2023-06-06 [2] Bioconductor
+ tibble                   3.2.1     2023-03-20 [2] CRAN (R 4.3.0)
+ tidyr                    1.3.0     2023-01-24 [2] CRAN (R 4.3.0)
+ tidyselect               1.2.0     2022-10-10 [2] CRAN (R 4.3.0)
+ utf8                     1.2.3     2023-01-31 [2] CRAN (R 4.3.0)
+ vctrs                    0.6.3     2023-06-14 [2] CRAN (R 4.3.1)
+ vipor                    0.4.5     2017-03-22 [2] CRAN (R 4.3.0)
+ viridis                  0.6.4     2023-07-22 [2] CRAN (R 4.3.1)
+ viridisLite              0.4.2     2023-05-02 [2] CRAN (R 4.3.0)
+ withr                    2.5.0     2022-03-03 [2] CRAN (R 4.3.0)
+ XML                      3.99-0.14 2023-03-19 [2] CRAN (R 4.3.0)
+ xtable                   1.8-4     2019-04-21 [2] CRAN (R 4.3.0)
+ XVector                  0.40.0    2023-04-25 [2] Bioconductor
+ yaml                     2.3.7     2023-01-23 [2] CRAN (R 4.3.0)
+ zlibbioc                 1.46.0    2023-04-25 [2] Bioconductor
+
+ [1] /users/lcollado/R/4.3
+ [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/R/4.3/lib64/R/site-library
+ [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.11.0/envs/svnR-4.3/R/4.3/lib64/R/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+**** Job ends ****
+Fri Aug 18 11:28:27 EDT 2023
