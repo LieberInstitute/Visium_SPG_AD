@@ -4,10 +4,10 @@ Loading LIBD module for rmate/1.5.10
 Loading LIBD module for ruby/3.1.2
 Loading conda_R/4.3
 **** Job starts ****
-Fri Aug 18 11:25:52 EDT 2023
+Fri Aug 18 12:27:47 EDT 2023
 **** JHPCE info ****
 User: lcollado
-Job id: 3686520
+Job id: 3686587
 Job name: gene_pairs_path_deconvo
 Hostname: compute-126.cm.cluster
 Task id: 4
@@ -200,12 +200,51 @@ ENSG00000198712
  0.2437  0.3001  0.3902  0.4695  0.5994  1.0000 
 [1] 1000 1826
 Number of gene combinations: 499500
-2023-08-18 11:26:24.682232 - computing pair_1
+2023-08-18 12:28:20.930462 - computing pair_1
 4.26 GB
-2023-08-18 11:26:27.416045 - computing pair_2
+2023-08-18 12:28:23.656511 - computing pair_2
 2.60 GB
-2023-08-18 11:26:47.658314 - computing co_expr
-Error: cannot allocate vector of size 2.0 Gb
-Execution halted
-**** Job ends ****
-Fri Aug 18 11:26:54 EDT 2023
+2023-08-18 12:28:41.934572 - computing co_expr
+2023-08-18 12:29:31.089994 - done computing co_expr
+1.72 GB
+Memory for co_expr_se:
+1.81 GB
+[1] 499500     14
+Warning messages:
+1: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+2: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+3: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+4: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+5: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+6: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+7: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+8: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+9: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+10: In max(x[x != max(x)]) :
+  no non-missing arguments to max; returning -Inf
+Summary of ratio of highest / second highest:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.038   1.101   1.159   1.210   4.015 
+ENSG00000126351_ENSG00000184226 ENSG00000101132_ENSG00000180879 
+                       4.015385                        3.762500 
+ENSG00000176171_ENSG00000053438 ENSG00000023287_ENSG00000116871 
+                       3.616667                        3.616667 
+ENSG00000120694_ENSG00000175130 ENSG00000114784_ENSG00000126351 
+                       3.548387                        3.541176 
+Full co_expr_se size:
+1.86 GB
+null device 
+          1 
+[1] "Reproducibility information:"
+[1] "2023-08-18 12:32:09 EDT"
+   user  system elapsed 
+250.039   6.831 261.455 
