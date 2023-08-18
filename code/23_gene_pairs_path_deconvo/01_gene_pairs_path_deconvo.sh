@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -cwd
-#$ -l mem_free=60G,h_vmem=60G,h_fsize=100G
-#$ -N gene_pairs_path
-#$ -o logs/01_gene_pairs_path.$TASK_ID.txt
-#$ -e logs/01_gene_pairs_path.$TASK_ID.txt
+#$ -l caracol,mem_free=20G,h_vmem=20G,h_fsize=100G
+#$ -N gene_pairs_path_deconvo
+#$ -o logs/01_gene_pairs_path_deconvo.$TASK_ID.txt
+#$ -e logs/01_gene_pairs_path_deconvo.$TASK_ID.txt
 #$ -m e
 #$ -t 1-7
 #$ -tc 3
@@ -25,7 +25,7 @@ module load conda_R/4.3
 module list
 
 ## Edit with your job command
-Rscript 01_gene_pairs_path.R
+Rscript 01_gene_pairs_path_deconvo.R
 
 echo "**** Job ends ****"
 date
