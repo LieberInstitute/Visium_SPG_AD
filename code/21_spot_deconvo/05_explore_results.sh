@@ -2,8 +2,8 @@
 
 #$ -cwd
 #$ -N "explore_results"
-#$ -o ../../processed-data/21_spot_deconvo/logs/05_explore_results.log
-#$ -e ../../processed-data/21_spot_deconvo/logs/05_explore_results.log
+#$ -o /dev/null
+#$ -e /dev/null
 #$ -l mf=5G,h_vmem=5G
 #$ -t 1-3
 #$ -tc 3
@@ -11,8 +11,8 @@
 #SBATCH -q shared
 #SBATCH --mem=5G
 #SBATCH --job-name=explore_results
-#SBATCH -o ../../processed-data/21_spot_deconvo/logs/05_explore_results.log
-#SBATCH -e ../../processed-data/21_spot_deconvo/logs/05_explore_results.log
+#SBATCH -o /dev/null
+#SBATCH -e /dev/null
 #SBATCH --array=1-3%3
 
 #   Auto-detect if SGE or SLURM is being used
