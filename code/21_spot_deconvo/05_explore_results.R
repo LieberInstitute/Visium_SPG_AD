@@ -4,9 +4,16 @@ library(SpatialExperiment)
 library(colorspace)
 library(spatialLIBD)
 library(sessioninfo)
+library(getopt)
+
+spec = matrix(
+    c("subset", "s", 1, "character", "Tissue type to subset to"),
+    byrow = TRUE, ncol = 5
+)
+opt = getopt(spec)
 
 results_in = here('processed-data', '21_spot_deconvo', 'clusters.csv')
-plot_dir = here('plots', '21_spot_deconvo', 'explore_results')
+plot_dir = here('plots', '21_spot_deconvo', 'explore_results', opt$subset)
 
 discrete_cell_palette = "Dark 2"
 
@@ -43,15 +50,21 @@ layer_dist_barplot <- function(
 #   Read in data
 ################################################################################
 
-dir.create(plot_dir, showWarnings = FALSE)
+dir.create(plot_dir, showWarnings = FALSE, recursive = TRUE)
 
 #   Read in spot-deconvolution results and merge with the original
-#   SpatialExperiment object
+#   SpatialExperiment object. Subset to only AD samples
 spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 spe = cluster_import(spe, dirname(results_in), prefix = 'c2l_')
 spe$c2l_sample = NULL
+spe = spe[, spe$diagnosis == "AD"]
 
-sample_ids = unique(spe$sample_id)
+#   Subset to white matter, gray matter, or neither
+if (opt$subset == "white") {
+    spe = spe[, spe$BayesSpace_harmony_k02 == 2]
+} else if (opt$subset == "gray") {
+    spe = spe[, spe$BayesSpace_harmony_k02 == 1]
+}
 
 results = colData(spe) |>
     as_tibble() |>
@@ -81,7 +94,6 @@ results = colData(spe) |>
 #-------------------------------------------------------------------------------
 
 norm_results = results |>
-    filter(diagnosis == "AD") |>
     #   For each pathology group and sample_id, normalize by the total counts of
     #   all cell types
     group_by(path_groups, sample_id) |>
@@ -103,7 +115,6 @@ layer_dist_barplot(
 )
 
 norm_results = results |>
-    filter(diagnosis == "AD") |>
     #   For each cell type and sample_id, normalize by the total counts of
     #   cells in all pathology groups
     group_by(cell_type, sample_id) |>
@@ -131,7 +142,6 @@ layer_dist_barplot(
 
 #   Average counts of each cell type in pathology group
 norm_results = results |>
-    filter(diagnosis == "AD") |>
     group_by(path_groups, sample_id, cell_type) |>
     summarize(count = mean(count)) |>
     ungroup()
