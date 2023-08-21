@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 #$ -cwd
 #$ -N "explore_results"

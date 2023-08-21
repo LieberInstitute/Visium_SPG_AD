@@ -15,8 +15,6 @@ opt = getopt(spec)
 results_in = here('processed-data', '21_spot_deconvo', 'clusters.csv')
 plot_dir = here('plots', '21_spot_deconvo', 'explore_results', opt$subset)
 
-discrete_cell_palette = "Dark 2"
-
 ################################################################################
 #   Functions
 ################################################################################
@@ -29,7 +27,7 @@ discrete_cell_palette = "Dark 2"
 #   'scale_fill_discrete_qualitative(palette = fill_palette)'; 'fill_lab' is the
 #   fill label; 'xlab' is the x-axis label. Returns NULL
 layer_dist_barplot <- function(
-        counts_df, out_path, ylab, x_var, fill_var, fill_lab, xlab, fill_palette
+        counts_df, out_path, ylab, x_var, fill_var, fill_lab, xlab, fill_values
     ) {
     p <- ggplot(
         counts_df,
@@ -37,7 +35,7 @@ layer_dist_barplot <- function(
     ) +
         geom_bar(stat = "identity") +
         labs(x = xlab, y = ylab, fill = fill_lab) +
-        scale_fill_discrete_qualitative(palette = fill_palette) +
+        scale_fill_manual(values = fill_values) +
         theme_bw(base_size = 16) +
         theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 
@@ -88,6 +86,16 @@ results = colData(spe) |>
 #   Exploratory plots
 ################################################################################
 
+path_colors = unique(results$path_groups_colors)
+names(path_colors) = sapply(
+    path_colors,
+    function(x) results[match(x, results$path_groups_colors), ][['path_groups']]
+)
+
+cell_colors = qualitative_hcl(
+    length(unique(results$cell_type)), palette = "Dark 3"
+)
+
 #-------------------------------------------------------------------------------
 #   Barplots that show how cell type proportions vary by pathology group and
 #   vice versa
@@ -111,7 +119,7 @@ layer_dist_barplot(
     norm_results, out_path = file.path(plot_dir, 'pathology_barplots.pdf'),
     ylab = 'Cell Type Proportion', x_var = 'path_groups',
     fill_var = 'cell_type', xlab = 'Pathology Group', fill_lab = 'Cell Type',
-    fill_palette = discrete_cell_palette
+    fill_values = cell_colors
 )
 
 norm_results = results |>
@@ -132,7 +140,7 @@ layer_dist_barplot(
     norm_results, out_path = file.path(plot_dir, 'pathology_barplots_inverted.pdf'),
     ylab = 'Pathology Proportion', x_var = 'cell_type',
     fill_var = 'path_groups', xlab = 'Cell Type', fill_lab = 'Pathology Group',
-    fill_palette = discrete_cell_palette
+    fill_values = path_colors
 )
 
 #-------------------------------------------------------------------------------
@@ -151,7 +159,7 @@ plot_list = list()
 for (cell_type in unique(norm_results$cell_type)) {
     plot_list[[cell_type]] = ggplot(
         norm_results |> filter(cell_type == {{ cell_type }}),
-        aes(x = path_groups, y = count)
+        aes(x = path_groups, y = count, color = path_groups)
     ) +
         geom_boxplot(outlier.shape = NA) +
         geom_jitter(width = 0.05) +
@@ -159,6 +167,7 @@ for (cell_type in unique(norm_results$cell_type)) {
             x = "Pathology Group",
             y = "Average Predicted Count",
         ) +
+        scale_color_manual(values = path_colors) +
         #   Facet purely for aesthetic purposes: there is only one cell type
         facet_wrap(~cell_type) +
         theme_bw(base_size = 23) +
