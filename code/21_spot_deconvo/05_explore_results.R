@@ -159,7 +159,7 @@ plot_list = list()
 for (cell_type in unique(norm_results$cell_type)) {
     plot_list[[cell_type]] = ggplot(
         norm_results |> filter(cell_type == {{ cell_type }}),
-        aes(x = path_groups, y = count, color = path_groups)
+        aes(x = path_groups, y = count, fill = path_groups)
     ) +
         geom_boxplot(outlier.shape = NA) +
         geom_jitter(width = 0.05) +
@@ -167,7 +167,7 @@ for (cell_type in unique(norm_results$cell_type)) {
             x = "Pathology Group",
             y = "Average Predicted Count",
         ) +
-        scale_color_manual(values = path_colors) +
+        scale_fill_manual(values = path_colors, guide = "none") +
         #   Facet purely for aesthetic purposes: there is only one cell type
         facet_wrap(~cell_type) +
         theme_bw(base_size = 23) +
