@@ -49,6 +49,7 @@ layer_dist_barplot <- function(
 ################################################################################
 
 dir.create(plot_dir, showWarnings = FALSE, recursive = TRUE)
+set.seed(08212023)
 
 #   Read in spot-deconvolution results and merge with the original
 #   SpatialExperiment object. Subset to only AD samples
