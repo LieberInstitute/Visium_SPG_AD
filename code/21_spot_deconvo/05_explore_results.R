@@ -179,4 +179,49 @@ pdf(file.path(plot_dir, "pathology_boxplots.pdf"), width = 10)
 print(plot_list)
 dev.off()
 
+#-------------------------------------------------------------------------------
+#   Boxplots to assess how glial / neuronal ratio changes by pathology group
+#-------------------------------------------------------------------------------
+
+norm_results = results |>
+    group_by(sample_id, path_groups, cell_type) |>
+    summarize(count = mean(count)) |>
+    pivot_wider(names_from = cell_type, values_from = count) |>
+    group_by(sample_id, path_groups) |>
+    summarize(
+        glial_neuron = (Astro + Micro) / (Excit + Inhib),
+        glial_excit = (Astro + Micro) / Excit
+    ) |>
+    ungroup()
+
+#   Glial vs. all neurons
+p = ggplot(
+        norm_results, aes(x = path_groups, y = glial_neuron, fill = path_groups)
+    ) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(width = 0.05) +
+    labs(x = "Pathology Group", y = "(Astro + Micro) / (Excit + Inhib)") +
+    scale_fill_manual(values = path_colors, guide = "none") +
+    theme_bw(base_size = 23) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+pdf(file.path(plot_dir, "pathology_glial_v_neuron.pdf"), width = 10)
+print(p)
+dev.off()
+
+#   Glial vs. excitatory neurons
+p = ggplot(
+        norm_results, aes(x = path_groups, y = glial_excit, fill = path_groups)
+    ) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(width = 0.05) +
+    labs(x = "Pathology Group", y = "(Astro + Micro) / Excit") +
+    scale_fill_manual(values = path_colors, guide = "none") +
+    theme_bw(base_size = 23) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+pdf(file.path(plot_dir, "pathology_glial_v_excit.pdf"), width = 10)
+print(p)
+dev.off()
+
 session_info()

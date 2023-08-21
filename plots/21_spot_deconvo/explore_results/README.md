@@ -11,3 +11,9 @@ The following plots are generated nearly identically, but swapping the x-axis an
 The boxplots represent similar information to `*/pathology_barplots.pdf`, with the essential difference being how counts are normalized.
 
 - `*/pathology_boxplots.pdf`: A single point in one box of these plots represents, for the particular cell type in question, the average count of that cell type among all spots belonging to the particular pathology group and one sample. Thus each point is one sample. This enables a direct comparison of the *density* of one cell type between different pathology conditions.
+
+The following plots compare ratios of counts of different cell types between pathology groups.
+
+- `*/pathology_glial_v_neuron.pdf`: For a given pathology group (box in the plot) and sample, the mean count of each cell type is taken among all spots belonging to that group and sample. Then, the following ratio is taken of those means: `(Astro + Micro) / (Excit + Inhib)`, which forms a single point in one of the boxes. All points together for one box represent that ratio computed for all samples.
+
+- `*/pathology_glial_v_excit.pdf`: For a given pathology group (box in the plot) and sample, the mean count of each cell type is taken among all spots belonging to that group and sample. Then, the following ratio is taken of those means: `(Astro + Micro) / Excit`, which forms a single point in one of the boxes. All points together for one box represent that ratio computed for all samples.

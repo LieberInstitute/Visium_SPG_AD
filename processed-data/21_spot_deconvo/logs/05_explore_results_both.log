@@ -1,10 +1,10 @@
 **** Job starts ****
-Mon Aug 21 13:49:40 EDT 2023
+Mon Aug 21 14:19:50 EDT 2023
 **** JHPCE info ****
 User: neagles
-Job id: 3689263
+Job id: 3689314
 Job name: explore_results
-Node name: compute-096.cm.cluster
+Node name: compute-103.cm.cluster
 Task id: 3
 Loading conda_R/4.3
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -136,7 +136,7 @@ The following objects are masked from ‘package:matrixStats’:
 
     anyMissing, rowMedians
 
-2023-08-21 13:50:10.22813 loading file /users/neagles/.cache/R/BiocFileCache/7214e2703ab_Visium_SPG_AD_spe_wholegenome.Rdata%3Fdl%3D1
+2023-08-21 14:20:42.710017 loading file /users/neagles/.cache/R/BiocFileCache/7214e2703ab_Visium_SPG_AD_spe_wholegenome.Rdata%3Fdl%3D1
 Overwriting 'spe$key'. Set 'overwrite = FALSE' if you do not want to overwrite it.
 `summarise()` has grouped output by 'path_groups', 'cell_type'. You can
 override using the `.groups` argument.
@@ -168,6 +168,14 @@ $OPC
 
 $Oligo
 
+null device 
+          1 
+`summarise()` has grouped output by 'sample_id', 'path_groups'. You can
+override using the `.groups` argument.
+`summarise()` has grouped output by 'sample_id'. You can override using the
+`.groups` argument.
+null device 
+          1 
 null device 
           1 
 ─ Session info ───────────────────────────────────────────────────────────────
@@ -353,4 +361,4 @@ null device
 
 ──────────────────────────────────────────────────────────────────────────────
 **** Job ends ****
-Mon Aug 21 13:52:09 EDT 2023
+Mon Aug 21 14:23:46 EDT 2023
