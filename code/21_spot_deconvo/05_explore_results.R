@@ -200,11 +200,11 @@ if (opt$subset == "gray") {
         filter(cell_type == 'Excit') |>
         mutate(is_pTau = path_groups == 'pTau')
 
-    t_results = t.test(count ~ is_pTau, stat_results)
+    t_results = t.test(count ~ is_pTau, stat_results, var.equal = TRUE)
     message(
         paste(
             'p-value for Excit counts in pTau vs. all:',
-            round(t_results$p.value, 3)
+            signif(t_results$p.value, 3)
         )
     )
 }
@@ -254,15 +254,29 @@ pdf(file.path(plot_dir, "pathology_glial_v_excit.pdf"), width = 10)
 print(p)
 dev.off()
 
-if ((opt$subset == "gray") || (opt$subset == "white")) {
+#   Test if glial/neuronal ratio significantly differs between n_Ab and all
+#   other groups combined
+if (opt$subset == "gray") {
     norm_results$is_n_Ab = norm_results$path_groups == 'n_Ab'
-    t_results = t.test(glial_neuron ~ is_n_Ab, norm_results)
+    t_results = t.test(glial_neuron ~ is_n_Ab, norm_results, var.equal = TRUE)
     message(
         paste(
             'p-value for (Astro + Micro) / (Excit + Inhib) ratios in n_Ab vs. all:',
-            round(t_results$p.value, 3)
+            signif(t_results$p.value, 3)
         )
     )
 }
+
+#   ANOVA for glial/neuronal ratios among pathology groups
+if ((opt$subset == "gray") || (opt$subset == "white")) {
+    anov = oneway.test(
+        glial_neuron ~ path_groups, norm_results, var.equal = TRUE
+    )
+    message(
+        paste(
+            'ANOVA for (Astro + Micro) / (Excit + Inhib) ratios:',
+            signif(anov$p.value, 3)
+        )
+    )
 
 session_info()
