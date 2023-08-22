@@ -83,6 +83,20 @@ results = colData(spe) |>
         )
     )
 
+#   Verify that input (VistoSeg) and output (cell2location) cell counts per spot
+#   are similar
+message(sprintf("For '%s' subset and AD samples:", opt$subset))
+message(
+    sprintf("Mean VistoSeg cell counts per spot: %s", round(mean(spe$NDAPI), 2))
+)
+c2l_av = results |>
+    group_by(key) |>
+    summarize(count = sum(count)) |>
+    summarize(av = mean(count)) |>
+    pull(av) |>
+    round(2)
+message(sprintf("Mean Cell2location cell counts per spot: %s", c2l_av))
+
 ################################################################################
 #   Exploratory plots
 ################################################################################
