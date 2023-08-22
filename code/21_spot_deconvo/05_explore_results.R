@@ -193,6 +193,22 @@ pdf(file.path(plot_dir, "pathology_boxplots.pdf"), width = 10)
 print(plot_list)
 dev.off()
 
+#   For gray matter, check if Excit counts significantly differ in pTau against
+#   all other groups combined
+if (opt$subset == "gray") {
+    stat_results = norm_results |>
+        filter(cell_type == 'Excit') |>
+        mutate(is_pTau = path_groups == 'pTau')
+
+    t_results = t.test(count ~ is_pTau, stat_results)
+    message(
+        paste(
+            'p-value for Excit counts in pTau vs. all:',
+            round(t_results$p.value, 2)
+        )
+    )
+}
+
 #-------------------------------------------------------------------------------
 #   Boxplots to assess how glial / neuronal ratio changes by pathology group
 #-------------------------------------------------------------------------------
