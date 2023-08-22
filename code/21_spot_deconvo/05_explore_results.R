@@ -278,5 +278,6 @@ if ((opt$subset == "gray") || (opt$subset == "white")) {
             signif(anov$p.value, 3)
         )
     )
+}
 
 session_info()
