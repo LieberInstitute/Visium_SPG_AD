@@ -204,7 +204,7 @@ if (opt$subset == "gray") {
     message(
         paste(
             'p-value for Excit counts in pTau vs. all:',
-            round(t_results$p.value, 2)
+            round(t_results$p.value, 3)
         )
     )
 }
@@ -253,5 +253,16 @@ p = ggplot(
 pdf(file.path(plot_dir, "pathology_glial_v_excit.pdf"), width = 10)
 print(p)
 dev.off()
+
+if ((opt$subset == "gray") || (opt$subset == "white")) {
+    norm_results$is_n_Ab = norm_results$path_groups == 'n_Ab'
+    t_results = t.test(glial_neuron ~ is_n_Ab, norm_results)
+    message(
+        paste(
+            'p-value for (Astro + Micro) / (Excit + Inhib) ratios in n_Ab vs. all:',
+            round(t_results$p.value, 3)
+        )
+    )
+}
 
 session_info()
