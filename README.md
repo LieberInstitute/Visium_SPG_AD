@@ -124,6 +124,12 @@ labeled with emojis:
     similar to `Visium_SPG_AD_wholegenome`, but with the `Ab` and
     `next_Ab` pathologies collapsed into a single one `Ab_env` for
     studying the Abeta micro environment.
+  - [Visium_SPG_AD_wholegenome_Abeta_and_pTau_microenv](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome_Abeta_and_pTau_microenv/):
+    [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website
+    similar to `Visium_SPG_AD_wholegenome_Abeta_microenv`, but after
+    also combining `pTau` and `next_pTau` into `pTau_env` as well as
+    `both` and `next_both` into `both_env`, thus resulting in only 4
+    categories: `none`, `Ab_env`, `pTau_env`, and `both_env`.
 - 👀 `iSEE`
   - [Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome](https://libd.shinyapps.io/Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome):
     [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1) website
