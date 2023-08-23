@@ -13,20 +13,20 @@ library("readxl")
 #   'vis_clus' with consistent manuscript-appropriate settings
 source(here("code", "21_spot_deconvo", "shared_functions.R"))
 
-sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
-out_dir = here('processed-data', '21_spot_deconvo')
-plot_dir = here('plots', '21_spot_deconvo')
-sce_in = here('processed-data', '21_spot_deconvo', 'sce_mathys.rds')
+sce_in <- here("processed-data", "21_spot_deconvo", "sce_mathys.rds")
+out_dir <- here("processed-data", "21_spot_deconvo")
+plot_dir <- here("plots", "21_spot_deconvo")
+sce_in <- here("processed-data", "21_spot_deconvo", "sce_mathys.rds")
 
-cell_type_var = "broad.cell.type"
-find_markers_model = "~individualID"
-discrete_cell_palette = "Dark 2"
-best_looking_sample_id = "V10A27106_D1_Br3880"
+cell_type_var <- "broad.cell.type"
+find_markers_model <- "~individualID"
+discrete_cell_palette <- "Dark 2"
+best_looking_sample_id <- "V10A27106_D1_Br3880"
 
 #   Number of marker genes to use per cell type, and to show in violin plots,
 #   respectively
-n_markers_per_type = 20
-n_markers_per_type_violin = 25
+n_markers_per_type <- 20
+n_markers_per_type_violin <- 25
 
 ################################################################################
 #   Functions
@@ -63,10 +63,8 @@ write_markers <- function(marker_stats, n_markers, out_path) {
     writeLines(marker_stats_temp$gene, con = out_path)
 }
 
-my_plot_expression <- function(
-        sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
-        marker_stats
-    ) {
+my_plot_expression <- function(sce, genes, assay = "logcounts", ct = "cellType", title = NULL,
+    marker_stats) {
     stopifnot(length(unique(colnames(sce))) == ncol(sce))
 
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
@@ -140,7 +138,7 @@ boxplot_mean_ratio <- function(marker_stats, n_markers, plot_path) {
 
 dir.create(plot_dir, showWarnings = FALSE)
 
-sce = readRDS(sce_in)
+sce <- readRDS(sce_in)
 
 #-------------------------------------------------------------------------------
 #   Rank genes as potential markers with DeconvoBuddies functions
@@ -163,10 +161,10 @@ sce = readRDS(sce_in)
 # ]
 
 #   Save 'marker_stats' table and the markers themselves (just Ensembl IDs)
-marker_stats = readRDS(file.path(out_dir, 'marker_stats.rds'))
+marker_stats <- readRDS(file.path(out_dir, "marker_stats.rds"))
 # saveRDS(marker_stats, file.path(out_dir, 'marker_stats.rds'))
 write_markers(
-    marker_stats, n_markers_per_type, file.path(out_dir, 'markers.txt')
+    marker_stats, n_markers_per_type, file.path(out_dir, "markers.txt")
 )
 
 ################################################################################
@@ -248,7 +246,7 @@ boxplot_mean_ratio(
 #   markers per cell type: 15, 25, 50
 #-------------------------------------------------------------------------------
 
-spe = fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
+spe <- fetch_data(type = "Visium_SPG_AD_Visium_wholegenome_spe")
 
 for (n_markers in c(15, 25, 50)) {
     plot_list <- list()

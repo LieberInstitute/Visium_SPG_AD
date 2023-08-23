@@ -5,12 +5,12 @@ suppressPackageStartupMessages(library("zellkonverter"))
 suppressPackageStartupMessages(library("sessioninfo"))
 suppressPackageStartupMessages(library("here"))
 
-spe_in = here(
-    'processed-data', '98_prepare_to_share',
-    'Visium_SPG_AD_spe_wholegenome.Rdata'
+spe_in <- here(
+    "processed-data", "98_prepare_to_share",
+    "Visium_SPG_AD_spe_wholegenome.Rdata"
 )
 
-spe_out = here('processed-data', '16_samui', 'spe.h5ad')
+spe_out <- here("processed-data", "16_samui", "spe.h5ad")
 
 write_anndata <- function(sce, out_path) {
     invisible(
@@ -18,13 +18,13 @@ write_anndata <- function(sce, out_path) {
             fun = function(sce, filename) {
                 library("zellkonverter")
                 library("reticulate")
-                
+
                 # Convert SCE to AnnData:
                 adata <- SCE2AnnData(sce)
-                
+
                 #  Write AnnData object to disk
                 adata$write(filename = filename)
-                
+
                 return()
             },
             env = zellkonverterAnnDataEnv(),

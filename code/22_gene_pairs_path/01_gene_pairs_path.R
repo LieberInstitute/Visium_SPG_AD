@@ -19,7 +19,7 @@ load(here("code", "05_deploy_app_wholegenome", "spe.Rdata"), verbose = TRUE)
 
 ## Identify pathology group of interest
 path_i <- as.integer(Sys.getenv("SGE_TASK_ID"))
-if(is.na(path_i)) {
+if (is.na(path_i)) {
     levels(spe$path_groups)
     # [1] "none"   "Ab"     "n_Ab"   "pTau"   "n_pTau" "both"   "n_both"
     warning("Testing with path_i = 2 which is Ab")
@@ -141,10 +141,8 @@ lobstr::obj_size(co_expr_se)
 
 ## Plotting function with code adapted from
 ## https://github.com/LieberInstitute/Visium_SPG_AD/blob/7f4017344675764da592d27677d34993589e44a5/code/21_spot_deconvo/02_find_markers.R#L71-L122
-my_plot_expression <- function(
-        sce, genes, assay = "counts", ct = "cellType", title = NULL,
-        marker_stats
-    ) {
+my_plot_expression <- function(sce, genes, assay = "counts", ct = "cellType", title = NULL,
+    marker_stats) {
     stopifnot(length(unique(colnames(sce))) == ncol(sce))
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
@@ -215,7 +213,7 @@ pdf(
     file.path(dir_plots, paste0("gene_pairs_co-expr_", path_name, ".pdf")),
     width = 35, height = 35
 )
-for(i in seq(0, 90, by = 10)) {
+for (i in seq(0, 90, by = 10)) {
     p <- my_plot_expression(
         sce = co_expr_se,
         genes = names(

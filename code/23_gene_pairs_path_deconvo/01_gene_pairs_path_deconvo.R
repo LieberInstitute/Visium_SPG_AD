@@ -20,7 +20,7 @@ load(here("code", "05_deploy_app_wholegenome", "spe.Rdata"), verbose = TRUE)
 
 ## Identify pathology group of interest
 path_i <- as.integer(Sys.getenv("SGE_TASK_ID"))
-if(is.na(path_i)) {
+if (is.na(path_i)) {
     levels(spe$path_groups)
     # [1] "none"   "Ab"     "n_Ab"   "pTau"   "n_pTau" "both"   "n_both"
     warning("Testing with path_i = 2 which is Ab")
@@ -34,7 +34,7 @@ spe <- spe[, spe$BayesSpace_harmony_k02 != 2 & spe$diagnosis == "AD"]
 # 756.83 MB
 
 ## Add in the spot deconvolution results
-spe <- cluster_import(spe, here('processed-data', '21_spot_deconvo'), prefix = 'c2l_')
+spe <- cluster_import(spe, here("processed-data", "21_spot_deconvo"), prefix = "c2l_")
 spe$c2l_sample <- NULL
 
 ## Get the cell2location column names
@@ -206,7 +206,7 @@ sum(tab, na.rm = TRUE)
 ## + having a unique combination of 2 cells
 ## + having at least 10 spots where this is the case
 spe <- spe[, spe$path_groups == path_name &
-            spe$c2l_combn_is_unique]
+    spe$c2l_combn_is_unique]
 ## + having at least 10 spots where this is the case
 combn_has_min10 <- names(table(spe$c2l_combn_unique)[table(spe$c2l_combn_unique) >= 10])
 spe <- spe[, spe$c2l_combn_unique %in% combn_has_min10]
@@ -311,10 +311,8 @@ lobstr::obj_size(co_expr_se)
 
 ## Plotting function with code adapted from
 ## https://github.com/LieberInstitute/Visium_SPG_AD/blob/7f4017344675764da592d27677d34993589e44a5/code/21_spot_deconvo/02_find_markers.R#L71-L122
-my_plot_expression <- function(
-        sce, genes, assay = "counts", ct = "cellType", title = NULL,
-        marker_stats
-    ) {
+my_plot_expression <- function(sce, genes, assay = "counts", ct = "cellType", title = NULL,
+    marker_stats) {
     stopifnot(length(unique(colnames(sce))) == ncol(sce))
     cat_df <- as.data.frame(colData(sce))[, ct, drop = FALSE]
     expression_long <- reshape2::melt(as.matrix(assays(sce)[[assay]][genes, ]))
@@ -386,7 +384,7 @@ pdf(
     file.path(dir_plots, paste0("gene_pairs_deconvo_co-expr_", path_name, ".pdf")),
     width = 35, height = 35
 )
-for(i in seq(0, 90, by = 10)) {
+for (i in seq(0, 90, by = 10)) {
     p <- my_plot_expression(
         sce = co_expr_se,
         genes = names(

@@ -249,7 +249,8 @@ pdf(
 plotColData(spe_wholegenome,
     y = "sum_umi",
     x = "sample_id",
-    color_by = "quality_groups") +
+    color_by = "quality_groups"
+) +
     scale_y_log10() +
     scale_colour_manual(values = quality_groups_colors) +
     ylab("Library size (in log10)") +
@@ -260,7 +261,8 @@ pdf(file.path(dir_plots, "wholegenome_quality_groups_chrM_proportion.pdf"), useD
 plotColData(spe_wholegenome,
     y = "expr_chrM_ratio",
     x = "sample_id",
-    color_by = "quality_groups") +
+    color_by = "quality_groups"
+) +
     scale_colour_manual(values = quality_groups_colors) +
     ylab("chrM proportion") +
     theme(axis.title.y = element_text(size = 18))
@@ -270,7 +272,8 @@ pdf(file.path(dir_plots, "wholegenome_quality_groups_genes_detected.pdf"), useDi
 plotColData(spe_wholegenome,
     y = "sum_gene",
     x = "sample_id",
-    color_by = "quality_groups") +
+    color_by = "quality_groups"
+) +
     scale_y_log10() +
     scale_colour_manual(values = quality_groups_colors) +
     ylab("Genes detected (in log10)") +

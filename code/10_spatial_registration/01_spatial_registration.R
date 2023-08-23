@@ -32,7 +32,7 @@ library(sessioninfo)
 
 k <- as.numeric(Sys.getenv("SGE_TASK_ID"))
 k_nice <- sprintf("%02d", k)
-spetype <- commandArgs(trailingOnly=TRUE)
+spetype <- commandArgs(trailingOnly = TRUE)
 spe <-
     readRDS(
         here::here(
@@ -116,7 +116,7 @@ colnames(mod) <- gsub("cluster", "", colnames(mod))
 # columns of ‘object’.
 
 corfit <- duplicateCorrelation(mat, mod,
-                               block = sce_pseudo$sample_id
+    block = sce_pseudo$sample_id
 )
 message("Detected correlation: ", corfit$consensus.correlation)
 
@@ -189,11 +189,11 @@ fdrs0_contrasts_cluster <- apply(pvals0_contrasts_cluster, 2, p.adjust, "fdr")
 
 data.frame(
     "FDRsig" = colSums(fdrs0_contrasts_cluster < 0.05 &
-                           t0_contrasts_cluster > 0),
+        t0_contrasts_cluster > 0),
     "Pval10-6sig" = colSums(pvals0_contrasts_cluster < 1e-6 &
-                                t0_contrasts_cluster > 0),
+        t0_contrasts_cluster > 0),
     "Pval10-8sig" = colSums(pvals0_contrasts_cluster < 1e-8 &
-                                t0_contrasts_cluster > 0)
+        t0_contrasts_cluster > 0)
 )
 
 # for k = 04
