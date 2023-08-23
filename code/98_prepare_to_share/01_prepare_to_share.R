@@ -105,6 +105,10 @@ spe$PMAP2 <- NULL
 source(here("code", "colors_pathology.R"), echo = TRUE, max.deparse.length = 500)
 spe$path_groups_colors <- colors_pathology[as.character(spe$path_groups)]
 
+## Add in the spot deconvolution results
+spe <- cluster_import(spe, here("processed-data", "21_spot_deconvo"), prefix = "c2l_")
+spe$c2l_sample <- NULL
+
 ## Save the final object that we can share through spatialLIBD
 save(spe, file = file.path(dir_rdata, paste0("Visium_SPG_AD_spe_", suffix, ".Rdata")))
 

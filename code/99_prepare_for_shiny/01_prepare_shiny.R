@@ -19,10 +19,6 @@ imgData(spe) <- imgData(spe)[
     !imgData(spe)$image_id %in% c("hires", "detected", "aligned"),
 ]
 
-## Add in the spot deconvolution results
-spe <- cluster_import(spe, here("processed-data", "21_spot_deconvo"), prefix = "c2l_")
-spe$c2l_sample <- NULL
-
 ## Save the final object for the shiny app
 if (suffix == "wholegenome") {
     save(spe,
