@@ -40,6 +40,23 @@ sig_genes <- sig_genes_extract_all(
     sce_layer = sce_pseudo
 )
 
+if (FALSE) {
+    ## Get pairwise numbers for the manuscript
+    pair <- subset(sig_genes, model_type == "pairwise" & fdr < 0.1)
+    pair$combination <-
+        paste0(pair$ensembl, "_", sapply(strsplit(pair$test, "-"), function(x) {
+            paste0(sort(x), collapse = "_")
+        }))
+    pair <- pair[!duplicated(pair$combination), ]
+    table(pair$test)
+    # Ab-n_Ab   Ab-n_both   n_Ab-both n_Ab-n_both n_Ab-n_pTau   n_Ab-pTau   none-n_Ab
+    #     297           1         187         112          39         301         299
+    nrow(pair)
+    # [1] 1236
+    length(unique(pair$ensembl))
+    # [1] 610
+}
+
 ## Extract FDR < 5%
 ## From
 ## https://github.com/LieberInstitute/brainseq_phase2/blob/be2b7f972bb2a0ede320633bf06abe1d4ef2c067/supp_tabs/create_supp_tables.R#L173-L181
