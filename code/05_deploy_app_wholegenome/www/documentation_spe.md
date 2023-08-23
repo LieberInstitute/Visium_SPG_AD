@@ -75,7 +75,7 @@ Throughout the rest of this document, we'll refer to this object by the name `sp
   - `NpTau`: number of ROI objects of pTau within a spot.
   - `PpTau`: proportion of ROI pixels of pTau within a spot.
   - `edge-distance` : closest distance in number of spots to either the vertical or horizontal edge.
-  - `c2l_*`: spot-level deconvolution results generated using [`cell2location`](https://doi.org/10.1038/s41587-021-01139-4) with the six broad cell types from the [Mathys et al snRNA-seq dataset](https://doi.org/10.1038/s41586-019-1195-2) in which they found AD associated gene expression changes. 
+  - `c2l_*`: spot-level deconvolution results generated using [`cell2location`](https://doi.org/10.1038/s41587-021-01139-4) with the six broad cell types from the [Mathys et al snRNA-seq dataset](https://doi.org/10.1038/s41586-019-1195-2) in which they found AD associated gene expression changes. The cell types are: astrocytes (astro), excitatory neurons (excit), inhibitory neurons (inhib), microglia (micro), oligodendrocytes (oligo), and oligodendrocyte precursor cells (OPC).
 * `Gene scale`: whether to use the raw expression values (`counts`) or the scaled and log transformed values (`logcounts`).
 * `Spot transparency level`: the transparency of the spots in the visualizations. It can be useful if the spot colors are blocking the background image.
 * `Spot point size`: the size of the spots in the visualizations.
