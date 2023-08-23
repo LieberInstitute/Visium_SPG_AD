@@ -206,7 +206,6 @@ Please run this yourself to check for any updates on how to cite
 
 ``` r
 print(citation("spatialLIBD")[1], bibtex = TRUE)
-#> 
 #> Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
 #> Maynard KR, Collado-Torres L (2022). "spatialLIBD: an R/Bioconductor
 #> package to visualize spatially-resolved transcriptomics data." _BMC
@@ -314,6 +313,14 @@ from the 10x Genomics Visium platform. For example, this is the code you
 can use to access the spatially-resolved data. For more details, check
 the help file for `fetch_data()`.
 
+As of August 23, 2023 the processed data includes spot-level
+deconvolution results generated using
+[`cell2location`](https://doi.org/10.1038/s41587-021-01139-4) with the
+six broad cell types from the [Mathys et al snRNA-seq
+dataset](https://doi.org/10.1038/s41586-019-1195-2) in which they found
+AD associated gene expression changes. To access these results check the
+`colData(spe)` columns starting with the `c2l_` prefix.
+
 ``` r
 ## Check that you have a recent version of spatialLIBD installed
 stopifnot(packageVersion("spatialLIBD") >= "1.11.12")
@@ -329,9 +336,9 @@ spe
 #> rownames(27853): ENSG00000243485 ENSG00000238009 ... ENSG00000278817
 #>   ENSG00000277196
 #> rowData names(7): source type ... gene_type gene_search
-#> colnames(38115): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ... TTGTTTGTATTACACG-1
-#>   TTGTTTGTGTAAATTC-1
-#> colData names(113): key sample_id ... APOe path_groups_colors
+#> colnames(38115): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
+#>   TTGTTTGTATTACACG-1 TTGTTTGTGTAAATTC-1
+#> colData names(113): key sample_id ... c2l_oli c2l_opc
 #> reducedDimNames(15): 10x_pca 10x_tsne ... TSNE_perplexity50.HARMONY
 #>   TSNE_perplexity80.HARMONY
 #> mainExpName: NULL
