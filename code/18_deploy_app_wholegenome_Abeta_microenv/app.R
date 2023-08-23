@@ -105,7 +105,8 @@ spatialLIBD::run_app(
         "PDAPI",
         "NpTau",
         "PpTau",
-        "edge_distance"
+        "edge_distance",
+        vars[grep("^c2l_", vars)]
     ),
     default_cluster = "path_groups",
     docs_path = "www"
