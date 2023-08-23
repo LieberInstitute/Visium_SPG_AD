@@ -175,6 +175,33 @@ table(spe$c2l_combn_unique, spe$path_groups, useNA = "ifany") >= 10
 # oli_opc FALSE FALSE FALSE FALSE   TRUE FALSE  FALSE
 # <NA>     TRUE  TRUE  TRUE  TRUE   TRUE  TRUE   TRUE
 
+tab <- as.matrix(table(spe$c2l_combn_unique, spe$path_groups))
+sum(tab)
+# [1] 4139
+tab[tab < 10] <- NA
+tab
+#         none  Ab n_Ab pTau n_pTau both n_both
+# ast_ex   125  47  127  387    116   36     50
+# ast_in    42  18   27  146     36          12
+# ast_mic   73  22   44  160     76   12     13
+# ast_oli   44            45     48
+# ast_opc   40       30  100     63          14
+# ex_in     73  48   78  301     81   18     34
+# ex_mic   101  31   64  261     74   22     31
+# ex_oli    32            31     26
+# ex_opc    34  16   32  156     39   14     20
+# in_mic    26            90     20
+# in_oli                  20
+# in_opc                  58     14
+# mic_oli   24            32     25
+# mic_opc   13            39     18
+# oli_opc                        12
+colSums(tab, na.rm = TRUE)
+# none     Ab   n_Ab   pTau n_pTau   both n_both
+#  627    182    402   1826    648    102    174
+sum(tab, na.rm = TRUE)
+# [1] 3961
+
 ## Subset to the given pathology group of interest
 ## + having a unique combination of 2 cells
 ## + having at least 10 spots where this is the case
@@ -205,7 +232,7 @@ dim(spe_expr)
 ## Compute the combinations of gene pairs
 gene_combn <- combn(k, 2)
 message("Number of gene combinations: ", ncol(gene_combn))
-# Number of gene combinations: 44850
+# Number of gene combinations: 499500
 
 ## Find the combination of genes that are co-expressed
 message(Sys.time(), " - computing pair_1")
