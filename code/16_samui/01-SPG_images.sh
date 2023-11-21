@@ -1,22 +1,24 @@
 #!/bin/bash
-#$ -cwd
-#$ -N "SPG_images"
-#$ -o ../../processed-data/16_samui/logs/01-SPG_images_$TASK_ID.log
-#$ -e ../../processed-data/16_samui/logs/01-SPG_images_$TASK_ID.log
-#$ -l mf=20G,h_vmem=20G
-#$ -t 1-10
-#$ -tc 10
+
+#SBATCH -p shared
+#SBATCH --array=1%10
+#SBATCH --mem=20G
+#SBATCH --job-name=SPG_images
+#SBATCH -o ../../processed-data/16_samui/logs/01-SPG_images_%a.log
+#SBATCH -e ../../processed-data/16_samui/logs/01-SPG_images_%a.log
+
+set -e
 
 echo "**** Job starts ****"
 date
 echo "**** JHPCE info ****"
 echo "User: ${USER}"
-echo "Job id: ${JOB_ID}"
-echo "Job name: ${JOB_NAME}"
-echo "Hostname: ${HOSTNAME}"
-echo "Task id: ${SGE_TASK_ID}"
+echo "Job id: ${SLURM_JOB_ID}"
+echo "Job name: ${SLURM_JOB_NAME}"
+echo "Node name: ${SLURMD_NODENAME}"
+echo "Task id: ${SLURM_ARRAY_TASK_ID}"
 
-module load loopy/1.0.0-next.24
+module load samui/1.0.0-next.24
 python 01-SPG_images.py
 
 echo "**** Job ends ****"

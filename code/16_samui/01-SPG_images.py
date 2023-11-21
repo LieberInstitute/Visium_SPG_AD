@@ -81,9 +81,9 @@ sample_info = (sample_info
 )
 
 #   Subset all types of IDs to this sample only
-sample_id_spaceranger = sample_info['spaceranger_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
-sample_id_image = sample_info['image_id'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
-sample_id_samui = sample_id_spaceranger + '_' + sample_info['diagnosis'].iloc[int(os.environ['SGE_TASK_ID']) - 1]
+sample_id_spaceranger = sample_info['spaceranger_id'].iloc[int(os.environ['SLURM_ARRAY_TASK_ID']) - 1]
+sample_id_image = sample_info['image_id'].iloc[int(os.environ['SLURM_ARRAY_TASK_ID']) - 1]
+sample_id_samui = sample_id_spaceranger + '_' + sample_info['diagnosis'].iloc[int(os.environ['SLURM_ARRAY_TASK_ID']) - 1]
 
 #   Update paths for this sample ID
 out_dir = Path(str(out_dir).format(sample_id_samui))
