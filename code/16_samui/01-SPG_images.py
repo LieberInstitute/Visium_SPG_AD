@@ -128,24 +128,9 @@ gene_df = pd.DataFrame(
 #   any duplicated cases
 gene_df = gene_df.loc[: , ~gene_df.columns.duplicated()].copy()
 
-#   Samui seems to break when using > ~ 5,000 genes. Take just the genes where
-#   at least 10% of spots have nonzero counts
-gene_df = gene_df.loc[:, np.sum(gene_df > 0, axis = 0) > (gene_df.shape[0] * 0.1)].copy()
-
 assert default_gene in gene_df.columns, "Default gene not in AnnData"
 
 print('Using {} genes as features.'.format(gene_df.shape[1]))
-
-################################################################################
-#   Split 'path_groups' column into binary columns for each of its values
-################################################################################
-
-#   Circumvent a Samui bug (https://github.com/chaichontat/samui/issues/84);
-#   turn the categorical column 'path_groups' into several numeric columns with
-#   just values of 0 and 1
-path_df = pd.DataFrame()
-for path_group in path_groups:
-    path_df[path_group] = (spe.obs['path_groups'] == path_group).astype(int)
 
 ################################################################################
 #   Use the Samui API to create the importable directory for this sample
@@ -167,7 +152,7 @@ this_sample.add_image(
 )
 
 #   Add gene expression results (multiple columns) as a feature
-this_sample.add_csv_feature(
+this_sample.add_chunked_feature(
     gene_df, name = "Genes", coordName = "coords", dataType = "quantitative"
 )
 
@@ -178,9 +163,10 @@ this_sample.add_csv_feature(
 )
 
 #   Add pathology groups
+path_df = pd.DataFrame({'path_group': spe.obs['path_groups']})
 this_sample.add_csv_feature(
     path_df, name = "Pathology Group", coordName = "coords",
-    dataType = "quantitative"
+    dataType = "categorical"
 )
 
 this_sample.set_default_feature(group = "Genes", feature = default_gene)
