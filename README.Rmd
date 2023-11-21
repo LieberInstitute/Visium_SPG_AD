@@ -63,6 +63,7 @@ We provide the following interactive websites, organized by software labeled wit
   - [Visium_SPG_AD_wholegenome](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website showing the spatially-resolved Visium-SPG data (n = 10 tissue sections from 3 AD donors and 1 age-matched control) with statistical results comparing the 7 different spot categories bearing Ab and pTau pathology within donors with AD. This version shows the whole genome gene expression data.
   - [Visium_SPG_AD_TGE](https://libd.shinyapps.io/Visium_SPG_AD_TGE): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website that the same as the previous one, but with the targeted gene expression (TGE) panel data.
   - [Visium_SPG_AD_wholegenome_Abeta_microenv](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome_Abeta_microenv): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website similar to `Visium_SPG_AD_wholegenome`, but with the `Ab` and `next_Ab` pathologies collapsed into a single one `Ab_env` for studying the Abeta micro environment.
+  - [Visium_SPG_AD_wholegenome_Abeta_and_pTau_microenv](https://libd.shinyapps.io/Visium_SPG_AD_wholegenome_Abeta_and_pTau_microenv/): [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w) website similar to `Visium_SPG_AD_wholegenome_Abeta_microenv`, but after also combining `pTau` and `next_pTau` into `pTau_env` as well as `both` and `next_both` into `both_env`, thus resulting in only 4 categories: `none`, `Ab_env`, `pTau_env`, and `both_env`.
 * 👀 `iSEE`
   - [Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome](https://libd.shinyapps.io/Visium_SPG_AD_pseudobulk_AD_pathology_wholegenome): [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1) website showing the pseudo-bulked spatial data of the 7 different pathological categories.
 * 🔍 `samui`
@@ -194,6 +195,8 @@ transcriptomics data from the 10x Genomics Visium platform. For example,
 this is the code you can use to access the spatially-resolved data. For more
 details, check the help file for `fetch_data()`.
 
+As of August 23, 2023 the processed data includes spot-level deconvolution results generated using [`cell2location`](https://doi.org/10.1038/s41587-021-01139-4) with the six broad cell types from the [Mathys et al snRNA-seq dataset](https://doi.org/10.1038/s41586-019-1195-2) in which they found AD associated gene expression changes. To access these results check the `colData(spe)` columns starting with the `c2l_` prefix.
+
 ```{r 'access_data', message=FALSE, fig.height = 8, fig.width = 9, eval = FALSE}
 ## Check that you have a recent version of spatialLIBD installed
 stopifnot(packageVersion("spatialLIBD") >= "1.11.12")
@@ -209,9 +212,9 @@ spe
 #> rownames(27853): ENSG00000243485 ENSG00000238009 ... ENSG00000278817
 #>   ENSG00000277196
 #> rowData names(7): source type ... gene_type gene_search
-#> colnames(38115): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ... TTGTTTGTATTACACG-1
-#>   TTGTTTGTGTAAATTC-1
-#> colData names(113): key sample_id ... APOe path_groups_colors
+#> colnames(38115): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
+#>   TTGTTTGTATTACACG-1 TTGTTTGTGTAAATTC-1
+#> colData names(113): key sample_id ... c2l_oli c2l_opc
 #> reducedDimNames(15): 10x_pca 10x_tsne ... TSNE_perplexity50.HARMONY
 #>   TSNE_perplexity80.HARMONY
 #> mainExpName: NULL
