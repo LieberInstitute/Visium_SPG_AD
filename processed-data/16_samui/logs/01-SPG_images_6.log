@@ -1,16 +1,19 @@
 **** Job starts ****
-Thu Apr 20 14:05:14 EDT 2023
+Tue Nov 21 04:58:47 PM EST 2023
 **** JHPCE info ****
 User: neagles
-Job id: 3130410
+Job id: 876865
 Job name: SPG_images
-Hostname: compute-119.cm.cluster
+Node name: compute-089
 Task id: 6
-Loading LIBD module for loopy/1.0.0-next.24
-/jhpce/shared/jhpce/libd/loopy/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1828: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+Loading LIBD SLURM module for samui/1.0.0-next.24
+/jhpce/shared/libd/core/samui/1.0.0-next.24/samui_env/lib/python3.10/site-packages/pydantic/_internal/_config.py:269: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+/jhpce/shared/libd/core/samui/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1838: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
   utils.warn_names_duplicates("obs")
-Using 3499 genes as features.
-[14:05:46] INFO     Transforming                                    logger.py:27
+Using 27845 genes as features.
+[16:59:54] INFO     Transforming                                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
@@ -23,12 +26,12 @@ Using 3499 genes as features.
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
                     D1_1.tif                                                    
-[14:06:03] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+[17:00:23] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
                     D1_2.tif                                                    
-[14:06:13] INFO     Writing COG                                     logger.py:27
+[17:00:54] INFO     Writing COG                                     logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
@@ -38,9 +41,13 @@ Using 3499 genes as features.
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD/VIFAD2_V10A27-106_             
                     D1_2.tif                                                    
-[14:06:45] INFO     V10A27106_D1_Br3880_AD Adding csv feature       logger.py:27
+[17:01:21] INFO     V10A27106_D1_Br3880_AD Adding chunked feature   logger.py:27
                     'Genes'                                                     
-[14:07:12] INFO     V10A27106_D1_Br3880_AD Adding csv feature 'Spot logger.py:27
+[17:13:19] INFO     V10A27106_D1_Br3880_AD Concatenating and        logger.py:27
+                    compressing chunks                                          
+[17:14:01] INFO     Writing compressed chunks for Genes: 7503572    logger.py:27
+                    bytes                                                       
+           INFO     V10A27106_D1_Br3880_AD Adding csv feature 'Spot logger.py:27
                     Coverage'                                                   
            INFO     V10A27106_D1_Br3880_AD Adding csv feature       logger.py:27
                     'Pathology Group'                                           
@@ -49,4 +56,4 @@ Using 3499 genes as features.
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10A27106_D1_Br3880_AD                                
 **** Job ends ****
-Thu Apr 20 14:07:13 EDT 2023
+Tue Nov 21 05:14:02 PM EST 2023

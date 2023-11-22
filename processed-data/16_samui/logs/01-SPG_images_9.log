@@ -1,16 +1,19 @@
 **** Job starts ****
-Thu Apr 20 14:08:29 EDT 2023
+Tue Nov 21 04:58:47 PM EST 2023
 **** JHPCE info ****
 User: neagles
-Job id: 3130410
+Job id: 876868
 Job name: SPG_images
-Hostname: compute-122.cm.cluster
+Node name: compute-099
 Task id: 9
-Loading LIBD module for loopy/1.0.0-next.24
-/jhpce/shared/jhpce/libd/loopy/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1828: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+Loading LIBD SLURM module for samui/1.0.0-next.24
+/jhpce/shared/libd/core/samui/1.0.0-next.24/samui_env/lib/python3.10/site-packages/pydantic/_internal/_config.py:269: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+/jhpce/shared/libd/core/samui/1.0.0-next.24/samui_env/lib/python3.10/site-packages/anndata/_core/anndata.py:1838: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
   utils.warn_names_duplicates("obs")
-Using 2077 genes as features.
-[14:08:45] INFO     Transforming                                    logger.py:27
+Using 27845 genes as features.
+[17:00:00] INFO     Transforming                                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD/VIFAD3_V10T31-036_             
@@ -18,17 +21,17 @@ Using 2077 genes as features.
            INFO     'V10T31036_C1_Br3873_AD' Executing queued       logger.py:27
                     functions                                                   
            INFO     V10T31036_C1_Br3873_AD Adding coords 'coords'   logger.py:27
-           INFO     Writing uncompressed GeoTIFF                    logger.py:27
+[17:00:19] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD/VIFAD3_V10T31-036_             
                     C1_1.tif                                                    
-[14:08:55] INFO     Writing uncompressed GeoTIFF                    logger.py:27
+[17:00:55] INFO     Writing uncompressed GeoTIFF                    logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD/VIFAD3_V10T31-036_             
                     C1_2.tif                                                    
-[14:09:05] INFO     Writing COG                                     logger.py:27
+[17:01:16] INFO     Writing COG                                     logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD/VIFAD3_V10T31-036_             
@@ -38,15 +41,19 @@ Using 2077 genes as features.
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD/VIFAD3_V10T31-036_             
                     C1_2.tif                                                    
-[14:09:47] INFO     V10T31036_C1_Br3873_AD Adding csv feature       logger.py:27
+[17:01:46] INFO     V10T31036_C1_Br3873_AD Adding chunked feature   logger.py:27
                     'Genes'                                                     
-[14:09:59] INFO     V10T31036_C1_Br3873_AD Adding csv feature 'Spot logger.py:27
+[17:12:49] INFO     V10T31036_C1_Br3873_AD Concatenating and        logger.py:27
+                    compressing chunks                                          
+[17:13:10] INFO     Writing compressed chunks for Genes: 4208619    logger.py:27
+                    bytes                                                       
+           INFO     V10T31036_C1_Br3873_AD Adding csv feature 'Spot logger.py:27
                     Coverage'                                                   
            INFO     V10T31036_C1_Br3873_AD Adding csv feature       logger.py:27
                     'Pathology Group'                                           
-[14:10:00] INFO     'V10T31036_C1_Br3873_AD' written to             logger.py:27
+           INFO     'V10T31036_C1_Br3873_AD' written to             logger.py:27
                     /dcs04/lieber/lcolladotor/with10x_LIBD001/Visiu             
                     m_SPG_AD/code/16_samui/../../processed-data/16_             
                     samui/V10T31036_C1_Br3873_AD                                
 **** Job ends ****
-Thu Apr 20 14:10:00 EDT 2023
+Tue Nov 21 05:13:10 PM EST 2023
