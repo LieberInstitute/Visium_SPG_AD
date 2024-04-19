@@ -63,7 +63,7 @@ Throughout the rest of this document, we'll refer to this object by the name `sp
     + `scran_high_subsets_Mito_percent`: spots with a high percent of mitochondrial gene expression.
     + `scran_discard`: spots belonging to either scran_low_lib_size, scran_low_n_feature, or scran_high_subsets_Mito_percent. 
     + `Scran_quick_cluster`: quick clustering results of spots prior to computing sum factors for computing logcounts. See [this](https://github.com/LieberInstitute/Visium_SPG_AD/blob/2f1b4d0e2c66ca0419ffa15cdf5bccc295ead20b/code/08_harmony_BayesSpace/01_preprocess_and_harmony.R#L61-L70) for more details.
-* `Continuous variable to plot`: which gene or continuous variable (such as the cell count, the ratio of the mitochondrial chromosome expression) to visualize in the gene tabs as well as on the `clusters (interactive)` tab. Details:
+* `Continuous variable(s) to plot`: which gene(s) or continuous variable(s) (such as the cell count, the ratio of the mitochondrial chromosome expression) to visualize in the gene tabs as well as on the `clusters (interactive)` tab. Multiple choices may be selected, in which case "Multi-gene method" controls the method used to combine information from all selected variables. Details:
   - `sum_umi`: sum of UMI counts across a spot.
   - `sum_gene`: number of genes with non-zero counts in a spot.
   - `expr_chrM`: sum of chrM counts in a spot.
@@ -76,6 +76,10 @@ Throughout the rest of this document, we'll refer to this object by the name `sp
   - `PpTau`: proportion of ROI pixels of pTau within a spot.
   - `edge-distance` : closest distance in number of spots to either the vertical or horizontal edge.
   - `c2l_*`: spot-level deconvolution results generated using [`cell2location`](https://doi.org/10.1038/s41587-021-01139-4) with the six broad cell types from the [Mathys et al snRNA-seq dataset](https://doi.org/10.1038/s41586-019-1195-2) in which they found AD associated gene expression changes. The cell types are: astrocytes (`ast`), excitatory neurons (`ex`), inhibitory neurons (`in`), microglia (`mic`), oligodendrocytes (`oli`), and oligodendrocyte precursor cells (`opc`).
+* `Multi-gene method`: when selecting more than one continuous variable, the method used to combine information from all selected variables. See [the multi gene plots vignette](https://research.libd.org/spatialLIBD/articles/multi_gene_plots.html) for more information about these methods for combining multiple continuous variables.
+  * `z_score`: to summarize multiple continuous variables, each is normalized to represent a Z-score. The multiple scores are then averaged.
+  * `pca`: PCA dimension reduction is conducted on the matrix formed by the continuous variables, and the first PC is then used and multiplied by -1 if needed to have the majority of the values for PC1 to be positive. 
+  * `sparsity`: the proportion of continuous variables with positive values for each spot is computed.
 * `Gene scale`: whether to use the raw expression values (`counts`) or the scaled and log transformed values (`logcounts`).
 * `Spot transparency level`: the transparency of the spots in the visualizations. It can be useful if the spot colors are blocking the background image.
 * `Spot point size`: the size of the spots in the visualizations.
