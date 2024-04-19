@@ -102,7 +102,7 @@ namely:
 
 - 🔭 [`spatialLIBD`](https://doi.org/10.1186/s12864-022-08601-w)
 - 👀 [`iSEE`](https://doi.org/10.12688%2Ff1000research.14966.1)
-- 🔍 [`samui`](https://doi.org/10.1101/2023.01.28.525943)
+- 🔍 [`samui`](http://dx.doi.org/10.1017/S2633903X2300017X)
 
 We provide the following interactive websites, organized by software
 labeled with emojis:
