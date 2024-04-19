@@ -187,8 +187,8 @@ if you use data from this project.
 > Divecha, Nicholas J Eagles, Jashandeep S Lobana, Stephen R Williams,
 > Michelle Mark, Rahul A Bharadwaj, Joel E Kleinman, Thomas M Hyde,
 > Stephanie C Page, Stephanie C Hicks, Keri Martinowich, Kristen R
-> Maynard, Leonardo Collado-Torres. bioRxiv 2023.04.20.537710; doi:
-> <https://doi.org/10.1101/2023.04.20.537710>
+> Maynard, Leonardo Collado-Torres. GEN Biotechnology; doi:
+> <https://doi.org/10.1089/genbio.2023.0019>
 
 Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
 
@@ -243,12 +243,13 @@ the vignettes and/or the paper(s) describing the package.
 
 To cite [`VistoSeg`](http://research.libd.org/VistoSeg/) please use:
 
-> VistoSeg: processing utilities for high-resolution Visium/Visium-IF
-> images for spatial transcriptomics data. Madhavi Tippani, Heena R.
+> VistoSeg: {Processing utilities for high-resolution images for
+> spatially resolved transcriptomics data. Madhavi Tippani, Heena R.
 > Divecha, Joseph L. Catallini II, Sang Ho Kwon, Lukas M. Weber, Abby
-> Spangler, Andrew E. Jaffe, Stephanie C. Hicks, Keri Martinowich,
-> Leonardo Collado-Torres, Stephanie C. Page, Kristen R. Maynard bioRxiv
-> 2021.08.04.452489; doi: <https://doi.org/10.1101/2021.08.04.452489>
+> Spangler, Andrew E. Jaffe, Thomas M. Hyde, Joel E. Kleinman, Stephanie
+> C. Hicks, Keri Martinowich, Leonardo Collado-Torres, Stephanie C.
+> Page, Kristen R. Maynard Biological Imaging ; doi:
+> <https://doi.org/10.1017/S2633903X23000235>
 
 Below is the citation in [`BibTeX`](http://www.bibtex.org/) format.
 
