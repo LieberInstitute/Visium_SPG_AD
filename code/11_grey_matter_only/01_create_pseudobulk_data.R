@@ -10,21 +10,74 @@
 #     memory = "15G")
 # To execute the script builder, use: sh 01_create_pseudobulk_data.sh
 
+# Ensure that necessary packages are installed
+packages_needed <- c("jaffelab", "devtools", "remotes") # add other packages as needed
+packages_to_install <- packages_needed[!(packages_needed %in% installed.packages()[,"Package"])]
+
+if (length(packages_to_install) > 0) {
+    # Install remotes if not already installed
+    if (!requireNamespace("remotes", quietly = TRUE)) {
+        install.packages("remotes")
+    }
+    
+    # Install missing packages from CRAN
+    cran_packages <- packages_to_install[packages_to_install %in% rownames(available.packages())]
+    if (length(cran_packages) > 0) {
+        install.packages(cran_packages)
+    }
+    
+    # Install jaffelab from GitHub
+    if ("jaffelab" %in% packages_to_install) {
+        remotes::install_github("LieberInstitute/jaffelab")
+    }
+    
+    # Load all required packages
+    invisible(lapply(packages_needed, library, character.only = TRUE))
+} else {
+    message("All packages are already installed.")
+}
+
+# Check and install missing packages
+necessary_packages <- c("getopt", "here", "spatialLIBD", "sessioninfo", "scater")
+missing_packages <- necessary_packages[!(necessary_packages %in% installed.packages()[,"Package"])]
+if (length(missing_packages) > 0) {
+    install.packages(missing_packages)
+}
+
+# Load packages
+lapply(necessary_packages, library, character.only = TRUE)
+
 # Required libraries
 library("getopt")
 
 ## Specify parameters
-spec <- matrix(c(
-    "spetype", "s", 2, "character", "SPE spetype: wholegenome or targeted",
-    "help", "h", 0, "logical", "Display help"
-), byrow = TRUE, ncol = 5)
-opt <- getopt(spec = spec)
+#spec <- matrix(c(
+#    "spetype", "s", 2, "character", "SPE spetype: wholegenome or targeted",
+#    "help", "h", 0, "logical", "Display help"
+#), byrow = TRUE, ncol = 5)
+#opt <- getopt(spec = spec)
 
 ## if help was asked for print a friendly message
 ## and exit with a non-zero error code
-if (!is.null(opt$help)) {
-    cat(getopt(spec, usage = TRUE))
-    q(status = 1)
+#if (!is.null(opt$help)) {
+#    cat(getopt(spec, usage = TRUE))
+#    q(status = 1)
+#}
+
+# Manually define the options instead of using command line arguments
+opt <- list(spetype = "wholegenome")  # Change "wholegenome" to "targeted" if needed
+
+# Now proceed with using opt$spetype to set directory paths
+library("here")  # Ensure 'here' library is loaded for path management
+dir_rdata <- here::here("processed-data", "11_grey_matter_only", opt$spetype)
+print(dir_rdata)  # This will print the directory path to confirm it's correctly set
+
+# Create the directory if it doesn't exist
+if (!dir.exists(dir_rdata)) {
+    dir.create(dir_rdata, recursive = TRUE)
+    cat("Directory created: ", dir_rdata, "\n")
+} else {
+    cat("Directory already exists: ", dir_rdata, "\n")
 }
 
 ## For testing
